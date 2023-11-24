@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>841</width>
-    <height>609</height>
+    <width>680</width>
+    <height>580</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,8 +20,8 @@
    <widget class="QPushButton" name="push_erase">
     <property name="geometry">
      <rect>
-      <x>729</x>
-      <y>118</y>
+      <x>568</x>
+      <y>94</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -58,7 +58,7 @@
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>224</y>
+      <y>200</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -94,7 +94,7 @@
     <property name="geometry">
      <rect>
       <x>351</x>
-      <y>504</y>
+      <y>480</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -108,7 +108,7 @@
     </property>
     <property name="styleSheet">
      <string notr="true"> QPushButton#push_pl_min {
-     background-color: rgba(20, 52, 65, 0.7);
+     background-color: rgba(48, 59, 68, 0.8);
      border-style: double;
      border-width: 3px;
      border-color: rgba(42, 78, 92, 0.9); 
@@ -130,7 +130,7 @@
     <property name="geometry">
      <rect>
       <x>351</x>
-      <y>434</y>
+      <y>410</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -144,7 +144,7 @@
     </property>
     <property name="styleSheet">
      <string notr="true"> QPushButton#push_1 {
-     background-color: rgba(65, 79, 92, 0.7);
+     background-color: rgba(48, 59, 68, 0.8);
      border-style: double;
      border-width: 3px;
      border-color: rgba(42, 78, 92, 0.9); 
@@ -166,7 +166,7 @@
     <property name="geometry">
      <rect>
       <x>351</x>
-      <y>364</y>
+      <y>340</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -180,7 +180,7 @@
     </property>
     <property name="styleSheet">
      <string notr="true"> QPushButton#push_4 {
-     background-color: rgba(65, 79, 92, 0.7);
+     background-color: rgba(48, 59, 68, 0.8);
      border-style: double;
      border-width: 3px;
      border-color: rgba(42, 78, 92, 0.9); 
@@ -202,7 +202,7 @@
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>504</y>
+      <y>480</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -238,7 +238,7 @@
     <property name="geometry">
      <rect>
       <x>590</x>
-      <y>434</y>
+      <y>410</y>
       <width>80</width>
       <height>140</height>
      </rect>
@@ -274,7 +274,7 @@
     <property name="geometry">
      <rect>
       <x>170</x>
-      <y>364</y>
+      <y>340</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -310,7 +310,7 @@
     <property name="geometry">
      <rect>
       <x>170</x>
-      <y>504</y>
+      <y>480</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -346,7 +346,7 @@
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>224</y>
+      <y>200</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -382,7 +382,7 @@
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>504</y>
+      <y>480</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -418,7 +418,7 @@
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>364</y>
+      <y>340</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -454,7 +454,7 @@
     <property name="geometry">
      <rect>
       <x>351</x>
-      <y>224</y>
+      <y>200</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -490,7 +490,7 @@
     <property name="geometry">
      <rect>
       <x>510</x>
-      <y>364</y>
+      <y>340</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -504,7 +504,7 @@
     </property>
     <property name="styleSheet">
      <string notr="true"> QPushButton#push_6 {
-     background-color: rgba(65, 79, 92, 0.7);
+     background-color: rgba(48, 59, 68, 0.8);
      border-style: double;
      border-width: 3px;
      border-color: rgba(42, 78, 92, 0.9); 
@@ -526,7 +526,7 @@
     <property name="geometry">
      <rect>
       <x>590</x>
-      <y>364</y>
+      <y>340</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -562,7 +562,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>294</y>
+      <y>270</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -598,7 +598,7 @@
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>434</y>
+      <y>410</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -634,7 +634,7 @@
     <property name="geometry">
      <rect>
       <x>170</x>
-      <y>224</y>
+      <y>200</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -670,7 +670,7 @@
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>294</y>
+      <y>270</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -706,7 +706,7 @@
     <property name="geometry">
      <rect>
       <x>430</x>
-      <y>224</y>
+      <y>200</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -742,7 +742,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>434</y>
+      <y>410</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -778,7 +778,7 @@
     <property name="geometry">
      <rect>
       <x>170</x>
-      <y>294</y>
+      <y>270</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -814,7 +814,7 @@
     <property name="geometry">
      <rect>
       <x>590</x>
-      <y>224</y>
+      <y>200</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -850,8 +850,8 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>95</y>
-      <width>821</width>
+      <y>70</y>
+      <width>660</width>
       <height>111</height>
      </rect>
     </property>
@@ -876,45 +876,11 @@
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="history">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>35</y>
-      <width>821</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-      <italic>false</italic>
-      <bold>false</bold>
-      <strikeout>false</strikeout>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel {
-    background-color: rgba(65, 79, 92, 0.7);
-    border: 3px solid rgba(42, 78, 92, 0.9); 
-    border-style: double;
-    padding: 5px;
-    text-align: right;
-}
-</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="wordWrap">
-     <bool>true</bool>
-    </property>
-   </widget>
    <widget class="QPushButton" name="push_9">
     <property name="geometry">
      <rect>
       <x>510</x>
-      <y>294</y>
+      <y>270</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -928,7 +894,7 @@
     </property>
     <property name="styleSheet">
      <string notr="true"> QPushButton#push_9 {
-     background-color: rgba(65, 79, 92, 0.7);
+     background-color: rgba(48, 59, 68, 0.8);
      border-style: double;
      border-width: 3px;
      border-color: rgba(42, 78, 92, 0.9); 
@@ -950,7 +916,7 @@
     <property name="geometry">
      <rect>
       <x>430</x>
-      <y>294</y>
+      <y>270</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -964,7 +930,7 @@
     </property>
     <property name="styleSheet">
      <string notr="true"> QPushButton#push_8 {
-     background-color: rgba(65, 79, 92, 0.7);
+     background-color: rgba(48, 59, 68, 0.8);
      border-style: double;
      border-width: 3px;
      border-color: rgba(42, 78, 92, 0.9); 
@@ -986,7 +952,7 @@
     <property name="geometry">
      <rect>
       <x>430</x>
-      <y>434</y>
+      <y>410</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -1000,7 +966,7 @@
     </property>
     <property name="styleSheet">
      <string notr="true"> QPushButton#push_2 {
-     background-color: rgba(65, 79, 92, 0.7);
+     background-color: rgba(48, 59, 68, 0.8);
      border-style: double;
      border-width: 3px;
      border-color: rgba(42, 78, 92, 0.9); 
@@ -1022,7 +988,7 @@
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>364</y>
+      <y>340</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -1058,7 +1024,7 @@
     <property name="geometry">
      <rect>
       <x>170</x>
-      <y>434</y>
+      <y>410</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -1094,7 +1060,7 @@
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>434</y>
+      <y>410</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -1130,7 +1096,7 @@
     <property name="geometry">
      <rect>
       <x>430</x>
-      <y>504</y>
+      <y>480</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -1144,7 +1110,7 @@
     </property>
     <property name="styleSheet">
      <string notr="true"> QPushButton#push_0 {
-     background-color: rgba(65, 79, 92, 0.7);
+     background-color: rgba(48, 59, 68, 0.8);
      border-style: double;
      border-width: 3px;
      border-color: rgba(42, 78, 92, 0.9); 
@@ -1166,7 +1132,7 @@
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>294</y>
+      <y>270</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -1202,7 +1168,7 @@
     <property name="geometry">
      <rect>
       <x>510</x>
-      <y>434</y>
+      <y>410</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -1216,7 +1182,7 @@
     </property>
     <property name="styleSheet">
      <string notr="true"> QPushButton#push_3 {
-     background-color: rgba(65, 79, 92, 0.7);
+     background-color: rgba(48, 59, 68, 0.8);
      border-style: double;
      border-width: 3px;
      border-color: rgba(42, 78, 92, 0.9); 
@@ -1238,7 +1204,7 @@
     <property name="geometry">
      <rect>
       <x>590</x>
-      <y>294</y>
+      <y>270</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -1274,7 +1240,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>224</y>
+      <y>200</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -1310,31 +1276,29 @@
     <property name="geometry">
      <rect>
       <x>510</x>
-      <y>504</y>
+      <y>480</y>
       <width>80</width>
       <height>70</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>-1</pointsize>
       <italic>false</italic>
       <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
      <string notr="true"> QPushButton#push_dot {
-     background-color: rgba(65, 79, 92, 0.7);
+     background-color: rgba(20, 52, 65, 0.7);
      border-style: double;
      border-width: 3px;
      border-color: rgba(42, 78, 92, 0.9); 
-     font: bold 25px;
      min-width: 2em;
      padding: 1px;
 	 color: rgba(255, 255, 255, 0.8);
  }
  QPushButton#push_dot:pressed {
-     background-color: rgb(42, 78, 92);
+     background-color: rgb(108, 63, 0);
      border-style: inset;
  }</string>
     </property>
@@ -1346,7 +1310,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>504</y>
+      <y>480</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -1382,7 +1346,7 @@
     <property name="geometry">
      <rect>
       <x>351</x>
-      <y>294</y>
+      <y>270</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -1396,7 +1360,7 @@
     </property>
     <property name="styleSheet">
      <string notr="true"> QPushButton#push_7 {
-     background-color: rgba(65, 79, 92, 0.7);
+     background-color: rgba(48, 59, 68, 0.8);
      border-style: double;
      border-width: 3px;
      border-color: rgba(42, 78, 92, 0.9); 
@@ -1418,7 +1382,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>364</y>
+      <y>340</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -1454,7 +1418,7 @@
     <property name="geometry">
      <rect>
       <x>430</x>
-      <y>364</y>
+      <y>340</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -1468,7 +1432,7 @@
     </property>
     <property name="styleSheet">
      <string notr="true"> QPushButton#push_5 {
-     background-color: rgba(65, 79, 92, 0.7);
+     background-color: rgba(48, 59, 68, 0.8);
      border-style: double;
      border-width: 3px;
      border-color: rgba(42, 78, 92, 0.9); 
@@ -1490,7 +1454,7 @@
     <property name="geometry">
      <rect>
       <x>510</x>
-      <y>224</y>
+      <y>200</y>
       <width>80</width>
       <height>70</height>
      </rect>
@@ -1522,115 +1486,28 @@
      <string>÷</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="push_credit">
+   <widget class="QLineEdit" name="history">
     <property name="geometry">
      <rect>
-      <x>691</x>
-      <y>458</y>
-      <width>140</width>
-      <height>116</height>
+      <x>10</x>
+      <y>10</y>
+      <width>660</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>18</pointsize>
-      <italic>false</italic>
-      <bold>true</bold>
-      <strikeout>false</strikeout>
+      <pointsize>17</pointsize>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true"> QPushButton#push_credit {
-     background-color: rgba(20, 52, 65, 0.7);
-     border-style: double;
-     border-width: 3px;
-     border-color: rgba(42, 78, 92, 0.9); 
-     min-width: 2em;
-     padding: 1px;
-	 color: rgba(255, 255, 255, 0.8);
-	 border-image: url(/home/deadline/s21_projects/C7_s21_smartcalc/src/pics/credit.png);
- }
- QPushButton#push_credit:pressed {
-     background-color: rgb(108, 63, 0);
-     border-style: inset;
- }</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="push_deposit">
-    <property name="geometry">
-     <rect>
-      <x>691</x>
-      <y>341</y>
-      <width>140</width>
-      <height>116</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>18</pointsize>
-      <italic>false</italic>
-      <bold>true</bold>
-      <strikeout>false</strikeout>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"> QPushButton#push_deposit {
-     background-color: rgba(20, 52, 65, 0.7);
-     border-style: double;
-     border-width: 3px;
-     border-color: rgba(42, 78, 92, 0.9); 
-     min-width: 2em;
-     padding: 1px;
-	 color: rgba(255, 255, 255, 0.8);
-	 border-image: url(/home/deadline/s21_projects/C7_s21_smartcalc/src/pics/deposit.png);
- }
- QPushButton#push_deposit:pressed {
-     background-color: rgb(108, 63, 0);
-     border-style: inset;
- }</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="push_graph">
-    <property name="geometry">
-     <rect>
-      <x>691</x>
-      <y>224</y>
-      <width>140</width>
-      <height>116</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>18</pointsize>
-      <italic>false</italic>
-      <bold>true</bold>
-      <strikeout>false</strikeout>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"> QPushButton#push_graph {
-     background-color: rgba(20, 52, 65, 0.7);
-     border-style: double;
-     border-width: 3px;
-     border-color: rgba(42, 78, 92, 0.9); 
-     min-width: 2em;
-     padding: 1px;
-	 color: rgba(255, 255, 255, 0.8);
-	 border-image: url(/home/deadline/s21_projects/C7_s21_smartcalc/src/pics/graph.png);
- }
- QPushButton#push_graph:pressed {
-     background-color: rgb(108, 63, 0);
-     border-style: inset;
- }</string>
-    </property>
-    <property name="text">
-     <string/>
+     <string notr="true">QLineEdit {
+    border: 3px solid rgba(42, 78, 92, 0.9); 
+    border-style: double;
+    padding: 5px;
+    text-align: right;
+}
+</string>
     </property>
    </widget>
    <zorder>push_acos</zorder>
@@ -1656,7 +1533,6 @@
    <zorder>push_sin</zorder>
    <zorder>push_mult</zorder>
    <zorder>resfield</zorder>
-   <zorder>history</zorder>
    <zorder>push_9</zorder>
    <zorder>push_8</zorder>
    <zorder>push_2</zorder>
@@ -1675,16 +1551,14 @@
    <zorder>push_5</zorder>
    <zorder>push_div</zorder>
    <zorder>push_erase</zorder>
-   <zorder>push_credit</zorder>
-   <zorder>push_deposit</zorder>
-   <zorder>push_graph</zorder>
+   <zorder>history</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>841</width>
+     <width>680</width>
      <height>23</height>
     </rect>
    </property>

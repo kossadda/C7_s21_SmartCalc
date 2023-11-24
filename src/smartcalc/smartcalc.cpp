@@ -172,6 +172,6 @@ void smartcalc::on_push_eq_clicked()
     QByteArray byteArray = ui->history->text().toUtf8();
     char* charArray = byteArray.data();
     double result = notation(charArray);
-    ui->resfield->setText(QString::number(result));
+    ui->resfield->setText(QString::number(result, 'f', 7));
 }
 
