@@ -32,5 +32,7 @@ private slots:
     void on_push_eq_clicked();
     void on_push_bkt2_clicked();
     void on_push_div_clicked();
+
+    int countDigits(double number);
 };
 #endif // SMARTCALC_H

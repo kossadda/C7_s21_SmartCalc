@@ -155,19 +155,26 @@ void smartcalc::on_push_div_clicked()
     }
 }
 
+int smartcalc::countDigits(double number)
+{
+    int integer = static_cast<int>(number);
+    std::string integer_string = std::to_string(integer);
+    return integer_string.length();
+}
+
 void smartcalc::on_push_eq_clicked()
 {
-    if(ui->resfield->text().length() > 0) {
-        ui->history->setText(ui->history->text() + ui->resfield->text());
-    } else {
-        QString temp = ui->history->text();
-        temp.chop(1);
-        ui->history->setText(temp);
-    }
+    // if(ui->resfield->text().length() > 0) {
+    //     ui->history->setText(ui->history->text() + ui->resfield->text());
+    // } else {
+    //     QString temp = ui->history->text();
+    //     temp.chop(1);
+    //     ui->history->setText(temp);
+    // }
     QByteArray byteArray = ui->history->text().toUtf8();
     char* charArray = byteArray.data();
-    double result = notation(charArray);
-    ui->resfield->setText(QString::number(result, 'f', 7));
+    double result = polish(charArray);
+    ui->resfield->setText(QString::number(result, 'g', countDigits(result) + 7));
     if(!ui->history->text().contains("=")) {
         ui->history->setText(ui->history->text() + "=");
     }

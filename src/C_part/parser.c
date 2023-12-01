@@ -1,16 +1,33 @@
 #include "C_funcs.h"
 
+#define SIN 115
+#define COS 99
+#define TAN 116
+#define ASIN 83
+#define ACOS 67
+#define ATAN 84
+#define SQRT 81
+#define LOG 76
+#define LN 101
+#define OPEN_BRCK 40
+#define CLOSE_BRCK 41
+#define ADD 43
+#define SUB 45
+#define MUL 42
+#define DIV 47
+
 int main() {
-    char *example = "(((1.123*213.5555-(217.12354)*1/2)/4/6*5632.57-123.344/(4.213*(((653.13*(14.123*121.2345+2/(23.123+9*0.213))))/((237.12*21.8888))/(1.888+92.14)))))";
+    char *example = "(((1.123*213.5555-((217.12354))*1/2)/4/6*(5632.57-123.344)/(23.12346)/(4.213*(((653.13*(14.123*121.2345+2/(23.123+9*0.213))))/((237.12*21.8888))/(1.888+92.14)))))";
+    // char *example = "s(5+(t(1.123*2))/c(1+2+213.52)/12.323)";
     printf("%lf\n", polish(example));
 }
 
 double polish(char *str) {
     char attachment[256] = "1*";
-    if (*str == '(') {
+    if (*str == '(' || *str == 's' || *str == 'c' || *str == 't' || *str == 'S' || *str == 'C' || *str == 'T') {
         strcat(attachment, str);
     }
-    double result = notation((*str == '(') ? attachment : str);
+    double result = notation((*str == '(' || *str == 's' || *str == 'c' || *str == 't' || *str == 'S' || *str == 'C' || *str == 'T') ? attachment : str);
     return result;
 }
 
@@ -18,7 +35,7 @@ double notation(char *str) {
     char token[256];
     strcpy(token, str);
     char *temp = NULL;
-    char moves[] = "()^+-*/";
+    char moves[] = "()^+-*/sctSCT";
     int n_count = 0;
     int o_count = -1;
     double nums[100] = {0};
@@ -36,6 +53,9 @@ double notation(char *str) {
             }
             if(str[i] == ')' && oper[o_count] == '(') {
                 oper[o_count--] = '\000';
+                if(oper[o_count] == SIN || oper[o_count] == COS || oper[o_count] == TAN || oper[o_count] == ASIN || oper[o_count] == ACOS || oper[o_count] == ATAN) {
+                    trigonometry(&(nums[n_count - 1]), oper[o_count--]);
+                }
             }
             if(n_count > 1) {
                 if(prior_comparison(str[i], oper[o_count-1]) == 1) {
@@ -66,37 +86,37 @@ double notation(char *str) {
 }
 
 int prior_comparison(char first, char second) {
-    int first_priority = 0;
-    int second_priority = 0;
+    int decision = 0;
+    int priority_1 = determine_priority(first);
+    int priority_2 = determine_priority(second);
+    if(priority_1 < priority_2) {
+        decision = 1;
+    } else if(priority_1 == priority_2) {
+        decision = 2;
+    }
+    if(first == 40 || first == 41 || second == 40 || second == 41) {
+        decision = 0;
+    }
+    return decision;
+}
+
+int determine_priority(char operation) {
     int priority = 0;
-    if(first == '+' || first == '-') {
-        first_priority = 1;
-    } else if (first == '*' || first == '/') {
-        first_priority = 2;
-    } else if (first == '(' || first == ')') {
-        first_priority = 4;
-    }
-    if(second == '+' || second == '-') {
-        second_priority = 1;
-    } else if (second == '*' || second == '/') {
-        second_priority = 2;
-    } else if (second == '(' || second == ')') {
-        second_priority = 4;
-    }
-    if(first_priority < second_priority) {
+    if(operation == 43 || operation == 45) {
         priority = 1;
-    } else if(first_priority == second_priority) {
+    } else if (operation == 42 || operation == 47) {
         priority = 2;
-    }
-    if(first == '(' || first == ')' || second == '(' || second == ')') {
-        priority = 0;
+    } else if (operation == SIN || operation == COS || operation == TAN || operation == ASIN || operation == ACOS || operation == ATAN) {
+        priority = 3;
+    } else if (operation == 40 || operation == 41) {
+        priority = 4;
     }
     return priority;
 }
 
 bool oper_find(char *str, int i) {
     bool oper_trig = false;
-    char operations[] = "()^+-*/";
+    char operations[] = "()^+-*/sctSCT";
     for(size_t j = 0; j < strlen(operations); j++) {
         if(str[i] == operations[j]) {
             oper_trig = true;
@@ -106,16 +126,32 @@ bool oper_find(char *str, int i) {
 }
 
 double math_nums(double first, double second, char operation) {
-    if(operation == '+') {
+    if(operation == ADD) {
         first += second;
-    } else if(operation == '-') {
+    } else if(operation == SUB) {
         first -= second;
-    } else if(operation == '/') {
+    } else if(operation == DIV) {
         first /= second;
-    } else if(operation == '*') {
+    } else if(operation == MUL) {
         first *= second;
     }
     return first;
+}
+
+void trigonometry(double *number, char operation) {
+    if(operation == SIN) {
+        *number = sin(*number);
+    } else if(operation == COS) {
+        *number = cos(*number);
+    } else if(operation == TAN) {
+        *number = tan(*number);
+    } else if(operation == ASIN) {
+        *number = asin(*number);
+    } else if(operation == ACOS) {
+        *number = acos(*number);
+    } else if(operation == ATAN) {
+        *number = atan(*number);
+    }
 }
 
 void bracket_close(double *nums, char *oper, int *n_count, int *o_count) {
