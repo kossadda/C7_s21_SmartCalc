@@ -1,5 +1,19 @@
 #include "C_funcs.h"
 
+int main() {
+    char *example = "(((1.123*213.5555-(217.12354)*1/2)/4/6*5632.57-123.344/(4.213*(((653.13*(14.123*121.2345+2/(23.123+9*0.213))))/((237.12*21.8888))/(1.888+92.14)))))";
+    printf("%lf\n", polish(example));
+}
+
+double polish(char *str) {
+    char attachment[256] = "1*";
+    if (*str == '(') {
+        strcat(attachment, str);
+    }
+    double result = notation((*str == '(') ? attachment : str);
+    return result;
+}
+
 double notation(char *str) {
     char token[256];
     strcpy(token, str);
@@ -11,7 +25,7 @@ double notation(char *str) {
     char oper[100];
     temp = strtok(token, moves);
     nums[n_count++] = atof(temp);
-    for(int i = 0; i < strlen(str); i++) {
+    for(size_t i = 0; i < strlen(str); i++) {
         if(oper_find(str, i)) {
             if(str[i] != ')') {
                 o_count++;

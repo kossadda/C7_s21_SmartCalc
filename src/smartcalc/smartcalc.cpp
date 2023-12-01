@@ -164,14 +164,12 @@ void smartcalc::on_push_eq_clicked()
         temp.chop(1);
         ui->history->setText(temp);
     }
-    if(!ui->history->text().contains("=")) {
-        ui->history->setText(ui->history->text() + "=");
-    }
-    on_push_C_clicked();
-
     QByteArray byteArray = ui->history->text().toUtf8();
     char* charArray = byteArray.data();
     double result = notation(charArray);
     ui->resfield->setText(QString::number(result, 'f', 7));
+    if(!ui->history->text().contains("=")) {
+        ui->history->setText(ui->history->text() + "=");
+    }
 }
 

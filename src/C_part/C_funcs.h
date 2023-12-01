@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+double polish(char *str);
 double notation(char *str);
 int prior_comparison(char first, char second);
 bool oper_find(char *str, int i);
