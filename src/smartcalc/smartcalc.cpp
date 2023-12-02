@@ -2,7 +2,11 @@
 #include "ui_smartcalc.h"
 
 extern "C" {
-#include "../C_part/parser.c"
+#include "../calculations/functions/main.c"
+#include "../calculations/functions/notation.c"
+#include "../calculations/functions/checks.c"
+#include "../calculations/functions/comparison.c"
+#include "../calculations/functions/math_operations.c"
 }
 
 smartcalc::smartcalc(QWidget *parent)
@@ -173,7 +177,7 @@ void smartcalc::on_push_eq_clicked()
     // }
     QByteArray byteArray = ui->history->text().toUtf8();
     char* charArray = byteArray.data();
-    double result = polish(charArray);
+    double result = calculation(charArray);
     ui->resfield->setText(QString::number(result, 'g', countDigits(result) + 7));
     if(!ui->history->text().contains("=")) {
         ui->history->setText(ui->history->text() + "=");
