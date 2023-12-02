@@ -15,7 +15,7 @@
 #define ATAN 84
 #define SQRT 81
 #define LOG 76
-#define LN 101
+#define LN 108
 #define OPEN_BRCK 40
 #define CLOSE_BRCK 41
 #define ADD 43

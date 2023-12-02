@@ -4,7 +4,7 @@ double notation(char *str) {
     char token[256];
     strcpy(token, str);
     char *temp = NULL;
-    const char moves[] = "()^+-*/sctSCTQLe";
+    const char moves[] = "()^+-*/sctSCTQLl";
     int n_count = 0;
     int o_count = -1;
     double nums[20] = {0};
@@ -22,7 +22,7 @@ double notation(char *str) {
             }
             if(str[i] == CLOSE_BRCK && oper[o_count] == OPEN_BRCK) {
                 oper[o_count--] = '\000';
-                if(check_symobol(oper[o_count], "sctSCTQLe")) {
+                if(check_symobol(oper[o_count], "sctSCTQLl")) {
                     trigonometry(&(nums[n_count - 1]), oper[o_count--]);
                 }
             }

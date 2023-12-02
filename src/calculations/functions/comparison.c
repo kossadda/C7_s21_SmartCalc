@@ -21,7 +21,7 @@ int determine_priority(char operation) {
         priority = 1;
     } else if (check_symobol(operation, "*/")) {
         priority = 2;
-    } else if (check_symobol(operation, "sctSCTQLe")) {
+    } else if (check_symobol(operation, "sctSCTQLl")) {
         priority = 3;
     } else if (check_symobol(operation, "()")) {
         priority = 4;
