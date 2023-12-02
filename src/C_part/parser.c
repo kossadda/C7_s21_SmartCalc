@@ -1,32 +1,14 @@
 #include "C_funcs.h"
 
-
-
-#define SIN 115
-#define COS 99
-#define TAN 116
-#define ASIN 83
-#define ACOS 67
-#define ATAN 84
-#define SQRT 81
-#define LOG 76
-#define LN 101
-#define OPEN_BRCK 40
-#define CLOSE_BRCK 41
-#define ADD 43
-#define SUB 45
-#define MUL 42
-#define DIV 47
-
 int main() {
-    // char *example = "T(43245.67)/(C(0.432455)-0.0032)";
+    // char *example = "Q((Q(5233332.555)*Q(3876.8768))/(Q(107.578-0078.0785))-(Q((70784.78/50782.807)+Q(4321.67)))/(Q(13433.42)-((532.2253*Q(1523.5523))+5230.3255))";
     // printf("%lf\n", polish(example));
     test();
 }
 
 double polish(char *str) {
     char attachment[256] = "1*";
-    char search[] = "(sctSCT";
+    const char search[] = "(sctSCTQLe";
     if (check_symobol(*str, search)) {
         strcat(attachment, str);
     } else {
@@ -40,7 +22,7 @@ double notation(char *str) {
     char token[256];
     strcpy(token, str);
     char *temp = NULL;
-    char moves[] = "()^+-*/sctSCT";
+    const char moves[] = "()^+-*/sctSCTQLe";
     int n_count = 0;
     int o_count = -1;
     double nums[20] = {0};
@@ -58,7 +40,7 @@ double notation(char *str) {
             }
             if(str[i] == CLOSE_BRCK && oper[o_count] == OPEN_BRCK) {
                 oper[o_count--] = '\000';
-                if(check_symobol(oper[o_count], "sctSCT")) {
+                if(check_symobol(oper[o_count], "sctSCTQLe")) {
                     trigonometry(&(nums[n_count - 1]), oper[o_count--]);
                 }
             }
@@ -90,7 +72,7 @@ double notation(char *str) {
     return nums[0];
 }
 
-int check_symobol(char first_symbol, char *search) {
+int check_symobol(char first_symbol, const char *search) {
     int check = 0;
     for (size_t i = 0; i < strlen(search); i++) {
         if(first_symbol == search[i]) {
@@ -121,7 +103,7 @@ int determine_priority(char operation) {
         priority = 1;
     } else if (check_symobol(operation, "*/")) {
         priority = 2;
-    } else if (check_symobol(operation, "sctSCT")) {
+    } else if (check_symobol(operation, "sctSCTQLe")) {
         priority = 3;
     } else if (check_symobol(operation, "()")) {
         priority = 4;
@@ -155,11 +137,17 @@ void trigonometry(double *number, char operation) {
         *number = acos(*number);
     } else if(operation == ATAN) {
         *number = atan(*number);
+    } else if(operation == SQRT) {
+        *number = sqrt(*number);
+    } else if(operation == LOG) {
+        *number = log10(*number);
+    } else if(operation == LN) {
+        *number = log(*number);
     }
 }
 
 void bracket_close(double *nums, char *oper, int *n_count, int *o_count) {
-    if(check_symobol(oper[*o_count], "(sctSCT")) {
+    if(check_symobol(oper[*o_count], "(sctSCTQLe")) {
         trigonometry(&(nums[*n_count-1]), oper[*o_count]);
         oper[(*o_count)--] = '\000';
     } else {
@@ -178,7 +166,7 @@ void math_in_condition(double *nums, char *oper, int *n_count, int *o_count) {
 
 void test() {
     int testing = 0;
-    for (size_t i = 43; i < sizeof(examples)/sizeof(examples[0]); i++) {
+    for (size_t i = 0; i < sizeof(examples)/sizeof(examples[0]); i++) {
         double one_ex = polish(examples[i]);
         double diff = one_ex - results[i];
         if((long long)(diff * 1e5) != 0) {
@@ -186,13 +174,13 @@ void test() {
         }
     }
     (testing == 0) ? printf("SUCCESS\n") : printf("FAIL\n"); 
-//     for (size_t i = 0; i < sizeof(examples)/sizeof(examples[0]); i++) {
-//         if(i == 39) printf("=======================+SINUS+=======================\n");
-//         if(i == 44) printf("=======================+COSINUS+=======================\n");
-//         if(i == 49) printf("=======================+TANGENS+=======================\n");
-//         if(i == 54) printf("=======================+ARCFUNCS+=======================\n");
-//         double one_ex = polish(examples[i]);
-//         printf ("%ld) %s\n", i, examples[i]);
-//         printf ("(my) %lf = %lf\n", one_ex, results[i]);
-//     }
+    // for (size_t i = 0; i < sizeof(examples)/sizeof(examples[0]); i++) {
+    //     if(i == 39) printf("=======================+SINUS+=======================\n");
+    //     if(i == 44) printf("=======================+COSINUS+=======================\n");
+    //     if(i == 49) printf("=======================+TANGENS+=======================\n");
+    //     if(i == 54) printf("=======================+ARCFUNCS+=======================\n");
+    //     double one_ex = polish(examples[i]);
+    //     printf ("%ld) %s\n", i, examples[i]);
+    //     printf ("(my) %lf = %lf\n", one_ex, results[i]);
+    // }
 }

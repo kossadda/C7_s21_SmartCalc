@@ -10,8 +10,7 @@ install: clean
 	mv smartcalc/smartcalc build
 	rm -rf smartcalc/Makefile
 
-uninstall:
-	@rm -rf build
+uninstall: clean
 
 run:
 	./build/smartcalc
