@@ -17,18 +17,26 @@
 #define DIV 47
 
 int main() {
-    char *example = "(((1.123*213.5555-((217.12354))*1/2)/4/6*(5632.57-123.344)/(23.12346)/(4.213*(((653.13*(14.123*121.2345+2/(23.123+9*0.213))))/((237.12*21.8888))/(1.888+92.14)))))";
+    // char *example = "43*(((1.123*213.5555-((217.12354))*1/2)/4/6*(5632.57-123.344)/(23.12346)/(4.213*(((653.13*(14.123*121.2345+2/(23.123+9*0.213))))/((237.12*21.8888))/(1.888+92.14)))))";
     // char *example = "s(5+(t(1.123*2))/c(1+2+213.52)/12.323)";
-    printf("%lf\n", polish(example));
+    // char *example = "(((132.5*232.4)/(34.32+423.2))-(74.32*30.5432))*(432.4/(243.24-14.52))";
+    // printf("%lf\n", polish(example));
+    test();
 }
 
 double polish(char *str) {
     char attachment[256] = "1*";
     if (*str == '(' || *str == 's' || *str == 'c' || *str == 't' || *str == 'S' || *str == 'C' || *str == 'T') {
         strcat(attachment, str);
+    } else {
+        strcpy(attachment, str);
     }
-    double result = notation((*str == '(' || *str == 's' || *str == 'c' || *str == 't' || *str == 'S' || *str == 'C' || *str == 'T') ? attachment : str);
+    double result = notation(attachment);
     return result;
+}
+
+void check_first_symobol() {
+    char moves[] = "(sctSCT";
 }
 
 double notation(char *str) {
@@ -165,4 +173,20 @@ void math_in_condition(double *nums, char *oper, int *n_count, int *o_count) {
     nums[(*n_count)--] = 0;
     oper[(*o_count)--] = '\000';
     nums[*n_count-1] = math_nums(nums[*n_count-1], nums[*n_count], oper[*o_count]);
+}
+
+void test() {
+    int testing = 0;
+    for (size_t i = 0; i < sizeof(examples)/sizeof(examples[0]); i++) {
+        double one_ex = polish(examples[i]);
+        if((one_ex - results[i]) > 1.0e-5) {
+            testing = 1;
+        }
+    }
+    (testing == 0) ? printf("SUCCESS\n") : printf("FAIL\n"); 
+    // for (size_t i = 0; i < sizeof(examples)/sizeof(examples[0]); i++) {
+    //     double one_ex = polish(examples[i]);
+    //     printf ("%ld) %s\n", i, examples[i]);
+    //     printf ("(my) %lf = %lf\n", one_ex, results[i]);
+    // }
 }

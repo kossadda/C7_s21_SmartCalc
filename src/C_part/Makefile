@@ -1,5 +1,7 @@
+CC=-Wall -Wextra -std=c11
+
 all:
 	clear
-	@gcc -Wall -Wextra -std=c11 parser.c -lm -o test
+	@gcc parser.c -lm -o test
 	@./test
 	@rm test
