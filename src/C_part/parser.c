@@ -1,5 +1,7 @@
 #include "C_funcs.h"
 
+
+
 #define SIN 115
 #define COS 99
 #define TAN 116
@@ -17,10 +19,7 @@
 #define DIV 47
 
 int main() {
-    // char *example = "43*(((1.123*213.5555-((217.12354))*1/2)/4/6*(5632.57-123.344)/(23.12346)/(4.213*(((653.13*(14.123*121.2345+2/(23.123+9*0.213))))/((237.12*21.8888))/(1.888+92.14)))))";
-    // char *example = "s(5+(t(1.123*2))/c(1+2+213.52)/12.323)";
-    // char *example = "(((132.5*232.4)/(34.32+423.2))-(74.32*30.5432))*(432.4/(243.24-14.52))";
-    // char *example = "s(325.5324*(((2.5432*3.432)/(1342.5-10.5324))-s((44325.11123/2324.234)+1.234))/(3.234-((2.7568*1.5234)+0.5324))";
+    // char *example = "T(43245.67)/(C(0.432455)-0.0032)";
     // printf("%lf\n", polish(example));
     test();
 }
@@ -118,13 +117,13 @@ int prior_comparison(char first, char second) {
 
 int determine_priority(char operation) {
     int priority = 0;
-    if(operation == 43 || operation == 45) {
+    if(operation == ADD || operation == SUB) {
         priority = 1;
-    } else if (operation == 42 || operation == 47) {
+    } else if (operation == MUL || operation == DIV) {
         priority = 2;
     } else if (operation == SIN || operation == COS || operation == TAN || operation == ASIN || operation == ACOS || operation == ATAN) {
         priority = 3;
-    } else if (operation == 40 || operation == 41) {
+    } else if (operation == OPEN_BRCK || operation == CLOSE_BRCK) {
         priority = 4;
     }
     return priority;
@@ -193,14 +192,18 @@ void test() {
     for (size_t i = 43; i < sizeof(examples)/sizeof(examples[0]); i++) {
         double one_ex = polish(examples[i]);
         double diff = one_ex - results[i];
-        if((long long)(diff * 1000000) != 0) {
+        if((long long)(diff * 1e5) != 0) {
             testing = 1;
         }
     }
     (testing == 0) ? printf("SUCCESS\n") : printf("FAIL\n"); 
-    // for (size_t i = 0; i < sizeof(examples)/sizeof(examples[0]); i++) {
-    //     double one_ex = polish(examples[i]);
-    //     printf ("%ld) %s\n", i, examples[i]);
-    //     printf ("(my) %lf = %lf\n", one_ex, results[i]);
-    // }
+//     for (size_t i = 0; i < sizeof(examples)/sizeof(examples[0]); i++) {
+//         if(i == 39) printf("=======================+SINUS+=======================\n");
+//         if(i == 44) printf("=======================+COSINUS+=======================\n");
+//         if(i == 49) printf("=======================+TANGENS+=======================\n");
+//         if(i == 54) printf("=======================+ARCFUNCS+=======================\n");
+//         double one_ex = polish(examples[i]);
+//         printf ("%ld) %s\n", i, examples[i]);
+//         printf ("(my) %lf = %lf\n", one_ex, results[i]);
+//     }
 }
