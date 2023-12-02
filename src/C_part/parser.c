@@ -26,24 +26,14 @@ int main() {
 
 double polish(char *str) {
     char attachment[256] = "1*";
-    if (check_first_symobol(*str)) {
+    char search[] = "(sctSCT";
+    if (check_symobol(*str, search)) {
         strcat(attachment, str);
     } else {
         strcpy(attachment, str);
     }
     double result = notation(attachment);
     return result;
-}
-
-int check_first_symobol(char first_symbol) {
-    int check = 0;
-    char moves[] = "(sctSCT";
-    for (size_t i = 0; i < strlen(moves); i++) {
-        if(first_symbol == moves[i]) {
-            check = 1;
-        }
-    }
-    return check;
 }
 
 double notation(char *str) {
@@ -58,7 +48,7 @@ double notation(char *str) {
     temp = strtok(token, moves);
     nums[n_count++] = atof(temp);
     for(size_t i = 0; i < strlen(str); i++) {
-        if(oper_find(str, i)) {
+        if(check_symobol(str[i], moves)) {
             if(str[i] != CLOSE_BRCK) {
                 o_count++;
             } else {
@@ -68,7 +58,7 @@ double notation(char *str) {
             }
             if(str[i] == CLOSE_BRCK && oper[o_count] == OPEN_BRCK) {
                 oper[o_count--] = '\000';
-                if(oper[o_count] == SIN || oper[o_count] == COS || oper[o_count] == TAN || oper[o_count] == ASIN || oper[o_count] == ACOS || oper[o_count] == ATAN) {
+                if(check_symobol(oper[o_count], "sctSCT")) {
                     trigonometry(&(nums[n_count - 1]), oper[o_count--]);
                 }
             }
@@ -83,7 +73,7 @@ double notation(char *str) {
             if(str[i] != CLOSE_BRCK) {
                 oper[o_count] = str[i];
             }
-            if(!oper_find(str, i + 1)) {
+            if(!check_symobol(str[i+1], moves)) {
                 temp = strtok(NULL, moves);
                 if(temp != NULL) nums[n_count++] = atof(temp);
             }
@@ -100,6 +90,16 @@ double notation(char *str) {
     return nums[0];
 }
 
+int check_symobol(char first_symbol, char *search) {
+    int check = 0;
+    for (size_t i = 0; i < strlen(search); i++) {
+        if(first_symbol == search[i]) {
+            check = 1;
+        }
+    }
+    return check;
+}
+
 int prior_comparison(char first, char second) {
     int decision = 0;
     int priority_1 = determine_priority(first);
@@ -109,7 +109,7 @@ int prior_comparison(char first, char second) {
     } else if(priority_1 == priority_2) {
         decision = 2;
     }
-    if(first == 40 || first == 41 || second == 40 || second == 41) {
+    if(check_symobol(first, "()") || check_symobol(second, "()")) {
         decision = 0;
     }
     return decision;
@@ -117,27 +117,16 @@ int prior_comparison(char first, char second) {
 
 int determine_priority(char operation) {
     int priority = 0;
-    if(operation == ADD || operation == SUB) {
+    if(check_symobol(operation, "+-")) {
         priority = 1;
-    } else if (operation == MUL || operation == DIV) {
+    } else if (check_symobol(operation, "*/")) {
         priority = 2;
-    } else if (operation == SIN || operation == COS || operation == TAN || operation == ASIN || operation == ACOS || operation == ATAN) {
+    } else if (check_symobol(operation, "sctSCT")) {
         priority = 3;
-    } else if (operation == OPEN_BRCK || operation == CLOSE_BRCK) {
+    } else if (check_symobol(operation, "()")) {
         priority = 4;
     }
     return priority;
-}
-
-bool oper_find(char *str, int i) {
-    bool oper_trig = false;
-    char operations[] = "()^+-*/sctSCT";
-    for(size_t j = 0; j < strlen(operations); j++) {
-        if(str[i] == operations[j]) {
-            oper_trig = true;
-        }
-    }
-    return oper_trig;
 }
 
 double math_nums(double first, double second, char operation) {
@@ -170,7 +159,7 @@ void trigonometry(double *number, char operation) {
 }
 
 void bracket_close(double *nums, char *oper, int *n_count, int *o_count) {
-    if(check_first_symobol(oper[*o_count])) {
+    if(check_symobol(oper[*o_count], "(sctSCT")) {
         trigonometry(&(nums[*n_count-1]), oper[*o_count]);
         oper[(*o_count)--] = '\000';
     } else {

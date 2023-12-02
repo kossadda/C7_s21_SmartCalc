@@ -9,10 +9,9 @@
 
 double polish(char *str);
 double notation(char *str);
-int check_first_symobol(char first_symbol);
+int check_symobol(char first_symbol, char *search);
 int prior_comparison(char first, char second);
 int determine_priority(char operation);
-bool oper_find(char *str, int i);
 double math_nums(double first, double second, char operation);
 void trigonometry(double *number, char operation);
 void bracket_close(double *nums, char *oper, int *n_count, int *o_count);
