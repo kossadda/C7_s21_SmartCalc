@@ -23,7 +23,7 @@
 #define MUL 42
 #define DIV 47
 
-double polish(char *str);
+double calculation(char *str);
 double notation(char *str);
 int check_symobol(char first_symbol, const char *search);
 int prior_comparison(char first, char second);
@@ -32,10 +32,5 @@ double math_nums(double first, double second, char operation);
 void trigonometry(double *number, char operation);
 void bracket_close(double *nums, char *oper, int *n_count, int *o_count);
 void math_in_condition(double *nums, char *oper, int *n_count, int *o_count);
-
-
-
-void test();
-
 
 #endif
