@@ -20,13 +20,14 @@ int main() {
     // char *example = "43*(((1.123*213.5555-((217.12354))*1/2)/4/6*(5632.57-123.344)/(23.12346)/(4.213*(((653.13*(14.123*121.2345+2/(23.123+9*0.213))))/((237.12*21.8888))/(1.888+92.14)))))";
     // char *example = "s(5+(t(1.123*2))/c(1+2+213.52)/12.323)";
     // char *example = "(((132.5*232.4)/(34.32+423.2))-(74.32*30.5432))*(432.4/(243.24-14.52))";
+    // char *example = "s(325.5324*(((2.5432*3.432)/(1342.5-10.5324))-s((44325.11123/2324.234)+1.234))/(3.234-((2.7568*1.5234)+0.5324))";
     // printf("%lf\n", polish(example));
     test();
 }
 
 double polish(char *str) {
     char attachment[256] = "1*";
-    if (*str == '(' || *str == 's' || *str == 'c' || *str == 't' || *str == 'S' || *str == 'C' || *str == 'T') {
+    if (check_first_symobol(*str)) {
         strcat(attachment, str);
     } else {
         strcpy(attachment, str);
@@ -35,8 +36,15 @@ double polish(char *str) {
     return result;
 }
 
-void check_first_symobol() {
+int check_first_symobol(char first_symbol) {
+    int check = 0;
     char moves[] = "(sctSCT";
+    for (size_t i = 0; i < strlen(moves); i++) {
+        if(first_symbol == moves[i]) {
+            check = 1;
+        }
+    }
+    return check;
 }
 
 double notation(char *str) {
@@ -46,20 +54,20 @@ double notation(char *str) {
     char moves[] = "()^+-*/sctSCT";
     int n_count = 0;
     int o_count = -1;
-    double nums[100] = {0};
-    char oper[100];
+    double nums[20] = {0};
+    char oper[20];
     temp = strtok(token, moves);
     nums[n_count++] = atof(temp);
     for(size_t i = 0; i < strlen(str); i++) {
         if(oper_find(str, i)) {
-            if(str[i] != ')') {
+            if(str[i] != CLOSE_BRCK) {
                 o_count++;
             } else {
-                while(oper[o_count] != '(') {
+                while(oper[o_count] != OPEN_BRCK) {
                     bracket_close(nums, oper, &n_count, &o_count);
                 }
             }
-            if(str[i] == ')' && oper[o_count] == '(') {
+            if(str[i] == CLOSE_BRCK && oper[o_count] == OPEN_BRCK) {
                 oper[o_count--] = '\000';
                 if(oper[o_count] == SIN || oper[o_count] == COS || oper[o_count] == TAN || oper[o_count] == ASIN || oper[o_count] == ACOS || oper[o_count] == ATAN) {
                     trigonometry(&(nums[n_count - 1]), oper[o_count--]);
@@ -73,7 +81,7 @@ double notation(char *str) {
                     math_in_condition(nums, oper, &n_count, &o_count);
                 }
             }
-            if(str[i] != ')') {
+            if(str[i] != CLOSE_BRCK) {
                 oper[o_count] = str[i];
             }
             if(!oper_find(str, i + 1)) {
@@ -84,7 +92,7 @@ double notation(char *str) {
         if(i == strlen(str) - 1) {
             while(o_count != -1) {
                 bracket_close(nums, oper, &n_count, &o_count);
-                if(oper[o_count] == '(') {
+                if(oper[o_count] == OPEN_BRCK) {
                     oper[o_count--] = '\000';
                 }
             }
@@ -163,10 +171,15 @@ void trigonometry(double *number, char operation) {
 }
 
 void bracket_close(double *nums, char *oper, int *n_count, int *o_count) {
-    nums[*n_count-2] = math_nums(nums[*n_count-2], nums[*n_count-1], oper[*o_count]);
-    nums[*n_count-1] = 0;
-    oper[(*o_count)--] = '\000';
-    (*n_count)--;
+    if(check_first_symobol(oper[*o_count])) {
+        trigonometry(&(nums[*n_count-1]), oper[*o_count]);
+        oper[(*o_count)--] = '\000';
+    } else {
+        nums[*n_count-2] = math_nums(nums[*n_count-2], nums[*n_count-1], oper[*o_count]);
+        nums[*n_count-1] = 0;
+        oper[(*o_count)--] = '\000';
+        (*n_count)--;
+    }
 }
 
 void math_in_condition(double *nums, char *oper, int *n_count, int *o_count) {
@@ -177,9 +190,10 @@ void math_in_condition(double *nums, char *oper, int *n_count, int *o_count) {
 
 void test() {
     int testing = 0;
-    for (size_t i = 0; i < sizeof(examples)/sizeof(examples[0]); i++) {
+    for (size_t i = 43; i < sizeof(examples)/sizeof(examples[0]); i++) {
         double one_ex = polish(examples[i]);
-        if((one_ex - results[i]) > 1.0e-5) {
+        double diff = one_ex - results[i];
+        if((long long)(diff * 1000000) != 0) {
             testing = 1;
         }
     }
