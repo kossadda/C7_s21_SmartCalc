@@ -464,6 +464,19 @@ START_TEST(square_1) {
     double true_result = 161.9427172;
     ck_assert_double_eq_tol(my_result, true_result, 1e-5);
 }
+START_TEST(square_ss) {
+    char *example = "e(Q((L((Q(5233332.555)*L(3876.8768))/(L(107.578-0078.0785))-(L((70784.78/(50782.807-e(123.432)/e(4762.213))+e(4321.67)))/(e(13433.42)-((532.2253*Q(1523.5523))+5230.3255)))*123456.12346))";
+    double my_result = calculation(example);
+    double true_result = 0.6605314;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-5);
+}
+
+START_TEST(square_sss) {
+    char *example = "(L(3654234)-Q(4345)*L(2234)*65324*(e(2654.5645)-e(6541))+(5747-L(561.5345)/e(3534)))/(5432-(Q(4230.4325)/s(L(6541)+L(10)-4232*e(1654.655))))";
+    double my_result = calculation(example);
+    double true_result = 2347.5096410;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-5);
+}
 
 Suite *s21_smartcalc(void) {
     Suite *calc = suite_create("s21_smartcalc");
@@ -541,6 +554,8 @@ Suite *s21_smartcalc(void) {
 
     TCase *tc_test_square = tcase_create("test_square");
     tcase_add_test(tc_test_arifmetic, square_1);
+    tcase_add_test(tc_test_arifmetic, square_ss);
+    tcase_add_test(tc_test_arifmetic, square_sss);
     suite_add_tcase(calc, tc_test_square);
 
     return calc;

@@ -25,9 +25,9 @@ gcov_report: clean
 	@mkdir -p ${GCOV}
 	@./${TEST}
 	gcovr -r . --html --html-details -o ${GCOV}/coverage.html
-	@rm -rf check *.gc*
+	@rm -rf ${TEST} *.gc*
 	xdg-open ${GCOV}/coverage.html
 
-valgrind: build
-	@valgrind ${VAL} ./test
-	@rm test
+valgrind: test
+	@valgrind ${VAL} ./${TEST}
+	@rm ${TEST}
