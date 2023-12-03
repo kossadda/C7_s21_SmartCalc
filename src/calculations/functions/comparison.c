@@ -24,11 +24,11 @@ int determine_priority(char operation) {
     } else if(check(operation, "m")) {
         priority = 3;
     } else if(check(operation, "^")) {
-        priority = 3;
-    } else if(check(operation, "sctSCTQLl")) {
         priority = 4;
-    } else if(check(operation, "()")) {
+    } else if(check(operation, "sctSCTQLl")) {
         priority = 5;
+    } else if(check(operation, "()")) {
+        priority = 6;
     }
     return priority;
 }

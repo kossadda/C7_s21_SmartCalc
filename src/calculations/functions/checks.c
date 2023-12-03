@@ -20,10 +20,6 @@ void bracket_close(double *nums, char *oper, int *n_count, int *o_count) {
         oper[(*o_count)--] = '\000';
         (*n_count)--;
     }
-    // else if(oper[*o_count] == UNAR) {
-    //     nums[*n_count] *= -1;
-    //     oper[(*o_count)--] = '\000';
-    // }
 }
 
 void math_in_condition(double *nums, char *oper, int *n_count, int *o_count) {
