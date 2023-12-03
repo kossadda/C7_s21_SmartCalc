@@ -4,7 +4,7 @@ double notation(char *str) {
     char token[256];
     strcpy(token, str);
     char *temp = NULL;
-    const char moves[] = "()^+-*/sctSCTQLl";
+    const char moves[] = "()^+-*/msctSCTQLl";
     int n_count = 0;
     int o_count = -1;
     double nums[20] = {0};
@@ -27,10 +27,13 @@ double notation(char *str) {
                 }
             }
             if(n_count > 1) {
-                if(prior_comparison(str[i], oper[o_count-1]) == 1) {
+                while(prior_comparison(str[i], oper[o_count-1]) == 1) {
                     math_in_condition(nums, oper, &n_count, &o_count);
                 }
-                if(prior_comparison(str[i], oper[o_count-1]) == 2) {
+                while(prior_comparison(str[i], oper[o_count-1]) == 2) {
+                    math_in_condition(nums, oper, &n_count, &o_count);
+                }
+                while(check_symobol(str[i], "(+-*/sctSCTQLl") && oper[o_count] == EXP && oper[o_count] == MOD) {
                     math_in_condition(nums, oper, &n_count, &o_count);
                 }
             }

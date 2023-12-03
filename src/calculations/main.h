@@ -22,6 +22,9 @@
 #define SUB 45
 #define MUL 42
 #define DIV 47
+#define EXP 94
+#define MOD 109
+#define UNAR 117
 
 double calculation(char *str);
 double notation(char *str);

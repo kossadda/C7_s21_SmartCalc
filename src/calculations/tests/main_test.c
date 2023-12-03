@@ -458,25 +458,39 @@ START_TEST(trigonometric_25) {
     ck_assert_double_eq_tol(my_result, true_result, 1e-5);
 }
 
-START_TEST(square_1) {
+START_TEST(other_1) {
     char *example = "Q((Q(5233332.555)*Q(3876.8768))/(Q(107.578-0078.0785))-(Q((70784.78/50782.807)+Q(4321.67)))/(Q(13433.42)-((532.2253*Q(1523.5523))+5230.3255))";
     double my_result = calculation(example);
     double true_result = 161.9427172;
     ck_assert_double_eq_tol(my_result, true_result, 1e-5);
 }
-START_TEST(square_ss) {
+START_TEST(other_2) {
     char *example = "l(Q((L((Q(5233332.555)*L(3876.8768))/(L(107.578-0078.0785))-(L((70784.78/(50782.807-l(123.432)/l(4762.213))+l(4321.67)))/(l(13433.42)-((532.2253*Q(1523.5523))+5230.3255)))*123456.12346))";
     double my_result = calculation(example);
     double true_result = 0.6605314;
     ck_assert_double_eq_tol(my_result, true_result, 1e-5);
 }
 
-START_TEST(square_sss) {
+START_TEST(other_3) {
     char *example = "(L(3654234)-Q(4345)*L(2234)*65324*(l(2654.5645)-l(6541))+(5747-L(561.5345)/l(3534)))/(5432-(Q(4230.4325)/s(L(6541)+L(10)-4232*l(1654.655))))";
     double my_result = calculation(example);
     double true_result = 2347.5096410;
     ck_assert_double_eq_tol(my_result, true_result, 1e-5);
 }
+
+START_TEST(other_4) {
+    char *example = "14.36/463.32*(1.326/50-34+20/2)^2^2-2^(2)^(2)";
+    double my_result = calculation(example);
+    double true_result = 10221.5896085;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-5);
+}
+
+// START_TEST(other_5) {
+//     char *example = "234.213m35.4+57-56*(3-754m33.51)m2";
+//     double my_result = calculation(example);
+//     double true_result = 78.493;
+//     ck_assert_double_eq_tol(my_result, true_result, 1e-5);
+// }
 
 Suite *s21_smartcalc(void) {
     Suite *calc = suite_create("s21_smartcalc");
@@ -553,9 +567,11 @@ Suite *s21_smartcalc(void) {
     suite_add_tcase(calc, tc_test_trigonometric);
 
     TCase *tc_test_square = tcase_create("test_square");
-    tcase_add_test(tc_test_arifmetic, square_1);
-    tcase_add_test(tc_test_arifmetic, square_ss);
-    tcase_add_test(tc_test_arifmetic, square_sss);
+    tcase_add_test(tc_test_arifmetic, other_1);
+    tcase_add_test(tc_test_arifmetic, other_2);
+    tcase_add_test(tc_test_arifmetic, other_3);
+    tcase_add_test(tc_test_arifmetic, other_4);
+    // tcase_add_test(tc_test_arifmetic, other_5);
     suite_add_tcase(calc, tc_test_square);
 
     return calc;

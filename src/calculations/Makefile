@@ -17,7 +17,7 @@ test: clean
 	@./${TEST}
 
 clean:
-	@rm -rf ${GCOV} *.gc* ${TEST}
+	@rm -rf ${GCOV} *.gc* ${TEST} 
 
 gcov_report: clean
 	@clear
