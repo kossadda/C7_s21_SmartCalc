@@ -1,13 +1,13 @@
 #include "../main.h"
 
 double calculation(char *str) {
-    char attachment[256] = "1*";
-    const char search[] = "(sctSCTQLl";
-    if (check(*str, search)) {
-        strcat(attachment, str);
-    } else {
-        strcpy(attachment, str);
+    double result = 0;
+    if(strlen(str) < 255) {
+        char result_str[256] = {0};
+        strcpy(result_str, str);
+        validation(result_str);
+        // printf("%s\n", result_str);
+        result = notation(result_str);
     }
-    double result = notation(attachment);
     return result;
 }
