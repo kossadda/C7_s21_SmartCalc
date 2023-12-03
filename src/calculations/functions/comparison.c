@@ -6,10 +6,10 @@ int prior_comparison(char first, char second) {
     int priority_2 = determine_priority(second);
     if(priority_1 < priority_2) {
         decision = 1;
-    } else if(priority_1 == priority_2 && first != EXP && first != MOD) {
+    } else if(priority_1 == priority_2 && !check(first, "^m")) {
         decision = 2;
     } 
-    if(check_symobol(first, "()") || check_symobol(second, "()")) {
+    if(check(first, "()") || check(second, "()")) {
         decision = 0;
     }
     return decision;
@@ -17,17 +17,17 @@ int prior_comparison(char first, char second) {
 
 int determine_priority(char operation) {
     int priority = 0;
-    if(check_symobol(operation, "+-")) {
+    if(check(operation, "+-")) {
         priority = 1;
-    } else if(check_symobol(operation, "*/")) {
+    } else if(check(operation, "*/")) {
         priority = 2;
-    } else if(check_symobol(operation, "m")) {
+    } else if(check(operation, "m")) {
         priority = 3;
-    } else if(check_symobol(operation, "^")) {
+    } else if(check(operation, "^")) {
         priority = 3;
-    } else if(check_symobol(operation, "sctSCTQLl")) {
+    } else if(check(operation, "sctSCTQLl")) {
         priority = 4;
-    } else if(check_symobol(operation, "()")) {
+    } else if(check(operation, "()")) {
         priority = 5;
     }
     return priority;

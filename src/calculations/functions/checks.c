@@ -1,6 +1,6 @@
 #include "../main.h"
 
-int check_symobol(char first_symbol, const char *search) {
+int check(char first_symbol, const char *search) {
     int check = 0;
     for (size_t i = 0; i < strlen(search); i++) {
         if(first_symbol == search[i]) {
@@ -11,7 +11,7 @@ int check_symobol(char first_symbol, const char *search) {
 }
 
 void bracket_close(double *nums, char *oper, int *n_count, int *o_count) {
-    if(check_symobol(oper[*o_count], "(sctSCTQLl")) {
+    if(check(oper[*o_count], "(sctSCTQLl")) {
         trigonometry(&(nums[*n_count-1]), oper[*o_count]);
         oper[(*o_count)--] = '\000';
     } else {

@@ -11,7 +11,7 @@
                 "/home/deadline/develop/C7_s21_smartcalc/src/calculations/tests/testing.c",
                 "/home/deadline/develop/C7_s21_smartcalc/src/calculations/functions/*.c",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}",
+                "/home/deadline/develop/C7_s21_smartcalc/src/calculations/test",
                 "-lm"
             ],
             "options": {

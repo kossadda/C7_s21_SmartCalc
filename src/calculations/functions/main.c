@@ -3,7 +3,7 @@
 double calculation(char *str) {
     char attachment[256] = "1*";
     const char search[] = "(sctSCTQLl";
-    if (check_symobol(*str, search)) {
+    if (check(*str, search)) {
         strcat(attachment, str);
     } else {
         strcpy(attachment, str);

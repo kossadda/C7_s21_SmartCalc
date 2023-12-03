@@ -27,8 +27,9 @@
 #define UNAR 117
 
 double calculation(char *str);
+void validation(char *str);
 double notation(char *str);
-int check_symobol(char first_symbol, const char *search);
+int check(char first_symbol, const char *search);
 int prior_comparison(char first, char second);
 int determine_priority(char operation);
 double math_nums(double first, double second, char operation);

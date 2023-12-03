@@ -13,9 +13,9 @@ double math_nums(double first, double second, char operation) {
         first = pow(first, second);
     } else if (operation == MOD) {
         first = fmod(first, second);
-        // if(first < 0) {
-        //     first = second + first;
-        // }
+        if(first < 0) {
+            first = second + first;
+        }
     }
 
     return first;

@@ -485,12 +485,19 @@ START_TEST(other_4) {
     ck_assert_double_eq_tol(my_result, true_result, 1e-5);
 }
 
-// START_TEST(other_5) {
-//     char *example = "234.213m35.4+57-56*(3-754m33.51)m2";
-//     double my_result = calculation(example);
-//     double true_result = 78.493;
-//     ck_assert_double_eq_tol(my_result, true_result, 1e-5);
-// }
+START_TEST(other_5) {
+    char *example = "234.213m35.4+57-56*(3-754m33.51)m2";
+    double my_result = calculation(example);
+    double true_result = 66.493;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-5);
+}
+
+START_TEST(other_6) {
+    char *example = "56*(3+754m33.51)m2.5421m2+2";
+    double my_result = calculation(example);
+    double true_result = 16.8064;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-5);
+}
 
 Suite *s21_smartcalc(void) {
     Suite *calc = suite_create("s21_smartcalc");
@@ -571,7 +578,8 @@ Suite *s21_smartcalc(void) {
     tcase_add_test(tc_test_arifmetic, other_2);
     tcase_add_test(tc_test_arifmetic, other_3);
     tcase_add_test(tc_test_arifmetic, other_4);
-    // tcase_add_test(tc_test_arifmetic, other_5);
+    tcase_add_test(tc_test_arifmetic, other_5);
+    tcase_add_test(tc_test_arifmetic, other_6);
     suite_add_tcase(calc, tc_test_square);
 
     return calc;
