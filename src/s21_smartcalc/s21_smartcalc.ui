@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>smartcalc</class>
- <widget class="QMainWindow" name="smartcalc">
+ <class>s21_smartcalc</class>
+ <widget class="QMainWindow" name="s21_smartcalc">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>smartcalc</string>
+   <string>s21_smartcalc</string>
   </property>
   <property name="autoFillBackground">
    <bool>true</bool>

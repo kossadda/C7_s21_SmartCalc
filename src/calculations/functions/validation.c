@@ -4,14 +4,14 @@ void validation(char *attachment) {
     char str[256] = "1*";
     char true_str[256] = {0};
     int count = 0;
-    if (check(*attachment, "(sctSCTQLl")) {
+    if (check(*attachment, "(sctasl")) {
         strcat(str, attachment);
     } else {
         strcpy(str, attachment);
     }
     for(size_t i = 0; i < strlen(str); i++) {
         if(check(str[i], "sctasl") && check(str[i-1], "+-/*( ")) {
-            valid_func(true_str, &count, str, &i);
+            check_trigonometric(true_str, &count, str, &i);
         } else if(str[i] == '(' && str[i+1] == '-') {
             i++;
             while(str[i] != ')') {
@@ -31,7 +31,7 @@ void validation(char *attachment) {
     strcpy(attachment, true_str);
 }
 
-void valid_func(char *true_str, int *count, char *str, size_t *i) {
+void check_trigonometric(char *true_str, int *count, char *str, size_t *i) {
     char temp[5] = {0};
     int temp_count = 0;
     while(str[*i] != '(') {

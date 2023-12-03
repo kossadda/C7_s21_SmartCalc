@@ -1,22 +1,22 @@
-#ifndef SMARTCALC_H
-#define SMARTCALC_H
+#ifndef s21_smartcalc_H
+#define s21_smartcalc_H
 
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class smartcalc; }
+namespace Ui { class s21_smartcalc; }
 QT_END_NAMESPACE
 
-class smartcalc : public QMainWindow
+class s21_smartcalc : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    smartcalc(QWidget *parent = nullptr);
-    ~smartcalc();
+    s21_smartcalc(QWidget *parent = nullptr);
+    ~s21_smartcalc();
 
 private:
-    Ui::smartcalc *ui;
+    Ui::s21_smartcalc *ui;
 
 private slots:
     void push_nums();
@@ -35,4 +35,4 @@ private slots:
 
     int countDigits(double number);
 };
-#endif // SMARTCALC_H
+#endif // s21_smartcalc_H

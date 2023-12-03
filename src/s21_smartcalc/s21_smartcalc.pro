@@ -10,13 +10,13 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
-    smartcalc.cpp
+    s21_smartcalc.cpp
 
 HEADERS += \
-    smartcalc.h
+    s21_smartcalc.h
 
 FORMS += \
-    smartcalc.ui
+    s21_smartcalc.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

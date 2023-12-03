@@ -1,15 +1,14 @@
 all: install run
 
-install: clean
+install: uninstall
 	mkdir build
-	cd smartcalc && qmake-qt5 && make
-	mv smartcalc/smartcalc build
-	rm -rf smartcalc/Makefile
+	cd s21_smartcalc && qmake-qt5 && make
+	mv s21_smartcalc/s21_smartcalc build
+	rm -rf s21_smartcalc/Makefile
 
-uninstall: clean
+uninstall:
+	@rm -rf test calculations/*.o s21_smartcalc/*.o build
 
 run:
-	./build/smartcalc
+	./build/s21_smartcalc
 
-clean:
-	@rm -rf test functions/*.o smartcalc/*.o build

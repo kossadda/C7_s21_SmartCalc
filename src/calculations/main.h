@@ -1,11 +1,10 @@
 #ifndef FUNC_TESTS_H_
 #define FUNC_TESTS_H_
 
-#include <string.h>
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 #define SIN 115
 #define COS 99
@@ -28,6 +27,7 @@
 
 double calculation(char *str);
 void validation(char *str);
+void check_trigonometric(char *true_str, int *count, char *str, size_t *i);
 double notation(char *str);
 int check(char first_symbol, const char *search);
 int prior_comparison(char first, char second);

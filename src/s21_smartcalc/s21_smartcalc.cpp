@@ -1,17 +1,18 @@
-#include "smartcalc.h"
-#include "ui_smartcalc.h"
+#include "s21_smartcalc.h"
+#include "ui_s21_smartcalc.h"
 
 extern "C" {
 #include "../calculations/functions/main.c"
+#include "../calculations/functions/validation.c"
 #include "../calculations/functions/notation.c"
 #include "../calculations/functions/checks.c"
 #include "../calculations/functions/comparison.c"
 #include "../calculations/functions/math_operations.c"
 }
 
-smartcalc::smartcalc(QWidget *parent)
+s21_smartcalc::s21_smartcalc(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::smartcalc)
+    , ui(new Ui::s21_smartcalc)
 {
     ui->setupUi(this);
 
@@ -27,12 +28,12 @@ smartcalc::smartcalc(QWidget *parent)
     connect(ui->push_9, SIGNAL(clicked()), this, SLOT(push_nums()));
 }
 
-smartcalc::~smartcalc()
+s21_smartcalc::~s21_smartcalc()
 {
     delete ui;
 }
 
-void smartcalc::push_nums()
+void s21_smartcalc::push_nums()
 {
     if(ui->history->text().contains("=")) {
         on_push_CE_clicked();
@@ -41,44 +42,44 @@ void smartcalc::push_nums()
     ui->resfield->setText(ui->resfield->text() + button->text());
 }
 
-void smartcalc::on_push_dot_clicked()
+void s21_smartcalc::on_push_dot_clicked()
 {
     if(!ui->resfield->text().contains(".") && ui->resfield->text().length() > 0) {
         ui->resfield->setText(ui->resfield->text() + ".");
     }
 }
 
-void smartcalc::on_push_bkt1_clicked()
+void s21_smartcalc::on_push_bkt1_clicked()
 {
     ui->history->setText(ui->history->text() + "(");
 }
 
-void smartcalc::on_push_bkt2_clicked()
+void s21_smartcalc::on_push_bkt2_clicked()
 {
     QString field = ui->resfield->text();
     ui->history->setText(ui->history->text() + field + ")");
     on_push_C_clicked();
 }
 
-void smartcalc::on_push_erase_clicked()
+void s21_smartcalc::on_push_erase_clicked()
 {
     QString field = ui->resfield->text();
     field.chop(1);
     ui->resfield->setText(field);
 }
 
-void smartcalc::on_push_C_clicked()
+void s21_smartcalc::on_push_C_clicked()
 {
     ui->resfield->setText("");
 }
 
-void smartcalc::on_push_CE_clicked()
+void s21_smartcalc::on_push_CE_clicked()
 {
     ui->history->setText("");
     on_push_C_clicked();
 }
 
-void smartcalc::on_push_pl_min_clicked()
+void s21_smartcalc::on_push_pl_min_clicked()
 {
     if(ui->resfield->text().contains("-")) {
         QString field = ui->resfield->text();
@@ -91,7 +92,7 @@ void smartcalc::on_push_pl_min_clicked()
     }
 }
 
-void smartcalc::on_push_sum_clicked()
+void s21_smartcalc::on_push_sum_clicked()
 {
     QString field = ui->resfield->text();
     QString istory = ui->history->text();
@@ -108,7 +109,7 @@ void smartcalc::on_push_sum_clicked()
     }
 }
 
-void smartcalc::on_push_sub_clicked()
+void s21_smartcalc::on_push_sub_clicked()
 {
     QString field = ui->resfield->text();
     QString istory = ui->history->text();
@@ -125,7 +126,7 @@ void smartcalc::on_push_sub_clicked()
     }
 }
 
-void smartcalc::on_push_mult_clicked()
+void s21_smartcalc::on_push_mult_clicked()
 {
     QString field = ui->resfield->text();
     QString istory = ui->history->text();
@@ -142,7 +143,7 @@ void smartcalc::on_push_mult_clicked()
     }
 }
 
-void smartcalc::on_push_div_clicked()
+void s21_smartcalc::on_push_div_clicked()
 {
     QString field = ui->resfield->text();
     QString istory = ui->history->text();
@@ -159,14 +160,14 @@ void smartcalc::on_push_div_clicked()
     }
 }
 
-int smartcalc::countDigits(double number)
+int s21_smartcalc::countDigits(double number)
 {
     int integer = static_cast<int>(number);
     std::string integer_string = std::to_string(integer);
     return integer_string.length();
 }
 
-void smartcalc::on_push_eq_clicked()
+void s21_smartcalc::on_push_eq_clicked()
 {
     // if(ui->resfield->text().length() > 0) {
     //     ui->history->setText(ui->history->text() + ui->resfield->text());
@@ -179,8 +180,8 @@ void smartcalc::on_push_eq_clicked()
     char* charArray = byteArray.data();
     double result = calculation(charArray);
     ui->resfield->setText(QString::number(result, 'g', countDigits(result) + 7));
-    if(!ui->history->text().contains("=")) {
-        ui->history->setText(ui->history->text() + "=");
-    }
+    // if(!ui->history->text().contains("=")) {
+    //     ui->history->setText(ui->history->text() + "=");
+    // }
 }
 
