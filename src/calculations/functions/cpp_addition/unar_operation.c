@@ -3,14 +3,14 @@
 char *unar_operation(char *str) {
     char ptr[256] = {0};
     int len = strlen(str) - 1;
-    if(str[len] == ')' && check(str[len-1], "1234567890")) {
+    if(str[len] == ')' && check(str[len-1], NUMBERS)) {
         int num = number_position(str, len - 1);
         int pos_minus = minus_position(str, len);
         if(num == pos_minus && !check(str[num - 2], "gtnsd")) {
             clean_unar(str, ptr, len, pos_minus);
             strcpy(str, ptr);
         }
-    } else if(check(str[len], "1234567890")) {
+    } else if(check(str[len], NUMBERS)) {
         int pos_number = number_position(str, len);
         make_unar(str, ptr, len, pos_number);
         strcpy(str, ptr);

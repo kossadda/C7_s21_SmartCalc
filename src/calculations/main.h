@@ -6,24 +6,12 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define SIN 115
-#define COS 99
-#define TAN 116
-#define ASIN 83
-#define ACOS 67
-#define ATAN 84
-#define SQRT 81
-#define LOG 76
-#define LN 108
-#define OPEN_BRCK 40
-#define CLOSE_BRCK 41
-#define ADD 43
-#define SUB 45
-#define MUL 42
-#define DIV 47
-#define EXP 94
-#define MOD 109
-#define UNAR 117
+enum {  SIN = 115, COS = 99, TAN = 116, ASIN = 83, ACOS = 67, ATAN = 84, SQRT = 81, LOG = 76, LN = 108, ZERO = 0,
+        OPEN_BRCK = 40, CLOSE_BRCK = 41, ADD = 43, SUB = 45, MUL = 42, DIV = 47, EXP = 94, MOD = 109, UNAR = 117  };
+
+#define TRIG_CHARS "sctSCTQLl"
+#define BRACKETS "()"
+#define NUMBERS "1234567890"
 
 double calculation(char *str);
 void validation(char *str);

@@ -21,8 +21,8 @@ double notation(char *str) {
                 }
             }
             if(str[i] == CLOSE_BRCK && oper[o_count] == OPEN_BRCK) {
-                oper[o_count--] = '\000';
-                if(check(oper[o_count], "sctSCTQLl")) {
+                oper[o_count--] = ZERO;
+                if(check(oper[o_count], TRIG_CHARS)) {
                     trigonometry(&(nums[n_count - 1]), oper[o_count--]);
                 }
             }
@@ -42,7 +42,7 @@ double notation(char *str) {
                 if(temp != NULL) nums[n_count++] = atof(temp);
                 if(oper[o_count] == UNAR) {
                     nums[n_count-1] *= -1;
-                    oper[o_count--] = '\000';
+                    oper[o_count--] = ZERO;
                 }
             }
         }
@@ -50,7 +50,7 @@ double notation(char *str) {
             while(o_count != -1) {
                 bracket_close(nums, oper, &n_count, &o_count);
                 if(oper[o_count] == OPEN_BRCK) {
-                    oper[o_count--] = '\000';
+                    oper[o_count--] = ZERO;
                 }
             }
         }

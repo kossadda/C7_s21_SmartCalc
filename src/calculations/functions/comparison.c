@@ -9,7 +9,7 @@ int prior_comparison(char first, char second) {
     } else if(priority_1 == priority_2 && !check(first, "^m")) {
         decision = 2;
     } 
-    if(check(first, "()") || check(second, "()")) {
+    if(check(first, BRACKETS) || check(second, BRACKETS)) {
         decision = 0;
     }
     return decision;
@@ -25,9 +25,9 @@ int determine_priority(char operation) {
         priority = 3;
     } else if(check(operation, "^")) {
         priority = 4;
-    } else if(check(operation, "sctSCTQLl")) {
+    } else if(check(operation, TRIG_CHARS)) {
         priority = 5;
-    } else if(check(operation, "()")) {
+    } else if(check(operation, BRACKETS)) {
         priority = 6;
     }
     return priority;
