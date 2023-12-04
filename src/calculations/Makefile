@@ -7,7 +7,7 @@ LINK=functions/*.c tests/main_test.c
 VAL=--trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full --show-leak-kinds=all
 
 build:
-	@gcc ${CC} functions/*.c tests/testing.c -lm -o ${TEST}
+	@gcc ${CC} functions/*.c functions/cpp_addition/*.c tests/testing.c -lm -o ${TEST}
 	clear
 	@./${TEST}
 

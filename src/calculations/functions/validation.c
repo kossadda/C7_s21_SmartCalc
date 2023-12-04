@@ -12,14 +12,16 @@ void validation(char *attachment) {
     for(size_t i = 0; i < strlen(str); i++) {
         if(check(str[i], "sctasl") && check(str[i-1], "+-/*( ")) {
             check_trigonometric(true_str, &count, str, &i);
-        } else if(check(str[i], "0123456789") && check(str[i+1], "(")) {
+        } else if(check(str[i], "0123456789)") && check(str[i+1], "(")) {
             true_str[count++] = str[i];
             true_str[count++] = MUL;
         } else if(!check(str[i], "o d")) {
             true_str[count++] = str[i];
         }
-        if(str[i] == '(' && str[i+1] == '-') {
-            true_str[count++] = UNAR;
+        if(str[i] == '(' && check(str[i+1], "+-")) {
+            if(str[i+1] == '-') {
+                true_str[count++] = UNAR;
+            }
             i++;
         }
     }

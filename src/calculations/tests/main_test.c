@@ -72,9 +72,9 @@ START_TEST(arifmetic_10) {
 }
 
 START_TEST(arifmetic_11) {
-    char *example = "(((15*2)/(3+2))-(7*0.5))";
+    char *example = "(((15*2)/(3+2))-(7*0.5)) - (+2)";
     double my_result = calculation(example);
-    double true_result = 2.5;
+    double true_result = 0.5;
     ck_assert_double_eq_tol(my_result, true_result, 1e-5);
 }
 

@@ -37,4 +37,10 @@ void trigonometry(double *number, char operation);
 void bracket_close(double *nums, char *oper, int *n_count, int *o_count);
 void math_in_condition(double *nums, char *oper, int *n_count, int *o_count);
 
+void clean_unar(char *str, char *ptr, int len, int pos_minus);
+void make_unar(char *str, char *ptr, int len, int pos_number);
+int number_position(char *str, int len);
+int minus_position(char *str, int len);
+char *unar_operation(char *str);
+
 #endif
