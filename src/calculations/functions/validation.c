@@ -6,6 +6,9 @@ void validation(char *attachment) {
     int count = 0;
     if (check(*attachment, "(sctasl")) {
         strcat(str, attachment);
+    } else if (check(*attachment, "-")) {
+        strcat(str, "(");
+        strcat(str, attachment);
     } else {
         strcpy(str, attachment);
     }

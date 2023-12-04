@@ -29,45 +29,25 @@ private slots:
     void on_push_sqrt_clicked();
     void on_push_log_clicked();
     void on_push_ln_clicked();
-
     void on_push_sin_clicked();
-
     void on_push_cos_clicked();
-
     void on_push_tan_clicked();
-
     void on_push_asin_clicked();
-
     void on_push_acos_clicked();
-
     void on_push_atan_clicked();
-
     void on_push_mod_clicked();
-
     void on_push_opn_brack_clicked();
-
     void on_push_cls_brack_clicked();
-
     void on_push_div_clicked();
-
     void on_push_mul_clicked();
-
     void on_push_sub_clicked();
-
     void on_push_sum_clicked();
-
     void on_push_e_clicked();
-
     void on_push_pi_clicked();
-
     void on_push_exp_clicked();
-
     void on_push_c_clicked();
-
     void on_push_del_clicked();
-
     void on_push_unar_clicked();
-
     void on_push_dot_clicked();
 
 private:

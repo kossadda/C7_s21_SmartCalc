@@ -20,6 +20,7 @@ HEADERS += \
     s21_smartcalc.h
 
 FORMS += \
+    journal.ui \
     s21_credit.ui \
     s21_deposit.ui \
     s21_smartcalc.ui

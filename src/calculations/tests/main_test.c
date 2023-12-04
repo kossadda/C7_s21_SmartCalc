@@ -65,7 +65,7 @@ START_TEST(arifmetic_9) {
 }
 
 START_TEST(arifmetic_10) {
-    char *example = "((20/4)*(5-(3/1.5)))";
+    char *example = "((20/4)(5-(3/1.5)))";
     double my_result = calculation(example);
     double true_result = 15;
     ck_assert_double_eq_tol(my_result, true_result, 1e-5);
@@ -79,9 +79,9 @@ START_TEST(arifmetic_11) {
 }
 
 START_TEST(arifmetic_12) {
-    char *example = "((6.213*(2.552-1.312))/(3.321-(2.423/4.1123)))";
+    char *example = "-1*((6.213*(2.552-1.312))/(3.321-(2.423/4.1123)))";
     double my_result = calculation(example);
-    double true_result = 2.8201707;
+    double true_result = -2.8201707;
     ck_assert_double_eq_tol(my_result, true_result, 1e-5);
 }
 

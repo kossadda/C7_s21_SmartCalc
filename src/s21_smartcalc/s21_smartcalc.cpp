@@ -256,17 +256,20 @@ void s21_smartcalc::on_push_unar_clicked()
 void s21_smartcalc::on_push_dot_clicked()
 {
     QString field = ui->result->text();
-    QByteArray byteArray = field.toUtf8();
-    char* charArray = byteArray.data();
-    int position = number_position(charArray, field.length() - 1);
-    int dot_find = 0;
-    for(int i = position; i < field.length(); i++) {
-        if(field.indexOf('.', i) != -1) {
-            dot_find = 1;
+    QChar last_symbol = field[field.length() - 1];
+    if(last_symbol >= '0' && last_symbol <= '9') {
+        QByteArray byteArray = field.toUtf8();
+        char* charArray = byteArray.data();
+        int position = number_position(charArray, field.length() - 1);
+        int dot_find = 0;
+        for(int i = position; i < field.length(); i++) {
+            if(field.indexOf('.', i) != -1) {
+                dot_find = 1;
+            }
         }
-    }
-    if(!dot_find) {
-        ui->result->setText(field + ".");
+        if(!dot_find) {
+            ui->result->setText(field + ".");
+        }
     }
 }
 
