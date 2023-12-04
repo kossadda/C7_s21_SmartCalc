@@ -22,6 +22,10 @@ private slots:
     void change_deposit(int index);
     void change_credit(int index);
 
+    void push_nums();
+    void on_push_eq_clicked();
+    int countDigits(double number);
+
 private:
     Ui::s21_smartcalc *ui;
 };

@@ -7,7 +7,7 @@ install: uninstall
 	rm -rf s21_smartcalc/Makefile
 
 uninstall:
-	@rm -rf test build calculations/*.o s21_smartcalc/*.o s21_smartcalc/ui_* s21_smartcalc/moc_* s21_smartcalc/*.user
+	@rm -rf test build build-* calculations/*.o s21_smartcalc/*.o s21_smartcalc/ui_* s21_smartcalc/moc_* s21_smartcalc/*.user
 
 run:
 	./build/s21_smartcalc
