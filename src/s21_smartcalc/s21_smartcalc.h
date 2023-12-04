@@ -1,10 +1,12 @@
-#ifndef s21_smartcalc_H
-#define s21_smartcalc_H
+#ifndef S21_SMARTCALC_H
+#define S21_SMARTCALC_H
 
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class s21_smartcalc; }
+namespace Ui {
+class s21_smartcalc;
+}
 QT_END_NAMESPACE
 
 class s21_smartcalc : public QMainWindow
@@ -15,24 +17,12 @@ public:
     s21_smartcalc(QWidget *parent = nullptr);
     ~s21_smartcalc();
 
+private slots:
+    void change_window(int index);
+    void change_deposit(int index);
+    void change_credit(int index);
+
 private:
     Ui::s21_smartcalc *ui;
-
-private slots:
-    void push_nums();
-    void on_push_dot_clicked();
-    void on_push_erase_clicked();
-    void on_push_pl_min_clicked();
-    void on_push_C_clicked();
-    void on_push_sum_clicked();
-    void on_push_CE_clicked();
-    void on_push_sub_clicked();
-    void on_push_mult_clicked();
-    void on_push_bkt1_clicked();
-    void on_push_eq_clicked();
-    void on_push_bkt2_clicked();
-    void on_push_div_clicked();
-
-    int countDigits(double number);
 };
-#endif // s21_smartcalc_H
+#endif // S21_SMARTCALC_H
