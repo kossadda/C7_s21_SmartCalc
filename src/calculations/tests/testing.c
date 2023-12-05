@@ -5,7 +5,7 @@ int main() {
     // printf("%lf\n", calculation(str));
     // validation(str);
     // printf("%s\n", str);   
-    char str[256] = "(2/45*5432e3 * (P/3.14)) + log(123e3 * 123 e-4)";
+    char str[256] = "292.3391417/2^2^2";
     // printf("%s\n", str);
     // validation(str);
     // printf("%s\n", str);

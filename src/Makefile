@@ -1,4 +1,4 @@
-CC=-Wall -Werror -Wextra -std=c11
+CC=-Wall -Werror -Wextra -g -std=c11
 EXE=test
 GCOV=gcov_report
 COVER=-fprofile-arcs -ftest-coverage

@@ -1,7 +1,7 @@
 #include "../main.h"
 
 double notation(char *str) {
-    char token[256] = {0};
+    char token[1500] = {0};
     strcpy(token, str);
     char *temp = NULL;
     const char moves[] = "()^+<*/msctSCTQLlu";

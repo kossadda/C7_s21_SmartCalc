@@ -2,7 +2,7 @@
 
 void validation(char *attachment) {
     char str[300] = "1*";
-    char true_str[1000] = {0};
+    char true_str[1500] = {0};
     int count = 0;
     if (check(*attachment, "(sctasl")) {
         strcat(str, attachment);
