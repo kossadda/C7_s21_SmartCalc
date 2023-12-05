@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>420</width>
+    <width>440</width>
     <height>550</height>
    </rect>
   </property>
@@ -25,7 +25,7 @@
   <widget class="QWidget" name="centralwidget">
    <property name="minimumSize">
     <size>
-     <width>0</width>
+     <width>440</width>
      <height>550</height>
     </size>
    </property>
@@ -327,7 +327,7 @@ border: 0px;</string>
       <property name="spacing">
        <number>0</number>
       </property>
-      <item row="0" column="4">
+      <item row="0" column="3">
        <widget class="QPushButton" name="push_mod">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -360,7 +360,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="5" column="2">
+      <item row="5" column="1">
        <widget class="QPushButton" name="push_1">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -393,7 +393,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="1" column="3">
+      <item row="1" column="2">
        <widget class="QPushButton" name="push_pi">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -426,7 +426,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="1" column="4">
+      <item row="1" column="3">
        <widget class="QPushButton" name="push_exp">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -459,7 +459,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
+      <item row="3" column="0">
        <widget class="QPushButton" name="push_sin">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -492,7 +492,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="4" column="3">
+      <item row="4" column="2">
        <widget class="QPushButton" name="push_5">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -525,7 +525,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="1" column="2">
+      <item row="1" column="1">
        <widget class="QPushButton" name="push_e">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -558,7 +558,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="2" column="5">
+      <item row="2" column="4">
        <widget class="QPushButton" name="push_mul">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -591,7 +591,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="2" column="3">
+      <item row="2" column="2">
        <widget class="QPushButton" name="push_cls_brack">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -624,7 +624,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="5" column="1">
+      <item row="5" column="0">
        <widget class="QPushButton" name="push_log">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -657,7 +657,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="3" column="4">
+      <item row="3" column="3">
        <widget class="QPushButton" name="push_9">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -690,7 +690,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="4" column="4">
+      <item row="4" column="3">
        <widget class="QPushButton" name="push_6">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -723,7 +723,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="5" column="5" rowspan="2">
+      <item row="5" column="4" rowspan="2">
        <widget class="QPushButton" name="push_eq">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -756,23 +756,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="0" column="0">
-       <spacer name="horizontalSpacer_3">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Ignored</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>25</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="0" column="3">
+      <item row="0" column="2">
        <widget class="QPushButton" name="push_atan">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -805,7 +789,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
+      <item row="2" column="0">
        <widget class="QPushButton" name="push_cos">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -838,7 +822,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="3" column="5">
+      <item row="3" column="4">
        <widget class="QPushButton" name="push_sub">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -871,7 +855,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="6" column="2">
+      <item row="6" column="1">
        <widget class="QPushButton" name="push_unar">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -904,7 +888,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="3" column="3">
+      <item row="3" column="2">
        <widget class="QPushButton" name="push_8">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -937,7 +921,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="4" column="2">
+      <item row="4" column="1">
        <widget class="QPushButton" name="push_4">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -970,7 +954,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="2" column="4">
+      <item row="2" column="3">
        <widget class="QPushButton" name="push_div">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1003,7 +987,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="0" column="2">
+      <item row="0" column="1">
        <widget class="QPushButton" name="push_acos">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1036,7 +1020,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="6" column="4">
+      <item row="6" column="3">
        <widget class="QPushButton" name="push_dot">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1069,7 +1053,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="3" column="2">
+      <item row="3" column="1">
        <widget class="QPushButton" name="push_7">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1102,7 +1086,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="5" column="3">
+      <item row="5" column="2">
        <widget class="QPushButton" name="push_2">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1135,7 +1119,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="4" column="1">
+      <item row="4" column="0">
        <widget class="QPushButton" name="push_sqrt">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1168,7 +1152,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="0" column="5">
+      <item row="0" column="4">
        <widget class="QPushButton" name="push_del">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1201,7 +1185,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="2" column="2">
+      <item row="2" column="1">
        <widget class="QPushButton" name="push_opn_brack">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1234,7 +1218,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="5" column="4">
+      <item row="5" column="3">
        <widget class="QPushButton" name="push_3">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1267,7 +1251,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
+      <item row="1" column="0">
        <widget class="QPushButton" name="push_tan">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1300,7 +1284,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
+      <item row="0" column="0">
        <widget class="QPushButton" name="push_asin">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1333,7 +1317,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="1" column="5">
+      <item row="1" column="4">
        <widget class="QPushButton" name="push_c">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1366,7 +1350,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="4" column="5">
+      <item row="4" column="4">
        <widget class="QPushButton" name="push_sum">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1400,7 +1384,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="6" column="3">
+      <item row="6" column="2">
        <widget class="QPushButton" name="push_0">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1433,7 +1417,7 @@ QPushButton:pressed {
         </property>
        </widget>
       </item>
-      <item row="6" column="1">
+      <item row="6" column="0">
        <widget class="QPushButton" name="push_ln">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -1465,22 +1449,6 @@ QPushButton:pressed {
          <string>ln</string>
         </property>
        </widget>
-      </item>
-      <item row="0" column="6">
-       <spacer name="horizontalSpacer_4">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Ignored</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>25</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
       </item>
      </layout>
     </item>
