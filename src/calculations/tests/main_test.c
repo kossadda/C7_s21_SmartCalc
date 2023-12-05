@@ -701,6 +701,40 @@ START_TEST(other_30) {
     ck_assert_double_eq_tol(my_result, true_result, 1e-5);
 }
 
+START_TEST(other_31) {
+    char *example = "sqrt(sin(P/2.1324) + cos(3.123P))/2.53";
+    double my_result = calculation(example);
+    double true_result = 0.1038119;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-5);
+}
+
+START_TEST(other_32) {
+    char *example = "log(2.5e-3) * ln(1000) / P";
+    double my_result = calculation(example);
+    double true_result = -5.7214271;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-5);
+}
+
+START_TEST(other_33) {
+    char *example = "sqrt(2.234*P^2) + log(34e4) - ln(134e-5)";
+    double my_result = calculation(example);
+    double true_result = 16.8421685;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-5);
+}
+
+START_TEST(other_34) {
+    char *example = "(2/45*5432e3 * (P/3.14)) + log(123e3 * 123 e-4)";
+    double my_result = calculation(example);
+    double true_result = 241547.8548887;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-5);
+}
+
+START_TEST(other_35) {
+    char *example = "(1+P*P*P-P^3)^3 -1";
+    double my_result = calculation(example);
+    double true_result = 0.0;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-5);
+}
 
 Suite *s21_smartcalc(void) {
     Suite *calc = suite_create("s21_smartcalc");
@@ -812,6 +846,11 @@ Suite *s21_smartcalc(void) {
     tcase_add_test(tc_test_arifmetic, other_28);
     tcase_add_test(tc_test_arifmetic, other_29);
     tcase_add_test(tc_test_arifmetic, other_30);
+    tcase_add_test(tc_test_arifmetic, other_31);
+    tcase_add_test(tc_test_arifmetic, other_32);
+    tcase_add_test(tc_test_arifmetic, other_33);
+    tcase_add_test(tc_test_arifmetic, other_34);
+    tcase_add_test(tc_test_arifmetic, other_35);
     suite_add_tcase(calc, tc_test_square);
 
     return calc;

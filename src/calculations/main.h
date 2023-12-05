@@ -6,8 +6,8 @@
 #include <string.h>
 #include <stdlib.h>
 
-enum {  SIN = 115, COS = 99, TAN = 116, ASIN = 83, ACOS = 67, ATAN = 84, SQRT = 81, LOG = 76, LN = 108, ZERO = 0,
-        OPEN_BRCK = 40, CLOSE_BRCK = 41, ADD = 43, SUB = 45, MUL = 42, DIV = 47, EXP = 94, MOD = 109, UNAR = 117  };
+enum {  SIN = 115, COS = 99, TAN = 116, ASIN = 83, ACOS = 67, ATAN = 84, SQRT = 81, LOG = 76, LN = 108, ZERO = 0, PI = 80,
+        OPEN_BRCK = 40, CLOSE_BRCK = 41, ADD = 43, SUB = 60, MUL = 42, DIV = 47, EXP = 94, MOD = 109, UNAR = 117  };
 
 #define TRIG_CHARS "sctSCTQLl"
 #define BRACKETS "()"

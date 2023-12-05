@@ -10,7 +10,7 @@ PROG=build/s21_smartcalc
 MAIN_FOLD=s21_smartcalc
 
 # Моя временная цель
-build:
+build: uninstall
 	@gcc ${CC} ${LINK} calculations/functions/cpp_addition/*.c ${TESTS}/testing.c -lm -o ${EXE}
 	clear
 	@./${EXE}
@@ -23,7 +23,7 @@ install: uninstall
 	mv ${MAIN_FOLD}/s21_smartcalc build
 	rm -rf ${MAIN_FOLD}/Makefile
 
-uninstall:
+uninstall: clean
 	@rm -rf test build build-* calculations/*.o ${MAIN_FOLD}/*.o ${MAIN_FOLD}/ui_* ${MAIN_FOLD}/moc_* ${MAIN_FOLD}/*.user
 
 run:
@@ -47,6 +47,9 @@ clean:
 valgrind: test
 	@valgrind ${VAL} ./${EXE}
 	@rm ${EXE}
+
+clang-format:
+	clang-format -n -style="{BasedOnStyle: Google, IndentWidth: 4}" ${LINK}
 
 # dist:
 

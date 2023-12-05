@@ -4,7 +4,7 @@ double notation(char *str) {
     char token[256] = {0};
     strcpy(token, str);
     char *temp = NULL;
-    const char moves[] = "()^+-*/msctSCTQLlu";
+    const char moves[] = "()^+<*/msctSCTQLlu";
     int n_count = 0;
     int o_count = -1;
     double nums[100] = {0};
@@ -40,10 +40,6 @@ double notation(char *str) {
             if(!check(str[i+1], moves)) {
                 temp = strtok(NULL, moves);
                 if(temp != NULL) nums[n_count++] = atof(temp);
-                if(oper[o_count] == UNAR) {
-                    nums[n_count-1] *= -1;
-                    oper[o_count--] = ZERO;
-                }
             }
         }
         if(i == strlen(str) - 1) {

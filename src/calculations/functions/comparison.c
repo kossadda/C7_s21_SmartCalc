@@ -17,7 +17,7 @@ int prior_comparison(char first, char second) {
 
 int determine_priority(char operation) {
     int priority = 0;
-    if(check(operation, "+-")) {
+    if(check(operation, "+<")) {
         priority = 1;
     } else if(check(operation, "*/")) {
         priority = 2;

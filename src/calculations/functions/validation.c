@@ -1,8 +1,8 @@
 #include "../main.h"
 
 void validation(char *attachment) {
-    char str[256] = "1*";
-    char true_str[256] = {0};
+    char str[300] = "1*";
+    char true_str[1000] = {0};
     int count = 0;
     if (check(*attachment, "(sctasl")) {
         strcat(str, attachment);
@@ -18,6 +18,12 @@ void validation(char *attachment) {
         } else if(check(str[i], "0123456789)") && check(str[i+1], "(")) {
             true_str[count++] = str[i];
             true_str[count++] = MUL;
+        } else if (str[i] == PI) {
+            if(check(str[i-1], NUMBERS)) {
+                true_str[count++] = MUL;
+            }
+            strcat(true_str, "3.14159265358979323846");
+            count += 22;
         } else if(!check(str[i], "o d")) {
             true_str[count++] = str[i];
         }
@@ -28,11 +34,18 @@ void validation(char *attachment) {
             i++;
         }
     }
+    for(size_t i = 0; i < strlen(true_str); i++) {
+        if(true_str[i] == '-' && true_str[i-1] != 'e') {
+            true_str[i] = SUB;
+        } else if(true_str[i] == UNAR) {
+            true_str[i] = '-';
+        }
+    }
     strcpy(attachment, true_str);
 }
 
 void check_trigonometric(char *true_str, int *count, char *str, size_t *i) {
-    char temp[5] = {0};
+    char temp[10] = {0};
     int temp_count = 0;
     while(str[*i] != '(') {
         temp[temp_count++] = str[(*i)++];

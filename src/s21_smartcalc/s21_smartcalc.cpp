@@ -213,13 +213,13 @@ void s21_smartcalc::on_push_sum_clicked()
 
 void s21_smartcalc::on_push_e_clicked()
 {
-    ui->result->setText(ui->result->text() + "2.71828");
+    ui->result->setText(ui->result->text() + "e");
 }
 
 
 void s21_smartcalc::on_push_pi_clicked()
 {
-    ui->result->setText(ui->result->text() + "3.14159");
+    ui->result->setText(ui->result->text() + "P");
 }
 
 

@@ -1060,7 +1060,7 @@ QPushButton:pressed {
       <item>
        <widget class="QComboBox" name="comboBox">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1069,6 +1069,12 @@ QPushButton:pressed {
          <size>
           <width>200</width>
           <height>50</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>200</height>
          </size>
         </property>
         <property name="font">
@@ -1147,7 +1153,7 @@ QPushButton:pressed {
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton {
-    background-color: rgb(175, 97, 33);
+	background-color: rgb(81, 44, 6);
 }
 
 QPushButton:pressed {
@@ -1155,7 +1161,7 @@ QPushButton:pressed {
 }</string>
         </property>
         <property name="text">
-         <string>↻</string>
+         <string>📈</string>
         </property>
        </widget>
       </item>
