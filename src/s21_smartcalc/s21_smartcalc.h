@@ -50,7 +50,13 @@ private slots:
     void on_push_unar_clicked();
     void on_push_dot_clicked();
 
+    void on_turn_back_clicked();
+
+    void on_move_frwd_clicked();
+
 private:
     Ui::s21_smartcalc *ui;
+    QStringList history;
+    int history_count = -1;
 };
 #endif // S21_SMARTCALC_H

@@ -108,10 +108,28 @@ void s21_smartcalc::push_nums()
 
 void s21_smartcalc::on_push_eq_clicked()
 {
-    QByteArray byteArray = ui->result->text().toUtf8();
-    char* charArray = byteArray.data();
-    double res = calculation(charArray);
-    ui->result->setText(QString::number(res, 'g', countDigits(res) + 7));
+    if(ui->result->text() != "") {
+        if(history_count + 1 != history.size()) {
+            int list_size = history.size();
+            for(int i = 0; i < list_size; i++) {
+                history.removeAt(history_count + 1);
+            }
+        }
+        if(history_count >= 0) {
+            QString check = history.at(history_count);
+            if(check != ui->result->text()) {
+                history << ui->result->text();
+                history_count++;
+            }
+        } else {
+            history << ui->result->text();
+            history_count++;
+        }
+        QByteArray byteArray = ui->result->text().toUtf8();
+        char* charArray = byteArray.data();
+        double res = calculation(charArray);
+        ui->result->setText(QString::number(res, 'g', countDigits(res) + 7));
+    }
 }
 
 
@@ -269,6 +287,26 @@ void s21_smartcalc::on_push_dot_clicked()
         }
         if(!dot_find) {
             ui->result->setText(field + ".");
+        }
+    }
+}
+
+
+void s21_smartcalc::on_turn_back_clicked()
+{
+    if(history_count >= 0) {
+        ui->result->setText(history[history_count]);
+        history_count--;
+    }
+}
+
+
+void s21_smartcalc::on_move_frwd_clicked()
+{
+    if(history_count >= -1) {
+        if(history_count < history.size() - 1) {
+            history_count++;
+            ui->result->setText(history[history_count]);
         }
     }
 }
