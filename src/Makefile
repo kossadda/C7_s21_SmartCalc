@@ -9,19 +9,13 @@ VAL=--trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full -
 PROG=build/s21_smartcalc
 MAIN_FOLD=s21_smartcalc
 
-# Моя временная цель
-build: uninstall
-	@gcc ${CC} ${LINK} calculations/functions/cpp_addition/*.c ${TESTS}/testing.c -lm -o ${EXE}
-	clear
-	@./${EXE}
-
 all: install run
 
 install: uninstall
-	mkdir build
-	cd ${MAIN_FOLD} && qmake-qt5 && make
-	mv ${MAIN_FOLD}/s21_smartcalc build
-	rm -rf ${MAIN_FOLD}/Makefile
+	@mkdir build
+	@cd ${MAIN_FOLD} && qmake-qt5 && make -s
+	@mv ${MAIN_FOLD}/s21_smartcalc build
+	@rm -rf ${MAIN_FOLD}/Makefile
 
 uninstall: clean
 	@rm -rf test build build-* calculations/*.o ${MAIN_FOLD}/*.o ${MAIN_FOLD}/ui_* ${MAIN_FOLD}/moc_* ${MAIN_FOLD}/*.user
@@ -50,6 +44,12 @@ valgrind: test
 
 clang-format:
 	clang-format -n -style="{BasedOnStyle: Google, IndentWidth: 4}" ${LINK}
+
+# Моя временная цель
+build: uninstall
+	@gcc ${CC} ${LINK} calculations/functions/cpp_addition/*.c ${TESTS}/testing.c -lm -o ${EXE}
+	clear
+	@./${EXE}
 
 # dist:
 

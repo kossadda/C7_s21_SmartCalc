@@ -679,7 +679,7 @@ QCPPainter *QCPPaintBufferPixmap::startPainting()
 {
   QCPPainter *result = new QCPPainter(&mBuffer);
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-  result->setRenderHint(QPainter::HighQualityAntialiasing);
+  result->setRenderHint(QPainter::Antialiasing);
 #endif
   return result;
 }
@@ -768,7 +768,7 @@ QCPPainter *QCPPaintBufferGlPbuffer::startPainting()
   }
   
   QCPPainter *result = new QCPPainter(mGlPBuffer);
-  result->setRenderHint(QPainter::HighQualityAntialiasing);
+  result->setRenderHint(QPainter::Antialiasing);
   return result;
 }
 
@@ -881,7 +881,7 @@ QCPPainter *QCPPaintBufferGlFbo::startPainting()
   mGlFrameBuffer->bind();
   QCPPainter *result = new QCPPainter(paintDevice.data());
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-  result->setRenderHint(QPainter::HighQualityAntialiasing);
+  result->setRenderHint(QPainter::Antialiasing);
 #endif
   return result;
 }
@@ -15234,7 +15234,7 @@ void QCustomPlot::rescaleAxes(bool onlyVisiblePlottables)
 
   \see savePng, saveBmp, saveJpg, saveRastered
 */
-bool QCustomPlot::savePdf(const QString &fileName, int width, int height, QCP::ExportPen exportPen, const QString &pdfCreator, const QString &pdfTitle)
+bool QCustomPlot::savePdf(int width, int height)
 {
   bool success = false;
 #ifdef QT_NO_PRINTER
@@ -15257,12 +15257,6 @@ bool QCustomPlot::savePdf(const QString &fileName, int width, int height, QCP::E
     newHeight = height;
   }
   
-  QPrinter printer(QPrinter::ScreenResolution);
-  printer.setOutputFileName(fileName);
-  printer.setOutputFormat(QPrinter::PdfFormat);
-  printer.setColorMode(QPrinter::Color);
-  printer.printEngine()->setProperty(QPrintEngine::PPK_Creator, pdfCreator);
-  printer.printEngine()->setProperty(QPrintEngine::PPK_DocumentName, pdfTitle);
   QRect oldViewport = viewport();
   setViewport(QRect(0, 0, newWidth, newHeight));
 #if QT_VERSION < QT_VERSION_CHECK(5, 3, 0)
@@ -15274,24 +15268,8 @@ bool QCustomPlot::savePdf(const QString &fileName, int width, int height, QCP::E
   pageLayout.setOrientation(QPageLayout::Portrait);
   pageLayout.setMargins(QMarginsF(0, 0, 0, 0));
   pageLayout.setPageSize(QPageSize(viewport().size(), QPageSize::Point, QString(), QPageSize::ExactMatch));
-  printer.setPageLayout(pageLayout);
 #endif
   QCPPainter printpainter;
-  if (printpainter.begin(&printer))
-  {
-    printpainter.setMode(QCPPainter::pmVectorized);
-    printpainter.setMode(QCPPainter::pmNoCaching);
-    printpainter.setMode(QCPPainter::pmNonCosmetic, exportPen==QCP::epNoCosmetic);
-    printpainter.setWindow(mViewport);
-    if (mBackgroundBrush.style() != Qt::NoBrush &&
-        mBackgroundBrush.color() != Qt::white &&
-        mBackgroundBrush.color() != Qt::transparent &&
-        mBackgroundBrush.color().alpha() > 0) // draw pdf background color if not white/transparent
-      printpainter.fillRect(viewport(), mBackgroundBrush);
-    draw(&printpainter);
-    printpainter.end();
-    success = true;
-  }
   setViewport(oldViewport);
 #endif // QT_NO_PRINTER
   return success;
@@ -15489,7 +15467,7 @@ void QCustomPlot::paintEvent(QPaintEvent *event)
   if (painter.isActive())
   {
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-  painter.setRenderHint(QPainter::HighQualityAntialiasing); // to make Antialiasing look good if using the OpenGL graphicssystem
+  painter.setRenderHint(QPainter::Antialiasing); // to make Antialiasing look good if using the OpenGL graphicssystem
 #endif
     if (mBackgroundBrush.style() != Qt::NoBrush)
       painter.fillRect(mViewport, mBackgroundBrush);
