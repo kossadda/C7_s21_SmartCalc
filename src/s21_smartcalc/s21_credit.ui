@@ -141,9 +141,9 @@ QPushButton:pressed {
    <widget class="QLineEdit" name="sum_line">
     <property name="geometry">
      <rect>
-      <x>176</x>
+      <x>65</x>
       <y>100</y>
-      <width>160</width>
+      <width>221</width>
       <height>40</height>
      </rect>
     </property>
@@ -165,56 +165,19 @@ QPushButton:pressed {
       <height>40</height>
      </size>
     </property>
-   </widget>
-   <widget class="QLabel" name="sum">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>106</y>
-      <width>150</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>0</width>
-      <height>20</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>150</width>
-      <height>400</height>
-     </size>
-    </property>
     <property name="font">
      <font>
       <pointsize>11</pointsize>
      </font>
     </property>
-    <property name="layoutDirection">
-     <enum>Qt::RightToLeft</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(30, 27, 6);</string>
-    </property>
-    <property name="text">
+    <property name="placeholderText">
      <string>Сумма кредита</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QComboBox" name="sum_box">
     <property name="geometry">
      <rect>
-      <x>341</x>
+      <x>290</x>
       <y>100</y>
       <width>82</width>
       <height>40</height>
@@ -239,54 +202,12 @@ QPushButton:pressed {
      </size>
     </property>
    </widget>
-   <widget class="QLabel" name="time">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>196</y>
-      <width>150</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>0</width>
-      <height>20</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>150</width>
-      <height>400</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>11</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(30, 27, 6);</string>
-    </property>
-    <property name="text">
-     <string>Срок кредита</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="time_line">
     <property name="geometry">
      <rect>
-      <x>176</x>
-      <y>190</y>
-      <width>160</width>
+      <x>65</x>
+      <y>180</y>
+      <width>221</width>
       <height>40</height>
      </rect>
     </property>
@@ -308,12 +229,20 @@ QPushButton:pressed {
       <height>40</height>
      </size>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="placeholderText">
+     <string>Срок кредита</string>
+    </property>
    </widget>
    <widget class="QComboBox" name="time_box">
     <property name="geometry">
      <rect>
-      <x>341</x>
-      <y>190</y>
+      <x>290</x>
+      <y>180</y>
       <width>82</width>
       <height>40</height>
      </rect>
@@ -337,31 +266,19 @@ QPushButton:pressed {
      </size>
     </property>
    </widget>
-   <widget class="QLabel" name="percent">
+   <widget class="QLineEdit" name="percent_line">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>286</y>
-      <width>150</width>
-      <height>30</height>
+      <x>65</x>
+      <y>260</y>
+      <width>305</width>
+      <height>40</height>
      </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
     </property>
     <property name="minimumSize">
      <size>
       <width>0</width>
-      <height>20</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>150</width>
-      <height>400</height>
+      <height>40</height>
      </size>
     </property>
     <property name="font">
@@ -369,37 +286,15 @@ QPushButton:pressed {
       <pointsize>11</pointsize>
      </font>
     </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(30, 27, 6);</string>
-    </property>
-    <property name="text">
+    <property name="placeholderText">
      <string>Процентная ставка</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="percent_line">
-    <property name="geometry">
-     <rect>
-      <x>176</x>
-      <y>280</y>
-      <width>160</width>
-      <height>40</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>0</width>
-      <height>40</height>
-     </size>
     </property>
    </widget>
    <widget class="QLabel" name="info_label_2">
     <property name="geometry">
      <rect>
-      <x>343</x>
-      <y>286</y>
+      <x>380</x>
+      <y>266</y>
       <width>15</width>
       <height>25</height>
      </rect>
@@ -422,9 +317,9 @@ QPushButton:pressed {
    <widget class="QLabel" name="payment_1">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>375</y>
-      <width>150</width>
+      <x>65</x>
+      <y>340</y>
+      <width>305</width>
       <height>31</height>
      </rect>
     </property>
@@ -442,7 +337,7 @@ QPushButton:pressed {
     </property>
     <property name="maximumSize">
      <size>
-      <width>150</width>
+      <width>400</width>
       <height>400</height>
      </size>
     </property>
@@ -455,18 +350,18 @@ QPushButton:pressed {
      <string notr="true">background-color: rgb(30, 27, 6);</string>
     </property>
     <property name="text">
-     <string>Тип ежемесячных</string>
+     <string>Тип ежемесячных платежей</string>
     </property>
     <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QRadioButton" name="payment_type_1">
     <property name="geometry">
      <rect>
-      <x>181</x>
-      <y>370</y>
-      <width>110</width>
+      <x>122</x>
+      <y>380</y>
+      <width>170</width>
       <height>30</height>
      </rect>
     </property>
@@ -509,9 +404,9 @@ QRadioButton::indicator:checked {
    <widget class="QRadioButton" name="payment_type_2">
     <property name="geometry">
      <rect>
-      <x>181</x>
-      <y>405</y>
-      <width>172</width>
+      <x>121</x>
+      <y>415</y>
+      <width>170</width>
       <height>30</height>
      </rect>
     </property>
@@ -551,48 +446,6 @@ QRadioButton::indicator:checked {
      <string>Дифференцированные</string>
     </property>
    </widget>
-   <widget class="QLabel" name="payment_2">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>405</y>
-      <width>150</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>0</width>
-      <height>20</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>150</width>
-      <height>400</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>11</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(30, 27, 6);</string>
-    </property>
-    <property name="text">
-     <string>платежей</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-    </property>
-   </widget>
    <widget class="Line" name="line">
     <property name="geometry">
      <rect>
@@ -609,8 +462,8 @@ QRadioButton::indicator:checked {
    <widget class="QLabel" name="info_label_3">
     <property name="geometry">
      <rect>
-      <x>297</x>
-      <y>375</y>
+      <x>300</x>
+      <y>385</y>
       <width>17</width>
       <height>17</height>
      </rect>
@@ -645,8 +498,8 @@ QRadioButton::indicator:checked {
    <widget class="QLabel" name="info_label_4">
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>410</y>
+      <x>300</x>
+      <y>420</y>
       <width>17</width>
       <height>17</height>
      </rect>

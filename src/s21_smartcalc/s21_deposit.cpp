@@ -13,7 +13,49 @@ s21_deposit::s21_deposit(QWidget *parent)
     ui->depositBox->addItem("Кредитный");
 
     connect(ui->depositBox, SIGNAL(activated(int)), this, SLOT(change_deposit(int)));
+
+    myWidget = new my_widget(this);
+    myWidget2 = new my_widget(this);
+    ui->verticalLayout->addWidget(myWidget);
+    ui->verticalLayout_2->addWidget(myWidget2);
+    ui->begin->setDate(QDate::currentDate());
+
+    if (myWidget) {
+        QComboBox* comboBox = myWidget->getComboBox(); // Исправлено
+        if (comboBox) {
+            comboBox->setPlaceholderText("Пополнения");
+        }
+    }
+    if (myWidget2) {
+        QComboBox* comboBox = myWidget2->getComboBox(); // Исправлено
+        if (comboBox) {
+            comboBox->setPlaceholderText("Частичные снятия");
+        }
+    }
+    ui->sum_box->addItem(" ₽ - RUB");
+    ui->sum_box->addItem(" $ - USD");
+    ui->sum_box->addItem(" € - EUR");
+    ui->sum_box->addItem(" ¥ - CNY");
+    ui->sum_box->addItem(" ₹ - INR");
+    ui->sum_box->addItem(" ₸ - KZT");
+    ui->sum_box->addItem(" ¥ - JPY");
+    ui->sum_box->addItem(" ₣ - CHF");
+    ui->sum_box->addItem(" ฿ - THB");
+    ui->sum_box->addItem(" ₾ - GEL");
+
+    ui->time_box->addItem("дней");
+    ui->time_box->addItem("месяцев");
+    ui->time_box->addItem("лет");
+
+    ui->payment_period->addItem("В конце срока");
+    ui->payment_period->addItem("каждый день");
+    ui->payment_period->addItem("каждую неделю");
+    ui->payment_period->addItem("раз в месяц");
+    ui->payment_period->addItem("раз в квартал");
+    ui->payment_period->addItem("раз в полгода");
+    ui->payment_period->addItem("раз в год");
 }
+
 
 s21_deposit::~s21_deposit()
 {

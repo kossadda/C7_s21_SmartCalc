@@ -10,17 +10,19 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
+    my_widget.cpp \
     s21_credit.cpp \
     s21_deposit.cpp \
     s21_smartcalc.cpp
 
 HEADERS += \
+    my_widget.h \
     s21_credit.h \
     s21_deposit.h \
     s21_smartcalc.h
 
 FORMS += \
-    journal.ui \
+    my_widget.ui \
     s21_credit.ui \
     s21_deposit.ui \
     s21_smartcalc.ui

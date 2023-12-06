@@ -2,6 +2,7 @@
 #define S21_DEPOSIT_H
 
 #include <QMainWindow>
+#include "my_widget.h"
 
 namespace Ui {
 class s21_deposit;
@@ -21,6 +22,8 @@ private slots:
 
 private:
     Ui::s21_deposit *ui;
+    my_widget *myWidget;
+    my_widget *myWidget2;
 };
 
 #endif // S21_DEPOSIT_H
