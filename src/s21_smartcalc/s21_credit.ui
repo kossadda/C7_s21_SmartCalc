@@ -138,132 +138,11 @@ QPushButton:pressed {
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="calc_type">
-    <property name="geometry">
-     <rect>
-      <x>12</x>
-      <y>106</y>
-      <width>130</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>0</width>
-      <height>20</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>135</width>
-      <height>400</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>11</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(30, 27, 6);</string>
-    </property>
-    <property name="text">
-     <string>Вариант расчета</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="info_label_1">
-    <property name="geometry">
-     <rect>
-      <x>146</x>
-      <y>112</y>
-      <width>17</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="toolTip">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Калькулятор производит 3 варианта расчетов:&lt;/p&gt;&lt;p&gt;1. Расчет ежемесячного платежа по сумме и сроку кредита.&lt;/p&gt;&lt;p&gt;2. Расчет ежемесячного кредита по сумме и заранее заданному ежемесячному платежу.&lt;/p&gt;&lt;p&gt;3. Расчет возможной суммы кредита при фиксированном сроке и платеже.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QToolTip {
-	color: white;
-	background-color: black;
-	border: 1px solid white;
-	border-radius: 15px;
-}
-</string>
-    </property>
-    <property name="text">
-     <string>🛈</string>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="calc_type_box">
-    <property name="geometry">
-     <rect>
-      <x>176</x>
-      <y>100</y>
-      <width>247</width>
-      <height>40</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>0</width>
-      <height>20</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>16777215</width>
-      <height>40</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>9</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QComboBox {
-    border: 1px solid #808080;
-}
-
-QComboBox QAbstractItemView {
-    selection-background-color: #ffA500;
-}
-</string>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="sum_line">
     <property name="geometry">
      <rect>
       <x>176</x>
-      <y>170</y>
+      <y>100</y>
       <width>160</width>
       <height>40</height>
      </rect>
@@ -290,8 +169,8 @@ QComboBox QAbstractItemView {
    <widget class="QLabel" name="sum">
     <property name="geometry">
      <rect>
-      <x>5</x>
-      <y>176</y>
+      <x>10</x>
+      <y>106</y>
       <width>150</width>
       <height>30</height>
      </rect>
@@ -336,7 +215,7 @@ QComboBox QAbstractItemView {
     <property name="geometry">
      <rect>
       <x>341</x>
-      <y>170</y>
+      <y>100</y>
       <width>82</width>
       <height>40</height>
      </rect>
@@ -363,9 +242,9 @@ QComboBox QAbstractItemView {
    <widget class="QLabel" name="time">
     <property name="geometry">
      <rect>
-      <x>18</x>
-      <y>246</y>
-      <width>141</width>
+      <x>10</x>
+      <y>196</y>
+      <width>150</width>
       <height>30</height>
      </rect>
     </property>
@@ -406,7 +285,7 @@ QComboBox QAbstractItemView {
     <property name="geometry">
      <rect>
       <x>176</x>
-      <y>240</y>
+      <y>190</y>
       <width>160</width>
       <height>40</height>
      </rect>
@@ -434,7 +313,7 @@ QComboBox QAbstractItemView {
     <property name="geometry">
      <rect>
       <x>341</x>
-      <y>240</y>
+      <y>190</y>
       <width>82</width>
       <height>40</height>
      </rect>
@@ -462,7 +341,7 @@ QComboBox QAbstractItemView {
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>316</y>
+      <y>286</y>
       <width>150</width>
       <height>30</height>
      </rect>
@@ -504,7 +383,7 @@ QComboBox QAbstractItemView {
     <property name="geometry">
      <rect>
       <x>176</x>
-      <y>310</y>
+      <y>280</y>
       <width>160</width>
       <height>40</height>
      </rect>
@@ -519,8 +398,8 @@ QComboBox QAbstractItemView {
    <widget class="QLabel" name="info_label_2">
     <property name="geometry">
      <rect>
-      <x>341</x>
-      <y>316</y>
+      <x>343</x>
+      <y>286</y>
       <width>15</width>
       <height>25</height>
      </rect>
@@ -543,9 +422,9 @@ QComboBox QAbstractItemView {
    <widget class="QLabel" name="payment_1">
     <property name="geometry">
      <rect>
-      <x>14</x>
-      <y>385</y>
-      <width>141</width>
+      <x>10</x>
+      <y>375</y>
+      <width>150</width>
       <height>31</height>
      </rect>
     </property>
@@ -586,7 +465,7 @@ QComboBox QAbstractItemView {
     <property name="geometry">
      <rect>
       <x>181</x>
-      <y>380</y>
+      <y>370</y>
       <width>110</width>
       <height>30</height>
      </rect>
@@ -631,7 +510,7 @@ QRadioButton::indicator:checked {
     <property name="geometry">
      <rect>
       <x>181</x>
-      <y>415</y>
+      <y>405</y>
       <width>172</width>
       <height>30</height>
      </rect>
@@ -675,9 +554,9 @@ QRadioButton::indicator:checked {
    <widget class="QLabel" name="payment_2">
     <property name="geometry">
      <rect>
-      <x>12</x>
-      <y>415</y>
-      <width>141</width>
+      <x>10</x>
+      <y>405</y>
+      <width>150</width>
       <height>20</height>
      </rect>
     </property>
@@ -731,7 +610,7 @@ QRadioButton::indicator:checked {
     <property name="geometry">
      <rect>
       <x>297</x>
-      <y>385</y>
+      <y>375</y>
       <width>17</width>
       <height>17</height>
      </rect>
@@ -767,7 +646,7 @@ QRadioButton::indicator:checked {
     <property name="geometry">
      <rect>
       <x>360</x>
-      <y>420</y>
+      <y>410</y>
       <width>17</width>
       <height>17</height>
      </rect>

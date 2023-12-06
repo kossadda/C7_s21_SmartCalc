@@ -13,10 +13,6 @@ s21_credit::s21_credit(QWidget *parent)
     ui->creditBox->addItem("Инженерный");
     ui->creditBox->addItem("Депозитный");
 
-    ui->calc_type_box->addItem("Расчет ежемесячного платежа");
-    ui->calc_type_box->addItem("Расчет срока кредита");
-    ui->calc_type_box->addItem("Расчет максимальной суммы кредита");
-
     ui->sum_box->addItem(" ₽ - RUB");
     ui->sum_box->addItem(" $ - USD");
     ui->sum_box->addItem(" € - EUR");
