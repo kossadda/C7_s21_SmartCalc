@@ -46,10 +46,22 @@ my_widget::~my_widget()
     delete ui;
 }
 
+bool containsOnlyDigits(const QString &str)
+{
+    for (const QChar &ch : str) {
+        if (!ch.isDigit()) {
+            return false;
+        }
+    }
+    return true;
+}
+
 void my_widget::onAddButtonClicked()
 {
-    QString newItem = QString("%1 : %2").arg(dateEdit->date().toString("dd.MM.yyyy")).arg(amountLineEdit->text());
-    comboBox->addItem(newItem);
+    if (containsOnlyDigits(amountLineEdit->text()) && amountLineEdit->text().length()) {
+        QString newItem = QString("%1 : %2").arg(dateEdit->date().toString("dd.MM.yyyy"), amountLineEdit->text());
+        comboBox->addItem(newItem);
+    }
 }
 
 void my_widget::onRemoveButtonClicked()
