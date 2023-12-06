@@ -16,6 +16,7 @@ extern "C" {
 s21_smartcalc::s21_smartcalc(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::s21_smartcalc)
+    , graphWindow(nullptr)
 {
     ui->setupUi(this);
 
@@ -132,126 +133,105 @@ void s21_smartcalc::on_push_eq_clicked()
     }
 }
 
-
 void s21_smartcalc::on_push_sqrt_clicked()
 {
     ui->result->setText(ui->result->text() + "sqrt(");
 }
-
 
 void s21_smartcalc::on_push_log_clicked()
 {
     ui->result->setText(ui->result->text() + "log(");
 }
 
-
 void s21_smartcalc::on_push_ln_clicked()
 {
     ui->result->setText(ui->result->text() + "ln(");
 }
-
 
 void s21_smartcalc::on_push_sin_clicked()
 {
     ui->result->setText(ui->result->text() + "sin(");
 }
 
-
 void s21_smartcalc::on_push_cos_clicked()
 {
     ui->result->setText(ui->result->text() + "cos(");
 }
-
 
 void s21_smartcalc::on_push_tan_clicked()
 {
     ui->result->setText(ui->result->text() + "tan(");
 }
 
-
 void s21_smartcalc::on_push_asin_clicked()
 {
     ui->result->setText(ui->result->text() + "asin(");
 }
-
 
 void s21_smartcalc::on_push_acos_clicked()
 {
     ui->result->setText(ui->result->text() + "acos(");
 }
 
-
 void s21_smartcalc::on_push_atan_clicked()
 {
     ui->result->setText(ui->result->text() + "atan(");
 }
-
 
 void s21_smartcalc::on_push_mod_clicked()
 {
     ui->result->setText(ui->result->text() + " mod ");
 }
 
-
 void s21_smartcalc::on_push_opn_brack_clicked()
 {
     ui->result->setText(ui->result->text() + "(");
 }
-
 
 void s21_smartcalc::on_push_cls_brack_clicked()
 {
     ui->result->setText(ui->result->text() + ")");
 }
 
-
 void s21_smartcalc::on_push_div_clicked()
 {
     ui->result->setText(ui->result->text() + "/");
 }
-
 
 void s21_smartcalc::on_push_mul_clicked()
 {
     ui->result->setText(ui->result->text() + "*");
 }
 
-
 void s21_smartcalc::on_push_sub_clicked()
 {
     ui->result->setText(ui->result->text() + "-");
 }
-
 
 void s21_smartcalc::on_push_sum_clicked()
 {
     ui->result->setText(ui->result->text() + "+");
 }
 
-
 void s21_smartcalc::on_push_e_clicked()
 {
     ui->result->setText(ui->result->text() + "e");
 }
-
 
 void s21_smartcalc::on_push_pi_clicked()
 {
     ui->result->setText(ui->result->text() + "P");
 }
 
-
 void s21_smartcalc::on_push_exp_clicked()
 {
     ui->result->setText(ui->result->text() + "^");
 }
 
-
 void s21_smartcalc::on_push_c_clicked()
 {
     ui->result->setText("");
 }
-
 
 void s21_smartcalc::on_push_del_clicked()
 {
@@ -259,7 +239,6 @@ void s21_smartcalc::on_push_del_clicked()
     temp.chop(1);
     ui->result->setText(temp);
 }
-
 
 void s21_smartcalc::on_push_unar_clicked()
 {
@@ -269,7 +248,6 @@ void s21_smartcalc::on_push_unar_clicked()
     charArray = unar_operation(charArray);
     ui->result->setText(QString::fromUtf8(charArray));
 }
-
 
 void s21_smartcalc::on_push_dot_clicked()
 {
@@ -291,7 +269,6 @@ void s21_smartcalc::on_push_dot_clicked()
     }
 }
 
-
 void s21_smartcalc::on_turn_back_clicked()
 {
     if(history_count >= 0) {
@@ -299,7 +276,6 @@ void s21_smartcalc::on_turn_back_clicked()
         history_count--;
     }
 }
-
 
 void s21_smartcalc::on_move_frwd_clicked()
 {
@@ -311,3 +287,28 @@ void s21_smartcalc::on_move_frwd_clicked()
     }
 }
 
+void s21_smartcalc::on_graph_clicked()
+{
+    if(!graphWindow) {
+        QPoint currentPosGlobal = this->mapToGlobal(QPoint(442, 0));
+        graphWindow = new graphics();
+        graphWindow->setGeometry(currentPosGlobal.x(), currentPosGlobal.y(), 400, 400);
+        graphWindow->show();
+        connect(graphWindow, SIGNAL(graphWindowClosed()), this, SLOT(on_graphWindowClosed()));
+        ui->graph->setStyleSheet("QPushButton { background-color: rgb(0, 119, 171); } QPushButton:pressed { background-color: rgb(175, 97, 33); } QToolTip { background-color: rgb(30, 27, 6);	border: 1px solid white; }");
+        ui->push_eq->setStyleSheet("QPushButton { background-color: rgb(0, 119, 171); font-size: 17px; } QPushButton:pressed { background-color: rgb(175, 97, 33); }");
+        ui->push_eq->setText("graph");
+    } else {
+        graphWindow->close();
+        on_graphWindowClosed();
+    }
+}
+
+void s21_smartcalc::on_graphWindowClosed()
+{
+    // Обновите стили кнопок при закрытии окна графика
+    ui->graph->setStyleSheet("QPushButton { background-color: rgb(81, 44, 6); } QPushButton:pressed { background-color: rgb(50, 50, 50); } QToolTip { background-color: rgb(30, 27, 6);	border: 1px solid white; }");
+    ui->push_eq->setStyleSheet("QPushButton { background-color: rgb(175, 97, 33); font-size: 20px; } QPushButton:pressed { background-color: rgb(50, 50, 50); }");
+    ui->push_eq->setText("=");
+    graphWindow = nullptr;
+}
