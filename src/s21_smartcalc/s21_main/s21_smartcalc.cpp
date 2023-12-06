@@ -1,16 +1,16 @@
 #include "s21_smartcalc.h"
-#include "s21_deposit.h"
-#include "s21_credit.h"
+#include "../s21_deposit/s21_deposit.h"
+#include "../s21_credit/s21_credit.h"
 #include "ui_s21_smartcalc.h"
 
 extern "C" {
-#include "../calculations/functions/main.c"
-#include "../calculations/functions/validation.c"
-#include "../calculations/functions/notation.c"
-#include "../calculations/functions/checks.c"
-#include "../calculations/functions/comparison.c"
-#include "../calculations/functions/math_operations.c"
-#include "../calculations/functions/cpp_addition/unar_operation.c"
+#include "../../calculations/s21_main/main.c"
+#include "../../calculations/s21_main/validation.c"
+#include "../../calculations/s21_main/notation.c"
+#include "../../calculations/s21_main/checks.c"
+#include "../../calculations/s21_main/comparison.c"
+#include "../../calculations/s21_main/math_operations.c"
+#include "../s21_additional/unar_operation.c"
 }
 
 s21_smartcalc::s21_smartcalc(QWidget *parent)

@@ -1,4 +1,4 @@
-#include "../../main.h"
+#include "../../calculations/main.h"
 
 char *unar_operation(char *str) {
     char ptr[256] = {0};

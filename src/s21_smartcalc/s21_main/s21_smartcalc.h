@@ -2,7 +2,7 @@
 #define S21_SMARTCALC_H
 
 #include <QMainWindow>
-#include "graphics.h"
+#include "../s21_additional/graphics.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

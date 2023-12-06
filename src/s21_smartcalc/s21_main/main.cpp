@@ -1,6 +1,6 @@
 #include "s21_smartcalc.h"
-#include "s21_deposit.h"
-#include "s21_credit.h"
+#include "../s21_deposit/s21_deposit.h"
+#include "../s21_credit/s21_credit.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
