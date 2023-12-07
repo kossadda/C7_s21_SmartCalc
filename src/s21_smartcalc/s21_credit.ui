@@ -26,7 +26,8 @@
    <string>Calculator (by kossadda)</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="accessories-calculator"/>
+   <iconset>
+    <normaloff>../../pics/credit.png</normaloff>../../pics/credit.png</iconset>
   </property>
   <property name="windowOpacity">
    <double>0.975000000000000</double>

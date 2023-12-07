@@ -26,7 +26,8 @@
    <string>Calculator (by kossadda)</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="accessories-calculator"/>
+   <iconset>
+    <normaloff>../../pics/deposit.png</normaloff>../../pics/deposit.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="minimumSize">

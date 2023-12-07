@@ -2,7 +2,7 @@
 #define S21_DEPOSIT_H
 
 #include <QMainWindow>
-#include "../s21_additional/my_widget.h"
+#include "my_widget.h"
 
 namespace Ui {
 class s21_deposit;

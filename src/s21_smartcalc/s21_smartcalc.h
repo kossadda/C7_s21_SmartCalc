@@ -2,7 +2,8 @@
 #define S21_SMARTCALC_H
 
 #include <QMainWindow>
-#include "../s21_additional/graphics.h"
+#include <QPushButton>
+#include "graphics.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -24,6 +25,10 @@ private slots:
     void change_credit(int index);
     void on_graphWindowClosed();
     int countDigits(double number);
+    void on_x_clicked();
+    void on_plot_clicked();
+
+    void clear_result();
 
     void push_nums();
     void on_push_eq_clicked();
@@ -56,8 +61,12 @@ private slots:
 
 private:
     Ui::s21_smartcalc *ui;
+    QPushButton *pushButton;
+    QPushButton *pushButton1;
     QStringList history;
     graphics *graphWindow;
+    bool clear_after = false;
     int history_count = -1;
+    void dummyFunction() {}
 };
 #endif // S21_SMARTCALC_H

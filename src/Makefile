@@ -67,7 +67,7 @@ install_qmake:
     fi
 
 uninstall:
-	@rm -rf $(GCOV) $(TRASH) $(EXE) $(BUILD) $(BUILD)-* *.gc* 
+	@rm -rf $(GCOV) $(TRASH) $(EXE) $(BUILD) s21_smartcalc/$(BUILD)-* *.gc*
 
 run:
 	./$(BUILD)/$(PROG)
