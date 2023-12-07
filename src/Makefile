@@ -72,11 +72,11 @@ uninstall:
 run:
 	./$(BUILD)/$(PROG)
 
-test: clean
+test: uninstall
 	gcc $(CC) $(CMAIN) $(TESTS) -lm -o $(EXE) $(LCOV)
 	@./$(EXE)
 
-gcov_report: clean
+gcov_report: uninstall
 	gcc $(CC) $(COVER) $(CMAIN) $(TESTS) -lm -o $(EXE) $(LCOV)
 	@mkdir -p $(GCOV)
 	@./$(EXE)
@@ -97,7 +97,7 @@ clang-format:
 
 # Моя временная цель
 build: uninstall
-	@gcc $(CC) $(LINK) calculations/functions/cpp_addition/*.c $(TESTS)/testing.c -lm -o $(EXE)
+	@gcc $(CC) $(CMAIN) calculations/tests/testing.c -lm -o $(EXE)
 	clear
 	@./$(EXE)
 

@@ -39,15 +39,17 @@ void s21_credit::change_credit(int index)
 {
     QPoint currentPosGlobal = this->mapToGlobal(QPoint(0, 0));
     QSize currentSize = this->size();
-    if(index == 1) {
+    QMainWindow* newWindow = nullptr;
+
+    if (index == 1) {
+        newWindow = new s21_smartcalc();
+    } else if (index == 2) {
+        newWindow = new s21_deposit();
+    }
+
+    if (newWindow) {
         this->close();
-        s21_smartcalc *depositWindow = new s21_smartcalc();
-        depositWindow->setGeometry(currentPosGlobal.x(), currentPosGlobal.y(), currentSize.width(), currentSize.height());
-        depositWindow->show();
-    } else if(index == 2) {
-        this->close();
-        s21_deposit *depositWindow = new s21_deposit();
-        depositWindow->setGeometry(currentPosGlobal.x(), currentPosGlobal.y(), currentSize.width(), currentSize.height());
-        depositWindow->show();
+        newWindow->setGeometry(currentPosGlobal.x(), currentPosGlobal.y(), currentSize.width(), currentSize.height());
+        newWindow->show();
     }
 }

@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../../pics/calculator.png</normaloff>../../pics/calculator.png</iconset>
+    <normaloff>../pics/calculator.png</normaloff>../pics/calculator.png</iconset>
   </property>
   <property name="windowOpacity">
    <double>0.975000000000000</double>

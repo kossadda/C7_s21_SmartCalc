@@ -13,7 +13,7 @@ enum {  SIN = 115, COS = 99, TAN = 116, ASIN = 83, ACOS = 67, ATAN = 84, SQRT = 
 #define BRACKETS "()"
 #define NUMBERS "1234567890"
 
-double calculation(char *str);
+double calculation(char *str, double x);
 void validation(char *str);
 void check_trigonometric(char *true_str, int *count, char *str, size_t *i);
 double notation(char *str);
@@ -24,6 +24,7 @@ double math_nums(double first, double second, char operation);
 void trigonometry(double *number, char operation);
 void bracket_close(double *nums, char *oper, int *n_count, int *o_count);
 void math_in_condition(double *nums, char *oper, int *n_count, int *o_count);
+void validation_x(char *str, double x);
 
 void clean_unar(char *str, char *ptr, int len, int pos_minus);
 void make_unar(char *str, char *ptr, int len, int pos_number);

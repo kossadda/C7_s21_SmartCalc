@@ -27,6 +27,9 @@ private slots:
     int countDigits(double number);
     void on_x_clicked();
     void on_plot_clicked();
+    void save_history();
+    void createPlotButton(QPushButton *button, int row);
+    void switch_buttons();
 
     void clear_result();
 
@@ -67,6 +70,5 @@ private:
     graphics *graphWindow;
     bool clear_after = false;
     int history_count = -1;
-    void dummyFunction() {}
 };
 #endif // S21_SMARTCALC_H

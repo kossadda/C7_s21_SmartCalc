@@ -27,7 +27,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../../pics/credit.png</normaloff>../../pics/credit.png</iconset>
+    <normaloff>../pics/credit.png</normaloff>../pics/credit.png</iconset>
   </property>
   <property name="windowOpacity">
    <double>0.975000000000000</double>

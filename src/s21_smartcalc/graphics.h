@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QCloseEvent>
+#include <QVector>
 
 namespace Ui {
 class graphics;
@@ -22,8 +23,16 @@ signals:
 protected:
     void closeEvent(QCloseEvent *event) override;
 
+public slots:
+    void build_plot(QString expression);
+    double calculate(QString expression, double variable);
+    int check_brackets(QString expression);
+
 private:
     Ui::graphics *ui;
+    QVector<double> x, y;
+    double xBegin, xEnd, yBegin, yEnd, h, X;
+    int N;
 };
 
 #endif // GRAPHICS_H

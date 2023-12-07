@@ -27,7 +27,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../../pics/deposit.png</normaloff>../../pics/deposit.png</iconset>
+    <normaloff>../pics/deposit.png</normaloff>../pics/deposit.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="minimumSize">

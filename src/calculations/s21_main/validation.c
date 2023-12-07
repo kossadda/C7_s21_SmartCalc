@@ -1,6 +1,9 @@
 #include "../main.h"
 
 void validation(char *attachment) {
+    if(strlen(attachment) < 1) {
+        return;
+    }
     char str[300] = "1*";
     char true_str[1500] = {0};
     int count = 0;
@@ -42,6 +45,36 @@ void validation(char *attachment) {
         }
     }
     strcpy(attachment, true_str);
+}
+
+void validation_x(char *str, double x) {
+    if(strlen(str) < 1) {
+        return;
+    }
+    char true_str[1500] = {0};
+    int count = 0;
+    for(size_t i = 0; i < strlen(str); i++) {
+        if(str[i] == 'x') {
+            if(check(str[i-1], "0123456789)ePx")) {
+                true_str[count++] = MUL;
+            }
+            char temp_str[30] = {0};
+            int temp_count = 0;
+            if(x < 0) {
+                temp_count = sprintf(temp_str, "(%lf)", x);
+            } else { 
+                temp_count = sprintf(temp_str, "%lf", x);
+            }
+            strcat(true_str, temp_str);
+            count += temp_count;
+            if(check(str[i+1], "0123456789(eP")) {
+                true_str[count++] = MUL;
+            }
+        } else {
+            true_str[count++] = str[i];
+        }
+    }
+    strcpy(str, true_str);
 }
 
 void check_trigonometric(char *true_str, int *count, char *str, size_t *i) {

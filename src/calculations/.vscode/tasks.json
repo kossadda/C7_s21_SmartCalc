@@ -8,7 +8,7 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "/home/deadline/develop/C7_s21_smartcalc/src/calculations/tests/testing.c",
-                "/home/deadline/develop/C7_s21_smartcalc/src/calculations/functions/*.c",
+                "/home/deadline/develop/C7_s21_smartcalc/src/calculations/s21_main/*.c",
                 "-o",
                 "/home/deadline/develop/C7_s21_smartcalc/src/calculations/test",
                 "-lm"
