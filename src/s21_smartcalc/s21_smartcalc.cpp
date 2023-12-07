@@ -336,20 +336,28 @@ void s21_smartcalc::on_move_frwd_clicked()
 void s21_smartcalc::on_graph_clicked()
 {
     if(!graphWindow) {
-        QPoint currentPosGlobal = this->mapToGlobal(QPoint(-402, 0));
+        QPoint currentPosGlobal = this->mapToGlobal(QPoint(-442, 0));
         graphWindow = new graphics();
-        graphWindow->setGeometry(currentPosGlobal.x(), currentPosGlobal.y(), 400, 400);
+        graphWindow->setGeometry(currentPosGlobal.x(), currentPosGlobal.y(), 440, 550);
         graphWindow->show();
         connect(graphWindow, SIGNAL(graphWindowClosed()), this, SLOT(on_graphWindowClosed()));
 
+        QSize buttonSize = ui->push_sum->size();
+        int buttonWidth = buttonSize.width();
+        buttonSize = ui->push_dot->size();
+        int buttonHeight = buttonSize.height();
+
         pushButton = new QPushButton("plot", this);
-        pushButton->setFixedSize(85, 49);
+        pushButton->setFixedSize(buttonWidth, buttonHeight);
         pushButton->setStyleSheet("QPushButton { background-color: rgb(0, 119, 171); font-size: 20px; } QPushButton:pressed { background-color: rgb(175, 97, 33); }");
         ui->buttons_layer->addWidget(pushButton, 6, 4, 1, 1);
         connect(pushButton, &QPushButton::clicked, this, &s21_smartcalc::on_plot_clicked);
 
+        buttonSize = ui->push_3->size();
+        buttonHeight = buttonSize.height();
+
         pushButton1 = new QPushButton("x", this);
-        pushButton1->setFixedSize(85, 50);
+        pushButton1->setFixedSize(buttonWidth, buttonHeight);
         pushButton1->setStyleSheet("QPushButton { background-color: rgb(0, 119, 171); font-size: 20px; } QPushButton:pressed { background-color: rgb(175, 97, 33); }");
         ui->buttons_layer->addWidget(pushButton1, 5, 4, 1, 1);
         connect(pushButton1, &QPushButton::clicked, this, &s21_smartcalc::on_x_clicked);
