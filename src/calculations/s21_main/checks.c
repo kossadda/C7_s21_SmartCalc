@@ -1,6 +1,6 @@
 #include "../main.h"
 
-int check(char first_symbol, const char *search) {
+int check(const char first_symbol, const char *search) {
     int check = 0;
     for (size_t i = 0; i < strlen(search); i++) {
         if(first_symbol == search[i]) {

@@ -29,24 +29,21 @@ void graphics::closeEvent(QCloseEvent *event)
 }
 
 double graphics::calculate(QString expression, double variable) {
-    QByteArray byteArray = expression.toUtf8();
-    char* charArray = byteArray.data();
-    double res = calculation(charArray, variable);
+    std::string str = expression.toStdString();
+    char *c_str = (char *)str.c_str();
+    double res = calculation(c_str, variable);
     return res;
 }
 
-int graphics::check_brackets(QString expression)
+int graphics::check_symbol(QString expression, QChar symbol)
 {
-    int count_open = 0;
-    int count_close = 0;
+    int count_symbol = 0;
     for(int i = 0; i < expression.length(); i++) {
-        if(expression[i] == '(') {
-            count_open++;
-        } else if(expression[i] == ')') {
-            count_close++;
+        if(expression[i] == symbol) {
+            count_symbol++;
         }
     }
-    return (count_open != count_close) ? 1 : 0;
+    return count_symbol;
 }
 
 void graphics::build_plot(QString expression)

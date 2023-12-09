@@ -8,7 +8,6 @@ s21_credit::s21_credit(QWidget *parent)
     , ui(new Ui::s21_credit)
 {
     ui->setupUi(this);
-    ui->setupUi(this);
     ui->creditBox->addItem("Кредитный");
     ui->creditBox->addItem("Инженерный");
     ui->creditBox->addItem("Депозитный");

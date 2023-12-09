@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QPushButton>
+#include <QLineEdit>
 #include "graphics.h"
 
 QT_BEGIN_NAMESPACE
@@ -25,14 +26,14 @@ private slots:
     void change_credit(int index);
     void on_graphWindowClosed();
     int countDigits(double number);
-    void on_x_clicked();
-    void on_plot_clicked();
+    void on_actionVarTriggered();
+    void on_actionPlotTriggered();
     void save_history();
     void createPlotButton(QPushButton *button, int row);
-    void switch_buttons();
-
+    void switch_buttons(QString name1, QString name2);
+    void change_color(QPushButton *button, QString color);
     void clear_result();
-
+    void add(QString text);
     void push_nums();
     void on_push_eq_clicked();
     void on_push_sqrt_clicked();
@@ -61,11 +62,13 @@ private slots:
     void on_turn_back_clicked();
     void on_move_frwd_clicked();
     void on_graph_clicked();
+    void on_variable_clicked();
 
 private:
     Ui::s21_smartcalc *ui;
     QPushButton *pushButton;
     QPushButton *pushButton1;
+    QLineEdit *var;
     QStringList history;
     graphics *graphWindow;
     bool clear_after = false;

@@ -17,7 +17,7 @@ double calculation(char *str, double x);
 void validation(char *str);
 void check_trigonometric(char *true_str, int *count, char *str, size_t *i);
 double notation(char *str);
-int check(char first_symbol, const char *search);
+int check(const char first_symbol, const char *search);
 int prior_comparison(char first, char second);
 int determine_priority(char operation);
 double math_nums(double first, double second, char operation);

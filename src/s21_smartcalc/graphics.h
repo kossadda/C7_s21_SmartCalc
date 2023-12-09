@@ -26,7 +26,7 @@ protected:
 public slots:
     void build_plot(QString expression);
     double calculate(QString expression, double variable);
-    int check_brackets(QString expression);
+    int check_symbol(QString expression, QChar symbol);
 
 private:
     Ui::graphics *ui;

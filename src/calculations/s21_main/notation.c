@@ -39,7 +39,9 @@ double notation(char *str) {
             }
             if(!check(str[i+1], moves)) {
                 temp = strtok(NULL, moves);
-                if(temp != NULL) nums[n_count++] = atof(temp);
+                if(temp) {
+                    nums[n_count++] = atof(temp);
+                }
             }
         }
         if(i == strlen(str) - 1) {

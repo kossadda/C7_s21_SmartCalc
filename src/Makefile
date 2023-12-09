@@ -24,6 +24,9 @@ BUILD=build
 EXE=test
 PROG=s21_smartcalc
 
+VAL_CHECK=--num-callers --leak-check=full --show-leak-kinds=definite
+
+
 all: install run
 
 install: uninstall
@@ -38,7 +41,7 @@ install: uninstall
 	@rm -rf $(TRASH)
 
 install_by_qmake:
-	$(MAKE) install_qmake
+# 	$(MAKE) install_qmake
 	@mkdir -p $(BUILD)
 	@cd $(MAIN_FOLD) && qmake-qt5 && make -s
 	@mv $(MAIN_FOLD)/$(PROG) $(BUILD)/$(PROG)
@@ -84,8 +87,13 @@ gcov_report: uninstall
 	@rm -rf $(EXE) *.gc*
 	xdg-open $(GCOV)/coverage.html
 
-valgrind: test
-	@valgrind $(VAL) ./$(EXE)
+valgrind: uninstall install_by_cmake
+	@valgrind $(VAL) ./$(BUILD)/$(PROG) > valgrind.txt 2>&1
+
+# > val_test.txt 2>&1
+
+valgrind_test: test
+	@valgrind $(VAL_CHECK) ./$(EXE)
 	@rm $(EXE)
 
 clang-format:

@@ -1,9 +1,6 @@
 #include "../main.h"
 
 void validation(char *attachment) {
-    if(strlen(attachment) < 1) {
-        return;
-    }
     char str[300] = "1*";
     char true_str[1500] = {0};
     int count = 0;
@@ -48,9 +45,6 @@ void validation(char *attachment) {
 }
 
 void validation_x(char *str, double x) {
-    if(strlen(str) < 1) {
-        return;
-    }
     char true_str[1500] = {0};
     int count = 0;
     for(size_t i = 0; i < strlen(str); i++) {

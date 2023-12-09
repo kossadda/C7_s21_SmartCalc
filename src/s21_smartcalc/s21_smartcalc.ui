@@ -1400,6 +1400,55 @@ QToolTip {
        </widget>
       </item>
       <item>
+       <widget class="QPushButton" name="variable">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>35</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Установка значения переменной&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+	background-color: rgb(81, 44, 6);
+}
+
+QPushButton:pressed {
+    background-color: rgb(50, 50, 50);
+}
+
+QToolTip {
+	background-color: rgb(30, 27, 6);
+	border: 1px solid white;
+}
+</string>
+        </property>
+        <property name="text">
+         <string>f(x)</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="graph">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">

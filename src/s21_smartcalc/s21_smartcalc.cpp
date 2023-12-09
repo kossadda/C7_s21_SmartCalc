@@ -12,6 +12,7 @@ s21_smartcalc::s21_smartcalc(QWidget *parent)
     , ui(new Ui::s21_smartcalc)
     , pushButton(nullptr)
     , pushButton1(nullptr)
+    , var(nullptr)
     , graphWindow(nullptr)
 {
     ui->setupUi(this);
@@ -36,7 +37,15 @@ s21_smartcalc::s21_smartcalc(QWidget *parent)
 
 s21_smartcalc::~s21_smartcalc()
 {
+    if(pushButton) delete pushButton;
+    if(pushButton1) delete pushButton1;
+    if(var) delete var;
+    if(graphWindow) delete graphWindow;
     delete ui;
+}
+
+void s21_smartcalc::add(QString text) {
+    ui->result->setText(ui->result->text() + text);
 }
 
 // Сменить окно на депозитный/кредитный калькулятор
@@ -115,7 +124,7 @@ void s21_smartcalc::push_nums()
 {
     clear_result();
     QPushButton *button = (QPushButton *)sender();
-    ui->result->setText(ui->result->text() + button->text());
+    add(button->text());
 }
 
 // Вычисление выражения
@@ -123,10 +132,18 @@ void s21_smartcalc::on_push_eq_clicked()
 {
     if(ui->result->text() != "") {
         save_history();
-        if(graphWindow->check_brackets(ui->result->text())) {
+        if(graphWindow->check_symbol(ui->result->text(), 'x') > 0 && (!graphWindow && !var)) {
+            ui->result->setText("variable in expression");
+        } else if(graphWindow->check_symbol(ui->result->text(), '(') != graphWindow->check_symbol(ui->result->text(), ')')) {
             ui->result->setText("wrong brackets");
         } else {
-            double res = graphWindow->calculate(ui->result->text(), 0);
+            int var_point = 0;
+            if(var) {
+                if(var->text().length() > 0) {
+                    var_point = var->text().toDouble();
+                }
+            }
+            double res = graphWindow->calculate(ui->result->text(), var_point);
             ui->result->setText(QString::number(res, 'g', countDigits(res) + 7));
         }
         clear_after = true;
@@ -157,63 +174,63 @@ void s21_smartcalc::save_history() {
 void s21_smartcalc::on_push_sqrt_clicked()
 {
     clear_result();
-    ui->result->setText(ui->result->text() + "sqrt(");
+    add("sqrt(");
 }
 
 // Десятичный логарифм
 void s21_smartcalc::on_push_log_clicked()
 {
     clear_result();
-    ui->result->setText(ui->result->text() + "log(");
+    add("log(");
 }
 
 // Натуральный логарифм
 void s21_smartcalc::on_push_ln_clicked()
 {
     clear_result();
-    ui->result->setText(ui->result->text() + "ln(");
+    add("ln(");
 }
 
 // Синус
 void s21_smartcalc::on_push_sin_clicked()
 {
     clear_result();
-    ui->result->setText(ui->result->text() + "sin(");
+    add("sin(");
 }
 
 // Косинус
 void s21_smartcalc::on_push_cos_clicked()
 {
     clear_result();
-    ui->result->setText(ui->result->text() + "cos(");
+    add("cos(");
 }
 
 // Тангенс
 void s21_smartcalc::on_push_tan_clicked()
 {
     clear_result();
-    ui->result->setText(ui->result->text() + "tan(");
+    add("tan(");
 }
 
 // Арксинус
 void s21_smartcalc::on_push_asin_clicked()
 {
     clear_result();
-    ui->result->setText(ui->result->text() + "asin(");
+    add("asin(");
 }
 
 // Арккосинус
 void s21_smartcalc::on_push_acos_clicked()
 {
     clear_result();
-    ui->result->setText(ui->result->text() + "acos(");
+    add("acos(");
 }
 
 // Арктангенс
 void s21_smartcalc::on_push_atan_clicked()
 {
     clear_result();
-    ui->result->setText(ui->result->text() + "atan(");
+    add("atan(");
 }
 
 // Остаток от деления
@@ -221,7 +238,7 @@ void s21_smartcalc::on_push_mod_clicked()
 {
     clear_result();
     if(ui->result->text().length() > 0) {
-        ui->result->setText(ui->result->text() + " mod ");
+        add(" mod ");
     }
 }
 
@@ -229,7 +246,7 @@ void s21_smartcalc::on_push_mod_clicked()
 void s21_smartcalc::on_push_opn_brack_clicked()
 {
     clear_result();
-    ui->result->setText(ui->result->text() + "(");
+    add("(");
 }
 
 // Добавить закрывающую скобку
@@ -237,7 +254,7 @@ void s21_smartcalc::on_push_cls_brack_clicked()
 {
     clear_result();
     if(ui->result->text().length() > 0) {
-        ui->result->setText(ui->result->text() + ")");
+        add(")");
     }
 }
 
@@ -246,7 +263,7 @@ void s21_smartcalc::on_push_div_clicked()
 {
     clear_result();
     if(ui->result->text().length() > 0) {
-        ui->result->setText(ui->result->text() + "/");
+        add("/");
     }
 }
 
@@ -255,7 +272,7 @@ void s21_smartcalc::on_push_mul_clicked()
 {
     clear_result();
     if(ui->result->text().length() > 0) {
-        ui->result->setText(ui->result->text() + "*");
+        add("*");
     }
 }
 
@@ -264,7 +281,7 @@ void s21_smartcalc::on_push_sub_clicked()
 {
     clear_result();
     if(ui->result->text().length() > 0) {
-        ui->result->setText(ui->result->text() + "-");
+        add("-");
     }
 }
 
@@ -273,7 +290,7 @@ void s21_smartcalc::on_push_sum_clicked()
 {
     clear_result();
     if(ui->result->text().length() > 0) {
-        ui->result->setText(ui->result->text() + "+");
+        add("+");
     }
 }
 
@@ -281,14 +298,14 @@ void s21_smartcalc::on_push_sum_clicked()
 void s21_smartcalc::on_push_e_clicked()
 {
     clear_result();
-    ui->result->setText(ui->result->text() + "e");
+    add("e");
 }
 
 // Добавить число Пи
 void s21_smartcalc::on_push_pi_clicked()
 {
     clear_result();
-    ui->result->setText(ui->result->text() + "P");
+    add("P");
 }
 
 // Возведение в степень
@@ -296,7 +313,7 @@ void s21_smartcalc::on_push_exp_clicked()
 {
     clear_result();
     if(ui->result->text().length() > 0) {
-        ui->result->setText(ui->result->text() + "^");
+        add("^");
     }
 }
 
@@ -347,7 +364,7 @@ void s21_smartcalc::on_push_dot_clicked()
                 }
             }
             if(!dot_find) {
-                ui->result->setText(field + ".");
+                add(".");
             }
         }
     }
@@ -383,7 +400,15 @@ void s21_smartcalc::on_graph_clicked()
         graphWindow->show();
         connect(graphWindow, SIGNAL(graphWindowClosed()), this, SLOT(on_graphWindowClosed()));
 
-        switch_buttons();
+        change_color(ui->graph, "blue_graph");
+        if(!var) {
+            switch_buttons("plot", "x");
+            change_color(pushButton1, "blue");
+        }
+        change_color(pushButton, "blue");
+        pushButton->setText("plot");
+        disconnect(pushButton, &QPushButton::clicked, this, &s21_smartcalc::on_push_eq_clicked);
+        connect(pushButton, &QPushButton::clicked, this, &s21_smartcalc::on_actionPlotTriggered);
     } else {
         graphWindow->close();
         on_graphWindowClosed();
@@ -391,18 +416,21 @@ void s21_smartcalc::on_graph_clicked()
 }
 
 // Замена кнопки на = на x и plot
-void s21_smartcalc::switch_buttons()
+void s21_smartcalc::switch_buttons(QString name1, QString name2)
 {
-    pushButton = new QPushButton("plot", this);
+    pushButton = new QPushButton(name1, this);
     createPlotButton(pushButton, 6);
-    connect(pushButton, &QPushButton::clicked, this, &s21_smartcalc::on_plot_clicked);
+    if(!graphWindow && var) {
+        connect(pushButton, &QPushButton::clicked, this, &s21_smartcalc::on_push_eq_clicked);
+    } else {
+        connect(pushButton, &QPushButton::clicked, this, &s21_smartcalc::on_actionPlotTriggered);
+    }
 
-    pushButton1 = new QPushButton("x", this);
+    pushButton1 = new QPushButton(name2, this);
     createPlotButton(pushButton1, 5);
-    connect(pushButton1, &QPushButton::clicked, this, &s21_smartcalc::on_x_clicked);
+    connect(pushButton1, &QPushButton::clicked, this, &s21_smartcalc::on_actionVarTriggered);
 
-    ui->graph->setStyleSheet("QPushButton { background-color: rgb(0, 119, 171); } QPushButton:pressed { background-color: rgb(175, 97, 33); } QToolTip { background-color: rgb(30, 27, 6);	border: 1px solid white; }");
-    ui->push_eq->setStyleSheet("QPushButton { background-color: rgb(30, 27, 6); color: rgb(30, 27, 6) } QPushButton:pressed { background-color: rgb(50, 50, 50); }");
+    change_color(ui->push_eq, "black_eq");
 }
 
 // Создание замещающей кнопки
@@ -410,33 +438,39 @@ void s21_smartcalc::createPlotButton(QPushButton *button, int row)
 {
     button->setMinimumSize(80, 50);
     button->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-    button->setStyleSheet("QPushButton { background-color: rgb(0, 119, 171); font-size: 20px; } QPushButton:pressed { background-color: rgb(175, 97, 33); }");
     ui->buttons_layer->addWidget(button, row, 4, 1, 1);
 }
 
 // Закрытие окна графиков
 void s21_smartcalc::on_graphWindowClosed()
 {
-    delete pushButton;
-    pushButton = nullptr;
+    if(!var) {
+        delete pushButton;
+        pushButton = nullptr;
 
-    delete pushButton1;
-    pushButton1 = nullptr;
+        delete pushButton1;
+        pushButton1 = nullptr;
 
-    ui->push_eq->setStyleSheet("QPushButton { background-color: rgb(175, 97, 33); } QPushButton:pressed { background-color: rgb(50, 50, 50);}");
-    ui->graph->setStyleSheet("QPushButton { background-color: rgb(81, 44, 6); } QPushButton:pressed { background-color: rgb(50, 50, 50); } QToolTip { background-color: rgb(30, 27, 6);	border: 1px solid white; }");
+        change_color(ui->push_eq, "orange_eq");
+    } else {
+        disconnect(pushButton, &QPushButton::clicked, this, &s21_smartcalc::on_actionPlotTriggered);
+        connect(pushButton, &QPushButton::clicked, this, &s21_smartcalc::on_push_eq_clicked);
+        change_color(pushButton, "green");
+        pushButton->setText("=");
+    }
+    change_color(ui->graph, "orange");
     graphWindow = nullptr;
 }
 
 // Добавить x
-void s21_smartcalc::on_x_clicked()
+void s21_smartcalc::on_actionVarTriggered()
 {
     clear_result();
-    ui->result->setText(ui->result->text() + "x");
+    add("x");
 }
 
 // Построить график
-void s21_smartcalc::on_plot_clicked()
+void s21_smartcalc::on_actionPlotTriggered()
 {
     save_history();
     graphWindow->build_plot(ui->result->text());
@@ -451,3 +485,59 @@ void s21_smartcalc::clear_result()
         clear_after = false;
     }
 }
+
+// Выбор цвета замещающих кнопок
+void s21_smartcalc::change_color(QPushButton *button, QString color) {
+    if(color == "orange_eq") {
+        button->setStyleSheet("QPushButton { background-color: rgb(175, 97, 33); } QPushButton:pressed { background-color: rgb(50, 50, 50); }");
+    } else if(color == "orange") {
+        button->setStyleSheet("QPushButton { background-color: rgb(81, 44, 6); } QPushButton:pressed { background-color: rgb(50, 50, 50); } QToolTip { background-color: rgb(30, 27, 6); border: 1px solid white; }");
+    } else if(color == "blue") {
+        button->setStyleSheet("QPushButton { background-color: rgb(0, 119, 171); font-size: 20px; } QPushButton:pressed { background-color: rgb(175, 97, 33); }");
+    } else if(color == "blue_graph") {
+        button->setStyleSheet("QPushButton { background-color: rgb(0, 119, 171); } QPushButton:pressed { background-color: rgb(175, 97, 33); } QToolTip { background-color: rgb(30, 27, 6);	border: 1px solid white; }");
+    } else if(color == "blue_eq") {
+        button->setStyleSheet("QPushButton { background-color: rgb(23, 135, 21); } QPushButton:pressed { background-color: rgb(50, 50, 50);}");
+    } else if(color == "green") {
+        button->setStyleSheet("QPushButton { background-color: rgb(23, 135, 21); font-size: 20px; } QPushButton:pressed { background-color: rgb(50, 50, 50); }");
+    } else if(color == "green_var") {
+        button->setStyleSheet("QPushButton { background-color: rgb(23, 135, 21); } QPushButton:pressed { background-color: rgb(50, 50, 50); } QToolTip { background-color: rgb(30, 27, 6); border: 1px solid white; }");
+    } else if(color == "black_eq") {
+        button->setStyleSheet("QPushButton { background-color: rgb(30, 27, 6); color: rgb(30, 27, 6) } QPushButton:pressed { background-color: rgb(50, 50, 50); }");
+    }
+
+}
+
+// Добавить поле ввода переменной
+void s21_smartcalc::on_variable_clicked()
+{
+    if(!var) {
+        var = new QLineEdit(this);
+        var->setFixedHeight(35);
+        var->setMinimumWidth(70);
+        var->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+        var->setPlaceholderText("x =");
+        change_color(ui->variable, "green_var");
+        if(!graphWindow) {
+            switch_buttons("=", "x");
+            change_color(pushButton, "green");
+        }
+        change_color(pushButton1, "green");
+        ui->upline->insertWidget(2, var);
+    } else {
+        change_color(ui->variable, "orange");
+        delete var;
+        var = nullptr;
+        if(!graphWindow) {
+            delete pushButton;
+            pushButton = nullptr;
+
+            delete pushButton1;
+            pushButton1 = nullptr;
+            change_color(ui->push_eq, "orange_eq");
+        } else {
+            change_color(pushButton1, "blue");
+        }
+    }
+}
+

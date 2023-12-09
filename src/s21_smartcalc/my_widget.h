@@ -32,8 +32,8 @@ private:
     QComboBox *comboBox;
     QPushButton *addButton;
     QPushButton *removeButton;
-    QDateEdit *dateEdit; // Добавлено для ввода даты
-    QLineEdit *amountLineEdit; // Добавлено для ввода суммы
+    QDateEdit *dateEdit;
+    QLineEdit *amountLineEdit;
 };
 
 #endif // MY_WIDGET_H

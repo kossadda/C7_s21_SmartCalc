@@ -43,6 +43,11 @@ my_widget::my_widget(QWidget *parent) :
 
 my_widget::~my_widget()
 {
+    if(comboBox) delete comboBox;
+    if(addButton) delete addButton;
+    if(removeButton) delete removeButton;
+    if(dateEdit) delete dateEdit;
+    if(amountLineEdit) delete amountLineEdit;
     delete ui;
 }
 

@@ -736,6 +736,27 @@ START_TEST(other_35) {
     ck_assert_double_eq_tol(my_result, true_result, 1e-5);
 }
 
+START_TEST(other_36) {
+    char *example = "x(((ln(cos(1.5*atan(1)))/(log(x*sqrt(x))))+log((tan(1)-asin(0.25))/(ln(x)+sqrt(x)))))";
+    double my_result = calculation(example, 50);
+    double true_result = -65.1059150;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-5);
+}
+
+START_TEST(other_37) {
+    char *example = "sqrt(x*x*xx*x*x)x";
+    double my_result = calculation(example, 1.51);
+    double true_result = 5.1988560;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-5);
+}
+
+START_TEST(other_38) {
+    char *example = "log(((sqrt(x*x*xx*x*x)x)^2/1.25566*15.2333)/x^2)";
+    double my_result = calculation(example, -13.123);
+    double true_result = 7.7921207;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-5);
+}
+
 Suite *s21_smartcalc(void) {
     Suite *calc = suite_create("s21_smartcalc");
 
@@ -851,6 +872,9 @@ Suite *s21_smartcalc(void) {
     tcase_add_test(tc_test_arifmetic, other_33);
     tcase_add_test(tc_test_arifmetic, other_34);
     tcase_add_test(tc_test_arifmetic, other_35);
+    tcase_add_test(tc_test_arifmetic, other_36);
+    tcase_add_test(tc_test_arifmetic, other_37);
+    tcase_add_test(tc_test_arifmetic, other_38);
     suite_add_tcase(calc, tc_test_square);
 
     return calc;
