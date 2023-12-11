@@ -3,14 +3,14 @@
         {
             "type": "cppbuild",
             "label": "C/C++: gcc сборка активного файла",
-            "command": "/usr/lib64/ccache/gcc",
+            "command": "/usr/bin/gcc",
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "/home/deadline/develop/C7_s21_smartcalc/src/calculations/tests/testing.c",
-                "/home/deadline/develop/C7_s21_smartcalc/src/calculations/s21_main/*.c",
+                "/home/kossadda/desktop/C7_s21_smartcalc/src/calculations/tests/testing.c",
+                "/home/kossadda/desktop/C7_s21_smartcalc/src/calculations/s21_main/*.c",
                 "-o",
-                "/home/deadline/develop/C7_s21_smartcalc/src/calculations/test",
+                "/home/kossadda/desktop/C7_s21_smartcalc/src/calculations/test",
                 "-lm"
             ],
             "options": {

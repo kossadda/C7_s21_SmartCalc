@@ -27,3 +27,15 @@ void math_in_condition(double *nums, char *oper, int *n_count, int *o_count) {
     oper[(*o_count)--] = ZERO;
     nums[*n_count-1] = math_nums(nums[*n_count-1], nums[*n_count], oper[*o_count]);
 }
+
+// void math_of_priority(double **nums, char **oper, int *n_count, int *o_count, char current, int decision) {
+//     while(1) {
+//         if(*o_count && prior_comparison(current, (*oper)[*o_count-1]) == decision) {
+//             (*nums)[(*n_count)--] = 0;
+//             (*oper)[(*o_count)--] = ZERO;
+//             (*nums)[*n_count-1] = math_nums((*nums)[*n_count-1], (*nums)[*n_count], (*oper)[*o_count]);
+//         } else {
+//             break;
+//         }
+//     }
+// }

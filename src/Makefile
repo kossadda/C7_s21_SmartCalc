@@ -1,5 +1,5 @@
 # FLAGS
-VAL=--trace-children=yes --track-fds=yes --track-origins=yes --leak-check=full --show-leak-kinds=all
+VAL=--trace-children=yes --track-origins=yes --leak-check=full
 CLANG=-n -style="{BasedOnStyle: Google, IndentWidth: 4}"
 CC=-Wall -Werror -Wextra -g -std=c11
 COVER=-fprofile-arcs -ftest-coverage
@@ -93,7 +93,7 @@ valgrind: uninstall install_by_cmake
 # > val_test.txt 2>&1
 
 valgrind_test: test
-	@valgrind $(VAL_CHECK) ./$(EXE)
+	@valgrind $(VAL) ./$(EXE)
 	@rm $(EXE)
 
 clang-format:

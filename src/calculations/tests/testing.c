@@ -1,14 +1,11 @@
 #include "../main.h"
 #include <stdio.h>
 
-int main() {
-    // printf("%lf\n", calculation(str));
-    // validation(str);
-    // printf("%s\n", str);   
-    char str[256] = "5+6";
-    // printf("%s\n", str);
-    // validation_x(str, -13.123);
-    // validation(str, -5);
-    // printf("%s\n", str);
-    printf("%lf\n", calculation(str, -13.123));
+int main() { 
+    char *str = malloc(163);
+    sprintf(str, "%s", "(2/45*5432e3 * (P/3.14)) + log(123e3 * 123 e-4)");
+    validation(&str);
+    printf("%s", str);
+    // printf("\n\n%lf\n\n\n", calculation(str, 0));
+    free(str);
 }

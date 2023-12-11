@@ -27,12 +27,22 @@ double notation(char *str) {
                 }
             }
             if(n_count > 1) {
-                while(prior_comparison(str[i], oper[o_count-1]) == 1) {
-                    math_in_condition(nums, oper, &n_count, &o_count);
+                while(1) {
+                    if(o_count && prior_comparison(str[i], oper[o_count-1]) == 1) {
+                        math_in_condition(nums, oper, &n_count, &o_count);
+                    } else {
+                        break;
+                    }
                 }
-                while(prior_comparison(str[i], oper[o_count-1]) == 2) {
-                    math_in_condition(nums, oper, &n_count, &o_count);
+                // math_of_priority(&nums, &oper, &n_count, &o_count, str[i], 1);
+                while(1) {
+                    if(o_count && prior_comparison(str[i], oper[o_count-1]) == 2) {
+                        math_in_condition(nums, oper, &n_count, &o_count);
+                    } else {
+                        break;
+                    }
                 }
+                // math_of_priority(&nums, &oper, &n_count, &o_count, str[i], 2);
             }
             if(str[i] != CLOSE_BRCK) {
                 oper[o_count] = str[i];
@@ -47,7 +57,7 @@ double notation(char *str) {
         if(i == strlen(str) - 1) {
             while(o_count != -1) {
                 bracket_close(nums, oper, &n_count, &o_count);
-                if(oper[o_count] == OPEN_BRCK) {
+                if(o_count != -1 && oper[o_count] == OPEN_BRCK) {
                     oper[o_count--] = ZERO;
                 }
             }
