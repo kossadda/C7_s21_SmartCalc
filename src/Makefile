@@ -27,7 +27,7 @@ PROG=s21_smartcalc
 VAL_CHECK=--num-callers --leak-check=full --show-leak-kinds=definite
 
 
-all: install run
+all: install_by_qmake run
 
 install: uninstall
 	@read -p "Выберите способ установки (qmake/cmake): " choice; \
@@ -43,7 +43,7 @@ install: uninstall
 install_by_qmake:
 # 	$(MAKE) install_qmake
 	@mkdir -p $(BUILD)
-	@cd $(MAIN_FOLD) && qmake-qt5 && make -s
+	@cd $(MAIN_FOLD) && qmake && make -s
 	@mv $(MAIN_FOLD)/$(PROG) $(BUILD)/$(PROG)
 
 install_by_cmake:
@@ -87,8 +87,8 @@ gcov_report: uninstall
 	@rm -rf $(EXE) *.gc*
 	xdg-open $(GCOV)/coverage.html
 
-valgrind: uninstall install_by_cmake
-	@valgrind $(VAL) ./$(BUILD)/$(PROG) > valgrind.txt 2>&1
+valgrind: install_by_qmake
+	@valgrind $(VAL) ./$(BUILD)/$(PROG)
 
 # > val_test.txt 2>&1
 

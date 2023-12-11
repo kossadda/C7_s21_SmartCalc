@@ -34,6 +34,7 @@ double notation(char *str) {
                         break;
                     }
                 }
+                // math_of_priority(&nums, &oper, &n_count, &o_count, str[i], 1);
                 while(1) {
                     if(o_count && prior_comparison(str[i], oper[o_count-1]) == 2) {
                         math_in_condition(nums, oper, &n_count, &o_count);
@@ -41,6 +42,7 @@ double notation(char *str) {
                         break;
                     }
                 }
+                // math_of_priority(&nums, &oper, &n_count, &o_count, str[i], 2);
             }
             if(str[i] != CLOSE_BRCK) {
                 oper[o_count] = str[i];

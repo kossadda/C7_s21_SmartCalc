@@ -418,18 +418,20 @@ void s21_smartcalc::on_graph_clicked()
 // Замена кнопки на = на x и plot
 void s21_smartcalc::switch_buttons(QString name1, QString name2)
 {
-    pushButton = new QPushButton(name1, this);
-    createPlotButton(pushButton, 6);
-    if(!graphWindow && var) {
-        connect(pushButton, &QPushButton::clicked, this, &s21_smartcalc::on_push_eq_clicked);
-    } else {
-        connect(pushButton, &QPushButton::clicked, this, &s21_smartcalc::on_actionPlotTriggered);
+    if(!pushButton) {
+        pushButton = new QPushButton(name1, this);
+        createPlotButton(pushButton, 6);
+        if(!graphWindow && var) {
+            connect(pushButton, &QPushButton::clicked, this, &s21_smartcalc::on_push_eq_clicked);
+        } else {
+            connect(pushButton, &QPushButton::clicked, this, &s21_smartcalc::on_actionPlotTriggered);
+        }
     }
-
-    pushButton1 = new QPushButton(name2, this);
-    createPlotButton(pushButton1, 5);
-    connect(pushButton1, &QPushButton::clicked, this, &s21_smartcalc::on_actionVarTriggered);
-
+    if(!pushButton1) {
+        pushButton1 = new QPushButton(name2, this);
+        createPlotButton(pushButton1, 5);
+        connect(pushButton1, &QPushButton::clicked, this, &s21_smartcalc::on_actionVarTriggered);
+    }
     change_color(ui->push_eq, "black_eq");
 }
 
@@ -445,12 +447,14 @@ void s21_smartcalc::createPlotButton(QPushButton *button, int row)
 void s21_smartcalc::on_graphWindowClosed()
 {
     if(!var) {
-        delete pushButton;
-        pushButton = nullptr;
-
-        delete pushButton1;
-        pushButton1 = nullptr;
-
+        if(pushButton) {
+            delete pushButton;
+            pushButton = nullptr;
+        }
+        if(pushButton1) {
+            delete pushButton1;
+            pushButton1 = nullptr;
+        }
         change_color(ui->push_eq, "orange_eq");
     } else {
         disconnect(pushButton, &QPushButton::clicked, this, &s21_smartcalc::on_actionPlotTriggered);
@@ -459,7 +463,10 @@ void s21_smartcalc::on_graphWindowClosed()
         pushButton->setText("=");
     }
     change_color(ui->graph, "orange");
-    graphWindow = nullptr;
+    if (graphWindow) {
+        delete graphWindow;
+        graphWindow = nullptr;
+    }
 }
 
 // Добавить x
