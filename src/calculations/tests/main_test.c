@@ -1,6 +1,17 @@
 #include "../main.h"
 #include <check.h>
 
+int test_suite(Suite *test) {
+    SRunner *suite_runner = srunner_create(test);
+    srunner_run_all(suite_runner, CK_NORMAL);
+    int failed_count = srunner_ntests_failed(suite_runner);
+    srunner_free(suite_runner);
+    if (failed_count != 0) {
+        return EXIT_FAILURE;
+    }
+    return EXIT_SUCCESS;
+}
+
 START_TEST(arifmetic_1) {
     char *example = "(((1.123*213.5555-((217.12354))*1/2)/4/6*(5632.57-123.344)/(23.12346)/(4.213*(((653.13*(14.123*121.2345+2/(23.123+9*0.213))))/((237.12*21.8888))/(1.888+92.14)))))";
     double my_result = calculation(example, 0);
@@ -756,137 +767,406 @@ START_TEST(other_38) {
     ck_assert_double_eq_tol(my_result, true_result, 1e-7);
 }
 
-Suite *s21_smartcalc(void) {
+START_TEST(other_39) {
+    char *example = "log(((sqrt(sqrt(x*x*xx*x*x)x)/(ln(42)*5.123))^2/1.25566*15.2333)/x^2)";
+    double my_result = calculation(example, 23.213);
+    double true_result = 1.25113394;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+START_TEST(other_40) {
+    char *example = "e * e - (log(3654234)-sqrt(4345)*log(2234)*65324*(ln(2654.5645)-ln(6541))+(5747-log(561.5345)/ln(3534)))/(5432-(sqrt(4230.4325)/sin(log(6541)+log(10)-4232*ln(1654.655))))";
+    double my_result = calculation(example, 0);
+    double true_result = -2340.12058496;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+START_TEST(other_41) {
+    char *example = "eeeeeee";
+    double my_result = calculation(example, 0);
+    double true_result = 1096.63315842;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+START_TEST(other_42) {
+    char *example = "eePeePeee";
+    double my_result = calculation(example, 0);
+    double true_result = 10823.33544680;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+START_TEST(other_43) {
+    char *example = "eePeePeee314/(P212)";
+    double my_result = calculation(example, 0);
+    double true_result = 5102.75871556;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+START_TEST(other_44) {
+    char *example = "5";
+    double my_result = calculation(example, 0);
+    double true_result = 5;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+START_TEST(wrong_expression_1) {
+    double my_result = calculation(NULL, 0);
+    double true_result = __DBL_MAX__;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+START_TEST(wrong_expression_2) {
+    char *example = "log(((sqrt(x*x*xx*x*x)x)^2/1.25566*15.2333)z/x^2)";
+    double my_result = calculation(example, 0);
+    double true_result = __DBL_MAX__;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+START_TEST(wrong_expression_3) {
+    char *example = "log(((sqt(x*x*xx*x*x)x)^2/1.25566*15.2333)/x^2)";
+    double my_result = calculation(example, 0);
+    double true_result = __DBL_MAX__;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+START_TEST(wrong_expression_4) {
+    char *example = "2 mid (2/45*5432e3 * (P/3.14)) + log(123e3 * 123 e-4)";
+    double my_result = calculation(example, 0);
+    double true_result = __DBL_MAX__;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+START_TEST(wrong_expression_5) {
+    char *example = "x + y";
+    double my_result = calculation(example, 0);
+    double true_result = __DBL_MAX__;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+START_TEST(wrong_expression_6) {
+    char *example = "x_mod_2";
+    double my_result = calculation(example, 0);
+    double true_result = __DBL_MAX__;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+START_TEST(wrong_expression_7) {
+    char *example = "san(2*(cos(1.5*atan(0.75)))*lg(1+ln(2.5))/(sqrt(2.5)+log(3.14)))";
+    double my_result = calculation(example, 0);
+    double true_result = __DBL_MAX__;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+START_TEST(wrong_expression_8) {
+    char *example = "324.2 mod 33.324 mod 54.432 modd 6.532";
+    double my_result = calculation(example, 0);
+    double true_result = __DBL_MAX__;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+START_TEST(wrong_expression_9) {
+    char *example = "sin(1^2^z)";
+    double my_result = calculation(example, 0);
+    double true_result = __DBL_MAX__;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+START_TEST(wrong_expression_10) {
+    char *example = "sqtr(sin(2^2^3))";
+    double my_result = calculation(example, 0);
+    double true_result = __DBL_MAX__;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+START_TEST(wrong_expression_11) {
+    char *example = "";
+    double my_result = calculation(example, 0);
+    double true_result = __DBL_MAX__;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+START_TEST(wrong_expression_12) {
+    char *example = "sqrt(sin(2^2^3))*sin(4)/s";
+    double my_result = calculation(example, 0);
+    double true_result = __DBL_MAX__;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+START_TEST(wrong_expression_13) {
+    char *example = "sqrt(sin(2^2^3))*sin(4)/sin";
+    double my_result = calculation(example, 0);
+    double true_result = __DBL_MAX__;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+Suite *s21_arifmetic_1(void) {
     Suite *calc = suite_create("s21_smartcalc");
 
-    TCase *tc_test_arifmetic = tcase_create("test_arifmetic");
-    tcase_add_test(tc_test_arifmetic, arifmetic_1);
-    tcase_add_test(tc_test_arifmetic, arifmetic_2);
-    tcase_add_test(tc_test_arifmetic, arifmetic_3);
-    tcase_add_test(tc_test_arifmetic, arifmetic_4);
-    tcase_add_test(tc_test_arifmetic, arifmetic_5);
-    tcase_add_test(tc_test_arifmetic, arifmetic_6);
-    tcase_add_test(tc_test_arifmetic, arifmetic_7);
-    tcase_add_test(tc_test_arifmetic, arifmetic_8);
-    tcase_add_test(tc_test_arifmetic, arifmetic_9);
-    tcase_add_test(tc_test_arifmetic, arifmetic_10);
-    tcase_add_test(tc_test_arifmetic, arifmetic_11);
-    tcase_add_test(tc_test_arifmetic, arifmetic_12);
-    tcase_add_test(tc_test_arifmetic, arifmetic_13);
-    tcase_add_test(tc_test_arifmetic, arifmetic_14);
-    tcase_add_test(tc_test_arifmetic, arifmetic_15);
-    tcase_add_test(tc_test_arifmetic, arifmetic_16);
-    tcase_add_test(tc_test_arifmetic, arifmetic_17);
-    tcase_add_test(tc_test_arifmetic, arifmetic_18);
-    tcase_add_test(tc_test_arifmetic, arifmetic_19);
-    tcase_add_test(tc_test_arifmetic, arifmetic_20);
-    tcase_add_test(tc_test_arifmetic, arifmetic_21);
-    tcase_add_test(tc_test_arifmetic, arifmetic_22);
-    tcase_add_test(tc_test_arifmetic, arifmetic_23);
-    tcase_add_test(tc_test_arifmetic, arifmetic_24);
-    tcase_add_test(tc_test_arifmetic, arifmetic_25);
-    tcase_add_test(tc_test_arifmetic, arifmetic_26);
-    tcase_add_test(tc_test_arifmetic, arifmetic_27);
-    tcase_add_test(tc_test_arifmetic, arifmetic_28);
-    tcase_add_test(tc_test_arifmetic, arifmetic_29);
-    tcase_add_test(tc_test_arifmetic, arifmetic_30);
-    tcase_add_test(tc_test_arifmetic, arifmetic_31);
-    tcase_add_test(tc_test_arifmetic, arifmetic_32);
-    tcase_add_test(tc_test_arifmetic, arifmetic_33);
-    tcase_add_test(tc_test_arifmetic, arifmetic_34);
-    tcase_add_test(tc_test_arifmetic, arifmetic_35);
-    tcase_add_test(tc_test_arifmetic, arifmetic_36);
-    tcase_add_test(tc_test_arifmetic, arifmetic_37);
-    tcase_add_test(tc_test_arifmetic, arifmetic_38);
-    tcase_add_test(tc_test_arifmetic, arifmetic_39);
-    tcase_add_test(tc_test_arifmetic, arifmetic_40);
-    suite_add_tcase(calc, tc_test_arifmetic);
+    TCase *tc_test_arifmetic_1 = tcase_create("test_arifmetic");
+    tcase_add_test(tc_test_arifmetic_1, arifmetic_1);
+    tcase_add_test(tc_test_arifmetic_1, arifmetic_2);
+    tcase_add_test(tc_test_arifmetic_1, arifmetic_3);
+    tcase_add_test(tc_test_arifmetic_1, arifmetic_4);
+    tcase_add_test(tc_test_arifmetic_1, arifmetic_5);
+    tcase_add_test(tc_test_arifmetic_1, arifmetic_6);
+    tcase_add_test(tc_test_arifmetic_1, arifmetic_7);
+    tcase_add_test(tc_test_arifmetic_1, arifmetic_8);
+    tcase_add_test(tc_test_arifmetic_1, arifmetic_9);
+    tcase_add_test(tc_test_arifmetic_1, arifmetic_10);
+    suite_add_tcase(calc, tc_test_arifmetic_1);
 
-    TCase *tc_test_trigonometric = tcase_create("test_trigonometric");
-    tcase_add_test(tc_test_arifmetic, trigonometric_1);
-    tcase_add_test(tc_test_arifmetic, trigonometric_2);
-    tcase_add_test(tc_test_arifmetic, trigonometric_3);
-    tcase_add_test(tc_test_arifmetic, trigonometric_4);
-    tcase_add_test(tc_test_arifmetic, trigonometric_5);
-    tcase_add_test(tc_test_arifmetic, trigonometric_6);
-    tcase_add_test(tc_test_arifmetic, trigonometric_7);
-    tcase_add_test(tc_test_arifmetic, trigonometric_8);
-    tcase_add_test(tc_test_arifmetic, trigonometric_9);
-    tcase_add_test(tc_test_arifmetic, trigonometric_10);
-    tcase_add_test(tc_test_arifmetic, trigonometric_11);
-    tcase_add_test(tc_test_arifmetic, trigonometric_12);
-    tcase_add_test(tc_test_arifmetic, trigonometric_13);
-    tcase_add_test(tc_test_arifmetic, trigonometric_14);
-    tcase_add_test(tc_test_arifmetic, trigonometric_15);
-    tcase_add_test(tc_test_arifmetic, trigonometric_16);
-    tcase_add_test(tc_test_arifmetic, trigonometric_17);
-    tcase_add_test(tc_test_arifmetic, trigonometric_18);
-    tcase_add_test(tc_test_arifmetic, trigonometric_19);
-    tcase_add_test(tc_test_arifmetic, trigonometric_20);
-    tcase_add_test(tc_test_arifmetic, trigonometric_21);
-    tcase_add_test(tc_test_arifmetic, trigonometric_22);
-    tcase_add_test(tc_test_arifmetic, trigonometric_23);
-    tcase_add_test(tc_test_arifmetic, trigonometric_24);
-    tcase_add_test(tc_test_arifmetic, trigonometric_25);
-    tcase_add_test(tc_test_arifmetic, trigonometric_26);
-    tcase_add_test(tc_test_arifmetic, trigonometric_27);
-    tcase_add_test(tc_test_arifmetic, trigonometric_28);
-    tcase_add_test(tc_test_arifmetic, trigonometric_29);
-    tcase_add_test(tc_test_arifmetic, trigonometric_30);
-    suite_add_tcase(calc, tc_test_trigonometric);
+    return calc;
+}
 
-    TCase *tc_test_square = tcase_create("test_square");
-    tcase_add_test(tc_test_arifmetic, other_1);
-    tcase_add_test(tc_test_arifmetic, other_2);
-    tcase_add_test(tc_test_arifmetic, other_3);
-    tcase_add_test(tc_test_arifmetic, other_4);
-    tcase_add_test(tc_test_arifmetic, other_5);
-    tcase_add_test(tc_test_arifmetic, other_6);
-    tcase_add_test(tc_test_arifmetic, other_7);
-    tcase_add_test(tc_test_arifmetic, other_8);
-    tcase_add_test(tc_test_arifmetic, other_9);
-    tcase_add_test(tc_test_arifmetic, other_10);
-    tcase_add_test(tc_test_arifmetic, other_11);
-    tcase_add_test(tc_test_arifmetic, other_12);
-    tcase_add_test(tc_test_arifmetic, other_13);
-    tcase_add_test(tc_test_arifmetic, other_14);
-    tcase_add_test(tc_test_arifmetic, other_15);
-    tcase_add_test(tc_test_arifmetic, other_16);
-    tcase_add_test(tc_test_arifmetic, other_17);
-    tcase_add_test(tc_test_arifmetic, other_18);
-    tcase_add_test(tc_test_arifmetic, other_19);
-    tcase_add_test(tc_test_arifmetic, other_20);
-    tcase_add_test(tc_test_arifmetic, other_21);
-    tcase_add_test(tc_test_arifmetic, other_22);
-    tcase_add_test(tc_test_arifmetic, other_23);
-    tcase_add_test(tc_test_arifmetic, other_24);
-    tcase_add_test(tc_test_arifmetic, other_25);
-    tcase_add_test(tc_test_arifmetic, other_26);
-    tcase_add_test(tc_test_arifmetic, other_27);
-    tcase_add_test(tc_test_arifmetic, other_28);
-    tcase_add_test(tc_test_arifmetic, other_29);
-    tcase_add_test(tc_test_arifmetic, other_30);
-    tcase_add_test(tc_test_arifmetic, other_31);
-    tcase_add_test(tc_test_arifmetic, other_32);
-    tcase_add_test(tc_test_arifmetic, other_33);
-    tcase_add_test(tc_test_arifmetic, other_34);
-    tcase_add_test(tc_test_arifmetic, other_35);
-    tcase_add_test(tc_test_arifmetic, other_36);
-    tcase_add_test(tc_test_arifmetic, other_37);
-    tcase_add_test(tc_test_arifmetic, other_38);
-    suite_add_tcase(calc, tc_test_square);
+Suite *s21_arifmetic_2(void) {
+    Suite *calc = suite_create("s21_smartcalc");
+
+    TCase *tc_test_arifmetic_2 = tcase_create("test_arifmetic");
+    tcase_add_test(tc_test_arifmetic_2, arifmetic_11);
+    tcase_add_test(tc_test_arifmetic_2, arifmetic_12);
+    tcase_add_test(tc_test_arifmetic_2, arifmetic_13);
+    tcase_add_test(tc_test_arifmetic_2, arifmetic_14);
+    tcase_add_test(tc_test_arifmetic_2, arifmetic_15);
+    tcase_add_test(tc_test_arifmetic_2, arifmetic_16);
+    tcase_add_test(tc_test_arifmetic_2, arifmetic_17);
+    tcase_add_test(tc_test_arifmetic_2, arifmetic_18);
+    tcase_add_test(tc_test_arifmetic_2, arifmetic_19);
+    tcase_add_test(tc_test_arifmetic_2, arifmetic_20);
+    suite_add_tcase(calc, tc_test_arifmetic_2);
+
+    return calc;
+}
+
+Suite *s21_arifmetic_3(void) {
+    Suite *calc = suite_create("s21_smartcalc");
+
+    TCase *tc_test_arifmetic_3 = tcase_create("test_arifmetic");
+    tcase_add_test(tc_test_arifmetic_3, arifmetic_21);
+    tcase_add_test(tc_test_arifmetic_3, arifmetic_22);
+    tcase_add_test(tc_test_arifmetic_3, arifmetic_23);
+    tcase_add_test(tc_test_arifmetic_3, arifmetic_24);
+    tcase_add_test(tc_test_arifmetic_3, arifmetic_25);
+    tcase_add_test(tc_test_arifmetic_3, arifmetic_26);
+    tcase_add_test(tc_test_arifmetic_3, arifmetic_27);
+    tcase_add_test(tc_test_arifmetic_3, arifmetic_28);
+    tcase_add_test(tc_test_arifmetic_3, arifmetic_29);
+    tcase_add_test(tc_test_arifmetic_3, arifmetic_30);
+    suite_add_tcase(calc, tc_test_arifmetic_3);
+
+    return calc;
+}
+
+Suite *s21_arifmetic_4(void) {
+    Suite *calc = suite_create("s21_smartcalc");
+
+    TCase *tc_test_arifmetic_4 = tcase_create("test_arifmetic");
+    tcase_add_test(tc_test_arifmetic_4, arifmetic_31);
+    tcase_add_test(tc_test_arifmetic_4, arifmetic_32);
+    tcase_add_test(tc_test_arifmetic_4, arifmetic_33);
+    tcase_add_test(tc_test_arifmetic_4, arifmetic_34);
+    tcase_add_test(tc_test_arifmetic_4, arifmetic_35);
+    tcase_add_test(tc_test_arifmetic_4, arifmetic_36);
+    tcase_add_test(tc_test_arifmetic_4, arifmetic_37);
+    tcase_add_test(tc_test_arifmetic_4, arifmetic_38);
+    tcase_add_test(tc_test_arifmetic_4, arifmetic_39);
+    tcase_add_test(tc_test_arifmetic_4, arifmetic_40);
+    suite_add_tcase(calc, tc_test_arifmetic_4);
+
+    return calc;
+}
+
+Suite *s21_trigonometric_1(void) {
+    Suite *calc = suite_create("s21_smartcalc");
+
+    TCase *tc_test_trigonometric_1 = tcase_create("test_arifmetic");
+    tcase_add_test(tc_test_trigonometric_1, trigonometric_1);
+    tcase_add_test(tc_test_trigonometric_1, trigonometric_2);
+    tcase_add_test(tc_test_trigonometric_1, trigonometric_3);
+    tcase_add_test(tc_test_trigonometric_1, trigonometric_4);
+    tcase_add_test(tc_test_trigonometric_1, trigonometric_5);
+    tcase_add_test(tc_test_trigonometric_1, trigonometric_6);
+    tcase_add_test(tc_test_trigonometric_1, trigonometric_7);
+    tcase_add_test(tc_test_trigonometric_1, trigonometric_8);
+    tcase_add_test(tc_test_trigonometric_1, trigonometric_9);
+    tcase_add_test(tc_test_trigonometric_1, trigonometric_10);
+    suite_add_tcase(calc, tc_test_trigonometric_1);
+
+    return calc;
+}
+
+Suite *s21_trigonometric_2(void) {
+    Suite *calc = suite_create("s21_smartcalc");
+
+    TCase *tc_test_trigonometric_2 = tcase_create("test_arifmetic");
+    tcase_add_test(tc_test_trigonometric_2, trigonometric_11);
+    tcase_add_test(tc_test_trigonometric_2, trigonometric_12);
+    tcase_add_test(tc_test_trigonometric_2, trigonometric_13);
+    tcase_add_test(tc_test_trigonometric_2, trigonometric_14);
+    tcase_add_test(tc_test_trigonometric_2, trigonometric_15);
+    tcase_add_test(tc_test_trigonometric_2, trigonometric_16);
+    tcase_add_test(tc_test_trigonometric_2, trigonometric_17);
+    tcase_add_test(tc_test_trigonometric_2, trigonometric_18);
+    tcase_add_test(tc_test_trigonometric_2, trigonometric_19);
+    tcase_add_test(tc_test_trigonometric_2, trigonometric_20);
+    suite_add_tcase(calc, tc_test_trigonometric_2);
+
+    return calc;
+}
+
+Suite *s21_trigonometric_3(void) {
+    Suite *calc = suite_create("s21_smartcalc");
+
+    TCase *tc_test_trigonometric_3 = tcase_create("test_arifmetic");
+    tcase_add_test(tc_test_trigonometric_3, trigonometric_21);
+    tcase_add_test(tc_test_trigonometric_3, trigonometric_22);
+    tcase_add_test(tc_test_trigonometric_3, trigonometric_23);
+    tcase_add_test(tc_test_trigonometric_3, trigonometric_24);
+    tcase_add_test(tc_test_trigonometric_3, trigonometric_25);
+    tcase_add_test(tc_test_trigonometric_3, trigonometric_26);
+    tcase_add_test(tc_test_trigonometric_3, trigonometric_27);
+    tcase_add_test(tc_test_trigonometric_3, trigonometric_28);
+    tcase_add_test(tc_test_trigonometric_3, trigonometric_29);
+    tcase_add_test(tc_test_trigonometric_3, trigonometric_30);
+    suite_add_tcase(calc, tc_test_trigonometric_3);
+
+    return calc;
+}
+
+Suite *s21_other_1(void) {
+    Suite *calc = suite_create("s21_smartcalc");
+
+    TCase *tc_test_other_1 = tcase_create("test_arifmetic");
+    tcase_add_test(tc_test_other_1, other_1);
+    tcase_add_test(tc_test_other_1, other_2);
+    tcase_add_test(tc_test_other_1, other_3);
+    tcase_add_test(tc_test_other_1, other_4);
+    tcase_add_test(tc_test_other_1, other_5);
+    tcase_add_test(tc_test_other_1, other_6);
+    tcase_add_test(tc_test_other_1, other_7);
+    tcase_add_test(tc_test_other_1, other_8);
+    tcase_add_test(tc_test_other_1, other_9);
+    tcase_add_test(tc_test_other_1, other_10);
+    suite_add_tcase(calc, tc_test_other_1);
+
+    return calc;
+}
+
+Suite *s21_other_2(void) {
+    Suite *calc = suite_create("s21_smartcalc");
+
+    TCase *tc_test_other_2 = tcase_create("test_arifmetic");
+    tcase_add_test(tc_test_other_2, other_11);
+    tcase_add_test(tc_test_other_2, other_12);
+    tcase_add_test(tc_test_other_2, other_13);
+    tcase_add_test(tc_test_other_2, other_14);
+    tcase_add_test(tc_test_other_2, other_15);
+    tcase_add_test(tc_test_other_2, other_16);
+    tcase_add_test(tc_test_other_2, other_17);
+    tcase_add_test(tc_test_other_2, other_18);
+    tcase_add_test(tc_test_other_2, other_19);
+    tcase_add_test(tc_test_other_2, other_20);
+    suite_add_tcase(calc, tc_test_other_2);
+
+    return calc;
+}
+
+Suite *s21_other_3(void) {
+    Suite *calc = suite_create("s21_smartcalc");
+
+    TCase *tc_test_other_3 = tcase_create("test_arifmetic");
+    tcase_add_test(tc_test_other_3, other_21);
+    tcase_add_test(tc_test_other_3, other_22);
+    tcase_add_test(tc_test_other_3, other_23);
+    tcase_add_test(tc_test_other_3, other_24);
+    tcase_add_test(tc_test_other_3, other_25);
+    tcase_add_test(tc_test_other_3, other_26);
+    tcase_add_test(tc_test_other_3, other_27);
+    tcase_add_test(tc_test_other_3, other_28);
+    tcase_add_test(tc_test_other_3, other_29);
+    tcase_add_test(tc_test_other_3, other_30);
+    suite_add_tcase(calc, tc_test_other_3);
+
+    return calc;
+}
+
+Suite *s21_other_4(void) {
+    Suite *calc = suite_create("s21_smartcalc");
+
+    TCase *tc_test_other_4 = tcase_create("test_arifmetic");
+    tcase_add_test(tc_test_other_4, other_31);
+    tcase_add_test(tc_test_other_4, other_32);
+    tcase_add_test(tc_test_other_4, other_33);
+    tcase_add_test(tc_test_other_4, other_34);
+    tcase_add_test(tc_test_other_4, other_35);
+    tcase_add_test(tc_test_other_4, other_36);
+    tcase_add_test(tc_test_other_4, other_37);
+    tcase_add_test(tc_test_other_4, other_38);
+    tcase_add_test(tc_test_other_4, other_39);
+    tcase_add_test(tc_test_other_4, other_40);
+    suite_add_tcase(calc, tc_test_other_4);
+
+    return calc;
+}
+
+Suite *s21_other_5(void) {
+    Suite *calc = suite_create("s21_smartcalc");
+
+    TCase *tc_test_other_5 = tcase_create("test_arifmetic");
+    tcase_add_test(tc_test_other_5, other_41);
+    tcase_add_test(tc_test_other_5, other_42);
+    tcase_add_test(tc_test_other_5, other_43);
+    tcase_add_test(tc_test_other_5, other_44);
+    suite_add_tcase(calc, tc_test_other_5);
+
+    return calc;
+}
+
+Suite *s21_wrong_expressions_1(void) {
+    Suite *calc = suite_create("s21_smartcalc");
+
+    TCase *tc_expressions_1 = tcase_create("test_arifmetic");
+    tcase_add_test(tc_expressions_1, wrong_expression_1);
+    tcase_add_test(tc_expressions_1, wrong_expression_2);
+    tcase_add_test(tc_expressions_1, wrong_expression_3);
+    tcase_add_test(tc_expressions_1, wrong_expression_4);
+    tcase_add_test(tc_expressions_1, wrong_expression_5);
+    tcase_add_test(tc_expressions_1, wrong_expression_6);
+    tcase_add_test(tc_expressions_1, wrong_expression_7);
+    tcase_add_test(tc_expressions_1, wrong_expression_8);
+    tcase_add_test(tc_expressions_1, wrong_expression_9);
+    tcase_add_test(tc_expressions_1, wrong_expression_10);
+    suite_add_tcase(calc, tc_expressions_1);
+
+    return calc;
+}
+
+Suite *s21_wrong_expressions_2(void) {
+    Suite *calc = suite_create("s21_smartcalc");
+
+    TCase *tc_expressions_2 = tcase_create("test_arifmetic");
+    tcase_add_test(tc_expressions_2, wrong_expression_11);
+    tcase_add_test(tc_expressions_2, wrong_expression_12);
+    tcase_add_test(tc_expressions_2, wrong_expression_13);
+    suite_add_tcase(calc, tc_expressions_2);
 
     return calc;
 }
 
 int main(void) {
-    Suite *suite = s21_smartcalc();
-    SRunner *suite_runner = srunner_create(suite);
-    srunner_run_all(suite_runner, CK_NORMAL);
-    int failed_count = srunner_ntests_failed(suite_runner);
-    srunner_free(suite_runner);
-    if (failed_count != 0) {
-        return EXIT_FAILURE;
+    int failed_count = 0;
+    Suite *(*suites[])(void) = {
+        s21_arifmetic_1          , s21_arifmetic_2         , s21_arifmetic_3      , s21_arifmetic_4 ,
+        s21_trigonometric_1      , s21_trigonometric_2     , s21_trigonometric_3  ,
+        s21_other_1              , s21_other_2             , s21_other_3          , s21_other_4     , s21_other_5,
+        s21_wrong_expressions_1  , s21_wrong_expressions_2 ,
+    };
+
+    for(size_t i = 0; i < sizeof(suites)/sizeof(suites[0]); i++) {
+        failed_count = test_suite(suites[i]());
+        if (failed_count) {
+            return EXIT_FAILURE;
+        }
     }
+    
     return EXIT_SUCCESS;
 }

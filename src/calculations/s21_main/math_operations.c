@@ -2,43 +2,44 @@
 #include <math.h>
 
 double math_nums(double first, double second, const char operation) {
-    if(operation == ADD) {
+    if(operation == CHAR_ADD) {
         first += second;
-    } else if(operation == SUB) {
+    } else if(operation == CHAR_SUB) {
         first -= second;
-    } else if(operation == DIV) {
+    } else if(operation == CHAR_DIV) {
         first /= second;
-    } else if(operation == MUL) {
+    } else if(operation == CHAR_MUL) {
         first *= second;
-    } else if (operation == EXP) {
+    } else if (operation == CHAR_EXP) {
         first = pow(first, second);
-    } else if (operation == MOD) {
+    } else if (operation == CHAR_MOD) {
         first = fmod(first, second);
         if(first < 0) {
             first = second + first;
         }
     }
+
     return first;
 }
 
-void trigonometry(double *number, const char operation) {
-    if(operation == SIN) {
+void math_trigonometry(double *number, const char operation) {
+    if(operation == CHAR_SIN) {
         *number = sin(*number);
-    } else if(operation == COS) {
+    } else if(operation == CHAR_COS) {
         *number = cos(*number);
-    } else if(operation == TAN) {
+    } else if(operation == CHAR_TAN) {
         *number = tan(*number);
-    } else if(operation == ASIN) {
+    } else if(operation == CHAR_ASIN) {
         *number = asin(*number);
-    } else if(operation == ACOS) {
+    } else if(operation == CHAR_ACOS) {
         *number = acos(*number);
-    } else if(operation == ATAN) {
+    } else if(operation == CHAR_ATAN) {
         *number = atan(*number);
-    } else if(operation == SQRT) {
+    } else if(operation == CHAR_SQRT) {
         *number = sqrt(*number);
-    } else if(operation == LOG) {
+    } else if(operation == CHAR_LOG) {
         *number = log10(*number);
-    } else if(operation == LN) {
+    } else if(operation == CHAR_LN) {
         *number = log(*number);
     }
 }
