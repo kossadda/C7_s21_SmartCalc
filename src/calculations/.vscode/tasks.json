@@ -7,10 +7,10 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "/home/kossadda/desktop/C7_s21_smartcalc/src/calculations/tests/testing.c",
-                "/home/kossadda/desktop/C7_s21_smartcalc/src/calculations/s21_main/*.c",
+                "/home/kossadda/develop/C7_s21_smartcalc/src/calculations/tests/testing.c",
+                "/home/kossadda/develop/C7_s21_smartcalc/src/calculations/s21_main/*.c",
                 "-o",
-                "/home/kossadda/desktop/C7_s21_smartcalc/src/calculations/test",
+                "/home/kossadda/develop/C7_s21_smartcalc/src/calculations/test",
                 "-lm"
             ],
             "options": {

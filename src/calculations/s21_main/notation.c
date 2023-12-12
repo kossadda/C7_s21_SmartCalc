@@ -1,65 +1,56 @@
 #include "../main.h"
 
+void add_num_to_stack(num_stack *num, char *token);
+
 double notation(char *str) {
-    char token[1500] = {0};
+    op_stack ops = {0};
+    num_stack num = {0};
+    ops.count = -1;
+    char token[strlen(str) + 1];
     strcpy(token, str);
-    char *temp = NULL;
-    const char moves[] = "()^+<*/msctSCTQLlu";
-    int n_count = 0;
-    int o_count = -1;
-    double nums[100] = {0};
-    char oper[50] = {0};
-    temp = strtok(token, moves);
-    nums[n_count++] = atof(temp);
+    add_num_to_stack(&num, token);
     for(size_t i = 0; i < strlen(str); i++) {
-        if(check(str[i], moves)) {
-            if(str[i] != CLOSE_BRCK) {
-                o_count++;
+        if(check(str[i], ALL_OPERATIONS)) {
+            if(str[i] == CLOSE_BRCK) {
+                bracket_close(&num, &ops, PARS_EXPRESSION);
             } else {
-                while(oper[o_count] != OPEN_BRCK) {
-                    bracket_close(nums, oper, &n_count, &o_count);
+                ops.count++;
+            }
+            if(str[i] == CLOSE_BRCK && ops.stack[ops.count] == OPEN_BRCK) {
+                clean_top_stack(&num, NO, &ops, YES);
+                if(check(ops.stack[ops.count], TRIGONOMETRIC_CHARS)) {
+                    trigonometry(&(num.stack[num.count - 1]), ops.stack[ops.count--]);
                 }
             }
-            if(str[i] == CLOSE_BRCK && oper[o_count] == OPEN_BRCK) {
-                oper[o_count--] = ZERO;
-                if(check(oper[o_count], TRIG_CHARS)) {
-                    trigonometry(&(nums[n_count - 1]), oper[o_count--]);
-                }
-            }
-            if(n_count > 1) {
-                while(1) {
-                    if(o_count && prior_comparison(str[i], oper[o_count-1]) == 1) {
-                        math_in_condition(nums, oper, &n_count, &o_count);
-                    } else {
-                        break;
-                    }
-                }
-                while(1) {
-                    if(o_count && prior_comparison(str[i], oper[o_count-1]) == 2) {
-                        math_in_condition(nums, oper, &n_count, &o_count);
-                    } else {
-                        break;
-                    }
-                }
+            if(num.count > 1) {
+                math_while_parsing(&num, &ops, str[i], EQUAL_PRIORITY);
+                math_while_parsing(&num, &ops, str[i], HIGH_PRIORITY);
             }
             if(str[i] != CLOSE_BRCK) {
-                oper[o_count] = str[i];
+                ops.stack[ops.count] = str[i];
             }
-            if(!check(str[i+1], moves)) {
-                temp = strtok(NULL, moves);
-                if(temp) {
-                    nums[n_count++] = atof(temp);
-                }
-            }
-        }
-        if(i == strlen(str) - 1) {
-            while(o_count != -1) {
-                bracket_close(nums, oper, &n_count, &o_count);
-                if(o_count != -1 && oper[o_count] == OPEN_BRCK) {
-                    oper[o_count--] = ZERO;
-                }
+            if(!check(str[i+1], ALL_OPERATIONS)) {
+                add_num_to_stack(&num, NULL);
             }
         }
     }
-    return nums[0];
+    bracket_close(&num, &ops, CLOSE_EXPRESSION);
+    return num.stack[0];
+}
+
+void add_num_to_stack(num_stack *num, char *token) {
+    char *temp = NULL;
+    temp = strtok(token, ALL_OPERATIONS);
+    if(temp) {
+        num->stack[num->count++] = atof(temp);
+    }
+}
+
+void clean_top_stack(num_stack *num, int num_decision, op_stack *ops, int ops_decision) {
+    if(num_decision) {
+        num->stack[num->count--] = 0;
+    }
+    if(ops_decision) {
+        ops->stack[ops->count--] = ZERO;
+    }
 }

@@ -17,7 +17,6 @@ double math_nums(double first, double second, char operation) {
             first = second + first;
         }
     }
-
     return first;
 }
 

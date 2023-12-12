@@ -1,16 +1,16 @@
 #include "../main.h"
 
-int prior_comparison(char first, char second) {
-    int decision = 0;
-    int priority_1 = determine_priority(first);
-    int priority_2 = determine_priority(second);
+int prior_comparison(char current, char top_stack) {
+    int decision = LOW_PRIORITY;
+    int priority_1 = determine_priority(current);
+    int priority_2 = determine_priority(top_stack);
     if(priority_1 < priority_2) {
-        decision = 1;
-    } else if(priority_1 == priority_2 && !check(first, "^m")) {
-        decision = 2;
+        decision = EQUAL_PRIORITY;
+    } else if(priority_1 == priority_2 && !check(current, RIGHT_ASSOCIATIVE)) {
+        decision = HIGH_PRIORITY;
     } 
-    if(check(first, BRACKETS) || check(second, BRACKETS)) {
-        decision = 0;
+    if(check(current, BRACKETS) || check(top_stack, BRACKETS)) {
+        decision = LOW_PRIORITY;
     }
     return decision;
 }
@@ -19,16 +19,14 @@ int determine_priority(char operation) {
     int priority = 0;
     if(check(operation, "+<")) {
         priority = 1;
-    } else if(check(operation, "*/")) {
+    } else if(check(operation, "*/m")) {
         priority = 2;
-    } else if(check(operation, "m")) {
-        priority = 3;
     } else if(check(operation, "^")) {
+        priority = 3;
+    } else if(check(operation, TRIGONOMETRIC_CHARS)) {
         priority = 4;
-    } else if(check(operation, TRIG_CHARS)) {
-        priority = 5;
     } else if(check(operation, BRACKETS)) {
-        priority = 6;
+        priority = 5;
     }
     return priority;
 }
