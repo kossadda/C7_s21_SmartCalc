@@ -1,5 +1,7 @@
 #include "../main.h"
 
+static void check_trigonometric(char *true_str, int *count, const char *str, size_t *i);
+
 void validation(char *attachment) {
     char str[300] = "1*";
     char true_str[1500] = {0};
@@ -71,7 +73,7 @@ void validation_x(char *str, double x) {
     strcpy(str, true_str);
 }
 
-void check_trigonometric(char *true_str, int *count, char *str, size_t *i) {
+static void check_trigonometric(char *true_str, int *count, const char *str, size_t *i) {
     char temp[10] = {0};
     int temp_count = 0;
     while(str[*i] != '(') {

@@ -28,7 +28,7 @@ void bracket_close(num_stack *num, op_stack *ops, int mode) {
     }
 }
 
-void math_while_parsing(num_stack *num, op_stack *ops, char current_operation, int decision) {
+void math_while_parsing(num_stack *num, op_stack *ops, const char current_operation, int decision) {
     while(ops->count && prior_comparison(current_operation, ops->stack[ops->count-1]) == decision) {
         clean_top_stack(num, YES, ops, YES);
         num->stack[num->count - 1] = math_nums(num->stack[num->count - 1], num->stack[num->count], ops->stack[ops->count]);

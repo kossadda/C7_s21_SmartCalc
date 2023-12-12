@@ -1,6 +1,6 @@
 #include "../main.h"
 
-double math_nums(double first, double second, char operation) {
+double math_nums(double first, double second, const char operation) {
     if(operation == ADD) {
         first += second;
     } else if(operation == SUB) {
@@ -20,7 +20,7 @@ double math_nums(double first, double second, char operation) {
     return first;
 }
 
-void trigonometry(double *number, char operation) {
+void trigonometry(double *number, const char operation) {
     if(operation == SIN) {
         *number = sin(*number);
     } else if(operation == COS) {

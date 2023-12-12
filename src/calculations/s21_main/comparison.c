@@ -1,6 +1,6 @@
 #include "../main.h"
 
-int prior_comparison(char current, char top_stack) {
+int prior_comparison(const char current, const char top_stack) {
     int decision = LOW_PRIORITY;
     int priority_1 = determine_priority(current);
     int priority_2 = determine_priority(top_stack);
@@ -15,7 +15,7 @@ int prior_comparison(char current, char top_stack) {
     return decision;
 }
 
-int determine_priority(char operation) {
+int determine_priority(const char operation) {
     int priority = 0;
     if(check(operation, "+<")) {
         priority = 1;
