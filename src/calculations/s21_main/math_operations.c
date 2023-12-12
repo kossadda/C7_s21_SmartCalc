@@ -1,4 +1,5 @@
 #include "../main.h"
+#include <math.h>
 
 double math_nums(double first, double second, const char operation) {
     if(operation == ADD) {

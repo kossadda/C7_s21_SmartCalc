@@ -2,7 +2,6 @@
 #define FUNC_TESTS_H_
 
 #include <stdio.h>
-#include <math.h>
 #include <string.h>
 #include <stdlib.h>
 
@@ -11,10 +10,12 @@
 #define BRACKETS "()"
 #define NUMBERS "1234567890"
 #define RIGHT_ASSOCIATIVE "^"
+#define PI_NUMBER 3.1415926535897932
+#define EXP_NUMBER 2.7182818284590452
 
 enum clean_decision {
-    YES = 1,
     NO  = 0,
+    YES = 1,
 };
 
 enum prior_decisions {
@@ -28,6 +29,14 @@ enum brackets_mode {
     CLOSE_EXPRESSION = 1,
 };
 
+enum addition_mode {
+    STRING     = 0,
+    NUMBER     = 1,
+    ONE_CHAR   = 2,
+    TWO_CHAR   = 3,
+    THREE_CHAR = 4,
+};
+
 enum substitution {
     SIN        = 's'     , COS    = 'c'     , TAN     = 't', 
     ASIN       = 'S'     , ACOS   = 'C'     , ATAN    = 'T', 
@@ -36,6 +45,7 @@ enum substitution {
     CLOSE_BRCK = ')'     , ADD    = '+'     , SUB     = '<', 
     OPEN_BRCK  = '('     , MUL    = '*'     , DIV     = '/',   
     MOD        = 'm'     , UNAR   = 'u'     , MINUS   = '-',
+    VAR        = 'x'     , E      = 'e',
 };
 
 typedef struct {
@@ -50,8 +60,9 @@ typedef struct {
 
 // main funtions
 double calculation(char *str, double x);
-void validation_x(char *str, double x);
-void validation(char *str);
+void str_without_spaces(char *str);
+void input_varibles(char *str, double x);
+void func_substitution(char *str);
 double notation(char *str);
 
 // math_operations
