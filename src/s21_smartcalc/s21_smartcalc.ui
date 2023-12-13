@@ -363,7 +363,7 @@ QToolTip {
 </string>
         </property>
         <property name="text">
-         <string>📈</string>
+         <string>〽</string>
         </property>
        </widget>
       </item>

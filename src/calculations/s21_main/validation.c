@@ -171,7 +171,7 @@ static int check_trigonometric(char *true_str, int *count, const char *str, size
 }
 
 static void add_symbol(char *str, int *count, int mode, ...) {
-    va_list args = {0};
+    va_list args;
     va_start(args, mode);
 
     if(mode >= ONE_CHAR) {

@@ -3,8 +3,9 @@
 static void add_num_to_stack(num_stack *num, char *token);
 
 double notation(char *str) {
-    op_stack ops = {0};
-    num_stack num = {0};
+    op_stack ops;
+    num_stack num;
+    num.count = 0;
     ops.count = -1;
 
     char token[strlen(str) + 1];

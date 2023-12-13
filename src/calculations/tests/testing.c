@@ -5,7 +5,7 @@ int main() {
     // printf("%lf\n", calculation(str));
     // validation(str);
     // printf("%s\n", str);
-    char str[500] = "2^2^2*sin";
+    char str[500] = "x^2-10";
     // str_without_spaces(str);
     // input_varibles(str, -13.123);
 
@@ -15,5 +15,5 @@ int main() {
     // validation_x(str, -13.123);
     // validation(str, -5);
     // printf("%s\n", str);
-    printf("\n\n%lf\n\n\n", calculation(str, 1.51));
+    printf("\n\n%lf\n\n\n", calculation(str, 100));
 }

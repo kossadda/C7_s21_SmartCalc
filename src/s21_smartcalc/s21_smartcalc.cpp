@@ -40,7 +40,6 @@ s21_smartcalc::~s21_smartcalc()
     if(pushButton) delete pushButton;
     if(pushButton1) delete pushButton1;
     if(var) delete var;
-    if(graphWindow) delete graphWindow;
     delete ui;
 }
 
@@ -144,7 +143,11 @@ void s21_smartcalc::on_push_eq_clicked()
                 }
             }
             double res = graphWindow->calculate(ui->result->text(), var_point);
-            ui->result->setText(QString::number(res, 'g', countDigits(res) + 7));
+            if(res != __DBL_MAX__) {
+                ui->result->setText(QString::number(res, 'g', countDigits(res) + 7));
+            } else {
+                ui->result->setText("wrong expression");
+            }
         }
         clear_after = true;
     }
@@ -154,7 +157,7 @@ void s21_smartcalc::on_push_eq_clicked()
 void s21_smartcalc::save_history() {
     if(history_count + 1 != history.size()) {
         int list_size = history.size();
-        for(int i = 0; i < list_size; i++) {
+        for(int i = 0; i < list_size - history_count - 1; i++) {
             history.removeAt(history_count + 1);
         }
     }
@@ -373,10 +376,11 @@ void s21_smartcalc::on_push_dot_clicked()
 // Отмотка истории назад
 void s21_smartcalc::on_turn_back_clicked()
 {
-    if(history_count >= 0) {
-        ui->result->setText(history[history_count]);
+    if(history_count > 0) {
+        if(!(history_count + 1 == history.size() &&  ui->result->text() != history[history_count]))
         history_count--;
     }
+    ui->result->setText(history[history_count]);
 }
 
 // Перемотка истории вперед
@@ -411,7 +415,7 @@ void s21_smartcalc::on_graph_clicked()
         connect(pushButton, &QPushButton::clicked, this, &s21_smartcalc::on_actionPlotTriggered);
     } else {
         graphWindow->close();
-        on_graphWindowClosed();
+        // on_graphWindowClosed();
     }
 }
 
@@ -464,7 +468,6 @@ void s21_smartcalc::on_graphWindowClosed()
     }
     change_color(ui->graph, "orange");
     if (graphWindow) {
-        delete graphWindow;
         graphWindow = nullptr;
     }
 }
@@ -480,8 +483,15 @@ void s21_smartcalc::on_actionVarTriggered()
 void s21_smartcalc::on_actionPlotTriggered()
 {
     save_history();
-    graphWindow->build_plot(ui->result->text());
-    graphWindow->show();
+    if(graphWindow->check_symbol(ui->result->text(), '(') != graphWindow->check_symbol(ui->result->text(), ')')) {
+        ui->result->setText("wrong brackets");
+    } else if(graphWindow->calculate(ui->result->text(), 1) == __DBL_MAX__) {
+        ui->result->setText("wrong expression");
+    } else {
+        graphWindow->build_plot(ui->result->text());
+        graphWindow->show();
+    }
+    clear_after = true;
 }
 
 // Очистить поле ввода в случае предыдущих вычислений

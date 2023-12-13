@@ -95,4 +95,11 @@ int check(const char first_symbol, const char *search);
 int prior_comparison(const char first, const char second);
 int determine_priority(const char operation);
 
+// C++ secondary functions
+int number_position(char *str, int len);
+int minus_position(char *str, int len);
+void make_unar(char *str, char *ptr, int len, int pos_number);
+void clean_unar(char *str, char *ptr, int len, int pos_minus);
+char *unar_operation(char *str);
+
 #endif
