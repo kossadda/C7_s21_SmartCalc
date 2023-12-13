@@ -472,7 +472,7 @@ QPushButton:pressed {
         </property>
         <property name="font">
          <font>
-          <pointsize>16</pointsize>
+          <pointsize>13</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -538,7 +538,7 @@ QPushButton:pressed {
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>12</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -1462,7 +1462,7 @@ QPushButton:pressed {
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>12</pointsize>
          </font>
         </property>
         <property name="styleSheet">
