@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QCloseEvent>
 #include <QVector>
+#include "qcustomplot.h"
 
 namespace Ui {
 class graphics;
@@ -24,12 +25,23 @@ protected:
     void closeEvent(QCloseEvent *event) override;
 
 public slots:
+    void slotMousePress(QMouseEvent *event);
+    void slotMouseMove(QMouseEvent *event);
+
     void build_plot(QString expression);
     double calculate(QString expression, double variable);
     int check_symbol(QString expression, QChar symbol);
 
+private slots:
+    void on_trace_enable_clicked();
+
 private:
     Ui::graphics *ui;
+    QCPItemTracer *tracer;
+    int tracer_visible;
+    double last_step;
+    QString last_expr;
+
     QVector<double> x, y;
     double xBegin, xEnd, yBegin, yEnd, h, X;
     int N;

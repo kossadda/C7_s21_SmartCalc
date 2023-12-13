@@ -136,7 +136,7 @@ void s21_smartcalc::on_push_eq_clicked()
         } else if(graphWindow->check_symbol(ui->result->text(), '(') != graphWindow->check_symbol(ui->result->text(), ')')) {
             ui->result->setText("wrong brackets");
         } else {
-            int var_point = 0;
+            double var_point = 0;
             if(var) {
                 if(var->text().length() > 0) {
                     var_point = var->text().toDouble();
@@ -398,9 +398,9 @@ void s21_smartcalc::on_move_frwd_clicked()
 void s21_smartcalc::on_graph_clicked()
 {
     if(!graphWindow) {
-        QPoint currentPosGlobal = this->mapToGlobal(QPoint(-442, 0));
+        QPoint currentPosGlobal = this->mapToGlobal(QPoint(-550, 0));
         graphWindow = new graphics();
-        graphWindow->setGeometry(currentPosGlobal.x(), currentPosGlobal.y(), 440, 550);
+        graphWindow->setGeometry(currentPosGlobal.x(), currentPosGlobal.y(), 550, 550);
         graphWindow->show();
         connect(graphWindow, SIGNAL(graphWindowClosed()), this, SLOT(on_graphWindowClosed()));
 
@@ -482,16 +482,18 @@ void s21_smartcalc::on_actionVarTriggered()
 // Построить график
 void s21_smartcalc::on_actionPlotTriggered()
 {
-    save_history();
-    if(graphWindow->check_symbol(ui->result->text(), '(') != graphWindow->check_symbol(ui->result->text(), ')')) {
-        ui->result->setText("wrong brackets");
-    } else if(graphWindow->calculate(ui->result->text(), 1) == __DBL_MAX__) {
-        ui->result->setText("wrong expression");
-    } else {
-        graphWindow->build_plot(ui->result->text());
-        graphWindow->show();
+    if(ui->result->text().length() > 0) {
+        save_history();
+        if(graphWindow->check_symbol(ui->result->text(), '(') != graphWindow->check_symbol(ui->result->text(), ')')) {
+            ui->result->setText("wrong brackets");
+        } else if(graphWindow->calculate(ui->result->text(), 1) == __DBL_MAX__) {
+            ui->result->setText("wrong expression");
+        } else {
+            graphWindow->build_plot(ui->result->text());
+            graphWindow->show();
+        }
+        clear_after = true;
     }
-    clear_after = true;
 }
 
 // Очистить поле ввода в случае предыдущих вычислений
