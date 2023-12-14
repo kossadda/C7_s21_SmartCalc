@@ -21,6 +21,7 @@ graphics::graphics(QWidget *parent) :
     change_label_visible(false);
     connect(ui->Table, &QCustomPlot::mousePress, this, &graphics::slotMousePress);
     connect(ui->Table, &QCustomPlot::mouseMove, this, &graphics::slotMouseMove);
+    connect(ui->Table, &QCustomPlot::mouseWheel, this, &graphics::onMouseWheel);
 }
 
 graphics::~graphics()
@@ -55,6 +56,20 @@ int graphics::check_symbol(QString expression, QChar symbol)
     }
     return count_symbol;
 }
+
+void graphics::onMouseWheel(QWheelEvent *event)
+{
+    QCPRange yRange = ui->Table->yAxis->range();
+    QCPRange xRange = ui->Table->xAxis->range();
+
+    if(ui->Table->graphCount() > 0) {
+        if (yRange.size() > yEnd - yBegin || xRange.size() > xEnd - xBegin) {
+            ui->Table->xAxis->setRange(xBegin, xEnd);
+            ui->Table->yAxis->setRange(yBegin, yEnd);
+        }
+    }
+}
+
 
 void graphics::slotMousePress(QMouseEvent *event)
 {
@@ -107,7 +122,7 @@ void graphics::build_plot(QString expression)
         xEnd = ui->x_end->text().toDouble();
         yBegin = ui->y_beg->text().toDouble();
         yEnd = ui->y_end->text().toDouble() + h;
-        ui->Table->xAxis->setRange(xBegin - 1, xEnd + 1);
+        ui->Table->xAxis->setRange(xBegin, xEnd);
         ui->Table->yAxis->setRange(yBegin, yEnd);
 
         N = (xEnd - xBegin)/h + 2;
@@ -116,12 +131,21 @@ void graphics::build_plot(QString expression)
         {
             result = calculate(expression, X);
             x.push_back(X);
-            y.push_back(result);
+            if(result < yEnd && result > yBegin) {
+                y.push_back(result);
+            } else {
+                y.push_back(std::nan(""));
+            }
         }
 
         ui->Table->addGraph(ui->Table->xAxis, ui->Table->yAxis);
         ui->Table->graph(0)->setData(x, y);
+
         ui->Table->replot();
+        ui->Table->setInteraction(QCP::iRangeZoom, true);
+        if(!ui->x_trace->isVisible()) {
+            ui->Table->setInteraction(QCP::iRangeDrag, true);
+        }
     }
 }
 
@@ -133,9 +157,11 @@ void graphics::on_trace_enable_clicked()
         }
         if(ui->x_trace->isVisible()) {
             ui->trace_enable->setStyleSheet("QPushButton {background-color: rgb(0, 119, 171);} QPushButton:pressed {background-color: rgb(175, 97, 33);}");
+            ui->Table->setInteraction(QCP::iRangeDrag, true);
             change_label_visible(false);
         } else {
             ui->trace_enable->setStyleSheet("QPushButton {background-color: rgb(175, 97, 33);} QPushButton:pressed {background-color: rgb(50, 50, 50);}");
+            ui->Table->setInteraction(QCP::iRangeDrag, false);
             change_label_visible(true);
             ui->x_trace->setText("0");
             ui->y_trace->setText("0");
@@ -145,6 +171,7 @@ void graphics::on_trace_enable_clicked()
             tracer = new QCPItemTracer(ui->Table);
             tracer->setGraph(ui->Table->graph(0));
             ui->trace_enable->setStyleSheet("QPushButton {background-color: rgb(175, 97, 33);} QPushButton:pressed {background-color: rgb(50, 50, 50);}");
+            ui->Table->setInteraction(QCP::iRangeDrag, false);
             change_label_visible(true);
         }
     }
