@@ -29,16 +29,16 @@ VAL_CHECK=--num-callers --leak-check=full --show-leak-kinds=definite
 
 all: install_by_qmake run
 
-install: uninstall
-	@read -p "Выберите способ установки (qmake/cmake): " choice; \
-	if [ "$$choice" = "qmake" ]; then \
-		$(MAKE) install_by_qmake; \
-	elif [ "$$choice" = "cmake" ]; then \
-		$(MAKE) install_by_cmake; \
-	else \
-		echo "Неверный выбор. Установка отменена."; \
-	fi 
-	@rm -rf $(TRASH)
+# install: uninstall
+# 	@read -p "Выберите способ установки (qmake/cmake): " choice; \
+# 	if [ "$$choice" = "qmake" ]; then \
+# 		$(MAKE) install_by_qmake; \
+# 	elif [ "$$choice" = "cmake" ]; then \
+# 		$(MAKE) install_by_cmake; \
+# 	else \
+# 		echo "Неверный выбор. Установка отменена."; \
+# 	fi
+# 	@rm -rf $(TRASH)
 
 install_by_qmake:
 # 	$(MAKE) install_qmake
@@ -46,8 +46,8 @@ install_by_qmake:
 	@cd $(MAIN_FOLD) && qmake && make -s
 	@mv $(MAIN_FOLD)/$(PROG) $(BUILD)/$(PROG)
 
-install_by_cmake:
-	$(MAKE) install_cmake
+install:
+# 	$(MAKE) install_cmake
 	@mkdir -p $(BUILD)
 	@cd $(BUILD) && cmake .. && make
 
@@ -87,7 +87,7 @@ gcov_report: uninstall
 	@rm -rf $(EXE) *.gc*
 	xdg-open $(GCOV)/coverage.html
 
-valgrind: install_by_qmake
+valgrind: install
 	@valgrind $(VAL) ./$(BUILD)/$(PROG)
 
 # > val_test.txt 2>&1

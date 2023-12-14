@@ -31,6 +31,7 @@ public slots:
     void build_plot(QString expression);
     double calculate(QString expression, double variable);
     int check_symbol(QString expression, QChar symbol);
+    void change_label_visible(bool decision);
 
 private slots:
     void on_trace_enable_clicked();
@@ -38,8 +39,8 @@ private slots:
 private:
     Ui::graphics *ui;
     QCPItemTracer *tracer;
-    int tracer_visible;
     double last_step;
+    int tracer_visible;
     QString last_expr;
 
     QVector<double> x, y;
