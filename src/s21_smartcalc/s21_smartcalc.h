@@ -20,6 +20,9 @@ public:
     s21_smartcalc(QWidget *parent = nullptr);
     ~s21_smartcalc();
 
+protected:
+    void resizeEvent(QResizeEvent *event) override;
+
 private slots:
     void change_window(int index);
     void change_deposit(int index);
