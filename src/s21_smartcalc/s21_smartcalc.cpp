@@ -14,6 +14,7 @@ s21_smartcalc::s21_smartcalc(QWidget *parent)
     , pushButton1(nullptr)
     , var(nullptr)
     , graphWindow(nullptr)
+    , listWidget(nullptr)
 {
     ui->setupUi(this);
 
@@ -28,11 +29,35 @@ s21_smartcalc::s21_smartcalc(QWidget *parent)
     connect(ui->push_8, SIGNAL(clicked()), this, SLOT(push_nums()));
     connect(ui->push_9, SIGNAL(clicked()), this, SLOT(push_nums()));
 
-    ui->comboBox->addItem("Инженерный");
-    ui->comboBox->addItem("Депозитный");
-    ui->comboBox->addItem("Кредитный");
+    ui->switch_window->addItem("Инженерный");
+    ui->switch_window->addItem("Депозитный");
+    ui->switch_window->addItem("Кредитный");
 
-    connect(ui->comboBox, SIGNAL(activated(int)), this, SLOT(change_window(int)));
+    ui->history_info_label->setVisible(false);
+    ui->history_widget->setVisible(false);
+
+    connect(ui->switch_window, SIGNAL(activated(int)), this, SLOT(change_window(int)));
+    connect(this, &s21_smartcalc::resized, this, &s21_smartcalc::onResized);
+}
+
+void s21_smartcalc::onResized(const QSize &newSize)
+{
+    int maxWidth = 700;
+
+    if (newSize.width() > maxWidth && !ui->history_info_label->isVisible()) {
+        ui->history_info_label->setVisible(true);
+        ui->history_widget->setVisible(true);
+    } else if (newSize.width() <= maxWidth && ui->history_info_label->isVisible()) {
+        ui->history_info_label->setVisible(false);
+        ui->history_widget->setVisible(false);
+    }
+}
+
+void s21_smartcalc::resizeEvent(QResizeEvent *event)
+{
+    QMainWindow::resizeEvent(event);
+
+    emit resized(event->size());
 }
 
 s21_smartcalc::~s21_smartcalc()
@@ -239,7 +264,7 @@ void s21_smartcalc::createPlotButton(QPushButton *button, int row)
 {
     button->setMinimumSize(80, 50);
     button->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-    ui->buttons_layer->addWidget(button, row, 4, 1, 1);
+    ui->buttons->addWidget(button, row, 4, 1, 1);
 }
 
 // Построить график
@@ -274,7 +299,7 @@ void s21_smartcalc::on_variable_clicked()
             change_color(pushButton, "green");
         }
         change_color(pushButton1, "green");
-        ui->upline->insertWidget(2, var);
+        ui->settings->insertWidget(2, var);
     } else {
         change_color(ui->variable, "orange");
         delete var;
@@ -320,16 +345,20 @@ void s21_smartcalc::save_history() {
         int list_size = history.size();
         for(int i = 0; i < list_size - history_count - 1; i++) {
             history.removeAt(history_count + 1);
+            QListWidgetItem *itemToRemove = ui->history_widget->takeItem(history_count + 1);
+            delete itemToRemove;
         }
     }
     if(history_count >= 0) {
         QString check = history.at(history_count);
         if(check != ui->result->text()) {
             history << ui->result->text();
+            ui->history_widget->addItem(ui->result->text());
             history_count++;
         }
     } else {
         history << ui->result->text();
+        ui->history_widget->addItem(ui->result->text());
         history_count++;
     }
 }

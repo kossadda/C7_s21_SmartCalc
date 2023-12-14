@@ -16,6 +16,9 @@ class s21_smartcalc : public QMainWindow
 {
     Q_OBJECT
 
+signals:
+    void resized(const QSize &newSize);
+
 public:
     s21_smartcalc(QWidget *parent = nullptr);
     ~s21_smartcalc();
@@ -24,6 +27,7 @@ protected:
     void resizeEvent(QResizeEvent *event) override;
 
 private slots:
+    void onResized(const QSize &newSize);
     void change_window(int index);
     void change_deposit(int index);
     void change_credit(int index);
@@ -74,6 +78,7 @@ private:
     QLineEdit *var;
     QStringList history;
     graphics *graphWindow;
+    QListWidget* listWidget;
     bool clear_after = false;
     int history_count = -1;
 };
