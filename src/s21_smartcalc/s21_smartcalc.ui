@@ -180,7 +180,7 @@
           <property name="font">
            <font>
             <pointsize>15</pointsize>
-            <bold>true</bold>
+            <bold>false</bold>
            </font>
           </property>
           <property name="styleSheet">

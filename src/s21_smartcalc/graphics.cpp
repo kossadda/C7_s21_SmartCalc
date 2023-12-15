@@ -57,7 +57,7 @@ int graphics::check_symbol(QString expression, QChar symbol)
     return count_symbol;
 }
 
-void graphics::onMouseWheel(QWheelEvent *event)
+void graphics::onMouseWheel()
 {
     QCPRange yRange = ui->Table->yAxis->range();
     QCPRange xRange = ui->Table->xAxis->range();
@@ -156,11 +156,11 @@ void graphics::on_trace_enable_clicked()
             tracer->setVisible(!tracer->visible());
         }
         if(ui->x_trace->isVisible()) {
-            ui->trace_enable->setStyleSheet("QPushButton {background-color: rgb(0, 119, 171);} QPushButton:pressed {background-color: rgb(175, 97, 33);}");
+            ui->trace_enable->setStyleSheet("QPushButton {background-color: rgb(175, 97, 33); border-radius: 10px; } QPushButton:pressed {background-color: rgb(0, 146, 209);}");
             ui->Table->setInteraction(QCP::iRangeDrag, true);
             change_label_visible(false);
         } else {
-            ui->trace_enable->setStyleSheet("QPushButton {background-color: rgb(175, 97, 33);} QPushButton:pressed {background-color: rgb(50, 50, 50);}");
+            ui->trace_enable->setStyleSheet("QPushButton {background-color: rgb(0, 146, 209); border-radius: 10px; } QPushButton:pressed {background-color: rgb(175, 97, 33);}");
             ui->Table->setInteraction(QCP::iRangeDrag, false);
             change_label_visible(true);
             ui->x_trace->setText("0");
@@ -170,7 +170,7 @@ void graphics::on_trace_enable_clicked()
         if(ui->Table->graphCount() > 0) {
             tracer = new QCPItemTracer(ui->Table);
             tracer->setGraph(ui->Table->graph(0));
-            ui->trace_enable->setStyleSheet("QPushButton {background-color: rgb(175, 97, 33);} QPushButton:pressed {background-color: rgb(50, 50, 50);}");
+            ui->trace_enable->setStyleSheet("QPushButton {background-color: rgb(0, 146, 209); border-radius: 10px; } QPushButton:pressed {background-color: rgb(175, 97, 33);}");
             ui->Table->setInteraction(QCP::iRangeDrag, false);
             change_label_visible(true);
         }

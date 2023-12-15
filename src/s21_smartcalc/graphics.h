@@ -27,7 +27,7 @@ protected:
 public slots:
     void slotMousePress(QMouseEvent *event);
     void slotMouseMove(QMouseEvent *event);
-    void onMouseWheel(QWheelEvent *event);
+    void onMouseWheel();
 
     void build_plot(QString expression);
     double calculate(QString expression, double variable);
