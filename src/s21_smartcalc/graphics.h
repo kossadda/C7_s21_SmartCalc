@@ -43,6 +43,7 @@ private:
     double last_step;
     int tracer_visible;
     QString last_expr;
+    int graph_nums;
 
     QVector<double> x, y;
     double xBegin, xEnd, yBegin, yEnd, h, X;

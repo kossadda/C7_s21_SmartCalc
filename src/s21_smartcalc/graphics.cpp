@@ -15,7 +15,8 @@ graphics::graphics(QWidget *parent) :
     ui(new Ui::graphics),
     tracer(nullptr),
     last_step(0.01),
-    tracer_visible(0)
+    tracer_visible(0),
+    graph_nums(0)
 {
     ui->setupUi(this);
     change_label_visible(false);
@@ -112,7 +113,9 @@ void graphics::build_plot(QString expression)
         if(tracer && last_expr != expression) {
             tracer_visible = 1;
         }
+        double prev = calculate(expression, xBegin);
         double result = 0;
+        double diff = 0;
         ui->Table->clearItems();
         x.clear();
         y.clear();
@@ -130,12 +133,14 @@ void graphics::build_plot(QString expression)
         for(X = xBegin; X <= xEnd; X += h)
         {
             result = calculate(expression, X);
+            diff = fabs(result - prev);
             x.push_back(X);
-            if(result < yEnd && result > yBegin) {
+            if(result < yEnd && result > yBegin && diff < 10) {
                 y.push_back(result);
             } else {
                 y.push_back(std::nan(""));
             }
+            prev = 0;
         }
 
         ui->Table->addGraph(ui->Table->xAxis, ui->Table->yAxis);
@@ -148,6 +153,60 @@ void graphics::build_plot(QString expression)
         }
     }
 }
+
+// void graphics::build_plot(QString expression)
+// {
+//     if(ui->step->text().toDouble() != 0) {
+//         if(tracer && last_expr != expression) {
+//             tracer_visible = 1;
+//         }
+//         double result = 0;
+//         ui->Table->clearItems();
+//         ui->Table->clearGraphs();
+//         graph_nums = 0;
+
+//         h = ui->step->text().toDouble();
+//         xBegin = ui->x_beg->text().toDouble();
+//         xEnd = ui->x_end->text().toDouble();
+//         yBegin = ui->y_beg->text().toDouble();
+//         yEnd = ui->y_end->text().toDouble() + h;
+//         ui->Table->xAxis->setRange(xBegin, xEnd);
+//         ui->Table->yAxis->setRange(yBegin, yEnd);
+
+//         N = (xEnd - xBegin)/h + 2;
+//         X = xBegin;
+//         bool graph_this = 0;
+
+//         for(; X <= xEnd;)
+//         {
+//             QVector<double> x, y;
+//             for( ; X <= xEnd ; ) {
+//                 X += h;
+//                 result = calculate(expression, X);
+//                 if(result < yEnd && result > yBegin) {
+//                     x.push_back(X);
+//                     y.push_back(result);
+//                 } else {
+//                     graph_this = 1;
+//                     break;
+//                 }
+//             }
+//             if(graph_this && !x.isEmpty()) {
+//                 allX.push_back(x);
+//                 allY.push_back(y);
+//                 ui->Table->addGraph(ui->Table->xAxis, ui->Table->yAxis);
+//                 ui->Table->graph(graph_nums)->setData(allX.back(), allY.back());
+//                 graph_nums++;
+//                 graph_this = 0;
+//             }
+//         }
+//         ui->Table->replot();
+//         ui->Table->setInteraction(QCP::iRangeZoom, true);
+//         if(!ui->x_trace->isVisible()) {
+//             ui->Table->setInteraction(QCP::iRangeDrag, true);
+//         }
+//     }
+// }
 
 void graphics::on_trace_enable_clicked()
 {
