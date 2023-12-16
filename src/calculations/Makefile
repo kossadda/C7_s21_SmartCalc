@@ -1,3 +1,9 @@
+credit:
+	rm -rf test
+	clear
+	@gcc -Wall -Wextra -g s21_credit/main.c -o test -lm
+	@./test
+
 val: 
 	rm -rf test
 	clear

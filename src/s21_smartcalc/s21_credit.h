@@ -18,6 +18,8 @@ public:
 private slots:
     void change_credit(int index);
 
+    void on_calculate_clicked();
+
 private:
     Ui::s21_credit *ui;
 };

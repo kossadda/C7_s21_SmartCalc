@@ -135,12 +135,12 @@ void graphics::build_plot(QString expression)
             result = calculate(expression, X);
             diff = fabs(result - prev);
             x.push_back(X);
-            if(result < yEnd && result > yBegin && diff < 10) {
+            if(result < yEnd && result > yBegin && diff < 200) {
                 y.push_back(result);
             } else {
                 y.push_back(std::nan(""));
             }
-            prev = 0;
+            prev = result;
         }
 
         ui->Table->addGraph(ui->Table->xAxis, ui->Table->yAxis);

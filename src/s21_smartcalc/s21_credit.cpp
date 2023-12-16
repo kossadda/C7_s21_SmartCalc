@@ -3,6 +3,10 @@
 #include "s21_smartcalc.h"
 #include "ui_s21_credit.h"
 
+extern "C" {
+#include "../calculations/s21_credit/main.c"
+}
+
 s21_credit::s21_credit(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::s21_credit)
@@ -25,6 +29,8 @@ s21_credit::s21_credit(QWidget *parent)
 
     ui->time_box->addItem("лет");
     ui->time_box->addItem("месяцев");
+
+    ui->date_credit->setDate(QDate::currentDate());
 
     connect(ui->creditBox, SIGNAL(activated(int)), this, SLOT(change_credit(int)));
 }
@@ -52,3 +58,20 @@ void s21_credit::change_credit(int index)
         newWindow->show();
     }
 }
+
+void s21_credit::on_calculate_clicked()
+{
+    long double amount = ui->amount->text().toDouble();
+    int months = ui->credit_time->text().toInt();
+    long double rate = ui->percent->text().toDouble();
+    int days_of_months[months];
+    // QDate temp = ui->date_credit->date();;
+    QDate current_day = ui->date_credit->date();
+    for(int i = 0; i < months; i++) {
+        days_of_months[i] = current_day.daysInMonth();
+        current_day = current_day.addMonths(1);
+    }
+    long double results[months][4];
+    calculate_credit(amount, months, days_of_months, rate, results);
+}
+

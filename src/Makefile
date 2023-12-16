@@ -27,7 +27,7 @@ PROG=s21_smartcalc
 VAL_CHECK=--num-callers --leak-check=full --show-leak-kinds=definite
 
 
-all: install_by_qmake run
+all: install run
 
 # install: uninstall
 # 	@read -p "Выберите способ установки (qmake/cmake): " choice; \
