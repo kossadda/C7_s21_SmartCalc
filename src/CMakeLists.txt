@@ -21,12 +21,14 @@ set(PROJECT_SOURCES
     ./s21_smartcalc/unar_operation.c
     ./s21_smartcalc/my_widget.cpp
     ./s21_smartcalc/graphics.cpp
+    ./s21_smartcalc/s21_credit_table.cpp
     ./calculations/s21_main/checks.c
     ./calculations/s21_main/comparison.c
     ./calculations/s21_main/main.c
     ./calculations/s21_main/math_operations.c
     ./calculations/s21_main/notation.c
     ./calculations/s21_main/validation.c
+    ./calculations/s21_credit/main.c
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

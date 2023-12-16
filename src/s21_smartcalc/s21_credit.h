@@ -2,7 +2,7 @@
 #define S21_CREDIT_H
 
 #include <QMainWindow>
-
+#include "s21_credit_table.h"
 namespace Ui {
 class s21_credit;
 }
@@ -17,11 +17,11 @@ public:
 
 private slots:
     void change_credit(int index);
-
     void on_calculate_clicked();
 
 private:
     Ui::s21_credit *ui;
+    s21_credit_table *tableWindow;
 };
 
 #endif // S21_CREDIT_H

@@ -13,6 +13,7 @@ SOURCES += \
     my_widget.cpp \
     qcustomplot.cpp \
     s21_credit.cpp \
+    s21_credit_table.cpp \
     s21_deposit.cpp \
     s21_smartcalc.cpp
 
@@ -21,6 +22,7 @@ HEADERS += \
     my_widget.h \
     qcustomplot.h \
     s21_credit.h \
+    s21_credit_table.h \
     s21_deposit.h \
     s21_smartcalc.h
 
@@ -28,6 +30,7 @@ FORMS += \
     graphics.ui \
     my_widget.ui \
     s21_credit.ui \
+    s21_credit_table.ui \
     s21_deposit.ui \
     s21_smartcalc.ui
 

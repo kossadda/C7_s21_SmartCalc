@@ -8,7 +8,6 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     setlocale(LC_NUMERIC, "C");
     s21_credit w;
-    a.setStyle(QStyleFactory::create("Fusion"));
     w.show();
     return a.exec();
 }

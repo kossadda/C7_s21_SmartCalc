@@ -513,6 +513,7 @@ border: 0px;</string>
           <property name="styleSheet">
            <string notr="true">QPushButton {
     background-color: rgb(50, 50, 50);
+	padding-top: 6px;
 }
 
 QPushButton:pressed {
@@ -520,7 +521,7 @@ QPushButton:pressed {
 }</string>
           </property>
           <property name="text">
-           <string>×</string>
+           <string>*</string>
           </property>
          </widget>
         </item>
@@ -587,7 +588,7 @@ QPushButton:pressed {
 }</string>
           </property>
           <property name="text">
-           <string>÷</string>
+           <string>/</string>
           </property>
          </widget>
         </item>
@@ -607,7 +608,7 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>14</pointsize>
            </font>
           </property>
           <property name="styleSheet">
@@ -1366,7 +1367,7 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>13</pointsize>
            </font>
           </property>
           <property name="styleSheet">
@@ -1511,7 +1512,7 @@ QPushButton:pressed {
 }</string>
           </property>
           <property name="text">
-           <string>x²</string>
+           <string>^</string>
           </property>
          </widget>
         </item>

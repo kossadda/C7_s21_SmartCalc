@@ -94,7 +94,7 @@ void graphics::slotMousePress(QMouseEvent *event)
 
         last_step = ui->step->text().toDouble();
         ui->x_trace->setText(QString::number(tracer->position->key()));
-        ui->y_trace->setText(QString::number(tracer->position->value()));
+        ui->y_trace->setText(QString::number(tracer->position->value(), 'f', 5));
 
         ui->Table->replot();
     }
@@ -113,6 +113,8 @@ void graphics::build_plot(QString expression)
         if(tracer && last_expr != expression) {
             tracer_visible = 1;
         }
+        ui->x_trace->setText("0");
+        ui->y_trace->setText("0");
         double prev = calculate(expression, xBegin);
         double result = 0;
         double diff = 0;
@@ -222,8 +224,6 @@ void graphics::on_trace_enable_clicked()
             ui->trace_enable->setStyleSheet("QPushButton {background-color: rgb(0, 146, 209); border-radius: 10px; } QPushButton:pressed {background-color: rgb(175, 97, 33);}");
             ui->Table->setInteraction(QCP::iRangeDrag, false);
             change_label_visible(true);
-            ui->x_trace->setText("0");
-            ui->y_trace->setText("0");
         }
     } else {
         if(ui->Table->graphCount() > 0) {
