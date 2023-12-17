@@ -407,6 +407,21 @@ QPushButton:pressed {
     <property name="styleSheet">
      <string notr="true">QComboBox { background-color: rgb(30, 27, 6); border: 15px; text-align: center; } QComboBox::drop-down { border: none; }</string>
     </property>
+    <item>
+     <property name="text">
+      <string>Deposit</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Engineer</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Credit</string>
+     </property>
+    </item>
    </widget>
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">

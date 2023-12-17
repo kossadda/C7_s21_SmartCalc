@@ -19,25 +19,6 @@ s21_credit::s21_credit(QWidget *parent)
     tableWindow->getUi()->table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     // ui->date_credit->setDate(QDate::currentDate());
 
-    ui->creditBox->addItem("Кредитный");
-    ui->creditBox->addItem("Инженерный");
-    ui->creditBox->addItem("Депозитный");
-
-    ui->sum_box->addItem(" ₽ - RUB");
-    ui->sum_box->addItem(" $ - USD");
-    ui->sum_box->addItem(" € - EUR");
-    ui->sum_box->addItem(" ¥ - CNY");
-    ui->sum_box->addItem(" ₹ - INR");
-    ui->sum_box->addItem(" ₸ - KZT");
-    ui->sum_box->addItem(" ¥ - JPY");
-    ui->sum_box->addItem(" ₣ - CHF");
-    ui->sum_box->addItem(" ฿ - THB");
-    ui->sum_box->addItem(" ₾ - GEL");
-
-    ui->time_box->addItem("лет");
-    ui->time_box->addItem("месяцев");
-
-
     connect(ui->creditBox, SIGNAL(activated(int)), this, SLOT(change_credit(int)));
 }
 
@@ -68,70 +49,68 @@ void s21_credit::change_credit(int index)
     }
 }
 
+void s21_credit::add_item_to_table(int row, int column, QString value) {
+    QTableWidgetItem *item = new QTableWidgetItem(value);
+    item->setTextAlignment(Qt::AlignCenter);
+    tableWindow->getUi()->table->setItem(row, column, item);
+}
+
 void s21_credit::on_calculate_clicked()
 {
-    long double amount = ui->amount->text().toDouble();
     int months = ui->credit_time->text().toInt();
+    long double amount = ui->amount->text().toDouble();
     long double rate = ui->percent->text().toDouble();
-    int month_min_count = (months > 12) ? months : 12;
-    int days_of_months[month_min_count] = {0};
-    long double results[months][4] = {0};
+    long double results[months + 1][4] = {0};
     long double summary_res[3] = {0};
 
+    int days_of_months[months + 1][2] = {0};
     QDate current_day = ui->date_credit->date();
-    for(int i = 0; i < month_min_count; i++) {
-        days_of_months[i] = current_day.daysInMonth();
+    for(int i = 0; i <= months; i++) {
+        days_of_months[i][0] = current_day.daysInMonth();
+        days_of_months[i][1] = current_day.isLeapYear(current_day.year());
+        if(current_day.month() == 12) {
+            QDate check_leap = current_day.addMonths(1);
+            if(!days_of_months[i][1] && check_leap.isLeapYear(check_leap.year())) {
+                days_of_months[i][0] = current_day.day();
+                days_of_months[i][1] = 2;
+            } else if(days_of_months[i][1]) {
+                days_of_months[i][0] = current_day.day();
+                days_of_months[i][1] = 3;
+            }
+        }
         current_day = current_day.addMonths(1);
     }
-    calculate_credit(amount, months, days_of_months, rate, results);
+
+    calculate_credit(amount, months, days_of_months, rate, results, summary_res);
+
     if(tableWindow) {
         QPoint currentPosGlobal = this->mapToGlobal(QPoint(-700, 0));
         tableWindow->setGeometry(currentPosGlobal.x(), currentPosGlobal.y(), 700, 550);
         tableWindow->show();
-        tableWindow->getUi()->table->setRowCount(months + 2);
-        current_day = ui->date_credit->date();
-        QTableWidgetItem *first_date = new QTableWidgetItem(current_day.toString("dd.MM.yyyy"));
-        QTableWidgetItem *first_date_info = new QTableWidgetItem("Issuance of credit");
-        first_date->setTextAlignment(Qt::AlignCenter);
-        first_date_info->setTextAlignment(Qt::AlignCenter);
-        tableWindow->getUi()->table->setItem(0, 0, first_date);
-        tableWindow->getUi()->table->setItem(0, 1, first_date_info);
-        current_day = current_day.addMonths(1);
+        tableWindow->getUi()->table->setRowCount(months);
+        current_day = ui->date_credit->date().addMonths(1);
+        int additional_month = 0;
 
-        for(int i = 0; i < months; i++) {
-            QTableWidgetItem *dates = new QTableWidgetItem(current_day.toString("dd.MM.yyyy"));
-            dates->setTextAlignment(Qt::AlignCenter);
-            tableWindow->getUi()->table->setItem(i + 1, 0, dates);
+        for(int i = 0; i < months + additional_month; i++) {
+            add_item_to_table(i, 0, current_day.toString("dd.MM.yyyy"));
             for(int j = 0; j < 4; j++) {
-                QTableWidgetItem *data = new QTableWidgetItem(QString::number(static_cast<double>(results[i][j]), 'f', 2));
-                data->setTextAlignment(Qt::AlignCenter);
-                tableWindow->getUi()->table->setItem(i + 1, j + 1, data);
-                if(j < 3) {
-                    summary_res[j] += results[i][j];
-                }
+                add_item_to_table(i, j+1, QString::number(results[i][j], 'f', 2));
             }
             current_day = current_day.addMonths(1);
+            if(i == months - 1 && results[i][3] > 0) {
+                additional_month = 1;
+                tableWindow->getUi()->table->setRowCount(months + additional_month);
+            }
         }
         for(int i = 0; i < 3; i++) {
-            QString number;
+            QString number = QString::number(static_cast<double>(summary_res[i]), 'f', 2);
             if(i == 0) {
-                number += "Total paid\n";
-            } else if(i == 1) {
-                number += "Debt paid\n";
-            } else if(i == 2) {
-                number += "Interest paid\n";
+                tableWindow->getUi()->total_info->setText("<html>Total paid: " + number + "</html>");
+            } else if (i == 1) {
+                tableWindow->getUi()->debt_info->setText("<html>Debt paid: " + number + "</html>");
+            } else {
+                tableWindow->getUi()->interest_info->setText("<html>Interest paid: " + number + "</html>");
             }
-            number += QString::number(static_cast<double>(summary_res[i]), 'f', 2);
-            QTableWidgetItem *sums = new QTableWidgetItem(number);
-            sums->setTextAlignment(Qt::AlignCenter);
-            tableWindow->getUi()->table->setItem(months + 1, i + 1, sums);
-        }
-        int row_height = 30;
-        for (int row = 0; row < months + 2; row++) {
-            if(row == months + 1) {
-                row_height = 60;
-            }
-            tableWindow->getUi()->table->setRowHeight(row, row_height);
         }
     }
 }

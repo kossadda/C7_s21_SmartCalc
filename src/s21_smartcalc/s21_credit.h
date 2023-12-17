@@ -18,6 +18,7 @@ public:
 private slots:
     void change_credit(int index);
     void on_calculate_clicked();
+    void add_item_to_table(int row, int column, QString value);
 
 private:
     Ui::s21_credit *ui;

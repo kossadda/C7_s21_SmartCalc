@@ -29,10 +29,6 @@ s21_smartcalc::s21_smartcalc(QWidget *parent)
     connect(ui->push_8, SIGNAL(clicked()), this, SLOT(push_nums()));
     connect(ui->push_9, SIGNAL(clicked()), this, SLOT(push_nums()));
 
-    ui->switch_window->addItem("Инженерный");
-    ui->switch_window->addItem("Депозитный");
-    ui->switch_window->addItem("Кредитный");
-
     ui->history_info_label->setVisible(false);
     ui->history_widget->setVisible(false);
 

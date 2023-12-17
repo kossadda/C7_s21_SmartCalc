@@ -8,9 +8,6 @@ s21_deposit::s21_deposit(QWidget *parent)
     , ui(new Ui::s21_deposit)
 {
     ui->setupUi(this);
-    ui->depositBox->addItem("Депозитный");
-    ui->depositBox->addItem("Инженерный");
-    ui->depositBox->addItem("Кредитный");
 
     connect(ui->depositBox, SIGNAL(activated(int)), this, SLOT(change_deposit(int)));
 

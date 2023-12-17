@@ -46,7 +46,7 @@
     </size>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 255);</string>
+    <string notr="true">background-color: rgb(30, 27, 6);</string>
    </property>
    <widget class="QPushButton" name="calculate">
     <property name="geometry">
@@ -90,7 +90,7 @@ QPushButton:pressed {
 }</string>
     </property>
     <property name="text">
-     <string>Рассчитать</string>
+     <string>Calculate</string>
     </property>
    </widget>
    <widget class="QComboBox" name="creditBox">
@@ -128,10 +128,10 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QComboBox {
-	background-color: rgb(255, 255, 255);
+	background-color: rgb(30, 27, 6);
 	border: 15px; 
 	text-align: center;
-	color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
 }
 
 QComboBox::drop-down {
@@ -147,6 +147,21 @@ QComboBox::drop-down {
     <property name="frame">
      <bool>true</bool>
     </property>
+    <item>
+     <property name="text">
+      <string>Credit</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Engineer</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Deposit</string>
+     </property>
+    </item>
    </widget>
    <widget class="QLineEdit" name="amount">
     <property name="geometry">
@@ -181,13 +196,14 @@ QComboBox::drop-down {
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(0, 0, 0);</string>
+     <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>569000</string>
+     <string>16235854635</string>
     </property>
     <property name="placeholderText">
-     <string>Сумма кредита</string>
+     <string>Amount of credit</string>
     </property>
    </widget>
    <widget class="QComboBox" name="sum_box">
@@ -218,8 +234,59 @@ QComboBox::drop-down {
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(0, 0, 0);</string>
+     <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
     </property>
+    <item>
+     <property name="text">
+      <string> $ - USD</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string> ₽ - RUB</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string> € - EUR</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string> ¥ - CNY</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string> ₹ - INR</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string> ₸ - KZT</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string> ¥ - JPY</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string> ₣ - CHF</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string> ฿ - THB</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string> ₾ - GEL</string>
+     </property>
+    </item>
    </widget>
    <widget class="QLineEdit" name="credit_time">
     <property name="geometry">
@@ -254,13 +321,14 @@ QComboBox::drop-down {
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(0, 0, 0);</string>
+     <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>33</string>
+     <string>556</string>
     </property>
     <property name="placeholderText">
-     <string>Срок кредита</string>
+     <string>Credit term</string>
     </property>
    </widget>
    <widget class="QComboBox" name="time_box">
@@ -291,8 +359,19 @@ QComboBox::drop-down {
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(0, 0, 0);</string>
+     <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
     </property>
+    <item>
+     <property name="text">
+      <string>years</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>months</string>
+     </property>
+    </item>
    </widget>
    <widget class="QLineEdit" name="percent">
     <property name="geometry">
@@ -315,13 +394,14 @@ QComboBox::drop-down {
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(0, 0, 0);</string>
+     <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>12</string>
+     <string>15.874</string>
     </property>
     <property name="placeholderText">
-     <string>Процентная ставка</string>
+     <string>Interest rate</string>
     </property>
    </widget>
    <widget class="QLabel" name="info_label_2">
@@ -345,7 +425,7 @@ QComboBox::drop-down {
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(0, 0, 0);</string>
+     <string notr="true">color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>%</string>
@@ -384,11 +464,11 @@ QComboBox::drop-down {
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(0, 0, 0);</string>
+     <string notr="true">background-color: rgb(30, 27, 6);
+color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>Тип ежемесячных платежей</string>
+     <string>Type of monthly payments</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -435,11 +515,11 @@ QRadioButton::indicator:checked {
 }
 
 QRadioButton{
-	color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
 }</string>
     </property>
     <property name="text">
-     <string>Аннуитетные</string>
+     <string>Annuity</string>
     </property>
    </widget>
    <widget class="QRadioButton" name="payment_type_2">
@@ -484,12 +564,12 @@ QRadioButton::indicator:checked {
 }
 
 QRadioButton{
-	color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
 }
 </string>
     </property>
     <property name="text">
-     <string>Дифференцированные</string>
+     <string>Differentiated</string>
     </property>
    </widget>
    <widget class="Line" name="line">
@@ -526,7 +606,7 @@ QRadioButton{
      </font>
     </property>
     <property name="toolTip">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Аннуитетный платеж - вариант ежемесячного платежа по кредиту, когда размер ежемесячного платежа остаётся постоянным на всём периоде кредитования.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;An annuity payment is a variant of monthly loan payment, when the amount of the monthly payment remains constant throughout the entire loan period.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">QToolTip {
@@ -537,7 +617,7 @@ QRadioButton{
 }
 
 QLabel {
-	color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
 }
 </string>
     </property>
@@ -566,7 +646,7 @@ QLabel {
      </font>
     </property>
     <property name="toolTip">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Дифференцированный платеж - вариант ежемесячного платежа по кредиту, когда размер ежемесячного платежа по погашению кредита постепенно уменьшается к концу периода кредитования.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Differentiated payment is a variant of monthly loan payment, when the size of the monthly loan repayment gradually decreases towards the end of the loan period.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">QToolTip {
@@ -577,7 +657,7 @@ QLabel {
 }
 
 QLabel {
-	color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
 }
 </string>
     </property>
@@ -588,47 +668,9 @@ QLabel {
    <widget class="QDateEdit" name="date_credit">
     <property name="geometry">
      <rect>
-      <x>260</x>
+      <x>220</x>
       <y>280</y>
-      <width>110</width>
-      <height>40</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(0, 0, 0);</string>
-    </property>
-    <property name="maximumDateTime">
-     <datetime>
-      <hour>18</hour>
-      <minute>59</minute>
-      <second>59</second>
-      <year>9999</year>
-      <month>12</month>
-      <day>24</day>
-     </datetime>
-    </property>
-    <property name="calendarPopup">
-     <bool>false</bool>
-    </property>
-    <property name="date">
-     <date>
-      <year>2024</year>
-      <month>6</month>
-      <day>6</day>
-     </date>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>65</x>
-      <y>280</y>
-      <width>180</width>
+      <width>150</width>
       <height>40</height>
      </rect>
     </property>
@@ -638,10 +680,49 @@ QLabel {
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(0, 0, 0);</string>
+     <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="maximumDateTime">
+     <datetime>
+      <hour>10</hour>
+      <minute>59</minute>
+      <second>59</second>
+      <year>9999</year>
+      <month>12</month>
+      <day>21</day>
+     </datetime>
+    </property>
+    <property name="calendarPopup">
+     <bool>true</bool>
+    </property>
+    <property name="date">
+     <date>
+      <year>2025</year>
+      <month>9</month>
+      <day>9</day>
+     </date>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>65</x>
+      <y>280</y>
+      <width>140</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>Дата выдачи кредита:</string>
+     <string>Loan issue date</string>
     </property>
    </widget>
   </widget>
