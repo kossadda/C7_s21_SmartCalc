@@ -18,10 +18,10 @@ set(PROJECT_SOURCES
     ./s21_smartcalc/s21_deposit.cpp
     ./s21_smartcalc/s21_credit.cpp
     ./s21_smartcalc/qcustomplot.cpp
-    ./s21_smartcalc/unar_operation.c
     ./s21_smartcalc/my_widget.cpp
     ./s21_smartcalc/graphics.cpp
     ./s21_smartcalc/s21_credit_table.cpp
+    ./calculations/s21_additional/unar_operation.c
     ./calculations/s21_main/checks.c
     ./calculations/s21_main/comparison.c
     ./calculations/s21_main/main.c
@@ -43,9 +43,8 @@ else()
 endif()
 
 target_include_directories(s21_smartcalc PRIVATE
-    ./s21_smartcalc     # Каталог с заголовочными файлами вашего проекта
-    ./calculations  # Каталог с заголовочными файлами calculations/s21_main
-    # Другие каталоги, если необходимо
+    ./s21_smartcalc
+    ./calculations
 )
 
 target_link_libraries(s21_smartcalc PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)

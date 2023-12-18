@@ -4,7 +4,7 @@
 #include "ui_s21_smartcalc.h"
 
 extern "C" {
-#include "unar_operation.c"
+#include "../calculations/s21_additional/unar_operation.c"
 }
 
 s21_smartcalc::s21_smartcalc(QWidget *parent)
