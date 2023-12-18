@@ -55,22 +55,31 @@ void s21_credit::on_calculate_clicked()
     data.months = ui->credit_time->text().toInt();
     data.debt = ui->amount->text().toDouble();
     data.rate = ui->percent->text().toDouble();
-    data.current = 0;
+    if(ui->annuity->isChecked()) {
+        data.payment_type = ANNUITY;
+    } else {
+        if(ui->differentiated->isChecked()) {
+            data.payment_type = DIFFERENTIATED;
+        } else {
+            data.payment_type = 3;
+        }
+    }
+    if(data.payment_type != 3) {
+        long double results[data.months + 20][4] = {0};
+        long double summary_res[3] = {0};
+        int month_day[data.months + 20][2] = {0};
 
-    long double results[data.months + 1][4] = {0};
-    long double summary_res[3] = {0};
-    int month_day[data.months + 1][2] = {0};
+        check_dates_in_months(month_day, data.months + 20);
 
-    check_dates_in_months(month_day, data.months);
+        calculate_credit(&data, month_day, results, summary_res);
 
-    calculate_credit(data, month_day, results, summary_res);
-
-    if(tableWindow) {
-        QPoint currentPosGlobal = this->mapToGlobal(QPoint(-700, 0));
-        tableWindow->setGeometry(currentPosGlobal.x(), currentPosGlobal.y(), 700, 550);
-        tableWindow->show();
-        tableWindow->getUi()->table->setRowCount(data.months);
-        add_all_to_table(data.months, results, summary_res);
+        if(tableWindow) {
+            QPoint currentPosGlobal = this->mapToGlobal(QPoint(-700, 0));
+            tableWindow->setGeometry(currentPosGlobal.x(), currentPosGlobal.y(), 700, 550);
+            tableWindow->show();
+            tableWindow->getUi()->table->setRowCount(data.current);
+            add_all_to_table(data.current, results, summary_res);
+        }
     }
 }
 
@@ -108,10 +117,6 @@ void s21_credit::add_all_to_table(int months, long double results[][4], long dou
             add_item_to_table(i, j+1, QString::number(results[i][j], 'f', 2));
         }
         current_day = current_day.addMonths(1);
-        if(i == months - 1 && results[i][3] > 0) {
-            additional_month = 1;
-            tableWindow->getUi()->table->setRowCount(months + additional_month);
-        }
     }
     for(int i = 0; i < 3; i++) {
         QString number = QString::number(static_cast<double>(summary_res[i]), 'f', 2);

@@ -200,7 +200,7 @@ QComboBox::drop-down {
 background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>16235854635</string>
+     <string>2354931.88</string>
     </property>
     <property name="placeholderText">
      <string>Amount of credit</string>
@@ -325,7 +325,7 @@ background-color: rgb(255, 255, 255);</string>
 background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>556</string>
+     <string>461</string>
     </property>
     <property name="placeholderText">
      <string>Credit term</string>
@@ -398,7 +398,7 @@ background-color: rgb(255, 255, 255);</string>
 background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>15.874</string>
+     <string>15.88</string>
     </property>
     <property name="placeholderText">
      <string>Interest rate</string>
@@ -474,7 +474,7 @@ color: rgb(255, 255, 255);</string>
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QRadioButton" name="payment_type_1">
+   <widget class="QRadioButton" name="annuity">
     <property name="geometry">
      <rect>
       <x>122</x>
@@ -522,7 +522,7 @@ QRadioButton{
      <string>Annuity</string>
     </property>
    </widget>
-   <widget class="QRadioButton" name="payment_type_2">
+   <widget class="QRadioButton" name="differentiated">
     <property name="geometry">
      <rect>
       <x>121</x>
@@ -685,12 +685,12 @@ background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="maximumDateTime">
      <datetime>
-      <hour>10</hour>
+      <hour>9</hour>
       <minute>59</minute>
       <second>59</second>
       <year>9999</year>
       <month>12</month>
-      <day>21</day>
+      <day>20</day>
      </datetime>
     </property>
     <property name="calendarPopup">
@@ -698,9 +698,9 @@ background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="date">
      <date>
-      <year>2025</year>
-      <month>9</month>
-      <day>9</day>
+      <year>1981</year>
+      <month>5</month>
+      <day>5</day>
      </date>
     </property>
    </widget>
