@@ -428,22 +428,11 @@ QPushButton:pressed {
      <rect>
       <x>20</x>
       <y>330</y>
-      <width>191</width>
+      <width>401</width>
       <height>131</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout"/>
-   </widget>
-   <widget class="QWidget" name="verticalLayoutWidget_2">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>330</y>
-      <width>202</width>
-      <height>131</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_2"/>
    </widget>
    <widget class="QDateEdit" name="begin">
     <property name="geometry">

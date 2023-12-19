@@ -12,23 +12,20 @@ s21_deposit::s21_deposit(QWidget *parent)
     connect(ui->depositBox, SIGNAL(activated(int)), this, SLOT(change_deposit(int)));
 
     myWidget = new my_widget(this);
-    myWidget2 = new my_widget(this);
     ui->verticalLayout->addWidget(myWidget);
-    ui->verticalLayout_2->addWidget(myWidget2);
-    ui->begin->setDate(QDate::currentDate());
 
-    if (myWidget) {
-        QComboBox* comboBox = myWidget->getComboBox(); // Исправлено
-        if (comboBox) {
-            comboBox->setPlaceholderText("Пополнения");
-        }
-    }
-    if (myWidget2) {
-        QComboBox* comboBox = myWidget2->getComboBox(); // Исправлено
-        if (comboBox) {
-            comboBox->setPlaceholderText("Частичные снятия");
-        }
-    }
+    // if (myWidget) {
+    //     QComboBox* comboBox = myWidget->getComboBox(); // Исправлено
+    //     if (comboBox) {
+    //         comboBox->setPlaceholderText("Пополнения");
+    //     }
+    // }
+    // if (myWidget2) {
+    //     QComboBox* comboBox = myWidget2->getComboBox(); // Исправлено
+    //     if (comboBox) {
+    //         comboBox->setPlaceholderText("Частичные снятия");
+    //     }
+    // }
     ui->sum_box->addItem(" ₽ - RUB");
     ui->sum_box->addItem(" $ - USD");
     ui->sum_box->addItem(" € - EUR");
@@ -57,7 +54,6 @@ s21_deposit::s21_deposit(QWidget *parent)
 s21_deposit::~s21_deposit()
 {
     if(myWidget) delete myWidget;
-    if(myWidget2) delete myWidget2;
     delete ui;
 }
 

@@ -16,8 +16,12 @@ s21_credit::s21_credit(QWidget *parent)
     ui->setupUi(this);
     tableWindow = new s21_credit_table();
 
+    early_pay = new my_widget(this);
+    ui->verticalLayout->addWidget(early_pay);
+
+
     tableWindow->getUi()->table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    // ui->date_credit->setDate(QDate::currentDate());
+    ui->date_credit->setDate(QDate::currentDate());
 
     connect(ui->creditBox, SIGNAL(activated(int)), this, SLOT(change_credit(int)));
 }
@@ -49,12 +53,28 @@ void s21_credit::change_credit(int index)
     }
 }
 
+void s21_credit::free_memory(int rows, long double ***result, long double **total) {
+    for(int i = 0; i < rows; i++) {
+        free((*result)[i]);
+        (*result)[i] = NULL;
+    }
+    free(*result);
+    free(*total);
+    *result = NULL;
+    *total = NULL;
+}
+
 void s21_credit::on_calculate_clicked()
 {
+    payments pay;
     initial data;
     data.months = ui->credit_time->text().toInt();
     data.debt = ui->amount->text().toDouble();
     data.rate = ui->percent->text().toDouble();
+    data.date.day = ui->date_credit->date().day();
+    data.date.month = ui->date_credit->date().month();
+    data.date.year = ui->date_credit->date().year();
+
     if(ui->annuity->isChecked()) {
         data.payment_type = ANNUITY;
     } else {
@@ -65,40 +85,16 @@ void s21_credit::on_calculate_clicked()
         }
     }
     if(data.payment_type != 3) {
-        long double results[data.months + 20][4] = {0};
-        long double summary_res[3] = {0};
-        int month_day[data.months + 20][2] = {0};
-
-        check_dates_in_months(month_day, data.months + 20);
-
-        calculate_credit(&data, month_day, results, summary_res);
+        calculate_credit(&data, &pay);
 
         if(tableWindow) {
             QPoint currentPosGlobal = this->mapToGlobal(QPoint(-700, 0));
             tableWindow->setGeometry(currentPosGlobal.x(), currentPosGlobal.y(), 700, 550);
             tableWindow->show();
             tableWindow->getUi()->table->setRowCount(data.current);
-            add_all_to_table(data.current, results, summary_res);
+            add_all_to_table(data.current, pay.result, pay.total);
         }
-    }
-}
-
-void s21_credit::check_dates_in_months(int month_day[][2], int months) {
-    QDate current_day = ui->date_credit->date();
-    for(int i = 0; i <= months; i++) {
-        month_day[i][0] = current_day.daysInMonth();
-        month_day[i][1] = current_day.isLeapYear(current_day.year());
-        if(current_day.month() == 12) {
-            QDate check_leap = current_day.addMonths(1);
-            if(!month_day[i][1] && check_leap.isLeapYear(check_leap.year())) {
-                month_day[i][0] = current_day.day();
-                month_day[i][1] = 2;
-            } else if(month_day[i][1]) {
-                month_day[i][0] = current_day.day();
-                month_day[i][1] = 3;
-            }
-        }
-        current_day = current_day.addMonths(1);
+        free_memory(data.current, &pay.result, &pay.total);
     }
 }
 
@@ -108,18 +104,18 @@ void s21_credit::add_item_to_table(int row, int column, QString value) {
     tableWindow->getUi()->table->setItem(row, column, item);
 }
 
-void s21_credit::add_all_to_table(int months, long double results[][4], long double *summary_res) {
+void s21_credit::add_all_to_table(int months, long double **result, long double *total) {
     int additional_month = 0;
     QDate current_day = ui->date_credit->date().addMonths(1);
     for(int i = 0; i < months + additional_month; i++) {
         add_item_to_table(i, 0, current_day.toString("dd.MM.yyyy"));
         for(int j = 0; j < 4; j++) {
-            add_item_to_table(i, j+1, QString::number(results[i][j], 'f', 2));
+            add_item_to_table(i, j+1, QString::number(result[i][j], 'f', 2));
         }
         current_day = current_day.addMonths(1);
     }
     for(int i = 0; i < 3; i++) {
-        QString number = QString::number(static_cast<double>(summary_res[i]), 'f', 2);
+        QString number = QString::number(static_cast<double>(total[i]), 'f', 2);
         if(i == 0) {
             tableWindow->getUi()->total_info->setText("Total paid: " + number);
         } else if (i == 1) {

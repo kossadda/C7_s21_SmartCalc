@@ -3,10 +3,7 @@
 
 #include <QMainWindow>
 #include "s21_credit_table.h"
-// extern "C" {
-// #include "../calculations/s21_credit/main.c"
-// }
-
+#include "my_widget.h"
 
 namespace Ui {
 class s21_credit;
@@ -24,12 +21,13 @@ private slots:
     void change_credit(int index);
     void on_calculate_clicked();
     void add_item_to_table(int row, int column, QString value);
-    void check_dates_in_months(int month_day[][2], int months);
-    void add_all_to_table(int months, long double results[][4], long double *summary_res);
+    void add_all_to_table(int months, long double **result, long double *total);
+    void free_memory(int rows, long double ***result, long double **total);
 
 private:
     Ui::s21_credit *ui;
     s21_credit_table *tableWindow;
+    my_widget *early_pay;
 };
 
 #endif // S21_CREDIT_H

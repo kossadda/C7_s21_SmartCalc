@@ -2,12 +2,6 @@
 #define MY_WIDGET_H
 
 #include <QWidget>
-#include <QComboBox>
-#include <QPushButton>
-#include <QHBoxLayout>
-#include <QVBoxLayout>
-#include <QDateEdit>
-#include <QLineEdit>
 
 namespace Ui {
 class my_widget;
@@ -21,19 +15,12 @@ public:
     explicit my_widget(QWidget *parent = nullptr);
     ~my_widget();
 
-    QComboBox* getComboBox() const;
-
 private slots:
-    void onAddButtonClicked();
-    void onRemoveButtonClicked();
+    void on_add_to_table_clicked();
+    void on_clean_table_clicked();
 
 private:
     Ui::my_widget *ui;
-    QComboBox *comboBox;
-    QPushButton *addButton;
-    QPushButton *removeButton;
-    QDateEdit *dateEdit;
-    QLineEdit *amountLineEdit;
 };
 
 #endif // MY_WIDGET_H

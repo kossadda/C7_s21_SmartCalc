@@ -7,6 +7,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     setlocale(LC_NUMERIC, "C");
+    // my_widget w;
     s21_credit w;
     w.show();
     return a.exec();

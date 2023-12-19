@@ -6,48 +6,12 @@ my_widget::my_widget(QWidget *parent) :
     ui(new Ui::my_widget)
 {
     ui->setupUi(this);
-
-    // Создаем компоненты
-    comboBox = new QComboBox(this);
-    addButton = new QPushButton("Добавить", this);
-    removeButton = new QPushButton("Удалить", this);
-    dateEdit = new QDateEdit(this); // Добавлено
-    amountLineEdit = new QLineEdit(this); // Добавлено
-
-    // Настройка макета
-    QVBoxLayout *layout = new QVBoxLayout(this);
-    QHBoxLayout *buttonLayout = new QHBoxLayout();
-
-    // Добавляем компоненты в макет
-    layout->addWidget(comboBox);
-    comboBox->setStyleSheet("border: 1px solid gray; font-size: 13px;");
-    layout->addWidget(dateEdit);
-    dateEdit->setStyleSheet("QDateEdit { text-align: right; font-size: 15px; border: 1px solid gray }");
-    dateEdit->setDate(QDate::currentDate());
-    layout->addWidget(amountLineEdit);
-    amountLineEdit->setStyleSheet("border: 1px solid gray; font-size: 15px;");
-    amountLineEdit->setPlaceholderText("Введите сумму");
-    buttonLayout->addWidget(addButton);
-    addButton->setStyleSheet("background-color: rgb(22, 89, 22);");
-    removeButton->setStyleSheet("background-color: rgb(99, 27, 27);");
-    buttonLayout->addWidget(removeButton);
-    layout->addLayout(buttonLayout);
-
-    // Устанавливаем макет для виджета
-    setLayout(layout);
-
-    // Подключаем сигналы к слотам
-    connect(addButton, &QPushButton::clicked, this, &my_widget::onAddButtonClicked);
-    connect(removeButton, &QPushButton::clicked, this, &my_widget::onRemoveButtonClicked);
+    ui->table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->pay_date->setDate(QDate::currentDate());
 }
 
 my_widget::~my_widget()
 {
-    if(comboBox) delete comboBox;
-    if(addButton) delete addButton;
-    if(removeButton) delete removeButton;
-    if(dateEdit) delete dateEdit;
-    if(amountLineEdit) delete amountLineEdit;
     delete ui;
 }
 
@@ -61,20 +25,25 @@ bool containsOnlyDigits(const QString &str)
     return true;
 }
 
-void my_widget::onAddButtonClicked()
+void my_widget::on_add_to_table_clicked()
 {
-    if (containsOnlyDigits(amountLineEdit->text()) && amountLineEdit->text().length()) {
-        QString newItem = QString("%1 : %2").arg(dateEdit->date().toString("dd.MM.yyyy"), amountLineEdit->text());
-        comboBox->addItem(newItem);
+    if(ui->pay_sum->text().length() && containsOnlyDigits(ui->pay_sum->text())) {
+        ui->table->setRowCount(ui->table->rowCount() + 1);
+        QTableWidgetItem *item_1 = new QTableWidgetItem(ui->pay_date->date().toString("dd.MM.yyyy"));
+        item_1->setTextAlignment(Qt::AlignCenter);
+        ui->table->setItem(ui->table->rowCount() - 1, 0, item_1);
+        QTableWidgetItem *item_2 = new QTableWidgetItem(ui->pay_sum->text());
+        item_2->setTextAlignment(Qt::AlignCenter);
+        ui->table->setItem(ui->table->rowCount() - 1, 1, item_2);
+        QTableWidgetItem *item_3 = new QTableWidgetItem(ui->pay_type->currentText());
+        item_3->setTextAlignment(Qt::AlignCenter);
+        ui->table->setItem(ui->table->rowCount() - 1, 2, item_3);
     }
 }
 
-void my_widget::onRemoveButtonClicked()
+
+void my_widget::on_clean_table_clicked()
 {
-    comboBox->removeItem(comboBox->currentIndex());
+    ui->table->setRowCount(ui->table->rowCount() - 1);
 }
 
-QComboBox* my_widget::getComboBox() const
-{
-    return comboBox;
-}
