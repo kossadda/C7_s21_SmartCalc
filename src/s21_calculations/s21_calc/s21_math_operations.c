@@ -1,6 +1,11 @@
-#include "../main.h"
+#include "s21_calc.h"
 #include <math.h>
 
+/// @brief Calculates two numbers received as input using the specified operation
+/// @param first First number
+/// @param second Second number
+/// @param operation Operation
+/// @return Calculation result
 double math_nums(double first, double second, const char operation) {
     if(operation == CHAR_ADD) {
         first += second;
@@ -22,6 +27,9 @@ double math_nums(double first, double second, const char operation) {
     return first;
 }
 
+/// @brief Calculates the received number using the specified trigonometric function
+/// @param number Number
+/// @param operation Trigonometric function
 void math_trigonometry(double *number, const char operation) {
     if(operation == CHAR_SIN) {
         *number = sin(*number);

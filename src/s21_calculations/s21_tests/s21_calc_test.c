@@ -1,16 +1,4 @@
-#include "../main.h"
-#include <check.h>
-
-int test_suite(Suite *test) {
-    SRunner *suite_runner = srunner_create(test);
-    srunner_run_all(suite_runner, CK_NORMAL);
-    int failed_count = srunner_ntests_failed(suite_runner);
-    srunner_free(suite_runner);
-    if (failed_count != 0) {
-        return EXIT_FAILURE;
-    }
-    return EXIT_SUCCESS;
-}
+#include "s21_test.h"
 
 START_TEST(arifmetic_1) {
     char *example = "(((1.123*213.5555-((217.12354))*1/2)/4/6*(5632.57-123.344)/(23.12346)/(4.213*(((653.13*(14.123*121.2345+2/(23.123+9*0.213))))/((237.12*21.8888))/(1.888+92.14)))))";
@@ -900,7 +888,7 @@ START_TEST(wrong_expression_13) {
 }
 
 Suite *s21_arifmetic_1(void) {
-    Suite *calc = suite_create("s21_smartcalc");
+    Suite *calc = suite_create("s21_arifmetic (easy expressions)");
 
     TCase *tc_test_arifmetic_1 = tcase_create("test_arifmetic");
     tcase_add_test(tc_test_arifmetic_1, arifmetic_1);
@@ -919,7 +907,7 @@ Suite *s21_arifmetic_1(void) {
 }
 
 Suite *s21_arifmetic_2(void) {
-    Suite *calc = suite_create("s21_smartcalc");
+    Suite *calc = suite_create("s21_smartcalc (arifmetic medium expressions)");
 
     TCase *tc_test_arifmetic_2 = tcase_create("test_arifmetic");
     tcase_add_test(tc_test_arifmetic_2, arifmetic_11);
@@ -938,7 +926,7 @@ Suite *s21_arifmetic_2(void) {
 }
 
 Suite *s21_arifmetic_3(void) {
-    Suite *calc = suite_create("s21_smartcalc");
+    Suite *calc = suite_create("s21_smartcalc (arifmetic hard expressions)");
 
     TCase *tc_test_arifmetic_3 = tcase_create("test_arifmetic");
     tcase_add_test(tc_test_arifmetic_3, arifmetic_21);
@@ -957,7 +945,7 @@ Suite *s21_arifmetic_3(void) {
 }
 
 Suite *s21_arifmetic_4(void) {
-    Suite *calc = suite_create("s21_smartcalc");
+    Suite *calc = suite_create("s21_smartcalc (arifmetic too hard expressions)");
 
     TCase *tc_test_arifmetic_4 = tcase_create("test_arifmetic");
     tcase_add_test(tc_test_arifmetic_4, arifmetic_31);
@@ -976,9 +964,9 @@ Suite *s21_arifmetic_4(void) {
 }
 
 Suite *s21_trigonometric_1(void) {
-    Suite *calc = suite_create("s21_smartcalc");
+    Suite *calc = suite_create("s21_smartcalc (trigonometric medium expressions)");
 
-    TCase *tc_test_trigonometric_1 = tcase_create("test_arifmetic");
+    TCase *tc_test_trigonometric_1 = tcase_create("test_trigonometric");
     tcase_add_test(tc_test_trigonometric_1, trigonometric_1);
     tcase_add_test(tc_test_trigonometric_1, trigonometric_2);
     tcase_add_test(tc_test_trigonometric_1, trigonometric_3);
@@ -995,9 +983,9 @@ Suite *s21_trigonometric_1(void) {
 }
 
 Suite *s21_trigonometric_2(void) {
-    Suite *calc = suite_create("s21_smartcalc");
+    Suite *calc = suite_create("s21_smartcalc (trigonometric hard expressions)");
 
-    TCase *tc_test_trigonometric_2 = tcase_create("test_arifmetic");
+    TCase *tc_test_trigonometric_2 = tcase_create("test_trigonometric");
     tcase_add_test(tc_test_trigonometric_2, trigonometric_11);
     tcase_add_test(tc_test_trigonometric_2, trigonometric_12);
     tcase_add_test(tc_test_trigonometric_2, trigonometric_13);
@@ -1014,9 +1002,9 @@ Suite *s21_trigonometric_2(void) {
 }
 
 Suite *s21_trigonometric_3(void) {
-    Suite *calc = suite_create("s21_smartcalc");
+    Suite *calc = suite_create("s21_smartcalc (trigonometric too hard expressions)");
 
-    TCase *tc_test_trigonometric_3 = tcase_create("test_arifmetic");
+    TCase *tc_test_trigonometric_3 = tcase_create("test_trigonometric");
     tcase_add_test(tc_test_trigonometric_3, trigonometric_21);
     tcase_add_test(tc_test_trigonometric_3, trigonometric_22);
     tcase_add_test(tc_test_trigonometric_3, trigonometric_23);
@@ -1033,9 +1021,9 @@ Suite *s21_trigonometric_3(void) {
 }
 
 Suite *s21_other_1(void) {
-    Suite *calc = suite_create("s21_smartcalc");
+    Suite *calc = suite_create("s21_smartcalc (other hardest expressions)");
 
-    TCase *tc_test_other_1 = tcase_create("test_arifmetic");
+    TCase *tc_test_other_1 = tcase_create("test_other");
     tcase_add_test(tc_test_other_1, other_1);
     tcase_add_test(tc_test_other_1, other_2);
     tcase_add_test(tc_test_other_1, other_3);
@@ -1052,9 +1040,9 @@ Suite *s21_other_1(void) {
 }
 
 Suite *s21_other_2(void) {
-    Suite *calc = suite_create("s21_smartcalc");
+    Suite *calc = suite_create("s21_smartcalc (other hardest unusual expressions)");
 
-    TCase *tc_test_other_2 = tcase_create("test_arifmetic");
+    TCase *tc_test_other_2 = tcase_create("test_other");
     tcase_add_test(tc_test_other_2, other_11);
     tcase_add_test(tc_test_other_2, other_12);
     tcase_add_test(tc_test_other_2, other_13);
@@ -1071,9 +1059,9 @@ Suite *s21_other_2(void) {
 }
 
 Suite *s21_other_3(void) {
-    Suite *calc = suite_create("s21_smartcalc");
+    Suite *calc = suite_create("s21_smartcalc (other hard unusual expressions)");
 
-    TCase *tc_test_other_3 = tcase_create("test_arifmetic");
+    TCase *tc_test_other_3 = tcase_create("test_other");
     tcase_add_test(tc_test_other_3, other_21);
     tcase_add_test(tc_test_other_3, other_22);
     tcase_add_test(tc_test_other_3, other_23);
@@ -1090,9 +1078,9 @@ Suite *s21_other_3(void) {
 }
 
 Suite *s21_other_4(void) {
-    Suite *calc = suite_create("s21_smartcalc");
+    Suite *calc = suite_create("s21_smartcalc (other medium unusual expressions)");
 
-    TCase *tc_test_other_4 = tcase_create("test_arifmetic");
+    TCase *tc_test_other_4 = tcase_create("test_other");
     tcase_add_test(tc_test_other_4, other_31);
     tcase_add_test(tc_test_other_4, other_32);
     tcase_add_test(tc_test_other_4, other_33);
@@ -1109,9 +1097,9 @@ Suite *s21_other_4(void) {
 }
 
 Suite *s21_other_5(void) {
-    Suite *calc = suite_create("s21_smartcalc");
+    Suite *calc = suite_create("s21_smartcalc (other easy unusual expressions)");
 
-    TCase *tc_test_other_5 = tcase_create("test_arifmetic");
+    TCase *tc_test_other_5 = tcase_create("test_other");
     tcase_add_test(tc_test_other_5, other_41);
     tcase_add_test(tc_test_other_5, other_42);
     tcase_add_test(tc_test_other_5, other_43);
@@ -1122,9 +1110,9 @@ Suite *s21_other_5(void) {
 }
 
 Suite *s21_wrong_expressions_1(void) {
-    Suite *calc = suite_create("s21_smartcalc");
+    Suite *calc = suite_create("s21_smartcalc (wrong experssions first cases)");
 
-    TCase *tc_expressions_1 = tcase_create("test_arifmetic");
+    TCase *tc_expressions_1 = tcase_create("test_expressions");
     tcase_add_test(tc_expressions_1, wrong_expression_1);
     tcase_add_test(tc_expressions_1, wrong_expression_2);
     tcase_add_test(tc_expressions_1, wrong_expression_3);
@@ -1141,32 +1129,13 @@ Suite *s21_wrong_expressions_1(void) {
 }
 
 Suite *s21_wrong_expressions_2(void) {
-    Suite *calc = suite_create("s21_smartcalc");
+    Suite *calc = suite_create("s21_smartcalc (wrong experssions second cases)");
 
-    TCase *tc_expressions_2 = tcase_create("test_arifmetic");
+    TCase *tc_expressions_2 = tcase_create("test_expressions");
     tcase_add_test(tc_expressions_2, wrong_expression_11);
     tcase_add_test(tc_expressions_2, wrong_expression_12);
     tcase_add_test(tc_expressions_2, wrong_expression_13);
     suite_add_tcase(calc, tc_expressions_2);
 
     return calc;
-}
-
-int main(void) {
-    int failed_count = 0;
-    Suite *(*suites[])(void) = {
-        s21_arifmetic_1          , s21_arifmetic_2         , s21_arifmetic_3      , s21_arifmetic_4 ,
-        s21_trigonometric_1      , s21_trigonometric_2     , s21_trigonometric_3  ,
-        s21_other_1              , s21_other_2             , s21_other_3          , s21_other_4     , s21_other_5,
-        s21_wrong_expressions_1  , s21_wrong_expressions_2 ,
-    };
-
-    for(size_t i = 0; i < sizeof(suites)/sizeof(suites[0]); i++) {
-        failed_count = test_suite(suites[i]());
-        if (failed_count) {
-            return EXIT_FAILURE;
-        }
-    }
-    
-    return EXIT_SUCCESS;
 }

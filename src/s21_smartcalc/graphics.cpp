@@ -2,12 +2,12 @@
 #include "ui_graphics.h"
 
 extern "C" {
-#include "../calculations/s21_main/main.c"
-#include "../calculations/s21_main/validation.c"
-#include "../calculations/s21_main/notation.c"
-#include "../calculations/s21_main/checks.c"
-#include "../calculations/s21_main/comparison.c"
-#include "../calculations/s21_main/math_operations.c"
+#include "../s21_calculations/s21_calc/s21_calc.c"
+#include "../s21_calculations/s21_calc/s21_validation.c"
+#include "../s21_calculations/s21_calc/s21_notation.c"
+#include "../s21_calculations/s21_calc/s21_checks.c"
+#include "../s21_calculations/s21_calc/s21_comparison.c"
+#include "../s21_calculations/s21_calc/s21_math_operations.c"
 }
 
 graphics::graphics(QWidget *parent) :

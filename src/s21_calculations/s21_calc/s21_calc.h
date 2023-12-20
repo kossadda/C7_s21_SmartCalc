@@ -1,9 +1,12 @@
-#ifndef FUNC_TESTS_H_
-#define FUNC_TESTS_H_
+#ifndef S21_C_CALC_H_
+#define S21_C_CALC_H_
 
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+
+#define PI_NUMBER 3.1415926535897932
+#define EXP_NUMBER 2.7182818284590452
 
 #define INCLUDE_CHARS "()^+-*/ modsinctaqrlgePx.0123456789"
 #define ALL_OPERATIONS "()^+<*/msctSCTQLlu"
@@ -26,32 +29,15 @@
 #define PI "P"
 #define E "e"
 
-#define PI_NUMBER 3.1415926535897932
-#define EXP_NUMBER 2.7182818284590452
+typedef struct {
+    double stack[100];
+    int count;
+} num_stack;
 
-enum decision {
-    NO  = 0,
-    YES = 1,
-};
-
-enum prior_decisions {
-    LOW_PRIORITY   = 0,
-    EQUAL_PRIORITY = 1,
-    HIGH_PRIORITY  = 2,
-};
-
-enum brackets_mode {
-    PARS_EXPRESSION  = 0,
-    CLOSE_EXPRESSION = 1,
-};
-
-enum addition_mode {
-    STRING     = 0,
-    NUMBER     = 1,
-    ONE_CHAR   = 2,
-    TWO_CHAR   = 3,
-    THREE_CHAR = 4,
-};
+typedef struct {
+    char stack[50];
+    int count;
+} op_stack;
 
 enum substitution {
     CHAR_SIN      =   's',    CHAR_COS    =   'c',    CHAR_TAN     =   't', 
@@ -64,17 +50,32 @@ enum substitution {
     CHAR_VAR      =   'x',    CHAR_E      =   'e',    CHAR_SPACE   =   ' ',
 };
 
-typedef struct {
-    double stack[100];
-    int count;
-} num_stack;
+enum brackets_mode {
+    PARS_EXPRESSION  = 0,
+    CLOSE_EXPRESSION = 1,
+};
 
-typedef struct {
-    char stack[50];
-    int count;
-} op_stack;
+enum prior_decisions {
+    LOW_PRIORITY   = 0,
+    EQUAL_PRIORITY = 1,
+    HIGH_PRIORITY  = 2,
+};
+
+enum addition_mode {
+    STRING     = 0,
+    NUMBER     = 1,
+    ONE_CHAR   = 2,
+    TWO_CHAR   = 3,
+    THREE_CHAR = 4,
+};
+
+enum decision {
+    NO  = 0,
+    YES = 1,
+};
 
 // main funtions
+
 double calculation(char *str, double x);
 int str_without_spaces(char *str);
 void input_varibles(char *str, double x);
@@ -82,20 +83,24 @@ int func_substitution(char *str);
 double notation(char *str);
 
 // math_operations
+
 void bracket_close(num_stack *num, op_stack *ops, int mode);
 double math_nums(double first, double second, const char operation);
 void math_trigonometry(double *number, const char operation);
 void math_while_parsing(num_stack *num, op_stack *ops, const char current_operation, int decision);
 
 // secondary functions
+
 void clean_top_stack(num_stack *num, int num_decision, op_stack *ops, int ops_decision);
 int check(const char first_symbol, const char *search);
 
 // comparisons
+
 int prior_comparison(const char first, const char second);
 int determine_priority(const char operation);
 
 // C++ secondary functions
+
 int number_position(char *str, int len);
 int minus_position(char *str, int len);
 void make_unar(char *str, char *ptr, int len, int pos_number);

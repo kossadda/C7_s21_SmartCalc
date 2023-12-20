@@ -21,14 +21,18 @@ set(PROJECT_SOURCES
     ./s21_smartcalc/my_widget.cpp
     ./s21_smartcalc/graphics.cpp
     ./s21_smartcalc/s21_credit_table.cpp
-    ./calculations/s21_additional/unar_operation.c
-    ./calculations/s21_main/checks.c
-    ./calculations/s21_main/comparison.c
-    ./calculations/s21_main/main.c
-    ./calculations/s21_main/math_operations.c
-    ./calculations/s21_main/notation.c
-    ./calculations/s21_main/validation.c
-    ./calculations/s21_credit/main.c
+    ./s21_calculations/s21_calc/s21_unar_operation.c
+    ./s21_calculations/s21_calc/s21_checks.c
+    ./s21_calculations/s21_calc/s21_comparison.c
+    ./s21_calculations/s21_calc/s21_calc.c
+    ./s21_calculations/s21_calc/s21_math_operations.c
+    ./s21_calculations/s21_calc/s21_notation.c
+    ./s21_calculations/s21_calc/s21_validation.c
+    ./s21_calculations/s21_credit/s21_credit.c
+    ./s21_calculations/s21_credit/s21_credit.c
+    ./s21_calculations/s21_credit/s21_annuity.c
+    ./s21_calculations/s21_credit/s21_differentiated.c
+    ./s21_calculations/s21_credit/s21_calendar.c
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -44,7 +48,7 @@ endif()
 
 target_include_directories(s21_smartcalc PRIVATE
     ./s21_smartcalc
-    ./calculations
+    ./s21_calculations
 )
 
 target_link_libraries(s21_smartcalc PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)

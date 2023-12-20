@@ -5,7 +5,11 @@
 #include "ui_s21_credit_table.h"
 
 extern "C" {
-#include "../calculations/s21_credit/main.c"
+#include "../s21_calculations/s21_credit/s21_credit.h"
+#include "../s21_calculations/s21_credit/s21_credit.c"
+#include "../s21_calculations/s21_credit/s21_annuity.c"
+#include "../s21_calculations/s21_credit/s21_differentiated.c"
+#include "../s21_calculations/s21_credit/s21_calendar.c"
 }
 
 s21_credit::s21_credit(QWidget *parent)
@@ -21,7 +25,7 @@ s21_credit::s21_credit(QWidget *parent)
 
 
     tableWindow->getUi()->table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    ui->date_credit->setDate(QDate::currentDate());
+    // ui->date_credit->setDate(QDate::currentDate());
 
     connect(ui->creditBox, SIGNAL(activated(int)), this, SLOT(change_credit(int)));
 }
@@ -81,7 +85,7 @@ void s21_credit::on_calculate_clicked()
         if(ui->differentiated->isChecked()) {
             data.payment_type = DIFFERENTIATED;
         } else {
-            data.payment_type = 3;
+            data.payment_type = NOT_CHOSEN;
         }
     }
     if(data.payment_type != 3) {

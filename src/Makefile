@@ -7,24 +7,22 @@ LCOV=-lcheck -lsubunit -lgcov
 GCOVR=-r . --html --html-details
 # FUNCS PATHS
 MAIN_FOLD=s21_smartcalc
-CALC=s21_smartcalc/s21_main
-DEPOSIT=s21_smartcalc/s21_deposit
-CREDIT=s21_smartcalc/s21_credit
-OTHER=s21_smartcalc/s21_additional
-CMAIN=calculations/s21_main/*
-CDEPOSIT=calculations/s21_deposit/*
-CCREDIT=calculations/s21_credit/*
+CALC=s21_calculations/s21_calc/*.c
+DEPOSIT=s21_calculations/s21_deposit/*.c
+CREDIT=s21_calculations/s21_credit/*.c
 # TESTS PATHS
-TESTS=calculations/tests/main_test.c
+TESTS=s21_calculations/s21_tests/*.c
 # OTHER PATHS
 TRASH=$(MAIN_FOLD)/*.o $(MAIN_FOLD)/ui_* $(MAIN_FOLD)/moc_* $(MAIN_FOLD)/*.user $(MAIN_FOLD)/Makefile
-GCOV=calculations/gcov_report
+GCOV=s21_calculations/gcov_report
 BUILD=build
 # EXECUTE
 EXE=test
 PROG=s21_smartcalc
 
-VAL_CHECK=--num-callers --leak-check=full --show-leak-kinds=definite
+
+
+
 
 
 all: install run
@@ -76,28 +74,27 @@ run:
 	./$(BUILD)/$(PROG)
 
 test: uninstall
-	gcc $(CC) $(CMAIN) $(TESTS) -lm -o $(EXE) $(LCOV)
+	clear
+	gcc $(CC) $(CALC) $(CREDIT) $(TESTS) -lm -o $(EXE) $(LCOV)
 	@./$(EXE)
 
 gcov_report: uninstall
-	gcc $(CC) $(COVER) $(CMAIN) $(TESTS) -lm -o $(EXE) $(LCOV)
+	gcc $(CC) $(COVER) $(CALC) $(CREDIT) $(TESTS) -lm -o $(EXE) $(LCOV)
 	@mkdir -p $(GCOV)
 	@./$(EXE)
 	gcovr $(GCOVR) -o $(GCOV)/coverage.html
 	@rm -rf $(EXE) *.gc*
 	xdg-open $(GCOV)/coverage.html
 
-valgrind: install
-	@valgrind $(VAL) ./$(BUILD)/$(PROG)
-
-# > val_test.txt 2>&1
-
-valgrind_test: test
+valgrind: test
 	@valgrind $(VAL) ./$(EXE)
 	@rm $(EXE)
 
+valgrind_prog: install
+	@valgrind $(VAL) ./$(BUILD)/$(PROG)
+
 clang-format:
-	clang-format $(CLANG) $(CMAIN)
+	clang-format $(CLANG) $(CALC)
 
 # dist:
 
@@ -105,7 +102,9 @@ clang-format:
 
 # Моя временная цель
 build: uninstall
-	@gcc $(CC) $(CMAIN) calculations/tests/testing.c -lm -o $(EXE)
+	@gcc $(CC) $(CALC) $(CREDIT) s21_calculations/s21_testing.c -lm -o $(EXE)
 	clear
 	@./$(EXE)
 
+
+# > val_test.txt 2>&1
