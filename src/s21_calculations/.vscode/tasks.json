@@ -7,12 +7,16 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                // "/home/kossadda/develop/C7_s21_smartcalc/src/calculations/tests/testing.c",
-                // "/home/kossadda/develop/C7_s21_smartcalc/src/calculations/s21_main/*.c",
-                "/home/kossadda/develop/C7_s21_smartcalc/src/calculations/s21_credit/main.c",
+                "/home/kossadda/develop/C7_s21_smartcalc/src/s21_calculations/s21_testing.c",
+                // "/home/kossadda/develop/C7_s21_smartcalc/src/s21_calculations/s21_calc/*.c",
+                // "/home/kossadda/develop/C7_s21_smartcalc/src/s21_calculations/s21_tests/*.c",
+                "/home/kossadda/develop/C7_s21_smartcalc/src/s21_calculations/s21_credit/*.c",
                 "-o",
-                "/home/kossadda/develop/C7_s21_smartcalc/src/calculations/test",
-                "-lm"
+                "/home/kossadda/develop/C7_s21_smartcalc/src/test",
+                "-lm",
+                // "-lcheck",
+                // "-lsubunit",
+                // "-lgcov"
             ],
             "options": {
                 "cwd": "${fileDirname}"

@@ -31,7 +31,13 @@ Suite *s21_wrong_expressions_2(void);
 
 Suite *s21_annuity_1(void);
 Suite *s21_annuity_2(void);
+Suite *s21_annuity_3(void);
+Suite *s21_annuity_4(void);
+Suite *s21_annuity_5(void);
 Suite *s21_differentiated_1(void);
 Suite *s21_differentiated_2(void);
+Suite *s21_differentiated_3(void);
+Suite *s21_differentiated_4(void);
+Suite *s21_differentiated_5(void);
 
 #endif

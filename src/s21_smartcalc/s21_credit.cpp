@@ -78,6 +78,7 @@ void s21_credit::on_calculate_clicked()
     data.date.day = ui->date_credit->date().day();
     data.date.month = ui->date_credit->date().month();
     data.date.year = ui->date_credit->date().year();
+    data.date.leap = 0;
 
     if(ui->annuity->isChecked()) {
         data.payment_type = ANNUITY;
@@ -88,7 +89,7 @@ void s21_credit::on_calculate_clicked()
             data.payment_type = NOT_CHOSEN;
         }
     }
-    if(data.payment_type != 3) {
+    if(data.payment_type != NOT_CHOSEN) {
         calculate_credit(&data, &pay);
 
         if(tableWindow) {

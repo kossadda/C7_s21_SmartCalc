@@ -52,8 +52,9 @@ void annuity(initial *data, payments *pay);
 void differentiated(initial *data, payments *pay);
 
 // calendar functions
-void check_days(initial *data);
+void check_days(initial *data, time_data *next_month, int const_day);
 int check_leap(int year);
-void days_in_month(time_data *date);
+void days_in_month(time_data *date, time_data *next_month);
+void add_month(time_data *date, int beginning_date);
 
 #endif

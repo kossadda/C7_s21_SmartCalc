@@ -888,7 +888,7 @@ START_TEST(wrong_expression_13) {
 }
 
 Suite *s21_arifmetic_1(void) {
-    Suite *calc = suite_create("s21_arifmetic (easy expressions)");
+    Suite *calc = suite_create("s21_smartcalc (easy expressions)");
 
     TCase *tc_test_arifmetic_1 = tcase_create("test_arifmetic");
     tcase_add_test(tc_test_arifmetic_1, arifmetic_1);
