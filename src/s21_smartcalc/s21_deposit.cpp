@@ -11,21 +11,6 @@ s21_deposit::s21_deposit(QWidget *parent)
 
     connect(ui->depositBox, SIGNAL(activated(int)), this, SLOT(change_deposit(int)));
 
-    myWidget = new my_widget(this);
-    ui->verticalLayout->addWidget(myWidget);
-
-    // if (myWidget) {
-    //     QComboBox* comboBox = myWidget->getComboBox(); // Исправлено
-    //     if (comboBox) {
-    //         comboBox->setPlaceholderText("Пополнения");
-    //     }
-    // }
-    // if (myWidget2) {
-    //     QComboBox* comboBox = myWidget2->getComboBox(); // Исправлено
-    //     if (comboBox) {
-    //         comboBox->setPlaceholderText("Частичные снятия");
-    //     }
-    // }
     ui->sum_box->addItem(" ₽ - RUB");
     ui->sum_box->addItem(" $ - USD");
     ui->sum_box->addItem(" € - EUR");

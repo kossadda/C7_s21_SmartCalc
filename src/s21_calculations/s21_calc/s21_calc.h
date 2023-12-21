@@ -10,9 +10,10 @@
 
 #define INCLUDE_CHARS "()^+-*/ modsinctaqrlgePx.0123456789"
 #define ALL_OPERATIONS "()^+<*/msctSCTQLlu"
-#define PREV_TRIGONTRC_CHARS "+-/*()d"
-#define BEGIN_TRIGONTRC_CHARS "sctasl"
 #define TRIGONOMETRIC_CHARS "sctSCTQLl"
+#define PREV_TRIGONTRC_CHARS "+-/*()d"
+#define BEGIN_TRIGONTRC_CHARS "sctal"
+#define WRONG_BEGINNING "odinqrg"
 #define RIGHT_ASSOCIATIVE "^"
 #define BEGIN_ADDITION "1*("
 #define NUMBERS "1234567890"

@@ -1,5 +1,7 @@
 #include "s21_test.h"
 
+//  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 START_TEST(arifmetic_1) {
     char *example = "(((1.123*213.5555-((217.12354))*1/2)/4/6*(5632.57-123.344)/(23.12346)/(4.213*(((653.13*(14.123*121.2345+2/(23.123+9*0.213))))/((237.12*21.8888))/(1.888+92.14)))))";
     double my_result = calculation(example, 0);
@@ -69,6 +71,8 @@ START_TEST(arifmetic_10) {
     double true_result = 15;
     ck_assert_double_eq_tol(my_result, true_result, 1e-7);
 }
+
+//  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 START_TEST(arifmetic_11) {
     char *example = "(((15*2)/(3+2))-(7*0.5)) - (+2)";
@@ -140,6 +144,8 @@ START_TEST(arifmetic_20) {
     ck_assert_double_eq_tol(my_result, true_result, 1e-7);
 }
 
+//  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 START_TEST(arifmetic_21) {
     char *example = "(((189.67/423.3)+2.34)*(46.34/6.348-1634.2))/((25.343*0.63465)+(54.371/50543.55))";
     double my_result = calculation(example, 0);
@@ -209,6 +215,8 @@ START_TEST(arifmetic_30) {
     double true_result = 13267141.74182536;
     ck_assert_double_eq_tol(my_result, true_result, 1e-7);
 }
+
+//  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 START_TEST(arifmetic_31) {
     char *example = "(((12324.342/2342.234)+(342.4325*154.65))/(876.3-3451))+(2534.543*(1234.655/320.542))";
@@ -280,6 +288,8 @@ START_TEST(arifmetic_40) {
     ck_assert_double_eq_tol(my_result, true_result, 1e-7);
 }
 
+//  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 START_TEST(trigonometric_1) {
     char *example = "sin(((1432.35*24.3)/(34/3+24/43-23))-sin(7324.35*0.5))";
     double my_result = calculation(example, 0);
@@ -349,6 +359,8 @@ START_TEST(trigonometric_10) {
     double true_result = -32945600.78318327;
     ck_assert_double_eq_tol(my_result, true_result, 1e-5);
 }
+
+//  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 START_TEST(trigonometric_11) {
     char *example = "tan(((sin(45)*cos(30))/2)-(tan(12.34)/(cos(2.55)-1.32)))";
@@ -420,6 +432,8 @@ START_TEST(trigonometric_20) {
     ck_assert_double_eq_tol(my_result, true_result, 1e-7);
 }
 
+//  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 START_TEST(trigonometric_21) {
     char *example = "asin((0.09000012*((asin(18.435/341.432)+2.412)*(4.8324-asin(1.2432/123+0.0532))))-1)";
     double my_result = calculation(example, 0);
@@ -490,6 +504,8 @@ START_TEST(trigonometric_30) {
     ck_assert_double_eq_tol(my_result, true_result, 1e-7);
 }
 
+//  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 START_TEST(other_1) {
     char *example = "sqrt((sqrt(5233332.555)*sqrt(3876.8768))/(sqrt(107.578-0078.0785))-(sqrt((70784.78/50782.807)+sqrt(4321.67)))/(sqrt(13433.42)-((532.2253*sqrt(1523.5523))+5230.3255)))";
     double my_result = calculation(example, 0);
@@ -558,6 +574,8 @@ START_TEST(other_10) {
     double true_result = -39743614292.13980964;
     ck_assert_double_eq_tol(my_result, true_result, 1e-7);
 }
+
+//  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 START_TEST(other_11) {
     char *example = "((((-13428/3432)+(-76542))*(45432.8243-6341.2634))/((-6432*(-5430.635))+(-5431/(-5430.5435))))+(-3457/(4323*4322))";
@@ -629,6 +647,8 @@ START_TEST(other_20) {
     ck_assert_double_eq_tol(my_result, true_result, 1e-7);
 }
 
+//  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 START_TEST(other_21) {
     char *example = "sin(cos(tan(atan(acos(asin(0.02*sqrt(2.56)/(ln(1.5)-log(4.321)))+0.14159)/sqrt(5.432)))))";
     double my_result = calculation(example, 0);
@@ -698,6 +718,8 @@ START_TEST(other_30) {
     double true_result = 4.97131049;
     ck_assert_double_eq_tol(my_result, true_result, 1e-7);
 }
+
+//  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 START_TEST(other_31) {
     char *example = "sqrt(sin(P/2.1324) + cos(3.123P))/2.53";
@@ -769,6 +791,8 @@ START_TEST(other_40) {
     ck_assert_double_eq_tol(my_result, true_result, 1e-7);
 }
 
+//  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 START_TEST(other_41) {
     char *example = "eeeeeee";
     double my_result = calculation(example, 0);
@@ -796,6 +820,50 @@ START_TEST(other_44) {
     double true_result = 5;
     ck_assert_double_eq_tol(my_result, true_result, 1e-7);
 }
+
+START_TEST(other_45) {
+    char *example = "sqrt(e*P*34.123x*1.11*5.22)x";
+    double my_result = calculation(example, 2);
+    double true_result = 116.22177789;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+START_TEST(other_46) {
+    char *example = "sin(cos(tan(sin(cos(tan(5.112))))))";
+    double my_result = calculation(example, 50);
+    double true_result = 0.65811820;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+START_TEST(other_47) {
+    char *example = "sqrt(sqrt(sqrt(2.33)/sqrt(2.1324)) + sqrt(sqrt(3.123P)))/sqrt(2.53)";
+    double my_result = calculation(example, 0);
+    double true_result = 1.05054622;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+START_TEST(other_48) {
+    char *example = "tan(cos(sin(tan(cos(sin(tan(cos(sin(sqrt(ln(100000000))))))))))";
+    double my_result = calculation(example, 0);
+    double true_result = 0.76870729;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+START_TEST(other_49) {
+    char *example = "ln(log(2.5)*cos(0.5)/(523(sin(2*(cos(1.5*atan(0.75)))*log(1+ln(2.5))))))";
+    double my_result = calculation(example, 0);
+    double true_result = -6.15975441;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+START_TEST(other_50) {
+    char *example = "((((-138/32)+(-76542))*(452.83-61.24))/((-32*(-540.65))+(-5431/(-5430.5435))))+(-3457/(4323*4322))/(((-967575+(-744234/2352))*(4765-(-375/134.54)))-(-42.45/(210423.5*3422)))*((-6534.51+(321/(311-(-11.35423))))/(-414.5234-(-3.42342/35421.12355)))";
+    double my_result = calculation(example, 0);
+    double true_result = -1732.46542939;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+//  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 START_TEST(wrong_expression_1) {
     double my_result = calculation(NULL, 0);
@@ -866,6 +934,8 @@ START_TEST(wrong_expression_10) {
     ck_assert_double_eq_tol(my_result, true_result, 1e-7);
 }
 
+//  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 START_TEST(wrong_expression_11) {
     char *example = "";
     double my_result = calculation(example, 0);
@@ -886,6 +956,57 @@ START_TEST(wrong_expression_13) {
     double true_result = __DBL_MAX__;
     ck_assert_double_eq_tol(my_result, true_result, 1e-7);
 }
+
+START_TEST(wrong_expression_14) {
+    char *example = "qrt(sin(2^2^3))*sin(4)/sin(1)";
+    double my_result = calculation(example, 0);
+    double true_result = __DBL_MAX__;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+START_TEST(wrong_expression_15) {
+    char *example = "srt(sin(2^2^3))*sin(4)/sin(2)";
+    double my_result = calculation(example, 0);
+    double true_result = __DBL_MAX__;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+START_TEST(wrong_expression_16) {
+    char *example = "sqrt(in(2^2^3))*sin(4)/sin(2)";
+    double my_result = calculation(example, 0);
+    double true_result = __DBL_MAX__;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+START_TEST(wrong_expression_17) {
+    char *example = "sqrt(sin(2^2^3))*os(4)/sin(2)";
+    double my_result = calculation(example, 0);
+    double true_result = __DBL_MAX__;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+START_TEST(wrong_expression_18) {
+    char *example = "og(sin(2^2^3))*cos(4)/sin(2)";
+    double my_result = calculation(example, 0);
+    double true_result = __DBL_MAX__;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+START_TEST(wrong_expression_19) {
+    char *example = "sin(2*(cos(1.5*atan(0.75)))*n(1+ln(2.5))/(sqrt(2.5)+log(3.14)))";
+    double my_result = calculation(example, 0);
+    double true_result = __DBL_MAX__;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+START_TEST(wrong_expression_20) {
+    char *example = "sin(2*(cos(1.5*taan(0.75)))*ln(1+ln(2.5))/(sqrt(2.5)+log(3.14)))";
+    double my_result = calculation(example, 0);
+    double true_result = __DBL_MAX__;
+    ck_assert_double_eq_tol(my_result, true_result, 1e-7);
+}
+
+//  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Suite *s21_arifmetic_1(void) {
     Suite *calc = suite_create("s21_smartcalc (easy expressions)");
@@ -1104,6 +1225,12 @@ Suite *s21_other_5(void) {
     tcase_add_test(tc_test_other_5, other_42);
     tcase_add_test(tc_test_other_5, other_43);
     tcase_add_test(tc_test_other_5, other_44);
+    tcase_add_test(tc_test_other_5, other_45);
+    tcase_add_test(tc_test_other_5, other_46);
+    tcase_add_test(tc_test_other_5, other_47);
+    tcase_add_test(tc_test_other_5, other_48);
+    tcase_add_test(tc_test_other_5, other_49);
+    tcase_add_test(tc_test_other_5, other_50);
     suite_add_tcase(calc, tc_test_other_5);
 
     return calc;
@@ -1135,6 +1262,13 @@ Suite *s21_wrong_expressions_2(void) {
     tcase_add_test(tc_expressions_2, wrong_expression_11);
     tcase_add_test(tc_expressions_2, wrong_expression_12);
     tcase_add_test(tc_expressions_2, wrong_expression_13);
+    tcase_add_test(tc_expressions_2, wrong_expression_14);
+    tcase_add_test(tc_expressions_2, wrong_expression_15);
+    tcase_add_test(tc_expressions_2, wrong_expression_16);
+    tcase_add_test(tc_expressions_2, wrong_expression_17);
+    tcase_add_test(tc_expressions_2, wrong_expression_18);
+    tcase_add_test(tc_expressions_2, wrong_expression_19);
+    tcase_add_test(tc_expressions_2, wrong_expression_20);
     suite_add_tcase(calc, tc_expressions_2);
 
     return calc;
