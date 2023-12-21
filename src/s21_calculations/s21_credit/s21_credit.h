@@ -21,6 +21,11 @@ enum year_status {
     YEAR_IS_LEAP = 1,
 };
 
+enum mallocate {
+    ALLOCATED = 0,
+    NOT_ALLOCATED = 1,
+};
+
 typedef struct time_data {
     int day;
     int month;
@@ -50,6 +55,10 @@ typedef struct initial {
 void calculate_credit(initial *data, payments *pay);
 void annuity(initial *data, payments *pay);
 void differentiated(initial *data, payments *pay);
+void calc_percent(initial *data, payments *pay);
+void remember_result(initial *data, payments *pay);
+int allocate_memory(initial *data, payments *pay);
+int init_massive(payments *pay);
 
 // calendar functions
 void check_days(initial *data, time_data *next_month, int const_day);
