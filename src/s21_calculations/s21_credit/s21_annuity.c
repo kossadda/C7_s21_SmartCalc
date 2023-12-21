@@ -3,10 +3,10 @@
 /// @brief Function for calculating monthly payments of annuity type
 /// @param data Structure containing input parameters for calculation
 /// @param pay Structure containing buffer variables for monthly results and general payment data arrays
-void annuity(initial *data, payments *pay) {
+void annuity(initial *data, payments *pay, time_data next_month) {
     static long double rest = 0;
 
-    calc_percent(data, pay);
+    calc_percent(data, pay, next_month);
 
     if(rest) {
         pay->percent += rest;

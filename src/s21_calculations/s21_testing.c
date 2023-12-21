@@ -15,9 +15,9 @@ int main() {
     initial data;
     payments pay;
     
-    input_initial(&data, 1674111.57, 71, ANNUITY, 8.244, 5, 5, 2005);
+    input_initial(&data, 1000, 4, ANNUITY, 5, 06, 07, 2021);
     calculate_credit(&data, &pay);
-    long double result_total[3] = {2121675.22, 167411.57, 447563.65};
+    long double result_total[3] = {1010.57, 1000, 10.57};
 
     for(int i = 0; i < 3; i++) {
         printf("my:%Lf - true:%Lf\n", pay.total[i], result_total[i]);

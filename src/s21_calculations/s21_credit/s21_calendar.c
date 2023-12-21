@@ -20,33 +20,23 @@ void days_in_month(time_data *date, time_data *next_month) {
     if(date->leap) {
         days[2] = 29;
     }
-    int diff = days[date->month] - date->day;
-    date->month_days = next_month->day + diff;
+    date->month_days = days[date->month] - date->day;
+    next_month->month_days = next_month->day;
 }
-
 
 /// @brief Function for determining date structure parameters for the next month
 /// @param data Structure containing input parameters for calculation
 void check_days(initial *data, time_data *next_month, int const_day) {
     data->date.leap = check_leap(data->date.year);
     next_month->leap = check_leap(next_month->year);
-    if(data->date.month == 12) {
-        if(check_leap(data->date.year + 1)) {
-            data->date.month_days = data->date.day;
-            data->date.leap = 2;
-        } else if (data->date.leap) {
-            data->date.month_days = data->date.day;
-            data->date.leap = 3;
-        } else {
-            days_in_month(&(data->date), next_month);
-        }
-    } else {
-        days_in_month(&(data->date), next_month);
-    }
+    days_in_month(&(data->date), next_month);
     add_month(&(data->date), const_day);
     add_month(next_month, const_day);
 }
 
+/// @brief A function that determines the correct logic for adding a month to the current date
+/// @param date A structure containing the current date, the number of days in the month and a leap year variable
+/// @param beginning_date The original date received as input from the user
 void add_month(time_data *date, int beginning_date) {
     date->month += 1;
     if(date->month > 12) {

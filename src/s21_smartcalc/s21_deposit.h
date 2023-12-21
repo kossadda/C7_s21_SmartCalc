@@ -22,7 +22,6 @@ private slots:
 
 private:
     Ui::s21_deposit *ui;
-    my_widget *myWidget;
 };
 
 #endif // S21_DEPOSIT_H

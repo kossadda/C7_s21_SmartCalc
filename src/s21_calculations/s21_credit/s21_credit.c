@@ -21,7 +21,7 @@ void calculate_credit(initial *data, payments *pay) {
             error_code = allocate_memory(data, pay);
             if(!error_code) {
                 check_days(data, &next_month, const_day);
-                annuity(data, pay);
+                annuity(data, pay, next_month);
             }
         }
     } else if(data->payment_type == DIFFERENTIATED && error_code == ALLOCATED) {
@@ -31,7 +31,7 @@ void calculate_credit(initial *data, payments *pay) {
             error_code = allocate_memory(data, pay);
             if(!error_code) {
                 check_days(data, &next_month, const_day);
-                differentiated(data, pay);
+                differentiated(data, pay, next_month);
             }
         }
     }

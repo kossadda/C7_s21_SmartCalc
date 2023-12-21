@@ -10,6 +10,7 @@ extern "C" {
 #include "../s21_calculations/s21_credit/s21_annuity.c"
 #include "../s21_calculations/s21_credit/s21_differentiated.c"
 #include "../s21_calculations/s21_credit/s21_calendar.c"
+#include "../s21_calculations/s21_credit/s21_supporting.c"
 }
 
 s21_credit::s21_credit(QWidget *parent)
@@ -25,7 +26,7 @@ s21_credit::s21_credit(QWidget *parent)
 
 
     tableWindow->getUi()->table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    // ui->date_credit->setDate(QDate::currentDate());
+    ui->date_credit->setDate(QDate::currentDate());
 
     connect(ui->creditBox, SIGNAL(activated(int)), this, SLOT(change_credit(int)));
 }
@@ -110,14 +111,22 @@ void s21_credit::add_item_to_table(int row, int column, QString value) {
 }
 
 void s21_credit::add_all_to_table(int months, long double **result, long double *total) {
-    int additional_month = 0;
+    int first_date = ui->date_credit->date().day();
     QDate current_day = ui->date_credit->date().addMonths(1);
-    for(int i = 0; i < months + additional_month; i++) {
+    for(int i = 0; i < months; i++) {
         add_item_to_table(i, 0, current_day.toString("dd.MM.yyyy"));
         for(int j = 0; j < 4; j++) {
             add_item_to_table(i, j+1, QString::number(result[i][j], 'f', 2));
         }
         current_day = current_day.addMonths(1);
+
+        if(current_day.day() != first_date) {
+            if(first_date > current_day.day()) {
+                current_day.setDate(current_day.year(), current_day.month(), current_day.daysInMonth());
+            } else {
+                current_day.setDate(current_day.year(), current_day.month(), first_date);
+            }
+        }
     }
     for(int i = 0; i < 3; i++) {
         QString number = QString::number(static_cast<double>(total[i]), 'f', 2);

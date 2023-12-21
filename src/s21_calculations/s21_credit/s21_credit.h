@@ -53,12 +53,15 @@ typedef struct initial {
 
 // main functions
 void calculate_credit(initial *data, payments *pay);
-void annuity(initial *data, payments *pay);
-void differentiated(initial *data, payments *pay);
-void calc_percent(initial *data, payments *pay);
-void remember_result(initial *data, payments *pay);
+void annuity(initial *data, payments *pay, time_data next_month);
+void differentiated(initial *data, payments *pay, time_data next_month);
+
+// support functions
+
 int allocate_memory(initial *data, payments *pay);
 int init_massive(payments *pay);
+void calc_percent(initial *data, payments *pay, time_data next_month);
+void remember_result(initial *data, payments *pay);
 
 // calendar functions
 void check_days(initial *data, time_data *next_month, int const_day);

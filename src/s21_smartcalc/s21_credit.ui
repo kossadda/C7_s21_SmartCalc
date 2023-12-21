@@ -648,7 +648,7 @@ background-color: rgb(255, 255, 255);</string>
         </property>
         <property name="maximumDateTime">
          <datetime>
-          <hour>19</hour>
+          <hour>14</hour>
           <minute>59</minute>
           <second>59</second>
           <year>9999</year>
@@ -662,8 +662,8 @@ background-color: rgb(255, 255, 255);</string>
         <property name="date">
          <date>
           <year>2016</year>
-          <month>2</month>
-          <day>22</day>
+          <month>1</month>
+          <day>31</day>
          </date>
         </property>
        </widget>

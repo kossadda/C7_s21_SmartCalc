@@ -3,17 +3,10 @@
 /// @brief A function that calculates what part of the monthly payment goes to interest
 /// @param data Structure containing input parameters for calculation
 /// @param pay Structure containing buffer variables for monthly results and general payment data arrays
-void calc_percent(initial *data, payments *pay) {
-    if(data->date.leap < 2) {
-        pay->percent = round((data->debt * data->rate / 100) / ((data->date.leap) ? LEAP_YEAR : YEAR) * data->date.month_days * 100) / 100;
-    } else {
-        long double days_in_december = DECEMBER - data->date.month_days;
-        long double days_this_year = (data->date.leap == 2) ? YEAR : LEAP_YEAR;
-        long double days_next_year = (days_this_year == YEAR) ? LEAP_YEAR : YEAR; 
-        long double first_part_month = (data->debt * data->rate / 100) / days_this_year * days_in_december;
-        long double second_part_month = (data->debt * data->rate / 100) / days_next_year * data->date.month_days;
-        pay->percent = round((first_part_month + second_part_month) * 100) / 100;
-    }
+void calc_percent(initial *data, payments *pay, time_data next_month) {
+    long double first_part_month = (data->debt * data->rate / 100) / ((data->date.leap) ? LEAP_YEAR : YEAR) * data->date.month_days;
+    long double second_part_month = (data->debt * data->rate / 100) / ((next_month.leap) ? LEAP_YEAR : YEAR) * next_month.month_days;
+    pay->percent = round((first_part_month + second_part_month) * 100) / 100;
 }
 
 /// @brief A function that writes the result of each month to an array
@@ -62,7 +55,7 @@ int allocate_memory(initial *data, payments *pay) {
     if(pay->result) {
         error_code = ALLOCATED;
     }
-    pay->result[data->current] = (long double *)malloc(5 * sizeof(long double));
+    pay->result[data->current] = (long double *)malloc(4 * sizeof(long double));
     if(pay->result[data->current]) {
         error_code = ALLOCATED;
     } else {

@@ -38,7 +38,6 @@ s21_deposit::s21_deposit(QWidget *parent)
 
 s21_deposit::~s21_deposit()
 {
-    if(myWidget) delete myWidget;
     delete ui;
 }
 
