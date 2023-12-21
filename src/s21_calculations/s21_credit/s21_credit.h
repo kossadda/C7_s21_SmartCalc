@@ -26,6 +26,11 @@ enum mallocate {
     NOT_ALLOCATED = 1,
 };
 
+enum redemtion_type {
+    REDUCE_TERM = 0,
+    REDUCE_PAY = 1,
+};
+
 typedef struct time_data {
     int day;
     int month;
@@ -38,6 +43,7 @@ typedef struct payments {
     long double main;
     long double percent;
     long double monthly;
+    long double const_main;
     long double *total;
     long double **result;
 } payments;
@@ -51,10 +57,18 @@ typedef struct initial {
     time_data date;
 } initial;
 
+typedef struct another_payments {
+    time_data *date;
+    long double *sum;
+    int *type;
+    int count;
+    int current;
+} another_payments;
+
 // main functions
-void calculate_credit(initial *data, payments *pay);
-void annuity(initial *data, payments *pay, time_data next_month);
-void differentiated(initial *data, payments *pay, time_data next_month);
+void calculate_credit(initial *data, payments *pay, another_payments *redemption);
+void annuity(initial *data, payments *pay, time_data next_month, another_payments *redemption);
+void differentiated(initial *data, payments *pay, time_data next_month, another_payments *redemption);
 
 // support functions
 

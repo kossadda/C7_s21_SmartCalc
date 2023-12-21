@@ -1,13 +1,25 @@
 #include "my_widget.h"
 #include "ui_my_widget.h"
 
+class DateTableWidgetItem : public QTableWidgetItem {
+public:
+    bool operator<(const QTableWidgetItem &other) const override {
+        // Сравниваем даты при помощи QDateTime
+        QDateTime date1 = QDateTime::fromString(text(), "dd.MM.yyyy");
+        QDateTime date2 = QDateTime::fromString(other.text(), "dd.MM.yyyy");
+        return date1 < date2;
+    }
+};
+
 my_widget::my_widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::my_widget)
 {
     ui->setupUi(this);
     ui->table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    ui->pay_date->setDate(QDate::currentDate());
+    ui->table->setSortingEnabled(true);
+    ui->table->sortByColumn(0, Qt::AscendingOrder);
+    // ui->pay_date->setDate(QDate::currentDate());
 }
 
 my_widget::~my_widget()
@@ -29,21 +41,27 @@ void my_widget::on_add_to_table_clicked()
 {
     if(ui->pay_sum->text().length() && containsOnlyDigits(ui->pay_sum->text())) {
         ui->table->setRowCount(ui->table->rowCount() + 1);
-        QTableWidgetItem *item_1 = new QTableWidgetItem(ui->pay_date->date().toString("dd.MM.yyyy"));
+        DateTableWidgetItem *item_1 = new DateTableWidgetItem();
+        DateTableWidgetItem *item_2 = new DateTableWidgetItem();
+        DateTableWidgetItem *item_3 = new DateTableWidgetItem();
+        item_1->setText(ui->pay_date->date().toString("dd.MM.yyyy"));
+        item_2->setText(ui->pay_sum->text());
+        item_3->setText(ui->pay_type->currentText());
         item_1->setTextAlignment(Qt::AlignCenter);
-        ui->table->setItem(ui->table->rowCount() - 1, 0, item_1);
-        QTableWidgetItem *item_2 = new QTableWidgetItem(ui->pay_sum->text());
         item_2->setTextAlignment(Qt::AlignCenter);
-        ui->table->setItem(ui->table->rowCount() - 1, 1, item_2);
-        QTableWidgetItem *item_3 = new QTableWidgetItem(ui->pay_type->currentText());
         item_3->setTextAlignment(Qt::AlignCenter);
-        ui->table->setItem(ui->table->rowCount() - 1, 2, item_3);
+        ui->table->setItem(ui->table->rowCount() - 1, 0, item_1);
+        ui->table->setItem(item_1->row(), 1, item_2);
+        ui->table->setItem(item_1->row(), 2, item_3);
     }
 }
-
 
 void my_widget::on_clean_table_clicked()
 {
     ui->table->setRowCount(ui->table->rowCount() - 1);
 }
 
+QTableWidget* my_widget::getTableWidget()
+{
+    return ui->table;
+}

@@ -66,6 +66,13 @@ background-color: rgb(255, 255, 255);</string>
        <property name="calendarPopup">
         <bool>true</bool>
        </property>
+       <property name="date">
+        <date>
+         <year>2022</year>
+         <month>4</month>
+         <day>10</day>
+        </date>
+       </property>
       </widget>
      </item>
      <item row="1" column="0" colspan="5">
@@ -86,6 +93,9 @@ QTableWidget {
 	color: rgb(255, 255, 255);
 	gridline-color: rgb(255, 255, 255);
 }</string>
+       </property>
+       <property name="rowCount">
+        <number>0</number>
        </property>
        <column>
         <property name="text">
@@ -132,6 +142,9 @@ QTableWidget {
        <property name="styleSheet">
         <string notr="true">color: rgb(0, 0, 0);
 background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>500</string>
        </property>
        <property name="placeholderText">
         <string>Early pay sum</string>

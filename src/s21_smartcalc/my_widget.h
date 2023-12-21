@@ -2,6 +2,7 @@
 #define MY_WIDGET_H
 
 #include <QWidget>
+#include <QTableWidget>
 
 namespace Ui {
 class my_widget;
@@ -14,6 +15,9 @@ class my_widget : public QWidget
 public:
     explicit my_widget(QWidget *parent = nullptr);
     ~my_widget();
+
+public slots:
+    QTableWidget* getTableWidget();
 
 private slots:
     void on_add_to_table_clicked();

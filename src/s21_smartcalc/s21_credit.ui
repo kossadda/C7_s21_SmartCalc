@@ -57,7 +57,7 @@
      </widget>
     </item>
     <item row="3" column="0">
-     <layout class="QGridLayout" name="gridLayout_5">
+     <layout class="QGridLayout" name="layout">
       <property name="leftMargin">
        <number>15</number>
       </property>
@@ -71,7 +71,7 @@
        <number>15</number>
       </property>
       <item row="2" column="0">
-       <widget class="QLabel" name="label_3">
+       <widget class="QLabel" name="credit_label">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -107,7 +107,7 @@
        </widget>
       </item>
       <item row="3" column="1">
-       <spacer name="horizontalSpacer_11">
+       <spacer name="spacer_11">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -123,7 +123,7 @@
        </spacer>
       </item>
       <item row="3" column="3">
-       <widget class="QLabel" name="info_label_2">
+       <widget class="QLabel" name="percent_label">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -156,10 +156,10 @@
        </widget>
       </item>
       <item row="8" column="0" colspan="4">
-       <layout class="QVBoxLayout" name="verticalLayout"/>
+       <layout class="QVBoxLayout" name="layout_1"/>
       </item>
       <item row="3" column="2">
-       <widget class="QLineEdit" name="percent">
+       <widget class="QLineEdit" name="percent_edit">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -188,7 +188,7 @@
 background-color: rgb(255, 255, 255);</string>
         </property>
         <property name="text">
-         <string>3</string>
+         <string>10</string>
         </property>
         <property name="placeholderText">
          <string>Enter interest rate</string>
@@ -196,7 +196,7 @@ background-color: rgb(255, 255, 255);</string>
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QLabel" name="label_2">
+       <widget class="QLabel" name="amount_label">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -232,7 +232,7 @@ background-color: rgb(255, 255, 255);</string>
        </widget>
       </item>
       <item row="6" column="1">
-       <spacer name="horizontalSpacer_14">
+       <spacer name="spacer_14">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -248,7 +248,7 @@ background-color: rgb(255, 255, 255);</string>
        </spacer>
       </item>
       <item row="2" column="2">
-       <widget class="QLineEdit" name="credit_time">
+       <widget class="QLineEdit" name="time_edit">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -277,7 +277,7 @@ background-color: rgb(255, 255, 255);</string>
 background-color: rgb(255, 255, 255);</string>
         </property>
         <property name="text">
-         <string>12</string>
+         <string>6</string>
         </property>
         <property name="placeholderText">
          <string>Enter the loan term</string>
@@ -329,7 +329,7 @@ QRadioButton{
        </widget>
       </item>
       <item row="4" column="1">
-       <spacer name="horizontalSpacer_12">
+       <spacer name="spacer_12">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -345,7 +345,7 @@ QRadioButton{
        </spacer>
       </item>
       <item row="5" column="3">
-       <widget class="QLabel" name="info_label_3">
+       <widget class="QLabel" name="info_label_1">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -467,7 +467,7 @@ background-color: rgb(255, 255, 255);</string>
        </widget>
       </item>
       <item row="6" column="3">
-       <widget class="QLabel" name="info_label_4">
+       <widget class="QLabel" name="info_label_2">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -513,7 +513,7 @@ QLabel {
        </widget>
       </item>
       <item row="1" column="1">
-       <spacer name="horizontalSpacer_9">
+       <spacer name="spacer_9">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -529,7 +529,7 @@ QLabel {
        </spacer>
       </item>
       <item row="5" column="1">
-       <spacer name="horizontalSpacer_13">
+       <spacer name="spacer_13">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -545,7 +545,7 @@ QLabel {
        </spacer>
       </item>
       <item row="3" column="0">
-       <widget class="QLabel" name="label_4">
+       <widget class="QLabel" name="interest_label">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -581,7 +581,7 @@ QLabel {
        </widget>
       </item>
       <item row="1" column="2">
-       <widget class="QLineEdit" name="amount">
+       <widget class="QLineEdit" name="amount_edit">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -610,7 +610,7 @@ QLabel {
 background-color: rgb(255, 255, 255);</string>
         </property>
         <property name="text">
-         <string>800</string>
+         <string>120000</string>
         </property>
         <property name="placeholderText">
          <string>Enter loan amount</string>
@@ -618,7 +618,7 @@ background-color: rgb(255, 255, 255);</string>
        </widget>
       </item>
       <item row="4" column="2">
-       <widget class="QDateEdit" name="date_credit">
+       <widget class="QDateEdit" name="date_edit">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -648,7 +648,7 @@ background-color: rgb(255, 255, 255);</string>
         </property>
         <property name="maximumDateTime">
          <datetime>
-          <hour>14</hour>
+          <hour>4</hour>
           <minute>59</minute>
           <second>59</second>
           <year>9999</year>
@@ -661,15 +661,15 @@ background-color: rgb(255, 255, 255);</string>
         </property>
         <property name="date">
          <date>
-          <year>2016</year>
-          <month>1</month>
-          <day>31</day>
+          <year>2022</year>
+          <month>3</month>
+          <day>1</day>
          </date>
         </property>
        </widget>
       </item>
       <item row="2" column="1">
-       <spacer name="horizontalSpacer_10">
+       <spacer name="spacer_10">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -721,9 +721,9 @@ background-color: rgb(255, 255, 255);</string>
        </widget>
       </item>
       <item row="9" column="0" colspan="4">
-       <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <layout class="QHBoxLayout" name="layout_2">
         <item>
-         <spacer name="horizontalSpacer_6">
+         <spacer name="spacer_6">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -778,7 +778,7 @@ QPushButton:pressed {
          </widget>
         </item>
         <item>
-         <spacer name="horizontalSpacer_5">
+         <spacer name="spacer_5">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -796,7 +796,7 @@ QPushButton:pressed {
        </layout>
       </item>
       <item row="4" column="0">
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="loan_label">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -874,7 +874,7 @@ QRadioButton{
        </widget>
       </item>
       <item row="5" column="0" rowspan="2">
-       <widget class="QLabel" name="payment_1">
+       <widget class="QLabel" name="payment_label">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
           <horstretch>0</horstretch>
