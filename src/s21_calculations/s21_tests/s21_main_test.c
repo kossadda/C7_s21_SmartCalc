@@ -11,6 +11,8 @@ int main(void) {
     Suite *(*credit[])(void) = {
         s21_annuity_1         , s21_annuity_2         , s21_annuity_3         , s21_annuity_4         , s21_annuity_5         ,
         s21_differentiated_1  , s21_differentiated_2  , s21_differentiated_3  , s21_differentiated_4  , s21_differentiated_5  ,
+        s21_redemption_term_1 ,   
+        s21_redemption_pay_1  ,  
     };
 
     printf("\n================== SMARTCALC TESTS ==================\n\n");

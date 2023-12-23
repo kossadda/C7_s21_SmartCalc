@@ -43,3 +43,15 @@ void input_initial(initial *data, long double debt, long double months, int type
     data->date.month = month;
     data->date.year = year;
 }
+
+void input_redemption(another_payments *redemption, int day, int month, int year, long double sum, int type) {
+    redemption->date = (time_data *)realloc(redemption->date, (redemption->count + 1) * sizeof(time_data));
+    redemption->sum = (long double *)realloc(redemption->sum, (redemption->count + 1) * sizeof(long double));
+    redemption->type = (int *)realloc(redemption->type, (redemption->count + 1) * sizeof(int));
+    redemption->date[redemption->count].day = day;
+    redemption->date[redemption->count].month = month;
+    redemption->date[redemption->count].year = year;
+    redemption->sum[redemption->count] = sum;
+    redemption->type[redemption->count] = type;
+    redemption->count++; 
+}

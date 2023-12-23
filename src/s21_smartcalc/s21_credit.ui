@@ -648,12 +648,12 @@ background-color: rgb(255, 255, 255);</string>
         </property>
         <property name="maximumDateTime">
          <datetime>
-          <hour>4</hour>
+          <hour>13</hour>
           <minute>59</minute>
           <second>59</second>
           <year>9999</year>
           <month>12</month>
-          <day>15</day>
+          <day>14</day>
          </datetime>
         </property>
         <property name="calendarPopup">
@@ -663,7 +663,7 @@ background-color: rgb(255, 255, 255);</string>
          <date>
           <year>2022</year>
           <month>3</month>
-          <day>1</day>
+          <day>15</day>
          </date>
         </property>
        </widget>

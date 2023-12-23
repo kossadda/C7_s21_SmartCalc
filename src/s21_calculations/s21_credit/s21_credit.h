@@ -67,8 +67,9 @@ typedef struct another_payments {
 
 // main functions
 void calculate_credit(initial *data, payments *pay, another_payments *redemption);
-void annuity(initial *data, payments *pay, time_data next_month, another_payments *redemption);
-void differentiated(initial *data, payments *pay, time_data next_month, another_payments *redemption);
+void annuity(initial *data, payments *pay, time_data next_month);
+void differentiated(initial *data, payments *pay, time_data next_month,  long double full_percent);
+long double redemp_payment(initial *data, payments *pay, time_data *next_month, another_payments *redemption, int call);
 
 // support functions
 
@@ -76,11 +77,15 @@ int allocate_memory(initial *data, payments *pay);
 int init_massive(payments *pay);
 void calc_percent(initial *data, payments *pay, time_data next_month);
 void remember_result(initial *data, payments *pay);
+void init_redemption(another_payments *redemption);
 
 // calendar functions
-void check_days(initial *data, time_data *next_month, int const_day);
+void check_days(initial *data, time_data *next_month);
 int check_leap(int year);
 void days_in_month(time_data *date, time_data *next_month);
 void add_month(time_data *date, int beginning_date);
+int compare_month(time_data now, time_data *pay, time_data next);
+int sub_date(time_data first, time_data second);
+void set_date(time_data *date, int day, int month, int year);
 
 #endif

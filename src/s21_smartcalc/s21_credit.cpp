@@ -69,31 +69,24 @@ void s21_credit::free_memory(int rows, long double ***result, long double **tota
     *total = NULL;
 }
 
-void init_redemption(another_payments *redemtion) {
-    redemtion->date = (time_data *)malloc(1 * sizeof(time_data));
-    redemtion->sum = (long double *)malloc(1 * sizeof(long double));
-    redemtion->type = (int *)malloc(1 * sizeof(int));
-    redemtion->count = 0;
-}
-
-void add_redemption(another_payments *redemtion, my_widget *early_pay, int count) {
-    redemtion->date = (time_data *)realloc(redemtion->date, (count + 1) * sizeof(time_data));
-    redemtion->sum = (long double *)realloc(redemtion->sum, (count + 1) * sizeof(long double));
-    redemtion->type = (int *)realloc(redemtion->type, (count + 1) * sizeof(int));
+void add_redemption(another_payments *redemption, my_widget *early_pay, int count) {
+    redemption->date = (time_data *)realloc(redemption->date, (count + 1) * sizeof(time_data));
+    redemption->sum = (long double *)realloc(redemption->sum, (count + 1) * sizeof(long double));
+    redemption->type = (int *)realloc(redemption->type, (count + 1) * sizeof(int));
     QTableWidgetItem *item1 = early_pay->getTableWidget()->item(count, 0);
     QDate one_date = QDate::fromString(item1->text(), "dd.MM.yyyy");
-    redemtion->date[count].day = one_date.day();
-    redemtion->date[count].month = one_date.month();
-    redemtion->date[count].year = one_date.year();
+    redemption->date[count].day = one_date.day();
+    redemption->date[count].month = one_date.month();
+    redemption->date[count].year = one_date.year();
     QTableWidgetItem *item2 = early_pay->getTableWidget()->item(count, 1);
-    redemtion->sum[count] = item2->text().toDouble();
+    redemption->sum[count] = item2->text().toDouble();
     QTableWidgetItem *item3 = early_pay->getTableWidget()->item(count, 2);
     if(item3->text() == "Reduce term") {
-        redemtion->type[count] = REDUCE_TERM;
+        redemption->type[count] = REDUCE_TERM;
     } else {
-        redemtion->type[count] = REDUCE_PAY;
+        redemption->type[count] = REDUCE_PAY;
     }
-    redemtion->count++;
+    redemption->count++;
 }
 
 void init_parameters(initial *data, Ui::s21_credit *ui) {
@@ -109,15 +102,15 @@ void s21_credit::on_calculate_clicked()
 {
     payments pay;
     initial data;
-    another_payments redemtion;
+    another_payments redemption;
     init_parameters(&data, ui);
 
     if(early_pay) {
         if(early_pay->getTableWidget()->rowCount()) {
-            init_redemption(&redemtion);
+            init_redemption(&redemption);
         }
         for(int count = 0; count < early_pay->getTableWidget()->rowCount(); count++) {
-            add_redemption(&redemtion, early_pay, count);
+            add_redemption(&redemption, early_pay, count);
         }
     }
 
@@ -131,28 +124,28 @@ void s21_credit::on_calculate_clicked()
         }
     }
     if(data.payment_type != NOT_CHOSEN) {
-        calculate_credit(&data, &pay, &redemtion);
+        calculate_credit(&data, &pay, &redemption);
 
         if(tableWindow) {
             QPoint currentPosGlobal = this->mapToGlobal(QPoint(-700, 0));
             tableWindow->setGeometry(currentPosGlobal.x(), currentPosGlobal.y(), 700, 550);
             tableWindow->show();
-            tableWindow->getUi()->table->setRowCount(data.current);
-            add_all_to_table(data.current, pay.result, pay.total);
+            tableWindow->getUi()->table->setRowCount(data.current + 1);
+            add_all_to_table(data.current + 1, pay.result, pay.total);
         }
         free_memory(data.current, &pay.result, &pay.total);
-        if(redemtion.date != NULL) {
-            free(redemtion.date);
-            redemtion.date = NULL;
-        }
-        if(redemtion.sum != NULL) {
-            free(redemtion.sum);
-            redemtion.sum = NULL;
-        }
-        if(redemtion.type != NULL) {
-            free(redemtion.type);
-            redemtion.type = NULL;
-        }
+        // if(redemption.date != NULL) {
+        //     free(redemption.date);
+        //     redemption.date = NULL;
+        // }
+        // if(redemption.sum != NULL) {
+        //     free(redemption.sum);
+        //     redemption.sum = NULL;
+        // }
+        // if(redemption.type != NULL) {
+        //     free(redemption.type);
+        //     redemption.type = NULL;
+        // }
     }
 }
 

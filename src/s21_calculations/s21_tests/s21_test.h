@@ -9,6 +9,7 @@
 int test_suite(Suite *test);
 void free_memory(int rows, payments *pay);
 void input_initial(initial *data, long double debt, long double months, int type, long double rate, int day, int month, int year);
+void input_redemption(another_payments *redemption, int day, int month, int year, long double sum, int type);
 
 // calculator tests
 
@@ -39,5 +40,7 @@ Suite *s21_differentiated_2(void);
 Suite *s21_differentiated_3(void);
 Suite *s21_differentiated_4(void);
 Suite *s21_differentiated_5(void);
-
+Suite *s21_redemption_term_1(void);
+Suite *s21_redemption_pay_1(void);
+ 
 #endif

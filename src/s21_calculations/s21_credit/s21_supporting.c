@@ -45,6 +45,14 @@ int init_massive(payments *pay) {
     return error_code;
 }
 
+void init_redemption(another_payments *redemption) {
+    redemption->date = (time_data *)malloc(1 * sizeof(time_data));
+    redemption->sum = (long double *)malloc(1 * sizeof(long double));
+    redemption->type = (int *)malloc(1 * sizeof(int));
+    redemption->count = 0;
+    redemption->current = 0;
+}
+
 /// @brief A function that allocates additional memory for an initialized array
 /// @param data Structure containing input parameters for calculation
 /// @param pay Structure containing buffer variables for monthly results and general payment data arrays
@@ -62,4 +70,31 @@ int allocate_memory(initial *data, payments *pay) {
         error_code = NOT_ALLOCATED;
     }
     return error_code;
+}
+
+long double redemp_payment(initial *data, payments *pay, time_data *next_month, another_payments *redemption, int call) {
+    data->current++;
+    allocate_memory(data, pay);
+    if(call) {
+        redemption->date[redemption->current].month_days = sub_date(redemption->date[redemption->current], redemption->date[redemption->current - 1]);
+    }
+    long double temp = round((data->debt * data->rate / 100) / ((redemption->date[redemption->current].leap) ? LEAP_YEAR : YEAR) * redemption->date[redemption->current].month_days * 100) / 100;
+    pay->percent = (temp > redemption->sum[redemption->current]) ? redemption->sum[redemption->current] : temp;
+    pay->monthly = redemption->sum[redemption->current];
+    pay->main = pay->monthly - pay->percent;
+    data->debt -= pay->main;
+
+    remember_result(data, pay);
+    if(redemption->date[redemption->current].month == data->date.month && redemption->date[redemption->current].day >= data->date.day) {
+        data->date.month_days -= sub_date(redemption->date[redemption->current], data->date);
+    } else {
+        data->date.month_days = 0;
+        next_month->month_days = sub_date(*next_month, redemption->date[redemption->current]);
+    }
+    if(redemption->type[redemption->current] == REDUCE_PAY) {
+        pay->const_main -= round(pay->main/(data->months - (data->current - redemption->current)) * 100) / 100;
+    }
+    pay->main = pay->const_main;
+    redemption->current++;
+    return (temp > redemption->sum[redemption->current - 1]) ? redemption->sum[redemption->current - 1] : 0;
 }
