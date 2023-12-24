@@ -188,7 +188,7 @@
 background-color: rgb(255, 255, 255);</string>
         </property>
         <property name="text">
-         <string>10</string>
+         <string>11.211</string>
         </property>
         <property name="placeholderText">
          <string>Enter interest rate</string>
@@ -277,7 +277,7 @@ background-color: rgb(255, 255, 255);</string>
 background-color: rgb(255, 255, 255);</string>
         </property>
         <property name="text">
-         <string>6</string>
+         <string>55</string>
         </property>
         <property name="placeholderText">
          <string>Enter the loan term</string>
@@ -610,7 +610,7 @@ QLabel {
 background-color: rgb(255, 255, 255);</string>
         </property>
         <property name="text">
-         <string>120000</string>
+         <string>12364567.22</string>
         </property>
         <property name="placeholderText">
          <string>Enter loan amount</string>
@@ -648,7 +648,7 @@ background-color: rgb(255, 255, 255);</string>
         </property>
         <property name="maximumDateTime">
          <datetime>
-          <hour>13</hour>
+          <hour>8</hour>
           <minute>59</minute>
           <second>59</second>
           <year>9999</year>
@@ -661,9 +661,9 @@ background-color: rgb(255, 255, 255);</string>
         </property>
         <property name="date">
          <date>
-          <year>2022</year>
-          <month>3</month>
-          <day>15</day>
+          <year>2019</year>
+          <month>1</month>
+          <day>11</day>
          </date>
         </property>
        </widget>

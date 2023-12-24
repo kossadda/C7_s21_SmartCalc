@@ -32,11 +32,15 @@ void calculate_credit(initial *data, payments *pay, another_payments *redemption
         pay->const_main = pay->main;
         
         for(data->current = -1; data->debt != 0; ) {
+            int change = 0;
             long double full_percent = 0;
             check_days(data, &next_month);
-            if(redemption && redemption->count) {
-                for(int call = 0; compare_month(data->date, &(redemption->date[redemption->current]), next_month); call++) {
-                    full_percent = redemp_payment(data, pay, &next_month, redemption, call);
+            if(redemption && redemption->sum && redemption->current < redemption->count) {
+                while(compare_month(data->date, &(redemption->date[redemption->current]), next_month)) {
+                    redemp_payment(data, pay, &next_month, redemption, &full_percent, &change);
+                    if(redemption->current == redemption->count) {
+                        break;
+                    }
                 }
             }
             differentiated(data, pay, next_month, full_percent);

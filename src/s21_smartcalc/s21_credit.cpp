@@ -60,13 +60,19 @@ void s21_credit::change_credit(int index)
 
 void s21_credit::free_memory(int rows, long double ***result, long double **total) {
     for(int i = 0; i < rows; i++) {
-        free((*result)[i]);
-        (*result)[i] = NULL;
+        if((*result)[i]) {
+            free((*result)[i]);
+            (*result)[i] = NULL;
+        }
     }
-    free(*result);
-    free(*total);
-    *result = NULL;
-    *total = NULL;
+    if(result) {
+        free(*result);
+        *result = NULL;
+    }
+    if(total) {
+        free(*total);
+        *total = NULL;
+    }
 }
 
 void add_redemption(another_payments *redemption, my_widget *early_pay, int count) {
@@ -106,7 +112,7 @@ void s21_credit::on_calculate_clicked()
     init_parameters(&data, ui);
 
     if(early_pay) {
-        if(early_pay->getTableWidget()->rowCount()) {
+        if(early_pay->getTableWidget()->rowCount() > 0) {
             init_redemption(&redemption);
         }
         for(int count = 0; count < early_pay->getTableWidget()->rowCount(); count++) {
@@ -124,7 +130,11 @@ void s21_credit::on_calculate_clicked()
         }
     }
     if(data.payment_type != NOT_CHOSEN) {
-        calculate_credit(&data, &pay, &redemption);
+        if(early_pay->getTableWidget()->rowCount() == 0) {
+            calculate_credit(&data, &pay, NULL);
+        } else {
+            calculate_credit(&data, &pay, &redemption);
+        }
 
         if(tableWindow) {
             QPoint currentPosGlobal = this->mapToGlobal(QPoint(-700, 0));
@@ -133,19 +143,21 @@ void s21_credit::on_calculate_clicked()
             tableWindow->getUi()->table->setRowCount(data.current + 1);
             add_all_to_table(data.current + 1, pay.result, pay.total);
         }
-        free_memory(data.current, &pay.result, &pay.total);
-        // if(redemption.date != NULL) {
-        //     free(redemption.date);
-        //     redemption.date = NULL;
-        // }
-        // if(redemption.sum != NULL) {
-        //     free(redemption.sum);
-        //     redemption.sum = NULL;
-        // }
-        // if(redemption.type != NULL) {
-        //     free(redemption.type);
-        //     redemption.type = NULL;
-        // }
+        free_memory(data.current + 1, &pay.result, &pay.total);
+        if(early_pay->getTableWidget()->rowCount() > 0) {
+            if(redemption.date != NULL) {
+                free(redemption.date);
+                redemption.date = NULL;
+            }
+            if(redemption.sum != NULL) {
+                free(redemption.sum);
+                redemption.sum = NULL;
+            }
+            if(redemption.type != NULL) {
+                free(redemption.type);
+                redemption.type = NULL;
+            }
+        }
     }
 }
 
@@ -155,14 +167,44 @@ void s21_credit::add_item_to_table(int row, int column, QString value) {
     tableWindow->getUi()->table->setItem(row, column, item);
 }
 
+int s21_credit::check_date_between(const QDate& previous, const QDate& current, int* redemp_count) {
+    QDate one_date;
+    QTableWidgetItem *redem_item = early_pay->getTableWidget()->item(*redemp_count, 0);
+    one_date = QDate::fromString(redem_item->text(), "dd.MM.yyyy");
+    return (one_date >= previous && one_date < current) ? 1 : 0;
+}
+
+void s21_credit::add_datarow_to_table(const QDate& date, QString row_head, long double **result, int iteration) {
+    QTableWidgetItem *header_item = new QTableWidgetItem(row_head);
+    tableWindow->getUi()->table->setVerticalHeaderItem(iteration, header_item);
+    add_item_to_table(iteration, 0, date.toString("dd.MM.yyyy"));
+    for(int j = 0; j < 4; j++) {
+        add_item_to_table(iteration, j+1, QString::number(result[iteration][j], 'f', 2));
+    }
+}
+
 void s21_credit::add_all_to_table(int months, long double **result, long double *total) {
+    int redemp_count = 0;
     int first_date = ui->date_edit->date().day();
+    QDate prev = ui->date_edit->date();
     QDate current_day = ui->date_edit->date().addMonths(1);
+    QDate one_date;
     for(int i = 0; i < months; i++) {
-        add_item_to_table(i, 0, current_day.toString("dd.MM.yyyy"));
-        for(int j = 0; j < 4; j++) {
-            add_item_to_table(i, j+1, QString::number(result[i][j], 'f', 2));
+        if(redemp_count != early_pay->getTableWidget()->rowCount()) {
+            while(check_date_between(prev, current_day, &redemp_count)) {
+                QTableWidgetItem *redem_item = early_pay->getTableWidget()->item(redemp_count, 0);
+                one_date = QDate::fromString(redem_item->text(), "dd.MM.yyyy");
+                add_datarow_to_table(one_date, "", result, i);
+                redemp_count++;
+                i++;
+                if(redemp_count == early_pay->getTableWidget()->rowCount()) {
+                    break;
+                }
+            }
         }
+        add_datarow_to_table(current_day, QString::number(i + 1 - redemp_count), result, i);
+
+        prev = current_day;
         current_day = current_day.addMonths(1);
 
         if(current_day.day() != first_date) {

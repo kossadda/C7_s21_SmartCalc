@@ -7,7 +7,7 @@
 // functions to test
 
 int test_suite(Suite *test);
-void free_memory(int rows, payments *pay);
+void free_memory(int row, payments *pay, another_payments *redemption);
 void input_initial(initial *data, long double debt, long double months, int type, long double rate, int day, int month, int year);
 void input_redemption(another_payments *redemption, int day, int month, int year, long double sum, int type);
 

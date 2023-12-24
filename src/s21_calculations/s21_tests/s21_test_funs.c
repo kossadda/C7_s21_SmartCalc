@@ -1,19 +1,33 @@
 #include "s21_test.h"
 
-/// @brief Function for clearing memory in payments arrays
-/// @param rows Number of rows
-/// @param pay Structure containing buffer variables for monthly results and general payment data arrays
-void free_memory(int rows, payments *pay) {
-    for(int i = 0; i < rows; i++) {
-        free(pay->result[i]);
-        pay->result[i] = NULL;
-    }
-    free(pay->result);
-    free(pay->total);
-    pay->result = NULL;
-    pay->total = NULL;
-}
+#define ARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]))
 
+/// @brief Function for clearing memory in payments arrays
+/// @param pay Structure containing buffer variables for monthly results and general payment data arrays
+void free_memory(int row, payments *pay, another_payments *redemption) {
+    if(pay) {
+        int redemp_rows = 0;
+        if(redemption) {
+            redemp_rows = 1;
+        }
+        for(int i = 0; i < row + redemp_rows; i++) {
+            free(pay->result[i]);
+            pay->result[i] = NULL;
+        }
+        free(pay->result);
+        free(pay->total);
+        pay->result = NULL;
+        pay->total = NULL;
+    }
+    if(redemption) {
+        free(redemption->date);
+        free(redemption->sum);
+        free(redemption->type);
+        redemption->date = NULL;
+        redemption->sum = NULL;
+        redemption->type = NULL;
+    }
+}
 /// @brief Function for testing the specified Suite
 /// @param test Input Suite tests
 /// @return Returns the error code. If the tests pass successfully - EXIT_SUCCESS, if unsuccessful - EXIT_FAILURE

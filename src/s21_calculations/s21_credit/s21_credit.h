@@ -69,7 +69,7 @@ typedef struct another_payments {
 void calculate_credit(initial *data, payments *pay, another_payments *redemption);
 void annuity(initial *data, payments *pay, time_data next_month);
 void differentiated(initial *data, payments *pay, time_data next_month,  long double full_percent);
-long double redemp_payment(initial *data, payments *pay, time_data *next_month, another_payments *redemption, int call);
+int redemp_payment(initial *data, payments *pay, time_data *next_month, another_payments *redemption, long double *full_percent, int *change);
 
 // support functions
 

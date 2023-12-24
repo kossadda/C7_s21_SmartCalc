@@ -72,29 +72,48 @@ int allocate_memory(initial *data, payments *pay) {
     return error_code;
 }
 
-long double redemp_payment(initial *data, payments *pay, time_data *next_month, another_payments *redemption, int call) {
+int redemp_payment(initial *data, payments *pay, time_data *next_month, another_payments *redemption, long double *full_percent, int *change) {
     data->current++;
     allocate_memory(data, pay);
-    if(call) {
+    long double percent = round((data->debt * data->rate / 100) / ((redemption->date[redemption->current].leap) ? LEAP_YEAR : YEAR) * redemption->date[redemption->current].month_days * 100) / 100;
+    if(*change) {
         redemption->date[redemption->current].month_days = sub_date(redemption->date[redemption->current], redemption->date[redemption->current - 1]);
     }
-    long double temp = round((data->debt * data->rate / 100) / ((redemption->date[redemption->current].leap) ? LEAP_YEAR : YEAR) * redemption->date[redemption->current].month_days * 100) / 100;
-    pay->percent = (temp > redemption->sum[redemption->current]) ? redemption->sum[redemption->current] : temp;
+    if(redemption->sum[redemption->current] > percent) {
+        pay->percent = percent - *full_percent;
+        *change = 1;
+    }
+    if(!*change && redemption->current) {
+        redemption->date[redemption->current].month_days = sub_date(redemption->date[redemption->current], redemption->date[redemption->current - 1]);
+        percent = round((data->debt * data->rate / 100) / ((redemption->date[redemption->current].leap) ? LEAP_YEAR : YEAR) * redemption->date[redemption->current].month_days * 100) / 100;
+    }
+    if(!*change) {
+        pay->percent = (percent > redemption->sum[redemption->current]) ? redemption->sum[redemption->current] : percent;
+        *full_percent += pay->percent;
+    }
+    // if(percent > redemption->sum[redemption->current]) {
+    //     pay->percent = redemption->sum[redemption->current];
+    //     *full_percent += redemption->sum[redemption->current];
+    // } else {
+    //     pay->percent = percent - *full_percent;
+    //     *full_percent += pay->percent;
+    // }
     pay->monthly = redemption->sum[redemption->current];
     pay->main = pay->monthly - pay->percent;
     data->debt -= pay->main;
 
     remember_result(data, pay);
-    if(redemption->date[redemption->current].month == data->date.month && redemption->date[redemption->current].day >= data->date.day) {
-        data->date.month_days -= sub_date(redemption->date[redemption->current], data->date);
-    } else {
-        data->date.month_days = 0;
-        next_month->month_days = sub_date(*next_month, redemption->date[redemption->current]);
+    if(pay->main && change) {
+        if(redemption->date[redemption->current].month == data->date.month && redemption->date[redemption->current].day >= data->date.day) {
+            data->date.month_days -= sub_date(redemption->date[redemption->current], data->date);
+        } else {
+            data->date.month_days = 0;
+            next_month->month_days = sub_date(*next_month, redemption->date[redemption->current]);
+        }
     }
     if(redemption->type[redemption->current] == REDUCE_PAY) {
         pay->const_main -= round(pay->main/(data->months - (data->current - redemption->current)) * 100) / 100;
     }
     pay->main = pay->const_main;
     redemption->current++;
-    return (temp > redemption->sum[redemption->current - 1]) ? redemption->sum[redemption->current - 1] : 0;
 }

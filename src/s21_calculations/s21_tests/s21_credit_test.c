@@ -13,7 +13,7 @@ START_TEST(annuity_1) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_2) {
@@ -27,7 +27,7 @@ START_TEST(annuity_2) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_3) {
@@ -41,7 +41,7 @@ START_TEST(annuity_3) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_4) {
@@ -55,7 +55,7 @@ START_TEST(annuity_4) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_5) {
@@ -69,7 +69,7 @@ START_TEST(annuity_5) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_6) {
@@ -83,7 +83,7 @@ START_TEST(annuity_6) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_7) {
@@ -97,7 +97,7 @@ START_TEST(annuity_7) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_8) {
@@ -111,7 +111,7 @@ START_TEST(annuity_8) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_9) {
@@ -125,7 +125,7 @@ START_TEST(annuity_9) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_10) {
@@ -139,7 +139,7 @@ START_TEST(annuity_10) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 //  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -155,7 +155,7 @@ START_TEST(annuity_11) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_12) {
@@ -169,7 +169,7 @@ START_TEST(annuity_12) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_13) {
@@ -183,7 +183,7 @@ START_TEST(annuity_13) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_14) {
@@ -197,7 +197,7 @@ START_TEST(annuity_14) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_15) {
@@ -211,7 +211,7 @@ START_TEST(annuity_15) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_16) {
@@ -225,7 +225,7 @@ START_TEST(annuity_16) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_17) {
@@ -239,7 +239,7 @@ START_TEST(annuity_17) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_18) {
@@ -253,7 +253,7 @@ START_TEST(annuity_18) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_19) {
@@ -267,7 +267,7 @@ START_TEST(annuity_19) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 //  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -283,7 +283,7 @@ START_TEST(annuity_20) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_21) {
@@ -297,7 +297,7 @@ START_TEST(annuity_21) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_22) {
@@ -311,7 +311,7 @@ START_TEST(annuity_22) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_23) {
@@ -325,7 +325,7 @@ START_TEST(annuity_23) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_24) {
@@ -339,7 +339,7 @@ START_TEST(annuity_24) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_25) {
@@ -353,7 +353,7 @@ START_TEST(annuity_25) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_26) {
@@ -367,7 +367,7 @@ START_TEST(annuity_26) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_27) {
@@ -381,7 +381,7 @@ START_TEST(annuity_27) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_28) {
@@ -395,7 +395,7 @@ START_TEST(annuity_28) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_29) {
@@ -409,7 +409,7 @@ START_TEST(annuity_29) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_30) {
@@ -423,7 +423,7 @@ START_TEST(annuity_30) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 //  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -439,7 +439,7 @@ START_TEST(annuity_31) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_32) {
@@ -453,7 +453,7 @@ START_TEST(annuity_32) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_33) {
@@ -467,7 +467,7 @@ START_TEST(annuity_33) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_34) {
@@ -481,7 +481,7 @@ START_TEST(annuity_34) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_35) {
@@ -495,7 +495,7 @@ START_TEST(annuity_35) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_36) {
@@ -509,7 +509,7 @@ START_TEST(annuity_36) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_37) {
@@ -523,7 +523,7 @@ START_TEST(annuity_37) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_38) {
@@ -537,7 +537,7 @@ START_TEST(annuity_38) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_39) {
@@ -551,7 +551,7 @@ START_TEST(annuity_39) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_40) {
@@ -565,7 +565,7 @@ START_TEST(annuity_40) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 //  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -581,7 +581,7 @@ START_TEST(annuity_41) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_42) {
@@ -595,7 +595,7 @@ START_TEST(annuity_42) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_43) {
@@ -609,7 +609,7 @@ START_TEST(annuity_43) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_44) {
@@ -623,7 +623,7 @@ START_TEST(annuity_44) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_45) {
@@ -637,7 +637,7 @@ START_TEST(annuity_45) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_46) {
@@ -651,7 +651,7 @@ START_TEST(annuity_46) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_47) {
@@ -665,7 +665,7 @@ START_TEST(annuity_47) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_48) {
@@ -679,7 +679,7 @@ START_TEST(annuity_48) {
     for(int i = 0; i < 2; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_49) {
@@ -693,7 +693,7 @@ START_TEST(annuity_49) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(annuity_50) {
@@ -707,7 +707,7 @@ START_TEST(annuity_50) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 //  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -723,7 +723,7 @@ START_TEST(differentiated_1) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_2) {
@@ -737,7 +737,7 @@ START_TEST(differentiated_2) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_3) {
@@ -751,7 +751,7 @@ START_TEST(differentiated_3) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_4) {
@@ -765,7 +765,7 @@ START_TEST(differentiated_4) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_5) {
@@ -779,7 +779,7 @@ START_TEST(differentiated_5) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_6) {
@@ -793,7 +793,7 @@ START_TEST(differentiated_6) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_7) {
@@ -807,7 +807,7 @@ START_TEST(differentiated_7) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_8) {
@@ -821,7 +821,7 @@ START_TEST(differentiated_8) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_9) {
@@ -835,7 +835,7 @@ START_TEST(differentiated_9) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_10) {
@@ -849,7 +849,7 @@ START_TEST(differentiated_10) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 //  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -865,7 +865,7 @@ START_TEST(differentiated_11) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_12) {
@@ -879,7 +879,7 @@ START_TEST(differentiated_12) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_13) {
@@ -893,7 +893,7 @@ START_TEST(differentiated_13) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_14) {
@@ -907,7 +907,7 @@ START_TEST(differentiated_14) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_15) {
@@ -921,7 +921,7 @@ START_TEST(differentiated_15) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_16) {
@@ -935,7 +935,7 @@ START_TEST(differentiated_16) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_17) {
@@ -949,7 +949,7 @@ START_TEST(differentiated_17) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_18) {
@@ -963,7 +963,7 @@ START_TEST(differentiated_18) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_19) {
@@ -977,7 +977,7 @@ START_TEST(differentiated_19) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_20) {
@@ -991,7 +991,7 @@ START_TEST(differentiated_20) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 //  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1007,7 +1007,7 @@ START_TEST(differentiated_21) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_22) {
@@ -1021,7 +1021,7 @@ START_TEST(differentiated_22) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_23) {
@@ -1035,7 +1035,7 @@ START_TEST(differentiated_23) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_24) {
@@ -1049,7 +1049,7 @@ START_TEST(differentiated_24) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_25) {
@@ -1063,7 +1063,7 @@ START_TEST(differentiated_25) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_26) {
@@ -1077,7 +1077,7 @@ START_TEST(differentiated_26) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_27) {
@@ -1091,7 +1091,7 @@ START_TEST(differentiated_27) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_28) {
@@ -1105,7 +1105,7 @@ START_TEST(differentiated_28) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_29) {
@@ -1119,7 +1119,7 @@ START_TEST(differentiated_29) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_30) {
@@ -1133,7 +1133,7 @@ START_TEST(differentiated_30) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 //  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1149,7 +1149,7 @@ START_TEST(differentiated_31) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_32) {
@@ -1163,7 +1163,7 @@ START_TEST(differentiated_32) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_33) {
@@ -1177,7 +1177,7 @@ START_TEST(differentiated_33) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_34) {
@@ -1191,7 +1191,7 @@ START_TEST(differentiated_34) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_35) {
@@ -1205,7 +1205,7 @@ START_TEST(differentiated_35) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_36) {
@@ -1219,7 +1219,7 @@ START_TEST(differentiated_36) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_37) {
@@ -1233,7 +1233,7 @@ START_TEST(differentiated_37) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_38) {
@@ -1247,7 +1247,7 @@ START_TEST(differentiated_38) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_39) {
@@ -1261,7 +1261,7 @@ START_TEST(differentiated_39) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_40) {
@@ -1275,7 +1275,7 @@ START_TEST(differentiated_40) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 //  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1291,7 +1291,7 @@ START_TEST(differentiated_41) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_42) {
@@ -1305,7 +1305,7 @@ START_TEST(differentiated_42) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_43) {
@@ -1319,7 +1319,7 @@ START_TEST(differentiated_43) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_44) {
@@ -1333,7 +1333,7 @@ START_TEST(differentiated_44) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_45) {
@@ -1347,7 +1347,7 @@ START_TEST(differentiated_45) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_46) {
@@ -1361,7 +1361,7 @@ START_TEST(differentiated_46) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_47) {
@@ -1375,7 +1375,7 @@ START_TEST(differentiated_47) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_48) {
@@ -1389,7 +1389,7 @@ START_TEST(differentiated_48) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_49) {
@@ -1403,7 +1403,7 @@ START_TEST(differentiated_49) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(differentiated_50) {
@@ -1417,7 +1417,7 @@ START_TEST(differentiated_50) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current + 1, &pay, NULL);
 }
 
 START_TEST(redemtion_term_1) {
@@ -1435,7 +1435,7 @@ START_TEST(redemtion_term_1) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current, &pay, &redemption);
 }
 
 START_TEST(redemtion_pay_1) {
@@ -1453,7 +1453,7 @@ START_TEST(redemtion_pay_1) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current, &pay, &redemption);
 }
 
 START_TEST(redemtion_term_2) {
@@ -1472,7 +1472,7 @@ START_TEST(redemtion_term_2) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current, &pay, &redemption);
 }
 
 START_TEST(redemtion_pay_2) {
@@ -1491,7 +1491,7 @@ START_TEST(redemtion_pay_2) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current, &pay, &redemption);
 }
 
 START_TEST(redemtion_term_3) {
@@ -1510,7 +1510,7 @@ START_TEST(redemtion_term_3) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current, &pay, &redemption);
 }
 
 START_TEST(redemtion_pay_3) {
@@ -1529,7 +1529,7 @@ START_TEST(redemtion_pay_3) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current, &pay, &redemption);
 }
 
 START_TEST(redemtion_term_4) {
@@ -1549,7 +1549,7 @@ START_TEST(redemtion_term_4) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current, &pay, &redemption);
 }
 
 
@@ -1570,49 +1570,49 @@ START_TEST(redemtion_pay_4) {
     for(int i = 0; i < 3; i++) {
         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
     }
-    free_memory(data.current, &pay);
+    free_memory(data.current, &pay, &redemption);
 }
 
-// START_TEST(redemtion_term_5) {
-//     initial data;
-//     payments pay;
-//     another_payments redemption;
-//     init_redemption(&redemption);
+START_TEST(redemtion_term_5) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
 
-//     input_initial(&data, 12364567.22, 55, DIFFERENTIATED, 11.211, 11, 01, 2019);
-//     input_redemption(&redemption, 05, 02, 2019, 51235, REDUCE_TERM);
-//     input_redemption(&redemption, 30, 07, 2020, 260000, REDUCE_TERM);
-//     input_redemption(&redemption, 22, 02, 2020, 212731, REDUCE_TERM);
+    input_initial(&data, 12364567.22, 55, DIFFERENTIATED, 11.211, 11, 01, 2019);
+    input_redemption(&redemption, 05, 02, 2019, 51235, REDUCE_TERM);
+    input_redemption(&redemption, 22, 02, 2020, 212731, REDUCE_TERM);
+    input_redemption(&redemption, 30, 07, 2020, 260000, REDUCE_TERM);
 
-//     calculate_credit(&data, &pay, &redemption);
-//     long double result_total[3] = {15455177.6, 12364567.22, 3090610.38};
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {15455177.6, 12364567.22, 3090610.38};
 
-//     for(int i = 0; i < 3; i++) {
-//         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
-//     }
-//     free_memory(data.current, &pay);
-// }
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
 
 
-// START_TEST(redemtion_pay_5) {
-//     initial data;
-//     payments pay;
-//     another_payments redemption;
-//     init_redemption(&redemption);
+START_TEST(redemtion_pay_5) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
 
-//     input_initial(&data, 12364567.22, 55, DIFFERENTIATED, 11.211, 11, 01, 2019);
-//     input_redemption(&redemption, 05, 02, 2019, 51235, REDUCE_PAY);
-//     input_redemption(&redemption, 30, 07, 2020, 260000, REDUCE_PAY);
-//     input_redemption(&redemption, 22, 02, 2020, 212731, REDUCE_PAY);
+    input_initial(&data, 12364567.22, 55, DIFFERENTIATED, 11.211, 11, 01, 2019);
+    input_redemption(&redemption, 05, 02, 2019, 51235, REDUCE_PAY);
+    input_redemption(&redemption, 22, 02, 2020, 212731, REDUCE_PAY);
+    input_redemption(&redemption, 30, 07, 2020, 260000, REDUCE_PAY);
 
-//     calculate_credit(&data, &pay, &redemption);
-//     long double result_total[3] = {15523983.03, 12364567.22, 3159415.81};
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {15523983.03, 12364567.22, 3159415.81};
 
-//     for(int i = 0; i < 3; i++) {
-//         ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
-//     }
-//     free_memory(data.current, &pay);
-// }
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
 
 //  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -1814,7 +1814,7 @@ Suite *s21_redemption_term_1(void) {
     tcase_add_test(tc_test_term_1, redemtion_term_2);
     tcase_add_test(tc_test_term_1, redemtion_term_3);
     tcase_add_test(tc_test_term_1, redemtion_term_4);
-    // tcase_add_test(tc_test_term_1, redemtion_term_5);
+    tcase_add_test(tc_test_term_1, redemtion_term_5);
     
     suite_add_tcase(credit, tc_test_term_1);
 
@@ -1829,7 +1829,7 @@ Suite *s21_redemption_pay_1(void) {
     tcase_add_test(tc_test_pay_1, redemtion_pay_2);
     tcase_add_test(tc_test_pay_1, redemtion_pay_3);
     tcase_add_test(tc_test_pay_1, redemtion_pay_4);
-    // tcase_add_test(tc_test_pay_1, redemtion_pay_5);
+    tcase_add_test(tc_test_pay_1, redemtion_pay_5);
 
     suite_add_tcase(credit, tc_test_pay_1);
 

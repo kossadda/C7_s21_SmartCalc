@@ -23,6 +23,8 @@ private slots:
     void add_item_to_table(int row, int column, QString value);
     void add_all_to_table(int months, long double **result, long double *total);
     void free_memory(int rows, long double ***result, long double **total);
+    int check_date_between(const QDate& previous, const QDate& current, int* redemp_count);
+    void add_datarow_to_table(const QDate& date, QString row_head, long double **result, int iteration);
 
 private:
     Ui::s21_credit *ui;
