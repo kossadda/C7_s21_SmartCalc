@@ -31,7 +31,7 @@ int init_massive(payments *pay) {
     pay->total = (long double *)malloc(3 * sizeof(long double));
     error_code = CHECK_NULL(pay->total);
     pay->result = (long double **)malloc(1 * sizeof(long double *));
-    error_code = CHECK_NULL(pay->result);
+    error_code = (error_code == ALLOCATED && CHECK_NULL(pay->result) == ALLOCATED) ? ALLOCATED : NOT_ALLOCATED;
     pay->total[0] = 0;
     pay->total[1] = 0;
     pay->total[2] = 0;
@@ -46,9 +46,9 @@ int init_redemption(another_payments *redemption) {
     redemption->date = (time_data *)malloc(1 * sizeof(time_data));
     error_code = CHECK_NULL(redemption->date);
     redemption->sum = (long double *)malloc(1 * sizeof(long double));
-    error_code = CHECK_NULL(redemption->sum);
+    error_code = (error_code == ALLOCATED && CHECK_NULL(redemption->sum) == ALLOCATED) ? ALLOCATED : NOT_ALLOCATED;
     redemption->type = (int *)malloc(1 * sizeof(int));
-    error_code = CHECK_NULL(redemption->type);
+    error_code = (error_code == ALLOCATED && CHECK_NULL(redemption->type) == ALLOCATED) ? ALLOCATED : NOT_ALLOCATED;
     redemption->count = 0;
     redemption->current = 0;
     return error_code;
@@ -63,7 +63,7 @@ int allocate_memory(initial *data, payments *pay) {
     pay->result = (long double **)realloc(pay->result, (data->current + 1) * sizeof(long double *));
     error_code = CHECK_NULL(pay->result);
     pay->result[data->current] = (long double *)malloc(4 * sizeof(long double));
-    error_code = CHECK_NULL(pay->result[data->current]);
+    error_code = (error_code == ALLOCATED && CHECK_NULL(pay->result[data->current]) == ALLOCATED) ? ALLOCATED : NOT_ALLOCATED;
     return error_code;
 }
 

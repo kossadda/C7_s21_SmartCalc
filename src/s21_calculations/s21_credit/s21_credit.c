@@ -10,7 +10,7 @@ int calculate_credit(initial *data, payments *pay, another_payments *redemption)
     int const_day = 0;
     
     error_code = CHECK_NULL(data);
-    error_code = CHECK_NULL(pay);
+    error_code = (error_code == ALLOCATED && CHECK_NULL(pay) == ALLOCATED) ? ALLOCATED : NOT_ALLOCATED;
     
     if(error_code == ALLOCATED) {
         if(redemption) {

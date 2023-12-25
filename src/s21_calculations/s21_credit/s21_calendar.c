@@ -5,9 +5,9 @@
 /// @return Returns information about the leap year. YEAR_NOT_LEAP - in the case of a normal year, YEAR_IS_LEAP - in the case of a leap year
 int check_leap(int year) {
     int leap = YEAR_NOT_LEAP;
-    if(year % 400 == 0) {
+    if(year % QUADRICENTENARY == 0) {
         leap = YEAR_IS_LEAP;
-    } else if(year % 4 == 0 && year % 100 != 0) {
+    } else if(year % LEAP_INTERVAL == 0 && year % CENTURY != 0) {
         leap = YEAR_IS_LEAP;
     }
     return leap;

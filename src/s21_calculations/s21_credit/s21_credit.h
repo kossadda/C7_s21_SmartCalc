@@ -7,27 +7,33 @@
 #define CHECK_NULL(ptr) (ptr == NULL)
 
 enum days_constants {
-    JAN  =  31    , FEB   =  28           , LEAP_FEB  =  29 ,
-    MAR  =  31    , APR   =  30           , MAY       =  31 ,
-    JUN  =  30    , JUL   =  31           , AUG       =  31 ,
-    SEP  =  30    , OCT   =  31           , NOV       =  30 ,
-    DEC  =  31    , YEAR  =  365          , LEAP_YEAR =  366,
-    CENTURY = 100 , QUADRICENTENARY = 400 , 
+    JAN = 31 , FEB = 28 , MAR = 31 , APR = 30 , 
+    MAY = 31 , JUN = 30 , JUL = 31 , AUG = 31 ,
+    SEP = 30 , OCT = 31 , NOV = 30 , DEC = 31 ,  
+};
+
+enum another_constants {
+    QUADRICENTENARY = 400 , 
+    CENTURY         = 100 ,
+    LEAP_INTERVAL   = 4   , 
+    YEAR            = 365 ,
+    LEAP_YEAR       = 366 ,
+    LEAP_FEB        =  29 ,
 };
 
 enum functions_status {
 //  year status
-    YEAR_NOT_LEAP  = 0   , YEAR_IS_LEAP = 1   ,
+    YEAR_NOT_LEAP    = 0 , YEAR_IS_LEAP   = 1 ,
 //  allocate memory
-    ALLOCATED = 0        , NOT_ALLOCATED = 1  ,
+    ALLOCATED        = 0 , NOT_ALLOCATED  = 1 ,
 //  changing of debt
-    DEBT_NOT_CHANGED = 0 , DEBT_CHANGED = 1   ,
+    DEBT_NOT_CHANGED = 0 , DEBT_CHANGED   = 1 ,
 //  date between two dates
-    DATE_BESIDE = 0      , DATE_BETWEEN = 1   ,
+    DATE_BESIDE      = 0 , DATE_BETWEEN   = 1 ,
 //  type of main payments
-    ANNUITY = 0          , DIFFERENTIATED = 1 , NOT_CHOSEN = 2 ,
+    ANNUITY          = 0 , DIFFERENTIATED = 1 , NOT_CHOSEN = 2 ,
 //  type of early payments
-    REDUCE_TERM = 0      , REDUCE_PAY = 1     ,
+    REDUCE_TERM      = 0 , REDUCE_PAY     = 1 ,
 };
 
 typedef struct time_data {

@@ -1841,13 +1841,53 @@ START_TEST(redemtion_pay_10) {
 }
 
 START_TEST(pointers_1) {
-
     calculate_credit(NULL, NULL, NULL);
-    long double result_total[3] = {0, 0, 0};
+}
 
-    for(int i = 0; i < 3; i++) {
-        ck_assert_double_eq_tol(0, result_total[i], 1e-3);
-    }
+START_TEST(pointers_2) {
+    initial data;
+
+    input_initial(&data, 120000, 6, DIFFERENTIATED, 10, 01, 03, 2022);
+
+    calculate_credit(&data, NULL, NULL);
+
+    free_memory(data.current, NULL, NULL);
+}
+
+START_TEST(pointers_3) {
+    initial data;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 120000, 6, DIFFERENTIATED, 10, 01, 03, 2022);
+    input_redemption(&redemption, 1, 4, 2022, 5232, REDUCE_TERM);
+
+    calculate_credit(&data, NULL, &redemption);
+
+    free_memory(data.current, NULL, &redemption);
+}
+
+START_TEST(pointers_4) {
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_redemption(&redemption, 1, 4, 2022, 5232, REDUCE_TERM);
+
+    calculate_credit(NULL, NULL, &redemption);
+
+    free_memory(0, NULL, &redemption);
+}
+
+START_TEST(pointers_5) {
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_redemption(&redemption, 1, 4, 2022, 5232, REDUCE_TERM);
+
+    calculate_credit(NULL, &pay, &redemption);
+
+    free_memory(0, NULL, &redemption);
 }
 
 //  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2087,6 +2127,10 @@ Suite *s21_pointer_test(void) {
 
     TCase *tc_test_pointers_1 = tcase_create("test_pointers");
     tcase_add_test(tc_test_pointers_1, pointers_1);
+    tcase_add_test(tc_test_pointers_1, pointers_2);
+    tcase_add_test(tc_test_pointers_1, pointers_3);
+    tcase_add_test(tc_test_pointers_1, pointers_4);
+    tcase_add_test(tc_test_pointers_1, pointers_5);
     suite_add_tcase(credit, tc_test_pointers_1);
 
     return credit;

@@ -14,18 +14,28 @@ void free_memory(int row, payments *pay, another_payments *redemption) {
             free(pay->result[i]);
             pay->result[i] = NULL;
         }
-        free(pay->result);
-        free(pay->total);
-        pay->result = NULL;
-        pay->total = NULL;
+        if(pay->result) {
+            free(pay->result);
+            pay->result = NULL;
+        }
+        if(pay->total) {
+            free(pay->total);
+            pay->total = NULL;
+        }
     }
     if(redemption) {
-        free(redemption->date);
-        free(redemption->sum);
-        free(redemption->type);
-        redemption->date = NULL;
-        redemption->sum = NULL;
-        redemption->type = NULL;
+        if(redemption->date) {
+            free(redemption->date);
+            redemption->date = NULL;
+        }
+        if(redemption->sum) {
+            free(redemption->sum);
+            redemption->sum = NULL;
+        }
+        if(redemption->type) {
+            free(redemption->type);
+            redemption->type = NULL;
+        }
     }
 }
 /// @brief Function for testing the specified Suite
