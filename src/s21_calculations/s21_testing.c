@@ -74,14 +74,24 @@ int main() {
 
 
 
-
-    // input_initial(&data, 55321523.34, 43, DIFFERENTIATED, 21.463, 03, 01, 2019);
-    // input_redemption(&redemption, 17, 01, 2019, 2000, REDUCE_TERM);
-    // input_redemption(&redemption, 18, 01, 2019, 1500, REDUCE_TERM);
-    // input_redemption(&redemption, 19, 01, 2019, 100000, REDUCE_TERM);
+    // input_initial(&data, 12364567.22, 55, DIFFERENTIATED, 11.211, 11, 01, 2019);
+    // input_redemption(&redemption, 05, 02, 2019, 51235, REDUCE_TERM);
+    // input_redemption(&redemption, 22, 02, 2020, 212731, REDUCE_TERM);
+    // input_redemption(&redemption, 30, 07, 2020, 260000, REDUCE_TERM);
 
     // calculate_credit(&data, &pay, &redemption);
     // long double result_total[3] = {15455177.6, 12364567.22, 3090610.38};
+
+
+    // input_initial(&data, 55321523.34, 43, DIFFERENTIATED, 21.463, 03, 01, 2019);
+    // input_redemption(&redemption, 21, 04, 2019, 50000, REDUCE_TERM);
+    // input_redemption(&redemption, 30, 04, 2019, 75000, REDUCE_TERM);
+    // input_redemption(&redemption, 31, 12, 2019, 100000, REDUCE_TERM);
+    // input_redemption(&redemption, 01, 01, 2020, 200000, REDUCE_TERM);
+
+
+    // calculate_credit(&data, &pay, &redemption);
+    // long double result_total[3] = {77065876.72, 55321523.34, 21744353.38};
 
 
 

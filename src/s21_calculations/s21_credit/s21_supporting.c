@@ -72,40 +72,36 @@ int allocate_memory(initial *data, payments *pay) {
     return error_code;
 }
 
-int redemp_payment(initial *data, payments *pay, time_data *next_month, another_payments *redemption, long double *full_percent, int *change) {
+void redemp_payment(initial *data, payments *pay, time_data *next_month, another_payments *redemption, long double *full_percent, int *change) {
     data->current++;
     allocate_memory(data, pay);
-    long double percent = round((data->debt * data->rate / 100) / ((redemption->date[redemption->current].leap) ? LEAP_YEAR : YEAR) * redemption->date[redemption->current].month_days * 100) / 100;
     if(*change) {
         redemption->date[redemption->current].month_days = sub_date(redemption->date[redemption->current], redemption->date[redemption->current - 1]);
+    } else {
+        redemption->date[redemption->current].month_days = sub_date(redemption->date[redemption->current], data->date);
     }
+    long double percent = round((data->debt * data->rate / 100) / ((redemption->date[redemption->current].leap) ? LEAP_YEAR : YEAR) * redemption->date[redemption->current].month_days * 100) / 100;
     if(redemption->sum[redemption->current] > percent) {
-        pay->percent = percent - *full_percent;
         *change = 1;
+    } else {
+        *change = 0;
     }
-    if(!*change && redemption->current) {
-        redemption->date[redemption->current].month_days = sub_date(redemption->date[redemption->current], redemption->date[redemption->current - 1]);
-        percent = round((data->debt * data->rate / 100) / ((redemption->date[redemption->current].leap) ? LEAP_YEAR : YEAR) * redemption->date[redemption->current].month_days * 100) / 100;
-    }
-    if(!*change) {
+    if(*change) {
+        pay->percent = percent - *full_percent;
+        *full_percent = 0;
+    } else {
         pay->percent = (percent > redemption->sum[redemption->current]) ? redemption->sum[redemption->current] : percent;
         *full_percent += pay->percent;
     }
-    // if(percent > redemption->sum[redemption->current]) {
-    //     pay->percent = redemption->sum[redemption->current];
-    //     *full_percent += redemption->sum[redemption->current];
-    // } else {
-    //     pay->percent = percent - *full_percent;
-    //     *full_percent += pay->percent;
-    // }
+
     pay->monthly = redemption->sum[redemption->current];
     pay->main = pay->monthly - pay->percent;
     data->debt -= pay->main;
 
     remember_result(data, pay);
-    if(pay->main && change) {
+    if(*change) {
         if(redemption->date[redemption->current].month == data->date.month && redemption->date[redemption->current].day >= data->date.day) {
-            data->date.month_days -= sub_date(redemption->date[redemption->current], data->date);
+            data->date.month_days = sub_till_end_month(redemption->date[redemption->current]);
         } else {
             data->date.month_days = 0;
             next_month->month_days = sub_date(*next_month, redemption->date[redemption->current]);

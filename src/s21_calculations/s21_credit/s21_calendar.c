@@ -111,3 +111,14 @@ int sub_date(time_data first, time_data second) {
     }
     return diff;
 }
+
+int sub_till_end_month(time_data date) {
+    date.leap = check_leap(date.year);
+    int days[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    if(date.leap) {
+        days[2] = 29;
+    }
+    time_data last_day_month = date;
+    last_day_month.day = days[date.month];
+    return sub_date(last_day_month, date);
+}
