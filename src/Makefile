@@ -87,7 +87,7 @@ gcov_report: uninstall
 	xdg-open $(GCOV)/coverage.html
 
 valgrind: test
-	@valgrind $(VAL) ./$(EXE)
+	@valgrind $(VAL) ./$(EXE) > val.txt 2>&1
 	@rm $(EXE)
 
 valgrind_prog: install

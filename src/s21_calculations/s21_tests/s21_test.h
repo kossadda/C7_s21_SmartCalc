@@ -42,5 +42,6 @@ Suite *s21_differentiated_4(void);
 Suite *s21_differentiated_5(void);
 Suite *s21_redemption_term_1(void);
 Suite *s21_redemption_pay_1(void);
+Suite *s21_pointer_test(void);
  
 #endif

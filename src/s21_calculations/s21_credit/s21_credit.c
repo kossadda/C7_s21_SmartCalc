@@ -3,49 +3,39 @@
 /// @brief Function for calculating monthly payments of annuity type
 /// @param data Structure containing input parameters for calculation
 /// @param pay Structure containing buffer variables for monthly results and general payment data arrays
-void calculate_credit(initial *data, payments *pay, another_payments *redemption) {
-    int error_code = ALLOCATED;
-    if(redemption) {
-        redemption->current = 0;
+/// @param redemption Structure containing data on early repayments
+int calculate_credit(initial *data, payments *pay, another_payments *redemption) {
+    int error_code = NOT_ALLOCATED;
+    time_data next_month;
+    int const_day = 0;
+    
+    error_code = CHECK_NULL(data);
+    error_code = CHECK_NULL(pay);
+    
+    if(error_code == ALLOCATED) {
+        if(redemption) {
+            redemption->current = 0;
+        }
+        const_day = data->date.day;
+        next_month = data->date;
+        next_month.leap = check_leap(next_month.year);
+        add_month(&next_month, const_day);
+
+        error_code = init_massive(pay);
     }
 
-    int const_day = data->date.day;
-    time_data next_month = data->date;
-    next_month.leap = check_leap(next_month.year);
-    add_month(&next_month, const_day);
-
-    error_code = init_massive(pay);
-
-
-    if(data->payment_type == ANNUITY && error_code == ALLOCATED) {
+    if(error_code == ALLOCATED && data->payment_type == ANNUITY) {
         double monthly_percent = data->rate / (100.0 * 12.0);
-        pay->monthly = round(data->debt * monthly_percent / (1 - pow((1.0 + monthly_percent), data->months * (-1))) * 100) / 100;
+        pay->monthly = round_value(data->debt * monthly_percent / (1 - pow((1.0 + monthly_percent), data->months * (-1))));
 
         for(data->current = -1; data->debt != 0;) {
-            check_days(data, &next_month);
+            determine_date(&data->date, &next_month);
             annuity(data, pay, next_month);
             add_month(&(data->date), const_day);
             add_month(&next_month, const_day);
         }
-    } else if(data->payment_type == DIFFERENTIATED && error_code == ALLOCATED) {
-        pay->main = round(data->debt/data->months * 100) / 100;
-        pay->const_main = pay->main;
-        
-        for(data->current = -1; data->debt != 0; ) {
-            int change = 0;
-            long double full_percent = 0;
-            check_days(data, &next_month);
-            if(redemption && redemption->sum && redemption->current < redemption->count) {
-                while(compare_month(data->date, &(redemption->date[redemption->current]), next_month)) {
-                    redemp_payment(data, pay, &next_month, redemption, &full_percent, &change);
-                    if(redemption->current == redemption->count) {
-                        break;
-                    }
-                }
-            }
-            differentiated(data, pay, next_month, full_percent);
-            add_month(&(data->date), const_day);
-            add_month(&next_month, const_day);
-        }
+    } else if(error_code == ALLOCATED && data->payment_type == DIFFERENTIATED) {
+        differentiated(data, pay, redemption, next_month);
     }
+    return error_code;
 }

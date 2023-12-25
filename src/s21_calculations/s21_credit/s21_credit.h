@@ -4,31 +4,30 @@
 #include <math.h>
 #include <stdlib.h>
 
+#define CHECK_NULL(ptr) (ptr == NULL)
+
 enum days_constants {
-    YEAR = 365,
-    LEAP_YEAR = 366,
-    DECEMBER = 31,
+    JAN  =  31    , FEB   =  28           , LEAP_FEB  =  29 ,
+    MAR  =  31    , APR   =  30           , MAY       =  31 ,
+    JUN  =  30    , JUL   =  31           , AUG       =  31 ,
+    SEP  =  30    , OCT   =  31           , NOV       =  30 ,
+    DEC  =  31    , YEAR  =  365          , LEAP_YEAR =  366,
+    CENTURY = 100 , QUADRICENTENARY = 400 , 
 };
 
-enum payment_status {
-    ANNUITY = 0,
-    DIFFERENTIATED = 1,
-    NOT_CHOSEN = 2,
-};
-
-enum year_status {
-    YEAR_NOT_LEAP  = 0,
-    YEAR_IS_LEAP = 1,
-};
-
-enum mallocate {
-    ALLOCATED = 0,
-    NOT_ALLOCATED = 1,
-};
-
-enum redemtion_type {
-    REDUCE_TERM = 0,
-    REDUCE_PAY = 1,
+enum functions_status {
+//  year status
+    YEAR_NOT_LEAP  = 0   , YEAR_IS_LEAP = 1   ,
+//  allocate memory
+    ALLOCATED = 0        , NOT_ALLOCATED = 1  ,
+//  changing of debt
+    DEBT_NOT_CHANGED = 0 , DEBT_CHANGED = 1   ,
+//  date between two dates
+    DATE_BESIDE = 0      , DATE_BETWEEN = 1   ,
+//  type of main payments
+    ANNUITY = 0          , DIFFERENTIATED = 1 , NOT_CHOSEN = 2 ,
+//  type of early payments
+    REDUCE_TERM = 0      , REDUCE_PAY = 1     ,
 };
 
 typedef struct time_data {
@@ -66,10 +65,10 @@ typedef struct another_payments {
 } another_payments;
 
 // main functions
-void calculate_credit(initial *data, payments *pay, another_payments *redemption);
+int calculate_credit(initial *data, payments *pay, another_payments *redemption);
 void annuity(initial *data, payments *pay, time_data next_month);
-void differentiated(initial *data, payments *pay, time_data next_month,  long double full_percent);
-void redemp_payment(initial *data, payments *pay, time_data *next_month, another_payments *redemption, long double *full_percent, int *change);
+int differentiated(initial *data, payments *pay, another_payments *redemption, time_data next_month);
+int redemp_payment(initial *data, payments *pay, time_data *next_month, another_payments *redemption, long double *paid_percent, int *change);
 
 // support functions
 
@@ -77,16 +76,16 @@ int allocate_memory(initial *data, payments *pay);
 int init_massive(payments *pay);
 void calc_percent(initial *data, payments *pay, time_data next_month);
 void remember_result(initial *data, payments *pay);
-void init_redemption(another_payments *redemption);
+long double round_value(long double number);
+int init_redemption(another_payments *redemption);
 
 // calendar functions
-void check_days(initial *data, time_data *next_month);
+
+void determine_date(time_data *this_month, time_data *next_month);
 int check_leap(int year);
-void days_in_month(time_data *date, time_data *next_month);
 void add_month(time_data *date, int beginning_date);
-int compare_month(time_data now, time_data *pay, time_data next);
+int compare_date_with_month(time_data now, time_data *pay, time_data next);
 int sub_date(time_data first, time_data second);
 int sub_till_end_month(time_data date);
-void set_date(time_data *date, int day, int month, int year);
 
 #endif

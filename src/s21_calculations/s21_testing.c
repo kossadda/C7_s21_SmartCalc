@@ -56,17 +56,12 @@ int main() {
     another_payments redemption;
     init_redemption(&redemption);
 
-    input_initial(&data, 1275367531, 200, DIFFERENTIATED, 17.231, 1, 1, 2015);
-    input_redemption(&redemption,  7,  5, 2015, 120214620, REDUCE_TERM);
-    input_redemption(&redemption,  8,  5, 2015, 100000000, REDUCE_TERM);
-    input_redemption(&redemption,  9,  5, 2015, 231023400, REDUCE_TERM);
-    input_redemption(&redemption, 10,  5, 2015, 231235620, REDUCE_TERM);
-    input_redemption(&redemption, 11,  5, 2015, 123645600, REDUCE_TERM);
-    input_redemption(&redemption, 12,  5, 2015, 289364410, REDUCE_TERM);
-    input_redemption(&redemption, 13,  7, 2015, 201123445, REDUCE_TERM);
+    input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
+    input_redemption(&redemption, 01, 04, 2022, 5232, REDUCE_TERM);
+    input_redemption(&redemption, 21, 12, 2022, 25000, REDUCE_TERM);
 
     calculate_credit(&data, &pay, &redemption);
-    long double result_total[3] = {1357014203.43, 1275367531, 81646672.43};
+    long double result_total[3] = {349401.61, 333333.33, 16068.28};
 
     for(int i = 0; i < 3; i++) {
         printf("  my:%Lf\ntrue:%Lf\n\n", pay.total[i], result_total[i]);

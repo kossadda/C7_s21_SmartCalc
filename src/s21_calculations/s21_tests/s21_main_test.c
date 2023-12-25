@@ -13,6 +13,7 @@ int main(void) {
         s21_differentiated_1  , s21_differentiated_2  , s21_differentiated_3  , s21_differentiated_4  , s21_differentiated_5  ,
         s21_redemption_term_1 ,   
         s21_redemption_pay_1  ,  
+        s21_pointer_test      ,
     };
 
     printf("\n================== SMARTCALC TESTS ==================\n\n");

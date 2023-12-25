@@ -3,6 +3,7 @@
 /// @brief Function for calculating monthly payments of annuity type
 /// @param data Structure containing input parameters for calculation
 /// @param pay Structure containing buffer variables for monthly results and general payment data arrays
+/// @param next_month Structure containing the payment end date for the current month
 void annuity(initial *data, payments *pay, time_data next_month) {
     static long double rest = 0;
     int error_code = ALLOCATED;

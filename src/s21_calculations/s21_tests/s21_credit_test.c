@@ -1840,6 +1840,16 @@ START_TEST(redemtion_pay_10) {
     free_memory(data.current, &pay, &redemption);
 }
 
+START_TEST(pointers_1) {
+
+    calculate_credit(NULL, NULL, NULL);
+    long double result_total[3] = {0, 0, 0};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(0, result_total[i], 1e-3);
+    }
+}
+
 //  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Suite *s21_annuity_1(void) {
@@ -2068,6 +2078,16 @@ Suite *s21_redemption_pay_1(void) {
     tcase_add_test(tc_test_pay_1, redemtion_pay_10);
 
     suite_add_tcase(credit, tc_test_pay_1);
+
+    return credit;
+}
+
+Suite *s21_pointer_test(void) {
+    Suite *credit = suite_create("s21_credit (pointers tests)");
+
+    TCase *tc_test_pointers_1 = tcase_create("test_pointers");
+    tcase_add_test(tc_test_pointers_1, pointers_1);
+    suite_add_tcase(credit, tc_test_pointers_1);
 
     return credit;
 }
