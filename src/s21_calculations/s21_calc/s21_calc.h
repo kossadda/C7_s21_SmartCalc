@@ -51,28 +51,15 @@ enum substitution {
     CHAR_VAR      =   'x',    CHAR_E      =   'e',    CHAR_SPACE   =   ' ',
 };
 
-enum brackets_mode {
-    PARS_EXPRESSION  = 0,
-    CLOSE_EXPRESSION = 1,
-};
-
-enum prior_decisions {
-    LOW_PRIORITY   = 0,
-    EQUAL_PRIORITY = 1,
-    HIGH_PRIORITY  = 2,
-};
-
-enum addition_mode {
-    STRING     = 0,
-    NUMBER     = 1,
-    ONE_CHAR   = 2,
-    TWO_CHAR   = 3,
-    THREE_CHAR = 4,
-};
-
-enum decision {
-    NO  = 0,
-    YES = 1,
+enum calc_functions_status {
+//  brackets closing mode
+    PARS_EXPRESSION  = 0, CLOSE_EXPRESSION = 1,
+//  types of priorities
+    LOW_PRIORITY   = 0, EQUAL_PRIORITY = 1, HIGH_PRIORITY  = 2,
+//  type of elements added when adding characters to a string
+    STRING     = 0, NUMBER     = 1, ONE_CHAR   = 2, TWO_CHAR   = 3,
+//  decisions
+    NO  = 0, YES = 1,
 };
 
 // main funtions

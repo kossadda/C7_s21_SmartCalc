@@ -4,7 +4,8 @@
 /// @param str Pointer to char coming from C++
 /// @param x Value of variable x
 /// @return If successful, returns the result of the calculation, failure - the maximum number of double (this number cannot be obtained during calculations)
-double calculation(char *str, double x) {
+double calculation(char *str, double x)
+{
     int wrong_expression = NO;
     char result_str[1500] = {0};
     double result = 0;

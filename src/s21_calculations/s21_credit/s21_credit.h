@@ -6,22 +6,20 @@
 
 #define CHECK_NULL(ptr) (ptr == NULL)
 
-enum days_constants {
-    JAN = 31 , FEB = 28 , MAR = 31 , APR = 30 , 
+enum constants {
+//  days constants
+    JAN = 31 , FEB = 28 , MAR = 31 , APR = 30 , LEAP_FEB = 29 ,
     MAY = 31 , JUN = 30 , JUL = 31 , AUG = 31 ,
-    SEP = 30 , OCT = 31 , NOV = 30 , DEC = 31 ,  
-};
-
-enum another_constants {
+    SEP = 30 , OCT = 31 , NOV = 30 , DEC = 31 ,
+//  another constants
     QUADRICENTENARY = 400 , 
     CENTURY         = 100 ,
     LEAP_INTERVAL   = 4   , 
     YEAR            = 365 ,
     LEAP_YEAR       = 366 ,
-    LEAP_FEB        =  29 ,
 };
 
-enum functions_status {
+enum credit_functions_status {
 //  year status
     YEAR_NOT_LEAP    = 0 , YEAR_IS_LEAP   = 1 ,
 //  allocate memory
@@ -72,7 +70,7 @@ typedef struct another_payments {
 
 // main functions
 int calculate_credit(initial *data, payments *pay, another_payments *redemption);
-void annuity(initial *data, payments *pay, time_data next_month);
+int annuity(initial *data, payments *pay, another_payments *redemption, time_data next_month);
 int differentiated(initial *data, payments *pay, another_payments *redemption, time_data next_month);
 int redemp_payment(initial *data, payments *pay, time_data *next_month, another_payments *redemption, long double *paid_percent, int *change);
 

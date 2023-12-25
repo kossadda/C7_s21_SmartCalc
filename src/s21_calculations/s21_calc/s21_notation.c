@@ -1,36 +1,12 @@
 #include "s21_calc.h"
 
-/// @brief Function for clearing the top of stacks
-/// @param num Numeric stack
-/// @param num_decision Cleaning decision. YES - clean, NO - do not clean
-/// @param ops Operation stack
-/// @param ops_decision Cleaning decision. YES - clean, NO - do not clean
-void clean_top_stack(num_stack *num, int num_decision, op_stack *ops, int ops_decision) {
-    if(num_decision == YES) {
-        num->stack[num->count--] = 0;
-    }
-
-    if(ops_decision == YES) {
-        ops->stack[ops->count--] = CHAR_ZERO;
-    }
-}
-
-/// @brief Function to add a number to a number stack
-/// @param num Number
-/// @param token Parse string
-static void add_num_to_stack(num_stack *num, char *token) {
-    char *temp = NULL;
-    temp = strtok(token, ALL_OPERATIONS);
-    
-    if(temp) {
-        num->stack[num->count++] = atof(temp);
-    }
-}
+static void add_num_to_stack(num_stack *num, char *token);
 
 /// @brief String parsing function to determine priority and then evaluate arithmetic expressions
 /// @param str Processed string with arithmetic expression
 /// @return Returns the result of calculations
-double notation(char *str) {
+double notation(char *str)
+{
     op_stack ops;
     num_stack num;
     num.count = 0;
@@ -74,3 +50,31 @@ double notation(char *str) {
     return num.stack[0];
 }
 
+/// @brief Function to add a number to a number stack
+/// @param num Number
+/// @param token Parse string
+static void add_num_to_stack(num_stack *num, char *token)
+{
+    char *temp = NULL;
+    temp = strtok(token, ALL_OPERATIONS);
+    
+    if(temp) {
+        num->stack[num->count++] = atof(temp);
+    }
+}
+
+/// @brief Function for clearing the top of stacks
+/// @param num Numeric stack
+/// @param num_decision Cleaning decision. YES - clean, NO - do not clean
+/// @param ops Operation stack
+/// @param ops_decision Cleaning decision. YES - clean, NO - do not clean
+void clean_top_stack(num_stack *num, int num_decision, op_stack *ops, int ops_decision)
+{
+    if(num_decision == YES) {
+        num->stack[num->count--] = 0;
+    }
+
+    if(ops_decision == YES) {
+        ops->stack[ops->count--] = CHAR_ZERO;
+    }
+}

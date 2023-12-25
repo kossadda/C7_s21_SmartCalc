@@ -3,7 +3,8 @@
 /// @brief Function for adding/removing a unary minus from the last number in a line
 /// @param str Processed string
 /// @return Returns the modified string
-char *unar_operation(char *str) {
+char *unar_operation(char *str)
+{
     char ptr[256] = {0};
     int len = strlen(str) - 1;
     if(str[len] == ')' && check(str[len-1], NUMBERS)) {
@@ -25,7 +26,8 @@ char *unar_operation(char *str) {
 /// @param str Processed string
 /// @param len String length
 /// @return Returns the index of the character from which the number begins
-int number_position(char *str, int len) {
+int number_position(char *str, int len)
+{
     int pos_number = 0;
     for(int i = len; i >= 0; i--) {
         if(!check(str[i], NUMBERS ".")) {
@@ -40,7 +42,8 @@ int number_position(char *str, int len) {
 /// @param str Processed string
 /// @param len String length
 /// @return Returns the index of the last character containing a minus value
-int minus_position(char *str, int len) {
+int minus_position(char *str, int len)
+{
     int pos_minus = 0;
     for (int i = len; i >= 0; i--) {
         if(str[i] == '-' && str[i-1] == '(' && str[len] == ')') {
@@ -56,7 +59,8 @@ int minus_position(char *str, int len) {
 /// @param ptr Buffer string
 /// @param len String length
 /// @param pos_number Index of the character from which the number begins
-void make_unar(char *str, char *ptr, int len, int pos_number) {
+void make_unar(char *str, char *ptr, int len, int pos_number)
+{
     int count = 0;
     if(pos_number == 0) {
         pos_number = -1;
@@ -78,7 +82,8 @@ void make_unar(char *str, char *ptr, int len, int pos_number) {
 /// @param ptr Buffer string
 /// @param len String length
 /// @param pos_minus Index of the last character containing a minus value
-void clean_unar(char *str, char *ptr, int len, int pos_minus) {
+void clean_unar(char *str, char *ptr, int len, int pos_minus)
+{
     int count = 0;
     for(int i = 0; i < len; i++) {
         if(i != pos_minus - 1 && i != pos_minus) {

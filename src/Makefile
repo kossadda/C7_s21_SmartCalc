@@ -88,6 +88,7 @@ gcov_report: uninstall
 
 valgrind: test
 	@valgrind $(VAL) ./$(EXE) > val.txt 2>&1
+	@code val.txt
 	@rm $(EXE)
 
 valgrind_prog: install

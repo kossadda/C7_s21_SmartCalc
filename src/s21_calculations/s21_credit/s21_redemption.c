@@ -7,7 +7,8 @@
 /// @param redemption Structure containing data on early repayments
 /// @param paid_percent The amount deducted from the monthly interest in case of early repayment
 /// @param change Variable reporting the change in the debt balance in case of early repayment
-int redemp_payment(initial *data, payments *pay, time_data *next_month, another_payments *redemption, long double *paid_percent, int *change) {
+int redemp_payment(initial *data, payments *pay, time_data *next_month, another_payments *redemption, long double *paid_percent, int *change)
+{
     int error_code = ALLOCATED;
     data->current++;
     error_code = allocate_memory(data, pay);

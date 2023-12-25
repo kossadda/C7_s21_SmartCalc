@@ -6,7 +6,8 @@
 /// @param second Second number
 /// @param operation Operation
 /// @return Calculation result
-double math_nums(double first, double second, const char operation) {
+double math_nums(double first, double second, const char operation)
+{
     if(operation == CHAR_ADD) {
         first += second;
     } else if(operation == CHAR_SUB) {
@@ -30,7 +31,8 @@ double math_nums(double first, double second, const char operation) {
 /// @brief Calculates the received number using the specified trigonometric function
 /// @param number Number
 /// @param operation Trigonometric function
-void math_trigonometry(double *number, const char operation) {
+void math_trigonometry(double *number, const char operation)
+{
     if(operation == CHAR_SIN) {
         *number = sin(*number);
     } else if(operation == CHAR_COS) {
