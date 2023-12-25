@@ -96,6 +96,10 @@ void redemp_payment(initial *data, payments *pay, time_data *next_month, another
 
     pay->monthly = redemption->sum[redemption->current];
     pay->main = pay->monthly - pay->percent;
+    if(data->debt < pay->main) {
+        pay->main = data->debt;
+        pay->monthly = pay->percent + pay->main;
+    }
     data->debt -= pay->main;
 
     remember_result(data, pay);

@@ -49,54 +49,27 @@ void free_memory(int row, payments *pay, another_payments *redemption) {
         redemption->type = NULL;
     }
 }
+
 int main() {
     initial data;
     payments pay;
     another_payments redemption;
     init_redemption(&redemption);
 
-    input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
-    input_redemption(&redemption, 26, 03, 2022, 5232, REDUCE_TERM);
-    input_redemption(&redemption, 10, 04, 2022, 12000, REDUCE_TERM);
+    input_initial(&data, 1275367531, 200, DIFFERENTIATED, 17.231, 1, 1, 2015);
+    input_redemption(&redemption,  7,  5, 2015, 120214620, REDUCE_TERM);
+    input_redemption(&redemption,  8,  5, 2015, 100000000, REDUCE_TERM);
+    input_redemption(&redemption,  9,  5, 2015, 231023400, REDUCE_TERM);
+    input_redemption(&redemption, 10,  5, 2015, 231235620, REDUCE_TERM);
+    input_redemption(&redemption, 11,  5, 2015, 123645600, REDUCE_TERM);
+    input_redemption(&redemption, 12,  5, 2015, 289364410, REDUCE_TERM);
+    input_redemption(&redemption, 13,  7, 2015, 201123445, REDUCE_TERM);
 
     calculate_credit(&data, &pay, &redemption);
-    long double result_total[3] = {349720.58, 333333.33, 16387.25};
-
-
-
-    // input_initial(&data, 12364567.22, 55, DIFFERENTIATED, 11.211, 11, 01, 2019);
-    // input_redemption(&redemption, 17, 01, 2019, 2000, REDUCE_TERM);
-    // input_redemption(&redemption, 18, 01, 2019, 1500, REDUCE_TERM);
-    // input_redemption(&redemption, 19, 01, 2019, 100000, REDUCE_TERM);
-
-    // calculate_credit(&data, &pay, &redemption);
-    // long double result_total[3] = {15558777.51, 12364567.22, 3194210.29};
-
-
-
-    // input_initial(&data, 12364567.22, 55, DIFFERENTIATED, 11.211, 11, 01, 2019);
-    // input_redemption(&redemption, 05, 02, 2019, 51235, REDUCE_TERM);
-    // input_redemption(&redemption, 22, 02, 2020, 212731, REDUCE_TERM);
-    // input_redemption(&redemption, 30, 07, 2020, 260000, REDUCE_TERM);
-
-    // calculate_credit(&data, &pay, &redemption);
-    // long double result_total[3] = {15455177.6, 12364567.22, 3090610.38};
-
-
-    // input_initial(&data, 55321523.34, 43, DIFFERENTIATED, 21.463, 03, 01, 2019);
-    // input_redemption(&redemption, 21, 04, 2019, 50000, REDUCE_TERM);
-    // input_redemption(&redemption, 30, 04, 2019, 75000, REDUCE_TERM);
-    // input_redemption(&redemption, 31, 12, 2019, 100000, REDUCE_TERM);
-    // input_redemption(&redemption, 01, 01, 2020, 200000, REDUCE_TERM);
-
-
-    // calculate_credit(&data, &pay, &redemption);
-    // long double result_total[3] = {77065876.72, 55321523.34, 21744353.38};
-
-
+    long double result_total[3] = {1357014203.43, 1275367531, 81646672.43};
 
     for(int i = 0; i < 3; i++) {
-        printf("my:%Lf - true:%Lf\n", pay.total[i], result_total[i]);
+        printf("  my:%Lf\ntrue:%Lf\n\n", pay.total[i], result_total[i]);
     }
     free_memory(data.current, &pay, &redemption);
 }
