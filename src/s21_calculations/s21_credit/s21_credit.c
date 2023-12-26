@@ -12,7 +12,6 @@ int calculate_credit(initial *data, payments *pay, another_payments *redemption)
 
     time_data next_month;
     int const_day = 0;
-    
 
     error_code_data = CHECK_NULL(data);
     error_code_pay = CHECK_NULL(pay);

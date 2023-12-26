@@ -1,7 +1,7 @@
 #include "s21_credit.h"
 
-static int calculate_this_month(initial *data, payments *pay, time_data next_month, long double paid_percent);
-static int check_and_calc_redemption(initial *data, payments *pay, another_payments *redemption, time_data *next_month, long double *paid_percent);
+static int calculate_annuity_month(initial *data, payments *pay, time_data next_month, long double paid_percent);
+static int check_calc_redemption(initial *data, payments *pay, another_payments *redemption, time_data *next_month, long double *paid_percent);
 
 /// @brief Calculates monthly payments for an annuity payment type
 /// @param data Structure containing input parameters for calculation
@@ -14,13 +14,19 @@ int annuity(initial *data, payments *pay, another_payments *redemption, time_dat
     int error_code = ALLOCATED;
     int const_day = data->date.day;
     double monthly_percent = data->rate / (100.0 * 12.0);
-    pay->monthly = round_value(data->debt * monthly_percent / (1 - pow((1.0 + monthly_percent), data->months * (-1))));
+    long double monthly_pay = round_value(data->debt * monthly_percent / (1 - pow((1.0 + monthly_percent), data->months * (-1))));
+    pay->monthly = monthly_pay;
 
     for(data->current = -1; data->debt != 0;) {
+        long double debt_before_redemp = data->debt;
         long double paid_percent = 0;
         determine_date(&data->date, &next_month);
-        error_code = check_and_calc_redemption(data, pay, redemption, &next_month, &paid_percent);
-        error_code = calculate_this_month(data, pay, next_month, paid_percent);
+        error_code = check_calc_redemption(data, pay, redemption, &next_month, &paid_percent);
+        if(data->debt != debt_before_redemp && redemption->type[redemption->current - 1] == REDUCE_PAY) {
+            monthly_pay = round_value(data->debt * monthly_percent / (1 - pow((1.0 + monthly_percent), (data->months - (data->current - redemption->current + 1)) * (-1))));
+        }
+        pay->monthly = monthly_pay;
+        error_code = (error_code == ALLOCATED) ? calculate_annuity_month(data, pay, next_month, paid_percent) : error_code;
         add_month(&(data->date), const_day);
         add_month(&next_month, const_day);
         data->debt = (error_code == ALLOCATED) ? data->debt : 0;
@@ -33,7 +39,7 @@ int annuity(initial *data, payments *pay, another_payments *redemption, time_dat
 /// @param pay Structure containing buffer variables for monthly results and general payment data arrays
 /// @param next_month Structure containing the payment end date for the current month
 /// @return Returns the error code. If memory is allocated - ALLOCATED, if not - NOT_ALLOCATED
-static int calculate_this_month(initial *data, payments *pay, time_data next_month, long double paid_percent)
+static int calculate_annuity_month(initial *data, payments *pay, time_data next_month, long double paid_percent)
 {
     int error_code = ALLOCATED;
     static long double rest = 0;
@@ -77,7 +83,7 @@ static int calculate_this_month(initial *data, payments *pay, time_data next_mon
 /// @param next_month Structure containing the payment end date for the current month
 /// @param paid_percent The amount deducted from the monthly interest in case of early repayment
 /// @return Returns the error code. If memory is allocated - ALLOCATED, if not - NOT_ALLOCATED
-static int check_and_calc_redemption(initial *data, payments *pay, another_payments *redemption, time_data *next_month, long double *paid_percent)
+static int check_calc_redemption(initial *data, payments *pay, another_payments *redemption, time_data *next_month, long double *paid_percent)
 {
     int error_code = ALLOCATED;
     int change = DEBT_NOT_CHANGED;

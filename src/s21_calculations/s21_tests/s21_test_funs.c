@@ -1,7 +1,5 @@
 #include "s21_test.h"
 
-#define ARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]))
-
 /// @brief Function for clearing memory in payments arrays
 /// @param pay Structure containing buffer variables for monthly results and general payment data arrays
 void free_memory(int row, payments *pay, another_payments *redemption) {

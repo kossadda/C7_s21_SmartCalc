@@ -95,10 +95,8 @@ QTableWidget {
 }</string>
        </property>
        <property name="rowCount">
-        <number>3</number>
+        <number>1</number>
        </property>
-       <row/>
-       <row/>
        <row/>
        <column>
         <property name="text">
@@ -117,45 +115,15 @@ QTableWidget {
        </column>
        <item row="0" column="0">
         <property name="text">
-         <string>17.01.2019</string>
+         <string>06.04.2022</string>
         </property>
        </item>
        <item row="0" column="1">
         <property name="text">
-         <string>2000</string>
+         <string>5232</string>
         </property>
        </item>
        <item row="0" column="2">
-        <property name="text">
-         <string>Reduce term</string>
-        </property>
-       </item>
-       <item row="1" column="0">
-        <property name="text">
-         <string>18.01.2019</string>
-        </property>
-       </item>
-       <item row="1" column="1">
-        <property name="text">
-         <string>1500</string>
-        </property>
-       </item>
-       <item row="1" column="2">
-        <property name="text">
-         <string>Reduce term</string>
-        </property>
-       </item>
-       <item row="2" column="0">
-        <property name="text">
-         <string>19.01.2019</string>
-        </property>
-       </item>
-       <item row="2" column="1">
-        <property name="text">
-         <string>500</string>
-        </property>
-       </item>
-       <item row="2" column="2">
         <property name="text">
          <string>Reduce term</string>
         </property>

@@ -1420,425 +1420,7 @@ START_TEST(differentiated_50) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(redemtion_term_1) {
-    initial data;
-    payments pay;
-    another_payments redemption;
-    init_redemption(&redemption);
-
-    input_initial(&data, 120000, 6, DIFFERENTIATED, 10, 01, 03, 2022);
-    input_redemption(&redemption, 1, 4, 2022, 5232, REDUCE_TERM);
-
-    calculate_credit(&data, &pay, &redemption);
-    long double result_total[3] = {123303.99, 120000, 3303.99};
-
-    for(int i = 0; i < 3; i++) {
-        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
-    }
-    free_memory(data.current, &pay, &redemption);
-}
-
-START_TEST(redemtion_pay_1) {
-    initial data;
-    payments pay;
-    another_payments redemption;
-    init_redemption(&redemption);
-
-    input_initial(&data, 120000, 6, DIFFERENTIATED, 10, 01, 03, 2022);
-    input_redemption(&redemption, 01, 04, 2022, 5232, REDUCE_PAY);
-
-    calculate_credit(&data, &pay, &redemption);
-    long double result_total[3] = {123392.28, 120000, 3392.28};
-
-    for(int i = 0; i < 3; i++) {
-        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
-    }
-    free_memory(data.current, &pay, &redemption);
-}
-
-START_TEST(redemtion_term_2) {
-    initial data;
-    payments pay;
-    another_payments redemption;
-    init_redemption(&redemption);
-
-    input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
-    input_redemption(&redemption, 01, 04, 2022, 5232, REDUCE_TERM);
-    input_redemption(&redemption, 21, 12, 2022, 25000, REDUCE_TERM);
-
-    calculate_credit(&data, &pay, &redemption);
-    long double result_total[3] = {349401.61, 333333.33, 16068.28};
-
-    for(int i = 0; i < 3; i++) {
-        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
-    }
-    free_memory(data.current, &pay, &redemption);
-}
-
-START_TEST(redemtion_pay_2) {
-    initial data;
-    payments pay;
-    another_payments redemption;
-    init_redemption(&redemption);
-
-    input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
-    input_redemption(&redemption, 01, 04, 2022, 5232, REDUCE_PAY);
-    input_redemption(&redemption, 23, 12, 2022, 25000, REDUCE_PAY);
-
-    calculate_credit(&data, &pay, &redemption);
-    long double result_total[3] = {350245.52, 333333.33, 16912.19};
-
-    for(int i = 0; i < 3; i++) {
-        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
-    }
-    free_memory(data.current, &pay, &redemption);
-}
-
-START_TEST(redemtion_term_3) {
-    initial data;
-    payments pay;
-    another_payments redemption;
-    init_redemption(&redemption);
-
-    input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
-    input_redemption(&redemption, 26, 03, 2022, 5232, REDUCE_TERM);
-    input_redemption(&redemption, 10, 04, 2022, 12000, REDUCE_TERM);
-
-    calculate_credit(&data, &pay, &redemption);
-    long double result_total[3] = {349720.58, 333333.33, 16387.25};
-
-    for(int i = 0; i < 3; i++) {
-        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
-    }
-    free_memory(data.current, &pay, &redemption);
-}
-
-START_TEST(redemtion_pay_3) {
-    initial data;
-    payments pay;
-    another_payments redemption;
-    init_redemption(&redemption);
-
-    input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
-    input_redemption(&redemption, 26, 03, 2022, 5232, REDUCE_PAY);
-    input_redemption(&redemption, 10, 04, 2022, 12000, REDUCE_PAY);
-
-    calculate_credit(&data, &pay, &redemption);
-    long double result_total[3] = {350495.97, 333333.33, 17162.64};
-
-    for(int i = 0; i < 3; i++) {
-        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
-    }
-    free_memory(data.current, &pay, &redemption);
-}
-
-START_TEST(redemtion_term_4) {
-    initial data;
-    payments pay;
-    another_payments redemption;
-    init_redemption(&redemption);
-
-    input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
-    input_redemption(&redemption, 26, 03, 2022, 5232, REDUCE_TERM);
-    input_redemption(&redemption, 01, 04, 2022, 6666, REDUCE_TERM);
-    input_redemption(&redemption, 10, 04, 2022, 12000, REDUCE_TERM);
-
-    calculate_credit(&data, &pay, &redemption);
-    long double result_total[3] = {349087.51, 333333.33, 15754.18};
-
-    for(int i = 0; i < 3; i++) {
-        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
-    }
-    free_memory(data.current, &pay, &redemption);
-}
-
-
-START_TEST(redemtion_pay_4) {
-    initial data;
-    payments pay;
-    another_payments redemption;
-    init_redemption(&redemption);
-
-    input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
-    input_redemption(&redemption, 26, 03, 2022, 5232, REDUCE_PAY);
-    input_redemption(&redemption, 01, 04, 2022, 6666, REDUCE_PAY);
-    input_redemption(&redemption, 10, 04, 2022, 12000, REDUCE_PAY);
-
-    calculate_credit(&data, &pay, &redemption);
-    long double result_total[3] = {350155.96, 333333.33, 16822.63};
-
-    for(int i = 0; i < 3; i++) {
-        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
-    }
-    free_memory(data.current, &pay, &redemption);
-}
-
-START_TEST(redemtion_term_5) {
-    initial data;
-    payments pay;
-    another_payments redemption;
-    init_redemption(&redemption);
-
-    input_initial(&data, 12364567.22, 55, DIFFERENTIATED, 11.211, 11, 01, 2019);
-    input_redemption(&redemption, 05, 02, 2019, 51235, REDUCE_TERM);
-    input_redemption(&redemption, 22, 02, 2020, 212731, REDUCE_TERM);
-    input_redemption(&redemption, 30, 07, 2020, 260000, REDUCE_TERM);
-
-    calculate_credit(&data, &pay, &redemption);
-    long double result_total[3] = {15455177.6, 12364567.22, 3090610.38};
-
-    for(int i = 0; i < 3; i++) {
-        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
-    }
-    free_memory(data.current, &pay, &redemption);
-}
-
-
-START_TEST(redemtion_pay_5) {
-    initial data;
-    payments pay;
-    another_payments redemption;
-    init_redemption(&redemption);
-
-    input_initial(&data, 12364567.22, 55, DIFFERENTIATED, 11.211, 11, 01, 2019);
-    input_redemption(&redemption, 05, 02, 2019, 51235, REDUCE_PAY);
-    input_redemption(&redemption, 22, 02, 2020, 212731, REDUCE_PAY);
-    input_redemption(&redemption, 30, 07, 2020, 260000, REDUCE_PAY);
-
-    calculate_credit(&data, &pay, &redemption);
-    long double result_total[3] = {15523983.03, 12364567.22, 3159415.81};
-
-    for(int i = 0; i < 3; i++) {
-        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
-    }
-    free_memory(data.current, &pay, &redemption);
-}
-
-START_TEST(redemtion_term_6) {
-    initial data;
-    payments pay;
-    another_payments redemption;
-    init_redemption(&redemption);
-
-    input_initial(&data, 12364567.22, 55, DIFFERENTIATED, 11.211, 11, 01, 2019);
-    input_redemption(&redemption, 17, 01, 2019, 2000, REDUCE_TERM);
-    input_redemption(&redemption, 18, 01, 2019, 1500, REDUCE_TERM);
-    input_redemption(&redemption, 19, 01, 2019, 100000, REDUCE_TERM);
-
-    calculate_credit(&data, &pay, &redemption);
-    long double result_total[3] = {15558777.51, 12364567.22, 3194210.29};
-
-    for(int i = 0; i < 3; i++) {
-        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
-    }
-    free_memory(data.current, &pay, &redemption);
-}
-
-
-START_TEST(redemtion_pay_6) {
-    initial data;
-    payments pay;
-    another_payments redemption;
-    init_redemption(&redemption);
-
-    input_initial(&data, 12364567.22, 55, DIFFERENTIATED, 11.211, 11, 01, 2019);
-    input_redemption(&redemption, 17, 01, 2019, 2000, REDUCE_PAY);
-    input_redemption(&redemption, 18, 01, 2019, 1500, REDUCE_PAY);
-    input_redemption(&redemption, 19, 01, 2019, 100000, REDUCE_PAY);
-
-    calculate_credit(&data, &pay, &redemption);
-    long double result_total[3] = {15577217.53, 12364567.22, 3212650.31};
-
-    for(int i = 0; i < 3; i++) {
-        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
-    }
-    free_memory(data.current, &pay, &redemption);
-}
-
-START_TEST(redemtion_term_7) {
-    initial data;
-    payments pay;
-    another_payments redemption;
-    init_redemption(&redemption);
-
-    input_initial(&data, 55321523.34, 43, DIFFERENTIATED, 21.463, 03, 01, 2019);
-    input_redemption(&redemption, 21, 04, 2019, 50000, REDUCE_TERM);
-    input_redemption(&redemption, 30, 04, 2019, 75000, REDUCE_TERM);
-    input_redemption(&redemption, 31, 12, 2019, 100000, REDUCE_TERM);
-    input_redemption(&redemption, 01, 01, 2020, 200000, REDUCE_TERM);
-
-    calculate_credit(&data, &pay, &redemption);
-    long double result_total[3] = {77065876.72, 55321523.34, 21744353.38};
-
-    for(int i = 0; i < 3; i++) {
-        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
-    }
-    free_memory(data.current, &pay, &redemption);
-}
-
-
-START_TEST(redemtion_pay_7) {
-    initial data;
-    payments pay;
-    another_payments redemption;
-    init_redemption(&redemption);
-
-    input_initial(&data, 55321523.34, 43, DIFFERENTIATED, 21.463, 03, 01, 2019);
-    input_redemption(&redemption, 21, 04, 2019, 50000, REDUCE_PAY);
-    input_redemption(&redemption, 30, 04, 2019, 75000, REDUCE_PAY);
-    input_redemption(&redemption, 31, 12, 2019, 100000, REDUCE_PAY);
-    input_redemption(&redemption, 01, 01, 2020, 200000, REDUCE_PAY);
-
-    calculate_credit(&data, &pay, &redemption);
-    long double result_total[3] = {77065876.72, 55321523.34, 21744353.38};
-
-    for(int i = 0; i < 3; i++) {
-        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
-    }
-    free_memory(data.current, &pay, &redemption);
-}
-
-START_TEST(redemtion_term_8) {
-    initial data;
-    payments pay;
-    another_payments redemption;
-    init_redemption(&redemption);
-
-    input_initial(&data, 77777777.77, 126, DIFFERENTIATED, 8.962, 8, 4, 2002);
-    input_redemption(&redemption, 16, 5, 2002, 5246521, REDUCE_TERM);
-    input_redemption(&redemption, 21, 11, 2002, 3262152, REDUCE_TERM);
-    input_redemption(&redemption, 22, 9, 2004, 1000000, REDUCE_TERM);
-    input_redemption(&redemption, 28, 2, 2005, 2000000, REDUCE_TERM);
-    input_redemption(&redemption, 29, 2, 2008, 6235667, REDUCE_TERM);
-    input_redemption(&redemption, 31, 12, 2008, 1500000, REDUCE_TERM);
-
-    calculate_credit(&data, &pay, &redemption);
-    long double result_total[3] = {104378506.06, 77777777.77, 26600728.29};
-
-    for(int i = 0; i < 3; i++) {
-        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
-    }
-    free_memory(data.current, &pay, &redemption);
-}
-
-START_TEST(redemtion_pay_8) {
-    initial data;
-    payments pay;
-    another_payments redemption;
-    init_redemption(&redemption);
-
-    input_initial(&data, 77777777.77, 126, DIFFERENTIATED, 8.962, 8, 4, 2002);
-    input_redemption(&redemption, 16, 5, 2002, 5246521, REDUCE_PAY);
-    input_redemption(&redemption, 21, 11, 2002, 3262152, REDUCE_PAY);
-    input_redemption(&redemption, 22, 9, 2004, 1000000, REDUCE_PAY);
-    input_redemption(&redemption, 28, 2, 2005, 2000000, REDUCE_PAY);
-    input_redemption(&redemption, 29, 2, 2008, 6235667, REDUCE_PAY);
-    input_redemption(&redemption, 31, 12, 2008, 1500000, REDUCE_PAY);
-
-    calculate_credit(&data, &pay, &redemption);
-    long double result_total[3] = {108536699.99, 77777777.77, 30758922.22};
-
-    for(int i = 0; i < 3; i++) {
-        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
-    }
-    free_memory(data.current, &pay, &redemption);
-}
-
-START_TEST(redemtion_term_9) {
-    initial data;
-    payments pay;
-    another_payments redemption;
-    init_redemption(&redemption);
-
-    input_initial(&data, 1275367531, 200, DIFFERENTIATED, 17.231, 1, 1, 2015);
-    input_redemption(&redemption,  7,  5, 2015, 120214620, REDUCE_TERM);
-    input_redemption(&redemption, 21,  5, 2015, 100000000, REDUCE_TERM);
-    input_redemption(&redemption, 21, 12, 2015, 231023400, REDUCE_TERM);
-    input_redemption(&redemption, 31,  1, 2016, 231235620, REDUCE_TERM);
-    input_redemption(&redemption,  1,  2, 2016, 123645600, REDUCE_TERM);
-    input_redemption(&redemption,  6,  6, 2016, 289364410, REDUCE_TERM);
-    input_redemption(&redemption, 30, 11, 2016, 201123445, REDUCE_TERM);
-
-    calculate_credit(&data, &pay, &redemption);
-    long double result_total[3] = {1507461575.35, 1275367531, 232094044.35};
-
-    for(int i = 0; i < 3; i++) {
-        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
-    }
-    free_memory(data.current, &pay, &redemption);
-}
-
-START_TEST(redemtion_pay_9) {
-    initial data;
-    payments pay;
-    another_payments redemption;
-    init_redemption(&redemption);
-
-    input_initial(&data, 1275367531, 200, DIFFERENTIATED, 17.231, 1, 1, 2015);
-    input_redemption(&redemption,  7,  5, 2015, 120214620, REDUCE_PAY);
-    input_redemption(&redemption, 21,  5, 2015, 100000000, REDUCE_PAY);
-    input_redemption(&redemption, 21, 12, 2015, 231023400, REDUCE_PAY);
-    input_redemption(&redemption, 31,  1, 2016, 231235620, REDUCE_PAY);
-    input_redemption(&redemption,  1,  2, 2016, 123645600, REDUCE_PAY);
-    input_redemption(&redemption,  6,  6, 2016, 289364410, REDUCE_PAY);
-    input_redemption(&redemption, 30, 11, 2016, 201123445, REDUCE_PAY);
-
-    calculate_credit(&data, &pay, &redemption);
-    long double result_total[3] = {1512894239.55, 1275367531, 237526708.55};
-
-    for(int i = 0; i < 3; i++) {
-        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
-    }
-    free_memory(data.current, &pay, &redemption);
-}
-
-START_TEST(redemtion_term_10) {
-    initial data;
-    payments pay;
-    another_payments redemption;
-    init_redemption(&redemption);
-
-    input_initial(&data, 1275367531, 200, DIFFERENTIATED, 17.231, 1, 1, 2015);
-    input_redemption(&redemption,  7,  5, 2015, 120214620, REDUCE_TERM);
-    input_redemption(&redemption,  8,  5, 2015, 100000000, REDUCE_TERM);
-    input_redemption(&redemption,  9,  5, 2015, 231023400, REDUCE_TERM);
-    input_redemption(&redemption, 10,  5, 2015, 231235620, REDUCE_TERM);
-    input_redemption(&redemption, 11,  5, 2015, 123645600, REDUCE_TERM);
-    input_redemption(&redemption, 12,  5, 2015, 289364410, REDUCE_TERM);
-    input_redemption(&redemption, 13,  7, 2015, 201123445, REDUCE_TERM);
-
-    calculate_credit(&data, &pay, &redemption);
-    long double result_total[3] = {1357014203.43, 1275367531, 81646672.43};
-
-    for(int i = 0; i < 3; i++) {
-        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
-    }
-    free_memory(data.current, &pay, &redemption);
-}
-
-START_TEST(redemtion_pay_10) {
-    initial data;
-    payments pay;
-    another_payments redemption;
-    init_redemption(&redemption);
-
-    input_initial(&data, 1275367531, 200, DIFFERENTIATED, 17.231, 1, 1, 2015);
-    input_redemption(&redemption,  7,  5, 2015, 120214620, REDUCE_PAY);
-    input_redemption(&redemption,  8,  5, 2015, 100000000, REDUCE_PAY);
-    input_redemption(&redemption,  9,  5, 2015, 231023400, REDUCE_PAY);
-    input_redemption(&redemption, 10,  5, 2015, 231235620, REDUCE_PAY);
-    input_redemption(&redemption, 11,  5, 2015, 123645600, REDUCE_PAY);
-    input_redemption(&redemption, 12,  5, 2015, 289364410, REDUCE_PAY);
-    input_redemption(&redemption, 13,  7, 2015, 201123445, REDUCE_PAY);
-
-    calculate_credit(&data, &pay, &redemption);
-    long double result_total[3] = {1357155980.3, 1275367531, 81788449.3};
-
-    for(int i = 0; i < 3; i++) {
-        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
-    }
-    free_memory(data.current, &pay, &redemption);
-}
+//  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 START_TEST(pointers_1) {
     calculate_credit(NULL, NULL, NULL);
@@ -1888,6 +1470,848 @@ START_TEST(pointers_5) {
     calculate_credit(NULL, &pay, &redemption);
 
     free_memory(0, NULL, &redemption);
+}
+
+//  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+START_TEST(diff_redemption_term_1) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 120000, 6, DIFFERENTIATED, 10, 01, 03, 2022);
+    input_redemption(&redemption, 1, 4, 2022, 5232, REDUCE_TERM);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {123303.99, 120000, 3303.99};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(diff_redemption_term_2) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
+    input_redemption(&redemption, 01, 04, 2022, 5232, REDUCE_TERM);
+    input_redemption(&redemption, 21, 12, 2022, 25000, REDUCE_TERM);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {349401.61, 333333.33, 16068.28};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(diff_redemption_term_3) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
+    input_redemption(&redemption, 26, 03, 2022, 5232, REDUCE_TERM);
+    input_redemption(&redemption, 10, 04, 2022, 12000, REDUCE_TERM);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {349720.58, 333333.33, 16387.25};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(diff_redemption_term_4) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
+    input_redemption(&redemption, 26, 03, 2022, 5232, REDUCE_TERM);
+    input_redemption(&redemption, 01, 04, 2022, 6666, REDUCE_TERM);
+    input_redemption(&redemption, 10, 04, 2022, 12000, REDUCE_TERM);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {349087.51, 333333.33, 15754.18};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(diff_redemption_term_5) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 12364567.22, 55, DIFFERENTIATED, 11.211, 11, 01, 2019);
+    input_redemption(&redemption, 05, 02, 2019, 51235, REDUCE_TERM);
+    input_redemption(&redemption, 22, 02, 2020, 212731, REDUCE_TERM);
+    input_redemption(&redemption, 30, 07, 2020, 260000, REDUCE_TERM);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {15455177.6, 12364567.22, 3090610.38};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(diff_redemption_term_6) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 12364567.22, 55, DIFFERENTIATED, 11.211, 11, 01, 2019);
+    input_redemption(&redemption, 17, 01, 2019, 2000, REDUCE_TERM);
+    input_redemption(&redemption, 18, 01, 2019, 1500, REDUCE_TERM);
+    input_redemption(&redemption, 19, 01, 2019, 100000, REDUCE_TERM);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {15558777.51, 12364567.22, 3194210.29};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(diff_redemption_term_7) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 55321523.34, 43, DIFFERENTIATED, 21.463, 03, 01, 2019);
+    input_redemption(&redemption, 21, 04, 2019, 50000, REDUCE_TERM);
+    input_redemption(&redemption, 30, 04, 2019, 75000, REDUCE_TERM);
+    input_redemption(&redemption, 31, 12, 2019, 100000, REDUCE_TERM);
+    input_redemption(&redemption, 01, 01, 2020, 200000, REDUCE_TERM);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {77065876.72, 55321523.34, 21744353.38};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(diff_redemption_term_8) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 77777777.77, 126, DIFFERENTIATED, 8.962, 8, 4, 2002);
+    input_redemption(&redemption, 16, 5, 2002, 5246521, REDUCE_TERM);
+    input_redemption(&redemption, 21, 11, 2002, 3262152, REDUCE_TERM);
+    input_redemption(&redemption, 22, 9, 2004, 1000000, REDUCE_TERM);
+    input_redemption(&redemption, 28, 2, 2005, 2000000, REDUCE_TERM);
+    input_redemption(&redemption, 29, 2, 2008, 6235667, REDUCE_TERM);
+    input_redemption(&redemption, 31, 12, 2008, 1500000, REDUCE_TERM);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {104378506.06, 77777777.77, 26600728.29};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(diff_redemption_term_9) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 1275367531, 200, DIFFERENTIATED, 17.231, 1, 1, 2015);
+    input_redemption(&redemption,  7,  5, 2015, 120214620, REDUCE_TERM);
+    input_redemption(&redemption, 21,  5, 2015, 100000000, REDUCE_TERM);
+    input_redemption(&redemption, 21, 12, 2015, 231023400, REDUCE_TERM);
+    input_redemption(&redemption, 31,  1, 2016, 231235620, REDUCE_TERM);
+    input_redemption(&redemption,  1,  2, 2016, 123645600, REDUCE_TERM);
+    input_redemption(&redemption,  6,  6, 2016, 289364410, REDUCE_TERM);
+    input_redemption(&redemption, 30, 11, 2016, 201123445, REDUCE_TERM);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {1507461575.35, 1275367531, 232094044.35};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(diff_redemption_term_10) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 1275367531, 200, DIFFERENTIATED, 17.231, 1, 1, 2015);
+    input_redemption(&redemption,  7,  5, 2015, 120214620, REDUCE_TERM);
+    input_redemption(&redemption,  8,  5, 2015, 100000000, REDUCE_TERM);
+    input_redemption(&redemption,  9,  5, 2015, 231023400, REDUCE_TERM);
+    input_redemption(&redemption, 10,  5, 2015, 231235620, REDUCE_TERM);
+    input_redemption(&redemption, 11,  5, 2015, 123645600, REDUCE_TERM);
+    input_redemption(&redemption, 12,  5, 2015, 289364410, REDUCE_TERM);
+    input_redemption(&redemption, 13,  7, 2015, 201123445, REDUCE_TERM);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {1357014203.43, 1275367531, 81646672.43};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+//  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+START_TEST(diff_redemption_pay_1) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 120000, 6, DIFFERENTIATED, 10, 01, 03, 2022);
+    input_redemption(&redemption, 01, 04, 2022, 5232, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {123392.28, 120000, 3392.28};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(diff_redemption_pay_2) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
+    input_redemption(&redemption, 01, 04, 2022, 5232, REDUCE_PAY);
+    input_redemption(&redemption, 23, 12, 2022, 25000, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {350245.52, 333333.33, 16912.19};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(diff_redemption_pay_3) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
+    input_redemption(&redemption, 26, 03, 2022, 5232, REDUCE_PAY);
+    input_redemption(&redemption, 10, 04, 2022, 12000, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {350495.97, 333333.33, 17162.64};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(diff_redemption_pay_4) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
+    input_redemption(&redemption, 26, 03, 2022, 5232, REDUCE_PAY);
+    input_redemption(&redemption, 01, 04, 2022, 6666, REDUCE_PAY);
+    input_redemption(&redemption, 10, 04, 2022, 12000, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {350155.96, 333333.33, 16822.63};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(diff_redemption_pay_5) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 12364567.22, 55, DIFFERENTIATED, 11.211, 11, 01, 2019);
+    input_redemption(&redemption, 05, 02, 2019, 51235, REDUCE_PAY);
+    input_redemption(&redemption, 22, 02, 2020, 212731, REDUCE_PAY);
+    input_redemption(&redemption, 30, 07, 2020, 260000, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {15523983.03, 12364567.22, 3159415.81};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(diff_redemption_pay_6) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 12364567.22, 55, DIFFERENTIATED, 11.211, 11, 01, 2019);
+    input_redemption(&redemption, 17, 01, 2019, 2000, REDUCE_PAY);
+    input_redemption(&redemption, 18, 01, 2019, 1500, REDUCE_PAY);
+    input_redemption(&redemption, 19, 01, 2019, 100000, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {15577217.53, 12364567.22, 3212650.31};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(diff_redemption_pay_7) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 55321523.34, 43, DIFFERENTIATED, 21.463, 03, 01, 2019);
+    input_redemption(&redemption, 21, 04, 2019, 50000, REDUCE_PAY);
+    input_redemption(&redemption, 30, 04, 2019, 75000, REDUCE_PAY);
+    input_redemption(&redemption, 31, 12, 2019, 100000, REDUCE_PAY);
+    input_redemption(&redemption, 01, 01, 2020, 200000, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {77065876.72, 55321523.34, 21744353.38};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(diff_redemption_pay_8) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 77777777.77, 126, DIFFERENTIATED, 8.962, 8, 4, 2002);
+    input_redemption(&redemption, 16, 5, 2002, 5246521, REDUCE_PAY);
+    input_redemption(&redemption, 21, 11, 2002, 3262152, REDUCE_PAY);
+    input_redemption(&redemption, 22, 9, 2004, 1000000, REDUCE_PAY);
+    input_redemption(&redemption, 28, 2, 2005, 2000000, REDUCE_PAY);
+    input_redemption(&redemption, 29, 2, 2008, 6235667, REDUCE_PAY);
+    input_redemption(&redemption, 31, 12, 2008, 1500000, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {108536699.99, 77777777.77, 30758922.22};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(diff_redemption_pay_9) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 1275367531, 200, DIFFERENTIATED, 17.231, 1, 1, 2015);
+    input_redemption(&redemption,  7,  5, 2015, 120214620, REDUCE_PAY);
+    input_redemption(&redemption, 21,  5, 2015, 100000000, REDUCE_PAY);
+    input_redemption(&redemption, 21, 12, 2015, 231023400, REDUCE_PAY);
+    input_redemption(&redemption, 31,  1, 2016, 231235620, REDUCE_PAY);
+    input_redemption(&redemption,  1,  2, 2016, 123645600, REDUCE_PAY);
+    input_redemption(&redemption,  6,  6, 2016, 289364410, REDUCE_PAY);
+    input_redemption(&redemption, 30, 11, 2016, 201123445, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {1512894239.55, 1275367531, 237526708.55};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(diff_redemption_pay_10) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 1275367531, 200, DIFFERENTIATED, 17.231, 1, 1, 2015);
+    input_redemption(&redemption,  7,  5, 2015, 120214620, REDUCE_PAY);
+    input_redemption(&redemption,  8,  5, 2015, 100000000, REDUCE_PAY);
+    input_redemption(&redemption,  9,  5, 2015, 231023400, REDUCE_PAY);
+    input_redemption(&redemption, 10,  5, 2015, 231235620, REDUCE_PAY);
+    input_redemption(&redemption, 11,  5, 2015, 123645600, REDUCE_PAY);
+    input_redemption(&redemption, 12,  5, 2015, 289364410, REDUCE_PAY);
+    input_redemption(&redemption, 13,  7, 2015, 201123445, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {1357155980.3, 1275367531, 81788449.3};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+//  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+START_TEST(annuity_redemption_term_1) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 120000, 6, ANNUITY, 10, 01, 03, 2022);
+    input_redemption(&redemption, 01, 04, 2022, 5232, REDUCE_TERM);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {123325.31, 120000, 3325.31};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+
+START_TEST(annuity_redemption_term_2) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 333333.33, 25, ANNUITY, 5, 23, 02, 2022);
+    input_redemption(&redemption, 01, 04, 2022, 5232, REDUCE_TERM);
+    input_redemption(&redemption, 21, 12, 2022, 25000, REDUCE_TERM);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {349553.37, 333333.33, 16220.04};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(annuity_redemption_term_3) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 333333.33, 25, ANNUITY, 5, 23, 02, 2022);
+    input_redemption(&redemption, 26, 03, 2022, 5232, REDUCE_TERM);
+    input_redemption(&redemption, 10, 04, 2022, 12000, REDUCE_TERM);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {349864.52, 333333.33, 16531.19};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(annuity_redemption_term_4) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 333333.33, 25, ANNUITY, 5, 23, 02, 2022);
+    input_redemption(&redemption, 26, 03, 2022, 5232, REDUCE_TERM);
+    input_redemption(&redemption, 01, 04, 2022, 6666, REDUCE_TERM);
+    input_redemption(&redemption, 10, 04, 2022, 12000, REDUCE_TERM);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {349202.58, 333333.33, 15869.25};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(annuity_redemption_term_5) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 12364567.22, 55, ANNUITY, 11.211, 11, 01, 2019);
+    input_redemption(&redemption, 05, 02, 2019, 51235, REDUCE_TERM);
+    input_redemption(&redemption, 22, 02, 2020, 212731, REDUCE_TERM);
+    input_redemption(&redemption, 30, 07, 2020, 260000, REDUCE_TERM);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {15632055.55, 12364567.22, 3267488.33};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(annuity_redemption_term_6) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 12364567.22, 55, ANNUITY, 11.211, 11, 01, 2019);
+    input_redemption(&redemption, 17, 01, 2019, 2000, REDUCE_TERM);
+    input_redemption(&redemption, 18, 01, 2019, 1500, REDUCE_TERM);
+    input_redemption(&redemption, 19, 01, 2019, 100000, REDUCE_TERM);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {15795556.74, 12364567.22, 3430989.52};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(annuity_redemption_term_7) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 55321523.34, 43, ANNUITY, 21.463, 03, 01, 2019);
+    input_redemption(&redemption, 21, 04, 2019, 50000, REDUCE_TERM);
+    input_redemption(&redemption, 30, 04, 2019, 75000, REDUCE_TERM);
+    input_redemption(&redemption, 31, 12, 2019, 100000, REDUCE_TERM);
+    input_redemption(&redemption, 01, 01, 2020, 200000, REDUCE_TERM);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {79371094.51, 55321523.34, 24049571.17};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(annuity_redemption_term_8) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 77777777.77, 126, ANNUITY, 8.962, 8, 4, 2002);
+    input_redemption(&redemption, 16, 5, 2002, 5246521, REDUCE_TERM);
+    input_redemption(&redemption, 21, 11, 2002, 3262152, REDUCE_TERM);
+    input_redemption(&redemption, 22, 9, 2004, 1000000, REDUCE_TERM);
+    input_redemption(&redemption, 28, 2, 2005, 2000000, REDUCE_TERM);
+    input_redemption(&redemption, 29, 2, 2008, 6235667, REDUCE_TERM);
+    input_redemption(&redemption, 31, 12, 2008, 1500000, REDUCE_TERM);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {105665490.78, 77777777.77, 27887713.01};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(annuity_redemption_term_9) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 1275367531, 200, ANNUITY, 17.231, 1, 1, 2015);
+    input_redemption(&redemption,  7,  5, 2015, 120214620, REDUCE_TERM);
+    input_redemption(&redemption, 21,  5, 2015, 100000000, REDUCE_TERM);
+    input_redemption(&redemption, 21, 12, 2015, 231023400, REDUCE_TERM);
+    input_redemption(&redemption, 31,  1, 2016, 231235620, REDUCE_TERM);
+    input_redemption(&redemption,  1,  2, 2016, 123645600, REDUCE_TERM);
+    input_redemption(&redemption,  6,  6, 2016, 289364410, REDUCE_TERM);
+    input_redemption(&redemption, 30, 11, 2016, 201123445, REDUCE_TERM);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {1505034239.42, 1275367531, 229666708.42};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(annuity_redemption_term_10) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 1275367531, 200, ANNUITY, 17.231, 1, 1, 2015);
+    input_redemption(&redemption,  7,  5, 2015, 120214620, REDUCE_TERM);
+    input_redemption(&redemption,  8,  5, 2015, 100000000, REDUCE_TERM);
+    input_redemption(&redemption,  9,  5, 2015, 231023400, REDUCE_TERM);
+    input_redemption(&redemption, 10,  5, 2015, 231235620, REDUCE_TERM);
+    input_redemption(&redemption, 11,  5, 2015, 123645600, REDUCE_TERM);
+    input_redemption(&redemption, 12,  5, 2015, 289364410, REDUCE_TERM);
+    input_redemption(&redemption, 13,  7, 2015, 201123445, REDUCE_TERM);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {1357840085.12, 1275367531, 82472554.12};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+//  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+START_TEST(annuity_redemption_pay_1) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 120000, 6, ANNUITY, 10, 01, 03, 2022);
+    input_redemption(&redemption, 01, 04, 2022, 5232, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {123416.29, 120000, 3416.29};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+
+START_TEST(annuity_redemption_pay_2) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 333333.33, 25, ANNUITY, 5, 23, 02, 2022);
+    input_redemption(&redemption, 01, 04, 2022, 5232, REDUCE_PAY);
+    input_redemption(&redemption, 21, 12, 2022, 25000, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {350528.01, 333333.33, 17194.68};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(annuity_redemption_pay_3) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 333333.33, 25, ANNUITY, 5, 23, 02, 2022);
+    input_redemption(&redemption, 26, 03, 2022, 5232, REDUCE_PAY);
+    input_redemption(&redemption, 10, 04, 2022, 12000, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {350705.73, 333333.33, 17372.4};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(annuity_redemption_pay_4) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 333333.33, 25, ANNUITY, 5, 23, 02, 2022);
+    input_redemption(&redemption, 26, 03, 2022, 5232, REDUCE_PAY);
+    input_redemption(&redemption, 01, 04, 2022, 6666, REDUCE_PAY);
+    input_redemption(&redemption, 10, 04, 2022, 12000, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {350361.73, 333333.33, 17028.4};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(annuity_redemption_pay_5) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 12364567.22, 55, ANNUITY, 11.211, 11, 01, 2019);
+    input_redemption(&redemption, 05, 02, 2019, 51235, REDUCE_PAY);
+    input_redemption(&redemption, 22, 02, 2020, 212731, REDUCE_PAY);
+    input_redemption(&redemption, 30, 07, 2020, 260000, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {15743504.95, 12364567.22, 3378937.73};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(annuity_redemption_pay_6) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 12364567.22, 55, ANNUITY, 11.211, 11, 01, 2019);
+    input_redemption(&redemption, 17, 01, 2019, 2000, REDUCE_PAY);
+    input_redemption(&redemption, 18, 01, 2019, 1500, REDUCE_PAY);
+    input_redemption(&redemption, 19, 01, 2019, 100000, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {15823651.02, 12364567.22, 3459083.8};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(annuity_redemption_pay_7) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 55321523.34, 43, ANNUITY, 21.463, 03, 01, 2019);
+    input_redemption(&redemption, 21, 04, 2019, 50000, REDUCE_PAY);
+    input_redemption(&redemption, 30, 04, 2019, 75000, REDUCE_PAY);
+    input_redemption(&redemption, 31, 12, 2019, 100000, REDUCE_PAY);
+    input_redemption(&redemption, 01, 01, 2020, 200000, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {79371094.51, 55321523.34, 24049571.17};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(annuity_redemption_pay_8) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 77777777.77, 126, ANNUITY, 8.962, 8, 4, 2002);
+    input_redemption(&redemption, 16, 5, 2002, 5246521, REDUCE_PAY);
+    input_redemption(&redemption, 21, 11, 2002, 3262152, REDUCE_PAY);
+    input_redemption(&redemption, 22, 9, 2004, 1000000, REDUCE_PAY);
+    input_redemption(&redemption, 28, 2, 2005, 2000000, REDUCE_PAY);
+    input_redemption(&redemption, 29, 2, 2008, 6235667, REDUCE_PAY);
+    input_redemption(&redemption, 31, 12, 2008, 1500000, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {112884986.74, 77777777.77, 35107208.97};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(annuity_redemption_pay_9) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 1275367531, 200, ANNUITY, 17.231, 1, 1, 2015);
+    input_redemption(&redemption,  7,  5, 2015, 120214620, REDUCE_PAY);
+    input_redemption(&redemption, 21,  5, 2015, 100000000, REDUCE_PAY);
+    input_redemption(&redemption, 21, 12, 2015, 231023400, REDUCE_PAY);
+    input_redemption(&redemption, 31,  1, 2016, 231235620, REDUCE_PAY);
+    input_redemption(&redemption,  1,  2, 2016, 123645600, REDUCE_PAY);
+    input_redemption(&redemption,  6,  6, 2016, 289364410, REDUCE_PAY);
+    input_redemption(&redemption, 30, 11, 2016, 201123445, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {1522054431.25, 1275367531, 246686900.25};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(annuity_redemption_pay_10) {
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 1275367531, 200, ANNUITY, 17.231, 1, 1, 2015);
+    input_redemption(&redemption,  7,  5, 2015, 120214620, REDUCE_PAY);
+    input_redemption(&redemption,  8,  5, 2015, 100000000, REDUCE_PAY);
+    input_redemption(&redemption,  9,  5, 2015, 231023400, REDUCE_PAY);
+    input_redemption(&redemption, 10,  5, 2015, 231235620, REDUCE_PAY);
+    input_redemption(&redemption, 11,  5, 2015, 123645600, REDUCE_PAY);
+    input_redemption(&redemption, 12,  5, 2015, 289364410, REDUCE_PAY);
+    input_redemption(&redemption, 13,  5, 2015, 201123445, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {1353111213.78, 1275367531, 77743682.78};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
 }
 
 //  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2082,46 +2506,6 @@ Suite *s21_differentiated_5(void) {
     return credit;
 }
 
-Suite *s21_redemption_term_1(void) {
-    Suite *credit = suite_create("s21_credit (reduce term)");
-
-    TCase *tc_test_term_1 = tcase_create("test_term");
-    tcase_add_test(tc_test_term_1, redemtion_term_1);
-    tcase_add_test(tc_test_term_1, redemtion_term_2);
-    tcase_add_test(tc_test_term_1, redemtion_term_3);
-    tcase_add_test(tc_test_term_1, redemtion_term_4);
-    tcase_add_test(tc_test_term_1, redemtion_term_5);
-    tcase_add_test(tc_test_term_1, redemtion_term_6);
-    tcase_add_test(tc_test_term_1, redemtion_term_7);
-    tcase_add_test(tc_test_term_1, redemtion_term_8);
-    tcase_add_test(tc_test_term_1, redemtion_term_9);
-    tcase_add_test(tc_test_term_1, redemtion_term_10);
-    
-    suite_add_tcase(credit, tc_test_term_1);
-
-    return credit;
-}
-
-Suite *s21_redemption_pay_1(void) {
-    Suite *credit = suite_create("s21_credit (reduce pay)");
-
-    TCase *tc_test_pay_1 = tcase_create("test_pay");
-    tcase_add_test(tc_test_pay_1, redemtion_pay_1);
-    tcase_add_test(tc_test_pay_1, redemtion_pay_2);
-    tcase_add_test(tc_test_pay_1, redemtion_pay_3);
-    tcase_add_test(tc_test_pay_1, redemtion_pay_4);
-    tcase_add_test(tc_test_pay_1, redemtion_pay_5);
-    tcase_add_test(tc_test_pay_1, redemtion_pay_6);
-    tcase_add_test(tc_test_pay_1, redemtion_pay_7);
-    tcase_add_test(tc_test_pay_1, redemtion_pay_8);
-    tcase_add_test(tc_test_pay_1, redemtion_pay_9);
-    tcase_add_test(tc_test_pay_1, redemtion_pay_10);
-
-    suite_add_tcase(credit, tc_test_pay_1);
-
-    return credit;
-}
-
 Suite *s21_pointer_test(void) {
     Suite *credit = suite_create("s21_credit (pointers tests)");
 
@@ -2132,6 +2516,85 @@ Suite *s21_pointer_test(void) {
     tcase_add_test(tc_test_pointers_1, pointers_4);
     tcase_add_test(tc_test_pointers_1, pointers_5);
     suite_add_tcase(credit, tc_test_pointers_1);
+
+    return credit;
+}
+
+Suite *s21_diff_redemption_term(void) {
+    Suite *credit = suite_create("s21_credit (differentiated reduce term)");
+
+    TCase *tc_test_diff_term_1 = tcase_create("test_diff_term");
+    tcase_add_test(tc_test_diff_term_1, diff_redemption_term_1);
+    tcase_add_test(tc_test_diff_term_1, diff_redemption_term_2);
+    tcase_add_test(tc_test_diff_term_1, diff_redemption_term_3);
+    tcase_add_test(tc_test_diff_term_1, diff_redemption_term_4);
+    tcase_add_test(tc_test_diff_term_1, diff_redemption_term_5);
+    tcase_add_test(tc_test_diff_term_1, diff_redemption_term_6);
+    tcase_add_test(tc_test_diff_term_1, diff_redemption_term_7);
+    tcase_add_test(tc_test_diff_term_1, diff_redemption_term_8);
+    tcase_add_test(tc_test_diff_term_1, diff_redemption_term_9);
+    tcase_add_test(tc_test_diff_term_1, diff_redemption_term_10);
+    
+    suite_add_tcase(credit, tc_test_diff_term_1);
+
+    return credit;
+}
+
+Suite *s21_diff_redemption_pay(void) {
+    Suite *credit = suite_create("s21_credit (differentiated reduce pay)");
+
+    TCase *tc_test_diff_pay_1 = tcase_create("test_diff_pay");
+    tcase_add_test(tc_test_diff_pay_1, diff_redemption_pay_1);
+    tcase_add_test(tc_test_diff_pay_1, diff_redemption_pay_2);
+    tcase_add_test(tc_test_diff_pay_1, diff_redemption_pay_3);
+    tcase_add_test(tc_test_diff_pay_1, diff_redemption_pay_4);
+    tcase_add_test(tc_test_diff_pay_1, diff_redemption_pay_5);
+    tcase_add_test(tc_test_diff_pay_1, diff_redemption_pay_6);
+    tcase_add_test(tc_test_diff_pay_1, diff_redemption_pay_7);
+    tcase_add_test(tc_test_diff_pay_1, diff_redemption_pay_8);
+    tcase_add_test(tc_test_diff_pay_1, diff_redemption_pay_9);
+    tcase_add_test(tc_test_diff_pay_1, diff_redemption_pay_10);
+
+    suite_add_tcase(credit, tc_test_diff_pay_1);
+
+    return credit;
+}
+
+Suite *s21_annuity_redepmtion_term(void) {
+    Suite *credit = suite_create("s21_credit (annuity reduce term)");
+
+    TCase *tc_test_annuity_term_1 = tcase_create("test_annuity_term");
+    tcase_add_test(tc_test_annuity_term_1, annuity_redemption_term_1);
+    tcase_add_test(tc_test_annuity_term_1, annuity_redemption_term_2);
+    tcase_add_test(tc_test_annuity_term_1, annuity_redemption_term_3);
+    tcase_add_test(tc_test_annuity_term_1, annuity_redemption_term_4);
+    tcase_add_test(tc_test_annuity_term_1, annuity_redemption_term_5);
+    tcase_add_test(tc_test_annuity_term_1, annuity_redemption_term_6);
+    tcase_add_test(tc_test_annuity_term_1, annuity_redemption_term_7);
+    tcase_add_test(tc_test_annuity_term_1, annuity_redemption_term_8);
+    tcase_add_test(tc_test_annuity_term_1, annuity_redemption_term_9);
+    tcase_add_test(tc_test_annuity_term_1, annuity_redemption_term_10);
+    
+    suite_add_tcase(credit, tc_test_annuity_term_1);
+
+    return credit;
+}
+
+Suite *s21_annuity_redepmtion_pay(void) {
+    Suite *credit = suite_create("s21_credit (annuity reduce pay)");
+
+    TCase *tc_test_annuity_pay_1 = tcase_create("test_annuity_term");
+    tcase_add_test(tc_test_annuity_pay_1, annuity_redemption_pay_1);
+    tcase_add_test(tc_test_annuity_pay_1, annuity_redemption_pay_2);
+    tcase_add_test(tc_test_annuity_pay_1, annuity_redemption_pay_3);
+    tcase_add_test(tc_test_annuity_pay_1, annuity_redemption_pay_4);
+    tcase_add_test(tc_test_annuity_pay_1, annuity_redemption_pay_5);
+    tcase_add_test(tc_test_annuity_pay_1, annuity_redemption_pay_6);
+    tcase_add_test(tc_test_annuity_pay_1, annuity_redemption_pay_7);
+    tcase_add_test(tc_test_annuity_pay_1, annuity_redemption_pay_8);
+    tcase_add_test(tc_test_annuity_pay_1, annuity_redemption_pay_9);
+    tcase_add_test(tc_test_annuity_pay_1, annuity_redemption_pay_10);
+    suite_add_tcase(credit, tc_test_annuity_pay_1);
 
     return credit;
 }

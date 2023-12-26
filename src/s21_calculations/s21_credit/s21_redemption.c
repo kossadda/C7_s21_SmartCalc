@@ -50,11 +50,13 @@ int redemp_payment(initial *data, payments *pay, time_data *next_month, another_
             }
         }
         if(redemption->type[redemption->current] == REDUCE_PAY) {
+            if(data->payment_type == ANNUITY) {
+                pay->const_main = pay->main;
+            }
             pay->const_main -= round_value(pay->main/(data->months - (data->current - redemption->current)));
         }
         pay->main = pay->const_main;
         redemption->current++;
-
     }
     return error_code;
 }

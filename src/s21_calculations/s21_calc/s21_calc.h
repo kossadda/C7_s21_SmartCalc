@@ -52,14 +52,14 @@ enum substitution {
 };
 
 enum calc_functions_status {
-//  brackets closing mode
-    PARS_EXPRESSION  = 0, CLOSE_EXPRESSION = 1,
-//  types of priorities
-    LOW_PRIORITY   = 0, EQUAL_PRIORITY = 1, HIGH_PRIORITY  = 2,
 //  type of elements added when adding characters to a string
-    STRING     = 0, NUMBER     = 1, ONE_CHAR   = 2, TWO_CHAR   = 3,
+    STRING = 0, NUMBER = 1, ONE_CHAR = 2, TWO_CHAR  = 3,
+//  types of priorities
+    LOW_PRIORITY = 0, EQUAL_PRIORITY = 1, HIGH_PRIORITY = 2,
+//  brackets closing mode
+    PARS_EXPRESSION = 0, CLOSE_EXPRESSION = 1,
 //  decisions
-    NO  = 0, YES = 1,
+    NO = 0, YES = 1,
 };
 
 // main funtions

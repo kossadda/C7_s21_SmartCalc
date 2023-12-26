@@ -40,8 +40,10 @@ Suite *s21_differentiated_2(void);
 Suite *s21_differentiated_3(void);
 Suite *s21_differentiated_4(void);
 Suite *s21_differentiated_5(void);
-Suite *s21_redemption_term_1(void);
-Suite *s21_redemption_pay_1(void);
 Suite *s21_pointer_test(void);
- 
+Suite *s21_diff_redemption_term(void);
+Suite *s21_diff_redemption_pay(void);
+Suite *s21_annuity_redepmtion_term(void);
+Suite *s21_annuity_redepmtion_pay(void);
+
 #endif

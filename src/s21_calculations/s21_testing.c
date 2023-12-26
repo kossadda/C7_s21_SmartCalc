@@ -58,10 +58,10 @@ int main() {
 
     input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
     input_redemption(&redemption, 01, 04, 2022, 5232, REDUCE_TERM);
-    input_redemption(&redemption, 21, 12, 2022, 25000, REDUCE_TERM);
+    input_redemption(&redemption, 23, 12, 2022, 25000, REDUCE_PAY);
 
     calculate_credit(&data, &pay, &redemption);
-    long double result_total[3] = {349401.61, 333333.33, 16068.28};
+    long double result_total[3] = {349800.87, 333333.33, 16467.54};
 
     for(int i = 0; i < 3; i++) {
         printf("  my:%Lf\ntrue:%Lf\n\n", pay.total[i], result_total[i]);
