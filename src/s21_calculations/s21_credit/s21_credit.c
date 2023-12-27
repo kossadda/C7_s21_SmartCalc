@@ -26,6 +26,7 @@ int calculate_credit(initial *data, payments *pay, another_payments *redemption)
         next_month.leap = check_leap(next_month.year);
         add_month(&next_month, const_day);
 
+        data->amount = data->debt;
         error_code = init_massive(pay);
     }
 

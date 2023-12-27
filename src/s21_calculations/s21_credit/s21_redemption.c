@@ -1,5 +1,9 @@
 #include "s21_credit.h"
 
+int logarifm(long double x, long double base) {
+    return ceil(log(x) / log(base));
+}
+
 /// @brief Calculates early payment
 /// @param data Structure containing input parameters for calculation
 /// @param pay Structure containing buffer variables for monthly results and general payment data arrays
@@ -9,6 +13,7 @@
 /// @param change Variable reporting the change in the debt balance in case of early repayment
 int redemp_payment(initial *data, payments *pay, time_data *next_month, another_payments *redemption, long double *paid_percent, int *change)
 {
+    long double monthly_pay = pay->monthly;
     int error_code = ALLOCATED;
     data->current++;
     error_code = allocate_memory(data, pay);
@@ -40,6 +45,12 @@ int redemp_payment(initial *data, payments *pay, time_data *next_month, another_
         }
         data->debt -= pay->main;
 
+        if(redemption->type[redemption->current] == REDUCE_TERM && pay->main && data->payment_type == ANNUITY) {
+            data->months = logarifm(monthly_pay/(monthly_pay - data->rate/12/100 *data->debt), 1 + data->rate/12/100) + (data->current - redemption->current);
+        } else if(redemption->type[redemption->current] == REDUCE_TERM && pay->main && data->payment_type == DIFFERENTIATED) {
+            data->months = ceil(data->debt / pay->const_main);
+        }
+
         remember_result(data, pay);
         if(*change) {
             if(redemption->date[redemption->current].month == data->date.month && redemption->date[redemption->current].day >= data->date.day) {
@@ -49,13 +60,18 @@ int redemp_payment(initial *data, payments *pay, time_data *next_month, another_
                 next_month->month_days = sub_date(*next_month, redemption->date[redemption->current]);
             }
         }
-        if(redemption->type[redemption->current] == REDUCE_PAY) {
-            if(data->payment_type == ANNUITY) {
-                pay->const_main = pay->main;
+        if(data->payment_type == ANNUITY) {
+            if(pay->main && redemption->type[redemption->current] == REDUCE_PAY) {
+                monthly_pay = round_value(data->debt * data->rate / 12 / 100 / (1 - pow((1.0 + data->rate / 12 / 100), (data->months - (data->current - redemption->current)) * (-1))));
             }
-            pay->const_main -= round_value(pay->main/(data->months - (data->current - redemption->current)));
+            pay->monthly = monthly_pay;
         }
-        pay->main = pay->const_main;
+        if(data->payment_type == DIFFERENTIATED) {
+            if(redemption->type[redemption->current] == REDUCE_PAY && *change == DEBT_CHANGED) {
+                pay->const_main = round_value(data->debt/(data->months - (data->current - redemption->current)));
+            }
+            pay->main = pay->const_main;
+        }
         redemption->current++;
     }
     return error_code;

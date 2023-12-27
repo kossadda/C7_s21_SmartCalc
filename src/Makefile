@@ -73,7 +73,7 @@ uninstall:
 run:
 	./$(BUILD)/$(PROG)
 
-test: uninstall
+test: ggwp
 	clear
 	gcc $(CC) $(CALC) $(CREDIT) $(TESTS) -lm -o $(EXE) $(LCOV)
 	@./$(EXE)
@@ -107,5 +107,6 @@ build: uninstall
 	clear
 	@./$(EXE)
 
-
+ggwp:
+	rm -rf test
 # > val_test.txt 2>&1

@@ -52,6 +52,7 @@ typedef struct payments {
 } payments;
 
 typedef struct initial {
+    long double amount;
     int payment_type;
     long double debt;
     long double rate;

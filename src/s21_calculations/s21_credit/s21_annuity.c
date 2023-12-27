@@ -18,14 +18,9 @@ int annuity(initial *data, payments *pay, another_payments *redemption, time_dat
     pay->monthly = monthly_pay;
 
     for(data->current = -1; data->debt != 0;) {
-        long double debt_before_redemp = data->debt;
         long double paid_percent = 0;
         determine_date(&data->date, &next_month);
         error_code = check_calc_redemption(data, pay, redemption, &next_month, &paid_percent);
-        if(data->debt != debt_before_redemp && redemption->type[redemption->current - 1] == REDUCE_PAY) {
-            monthly_pay = round_value(data->debt * monthly_percent / (1 - pow((1.0 + monthly_percent), (data->months - (data->current - redemption->current + 1)) * (-1))));
-        }
-        pay->monthly = monthly_pay;
         error_code = (error_code == ALLOCATED) ? calculate_annuity_month(data, pay, next_month, paid_percent) : error_code;
         add_month(&(data->date), const_day);
         add_month(&next_month, const_day);
