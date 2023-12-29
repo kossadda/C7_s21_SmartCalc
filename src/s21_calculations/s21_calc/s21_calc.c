@@ -1,9 +1,15 @@
 #include "s21_calc.h"
 
-/// @brief Main function of result calculation
-/// @param str Pointer to char coming from C++
-/// @param x Value of variable x
-/// @return If successful, returns the result of the calculation, failure - the maximum number of double (this number cannot be obtained during calculations)
+/**
+ * @brief Main function of result calculation.
+ * 
+ * @param[in] str pointer to char coming from C++.
+ * @param x value of variable x.
+ * 
+ * @return Result of the calculation.
+ * @retval True result of calculation - if all code segments completed without errors.
+ * @retval __DBL_MAX__ - if at least one code segment ends with an error (this number cannot be obtained during calculations).
+*/
 double calculation(char *str, double x)
 {
     int wrong_expression = NO;

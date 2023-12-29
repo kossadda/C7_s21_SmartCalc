@@ -1,8 +1,12 @@
 #include "s21_calc.h"
 
-/// @brief Function for adding/removing a unary minus from the last number in a line
-/// @param str Processed string
-/// @return Returns the modified string
+/**
+ * @brief Function for adding/removing a unary minus from the last number in a line.
+ * 
+ * @param[in] str processed string.
+ * 
+ * @return Modified string.
+*/
 char *unar_operation(char *str)
 {
     char ptr[256] = {0};
@@ -22,10 +26,14 @@ char *unar_operation(char *str)
     return str;
 }
 
-/// @brief Function to determine the position of the last number in a string
-/// @param str Processed string
-/// @param len String length
-/// @return Returns the index of the character from which the number begins
+/**
+ * @brief Function to determine the position of the last number in a string.
+ * 
+ * @param[in] str processed string.
+ * @param len String length.
+ * 
+ * @return Index of the character from which the number begins.
+*/
 int number_position(char *str, int len)
 {
     int pos_number = 0;
@@ -38,10 +46,14 @@ int number_position(char *str, int len)
     return pos_number;
 }
 
-/// @brief Function to determine the position of the last minus sign in a string
-/// @param str Processed string
-/// @param len String length
-/// @return Returns the index of the last character containing a minus value
+/**
+ * @brief Function to determine the position of the last minus sign in a string.
+ * 
+ * @param[in] str processed string.
+ * @param len string length.
+ * 
+ * @return Index of the last character containing a minus value.
+*/
 int minus_position(char *str, int len)
 {
     int pos_minus = 0;
@@ -54,11 +66,14 @@ int minus_position(char *str, int len)
     return pos_minus;
 }
 
-/// @brief Function to add a unary minus to a string
-/// @param str Processed string
-/// @param ptr Buffer string
-/// @param len String length
-/// @param pos_number Index of the character from which the number begins
+/**
+ * @brief Function to add a unary minus to a string.
+ * 
+ * @param[in] str processed string.
+ * @param[in] ptr buffer string.
+ * @param len string length.
+ * @param pos_number index of the character from which the number begins.
+*/
 void make_unar(char *str, char *ptr, int len, int pos_number)
 {
     int count = 0;
@@ -77,11 +92,14 @@ void make_unar(char *str, char *ptr, int len, int pos_number)
     }
 }
 
-/// @brief Function to remove unary minus
-/// @param str Processed string
-/// @param ptr Buffer string
-/// @param len String length
-/// @param pos_minus Index of the last character containing a minus value
+/**
+ * @brief Function to remove unary minus.
+ * 
+ * @param[in] str processed string.
+ * @param[in] ptr buffer string.
+ * @param len string length.
+ * @param pos_minus index of the last character containing a minus value.
+*/
 void clean_unar(char *str, char *ptr, int len, int pos_minus)
 {
     int count = 0;

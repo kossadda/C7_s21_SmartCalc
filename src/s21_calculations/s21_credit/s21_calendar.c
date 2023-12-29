@@ -1,8 +1,14 @@
 #include "s21_credit.h"
 
-/// @brief Function to define a year as a leap year
-/// @param year Verified year
-/// @return Returns information about the leap year. YEAR_NOT_LEAP - in the case of a normal year, YEAR_IS_LEAP - in the case of a leap year
+/**
+ * @brief Function to define a year as a leap year.
+ * 
+ * @param year verified year.
+ * 
+ * @return Information about the leap year.
+ * @retval YEAR_NOT_LEAP = 0 - in the case of a normal year.
+ * @retval YEAR_IS_LEAP = 1 - in the case of a leap year.
+*/
 int check_leap(int year)
 {
     int leap = YEAR_NOT_LEAP;
@@ -14,9 +20,12 @@ int check_leap(int year)
     return leap;
 }
 
-/// @brief Function for determining date structure parameters for this and next month
-/// @param this_month Structure containing the payment start date for the current month
-/// @param next_month Structure containing the payment end date for the current month
+/**
+ * @brief Function for determining date structure parameters for this and next month.
+ * 
+ * @param[in] this_month structure containing the payment start date for the current month.
+ * @param[in] next_month structure containing the payment end date for the current month.
+*/
 void determine_date(time_data *this_month, time_data *next_month)
 {
     this_month->leap = check_leap(this_month->year);
@@ -25,9 +34,12 @@ void determine_date(time_data *this_month, time_data *next_month)
     next_month->month_days = next_month->day;
 }
 
-/// @brief A function that determines the correct logic for adding a month to the current date
-/// @param date A structure containing the current date, the number of days in the month and a leap year variable
-/// @param beginning_date The original date received as input from the user
+/**
+ * @brief A function that determines the correct logic for adding a month to the current date.
+ * 
+ * @param[in] date structure containing the current date, the number of days in the month and a leap year variable.
+ * @param beginning_date the original date received as input from the user.
+*/
 void add_month(time_data *date, int beginning_date)
 {
     date->month += 1;
@@ -46,14 +58,20 @@ void add_month(time_data *date, int beginning_date)
     }
 }
 
-/// @brief Determines whether the current maturity date is within the range of the current payment month
-/// @param now Beginning of the payment period of the current month
-/// @param pay Early repayment date
-/// @param next End of the current month's payment period
-/// @return Returns information about the position of a date. 1 - is in the current month, 0 - not
+/**
+ * @brief Determines whether the current maturity date is within the range of the current payment month.
+ * 
+ * @param now beginning of the payment period of the current month.
+ * @param[in] pay early repayment date.
+ * @param next end of the current month's payment period.
+ * 
+ * @return Information about the position of early payment date.
+ * @retval DATE_OUTSIDE = 0 - if early_payment outside of current month.
+ * @retval DATE_BETWEEN = 1 - if early_payment outside in the current month.
+*/
 int compare_date_with_month(time_data now, time_data *pay, time_data next)
 {
-    int day_between = DATE_BESIDE;
+    int day_between = DATE_OUTSIDE;
     if(pay->year == now.year || pay->year == next.year) {
         if(pay->month == now.month && pay->day >= now.day) {
             day_between = DATE_BETWEEN;
@@ -67,9 +85,13 @@ int compare_date_with_month(time_data now, time_data *pay, time_data next)
     return day_between;
 }
 
-/// @brief Determines how many days from the current date to the beginning of the current year
-/// @param date Date from which the count is made
-/// @return Returns the number of days in a year
+/**
+ * @brief Determines how many days from the current date to the beginning of the current year.
+ * 
+ * @param date date from which the count is made.
+ * 
+ * @return Number of days in a year.
+*/
 static int days_in_this_year(time_data date)
 {
     int days[] = {0, JAN, (check_leap(date.year)) ? LEAP_FEB : FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC};
@@ -80,10 +102,14 @@ static int days_in_this_year(time_data date)
     return days_in_year;
 }
 
-/// @brief Subtracts two dates
-/// @param first The date from which you need to subtract
-/// @param second Date to be subtracted
-/// @return Returns the number of days between two dates
+/**
+ * @brief Subtracts two dates.
+ * 
+ * @param first the date from which you need to subtract.
+ * @param second date to be subtracted.
+ * 
+ * @return Number of days between two dates.
+*/
 int sub_date(time_data first, time_data second)
 {
     int difference = 0;
@@ -98,9 +124,13 @@ int sub_date(time_data first, time_data second)
     return difference;
 }
 
-/// @brief Determines the number of days from the current date to the end of the current month
-/// @param date Date from which the count is made
-/// @return Returns the number of days until the end of the current month
+/**
+ * @brief Determines the number of days from the current date to the end of the current month.
+ * 
+ * @param date date from which the count is made.
+ * 
+ * @return Number of days until the end of the current month.
+*/
 int sub_till_end_month(time_data date)
 {
     int days[] = {0, JAN, (date.leap) ? LEAP_FEB : FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC};

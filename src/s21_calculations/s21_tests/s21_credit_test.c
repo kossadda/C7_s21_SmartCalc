@@ -1541,7 +1541,7 @@ START_TEST(pointers_2)
 START_TEST(pointers_3)
 {
     initial data;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 120000, 6, DIFFERENTIATED, 10, 01, 03, 2022);
@@ -1554,7 +1554,7 @@ START_TEST(pointers_3)
 
 START_TEST(pointers_4)
 {
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_redemption(&redemption, 1, 4, 2022, 5232, REDUCE_TERM);
@@ -1567,7 +1567,7 @@ START_TEST(pointers_4)
 START_TEST(pointers_5)
 {
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_redemption(&redemption, 1, 4, 2022, 5232, REDUCE_TERM);
@@ -1583,7 +1583,7 @@ START_TEST(diff_redemption_term_1)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 120000, 6, DIFFERENTIATED, 10, 01, 03, 2022);
@@ -1602,7 +1602,7 @@ START_TEST(diff_redemption_term_2)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
@@ -1622,7 +1622,7 @@ START_TEST(diff_redemption_term_3)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
@@ -1642,7 +1642,7 @@ START_TEST(diff_redemption_term_4)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
@@ -1663,7 +1663,7 @@ START_TEST(diff_redemption_term_5)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 12364567.22, 55, DIFFERENTIATED, 11.211, 11, 01, 2019);
@@ -1684,7 +1684,7 @@ START_TEST(diff_redemption_term_6)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 12364567.22, 55, DIFFERENTIATED, 11.211, 11, 01, 2019);
@@ -1705,7 +1705,7 @@ START_TEST(diff_redemption_term_7)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 55321523.34, 43, DIFFERENTIATED, 21.463, 03, 01, 2019);
@@ -1727,7 +1727,7 @@ START_TEST(diff_redemption_term_8)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 77777777.77, 126, DIFFERENTIATED, 8.962, 8, 4, 2002);
@@ -1751,7 +1751,7 @@ START_TEST(diff_redemption_term_9)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 1275367531, 200, DIFFERENTIATED, 17.231, 1, 1, 2015);
@@ -1776,7 +1776,7 @@ START_TEST(diff_redemption_term_10)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 1275367531, 200, DIFFERENTIATED, 17.231, 1, 1, 2015);
@@ -1803,7 +1803,7 @@ START_TEST(diff_redemption_pay_1)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 120000, 6, DIFFERENTIATED, 10, 01, 03, 2022);
@@ -1822,7 +1822,7 @@ START_TEST(diff_redemption_pay_2)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
@@ -1842,7 +1842,7 @@ START_TEST(diff_redemption_pay_3)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
@@ -1862,7 +1862,7 @@ START_TEST(diff_redemption_pay_4)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
@@ -1883,7 +1883,7 @@ START_TEST(diff_redemption_pay_5)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 12364567.22, 55, DIFFERENTIATED, 11.211, 11, 01, 2019);
@@ -1904,7 +1904,7 @@ START_TEST(diff_redemption_pay_6)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 12364567.22, 55, DIFFERENTIATED, 11.211, 11, 01, 2019);
@@ -1925,7 +1925,7 @@ START_TEST(diff_redemption_pay_7)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 55321523.34, 43, DIFFERENTIATED, 21.463, 03, 01, 2019);
@@ -1947,7 +1947,7 @@ START_TEST(diff_redemption_pay_8)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 77777777.77, 126, DIFFERENTIATED, 8.962, 8, 4, 2002);
@@ -1971,7 +1971,7 @@ START_TEST(diff_redemption_pay_9)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 1275367531, 200, DIFFERENTIATED, 17.231, 1, 1, 2015);
@@ -1996,7 +1996,7 @@ START_TEST(diff_redemption_pay_10)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 1275367531, 200, DIFFERENTIATED, 17.231, 1, 1, 2015);
@@ -2023,7 +2023,7 @@ START_TEST(annuity_redemption_term_1)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 120000, 6, ANNUITY, 10, 01, 03, 2022);
@@ -2043,7 +2043,7 @@ START_TEST(annuity_redemption_term_2)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 333333.33, 25, ANNUITY, 5, 23, 02, 2022);
@@ -2063,7 +2063,7 @@ START_TEST(annuity_redemption_term_3)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 333333.33, 25, ANNUITY, 5, 23, 02, 2022);
@@ -2083,7 +2083,7 @@ START_TEST(annuity_redemption_term_4)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 333333.33, 25, ANNUITY, 5, 23, 02, 2022);
@@ -2104,7 +2104,7 @@ START_TEST(annuity_redemption_term_5)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 12364567.22, 55, ANNUITY, 11.211, 11, 01, 2019);
@@ -2125,7 +2125,7 @@ START_TEST(annuity_redemption_term_6)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 12364567.22, 55, ANNUITY, 11.211, 11, 01, 2019);
@@ -2146,7 +2146,7 @@ START_TEST(annuity_redemption_term_7)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 55321523.34, 43, ANNUITY, 21.463, 03, 01, 2019);
@@ -2168,7 +2168,7 @@ START_TEST(annuity_redemption_term_8)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 77777777.77, 126, ANNUITY, 8.962, 8, 4, 2002);
@@ -2192,7 +2192,7 @@ START_TEST(annuity_redemption_term_9)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 1275367531, 200, ANNUITY, 17.231, 1, 1, 2015);
@@ -2217,7 +2217,7 @@ START_TEST(annuity_redemption_term_10)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 1275367531, 200, ANNUITY, 17.231, 1, 1, 2015);
@@ -2244,7 +2244,7 @@ START_TEST(annuity_redemption_pay_1)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 120000, 6, ANNUITY, 10, 01, 03, 2022);
@@ -2263,7 +2263,7 @@ START_TEST(annuity_redemption_pay_2)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 333333.33, 25, ANNUITY, 5, 23, 02, 2022);
@@ -2283,7 +2283,7 @@ START_TEST(annuity_redemption_pay_3)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 333333.33, 25, ANNUITY, 5, 23, 02, 2022);
@@ -2303,7 +2303,7 @@ START_TEST(annuity_redemption_pay_4)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 333333.33, 25, ANNUITY, 5, 23, 02, 2022);
@@ -2324,7 +2324,7 @@ START_TEST(annuity_redemption_pay_5)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 12364567.22, 55, ANNUITY, 11.211, 11, 01, 2019);
@@ -2345,7 +2345,7 @@ START_TEST(annuity_redemption_pay_6)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 12364567.22, 55, ANNUITY, 11.211, 11, 01, 2019);
@@ -2366,7 +2366,7 @@ START_TEST(annuity_redemption_pay_7)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 55321523.34, 43, ANNUITY, 21.463, 03, 01, 2019);
@@ -2388,7 +2388,7 @@ START_TEST(annuity_redemption_pay_8)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 77777777.77, 126, ANNUITY, 8.962, 8, 4, 2002);
@@ -2412,7 +2412,7 @@ START_TEST(annuity_redemption_pay_9)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 1275367531, 200, ANNUITY, 17.231, 1, 1, 2015);
@@ -2437,7 +2437,7 @@ START_TEST(annuity_redemption_pay_10)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 1275367531, 200, ANNUITY, 17.231, 1, 1, 2015);
@@ -2463,7 +2463,7 @@ START_TEST(diff_redemption_combinated_1)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
@@ -2483,7 +2483,7 @@ START_TEST(diff_redemption_combinated_2)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
@@ -2503,7 +2503,7 @@ START_TEST(diff_redemption_combinated_3)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
@@ -2523,7 +2523,7 @@ START_TEST(diff_redemption_combinated_4)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
@@ -2543,7 +2543,7 @@ START_TEST(diff_redemption_combinated_5)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
@@ -2565,7 +2565,7 @@ START_TEST(diff_redemption_combinated_6)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 12364567.22, 55, DIFFERENTIATED, 11.211, 11, 01, 2019);
@@ -2587,7 +2587,7 @@ START_TEST(diff_redemption_combinated_7)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 55321523.34, 43, DIFFERENTIATED, 21.463, 03, 01, 2019);
@@ -2609,7 +2609,7 @@ START_TEST(diff_redemption_combinated_8)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
@@ -2629,7 +2629,7 @@ START_TEST(diff_redemption_combinated_9)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 655321523.34, 43, DIFFERENTIATED, 21.463, 03, 01, 2019);
@@ -2651,7 +2651,7 @@ START_TEST(diff_redemption_combinated_10)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 655321523.34, 43, DIFFERENTIATED, 21.463, 03, 01, 2019);
@@ -2677,7 +2677,7 @@ START_TEST(annuity_redepmtion_combinated_1)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 333333.33, 25, ANNUITY, 5, 23, 02, 2022);
@@ -2697,7 +2697,7 @@ START_TEST(annuity_redepmtion_combinated_2)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 333333.33, 25, ANNUITY, 5, 23, 02, 2022);
@@ -2717,7 +2717,7 @@ START_TEST(annuity_redepmtion_combinated_3)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 333333.33, 25, ANNUITY, 5, 23, 02, 2022);
@@ -2737,7 +2737,7 @@ START_TEST(annuity_redepmtion_combinated_4)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 333333.33, 25, ANNUITY, 5, 23, 02, 2022);
@@ -2757,7 +2757,7 @@ START_TEST(annuity_redepmtion_combinated_5)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 333333.33, 25, ANNUITY, 5, 23, 02, 2022);
@@ -2779,7 +2779,7 @@ START_TEST(annuity_redepmtion_combinated_6)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 12364567.22, 55, ANNUITY, 11.211, 11, 01, 2019);
@@ -2801,7 +2801,7 @@ START_TEST(annuity_redepmtion_combinated_7)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 55321523.34, 43, ANNUITY, 21.463, 03, 01, 2019);
@@ -2823,7 +2823,7 @@ START_TEST(annuity_redepmtion_combinated_8)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 333333.33, 25, ANNUITY, 5, 23, 02, 2022);
@@ -2843,7 +2843,7 @@ START_TEST(annuity_redepmtion_combinated_9)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 655321523.34, 43, ANNUITY, 21.463, 03, 01, 2019);
@@ -2865,7 +2865,7 @@ START_TEST(annuity_redepmtion_combinated_10)
 {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 655321523.34, 43, ANNUITY, 21.463, 03, 01, 2019);

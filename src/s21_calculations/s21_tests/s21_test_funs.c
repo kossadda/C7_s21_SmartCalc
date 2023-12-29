@@ -2,7 +2,7 @@
 
 /// @brief Function for clearing memory in payments arrays
 /// @param pay Structure containing buffer variables for monthly results and general payment data arrays
-void free_memory(int row, payments *pay, another_payments *redemption) {
+void free_memory(int row, payments *pay, early_pay *redemption) {
     if(pay) {
         int redemp_rows = 0;
         if(redemption) {
@@ -66,7 +66,7 @@ void input_initial(initial *data, long double debt, long double months, int type
     data->date.year = year;
 }
 
-void input_redemption(another_payments *redemption, int day, int month, int year, long double sum, int type) {
+void input_redemption(early_pay *redemption, int day, int month, int year, long double sum, int type) {
     redemption->date = (time_data *)realloc(redemption->date, (redemption->count + 1) * sizeof(time_data));
     redemption->sum = (long double *)realloc(redemption->sum, (redemption->count + 1) * sizeof(long double));
     redemption->type = (int *)realloc(redemption->type, (redemption->count + 1) * sizeof(int));

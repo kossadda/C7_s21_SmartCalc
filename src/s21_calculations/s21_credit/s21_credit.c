@@ -1,10 +1,17 @@
 #include "s21_credit.h"
 
-/// @brief Function for calculating monthly payments of annuity type
-/// @param data Structure containing input parameters for calculation
-/// @param pay Structure containing buffer variables for monthly results and general payment data arrays
-/// @param redemption Structure containing data on early repayments
-int calculate_credit(initial *data, payments *pay, another_payments *redemption)
+/**
+ * @brief Function for calculating monthly payments of annuity type.
+ * 
+ * @param[in] data structure containing input parameters for calculation.
+ * @param[in] pay structure containing buffer variables for monthly results and general payment data arrays.
+ * @param[in] redemption structure containing data on early repayments.
+ * 
+ * @return Error code.
+ * @retval ALLOCATED = 0 - if memory is allocated.
+ * @retval NOT_ALLOCATED = 1 - if memory isn't allocated.
+*/
+int calculate_credit(initial *data, payments *pay, early_pay *redemption)
 {
     int error_code = NOT_ALLOCATED;
     int error_code_data = NOT_ALLOCATED;
@@ -26,14 +33,15 @@ int calculate_credit(initial *data, payments *pay, another_payments *redemption)
         next_month.leap = check_leap(next_month.year);
         add_month(&next_month, const_day);
 
-        data->amount = data->debt;
         error_code = init_massive(pay);
     }
 
-    if(error_code == ALLOCATED && data->payment_type == ANNUITY) {
-        annuity(data, pay, redemption, next_month);
-    } else if(error_code == ALLOCATED && data->payment_type == DIFFERENTIATED) {
-        differentiated(data, pay, redemption, next_month);
+    if(error_code == ALLOCATED) {
+        if(data->payment_type == ANNUITY) {
+            annuity(data, pay, redemption, next_month);
+        } else if(data->payment_type == DIFFERENTIATED) {
+            differentiated(data, pay, redemption, next_month);
+        }
     }
     return error_code;
 }

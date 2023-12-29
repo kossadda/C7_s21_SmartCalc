@@ -11,7 +11,7 @@ void input_initial(initial *data, long double debt, long double months, int type
     data->date.year = year;
 }
 
-void input_redemption(another_payments *redemption, int day, int month, int year, long double sum, int type) {
+void input_redemption(early_pay *redemption, int day, int month, int year, long double sum, int type) {
     redemption->date = (time_data *)realloc(redemption->date, (redemption->count + 1) * sizeof(time_data));
     redemption->sum = (long double *)realloc(redemption->sum, (redemption->count + 1) * sizeof(long double));
     redemption->type = (int *)realloc(redemption->type, (redemption->count + 1) * sizeof(int));
@@ -25,7 +25,7 @@ void input_redemption(another_payments *redemption, int day, int month, int year
 
 #define ARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]))
 
-void free_memory(int row, payments *pay, another_payments *redemption) {
+void free_memory(int row, payments *pay, early_pay *redemption) {
     if(pay) {
         int redemp_rows = 0;
         if(redemption) {
@@ -57,7 +57,7 @@ void free_memory(int row, payments *pay, another_payments *redemption) {
 int main() {
     initial data;
     payments pay;
-    another_payments redemption;
+    early_pay redemption;
     init_redemption(&redemption);
 
     input_initial(&data, 655321523.34, 43, DIFFERENTIATED, 21.463, 03, 01, 2019);

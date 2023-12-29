@@ -1,9 +1,16 @@
 #include "s21_calc.h"
 
-/// @brief A function designed to compare the priorities of two operations (current and at the top of the stack)
-/// @param current Current operation
-/// @param top_stack Operation on top of stack
-/// @return Returns if the current operation prevails over the operation at the top of the stack - HIGH_PRIORITY. In case of priority equivalence - EQUAL_PRIORITY. In case of low priority - LOW_PRIORITY.
+/**
+ * @brief A function designed to compare the priorities of two lexems (current and at the top of the stack).
+ * 
+ * @param current current lexem.
+ * @param top_stack lexem on top of stack.
+ * 
+ * @return Status of the current lexem in relation to the lexem at the top of the stack.
+ * @retval LOW_PRIORITY = 0 - if the current lexem is of lower priority.
+ * @retval EQUAL_PRIORITY = 1 - if the current lexem has equal priority.
+ * @retval HIGH_PRIORITY = 2 - if the current lexem has higher priority.
+*/
 int prior_comparison(const char current, const char top_stack)
 {
     int decision = LOW_PRIORITY;
@@ -24,22 +31,31 @@ int prior_comparison(const char current, const char top_stack)
     return decision;
 }
 
-/// @brief The function determines the priority of the input operation
-/// @param operation Operation
-/// @return Returns the integer value of the function priority ("+-":1, "*/mod":2, "^":3, "sin,cos,tan,asin,acos,atan,log,ln":4, "()":5)
-int determine_priority(const char operation)
+/**
+ * @brief The function determines the priority of the input lexem.
+ * 
+ * @param lexem lexem.
+ * 
+ * @return lexem priority.
+ * @retval 1 - if lexem one of "+-".
+ * @retval 2 - if lexem one of "* / mod".
+ * @retval 3 - if lexem is "^".
+ * @retval 4 - if lexem one of "sin cos tan acos atan log ln".
+ * @retval 5 - if lexem one of "( )".
+*/
+int determine_priority(const char lexem)
 {
     int priority = 0;
 
-    if(check(operation, ADD MIN)) {
+    if(check(lexem, ADD MIN)) {
         priority = 1;
-    } else if(check(operation, MUL DIV MOD)) {
+    } else if(check(lexem, MUL DIV MOD)) {
         priority = 2;
-    } else if(check(operation, EXP)) {
+    } else if(check(lexem, EXP)) {
         priority = 3;
-    } else if(check(operation, TRIGONOMETRIC_CHARS)) {
+    } else if(check(lexem, TRIGONOMETRIC_CHARS)) {
         priority = 4;
-    } else if(check(operation, OP_BRCK CL_BRCK)) {
+    } else if(check(lexem, OP_BRCK CL_BRCK)) {
         priority = 5;
     }
     

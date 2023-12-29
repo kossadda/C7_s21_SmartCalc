@@ -30,16 +30,9 @@
 #define PI "P"
 #define E "e"
 
-typedef struct {
-    double stack[100];
-    int count;
-} num_stack;
-
-typedef struct {
-    char stack[50];
-    int count;
-} op_stack;
-
+/**
+ * @brief List defining replacement chars for full expression names.
+*/
 enum substitution {
     CHAR_SIN      =   's',    CHAR_COS    =   'c',    CHAR_TAN     =   't', 
     CHAR_ASIN     =   'S',    CHAR_ACOS   =   'C',    CHAR_ATAN    =   'T', 
@@ -51,6 +44,9 @@ enum substitution {
     CHAR_VAR      =   'x',    CHAR_E      =   'e',    CHAR_SPACE   =   ' ',
 };
 
+/**
+ * @brief List defining constant statuses for functions used in the credit calculator.
+*/
 enum calc_functions_status {
 //  type of elements added when adding characters to a string
     STRING = 0, NUMBER = 1, ONE_CHAR = 2, TWO_CHAR  = 3,
@@ -62,7 +58,23 @@ enum calc_functions_status {
     NO = 0, YES = 1,
 };
 
-// main funtions
+/**
+ * @brief Struct representing stack for numbers.
+*/
+typedef struct num_stack {
+    double stack[150];              /** An array containing stack numbers.                            */
+    int count;                      /** A counter that determines the number of numbers on the stack. */
+} num_stack;
+
+/**
+ * @brief Struct representing stack for lexems.
+*/
+typedef struct lex_stack {
+    char stack[75];                 /** An array containing stack lexems.                            */
+    int count;                      /** A counter that determines the number of lexems on the stack. */
+} lex_stack;
+
+// Main funtions
 
 double calculation(char *str, double x);
 int str_without_spaces(char *str);
@@ -70,22 +82,22 @@ void input_varibles(char *str, double x);
 int func_substitution(char *str);
 double notation(char *str);
 
-// math_operations
+// Math_operations
 
-void bracket_close(num_stack *num, op_stack *ops, int mode);
-double math_nums(double first, double second, const char operation);
-void math_trigonometry(double *number, const char operation);
-void math_while_parsing(num_stack *num, op_stack *ops, const char current_operation, int decision);
+void bracket_close(num_stack *num, lex_stack *lex, int mode);
+double math_nums(double first, double second, const char lexem);
+void math_trigonometry(double *number, const char lexem);
+void math_while_parsing(num_stack *num, lex_stack *lex, const char current_lexem, int decision);
 
-// secondary functions
+// Secondary functions
 
-void clean_top_stack(num_stack *num, int num_decision, op_stack *ops, int ops_decision);
+void clean_top_stack(num_stack *num, int num_decision, lex_stack *lex, int lex_decision);
 int check(const char first_symbol, const char *search);
 
-// comparisons
+// Comparisons
 
 int prior_comparison(const char first, const char second);
-int determine_priority(const char operation);
+int determine_priority(const char lexem);
 
 // C++ secondary functions
 

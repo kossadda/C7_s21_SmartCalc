@@ -7,9 +7,9 @@
 // functions to test
 
 int test_suite(Suite *test);
-void free_memory(int row, payments *pay, another_payments *redemption);
+void free_memory(int row, payments *pay, early_pay *redemption);
 void input_initial(initial *data, long double debt, long double months, int type, long double rate, int day, int month, int year);
-void input_redemption(another_payments *redemption, int day, int month, int year, long double sum, int type);
+void input_redemption(early_pay *redemption, int day, int month, int year, long double sum, int type);
 
 // calculator tests
 

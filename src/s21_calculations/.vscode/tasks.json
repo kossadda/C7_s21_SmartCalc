@@ -7,7 +7,7 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "/home/kossadda/develop/C7_s21_smartcalc/src/s21_calculations/s21_testing.c",
+                "/home/kossadda/develop/C7_s21_smartcalc/src/s21_calculations/s21_debug.c",
                 // "/home/kossadda/develop/C7_s21_smartcalc/src/s21_calculations/s21_calc/*.c",
                 // "/home/kossadda/develop/C7_s21_smartcalc/src/s21_calculations/s21_tests/*.c",
                 "/home/kossadda/develop/C7_s21_smartcalc/src/s21_calculations/s21_credit/*.c",

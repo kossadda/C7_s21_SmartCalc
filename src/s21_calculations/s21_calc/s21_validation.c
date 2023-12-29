@@ -4,9 +4,15 @@
 static int check_trigonometric(char *true_str, int *count, const char *str, size_t *i);
 static void add_symbol(char *str, int *count, int mode, ...);
 
-/// @brief A function for excluding spaces from a string, as well as validating the string for only valid characters
-/// @param str String to process
-/// @return Returns the error code. NO - the string contains valid characters. YES - there are invalid characters
+/**
+ * @brief A function for excluding spaces from a string, as well as validating the string for only valid characters.
+ * 
+ * @param[in] str string to process.
+ * 
+ * @return Error code.
+ * @retval NO = 0 - the string contains valid characters.
+ * @retval YES = 1 - there are invalid characters.
+*/
 int str_without_spaces(char *str)
 {
     int wrong_expression = NO;
@@ -37,9 +43,12 @@ int str_without_spaces(char *str)
     return wrong_expression;
 }
 
-/// @brief Function for replacing variables x, constants (e, Pi) with their corresponding values and additional processing
-/// @param str String to process
-/// @param var Value of variable x
+/**
+ * @brief Function for replacing variables x, constants (e, Pi) with their corresponding values and additional processing.
+ * 
+ * @param[in] str string to process.
+ * @param var value of variable x.
+*/
 void input_varibles(char *str, double var)
 {
     char true_str[1500] = {0};
@@ -84,9 +93,15 @@ void input_varibles(char *str, double var)
     strcpy(str, true_str);
 }
 
-/// @brief A function for replacing full function names with their shortened versions in char format (for ease of parsing) and additional processing
-/// @param str String to process
-/// @return Returns the error code. NO - the string contains valid characters. YES - there are invalid characters
+/**
+ * @brief A function for replacing full function names with their shortened versions in char format (for ease of parsing) and additional processing.
+ * 
+ * @param[in] str string to process.
+ * 
+ * @return Error code.
+ * @retval NO = 0 - the string contains valid characters.
+ * @retval YES = 1 - there are invalid characters.
+*/
 int func_substitution(char *str)
 {
     int wrong_expression = NO;
@@ -131,12 +146,18 @@ int func_substitution(char *str)
     return wrong_expression;
 }
 
-/// @brief A function that checks the possible full name of the function for compliance with those specified in the parser
-/// @param true_str Mathematical expression with substituted symbols
-/// @param count Counter for a string with replaced characters
-/// @param str String with full names
-/// @param i Counter for a line with full names
-/// @return Returns the error code. NO - the arithmetic function is written correctly. YES - possible arithmetic function is misspelled
+/**
+ * @brief A function that checks the possible full name of the function for compliance with those specified in the parser.
+ * 
+ * @param[in] true_str mathematical expression with substituted symbols.
+ * @param[in] count counter for a string with replaced characters.
+ * @param[in] str string with full names.
+ * @param[in] i counter for a line with full names.
+ * 
+ * @return Error code.
+ * @retval NO = 0 - the string contains valid characters.
+ * @retval YES = 1 - there are invalid characters.
+*/
 static int check_trigonometric(char *true_str, int *count, const char *str, size_t *i)
 {
     char temp[10] = {0};
@@ -192,11 +213,18 @@ static int check_trigonometric(char *true_str, int *count, const char *str, size
     return wrong_expression;
 }
 
-/// @brief Function to add characters/strings/numbers to a string
-/// @param str Processed string
-/// @param count Counter for a string
-/// @param mode The function operates in three modes. String - add a string to a string. Number - add a number to a string. ONE_CHAR - add a character to the string (for 2 characters - TWO_CHAR, if a larger number is needed, add the required number arithmetically)
-/// @param parameters Parameters corresponding to the specified mode
+/**
+ * @brief Function to add characters/strings/numbers to a string.
+ * Function have three modes.
+ * "mode" = STRING (0) - add a string to a string.
+ * "mode" = NUMBER (1) - add a number to a string.
+ * "mode" = CHAR (2) - add a char to the string (for 2 characters - TWO_CHAR, if a larger number is needed, add the required number arithmetically).
+ * 
+ * @param[in] str processed string.
+ * @param[in] count counter for a string.
+ * @param mode mode for adding symbols
+ * @param parameters parameters corresponding to the specified mode.
+*/
 static void add_symbol(char *str, int *count, int mode, ...)
 {
     va_list args;
