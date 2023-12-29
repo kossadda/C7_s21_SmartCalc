@@ -2,7 +2,8 @@
 
 //  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-START_TEST(annuity_1) {
+START_TEST(annuity_1)
+{
     initial data;
     payments pay;
 
@@ -16,7 +17,8 @@ START_TEST(annuity_1) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_2) {
+START_TEST(annuity_2)
+{
     initial data;
     payments pay;
 
@@ -30,7 +32,8 @@ START_TEST(annuity_2) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_3) {
+START_TEST(annuity_3)
+{
     initial data;
     payments pay;
 
@@ -44,7 +47,8 @@ START_TEST(annuity_3) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_4) {
+START_TEST(annuity_4)
+{
     initial data;
     payments pay;
 
@@ -58,7 +62,8 @@ START_TEST(annuity_4) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_5) {
+START_TEST(annuity_5)
+{
     initial data;
     payments pay;
 
@@ -72,7 +77,8 @@ START_TEST(annuity_5) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_6) {
+START_TEST(annuity_6)
+{
     initial data;
     payments pay;
 
@@ -86,7 +92,8 @@ START_TEST(annuity_6) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_7) {
+START_TEST(annuity_7)
+{
     initial data;
     payments pay;
 
@@ -100,7 +107,8 @@ START_TEST(annuity_7) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_8) {
+START_TEST(annuity_8)
+{
     initial data;
     payments pay;
 
@@ -114,7 +122,8 @@ START_TEST(annuity_8) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_9) {
+START_TEST(annuity_9)
+{
     initial data;
     payments pay;
 
@@ -128,7 +137,8 @@ START_TEST(annuity_9) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_10) {
+START_TEST(annuity_10)
+{
     initial data;
     payments pay;
 
@@ -144,7 +154,8 @@ START_TEST(annuity_10) {
 
 //  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-START_TEST(annuity_11) {
+START_TEST(annuity_11)
+{
     initial data;
     payments pay;
 
@@ -158,7 +169,8 @@ START_TEST(annuity_11) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_12) {
+START_TEST(annuity_12)
+{
     initial data;
     payments pay;
 
@@ -172,7 +184,8 @@ START_TEST(annuity_12) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_13) {
+START_TEST(annuity_13)
+{
     initial data;
     payments pay;
 
@@ -186,7 +199,8 @@ START_TEST(annuity_13) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_14) {
+START_TEST(annuity_14)
+{
     initial data;
     payments pay;
 
@@ -200,7 +214,8 @@ START_TEST(annuity_14) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_15) {
+START_TEST(annuity_15)
+{
     initial data;
     payments pay;
 
@@ -214,7 +229,8 @@ START_TEST(annuity_15) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_16) {
+START_TEST(annuity_16)
+{
     initial data;
     payments pay;
 
@@ -228,7 +244,8 @@ START_TEST(annuity_16) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_17) {
+START_TEST(annuity_17)
+{
     initial data;
     payments pay;
 
@@ -242,7 +259,8 @@ START_TEST(annuity_17) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_18) {
+START_TEST(annuity_18)
+{
     initial data;
     payments pay;
 
@@ -256,7 +274,8 @@ START_TEST(annuity_18) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_19) {
+START_TEST(annuity_19)
+{
     initial data;
     payments pay;
 
@@ -272,7 +291,8 @@ START_TEST(annuity_19) {
 
 //  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-START_TEST(annuity_20) {
+START_TEST(annuity_20)
+{
     initial data;
     payments pay;
 
@@ -286,7 +306,8 @@ START_TEST(annuity_20) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_21) {
+START_TEST(annuity_21)
+{
     initial data;
     payments pay;
 
@@ -300,7 +321,8 @@ START_TEST(annuity_21) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_22) {
+START_TEST(annuity_22)
+{
     initial data;
     payments pay;
 
@@ -314,7 +336,8 @@ START_TEST(annuity_22) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_23) {
+START_TEST(annuity_23)
+{
     initial data;
     payments pay;
 
@@ -328,7 +351,8 @@ START_TEST(annuity_23) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_24) {
+START_TEST(annuity_24)
+{
     initial data;
     payments pay;
 
@@ -342,7 +366,8 @@ START_TEST(annuity_24) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_25) {
+START_TEST(annuity_25)
+{
     initial data;
     payments pay;
 
@@ -356,7 +381,8 @@ START_TEST(annuity_25) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_26) {
+START_TEST(annuity_26)
+{
     initial data;
     payments pay;
 
@@ -370,7 +396,8 @@ START_TEST(annuity_26) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_27) {
+START_TEST(annuity_27)
+{
     initial data;
     payments pay;
 
@@ -384,7 +411,8 @@ START_TEST(annuity_27) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_28) {
+START_TEST(annuity_28)
+{
     initial data;
     payments pay;
 
@@ -398,7 +426,8 @@ START_TEST(annuity_28) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_29) {
+START_TEST(annuity_29)
+{
     initial data;
     payments pay;
 
@@ -412,7 +441,8 @@ START_TEST(annuity_29) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_30) {
+START_TEST(annuity_30)
+{
     initial data;
     payments pay;
 
@@ -428,7 +458,8 @@ START_TEST(annuity_30) {
 
 //  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-START_TEST(annuity_31) {
+START_TEST(annuity_31)
+{
     initial data;
     payments pay;
 
@@ -442,7 +473,8 @@ START_TEST(annuity_31) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_32) {
+START_TEST(annuity_32)
+{
     initial data;
     payments pay;
 
@@ -456,7 +488,8 @@ START_TEST(annuity_32) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_33) {
+START_TEST(annuity_33)
+{
     initial data;
     payments pay;
 
@@ -470,7 +503,8 @@ START_TEST(annuity_33) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_34) {
+START_TEST(annuity_34)
+{
     initial data;
     payments pay;
 
@@ -484,7 +518,8 @@ START_TEST(annuity_34) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_35) {
+START_TEST(annuity_35)
+{
     initial data;
     payments pay;
 
@@ -498,7 +533,8 @@ START_TEST(annuity_35) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_36) {
+START_TEST(annuity_36)
+{
     initial data;
     payments pay;
 
@@ -512,7 +548,8 @@ START_TEST(annuity_36) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_37) {
+START_TEST(annuity_37)
+{
     initial data;
     payments pay;
 
@@ -526,7 +563,8 @@ START_TEST(annuity_37) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_38) {
+START_TEST(annuity_38)
+{
     initial data;
     payments pay;
 
@@ -540,7 +578,8 @@ START_TEST(annuity_38) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_39) {
+START_TEST(annuity_39)
+{
     initial data;
     payments pay;
 
@@ -554,7 +593,8 @@ START_TEST(annuity_39) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_40) {
+START_TEST(annuity_40)
+{
     initial data;
     payments pay;
 
@@ -570,7 +610,8 @@ START_TEST(annuity_40) {
 
 //  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-START_TEST(annuity_41) {
+START_TEST(annuity_41)
+{
     initial data;
     payments pay;
 
@@ -584,7 +625,8 @@ START_TEST(annuity_41) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_42) {
+START_TEST(annuity_42)
+{
     initial data;
     payments pay;
 
@@ -598,7 +640,8 @@ START_TEST(annuity_42) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_43) {
+START_TEST(annuity_43)
+{
     initial data;
     payments pay;
 
@@ -612,7 +655,8 @@ START_TEST(annuity_43) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_44) {
+START_TEST(annuity_44)
+{
     initial data;
     payments pay;
 
@@ -626,7 +670,8 @@ START_TEST(annuity_44) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_45) {
+START_TEST(annuity_45)
+{
     initial data;
     payments pay;
 
@@ -640,7 +685,8 @@ START_TEST(annuity_45) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_46) {
+START_TEST(annuity_46)
+{
     initial data;
     payments pay;
 
@@ -654,7 +700,8 @@ START_TEST(annuity_46) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_47) {
+START_TEST(annuity_47)
+{
     initial data;
     payments pay;
 
@@ -668,7 +715,8 @@ START_TEST(annuity_47) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_48) {
+START_TEST(annuity_48)
+{
     initial data;
     payments pay;
 
@@ -682,7 +730,8 @@ START_TEST(annuity_48) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_49) {
+START_TEST(annuity_49)
+{
     initial data;
     payments pay;
 
@@ -696,7 +745,8 @@ START_TEST(annuity_49) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(annuity_50) {
+START_TEST(annuity_50)
+{
     initial data;
     payments pay;
 
@@ -712,7 +762,8 @@ START_TEST(annuity_50) {
 
 //  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-START_TEST(differentiated_1) {
+START_TEST(differentiated_1)
+{
     initial data;
     payments pay;
 
@@ -726,7 +777,8 @@ START_TEST(differentiated_1) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_2) {
+START_TEST(differentiated_2)
+{
     initial data;
     payments pay;
 
@@ -740,7 +792,8 @@ START_TEST(differentiated_2) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_3) {
+START_TEST(differentiated_3)
+{
     initial data;
     payments pay;
 
@@ -754,7 +807,8 @@ START_TEST(differentiated_3) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_4) {
+START_TEST(differentiated_4)
+{
     initial data;
     payments pay;
 
@@ -768,7 +822,8 @@ START_TEST(differentiated_4) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_5) {
+START_TEST(differentiated_5)
+{
     initial data;
     payments pay;
 
@@ -782,7 +837,8 @@ START_TEST(differentiated_5) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_6) {
+START_TEST(differentiated_6)
+{
     initial data;
     payments pay;
 
@@ -796,7 +852,8 @@ START_TEST(differentiated_6) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_7) {
+START_TEST(differentiated_7)
+{
     initial data;
     payments pay;
 
@@ -810,7 +867,8 @@ START_TEST(differentiated_7) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_8) {
+START_TEST(differentiated_8)
+{
     initial data;
     payments pay;
 
@@ -824,7 +882,8 @@ START_TEST(differentiated_8) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_9) {
+START_TEST(differentiated_9)
+{
     initial data;
     payments pay;
 
@@ -838,7 +897,8 @@ START_TEST(differentiated_9) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_10) {
+START_TEST(differentiated_10)
+{
     initial data;
     payments pay;
 
@@ -854,7 +914,8 @@ START_TEST(differentiated_10) {
 
 //  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-START_TEST(differentiated_11) {
+START_TEST(differentiated_11)
+{
     initial data;
     payments pay;
 
@@ -868,7 +929,8 @@ START_TEST(differentiated_11) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_12) {
+START_TEST(differentiated_12)
+{
     initial data;
     payments pay;
 
@@ -882,7 +944,8 @@ START_TEST(differentiated_12) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_13) {
+START_TEST(differentiated_13)
+{
     initial data;
     payments pay;
 
@@ -896,7 +959,8 @@ START_TEST(differentiated_13) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_14) {
+START_TEST(differentiated_14)
+{
     initial data;
     payments pay;
 
@@ -910,7 +974,8 @@ START_TEST(differentiated_14) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_15) {
+START_TEST(differentiated_15)
+{
     initial data;
     payments pay;
 
@@ -924,7 +989,8 @@ START_TEST(differentiated_15) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_16) {
+START_TEST(differentiated_16)
+{
     initial data;
     payments pay;
 
@@ -938,7 +1004,8 @@ START_TEST(differentiated_16) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_17) {
+START_TEST(differentiated_17)
+{
     initial data;
     payments pay;
 
@@ -952,7 +1019,8 @@ START_TEST(differentiated_17) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_18) {
+START_TEST(differentiated_18)
+{
     initial data;
     payments pay;
 
@@ -966,7 +1034,8 @@ START_TEST(differentiated_18) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_19) {
+START_TEST(differentiated_19)
+{
     initial data;
     payments pay;
 
@@ -980,7 +1049,8 @@ START_TEST(differentiated_19) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_20) {
+START_TEST(differentiated_20)
+{
     initial data;
     payments pay;
 
@@ -996,7 +1066,8 @@ START_TEST(differentiated_20) {
 
 //  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-START_TEST(differentiated_21) {
+START_TEST(differentiated_21)
+{
     initial data;
     payments pay;
 
@@ -1010,7 +1081,8 @@ START_TEST(differentiated_21) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_22) {
+START_TEST(differentiated_22)
+{
     initial data;
     payments pay;
 
@@ -1024,7 +1096,8 @@ START_TEST(differentiated_22) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_23) {
+START_TEST(differentiated_23)
+{
     initial data;
     payments pay;
 
@@ -1038,7 +1111,8 @@ START_TEST(differentiated_23) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_24) {
+START_TEST(differentiated_24)
+{
     initial data;
     payments pay;
 
@@ -1052,7 +1126,8 @@ START_TEST(differentiated_24) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_25) {
+START_TEST(differentiated_25)
+{
     initial data;
     payments pay;
 
@@ -1066,7 +1141,8 @@ START_TEST(differentiated_25) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_26) {
+START_TEST(differentiated_26)
+{
     initial data;
     payments pay;
 
@@ -1080,7 +1156,8 @@ START_TEST(differentiated_26) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_27) {
+START_TEST(differentiated_27)
+{
     initial data;
     payments pay;
 
@@ -1094,7 +1171,8 @@ START_TEST(differentiated_27) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_28) {
+START_TEST(differentiated_28)
+{
     initial data;
     payments pay;
 
@@ -1108,7 +1186,8 @@ START_TEST(differentiated_28) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_29) {
+START_TEST(differentiated_29)
+{
     initial data;
     payments pay;
 
@@ -1122,7 +1201,8 @@ START_TEST(differentiated_29) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_30) {
+START_TEST(differentiated_30)
+{
     initial data;
     payments pay;
 
@@ -1138,7 +1218,8 @@ START_TEST(differentiated_30) {
 
 //  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-START_TEST(differentiated_31) {
+START_TEST(differentiated_31)
+{
     initial data;
     payments pay;
 
@@ -1152,7 +1233,8 @@ START_TEST(differentiated_31) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_32) {
+START_TEST(differentiated_32)
+{
     initial data;
     payments pay;
 
@@ -1166,7 +1248,8 @@ START_TEST(differentiated_32) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_33) {
+START_TEST(differentiated_33)
+{
     initial data;
     payments pay;
 
@@ -1180,7 +1263,8 @@ START_TEST(differentiated_33) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_34) {
+START_TEST(differentiated_34)
+{
     initial data;
     payments pay;
 
@@ -1194,7 +1278,8 @@ START_TEST(differentiated_34) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_35) {
+START_TEST(differentiated_35)
+{
     initial data;
     payments pay;
 
@@ -1208,7 +1293,8 @@ START_TEST(differentiated_35) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_36) {
+START_TEST(differentiated_36)
+{
     initial data;
     payments pay;
 
@@ -1222,7 +1308,8 @@ START_TEST(differentiated_36) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_37) {
+START_TEST(differentiated_37)
+{
     initial data;
     payments pay;
 
@@ -1236,7 +1323,8 @@ START_TEST(differentiated_37) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_38) {
+START_TEST(differentiated_38)
+{
     initial data;
     payments pay;
 
@@ -1250,7 +1338,8 @@ START_TEST(differentiated_38) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_39) {
+START_TEST(differentiated_39)
+{
     initial data;
     payments pay;
 
@@ -1264,7 +1353,8 @@ START_TEST(differentiated_39) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_40) {
+START_TEST(differentiated_40)
+{
     initial data;
     payments pay;
 
@@ -1280,7 +1370,8 @@ START_TEST(differentiated_40) {
 
 //  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-START_TEST(differentiated_41) {
+START_TEST(differentiated_41)
+{
     initial data;
     payments pay;
 
@@ -1294,7 +1385,8 @@ START_TEST(differentiated_41) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_42) {
+START_TEST(differentiated_42)
+{
     initial data;
     payments pay;
 
@@ -1308,7 +1400,8 @@ START_TEST(differentiated_42) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_43) {
+START_TEST(differentiated_43)
+{
     initial data;
     payments pay;
 
@@ -1322,7 +1415,8 @@ START_TEST(differentiated_43) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_44) {
+START_TEST(differentiated_44)
+{
     initial data;
     payments pay;
 
@@ -1336,7 +1430,8 @@ START_TEST(differentiated_44) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_45) {
+START_TEST(differentiated_45)
+{
     initial data;
     payments pay;
 
@@ -1350,7 +1445,8 @@ START_TEST(differentiated_45) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_46) {
+START_TEST(differentiated_46)
+{
     initial data;
     payments pay;
 
@@ -1364,7 +1460,8 @@ START_TEST(differentiated_46) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_47) {
+START_TEST(differentiated_47)
+{
     initial data;
     payments pay;
 
@@ -1378,7 +1475,8 @@ START_TEST(differentiated_47) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_48) {
+START_TEST(differentiated_48)
+{
     initial data;
     payments pay;
 
@@ -1392,7 +1490,8 @@ START_TEST(differentiated_48) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_49) {
+START_TEST(differentiated_49)
+{
     initial data;
     payments pay;
 
@@ -1406,7 +1505,8 @@ START_TEST(differentiated_49) {
     free_memory(data.current + 1, &pay, NULL);
 }
 
-START_TEST(differentiated_50) {
+START_TEST(differentiated_50)
+{
     initial data;
     payments pay;
 
@@ -1422,11 +1522,13 @@ START_TEST(differentiated_50) {
 
 //  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-START_TEST(pointers_1) {
+START_TEST(pointers_1)
+{
     calculate_credit(NULL, NULL, NULL);
 }
 
-START_TEST(pointers_2) {
+START_TEST(pointers_2)
+{
     initial data;
 
     input_initial(&data, 120000, 6, DIFFERENTIATED, 10, 01, 03, 2022);
@@ -1436,7 +1538,8 @@ START_TEST(pointers_2) {
     free_memory(data.current, NULL, NULL);
 }
 
-START_TEST(pointers_3) {
+START_TEST(pointers_3)
+{
     initial data;
     another_payments redemption;
     init_redemption(&redemption);
@@ -1449,7 +1552,8 @@ START_TEST(pointers_3) {
     free_memory(data.current, NULL, &redemption);
 }
 
-START_TEST(pointers_4) {
+START_TEST(pointers_4)
+{
     another_payments redemption;
     init_redemption(&redemption);
 
@@ -1460,7 +1564,8 @@ START_TEST(pointers_4) {
     free_memory(0, NULL, &redemption);
 }
 
-START_TEST(pointers_5) {
+START_TEST(pointers_5)
+{
     payments pay;
     another_payments redemption;
     init_redemption(&redemption);
@@ -1474,7 +1579,8 @@ START_TEST(pointers_5) {
 
 //  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-START_TEST(diff_redemption_term_1) {
+START_TEST(diff_redemption_term_1)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -1492,7 +1598,8 @@ START_TEST(diff_redemption_term_1) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(diff_redemption_term_2) {
+START_TEST(diff_redemption_term_2)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -1511,7 +1618,8 @@ START_TEST(diff_redemption_term_2) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(diff_redemption_term_3) {
+START_TEST(diff_redemption_term_3)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -1530,7 +1638,8 @@ START_TEST(diff_redemption_term_3) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(diff_redemption_term_4) {
+START_TEST(diff_redemption_term_4)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -1550,7 +1659,8 @@ START_TEST(diff_redemption_term_4) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(diff_redemption_term_5) {
+START_TEST(diff_redemption_term_5)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -1570,7 +1680,8 @@ START_TEST(diff_redemption_term_5) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(diff_redemption_term_6) {
+START_TEST(diff_redemption_term_6)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -1590,7 +1701,8 @@ START_TEST(diff_redemption_term_6) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(diff_redemption_term_7) {
+START_TEST(diff_redemption_term_7)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -1611,7 +1723,8 @@ START_TEST(diff_redemption_term_7) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(diff_redemption_term_8) {
+START_TEST(diff_redemption_term_8)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -1634,7 +1747,8 @@ START_TEST(diff_redemption_term_8) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(diff_redemption_term_9) {
+START_TEST(diff_redemption_term_9)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -1658,7 +1772,8 @@ START_TEST(diff_redemption_term_9) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(diff_redemption_term_10) {
+START_TEST(diff_redemption_term_10)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -1684,7 +1799,8 @@ START_TEST(diff_redemption_term_10) {
 
 //  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-START_TEST(diff_redemption_pay_1) {
+START_TEST(diff_redemption_pay_1)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -1702,7 +1818,8 @@ START_TEST(diff_redemption_pay_1) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(diff_redemption_pay_2) {
+START_TEST(diff_redemption_pay_2)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -1721,7 +1838,8 @@ START_TEST(diff_redemption_pay_2) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(diff_redemption_pay_3) {
+START_TEST(diff_redemption_pay_3)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -1740,7 +1858,8 @@ START_TEST(diff_redemption_pay_3) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(diff_redemption_pay_4) {
+START_TEST(diff_redemption_pay_4)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -1760,7 +1879,8 @@ START_TEST(diff_redemption_pay_4) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(diff_redemption_pay_5) {
+START_TEST(diff_redemption_pay_5)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -1780,7 +1900,8 @@ START_TEST(diff_redemption_pay_5) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(diff_redemption_pay_6) {
+START_TEST(diff_redemption_pay_6)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -1800,7 +1921,8 @@ START_TEST(diff_redemption_pay_6) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(diff_redemption_pay_7) {
+START_TEST(diff_redemption_pay_7)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -1821,7 +1943,8 @@ START_TEST(diff_redemption_pay_7) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(diff_redemption_pay_8) {
+START_TEST(diff_redemption_pay_8)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -1844,7 +1967,8 @@ START_TEST(diff_redemption_pay_8) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(diff_redemption_pay_9) {
+START_TEST(diff_redemption_pay_9)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -1868,7 +1992,8 @@ START_TEST(diff_redemption_pay_9) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(diff_redemption_pay_10) {
+START_TEST(diff_redemption_pay_10)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -1894,7 +2019,8 @@ START_TEST(diff_redemption_pay_10) {
 
 //  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-START_TEST(annuity_redemption_term_1) {
+START_TEST(annuity_redemption_term_1)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -1913,7 +2039,8 @@ START_TEST(annuity_redemption_term_1) {
 }
 
 
-START_TEST(annuity_redemption_term_2) {
+START_TEST(annuity_redemption_term_2)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -1932,7 +2059,8 @@ START_TEST(annuity_redemption_term_2) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(annuity_redemption_term_3) {
+START_TEST(annuity_redemption_term_3)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -1951,7 +2079,8 @@ START_TEST(annuity_redemption_term_3) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(annuity_redemption_term_4) {
+START_TEST(annuity_redemption_term_4)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -1971,7 +2100,8 @@ START_TEST(annuity_redemption_term_4) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(annuity_redemption_term_5) {
+START_TEST(annuity_redemption_term_5)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -1991,7 +2121,8 @@ START_TEST(annuity_redemption_term_5) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(annuity_redemption_term_6) {
+START_TEST(annuity_redemption_term_6)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -2011,7 +2142,8 @@ START_TEST(annuity_redemption_term_6) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(annuity_redemption_term_7) {
+START_TEST(annuity_redemption_term_7)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -2032,7 +2164,8 @@ START_TEST(annuity_redemption_term_7) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(annuity_redemption_term_8) {
+START_TEST(annuity_redemption_term_8)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -2055,7 +2188,8 @@ START_TEST(annuity_redemption_term_8) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(annuity_redemption_term_9) {
+START_TEST(annuity_redemption_term_9)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -2079,7 +2213,8 @@ START_TEST(annuity_redemption_term_9) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(annuity_redemption_term_10) {
+START_TEST(annuity_redemption_term_10)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -2105,7 +2240,8 @@ START_TEST(annuity_redemption_term_10) {
 
 //  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-START_TEST(annuity_redemption_pay_1) {
+START_TEST(annuity_redemption_pay_1)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -2123,8 +2259,8 @@ START_TEST(annuity_redemption_pay_1) {
     free_memory(data.current, &pay, &redemption);
 }
 
-
-START_TEST(annuity_redemption_pay_2) {
+START_TEST(annuity_redemption_pay_2)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -2143,7 +2279,8 @@ START_TEST(annuity_redemption_pay_2) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(annuity_redemption_pay_3) {
+START_TEST(annuity_redemption_pay_3)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -2162,7 +2299,8 @@ START_TEST(annuity_redemption_pay_3) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(annuity_redemption_pay_4) {
+START_TEST(annuity_redemption_pay_4)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -2182,7 +2320,8 @@ START_TEST(annuity_redemption_pay_4) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(annuity_redemption_pay_5) {
+START_TEST(annuity_redemption_pay_5)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -2202,7 +2341,8 @@ START_TEST(annuity_redemption_pay_5) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(annuity_redemption_pay_6) {
+START_TEST(annuity_redemption_pay_6)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -2222,7 +2362,8 @@ START_TEST(annuity_redemption_pay_6) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(annuity_redemption_pay_7) {
+START_TEST(annuity_redemption_pay_7)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -2243,7 +2384,8 @@ START_TEST(annuity_redemption_pay_7) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(annuity_redemption_pay_8) {
+START_TEST(annuity_redemption_pay_8)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -2266,7 +2408,8 @@ START_TEST(annuity_redemption_pay_8) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(annuity_redemption_pay_9) {
+START_TEST(annuity_redemption_pay_9)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -2290,7 +2433,8 @@ START_TEST(annuity_redemption_pay_9) {
     free_memory(data.current, &pay, &redemption);
 }
 
-START_TEST(annuity_redemption_pay_10) {
+START_TEST(annuity_redemption_pay_10)
+{
     initial data;
     payments pay;
     another_payments redemption;
@@ -2313,10 +2457,438 @@ START_TEST(annuity_redemption_pay_10) {
     }
     free_memory(data.current, &pay, &redemption);
 }
+//  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+START_TEST(diff_redemption_combinated_1)
+{
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
+    input_redemption(&redemption, 01, 04, 2022, 5232, REDUCE_PAY);
+    input_redemption(&redemption, 23, 12, 2022, 25000, REDUCE_TERM);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {349564.71, 333333.33, 16231.38};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(diff_redemption_combinated_2)
+{
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
+    input_redemption(&redemption, 26, 03, 2022, 5232, REDUCE_PAY);
+    input_redemption(&redemption, 10, 04, 2022, 12000, REDUCE_TERM);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {349952.41, 333333.33, 16619.08};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(diff_redemption_combinated_3)
+{
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
+    input_redemption(&redemption, 26, 03, 2022, 5232, REDUCE_PAY);
+    input_redemption(&redemption, 10, 04, 2022, 12000, REDUCE_TERM);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {349952.41, 333333.33, 16619.08};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(diff_redemption_combinated_4)
+{
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
+    input_redemption(&redemption, 26, 03, 2022, 5232, REDUCE_TERM);
+    input_redemption(&redemption, 10, 04, 2022, 12000, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {349864.07, 333333.33, 16530.74};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(diff_redemption_combinated_5)
+{
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
+    input_redemption(&redemption, 26, 03, 2022, 5232, REDUCE_PAY);
+    input_redemption(&redemption, 01, 04, 2022, 6666, REDUCE_TERM);
+    input_redemption(&redemption, 10, 04, 2022, 12000, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {349537.98, 333333.33, 16204.65};
+
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(diff_redemption_combinated_6)
+{
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 12364567.22, 55, DIFFERENTIATED, 11.211, 11, 01, 2019);
+    input_redemption(&redemption, 05, 02, 2019, 51235, REDUCE_TERM);
+    input_redemption(&redemption, 22, 02, 2020, 212731, REDUCE_TERM);
+    input_redemption(&redemption, 30, 07, 2020, 260000, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {15038562.61, 12364567.22, 2673995.39};
+
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(diff_redemption_combinated_7)
+{
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 55321523.34, 43, DIFFERENTIATED, 21.463, 03, 01, 2019);
+    input_redemption(&redemption, 21, 04, 2019, 50000, REDUCE_PAY);
+    input_redemption(&redemption, 30, 04, 2019, 75000, REDUCE_TERM);
+    input_redemption(&redemption, 31, 12, 2019, 100000, REDUCE_TERM);
+    input_redemption(&redemption, 01, 01, 2020, 200000, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {77065876.72, 55321523.34, 21744353.38};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(diff_redemption_combinated_8)
+{
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 333333.33, 25, DIFFERENTIATED, 5, 23, 02, 2022);
+    input_redemption(&redemption, 26, 02, 2022, 137, REDUCE_TERM);
+    input_redemption(&redemption, 10, 04, 2022, 12000, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {351411.01, 333333.33, 18077.68};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(diff_redemption_combinated_9)
+{
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 655321523.34, 43, DIFFERENTIATED, 21.463, 03, 01, 2019);
+    input_redemption(&redemption, 21, 04, 2019, 5000120, REDUCE_TERM);
+    input_redemption(&redemption, 30, 04, 2019, 8750001, REDUCE_TERM);
+    input_redemption(&redemption, 31, 12, 2019, 11000000, REDUCE_TERM);
+    input_redemption(&redemption, 01, 01, 2020, 12000000, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {860971422.07, 655321523.34, 205649898.73};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(diff_redemption_combinated_10)
+{
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 655321523.34, 43, DIFFERENTIATED, 21.463, 03, 01, 2019);
+    input_redemption(&redemption, 21, 04, 2019, 5000120, REDUCE_TERM);
+    input_redemption(&redemption, 30, 04, 2019, 8750001, REDUCE_TERM);
+    input_redemption(&redemption, 31, 12, 2019, 11000000, REDUCE_TERM);
+    input_redemption(&redemption, 01, 01, 2020, 12000000, REDUCE_PAY);
+    input_redemption(&redemption, 02, 02, 2020, 20547123, REDUCE_TERM);
+    input_redemption(&redemption, 06, 03, 2020, 40897237, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {814392463.06, 655321523.34, 159070939.72};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
 
 //  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Suite *s21_annuity_1(void) {
+START_TEST(annuity_redepmtion_combinated_1)
+{
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 333333.33, 25, ANNUITY, 5, 23, 02, 2022);
+    input_redemption(&redemption, 01, 04, 2022, 5232, REDUCE_PAY);
+    input_redemption(&redemption, 23, 12, 2022, 25000, REDUCE_TERM);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {349778.95, 333333.33, 16445.62};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(annuity_redepmtion_combinated_2)
+{
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 333333.33, 25, ANNUITY, 5, 23, 02, 2022);
+    input_redemption(&redemption, 26, 03, 2022, 5232, REDUCE_PAY);
+    input_redemption(&redemption, 10, 04, 2022, 12000, REDUCE_TERM);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {350115.62, 333333.33, 16782.29};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(annuity_redepmtion_combinated_3)
+{
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 333333.33, 25, ANNUITY, 5, 23, 02, 2022);
+    input_redemption(&redemption, 26, 03, 2022, 5232, REDUCE_PAY);
+    input_redemption(&redemption, 10, 04, 2022, 12000, REDUCE_TERM);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {350115.62, 333333.33, 16782.29};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(annuity_redepmtion_combinated_4)
+{
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 333333.33, 25, ANNUITY, 5, 23, 02, 2022);
+    input_redemption(&redemption, 26, 03, 2022, 5232, REDUCE_TERM);
+    input_redemption(&redemption, 10, 04, 2022, 12000, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {350705.73, 333333.33, 17372.4};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(annuity_redepmtion_combinated_5)
+{
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 333333.33, 25, ANNUITY, 5, 23, 02, 2022);
+    input_redemption(&redemption, 26, 03, 2022, 5232, REDUCE_PAY);
+    input_redemption(&redemption, 01, 04, 2022, 6666, REDUCE_TERM);
+    input_redemption(&redemption, 10, 04, 2022, 12000, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {350361.73, 333333.33, 17028.4};
+
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(annuity_redepmtion_combinated_6)
+{
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 12364567.22, 55, ANNUITY, 11.211, 11, 01, 2019);
+    input_redemption(&redemption, 05, 02, 2019, 51235, REDUCE_TERM);
+    input_redemption(&redemption, 22, 02, 2020, 212731, REDUCE_TERM);
+    input_redemption(&redemption, 30, 07, 2020, 260000, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {15692895.04, 12364567.22, 3328327.82};
+
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(annuity_redepmtion_combinated_7)
+{
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 55321523.34, 43, ANNUITY, 21.463, 03, 01, 2019);
+    input_redemption(&redemption, 21, 04, 2019, 50000, REDUCE_PAY);
+    input_redemption(&redemption, 30, 04, 2019, 75000, REDUCE_TERM);
+    input_redemption(&redemption, 31, 12, 2019, 100000, REDUCE_TERM);
+    input_redemption(&redemption, 01, 01, 2020, 200000, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {79371094.51, 55321523.34, 24049571.17};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(annuity_redepmtion_combinated_8)
+{
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 333333.33, 25, ANNUITY, 5, 23, 02, 2022);
+    input_redemption(&redemption, 26, 02, 2022, 137, REDUCE_TERM);
+    input_redemption(&redemption, 10, 04, 2022, 12000, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {350972.97, 333333.33, 17639.64};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(annuity_redepmtion_combinated_9)
+{
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 655321523.34, 43, ANNUITY, 21.463, 03, 01, 2019);
+    input_redemption(&redemption, 21, 04, 2019, 5000120, REDUCE_TERM);
+    input_redemption(&redemption, 30, 04, 2019, 8750001, REDUCE_TERM);
+    input_redemption(&redemption, 31, 12, 2019, 11000000, REDUCE_TERM);
+    input_redemption(&redemption, 01, 01, 2020, 12000000, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {921932819.87, 655321523.34, 266611296.53};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+START_TEST(annuity_redepmtion_combinated_10)
+{
+    initial data;
+    payments pay;
+    another_payments redemption;
+    init_redemption(&redemption);
+
+    input_initial(&data, 655321523.34, 43, ANNUITY, 21.463, 03, 01, 2019);
+    input_redemption(&redemption, 21, 04, 2019, 5000120, REDUCE_TERM);
+    input_redemption(&redemption, 30, 04, 2019, 8750001, REDUCE_TERM);
+    input_redemption(&redemption, 31, 12, 2019, 11000000, REDUCE_TERM);
+    input_redemption(&redemption, 01, 01, 2020, 12000000, REDUCE_PAY);
+    input_redemption(&redemption, 02, 02, 2020, 20547123, REDUCE_TERM);
+    input_redemption(&redemption, 06, 03, 2020, 40897237, REDUCE_PAY);
+
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {903291483.84, 655321523.34, 247969960.5};
+
+    for(int i = 0; i < 3; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_memory(data.current, &pay, &redemption);
+}
+
+//  ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Suite *s21_annuity_1(void)
+{
     Suite *credit = suite_create("s21_credit (annuity first cases)");
 
     TCase *tc_test_annuity_1 = tcase_create("test_annuity");
@@ -2335,7 +2907,8 @@ Suite *s21_annuity_1(void) {
     return credit;
 }
 
-Suite *s21_annuity_2(void) {
+Suite *s21_annuity_2(void)
+{
     Suite *credit = suite_create("s21_credit (annuity second cases)");
 
     TCase *tc_test_annuity_2 = tcase_create("test_annuity");
@@ -2354,7 +2927,8 @@ Suite *s21_annuity_2(void) {
     return credit;
 }
 
-Suite *s21_annuity_3(void) {
+Suite *s21_annuity_3(void)
+{
     Suite *credit = suite_create("s21_credit (annuity third cases)");
 
     TCase *tc_test_annuity_3 = tcase_create("test_annuity");
@@ -2373,7 +2947,8 @@ Suite *s21_annuity_3(void) {
     return credit;
 }
 
-Suite *s21_annuity_4(void) {
+Suite *s21_annuity_4(void)
+{
     Suite *credit = suite_create("s21_credit (annuity fourth cases)");
 
     TCase *tc_test_annuity_4 = tcase_create("test_annuity");
@@ -2392,7 +2967,8 @@ Suite *s21_annuity_4(void) {
     return credit;
 }
 
-Suite *s21_annuity_5(void) {
+Suite *s21_annuity_5(void)
+{
     Suite *credit = suite_create("s21_credit (annuity fifth cases)");
 
     TCase *tc_test_annuity_5 = tcase_create("test_annuity");
@@ -2411,7 +2987,8 @@ Suite *s21_annuity_5(void) {
     return credit;
 }
 
-Suite *s21_differentiated_1(void) {
+Suite *s21_differentiated_1(void)
+{
     Suite *credit = suite_create("s21_credit (differentiated first cases)");
 
     TCase *tc_test_differentiated_1 = tcase_create("test_differentiated");
@@ -2430,7 +3007,8 @@ Suite *s21_differentiated_1(void) {
     return credit;
 }
 
-Suite *s21_differentiated_2(void) {
+Suite *s21_differentiated_2(void)
+{
     Suite *credit = suite_create("s21_credit (differentiated second cases)");
 
     TCase *tc_test_differentiated_2 = tcase_create("test_differentiated");
@@ -2449,7 +3027,8 @@ Suite *s21_differentiated_2(void) {
     return credit;
 }
 
-Suite *s21_differentiated_3(void) {
+Suite *s21_differentiated_3(void)
+{
     Suite *credit = suite_create("s21_credit (differentiated third cases)");
 
     TCase *tc_test_differentiated_3 = tcase_create("test_differentiated");
@@ -2468,7 +3047,8 @@ Suite *s21_differentiated_3(void) {
     return credit;
 }
 
-Suite *s21_differentiated_4(void) {
+Suite *s21_differentiated_4(void)
+{
     Suite *credit = suite_create("s21_credit (differentiated fourth cases)");
 
     TCase *tc_test_differentiated_4 = tcase_create("test_differentiated");
@@ -2487,7 +3067,8 @@ Suite *s21_differentiated_4(void) {
     return credit;
 }
 
-Suite *s21_differentiated_5(void) {
+Suite *s21_differentiated_5(void)
+{
     Suite *credit = suite_create("s21_credit (differentiated fifth cases)");
 
     TCase *tc_test_differentiated_5 = tcase_create("test_differentiated");
@@ -2506,7 +3087,8 @@ Suite *s21_differentiated_5(void) {
     return credit;
 }
 
-Suite *s21_pointer_test(void) {
+Suite *s21_pointer_test(void)
+{
     Suite *credit = suite_create("s21_credit (pointers tests)");
 
     TCase *tc_test_pointers_1 = tcase_create("test_pointers");
@@ -2520,7 +3102,8 @@ Suite *s21_pointer_test(void) {
     return credit;
 }
 
-Suite *s21_diff_redemption_term(void) {
+Suite *s21_diff_redemption_term(void)
+{
     Suite *credit = suite_create("s21_credit (differentiated reduce term)");
 
     TCase *tc_test_diff_term_1 = tcase_create("test_diff_term");
@@ -2540,7 +3123,8 @@ Suite *s21_diff_redemption_term(void) {
     return credit;
 }
 
-Suite *s21_diff_redemption_pay(void) {
+Suite *s21_diff_redemption_pay(void)
+{
     Suite *credit = suite_create("s21_credit (differentiated reduce pay)");
 
     TCase *tc_test_diff_pay_1 = tcase_create("test_diff_pay");
@@ -2560,7 +3144,8 @@ Suite *s21_diff_redemption_pay(void) {
     return credit;
 }
 
-Suite *s21_annuity_redepmtion_term(void) {
+Suite *s21_annuity_redepmtion_term(void)
+{
     Suite *credit = suite_create("s21_credit (annuity reduce term)");
 
     TCase *tc_test_annuity_term_1 = tcase_create("test_annuity_term");
@@ -2580,7 +3165,8 @@ Suite *s21_annuity_redepmtion_term(void) {
     return credit;
 }
 
-Suite *s21_annuity_redepmtion_pay(void) {
+Suite *s21_annuity_redepmtion_pay(void)
+{
     Suite *credit = suite_create("s21_credit (annuity reduce pay)");
 
     TCase *tc_test_annuity_pay_1 = tcase_create("test_annuity_term");
@@ -2595,6 +3181,46 @@ Suite *s21_annuity_redepmtion_pay(void) {
     tcase_add_test(tc_test_annuity_pay_1, annuity_redemption_pay_9);
     tcase_add_test(tc_test_annuity_pay_1, annuity_redemption_pay_10);
     suite_add_tcase(credit, tc_test_annuity_pay_1);
+
+    return credit;
+}
+
+Suite *s21_diff_redepmtion_combinated(void)
+{
+    Suite *credit = suite_create("s21_credit (differentiated combinated reduce pay/term)");
+
+    TCase *tc_test_diff_redepmtion_combinated_1 = tcase_create("test_diff_redepmtion_combinated");
+    tcase_add_test(tc_test_diff_redepmtion_combinated_1, diff_redemption_combinated_1);
+    tcase_add_test(tc_test_diff_redepmtion_combinated_1, diff_redemption_combinated_2);
+    tcase_add_test(tc_test_diff_redepmtion_combinated_1, diff_redemption_combinated_3);
+    tcase_add_test(tc_test_diff_redepmtion_combinated_1, diff_redemption_combinated_4);
+    tcase_add_test(tc_test_diff_redepmtion_combinated_1, diff_redemption_combinated_5);
+    tcase_add_test(tc_test_diff_redepmtion_combinated_1, diff_redemption_combinated_6);
+    tcase_add_test(tc_test_diff_redepmtion_combinated_1, diff_redemption_combinated_7);
+    tcase_add_test(tc_test_diff_redepmtion_combinated_1, diff_redemption_combinated_8);
+    tcase_add_test(tc_test_diff_redepmtion_combinated_1, diff_redemption_combinated_9);
+    tcase_add_test(tc_test_diff_redepmtion_combinated_1, diff_redemption_combinated_10);
+    suite_add_tcase(credit, tc_test_diff_redepmtion_combinated_1);
+
+    return credit;
+}
+
+Suite *s21_annuity_redepmtion_combinated(void)
+{
+    Suite *credit = suite_create("s21_credit (annuity combinated reduce pay/term)");
+
+    TCase *tc_test_annuity_redepmtion_combinated_1 = tcase_create("test_annuity_redepmtion_combinated");
+    tcase_add_test(tc_test_annuity_redepmtion_combinated_1, annuity_redepmtion_combinated_1);
+    tcase_add_test(tc_test_annuity_redepmtion_combinated_1, annuity_redepmtion_combinated_2);
+    tcase_add_test(tc_test_annuity_redepmtion_combinated_1, annuity_redepmtion_combinated_3);
+    tcase_add_test(tc_test_annuity_redepmtion_combinated_1, annuity_redepmtion_combinated_4);
+    tcase_add_test(tc_test_annuity_redepmtion_combinated_1, annuity_redepmtion_combinated_5);
+    tcase_add_test(tc_test_annuity_redepmtion_combinated_1, annuity_redepmtion_combinated_6);
+    tcase_add_test(tc_test_annuity_redepmtion_combinated_1, annuity_redepmtion_combinated_7);
+    tcase_add_test(tc_test_annuity_redepmtion_combinated_1, annuity_redepmtion_combinated_8);
+    tcase_add_test(tc_test_annuity_redepmtion_combinated_1, annuity_redepmtion_combinated_9);
+    tcase_add_test(tc_test_annuity_redepmtion_combinated_1, annuity_redepmtion_combinated_10);
+    suite_add_tcase(credit, tc_test_annuity_redepmtion_combinated_1);
 
     return credit;
 }

@@ -45,5 +45,7 @@ Suite *s21_diff_redemption_term(void);
 Suite *s21_diff_redemption_pay(void);
 Suite *s21_annuity_redepmtion_term(void);
 Suite *s21_annuity_redepmtion_pay(void);
+Suite *s21_diff_redepmtion_combinated(void);
+Suite *s21_annuity_redepmtion_combinated(void);
 
 #endif

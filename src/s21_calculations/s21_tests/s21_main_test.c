@@ -3,16 +3,39 @@
 int main(void) {
     int failed_count = 0;
     Suite *(*smartcalc[])(void) = {
-        s21_arifmetic_1        , s21_arifmetic_2        , s21_arifmetic_3    , s21_arifmetic_4,
-        s21_trigonometric_1    , s21_trigonometric_2    , s21_trigonometric_3,
-        s21_other_1            , s21_other_2            , s21_other_3        , s21_other_4    , s21_other_5,
-        s21_wrong_expressions_1, s21_wrong_expressions_2,
+        s21_arifmetic_1        ,
+        s21_arifmetic_2        ,
+        s21_arifmetic_3        ,
+        s21_arifmetic_4        ,
+        s21_trigonometric_1    ,
+        s21_trigonometric_2    ,
+        s21_trigonometric_3    ,
+        s21_other_1            ,
+        s21_other_2            ,
+        s21_other_3            ,
+        s21_other_4            ,
+        s21_other_5            ,
+        s21_wrong_expressions_1,
+        s21_wrong_expressions_2,
     };
     Suite *(*credit[])(void) = {
-        s21_pointer_test          ,
-        s21_annuity_1             , s21_annuity_2            , s21_annuity_3                , s21_annuity_4         , s21_annuity_5         ,
-        s21_differentiated_1      , s21_differentiated_2     , s21_differentiated_3         , s21_differentiated_4  , s21_differentiated_5  ,
-        s21_diff_redemption_term, s21_diff_redemption_pay, s21_annuity_redepmtion_term, s21_annuity_redepmtion_pay, 
+        s21_pointer_test                 ,
+        s21_annuity_1                    ,
+        s21_annuity_2                    ,
+        s21_annuity_3                    ,
+        s21_annuity_4                    ,
+        s21_annuity_5                    ,
+        s21_differentiated_1             ,
+        s21_differentiated_2             ,
+        s21_differentiated_3             ,
+        s21_differentiated_4             ,
+        s21_differentiated_5             ,
+        s21_diff_redemption_term         ,
+        s21_diff_redemption_pay          ,
+        s21_annuity_redepmtion_term      ,
+        s21_annuity_redepmtion_pay       ,
+        s21_diff_redepmtion_combinated   ,
+        s21_annuity_redepmtion_combinated,
     };
 
     printf("\n================== SMARTCALC TESTS ==================\n\n");
