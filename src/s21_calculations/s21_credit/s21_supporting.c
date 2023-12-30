@@ -32,31 +32,6 @@ void remember_result(initial *data, payments *pay)
 }
 
 /**
- * @brief Function initializing a data array.
- * 
- * @param[in] pay structure containing buffer variables for monthly results and general payment data arrays.
- * 
- * @return Error code.
- * @retval ALLOCATED = 0 - if memory is allocated.
- * @retval NOT_ALLOCATED = 1 - if memory isn't allocated.
-*/
-int init_massive(payments *pay)
-{
-    int error_code = NOT_ALLOCATED;
-    int error_code_total = NOT_ALLOCATED;
-    int error_code_result = NOT_ALLOCATED;
-    pay->total = (long double *)malloc(3 * sizeof(long double));
-    error_code_total = CHECK_NULL(pay->total);
-    pay->result = (long double **)malloc(1 * sizeof(long double *));
-    error_code_result = CHECK_NULL(pay->result);
-    error_code = error_code_total + error_code_result;
-    pay->total[0] = 0;
-    pay->total[1] = 0;
-    pay->total[2] = 0;
-    return error_code;
-}
-
-/**
  * @brief Function for initializing early repayment arrays.
  * 
  * @param[in] redemption structure containing data on early repayments.
@@ -68,15 +43,12 @@ int init_massive(payments *pay)
 int init_redemption(early_pay *redemption)
 {
     int error_code = NOT_ALLOCATED;
-    int error_code_date = NOT_ALLOCATED;
-    int error_code_sum = NOT_ALLOCATED;
-    int error_code_type = NOT_ALLOCATED;
     redemption->date = (time_data *)malloc(1 * sizeof(time_data));
-    error_code = CHECK_NULL(redemption->date);
+    int error_code_date = CHECK_NULL(redemption->date);
     redemption->sum = (long double *)malloc(1 * sizeof(long double));
-    error_code = CHECK_NULL(redemption->sum);
+    int error_code_sum = CHECK_NULL(redemption->sum);
     redemption->type = (int *)malloc(1 * sizeof(int));
-    error_code = CHECK_NULL(redemption->type);
+    int error_code_type = CHECK_NULL(redemption->type);
     error_code = error_code_date + error_code_sum + error_code_type;
     redemption->count = 0;
     redemption->current = 0;
@@ -96,12 +68,10 @@ int init_redemption(early_pay *redemption)
 int allocate_memory(initial *data, payments *pay)
 {
     int error_code = NOT_ALLOCATED;
-    int error_code_row = NOT_ALLOCATED;
-    int error_code_column = NOT_ALLOCATED;
     pay->result = (long double **)realloc(pay->result, (data->current + 1) * sizeof(long double *));
-    error_code_row = CHECK_NULL(pay->result);
+    int error_code_row = CHECK_NULL(pay->result);
     pay->result[data->current] = (long double *)malloc(4 * sizeof(long double));
-    error_code_column = CHECK_NULL(pay->result[data->current]);
+    int error_code_column = CHECK_NULL(pay->result[data->current]);
     error_code = error_code_row + error_code_column;
     return error_code;
 }

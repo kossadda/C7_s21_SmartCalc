@@ -99,7 +99,6 @@ void calc_percent(initial *data, payments *pay, time_data next_month);
 long double round_value(long double number);
 void remember_result(initial *data, payments *pay);
 int init_redemption(early_pay *redemption);
-int init_massive(payments *pay);
 int allocate_memory(initial *data, payments *pay);
 
 // Calendar functions

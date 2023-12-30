@@ -55,7 +55,7 @@ static int calculate_annuity_month(initial *data, payments *pay, time_data next_
         error_code = allocate_memory(data, pay);
         if(error_code == ALLOCATED) {
             calc_percent(data, pay, next_month);
-            pay->percent -= paid_percent; // temp
+            pay->percent -= paid_percent;
 
             if(rest) {
                 pay->percent += rest;

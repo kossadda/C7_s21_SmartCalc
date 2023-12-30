@@ -29,7 +29,7 @@ private slots:
 private:
     Ui::s21_credit *ui;
     s21_credit_table *tableWindow;
-    my_widget *early_pay;
+    my_widget *early_pays;
 };
 
 #endif // S21_CREDIT_H
