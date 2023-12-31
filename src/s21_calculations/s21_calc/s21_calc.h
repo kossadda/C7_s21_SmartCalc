@@ -48,13 +48,13 @@ enum substitution {
  * @brief List defining constant statuses for functions used in the credit calculator.
 */
 enum calc_functions_status {
-//  type of elements added when adding characters to a string
+//  Type of elements added when adding characters to a string.
     STRING = 0, NUMBER = 1, ONE_CHAR = 2, TWO_CHAR  = 3,
-//  types of priorities
+//  Types of priorities.
     LOW_PRIORITY = 0, EQUAL_PRIORITY = 1, HIGH_PRIORITY = 2,
-//  brackets closing mode
+//  Brackets closing mode.
     PARS_EXPRESSION = 0, CLOSE_EXPRESSION = 1,
-//  decisions
+//  Decisions of any status.
     NO = 0, YES = 1,
 };
 

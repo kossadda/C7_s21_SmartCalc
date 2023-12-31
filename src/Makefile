@@ -5,7 +5,7 @@ CC=-Wall -Werror -Wextra -g -std=c11
 COVER=-fprofile-arcs -ftest-coverage
 LCOV=-lcheck -lsubunit -lgcov
 GCOVR=-r . --html --html-details
-# FUNCS PATHS
+# FUNCS PATHS1
 MAIN_FOLD=s21_smartcalc
 CALC=s21_calculations/s21_calc/*.c
 DEPOSIT=s21_calculations/s21_deposit/*.c

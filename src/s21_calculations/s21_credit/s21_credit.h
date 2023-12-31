@@ -28,7 +28,7 @@ enum calendar_constants {
 enum credit_functions_status {
 //  Year leap status.
     YEAR_NOT_LEAP = 0, YEAR_IS_LEAP = 1,
-//  Allocate memory status
+//  Allocate memory status.
     ALLOCATED = 0, NOT_ALLOCATED = 1,
 //  Changing of debt status.
     DEBT_NOT_CHANGED = 0, DEBT_CHANGED = 1,

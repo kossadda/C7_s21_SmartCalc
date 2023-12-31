@@ -15,15 +15,24 @@ enum constants {
     QUADRICENTENARY = 400, 
     CENTURY         = 100,
     LEAP_INTERVAL   =   4, 
-    YEAR            = 365,
+    YEAR_DAYS       = 365,
     LEAP_YEAR       = 366,
 };
 
 enum deposit_functions_status {
-//  year status
+//  Year leap status.
     YEAR_NOT_LEAP = 0, YEAR_IS_LEAP = 1,
-//  allocate memory
+//  Allocate memory status.
     ALLOCATED = 0, NOT_ALLOCATED = 1,
+//  Type of term.
+    DAYS_PERIOD = 0, MONTHS_PERIOD = 1,
+//  Type of frequency of capitalization.
+    BY_DAY     = 0, BY_WEEK     = 1, BY_MONTH  = 2, 
+    BY_QUARTER = 3, BY_HALFYEAR = 4, BY_YEAR   = 5,
+//  Numerical representation of capitalization periodicity.
+    DAY = 1, WEEK = 7, MONTH = 1, QUARTER = 3, HALFYEAR = 6, YEAR = 12,
+//  Dates compare status.
+    DATE_EQUAL = 0, DATE_BEFORE = 1, DATE_AFTER = 2,
 };
 
 /**
@@ -56,7 +65,9 @@ typedef struct init {
     long double amount;                 /** Amount deposited.                                           */
     long double rate;                   /** Deposit interest rate.                                      */
     time_data date;                     /** Date of deposit placement                                   */
-    int months;                         /** Deposit term.                                               */
+    int term;                           /** Deposit term.                                               */
+    int term_type;                      /** Type of calculation of the period (days/months, etc.)       */
+    int capital_time;                   /** Frequency of capitalization                                 */
     int capital;                        /** Interest capitalization status.                             */
     int current;                        /** A counter that tracks the actual number of payment periods. */
 } init;
@@ -69,8 +80,11 @@ void calculate_deposit(init *depos, investment *pay);
 
 void determine_date(time_data *this_month, time_data *next_month);
 int check_leap(int year);
-void add_month(time_data *date, int beginning_date);
+void add_days(time_data *date, int term);
+void add_months(time_data *date, int term, int beginning_date);
 int sub_date(time_data first, time_data second);
 int sub_till_end_month(time_data date);
+int days_in_this_year(time_data date);
+void add_one_period(time_data *begin, time_data *end, time_data last_day, int capital_type);
 
 #endif
