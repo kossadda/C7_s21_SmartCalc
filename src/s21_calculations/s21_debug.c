@@ -1,9 +1,8 @@
-// #include "s21_tests/s21_test.h"
-#include "s21_deposit/s21_deposit.h"
+#include "s21_tests/s21_test.h"
 #include <stdio.h>
 
-#define DEBUG
-#ifndef DEBUG
+#define DEBUG_CREDIT
+#ifndef DEBUG_CREDIT
 
 void input_initial(initial *data, long double debt, long double months, int type, long double rate, int day, int month, int year) {
     data->debt = debt;
@@ -57,43 +56,6 @@ int logarifm(long double x, long double base) {
 }
 
 #endif
-#define LAST
-#ifndef LAST
-
-time_data determine_last_day(time_data first_day, int term_type, int term)
-{
-    time_data last = first_day;
-    int days[] = {0, JAN, (check_leap(last.year)) ? LEAP_FEB : FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC};
-    if(term_type == DAYS_PERIOD) {
-        for(int i = 0; i < term; i++) {
-            last.day++;
-            if(last.day > days[last.month]) {
-                last.day = 1;
-                last.month++;
-                if(last.month > 12) {
-                    last.month = 1;
-                    last.year++;
-                    if(check_leap(last.year)) {
-                        days[2] = LEAP_FEB;
-                    } else {
-                        days[2] = FEB;
-                    }
-                }
-            }
-        }
-    } else if(term_type == MONTHS_PERIOD) {
-        int const_date = first_day.day;
-        for(int i = 0; i < term; i++) {
-            add_month(&first_day, const_date);
-        }
-        last = first_day;
-    }
-
-
-    return last;
-}
-
-#endif
 
 void print_all(init *data, investment *pay) {
     printf("MONTHLY:\n");
@@ -123,7 +85,7 @@ int main() {
     init data;
     investment pay;
 
-    init_deposit(&data, 8622515.22, MONTHS_PERIOD, 12, 1, 1, 2014, 10, BY_MONTH, 1);
+    init_deposit(&data, 8622515.22, MONTHS_PERIOD, 12, 1, 1, 2014, 10, BY_MONTH, CAPITAL);
 
     calculate_deposit(&data, &pay);
     long double result_total[2] = {10471.28, 110471.28};

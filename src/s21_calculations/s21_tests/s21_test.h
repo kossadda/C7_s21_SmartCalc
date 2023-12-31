@@ -4,14 +4,16 @@
 #include "../s21_main.h"
 #include <check.h>
 
-// functions to test
+// Functions to test
 
 int test_suite(Suite *test);
-void free_memory(int row, payments *pay, early_pay *redemption);
+void free_credit(int row, payments *pay, early_pay *redemption);
+void free_deposit(int row, investment *pay);
 void input_initial(initial *data, long double debt, long double months, int type, long double rate, int day, int month, int year);
 void input_redemption(early_pay *redemption, int day, int month, int year, long double sum, int type);
+void init_deposit(init *deposit, long double amount, int term_type, int term, int day, int month, int year, long double rate, int capital_time, int capital);
 
-// calculator tests
+// Calculator tests
 
 Suite *s21_arifmetic_1(void);
 Suite *s21_arifmetic_2(void);
@@ -28,7 +30,7 @@ Suite *s21_other_5(void);
 Suite *s21_wrong_expressions_1(void);
 Suite *s21_wrong_expressions_2(void);
 
-// credit tests
+// Credit tests
 
 Suite *s21_annuity_1(void);
 Suite *s21_annuity_2(void);
@@ -47,5 +49,14 @@ Suite *s21_annuity_redepmtion_term(void);
 Suite *s21_annuity_redepmtion_pay(void);
 Suite *s21_diff_redepmtion_combinated(void);
 Suite *s21_annuity_redepmtion_combinated(void);
+
+// Deposit tests
+
+Suite *s21_deposit_by_month(void);
+Suite *s21_deposit_by_day(void);
+Suite *s21_deposit_by_week(void);
+Suite *s21_deposit_by_quarter(void);
+Suite *s21_deposit_by_halfyear(void);
+Suite *s21_deposit_by_year(void);
 
 #endif

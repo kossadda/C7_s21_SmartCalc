@@ -1,5 +1,8 @@
 #include "s21_credit.h"
 
+#ifdef TEMP
+#define TEMP
+
 /**
  * @brief Function to define a year as a leap year.
  * 
@@ -116,9 +119,9 @@ int sub_date(time_data first, time_data second)
     if(first.year == second.year) {
         difference = days_in_this_year(first) - days_in_this_year(second);
     } else {
-        difference = days_in_this_year(first) + (((second.leap) ? LEAP_YEAR : YEAR) - days_in_this_year(second));
+        difference = days_in_this_year(first) + (((second.leap) ? LEAP_YEAR : YEAR_DAYS) - days_in_this_year(second));
         for(int i = second.year + 1; i != first.year; i++) {
-            difference += (check_leap(i)) ? LEAP_YEAR : YEAR;
+            difference += (check_leap(i)) ? LEAP_YEAR : YEAR_DAYS;
         }
     }
     return difference;
@@ -138,3 +141,5 @@ int sub_till_end_month(time_data date)
     last_day_month.day = days[date.month];
     return sub_date(last_day_month, date);
 }
+
+#endif

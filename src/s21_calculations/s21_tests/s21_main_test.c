@@ -2,6 +2,7 @@
 
 int main(void) {
     int failed_count = 0;
+
     Suite *(*smartcalc[])(void) = {
         s21_arifmetic_1        ,
         s21_arifmetic_2        ,
@@ -18,6 +19,7 @@ int main(void) {
         s21_wrong_expressions_1,
         s21_wrong_expressions_2,
     };
+
     Suite *(*credit[])(void) = {
         s21_pointer_test                 ,
         s21_annuity_1                    ,
@@ -38,6 +40,15 @@ int main(void) {
         s21_annuity_redepmtion_combinated,
     };
 
+    Suite *(*deposit[])(void) = {
+        s21_deposit_by_month   ,
+        s21_deposit_by_day     ,
+        s21_deposit_by_week    ,
+        s21_deposit_by_quarter ,
+        s21_deposit_by_halfyear,
+        s21_deposit_by_year    ,
+    };
+
     printf("\n================== SMARTCALC TESTS ==================\n\n");
     for(size_t i = 0; i < sizeof(smartcalc)/sizeof(smartcalc[0]); i++) {
         printf("-----------------------------------------------------\n");
@@ -53,6 +64,15 @@ int main(void) {
         failed_count = test_suite(credit[i]());
         if (failed_count) {
             i = sizeof(credit)/sizeof(credit[0]);
+        }
+    }
+    printf("-----------------------------------------------------\n");
+    printf("\n\n================== DEPOSIT TESTS ====================\n\n");
+    for(size_t i = 0; i < sizeof(deposit)/sizeof(deposit[0]); i++) {
+        printf("-----------------------------------------------------\n");
+        failed_count = test_suite(deposit[i]());
+        if (failed_count) {
+            i = sizeof(deposit)/sizeof(deposit[0]);
         }
     }
     printf("-----------------------------------------------------\n\n");

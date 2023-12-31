@@ -9,8 +9,8 @@
 */
 void calc_percent(initial *data, payments *pay, time_data next_month)
 {
-    long double first_part_month = (data->debt * data->rate / 100) / ((data->date.leap) ? LEAP_YEAR : YEAR) * data->date.month_days;
-    long double second_part_month = (data->debt * data->rate / 100) / ((next_month.leap) ? LEAP_YEAR : YEAR) * next_month.month_days;
+    long double first_part_month = (data->debt * data->rate / 100) / ((data->date.leap) ? LEAP_YEAR : YEAR_DAYS) * data->date.month_days;
+    long double second_part_month = (data->debt * data->rate / 100) / ((next_month.leap) ? LEAP_YEAR : YEAR_DAYS) * next_month.month_days;
     pay->percent = round((first_part_month + second_part_month) * 100) / 100;
 }
 

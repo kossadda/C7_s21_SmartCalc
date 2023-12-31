@@ -3,5 +3,6 @@
 
 #include "s21_calc/s21_calc.h"
 #include "s21_credit/s21_credit.h"
+#include "s21_deposit/s21_deposit.h"
 
 #endif

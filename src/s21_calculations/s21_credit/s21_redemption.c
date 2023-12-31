@@ -29,7 +29,7 @@ int redemp_payment(initial *data, payments *pay, time_data *next_month, early_pa
         } else {
             redemption->date[redemption->current].month_days = sub_date(redemption->date[redemption->current], data->date);
         }
-        long double percent = round_value((data->debt * data->rate / 100) / ((redemption->date[redemption->current].leap) ? LEAP_YEAR : YEAR) * redemption->date[redemption->current].month_days);
+        long double percent = round_value((data->debt * data->rate / 100) / ((redemption->date[redemption->current].leap) ? LEAP_YEAR : YEAR_DAYS) * redemption->date[redemption->current].month_days);
         if(redemption->sum[redemption->current] > percent - *paid_percent) {
             *change = DEBT_CHANGED;
         } else {

@@ -1,55 +1,24 @@
 #ifndef S21_C_CREDIT_H
 #define S21_C_CREDIT_H
 
+#include "../s21_common/s21_common.h"
+
 #include <math.h>
 #include <stdlib.h>
 
 #define CHECK_NULL(ptr) (ptr == NULL)
 
 /**
- * @brief List defining calendar constants.
-*/
-enum calendar_constants {
-//  Days constants
-    JAN = 31, FEB = 28, MAR = 31, APR = 30, LEAP_FEB = 29,
-    MAY = 31, JUN = 30, JUL = 31, AUG = 31,
-    SEP = 30, OCT = 31, NOV = 30, DEC = 31,
-//  Another calendar constants
-    QUADRICENTENARY = 400, 
-    CENTURY         = 100,
-    LEAP_INTERVAL   =   4, 
-    YEAR            = 365,
-    LEAP_YEAR       = 366,
-};
-
-/**
  * @brief List defining constant statuses for functions used in the credit calculator.
 */
 enum credit_functions_status {
-//  Year leap status.
-    YEAR_NOT_LEAP = 0, YEAR_IS_LEAP = 1,
-//  Allocate memory status.
-    ALLOCATED = 0, NOT_ALLOCATED = 1,
 //  Changing of debt status.
     DEBT_NOT_CHANGED = 0, DEBT_CHANGED = 1,
-//  Date between two dates status.
-    DATE_OUTSIDE = 0, DATE_BETWEEN = 1,
 //  Type of main payments.
     ANNUITY = 0, DIFFERENTIATED = 1, NOT_CHOSEN = 2,
 //  Type of early payments.
     REDUCE_TERM = 0, REDUCE_PAY = 1,
 };
-
-/**
- * @brief Struct representing data about a specific day.
-*/
-typedef struct time_data {
-    int day;                    /** Day of the month.                                                   */
-    int month;                  /** Month of the year.                                                  */
-    int year;                   /** Year of this date.                                                  */
-    int leap;                   /** Contains information whether the year is a leap year.               */
-    int month_days;             /** Number of days of the month included in the monthly payment period. */
-} time_data;
 
 /**
  * @brief Struct representing monthly and overall payment results.
@@ -89,8 +58,7 @@ typedef struct early_pay {
 // Main functions
 
 int calculate_credit(initial *data, payments *pay, early_pay *redemption);
-int annuity(initial *data, payments *pay, early_pay *redemption, time_data next_month);
-int differentiated(initial *data, payments *pay, early_pay *redemption, time_data next_month);
+int calculate_payments(initial *data, payments *pay, early_pay *redemption);
 int redemp_payment(initial *data, payments *pay, time_data *next_month, early_pay *redemption, long double *paid_percent, int *change);
 
 // Support functions

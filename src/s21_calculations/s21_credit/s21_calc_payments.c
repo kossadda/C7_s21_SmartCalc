@@ -2,6 +2,7 @@
 
 static int calculate_annuity_month(initial *data, payments *pay, time_data next_month, long double paid_percent);
 static int check_calc_redemption(initial *data, payments *pay, early_pay *redemption, time_data *next_month, long double *paid_percent);
+static int calculate_diff_month(initial *data, payments *pay, time_data next_month, long double paid_percent);
 
 /**
  * @brief Calculates monthly payments for an annuity payment type.
@@ -15,28 +16,46 @@ static int check_calc_redemption(initial *data, payments *pay, early_pay *redemp
  * @retval ALLOCATED = 0 - if memory is allocated.
  * @retval NOT_ALLOCATED = 1 - if memory isn't allocated.
 */
-int annuity(initial *data, payments *pay, early_pay *redemption, time_data next_month)
+int calculate_payments(initial *data, payments *pay, early_pay *redemption)
 {
     int error_code = ALLOCATED;
     int const_day = data->date.day;
-    double monthly_percent = data->rate / (100.0 * 12.0);
-    long double monthly_pay = round_value(data->debt * monthly_percent / (1 - pow((1.0 + monthly_percent), data->months * (-1))));
-    pay->monthly = monthly_pay;
+
+    time_data next_month = data->date;
+
+    if(data->payment_type == ANNUITY) {
+        double monthly_percent = data->rate / (100.0 * 12.0);
+        long double monthly_pay = round_value(data->debt * monthly_percent / (1 - pow((1.0 + monthly_percent), data->months * (-1))));
+        pay->monthly = monthly_pay;
+    } else if(data->payment_type == DIFFERENTIATED) {
+        pay->main = round_value(data->debt/data->months);
+        pay->const_main = pay->main;
+    }
 
     for(data->current = -1; data->debt != 0;) {
         long double paid_percent = 0;
+        add_months(&next_month, MONTH, const_day);
+
         determine_date(&data->date, &next_month);
         error_code = check_calc_redemption(data, pay, redemption, &next_month, &paid_percent);
-        error_code = (error_code == ALLOCATED) ? calculate_annuity_month(data, pay, next_month, paid_percent) : error_code;
-        add_month(&(data->date), const_day);
-        add_month(&next_month, const_day);
+        if(error_code == ALLOCATED) {
+            if(data->payment_type == ANNUITY) {
+                error_code = calculate_annuity_month(data, pay, next_month, paid_percent);
+            } else if(data->payment_type == DIFFERENTIATED) {
+                error_code = calculate_diff_month(data, pay, next_month, paid_percent);
+            }
+        }
+
+        data->date = next_month;
+        // add_month(&(data->date), const_day);
+        // add_month(&next_month, const_day);
         data->debt = (error_code == ALLOCATED) ? data->debt : 0;
     }
     return error_code;
 }
 
 /**
- * @brief Function for calculating monthly payments of annuity type.
+ * @brief Function for calculating one month payments.
  * 
  * @param[in] data structure containing input parameters for calculation.
  * @param[in] pay structure containing buffer variables for monthly results and general payment data arrays.
@@ -77,6 +96,38 @@ static int calculate_annuity_month(initial *data, payments *pay, time_data next_
             }
             data->debt -= pay->main;
             
+            remember_result(data, pay);
+        }
+    }
+    return error_code;
+}
+
+/**
+ * @brief Function for calculating one month payments.
+ * 
+ * @param[in] data structure containing input parameters for calculation.
+ * @param[in] pay structure containing buffer variables for monthly results and general payment data arrays.
+ * @param next_month structure containing the payment end date for the current month.
+ * @param paid_percent the amount deducted from the monthly interest in case of early repayment.
+ * 
+ * @return Error code.
+ * @retval ALLOCATED = 0 - if memory is allocated.
+ * @retval NOT_ALLOCATED = 1 - if memory isn't allocated.
+*/
+static int calculate_diff_month(initial *data, payments *pay, time_data next_month, long double paid_percent)
+{
+    int error_code = ALLOCATED;
+    if(data->debt) {
+        data->current++;
+        error_code = allocate_memory(data, pay);
+        if(error_code == ALLOCATED) {
+            if(data->debt < pay->main) {
+                pay->main = data->debt;
+            }
+            calc_percent(data, pay, next_month);
+            pay->percent -= paid_percent;
+            pay->monthly = pay->main + pay->percent;
+            data->debt -= pay->main;
             remember_result(data, pay);
         }
     }
