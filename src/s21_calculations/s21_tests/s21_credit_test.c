@@ -4,7 +4,7 @@
 
 START_TEST(annuity_1)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 1000, 4, ANNUITY, 5, 06, 07, 2021);
@@ -19,7 +19,7 @@ START_TEST(annuity_1)
 
 START_TEST(annuity_2)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 800, 12, ANNUITY, 3, 22, 02, 2016);
@@ -34,7 +34,7 @@ START_TEST(annuity_2)
 
 START_TEST(annuity_3)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 9862.12, 7, ANNUITY, 13.77, 9, 9, 2000);
@@ -49,7 +49,7 @@ START_TEST(annuity_3)
 
 START_TEST(annuity_4)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 26744.12, 15, ANNUITY, 16.111, 12, 3, 2005);
@@ -64,7 +64,7 @@ START_TEST(annuity_4)
 
 START_TEST(annuity_5)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 38235.23, 18, ANNUITY, 9.725, 24, 04, 2014);
@@ -79,7 +79,7 @@ START_TEST(annuity_5)
 
 START_TEST(annuity_6)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 49715.84, 21, ANNUITY, 19.875, 21, 07, 2019);
@@ -94,7 +94,7 @@ START_TEST(annuity_6)
 
 START_TEST(annuity_7)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 54798.48, 25, ANNUITY, 17.121, 16, 01, 2022);
@@ -109,7 +109,7 @@ START_TEST(annuity_7)
 
 START_TEST(annuity_8)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 64972.21, 26, ANNUITY, 14.875, 28, 02, 2024);
@@ -124,7 +124,7 @@ START_TEST(annuity_8)
 
 START_TEST(annuity_9)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 72578.54, 28, ANNUITY, 21.254, 8, 11, 2008);
@@ -139,7 +139,7 @@ START_TEST(annuity_9)
 
 START_TEST(annuity_10)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 81458.47, 21, ANNUITY, 16.789, 12, 12, 2012);
@@ -156,7 +156,7 @@ START_TEST(annuity_10)
 
 START_TEST(annuity_11)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 92784.88, 29, ANNUITY, 19.987, 25, 11, 2020);
@@ -171,7 +171,7 @@ START_TEST(annuity_11)
 
 START_TEST(annuity_12)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 99999.99, 30, ANNUITY, 19.999, 9, 9, 2009);
@@ -186,7 +186,7 @@ START_TEST(annuity_12)
 
 START_TEST(annuity_13)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 105597.84, 32, ANNUITY, 21.847, 4, 10, 2011);
@@ -201,7 +201,7 @@ START_TEST(annuity_13)
 
 START_TEST(annuity_14)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 114874.84, 34, ANNUITY, 22.221, 8, 8, 2008);
@@ -216,7 +216,7 @@ START_TEST(annuity_14)
 
 START_TEST(annuity_15)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 120000, 12, ANNUITY, 12, 19, 12, 2023);
@@ -231,7 +231,7 @@ START_TEST(annuity_15)
 
 START_TEST(annuity_16)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 122784.45, 35, ANNUITY, 24.876, 11, 12, 1989);
@@ -246,7 +246,7 @@ START_TEST(annuity_16)
 
 START_TEST(annuity_17)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 137846.94, 37, ANNUITY, 27.182, 25, 2, 1998);
@@ -261,7 +261,7 @@ START_TEST(annuity_17)
 
 START_TEST(annuity_18)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 143975.18, 38, ANNUITY, 1.845, 15, 9, 1945);
@@ -276,7 +276,7 @@ START_TEST(annuity_18)
 
 START_TEST(annuity_19)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 151879.84, 40, ANNUITY, 8.971, 20, 11, 1978);
@@ -293,7 +293,7 @@ START_TEST(annuity_19)
 
 START_TEST(annuity_20)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 158797.48, 42, ANNUITY, 45.847, 1, 1, 2001);
@@ -308,7 +308,7 @@ START_TEST(annuity_20)
 
 START_TEST(annuity_21)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 168848.24, 43, ANNUITY, 33.333, 3, 3, 2033);
@@ -323,7 +323,7 @@ START_TEST(annuity_21)
 
 START_TEST(annuity_22)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 177548.15, 45, ANNUITY, 30.001, 6, 7, 2028);
@@ -338,7 +338,7 @@ START_TEST(annuity_22)
 
 START_TEST(annuity_23)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 184999.99, 47, ANNUITY, 24.919, 4, 11, 2021);
@@ -353,7 +353,7 @@ START_TEST(annuity_23)
 
 START_TEST(annuity_24)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 199999.99, 39, ANNUITY, 9.999, 9, 9, 1999);
@@ -368,7 +368,7 @@ START_TEST(annuity_24)
 
 START_TEST(annuity_25)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 224875.67, 48, ANNUITY, 57.487, 11, 2, 1947);
@@ -383,7 +383,7 @@ START_TEST(annuity_25)
 
 START_TEST(annuity_26)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 249723.16, 49, ANNUITY, 43.196, 4, 9, 1967);
@@ -398,7 +398,7 @@ START_TEST(annuity_26)
 
 START_TEST(annuity_27)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 276314.57, 50, ANNUITY, 64.878, 1, 2, 2003);
@@ -413,7 +413,7 @@ START_TEST(annuity_27)
 
 START_TEST(annuity_28)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 300000, 51, ANNUITY, 68.778, 6, 11, 2048);
@@ -428,7 +428,7 @@ START_TEST(annuity_28)
 
 START_TEST(annuity_29)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 337541.43, 52, ANNUITY, 71.381, 9, 5, 2005);
@@ -443,7 +443,7 @@ START_TEST(annuity_29)
 
 START_TEST(annuity_30)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 374112.34, 53, ANNUITY, 74.164, 11, 12, 2013);
@@ -460,7 +460,7 @@ START_TEST(annuity_30)
 
 START_TEST(annuity_31)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 400000, 54, ANNUITY, 45.694, 16, 1, 1982);
@@ -475,7 +475,7 @@ START_TEST(annuity_31)
 
 START_TEST(annuity_32)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 442341.55, 55, ANNUITY, 26.533, 6, 11, 1987);
@@ -490,7 +490,7 @@ START_TEST(annuity_32)
 
 START_TEST(annuity_33)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 485212.25, 56, ANNUITY, 44.444, 14, 5, 2045);
@@ -505,7 +505,7 @@ START_TEST(annuity_33)
 
 START_TEST(annuity_34)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 542678.51, 57, ANNUITY, 34.157, 11, 6, 2033);
@@ -520,7 +520,7 @@ START_TEST(annuity_34)
 
 START_TEST(annuity_35)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 594314.32, 58, ANNUITY, 26.441, 2, 3, 2022);
@@ -535,7 +535,7 @@ START_TEST(annuity_35)
 
 START_TEST(annuity_36)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 642314.87, 59, ANNUITY, 79.548, 5, 4, 2012);
@@ -550,7 +550,7 @@ START_TEST(annuity_36)
 
 START_TEST(annuity_37)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 697431.11, 60, ANNUITY, 81.544, 11, 10, 2016);
@@ -565,7 +565,7 @@ START_TEST(annuity_37)
 
 START_TEST(annuity_38)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 764131.15, 61, ANNUITY, 84.517, 18, 6, 2154);
@@ -580,7 +580,7 @@ START_TEST(annuity_38)
 
 START_TEST(annuity_39)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 812341.58, 62, ANNUITY, 64.115, 6, 11, 2054);
@@ -595,7 +595,7 @@ START_TEST(annuity_39)
 
 START_TEST(annuity_40)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 866471.88, 63, ANNUITY, 14.587, 31, 1, 2002);
@@ -612,7 +612,7 @@ START_TEST(annuity_40)
 
 START_TEST(annuity_41)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 904131.41, 64, ANNUITY, 11.124, 5, 3, 2012);
@@ -627,7 +627,7 @@ START_TEST(annuity_41)
 
 START_TEST(annuity_42)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 971121.54, 65, ANNUITY, 7.891, 6, 7, 2021);
@@ -642,7 +642,7 @@ START_TEST(annuity_42)
 
 START_TEST(annuity_43)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 1000000, 66, ANNUITY, 100, 5, 12, 2027);
@@ -657,7 +657,7 @@ START_TEST(annuity_43)
 
 START_TEST(annuity_44)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 1087135.54, 67, ANNUITY, 51.112, 17, 7, 2041);
@@ -672,7 +672,7 @@ START_TEST(annuity_44)
 
 START_TEST(annuity_45)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 1175434.15, 68, ANNUITY, 14.871, 22, 3, 2141);
@@ -687,7 +687,7 @@ START_TEST(annuity_45)
 
 START_TEST(annuity_46)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 1317981.54, 69, ANNUITY, 21.441, 21, 6, 2084);
@@ -702,7 +702,7 @@ START_TEST(annuity_46)
 
 START_TEST(annuity_47)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 1498752.24, 70, ANNUITY, 24.749, 27, 1, 2051);
@@ -717,7 +717,7 @@ START_TEST(annuity_47)
 
 START_TEST(annuity_48)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 1674111.57, 71, ANNUITY, 8.244, 5, 5, 2005);
@@ -732,7 +732,7 @@ START_TEST(annuity_48)
 
 START_TEST(annuity_49)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 1847566.39, 72, ANNUITY, 14.479, 15, 7, 2029);
@@ -747,7 +747,7 @@ START_TEST(annuity_49)
 
 START_TEST(annuity_50)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 2000000, 73, ANNUITY, 22.222, 22, 2, 2222);
@@ -764,7 +764,7 @@ START_TEST(annuity_50)
 
 START_TEST(differentiated_1)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 1000, 4, DIFFERENTIATED, 5, 06, 07, 2021);
@@ -779,7 +779,7 @@ START_TEST(differentiated_1)
 
 START_TEST(differentiated_2)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 800, 12, DIFFERENTIATED, 3, 22, 02, 2016);
@@ -794,7 +794,7 @@ START_TEST(differentiated_2)
 
 START_TEST(differentiated_3)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 9862.12, 7, DIFFERENTIATED, 13.77, 9, 9, 2000);
@@ -809,7 +809,7 @@ START_TEST(differentiated_3)
 
 START_TEST(differentiated_4)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 26744.12, 15, DIFFERENTIATED, 16.111, 12, 3, 2005);
@@ -824,7 +824,7 @@ START_TEST(differentiated_4)
 
 START_TEST(differentiated_5)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 38235.23, 18, DIFFERENTIATED, 9.725, 24, 04, 2014);
@@ -839,7 +839,7 @@ START_TEST(differentiated_5)
 
 START_TEST(differentiated_6)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 49715.84, 21, DIFFERENTIATED, 19.875, 21, 07, 2019);
@@ -854,7 +854,7 @@ START_TEST(differentiated_6)
 
 START_TEST(differentiated_7)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 54798.48, 25, DIFFERENTIATED, 17.121, 16, 01, 2022);
@@ -869,7 +869,7 @@ START_TEST(differentiated_7)
 
 START_TEST(differentiated_8)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 64972.21, 26, DIFFERENTIATED, 14.875, 28, 02, 2024);
@@ -884,7 +884,7 @@ START_TEST(differentiated_8)
 
 START_TEST(differentiated_9)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 72578.54, 28, DIFFERENTIATED, 21.254, 8, 11, 2008);
@@ -899,7 +899,7 @@ START_TEST(differentiated_9)
 
 START_TEST(differentiated_10)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 81458.47, 21, DIFFERENTIATED, 16.789, 12, 12, 2012);
@@ -916,7 +916,7 @@ START_TEST(differentiated_10)
 
 START_TEST(differentiated_11)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 92784.88, 29, DIFFERENTIATED, 19.987, 25, 11, 2020);
@@ -931,7 +931,7 @@ START_TEST(differentiated_11)
 
 START_TEST(differentiated_12)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 99999.99, 30, DIFFERENTIATED, 19.999, 9, 9, 2009);
@@ -946,7 +946,7 @@ START_TEST(differentiated_12)
 
 START_TEST(differentiated_13)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 105597.84, 32, DIFFERENTIATED, 21.847, 4, 10, 2011);
@@ -961,7 +961,7 @@ START_TEST(differentiated_13)
 
 START_TEST(differentiated_14)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 114874.84, 34, DIFFERENTIATED, 22.221, 8, 8, 2008);
@@ -976,7 +976,7 @@ START_TEST(differentiated_14)
 
 START_TEST(differentiated_15)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 120000, 12, DIFFERENTIATED, 12, 19, 12, 2023);
@@ -991,7 +991,7 @@ START_TEST(differentiated_15)
 
 START_TEST(differentiated_16)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 122784.45, 35, DIFFERENTIATED, 24.876, 11, 12, 1989);
@@ -1006,7 +1006,7 @@ START_TEST(differentiated_16)
 
 START_TEST(differentiated_17)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 137846.94, 37, DIFFERENTIATED, 27.182, 25, 2, 1998);
@@ -1021,7 +1021,7 @@ START_TEST(differentiated_17)
 
 START_TEST(differentiated_18)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 143975.18, 38, DIFFERENTIATED, 1.845, 15, 9, 1945);
@@ -1036,7 +1036,7 @@ START_TEST(differentiated_18)
 
 START_TEST(differentiated_19)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 151879.84, 40, DIFFERENTIATED, 8.971, 20, 11, 1978);
@@ -1051,7 +1051,7 @@ START_TEST(differentiated_19)
 
 START_TEST(differentiated_20)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 158797.48, 42, DIFFERENTIATED, 45.847, 1, 1, 2001);
@@ -1068,7 +1068,7 @@ START_TEST(differentiated_20)
 
 START_TEST(differentiated_21)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 168848.24, 43, DIFFERENTIATED, 33.333, 3, 3, 2033);
@@ -1083,7 +1083,7 @@ START_TEST(differentiated_21)
 
 START_TEST(differentiated_22)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 177548.15, 45, DIFFERENTIATED, 30.001, 6, 7, 2028);
@@ -1098,7 +1098,7 @@ START_TEST(differentiated_22)
 
 START_TEST(differentiated_23)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 184999.99, 47, DIFFERENTIATED, 24.919, 4, 11, 2021);
@@ -1113,7 +1113,7 @@ START_TEST(differentiated_23)
 
 START_TEST(differentiated_24)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 199999.99, 39, DIFFERENTIATED, 9.999, 9, 9, 1999);
@@ -1128,7 +1128,7 @@ START_TEST(differentiated_24)
 
 START_TEST(differentiated_25)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 224875.67, 48, DIFFERENTIATED, 57.487, 11, 2, 1947);
@@ -1143,7 +1143,7 @@ START_TEST(differentiated_25)
 
 START_TEST(differentiated_26)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 249723.16, 49, DIFFERENTIATED, 43.196, 4, 9, 1967);
@@ -1158,7 +1158,7 @@ START_TEST(differentiated_26)
 
 START_TEST(differentiated_27)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 276314.57, 50, DIFFERENTIATED, 64.878, 1, 2, 2003);
@@ -1173,7 +1173,7 @@ START_TEST(differentiated_27)
 
 START_TEST(differentiated_28)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 300000, 51, DIFFERENTIATED, 68.778, 6, 11, 2048);
@@ -1188,7 +1188,7 @@ START_TEST(differentiated_28)
 
 START_TEST(differentiated_29)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 337541.43, 52, DIFFERENTIATED, 71.381, 9, 5, 2005);
@@ -1203,7 +1203,7 @@ START_TEST(differentiated_29)
 
 START_TEST(differentiated_30)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 374112.34, 53, DIFFERENTIATED, 74.164, 11, 12, 2013);
@@ -1220,7 +1220,7 @@ START_TEST(differentiated_30)
 
 START_TEST(differentiated_31)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 400000, 54, DIFFERENTIATED, 45.694, 16, 1, 1982);
@@ -1235,7 +1235,7 @@ START_TEST(differentiated_31)
 
 START_TEST(differentiated_32)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 442341.55, 55, DIFFERENTIATED, 26.533, 6, 11, 1987);
@@ -1250,7 +1250,7 @@ START_TEST(differentiated_32)
 
 START_TEST(differentiated_33)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 485212.25, 56, DIFFERENTIATED, 44.444, 14, 5, 2045);
@@ -1265,7 +1265,7 @@ START_TEST(differentiated_33)
 
 START_TEST(differentiated_34)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 542678.51, 57, DIFFERENTIATED, 34.157, 11, 6, 2033);
@@ -1280,7 +1280,7 @@ START_TEST(differentiated_34)
 
 START_TEST(differentiated_35)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 594314.32, 58, DIFFERENTIATED, 26.441, 2, 3, 2022);
@@ -1295,7 +1295,7 @@ START_TEST(differentiated_35)
 
 START_TEST(differentiated_36)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 642314.87, 59, DIFFERENTIATED, 79.548, 5, 4, 2012);
@@ -1310,7 +1310,7 @@ START_TEST(differentiated_36)
 
 START_TEST(differentiated_37)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 697431.11, 60, DIFFERENTIATED, 81.544, 11, 10, 2016);
@@ -1325,7 +1325,7 @@ START_TEST(differentiated_37)
 
 START_TEST(differentiated_38)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 764131.15, 61, DIFFERENTIATED, 84.517, 18, 6, 2154);
@@ -1340,7 +1340,7 @@ START_TEST(differentiated_38)
 
 START_TEST(differentiated_39)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 812341.58, 62, DIFFERENTIATED, 64.115, 6, 11, 2054);
@@ -1355,7 +1355,7 @@ START_TEST(differentiated_39)
 
 START_TEST(differentiated_40)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 866471.88, 63, DIFFERENTIATED, 14.587, 31, 1, 2002);
@@ -1372,7 +1372,7 @@ START_TEST(differentiated_40)
 
 START_TEST(differentiated_41)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 904131.41, 64, DIFFERENTIATED, 11.124, 5, 3, 2012);
@@ -1387,7 +1387,7 @@ START_TEST(differentiated_41)
 
 START_TEST(differentiated_42)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 971121.54, 65, DIFFERENTIATED, 7.891, 6, 7, 2021);
@@ -1402,7 +1402,7 @@ START_TEST(differentiated_42)
 
 START_TEST(differentiated_43)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 1000000, 66, DIFFERENTIATED, 100, 5, 12, 2027);
@@ -1417,7 +1417,7 @@ START_TEST(differentiated_43)
 
 START_TEST(differentiated_44)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 1087135.54, 67, DIFFERENTIATED, 51.112, 17, 7, 2041);
@@ -1432,7 +1432,7 @@ START_TEST(differentiated_44)
 
 START_TEST(differentiated_45)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 1175434.15, 68, DIFFERENTIATED, 14.871, 22, 3, 2141);
@@ -1447,7 +1447,7 @@ START_TEST(differentiated_45)
 
 START_TEST(differentiated_46)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 1317981.54, 69, DIFFERENTIATED, 21.441, 21, 6, 2084);
@@ -1462,7 +1462,7 @@ START_TEST(differentiated_46)
 
 START_TEST(differentiated_47)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 1498752.24, 70, DIFFERENTIATED, 24.749, 27, 1, 2051);
@@ -1477,7 +1477,7 @@ START_TEST(differentiated_47)
 
 START_TEST(differentiated_48)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 1674111.57, 71, DIFFERENTIATED, 8.244, 5, 5, 2005);
@@ -1492,7 +1492,7 @@ START_TEST(differentiated_48)
 
 START_TEST(differentiated_49)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 1847566.39, 72, DIFFERENTIATED, 14.479, 15, 7, 2029);
@@ -1507,7 +1507,7 @@ START_TEST(differentiated_49)
 
 START_TEST(differentiated_50)
 {
-    initial data;
+    credit_init data;
     payments pay;
 
     input_initial(&data, 2000000, 73, DIFFERENTIATED, 22.222, 22, 2, 2222);
@@ -1529,7 +1529,7 @@ START_TEST(pointers_1)
 
 START_TEST(pointers_2)
 {
-    initial data;
+    credit_init data;
 
     input_initial(&data, 120000, 6, DIFFERENTIATED, 10, 01, 03, 2022);
 
@@ -1540,7 +1540,7 @@ START_TEST(pointers_2)
 
 START_TEST(pointers_3)
 {
-    initial data;
+    credit_init data;
     early_pay redemption;
     init_redemption(&redemption);
 
@@ -1581,7 +1581,7 @@ START_TEST(pointers_5)
 
 START_TEST(diff_redemption_term_1)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -1600,7 +1600,7 @@ START_TEST(diff_redemption_term_1)
 
 START_TEST(diff_redemption_term_2)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -1620,7 +1620,7 @@ START_TEST(diff_redemption_term_2)
 
 START_TEST(diff_redemption_term_3)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -1640,7 +1640,7 @@ START_TEST(diff_redemption_term_3)
 
 START_TEST(diff_redemption_term_4)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -1661,7 +1661,7 @@ START_TEST(diff_redemption_term_4)
 
 START_TEST(diff_redemption_term_5)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -1682,7 +1682,7 @@ START_TEST(diff_redemption_term_5)
 
 START_TEST(diff_redemption_term_6)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -1703,7 +1703,7 @@ START_TEST(diff_redemption_term_6)
 
 START_TEST(diff_redemption_term_7)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -1725,7 +1725,7 @@ START_TEST(diff_redemption_term_7)
 
 START_TEST(diff_redemption_term_8)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -1749,7 +1749,7 @@ START_TEST(diff_redemption_term_8)
 
 START_TEST(diff_redemption_term_9)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -1774,7 +1774,7 @@ START_TEST(diff_redemption_term_9)
 
 START_TEST(diff_redemption_term_10)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -1801,7 +1801,7 @@ START_TEST(diff_redemption_term_10)
 
 START_TEST(diff_redemption_pay_1)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -1820,7 +1820,7 @@ START_TEST(diff_redemption_pay_1)
 
 START_TEST(diff_redemption_pay_2)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -1840,7 +1840,7 @@ START_TEST(diff_redemption_pay_2)
 
 START_TEST(diff_redemption_pay_3)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -1860,7 +1860,7 @@ START_TEST(diff_redemption_pay_3)
 
 START_TEST(diff_redemption_pay_4)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -1881,7 +1881,7 @@ START_TEST(diff_redemption_pay_4)
 
 START_TEST(diff_redemption_pay_5)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -1902,7 +1902,7 @@ START_TEST(diff_redemption_pay_5)
 
 START_TEST(diff_redemption_pay_6)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -1923,7 +1923,7 @@ START_TEST(diff_redemption_pay_6)
 
 START_TEST(diff_redemption_pay_7)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -1945,7 +1945,7 @@ START_TEST(diff_redemption_pay_7)
 
 START_TEST(diff_redemption_pay_8)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -1969,7 +1969,7 @@ START_TEST(diff_redemption_pay_8)
 
 START_TEST(diff_redemption_pay_9)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -1994,7 +1994,7 @@ START_TEST(diff_redemption_pay_9)
 
 START_TEST(diff_redemption_pay_10)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2021,7 +2021,7 @@ START_TEST(diff_redemption_pay_10)
 
 START_TEST(annuity_redemption_term_1)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2041,7 +2041,7 @@ START_TEST(annuity_redemption_term_1)
 
 START_TEST(annuity_redemption_term_2)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2061,7 +2061,7 @@ START_TEST(annuity_redemption_term_2)
 
 START_TEST(annuity_redemption_term_3)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2081,7 +2081,7 @@ START_TEST(annuity_redemption_term_3)
 
 START_TEST(annuity_redemption_term_4)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2102,7 +2102,7 @@ START_TEST(annuity_redemption_term_4)
 
 START_TEST(annuity_redemption_term_5)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2123,7 +2123,7 @@ START_TEST(annuity_redemption_term_5)
 
 START_TEST(annuity_redemption_term_6)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2144,7 +2144,7 @@ START_TEST(annuity_redemption_term_6)
 
 START_TEST(annuity_redemption_term_7)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2166,7 +2166,7 @@ START_TEST(annuity_redemption_term_7)
 
 START_TEST(annuity_redemption_term_8)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2190,7 +2190,7 @@ START_TEST(annuity_redemption_term_8)
 
 START_TEST(annuity_redemption_term_9)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2215,7 +2215,7 @@ START_TEST(annuity_redemption_term_9)
 
 START_TEST(annuity_redemption_term_10)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2242,7 +2242,7 @@ START_TEST(annuity_redemption_term_10)
 
 START_TEST(annuity_redemption_pay_1)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2261,7 +2261,7 @@ START_TEST(annuity_redemption_pay_1)
 
 START_TEST(annuity_redemption_pay_2)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2281,7 +2281,7 @@ START_TEST(annuity_redemption_pay_2)
 
 START_TEST(annuity_redemption_pay_3)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2301,7 +2301,7 @@ START_TEST(annuity_redemption_pay_3)
 
 START_TEST(annuity_redemption_pay_4)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2322,7 +2322,7 @@ START_TEST(annuity_redemption_pay_4)
 
 START_TEST(annuity_redemption_pay_5)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2343,7 +2343,7 @@ START_TEST(annuity_redemption_pay_5)
 
 START_TEST(annuity_redemption_pay_6)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2364,7 +2364,7 @@ START_TEST(annuity_redemption_pay_6)
 
 START_TEST(annuity_redemption_pay_7)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2386,7 +2386,7 @@ START_TEST(annuity_redemption_pay_7)
 
 START_TEST(annuity_redemption_pay_8)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2410,7 +2410,7 @@ START_TEST(annuity_redemption_pay_8)
 
 START_TEST(annuity_redemption_pay_9)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2435,7 +2435,7 @@ START_TEST(annuity_redemption_pay_9)
 
 START_TEST(annuity_redemption_pay_10)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2461,7 +2461,7 @@ START_TEST(annuity_redemption_pay_10)
 
 START_TEST(diff_redemption_combinated_1)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2481,7 +2481,7 @@ START_TEST(diff_redemption_combinated_1)
 
 START_TEST(diff_redemption_combinated_2)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2501,7 +2501,7 @@ START_TEST(diff_redemption_combinated_2)
 
 START_TEST(diff_redemption_combinated_3)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2521,7 +2521,7 @@ START_TEST(diff_redemption_combinated_3)
 
 START_TEST(diff_redemption_combinated_4)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2541,7 +2541,7 @@ START_TEST(diff_redemption_combinated_4)
 
 START_TEST(diff_redemption_combinated_5)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2563,7 +2563,7 @@ START_TEST(diff_redemption_combinated_5)
 
 START_TEST(diff_redemption_combinated_6)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2585,7 +2585,7 @@ START_TEST(diff_redemption_combinated_6)
 
 START_TEST(diff_redemption_combinated_7)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2607,7 +2607,7 @@ START_TEST(diff_redemption_combinated_7)
 
 START_TEST(diff_redemption_combinated_8)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2627,7 +2627,7 @@ START_TEST(diff_redemption_combinated_8)
 
 START_TEST(diff_redemption_combinated_9)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2649,7 +2649,7 @@ START_TEST(diff_redemption_combinated_9)
 
 START_TEST(diff_redemption_combinated_10)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2675,7 +2675,7 @@ START_TEST(diff_redemption_combinated_10)
 
 START_TEST(annuity_redepmtion_combinated_1)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2695,7 +2695,7 @@ START_TEST(annuity_redepmtion_combinated_1)
 
 START_TEST(annuity_redepmtion_combinated_2)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2715,7 +2715,7 @@ START_TEST(annuity_redepmtion_combinated_2)
 
 START_TEST(annuity_redepmtion_combinated_3)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2735,7 +2735,7 @@ START_TEST(annuity_redepmtion_combinated_3)
 
 START_TEST(annuity_redepmtion_combinated_4)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2755,7 +2755,7 @@ START_TEST(annuity_redepmtion_combinated_4)
 
 START_TEST(annuity_redepmtion_combinated_5)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2777,7 +2777,7 @@ START_TEST(annuity_redepmtion_combinated_5)
 
 START_TEST(annuity_redepmtion_combinated_6)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2799,7 +2799,7 @@ START_TEST(annuity_redepmtion_combinated_6)
 
 START_TEST(annuity_redepmtion_combinated_7)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2821,7 +2821,7 @@ START_TEST(annuity_redepmtion_combinated_7)
 
 START_TEST(annuity_redepmtion_combinated_8)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2841,7 +2841,7 @@ START_TEST(annuity_redepmtion_combinated_8)
 
 START_TEST(annuity_redepmtion_combinated_9)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);
@@ -2863,7 +2863,7 @@ START_TEST(annuity_redepmtion_combinated_9)
 
 START_TEST(annuity_redepmtion_combinated_10)
 {
-    initial data;
+    credit_init data;
     payments pay;
     early_pay redemption;
     init_redemption(&redemption);

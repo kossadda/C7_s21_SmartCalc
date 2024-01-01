@@ -1,4 +1,4 @@
-#include "s21_calendar.h"
+#include "s21_common.h"
 
 static int days_in_this_year(time_data date);
 static void add_months(time_data *date, int term, int beginning_date);

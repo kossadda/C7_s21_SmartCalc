@@ -1,9 +1,7 @@
 #ifndef S21_C_DEPOSIT_H
 #define S21_C_DEPOSIT_H
 
-#include "../s21_calendar/s21_calendar.h"
-
-#define CHECK_NULL(ptr) (ptr == NULL)
+#include "../s21_common/s21_common.h"
 
 /**
  * @brief List defining constant statuses for functions used in the deposit calculator.
@@ -28,7 +26,7 @@ typedef struct investment {
 /**
  * @brief Struct representing initial information about the deposit.
 */
-typedef struct init {
+typedef struct deposit_init {
     long double amount;                 /** Amount deposited.                                           */
     long double rate;                   /** Deposit interest rate.                                      */
     time_data date;                     /** Date of deposit placement                                   */
@@ -37,10 +35,11 @@ typedef struct init {
     int capital_time;                   /** Frequency of capitalization                                 */
     int capital;                        /** Interest capitalization status.                             */
     int current;                        /** A counter that tracks the actual number of payment periods. */
-} init;
+} deposit_init;
 
 // Main functions
 
-void calculate_deposit(init *depos, investment *pay);
+void calculate_deposit(deposit_init *depos, investment *pay);
+int calc_period(deposit_init *data, investment *pay, time_data end_period);
 
 #endif

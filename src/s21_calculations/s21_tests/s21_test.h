@@ -9,9 +9,9 @@
 int test_suite(Suite *test);
 void free_credit(int row, payments *pay, early_pay *redemption);
 void free_deposit(int row, investment *pay);
-void input_initial(initial *data, long double debt, long double months, int type, long double rate, int day, int month, int year);
+void input_initial(credit_init *data, long double debt, long double months, int type, long double rate, int day, int month, int year);
 void input_redemption(early_pay *redemption, int day, int month, int year, long double sum, int type);
-void init_deposit(init *deposit, long double amount, int term_type, int term, int day, int month, int year, long double rate, int capital_time, int capital);
+void init_deposit(deposit_init *deposit, long double amount, int term_type, int term, int day, int month, int year, long double rate, int capital_time, int capital);
 
 // Calculator tests
 

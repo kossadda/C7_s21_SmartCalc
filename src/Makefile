@@ -7,10 +7,10 @@ LCOV=-lcheck -lsubunit -lgcov
 GCOVR=-r . --html --html-details
 # FUNCS PATHS1
 MAIN_FOLD=s21_smartcalc
-CALC=s21_calculations/s21_calc/*.c
+CALC=s21_calculations/s21_calculator/*.c
 CREDIT=s21_calculations/s21_credit/*.c
 DEPOSIT=s21_calculations/s21_deposit/*.c
-SUPPORT=s21_calculations/s21_calendar/*.c
+SUPPORT=s21_calculations/s21_common/*.c
 # TESTS PATHS
 TESTS=s21_calculations/s21_tests/*.c
 # OTHER PATHS
@@ -80,7 +80,7 @@ test: ggwp
 	@./$(EXE)
 
 gcov_report: uninstall
-	gcc $(CC) $(COVER) $(CALC) $(CREDIT) $(TESTS) -lm -o $(EXE) $(LCOV)
+	gcc $(CC) $(COVER) $(CALC) $(CREDIT) $(DEPOSIT) $(SUPPORT) $(TESTS) -lm -o $(EXE) $(LCOV)
 	@mkdir -p $(GCOV)
 	@./$(EXE)
 	gcovr $(GCOVR) -o $(GCOV)/coverage.html
@@ -98,16 +98,12 @@ valgrind_prog: install
 clang-format:
 	clang-format $(CLANG) $(CALC)
 
-# dist:
-
-# dvi:
 
 # Моя временная цель
 build: uninstall
-	@gcc $(CC) $(CALC) $(CREDIT) s21_calculations/s21_testing.c -lm -o $(EXE)
+	@gcc $(CC) $(CALC) $(CREDIT) $(DEPOSIT) $(SUPPORT) s21_calculations/s21_debug.c -lm -o $(EXE)
 	clear
 	@./$(EXE)
 
 ggwp:
 	rm -rf test
-# > val_test.txt 2>&1

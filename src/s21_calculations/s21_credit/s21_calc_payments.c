@@ -1,8 +1,8 @@
 #include "s21_credit.h"
 
-static int calculate_annuity_month(initial *data, payments *pay, time_data next_month, long double paid_percent);
-static int check_calc_redemption(initial *data, payments *pay, early_pay *redemption, time_data *next_month, long double *paid_percent);
-static int calculate_diff_month(initial *data, payments *pay, time_data next_month, long double paid_percent);
+static int calculate_annuity_month(credit_init *data, payments *pay, time_data next_month, long double paid_percent);
+static int check_calc_redemption(credit_init *data, payments *pay, early_pay *redemption, time_data *next_month, long double *paid_percent);
+static int calculate_diff_month(credit_init *data, payments *pay, time_data next_month, long double paid_percent);
 
 /**
  * @brief Calculates monthly payments for an annuity payment type.
@@ -16,7 +16,7 @@ static int calculate_diff_month(initial *data, payments *pay, time_data next_mon
  * @retval ALLOCATED = 0 - if memory is allocated.
  * @retval NOT_ALLOCATED = 1 - if memory isn't allocated.
 */
-int calculate_payments(initial *data, payments *pay, early_pay *redemption)
+int calculate_payments(credit_init *data, payments *pay, early_pay *redemption)
 {
     int error_code = ALLOCATED;
     int const_day = data->date.day;
@@ -63,40 +63,44 @@ int calculate_payments(initial *data, payments *pay, early_pay *redemption)
  * @retval ALLOCATED = 0 - if memory is allocated.
  * @retval NOT_ALLOCATED = 1 - if memory isn't allocated.
 */
-static int calculate_annuity_month(initial *data, payments *pay, time_data next_month, long double paid_percent)
+static int calculate_annuity_month(credit_init *data, payments *pay, time_data next_month, long double paid_percent)
 {
     int error_code = ALLOCATED;
     static long double rest = 0;
-    if(data->debt) {
-        data->current++;
-        error_code = allocate_memory(data, pay);
-        if(error_code == ALLOCATED) {
-            calc_percent(data, pay, next_month);
-            pay->percent -= paid_percent;
 
-            if(rest) {
-                pay->percent += rest;
-                rest = 0;
-            }
-            if(pay->percent > pay->monthly) {
-                rest = pay->percent - pay->monthly;
-                pay->percent = pay->monthly;
-                pay->main = 0;
-            } else {
-                if(data->debt >= pay->monthly) {
-                    pay->main = pay->monthly - pay->percent;
-                } else if(data->debt < pay->monthly && data->debt + pay->percent > pay->monthly) {
-                    pay->main = pay->monthly - pay->percent;
-                } else {
-                    pay->main = data->debt;
-                    pay->monthly = pay->main + pay->percent;
-                }
-            }
-            data->debt -= pay->main;
-            
-            remember_result(data, pay);
+    data->current++;
+    error_code = allocate_row(&pay->result, data->current);
+
+    if(error_code == ALLOCATED) {
+        long double first_part_month = percent_formula(data->debt, data->rate, data->date.leap, data->date.month_days);
+        long double second_part_month = percent_formula(data->debt, data->rate, next_month.leap, next_month.month_days);
+        pay->percent = round_value(first_part_month + second_part_month) - paid_percent;
+
+        if(rest) {
+            pay->percent += rest;
+            rest = 0;
         }
+
+        if(pay->percent > pay->monthly) {
+            rest = pay->percent - pay->monthly;
+            pay->percent = pay->monthly;
+            pay->main = 0;
+        } else {
+            if(data->debt >= pay->monthly) {
+                pay->main = pay->monthly - pay->percent;
+            } else if(data->debt < pay->monthly && data->debt + pay->percent > pay->monthly) {
+                pay->main = pay->monthly - pay->percent;
+            } else {
+                pay->main = data->debt;
+                pay->monthly = pay->main + pay->percent;
+            }
+        }
+
+        data->debt -= pay->main;
+        
+        remember_result(data, pay);
     }
+
     return error_code;
 }
 
@@ -112,23 +116,27 @@ static int calculate_annuity_month(initial *data, payments *pay, time_data next_
  * @retval ALLOCATED = 0 - if memory is allocated.
  * @retval NOT_ALLOCATED = 1 - if memory isn't allocated.
 */
-static int calculate_diff_month(initial *data, payments *pay, time_data next_month, long double paid_percent)
+static int calculate_diff_month(credit_init *data, payments *pay, time_data next_month, long double paid_percent)
 {
     int error_code = ALLOCATED;
-    if(data->debt) {
-        data->current++;
-        error_code = allocate_memory(data, pay);
-        if(error_code == ALLOCATED) {
-            if(data->debt < pay->main) {
-                pay->main = data->debt;
-            }
-            calc_percent(data, pay, next_month);
-            pay->percent -= paid_percent;
-            pay->monthly = pay->main + pay->percent;
-            data->debt -= pay->main;
-            remember_result(data, pay);
+
+    data->current++;
+    error_code = allocate_row(&pay->result, data->current);
+
+    if(error_code == ALLOCATED) {
+        if(data->debt < pay->main) {
+            pay->main = data->debt;
         }
+
+        long double first_part_month = percent_formula(data->debt, data->rate, data->date.leap, data->date.month_days);
+        long double second_part_month = percent_formula(data->debt, data->rate, next_month.leap, next_month.month_days);
+        pay->percent = round_value(first_part_month + second_part_month) - paid_percent;
+        pay->monthly = pay->main + pay->percent;
+        data->debt -= pay->main;
+
+        remember_result(data, pay);
     }
+
     return error_code;
 }
 
@@ -145,17 +153,20 @@ static int calculate_diff_month(initial *data, payments *pay, time_data next_mon
  * @retval ALLOCATED = 0 - if memory is allocated.
  * @retval NOT_ALLOCATED = 1 - if memory isn't allocated.
 */
-static int check_calc_redemption(initial *data, payments *pay, early_pay *redemption, time_data *next_month, long double *paid_percent)
+static int check_calc_redemption(credit_init *data, payments *pay, early_pay *redemption, time_data *next_month, long double *paid_percent)
 {
     int error_code = ALLOCATED;
     int change = DEBT_NOT_CHANGED;
+
     if(redemption && redemption->sum && redemption->current < redemption->count) {
         while(compare_date_with_month(data->date, &(redemption->date[redemption->current]), *next_month) == DATE_BETWEEN) {
             error_code = redemp_payment(data, pay, next_month, redemption, paid_percent, &change);
+
             if(redemption->current == redemption->count) {
                 break;
             }
         }
     }
+    
     return error_code;
 }

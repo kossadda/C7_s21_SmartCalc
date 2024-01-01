@@ -1,9 +1,7 @@
 #ifndef S21_C_CREDIT_H
 #define S21_C_CREDIT_H
 
-#include "../s21_calendar/s21_calendar.h"
-
-#define CHECK_NULL(ptr) (ptr == NULL)
+#include "../s21_common/s21_common.h"
 
 /**
  * @brief List defining constant statuses for functions used in the credit calculator.
@@ -32,14 +30,14 @@ typedef struct payments {
 /**
  * @brief Struct representing initial information about the credit.
 */
-typedef struct initial {
+typedef struct credit_init {
     long double debt;           /** Sets the credit amount and subsequently helps track the balance of the debt. */
     long double rate;           /** Credit interest rate.                                                        */
     time_data date;             /** Date of credit issue.                                                        */
     int payment_type;           /** Type of monthly payments.                                                    */
     int months;                 /** Credit terms.                                                                */
     int current;                /** A counter that tracks the actual number of months of lending.                */
-} initial;
+} credit_init;
 
 /**
  * @brief Struct representing initial information about early repayments.
@@ -54,25 +52,13 @@ typedef struct early_pay {
 
 // Main functions
 
-int calculate_credit(initial *data, payments *pay, early_pay *redemption);
-int calculate_payments(initial *data, payments *pay, early_pay *redemption);
-int redemp_payment(initial *data, payments *pay, time_data *next_month, early_pay *redemption, long double *paid_percent, int *change);
+int calculate_credit(credit_init *data, payments *pay, early_pay *redemption);
+int calculate_payments(credit_init *data, payments *pay, early_pay *redemption);
+int redemp_payment(credit_init *data, payments *pay, time_data *next_month, early_pay *redemption, long double *paid_percent, int *change);
 
 // Support functions
 
-void calc_percent(initial *data, payments *pay, time_data next_month);
-long double round_value(long double number);
-void remember_result(initial *data, payments *pay);
+void remember_result(credit_init *data, payments *pay);
 int init_redemption(early_pay *redemption);
-int allocate_memory(initial *data, payments *pay);
-
-// Calendar functions
-
-void determine_date(time_data *this_month, time_data *next_month);
-int check_leap(int year);
-void add_month(time_data *date, int beginning_date);
-int compare_date_with_month(time_data now, time_data *pay, time_data next);
-int sub_date(time_data first, time_data second);
-int sub_till_end_month(time_data date);
 
 #endif

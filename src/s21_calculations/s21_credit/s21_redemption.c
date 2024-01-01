@@ -17,12 +17,12 @@ static int logarithm(long double x, long double base);
  * @retval ALLOCATED = 0 - if memory is allocated.
  * @retval NOT_ALLOCATED = 1 - if memory isn't allocated.
 */
-int redemp_payment(initial *data, payments *pay, time_data *next_month, early_pay *redemption, long double *paid_percent, int *change)
+int redemp_payment(credit_init *data, payments *pay, time_data *next_month, early_pay *redemption, long double *paid_percent, int *change)
 {
     long double monthly_pay = pay->monthly;
     int error_code = ALLOCATED;
     data->current++;
-    error_code = allocate_memory(data, pay);
+    error_code = allocate_row(&pay->result, data->current);
     if(error_code == ALLOCATED) {
         if(*change == DEBT_CHANGED) {
             redemption->date[redemption->current].month_days = sub_date(redemption->date[redemption->current], redemption->date[redemption->current - 1]);

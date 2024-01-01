@@ -3,7 +3,9 @@
 /**
  * @brief Function for clearing memory in payments arrays.
  * 
- * @param pay structure containing buffer variables for monthly results and general payment data arrays.
+ * @param row number of rows.
+ * @param[in] pay structure containing buffer variables for monthly results and general payment data arrays.
+ * @param[in] redemption structure containing data arrays of early payments.
 */
 void free_credit(int row, payments *pay, early_pay *redemption) {
     if(pay) {
@@ -40,6 +42,12 @@ void free_credit(int row, payments *pay, early_pay *redemption) {
     }
 }
 
+/**
+ * @brief Function for clearing memory in investment arrays.
+ * 
+ * @param row number of rows.
+ * @param[in] pay structure containing buffer variables for monthly results and general payment data arrays.
+*/
 void free_deposit(int row, investment *pay) {
     if(pay) {
         for(int i = 0; i < row; i++) {
@@ -86,7 +94,7 @@ int test_suite(Suite *test) {
  * @param month month of loan issue.
  * @param year year of loan issue.
 */
-void input_initial(initial *data, long double debt, long double months, int type, long double rate, int day, int month, int year) {
+void input_initial(credit_init *data, long double debt, long double months, int type, long double rate, int day, int month, int year) {
     data->debt = debt;
     data->months = months;
     data->payment_type = type;
@@ -130,7 +138,7 @@ void input_redemption(early_pay *redemption, int day, int month, int year, long 
  * @param capital_time frequency of deposit payments.
  * @param capital Deposit capitalization enabled/disabled. NOT_CAPIT = 0 -  disabled, CAPIT = 1 - enabled.
 */
-void init_deposit(init *deposit, long double amount, int term_type, int term, int day, int month, int year, long double rate, int capital_time, int capital) {
+void init_deposit(deposit_init *deposit, long double amount, int term_type, int term, int day, int month, int year, long double rate, int capital_time, int capital) {
     deposit->amount = amount;
     deposit->term_type = term_type;
     deposit->term = term;

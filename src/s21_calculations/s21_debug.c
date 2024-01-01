@@ -4,7 +4,7 @@
 #define DEBUG_CREDIT
 #ifndef DEBUG_CREDIT
 
-void input_initial(initial *data, long double debt, long double months, int type, long double rate, int day, int month, int year) {
+void input_initial(credit_init *data, long double debt, long double months, int type, long double rate, int day, int month, int year) {
     data->debt = debt;
     data->months = months;
     data->payment_type = type;
@@ -51,7 +51,7 @@ void free_memory(int row, payments *pay, early_pay *redemption) {
     }
 }
 
-void print_credit(initial *data, payments *pay) {
+void print_credit(credit_init *data, payments *pay) {
     printf("MONTHLY:\n");
     for(int i = 0; i <= data->current; i++) {
         printf("%d", i + 1);
@@ -68,7 +68,7 @@ void print_credit(initial *data, payments *pay) {
 #ifndef DEBUG_DEPOSIT
 #define DEBUG_DEPOSIT
 
-void print_deposit(init *data, investment *pay) {
+void print_deposit(deposit_init *data, investment *pay) {
     printf("MONTHLY:\n");
     for(int i = 0; i <= data->current; i++) {
         printf("%d", i + 1);
@@ -81,7 +81,7 @@ void print_deposit(init *data, investment *pay) {
 }
 
 
-void init_deposit(init *deposit, long double amount, int term_type, int term, int day, int month, int year, long double rate, int capital_time, int capital) {
+void init_deposit(deposit_init *deposit, long double amount, int term_type, int term, int day, int month, int year, long double rate, int capital_time, int capital) {
     deposit->amount = amount;
     deposit->term_type = term_type;
     deposit->term = term;
@@ -99,7 +99,7 @@ void init_deposit(init *deposit, long double amount, int term_type, int term, in
 #define DEBUG
 
 int main() {
-    init data;
+    deposit_init data;
     investment pay;
 
     init_deposit(&data, 8622515.22, DAYS_PERIOD, 18125, 1, 1, 2015, 10, BY_END_TERM, NOT_CAPITAL);

@@ -21,17 +21,20 @@ set(PROJECT_SOURCES
     ./s21_smartcalc/my_widget.cpp
     ./s21_smartcalc/graphics.cpp
     ./s21_smartcalc/s21_credit_table.cpp
-    ./s21_calculations/s21_calc/s21_unar_operation.c
-    ./s21_calculations/s21_calc/s21_checks.c
-    ./s21_calculations/s21_calc/s21_comparison.c
-    ./s21_calculations/s21_calc/s21_calc.c
-    ./s21_calculations/s21_calc/s21_math_operations.c
-    ./s21_calculations/s21_calc/s21_notation.c
-    ./s21_calculations/s21_calc/s21_validation.c
-    ./s21_calculations/s21_credit/s21_credit.c
+    ./s21_calculations/s21_calculator/s21_calc.c
+    ./s21_calculations/s21_calculator/s21_checks.c
+    ./s21_calculations/s21_calculator/s21_comparison.c
+    ./s21_calculations/s21_calculator/s21_math_operations.c
+    ./s21_calculations/s21_calculator/s21_notation.c
+    ./s21_calculations/s21_calculator/s21_unar_operation.c
     ./s21_calculations/s21_credit/s21_credit.c
     ./s21_calculations/s21_credit/s21_calc_payments.c
-    ./s21_calculations/s21_calendar/s21_calendar.c
+    ./s21_calculations/s21_credit/s21_redemption.c
+    ./s21_calculations/s21_credit/s21_supporting.c
+    ./s21_calculations/s21_deposit/s21_deposit.c
+    ./s21_calculations/s21_deposit/s21_calc_deposits.c
+    ./s21_calculations/s21_common/s21_common.c
+    ./s21_calculations/s21_common/s21_calendar.c
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

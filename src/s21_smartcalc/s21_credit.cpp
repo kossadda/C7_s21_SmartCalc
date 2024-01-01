@@ -10,7 +10,8 @@ extern "C" {
 #include "../s21_calculations/s21_credit/s21_calc_payments.c"
 #include "../s21_calculations/s21_credit/s21_redemption.c"
 #include "../s21_calculations/s21_credit/s21_supporting.c"
-#include "../s21_calculations/s21_calendar/s21_calendar.c"
+#include "../s21_calculations/s21_common/s21_calendar.c"
+#include "../s21_calculations/s21_common/s21_common.c"
 }
 
 s21_credit::s21_credit(QWidget *parent)
@@ -95,7 +96,7 @@ void add_redemption(early_pay *redemption, my_widget *early_pays, int count) {
     redemption->count++;
 }
 
-void init_parameters(initial *data, Ui::s21_credit *ui) {
+void init_parameters(credit_init *data, Ui::s21_credit *ui) {
     data->months = ui->time_edit->text().toInt();
     data->debt = ui->amount_edit->text().toDouble();
     data->rate = ui->percent_edit->text().toDouble();
@@ -107,7 +108,7 @@ void init_parameters(initial *data, Ui::s21_credit *ui) {
 void s21_credit::on_calculate_clicked()
 {
     payments pay;
-    initial data;
+    credit_init data;
     early_pay redemption;
     init_parameters(&data, ui);
 

@@ -4,6 +4,8 @@
 #include <math.h>
 #include <stdlib.h>
 
+#define CHECK_NULL(ptr) (ptr == NULL)
+
 enum calendar_constants {
 //  days constants
     JAN = 31, FEB = 28, MAR = 31, APR = 30, LEAP_FEB = 29,
@@ -57,9 +59,13 @@ int compare_dates(time_data first, time_data second);
 void add_one_period(time_data *begin, time_data *end, time_data last_day, int capital_type, int const_date);
 int sub_till_end_month(time_data date);
 int sub_date(time_data first, time_data second);
+time_data determine_last_day(time_data date, int term_type, int term);
 
 // Another functions.
 
-time_data determine_last_day(time_data date, int term_type, int term);
+int init_payments(long double ***result, long double **total);
+int allocate_row(long double ***result, int current);
+long double percent_formula(long double debt, long double rate, int leap, int month_days);
+long double round_value(long double number);
 
 #endif

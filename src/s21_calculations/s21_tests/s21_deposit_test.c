@@ -4,7 +4,7 @@
 
 START_TEST(deposit_by_day_1)
 {
-    init data;
+    deposit_init data;
     investment pay;
 
     init_deposit(&data, 10000, MONTHS_PERIOD, 12, 1, 1, 2020, 15, BY_DAY, NOT_CAPITAL);
@@ -20,7 +20,7 @@ START_TEST(deposit_by_day_1)
 
 START_TEST(deposit_by_day_2)
 {
-    init data;
+    deposit_init data;
     investment pay;
 
     init_deposit(&data, 10000, MONTHS_PERIOD, 12, 1, 1, 2020, 15, BY_DAY, CAPITAL);
@@ -36,7 +36,7 @@ START_TEST(deposit_by_day_2)
 
 START_TEST(deposit_by_day_3)
 {
-    init data;
+    deposit_init data;
     investment pay;
 
     init_deposit(&data, 147634.72, MONTHS_PERIOD, 17, 7, 5, 2017, 13.218, BY_DAY, NOT_CAPITAL);
@@ -52,7 +52,7 @@ START_TEST(deposit_by_day_3)
 
 START_TEST(deposit_by_day_4)
 {
-    init data;
+    deposit_init data;
     investment pay;
 
     init_deposit(&data, 147634.72, MONTHS_PERIOD, 17, 7, 5, 2017, 13.218, BY_DAY, CAPITAL);
@@ -68,7 +68,7 @@ START_TEST(deposit_by_day_4)
 
 // START_TEST(deposit_by_day_5)
 // {
-//     init data;
+//     deposit_init data;
 //     investment pay;
 
 //     init_deposit(&data, 147634.72, MONTHS_PERIOD, 17, 7, 5, 2017, 13.218, BY_DAY, NOT_CAPITAL);
@@ -84,7 +84,7 @@ START_TEST(deposit_by_day_4)
 
 // START_TEST(deposit_by_day_6)
 // {
-//     init data;
+//     deposit_init data;
 //     investment pay;
 
 //     init_deposit(&data, 147634.72, MONTHS_PERIOD, 17, 7, 5, 2017, 13.218, BY_DAY, CAPITAL);
@@ -101,7 +101,7 @@ START_TEST(deposit_by_day_4)
 
 START_TEST(deposit_by_week_1)
 {
-    init data;
+    deposit_init data;
     investment pay;
 
     init_deposit(&data, 10000, MONTHS_PERIOD, 12, 1, 1, 2020, 15, BY_WEEK, NOT_CAPITAL);
@@ -117,7 +117,7 @@ START_TEST(deposit_by_week_1)
 
 START_TEST(deposit_by_week_2)
 {
-    init data;
+    deposit_init data;
     investment pay;
 
     init_deposit(&data, 10000, MONTHS_PERIOD, 12, 1, 1, 2020, 15, BY_WEEK, CAPITAL);
@@ -133,7 +133,7 @@ START_TEST(deposit_by_week_2)
 
 START_TEST(deposit_by_week_3)
 {
-    init data;
+    deposit_init data;
     investment pay;
 
     init_deposit(&data, 147634.72, MONTHS_PERIOD, 17, 7, 5, 2017, 13.218, BY_WEEK, NOT_CAPITAL);
@@ -149,7 +149,7 @@ START_TEST(deposit_by_week_3)
 
 START_TEST(deposit_by_week_4)
 {
-    init data;
+    deposit_init data;
     investment pay;
 
     init_deposit(&data, 147634.72, MONTHS_PERIOD, 17, 7, 5, 2017, 13.218, BY_WEEK, CAPITAL);
@@ -165,7 +165,7 @@ START_TEST(deposit_by_week_4)
 
 START_TEST(deposit_by_month_1)
 {
-    init data;
+    deposit_init data;
     investment pay;
 
     init_deposit(&data, 10000, MONTHS_PERIOD, 12, 1, 1, 2020, 15, BY_MONTH, NOT_CAPITAL);
@@ -181,7 +181,7 @@ START_TEST(deposit_by_month_1)
 
 START_TEST(deposit_by_month_2)
 {
-    init data;
+    deposit_init data;
     investment pay;
 
     init_deposit(&data, 10000, MONTHS_PERIOD, 12, 1, 1, 2020, 15, BY_MONTH, CAPITAL);
@@ -197,7 +197,7 @@ START_TEST(deposit_by_month_2)
 
 START_TEST(deposit_by_month_3)
 {
-    init data;
+    deposit_init data;
     investment pay;
 
     init_deposit(&data, 147634.72, MONTHS_PERIOD, 17, 7, 5, 2017, 13.218, BY_MONTH, NOT_CAPITAL);
@@ -213,7 +213,7 @@ START_TEST(deposit_by_month_3)
 
 START_TEST(deposit_by_month_4)
 {
-    init data;
+    deposit_init data;
     investment pay;
 
     init_deposit(&data, 147634.72, MONTHS_PERIOD, 17, 7, 5, 2017, 13.218, BY_MONTH, CAPITAL);
@@ -229,7 +229,7 @@ START_TEST(deposit_by_month_4)
 
 START_TEST(deposit_by_quarter_1)
 {
-    init data;
+    deposit_init data;
     investment pay;
 
     init_deposit(&data, 10000, MONTHS_PERIOD, 12, 1, 1, 2020, 15, BY_QUARTER, NOT_CAPITAL);
@@ -245,7 +245,7 @@ START_TEST(deposit_by_quarter_1)
 
 START_TEST(deposit_by_quarter_2)
 {
-    init data;
+    deposit_init data;
     investment pay;
 
     init_deposit(&data, 10000, MONTHS_PERIOD, 12, 1, 1, 2020, 15, BY_QUARTER, CAPITAL);
@@ -261,7 +261,7 @@ START_TEST(deposit_by_quarter_2)
 
 START_TEST(deposit_by_quarter_3)
 {
-    init data;
+    deposit_init data;
     investment pay;
 
     init_deposit(&data, 147634.72, MONTHS_PERIOD, 17, 7, 5, 2017, 13.218, BY_QUARTER, NOT_CAPITAL);
@@ -277,7 +277,7 @@ START_TEST(deposit_by_quarter_3)
 
 START_TEST(deposit_by_quarter_4)
 {
-    init data;
+    deposit_init data;
     investment pay;
 
     init_deposit(&data, 147634.72, MONTHS_PERIOD, 17, 7, 5, 2017, 13.218, BY_QUARTER, CAPITAL);
@@ -293,7 +293,7 @@ START_TEST(deposit_by_quarter_4)
 
 START_TEST(deposit_by_halfyear_1)
 {
-    init data;
+    deposit_init data;
     investment pay;
 
     init_deposit(&data, 10000, MONTHS_PERIOD, 12, 1, 1, 2020, 15, BY_HALFYEAR, NOT_CAPITAL);
@@ -309,7 +309,7 @@ START_TEST(deposit_by_halfyear_1)
 
 START_TEST(deposit_by_halfyear_2)
 {
-    init data;
+    deposit_init data;
     investment pay;
 
     init_deposit(&data, 10000, MONTHS_PERIOD, 12, 1, 1, 2020, 15, BY_HALFYEAR, CAPITAL);
@@ -325,7 +325,7 @@ START_TEST(deposit_by_halfyear_2)
 
 START_TEST(deposit_by_halfyear_3)
 {
-    init data;
+    deposit_init data;
     investment pay;
 
     init_deposit(&data, 147634.72, MONTHS_PERIOD, 17, 7, 5, 2017, 13.218, BY_HALFYEAR, NOT_CAPITAL);
@@ -341,7 +341,7 @@ START_TEST(deposit_by_halfyear_3)
 
 START_TEST(deposit_by_halfyear_4)
 {
-    init data;
+    deposit_init data;
     investment pay;
 
     init_deposit(&data, 147634.72, MONTHS_PERIOD, 17, 7, 5, 2017, 13.218, BY_HALFYEAR, CAPITAL);
@@ -357,7 +357,7 @@ START_TEST(deposit_by_halfyear_4)
 
 START_TEST(deposit_by_year_1)
 {
-    init data;
+    deposit_init data;
     investment pay;
 
     init_deposit(&data, 10000, MONTHS_PERIOD, 12, 1, 1, 2020, 15, BY_YEAR, NOT_CAPITAL);
@@ -373,7 +373,7 @@ START_TEST(deposit_by_year_1)
 
 START_TEST(deposit_by_year_2)
 {
-    init data;
+    deposit_init data;
     investment pay;
 
     init_deposit(&data, 10000, MONTHS_PERIOD, 12, 1, 1, 2020, 15, BY_YEAR, CAPITAL);
@@ -389,7 +389,7 @@ START_TEST(deposit_by_year_2)
 
 START_TEST(deposit_by_year_3)
 {
-    init data;
+    deposit_init data;
     investment pay;
 
     init_deposit(&data, 147634.72, MONTHS_PERIOD, 17, 7, 5, 2017, 13.218, BY_YEAR, NOT_CAPITAL);
@@ -405,7 +405,7 @@ START_TEST(deposit_by_year_3)
 
 START_TEST(deposit_by_year_4)
 {
-    init data;
+    deposit_init data;
     investment pay;
 
     init_deposit(&data, 147634.72, MONTHS_PERIOD, 17, 7, 5, 2017, 13.218, BY_YEAR, CAPITAL);
