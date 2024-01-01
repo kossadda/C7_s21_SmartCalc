@@ -21,6 +21,7 @@ int calculate_payments(initial *data, payments *pay, early_pay *redemption)
     int error_code = ALLOCATED;
     int const_day = data->date.day;
 
+    data->date.leap = check_leap(data->date.year);
     time_data next_month = data->date;
 
     if(data->payment_type == ANNUITY) {
@@ -34,9 +35,8 @@ int calculate_payments(initial *data, payments *pay, early_pay *redemption)
 
     for(data->current = -1; data->debt != 0;) {
         long double paid_percent = 0;
-        add_months(&next_month, MONTH, const_day);
+        add_one_period(&(data->date), &next_month, next_month, CREDIT_MONTH, const_day);
 
-        determine_date(&data->date, &next_month);
         error_code = check_calc_redemption(data, pay, redemption, &next_month, &paid_percent);
         if(error_code == ALLOCATED) {
             if(data->payment_type == ANNUITY) {
@@ -47,8 +47,6 @@ int calculate_payments(initial *data, payments *pay, early_pay *redemption)
         }
 
         data->date = next_month;
-        // add_month(&(data->date), const_day);
-        // add_month(&next_month, const_day);
         data->debt = (error_code == ALLOCATED) ? data->debt : 0;
     }
     return error_code;

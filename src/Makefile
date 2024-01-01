@@ -10,7 +10,7 @@ MAIN_FOLD=s21_smartcalc
 CALC=s21_calculations/s21_calc/*.c
 CREDIT=s21_calculations/s21_credit/*.c
 DEPOSIT=s21_calculations/s21_deposit/*.c
-COMMON=s21_calculations/s21_common/*.c
+SUPPORT=s21_calculations/s21_calendar/*.c
 # TESTS PATHS
 TESTS=s21_calculations/s21_tests/*.c
 # OTHER PATHS
@@ -76,7 +76,7 @@ run:
 
 test: ggwp
 	clear
-	gcc $(CC) $(CALC) $(CREDIT) $(DEPOSIT) $(COMMON) $(TESTS) -lm -o $(EXE) $(LCOV)
+	gcc $(CC) $(CALC) $(CREDIT) $(DEPOSIT) $(SUPPORT) $(TESTS) -lm -o $(EXE) $(LCOV)
 	@./$(EXE)
 
 gcov_report: uninstall

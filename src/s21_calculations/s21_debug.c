@@ -51,13 +51,7 @@ void free_memory(int row, payments *pay, early_pay *redemption) {
     }
 }
 
-int logarifm(long double x, long double base) {
-    return ceil(log(x) / log(base));
-}
-
-#endif
-
-void print_all(init *data, investment *pay) {
+void print_credit(initial *data, payments *pay) {
     printf("MONTHLY:\n");
     for(int i = 0; i <= data->current; i++) {
         printf("%d", i + 1);
@@ -68,6 +62,24 @@ void print_all(init *data, investment *pay) {
     }
     printf("\nTOTAL : %Lf  -  %Lf\n\n", pay->total[0], pay->total[1]);
 }
+
+#endif
+
+#ifndef DEBUG_DEPOSIT
+#define DEBUG_DEPOSIT
+
+void print_deposit(init *data, investment *pay) {
+    printf("MONTHLY:\n");
+    for(int i = 0; i <= data->current; i++) {
+        printf("%d", i + 1);
+        for(int j = 0; j < 4; j++) {
+            printf(" - %Lf", pay->result[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\nTOTAL : %Lf  -  %Lf\n\n", pay->total[0], pay->total[1]);
+}
+
 
 void init_deposit(init *deposit, long double amount, int term_type, int term, int day, int month, int year, long double rate, int capital_time, int capital) {
     deposit->amount = amount;
@@ -81,14 +93,22 @@ void init_deposit(init *deposit, long double amount, int term_type, int term, in
     deposit->capital = capital;
 }
 
+#endif
+
+#ifndef DEBUG
+#define DEBUG
+
 int main() {
     init data;
     investment pay;
 
-    init_deposit(&data, 8622515.22, MONTHS_PERIOD, 12, 1, 1, 2014, 10, BY_MONTH, CAPITAL);
+    init_deposit(&data, 8622515.22, DAYS_PERIOD, 18125, 1, 1, 2015, 10, BY_END_TERM, NOT_CAPITAL);
 
     calculate_deposit(&data, &pay);
     long double result_total[2] = {10471.28, 110471.28};
 
-    print_all(&data, &pay);
+    print_deposit(&data, &pay);
+    // print_credit(&data, &pay);
 }
+
+#endif

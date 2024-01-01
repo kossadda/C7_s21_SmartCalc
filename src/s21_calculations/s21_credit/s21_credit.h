@@ -1,10 +1,7 @@
 #ifndef S21_C_CREDIT_H
 #define S21_C_CREDIT_H
 
-#include "../s21_common/s21_common.h"
-
-#include <math.h>
-#include <stdlib.h>
+#include "../s21_calendar/s21_calendar.h"
 
 #define CHECK_NULL(ptr) (ptr == NULL)
 

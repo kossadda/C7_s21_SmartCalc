@@ -41,9 +41,9 @@ int main(void) {
     };
 
     Suite *(*deposit[])(void) = {
-        s21_deposit_by_month   ,
         s21_deposit_by_day     ,
         s21_deposit_by_week    ,
+        s21_deposit_by_month   ,
         s21_deposit_by_quarter ,
         s21_deposit_by_halfyear,
         s21_deposit_by_year    ,

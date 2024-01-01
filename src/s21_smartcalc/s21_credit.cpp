@@ -7,11 +7,10 @@
 extern "C" {
 #include "../s21_calculations/s21_credit/s21_credit.h"
 #include "../s21_calculations/s21_credit/s21_credit.c"
-#include "../s21_calculations/s21_credit/s21_annuity.c"
+#include "../s21_calculations/s21_credit/s21_calc_payments.c"
 #include "../s21_calculations/s21_credit/s21_redemption.c"
-#include "../s21_calculations/s21_credit/s21_differentiated.c"
-#include "../s21_calculations/s21_credit/s21_calendar.c"
 #include "../s21_calculations/s21_credit/s21_supporting.c"
+#include "../s21_calculations/s21_calendar/s21_calendar.c"
 }
 
 s21_credit::s21_credit(QWidget *parent)

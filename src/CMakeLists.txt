@@ -30,9 +30,8 @@ set(PROJECT_SOURCES
     ./s21_calculations/s21_calc/s21_validation.c
     ./s21_calculations/s21_credit/s21_credit.c
     ./s21_calculations/s21_credit/s21_credit.c
-    ./s21_calculations/s21_credit/s21_annuity.c
-    ./s21_calculations/s21_credit/s21_differentiated.c
-    ./s21_calculations/s21_credit/s21_calendar.c
+    ./s21_calculations/s21_credit/s21_calc_payments.c
+    ./s21_calculations/s21_calendar/s21_calendar.c
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
