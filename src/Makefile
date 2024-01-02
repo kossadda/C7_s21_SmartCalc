@@ -76,7 +76,7 @@ run:
 
 test: ggwp
 	clear
-	gcc $(CC) $(CALC) $(CREDIT) $(DEPOSIT) $(SUPPORT) $(TESTS) -lm -o $(EXE) $(LCOV)
+	@gcc $(CC) $(CALC) $(CREDIT) $(DEPOSIT) $(SUPPORT) $(TESTS) -lm -o $(EXE) $(LCOV)
 	@./$(EXE)
 
 gcov_report: uninstall

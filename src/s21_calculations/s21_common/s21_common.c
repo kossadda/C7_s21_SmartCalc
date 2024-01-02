@@ -24,13 +24,12 @@ long double round_value(long double number)
 int init_payments(long double ***result, long double **total)
 {
     int error_code = NOT_ALLOCATED;
-    int error_code_total = NOT_ALLOCATED;
-    int error_code_result = NOT_ALLOCATED;
     
     *total = (long double *)malloc(3 * sizeof(long double));
-    error_code_total = CHECK_NULL(*total);
+    int error_code_total = CHECK_NULL(*total);
     *result = (long double **)malloc(1 * sizeof(long double *));
-    error_code_result = CHECK_NULL(*result);
+    int error_code_result = CHECK_NULL(*result);
+    
     error_code = error_code_total + error_code_result;
     
     (*total)[0] = 0;

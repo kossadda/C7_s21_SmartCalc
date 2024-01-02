@@ -30,11 +30,12 @@ void calculate_deposit(deposit_init *data, investment *pay)
             time_data end_period = data->date;
             add_one_period(&(data->date), &end_period, last_day, data->capital_time, const_day);
 
-             error_code = calc_period(data, pay, end_period);
+            error_code = calc_period(data, pay, end_period);
             
             if(data->capital_time != BY_END_TERM) {
                 data->date = end_period;
             }
+
             data->current = (error_code == ALLOCATED) ? data->current : data->term;
         }
     }

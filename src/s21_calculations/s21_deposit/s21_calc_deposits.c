@@ -16,12 +16,15 @@ static void write_results(deposit_init data, investment *pay);
 int calc_period(deposit_init *data, investment *pay, time_data end_period)
 {
     int error_code = ALLOCATED;
+
     data->current++;
     error_code = allocate_row(&pay->result, data->current);
+
     if(error_code == ALLOCATED) {
         long double first_part_month = percent_formula(data->amount, data->rate, data->date.leap, data->date.month_days);
         long double second_part_month = percent_formula(data->amount, data->rate, end_period.leap, end_period.month_days);
         pay->profit = round_value(first_part_month + second_part_month);
+        
         if(data->capital == CAPITAL) {
             pay->balance_changing = pay->profit;
             pay->receiving = 0;
@@ -30,9 +33,11 @@ int calc_period(deposit_init *data, investment *pay, time_data end_period)
             pay->balance_changing = 0;
             pay->receiving = pay->profit;
         }
+
         pay->balance = data->amount;
         write_results(*data, pay);
     }
+
     return error_code;
 }
 
