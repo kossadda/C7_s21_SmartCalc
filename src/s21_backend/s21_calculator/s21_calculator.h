@@ -13,6 +13,7 @@
 #define TRIGONOMETRIC_CHARS "sctSCTQLl"
 #define PREV_TRIGONTRC_CHARS "+-/*()d"
 #define BEGIN_TRIGONTRC_CHARS "sctal"
+#define END_TIGONTRC_CHARS "gtnsd"
 #define WRONG_BEGINNING "odinqrg"
 #define RIGHT_ASSOCIATIVE "^"
 #define BEGIN_ADDITION "1*("
@@ -27,6 +28,7 @@
 #define DIV "/"
 #define MUL "*"
 #define MOD "m"
+#define DOT "."
 #define PI "P"
 #define E "e"
 

@@ -58,5 +58,6 @@ Suite *s21_deposit_by_week(void);
 Suite *s21_deposit_by_quarter(void);
 Suite *s21_deposit_by_halfyear(void);
 Suite *s21_deposit_by_year(void);
+Suite *s21_deposit_by_end_term(void);
 
 #endif

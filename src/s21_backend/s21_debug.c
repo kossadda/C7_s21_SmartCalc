@@ -102,10 +102,10 @@ int main() {
     deposit_init data;
     investment pay;
 
-    init_deposit(&data, 100.86, DAYS_PERIOD, 800000, 1, 1, 2024, 2.123, BY_DAY, CAPITAL);
+    init_deposit(&data, 10000, MONTHS_PERIOD, 12, 1, 1, 2020, 15, BY_MONTH, CAPITAL);
 
     calculate_deposit(&data, &pay);
-    long double result_total[2] = {6158421560.45, 6485163303.31};
+    long double result_total[2] = {1500.61, 10000};
 
     print_deposit(&data, &pay);
     // print_credit(&data, &pay);

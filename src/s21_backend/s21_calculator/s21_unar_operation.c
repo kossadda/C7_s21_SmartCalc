@@ -11,10 +11,10 @@ char *unar_operation(char *str)
 {
     char ptr[256] = {0};
     int len = strlen(str) - 1;
-    if(str[len] == ')' && check(str[len-1], NUMBERS)) {
+    if(str[len] == CHAR_CL_BRCK && check(str[len-1], NUMBERS)) {
         int num = number_position(str, len - 1);
         int pos_minus = minus_position(str, len);
-        if(num == pos_minus && !check(str[num - 2], "gtnsd")) {
+        if(num == pos_minus && !check(str[num - 2], END_TIGONTRC_CHARS)) {
             clean_unar(str, ptr, len, pos_minus);
             strcpy(str, ptr);
         }
@@ -38,7 +38,7 @@ int number_position(char *str, int len)
 {
     int pos_number = 0;
     for(int i = len; i >= 0; i--) {
-        if(!check(str[i], NUMBERS ".")) {
+        if(!check(str[i], NUMBERS DOT)) {
            pos_number = i;
            i = -1; 
         }
@@ -58,7 +58,7 @@ int minus_position(char *str, int len)
 {
     int pos_minus = 0;
     for (int i = len; i >= 0; i--) {
-        if(str[i] == '-' && str[i-1] == '(' && str[len] == ')') {
+        if(str[i] == CHAR_MINUS && str[i-1] == CHAR_OP_BRCK && str[len] == CHAR_CL_BRCK) {
             pos_minus = i;
             i = -1;
         }
@@ -82,12 +82,12 @@ void make_unar(char *str, char *ptr, int len, int pos_number)
     }
     for(int i = 0; i < len + 1; i++) {
         if(i == pos_number + 1) {
-            strcat(ptr, "(-");
+            strcat(ptr, OP_BRCK MINUS);
             count += 2;
         }
         ptr[count++] = str[i];
         if(i == len) {
-            ptr[count++] = ')';
+            ptr[count++] = CHAR_OP_BRCK;
         }
     }
 }
