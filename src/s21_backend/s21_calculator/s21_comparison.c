@@ -1,4 +1,4 @@
-#include "s21_calc.h"
+#include "s21_calculator.h"
 
 /**
  * @brief A function designed to compare the priorities of two lexems (current and at the top of the stack).

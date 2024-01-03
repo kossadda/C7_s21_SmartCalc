@@ -1,4 +1,4 @@
-#include "s21_calc.h"
+#include "s21_calculator.h"
 #include <math.h>
 
 /**

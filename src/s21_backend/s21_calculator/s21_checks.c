@@ -1,4 +1,4 @@
-#include "s21_calc.h"
+#include "s21_calculator.h"
 
 /**
  * @brief Function for checking an incoming character to match string characters.

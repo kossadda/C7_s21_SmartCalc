@@ -1,4 +1,4 @@
-#include "s21_calc.h"
+#include "s21_calculator.h"
 #include <stdarg.h>
 
 static int check_trigonometric(char *true_str, int *count, const char *str, size_t *i);

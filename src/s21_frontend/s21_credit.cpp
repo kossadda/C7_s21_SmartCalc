@@ -5,13 +5,13 @@
 #include "ui_s21_credit_table.h"
 
 extern "C" {
-#include "../s21_calculations/s21_credit/s21_credit.h"
-#include "../s21_calculations/s21_credit/s21_credit.c"
-#include "../s21_calculations/s21_credit/s21_calc_payments.c"
-#include "../s21_calculations/s21_credit/s21_redemption.c"
-#include "../s21_calculations/s21_credit/s21_supporting.c"
-#include "../s21_calculations/s21_common/s21_calendar.c"
-#include "../s21_calculations/s21_common/s21_common.c"
+#include "../s21_backend/s21_credit/s21_credit.h"
+#include "../s21_backend/s21_credit/s21_credit.c"
+#include "../s21_backend/s21_credit/s21_calc_payments.c"
+#include "../s21_backend/s21_credit/s21_redemption.c"
+#include "../s21_backend/s21_credit/s21_supporting.c"
+#include "../s21_backend/s21_common/s21_calendar.c"
+#include "../s21_backend/s21_common/s21_common.c"
 }
 
 s21_credit::s21_credit(QWidget *parent)

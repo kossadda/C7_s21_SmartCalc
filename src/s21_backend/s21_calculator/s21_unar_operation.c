@@ -1,4 +1,4 @@
-#include "s21_calc.h"
+#include "s21_calculator.h"
 
 /**
  * @brief Function for adding/removing a unary minus from the last number in a line.

@@ -1,4 +1,4 @@
-#include "s21_calc.h"
+#include "s21_calculator.h"
 
 static void add_num_to_stack(num_stack *num, char *token);
 

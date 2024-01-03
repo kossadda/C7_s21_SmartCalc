@@ -6,16 +6,16 @@ COVER=-fprofile-arcs -ftest-coverage
 LCOV=-lcheck -lsubunit -lgcov
 GCOVR=-r . --html --html-details
 # FUNCS PATHS1
-MAIN_FOLD=s21_smartcalc
-CALC=s21_calculations/s21_calculator/*.c
-CREDIT=s21_calculations/s21_credit/*.c
-DEPOSIT=s21_calculations/s21_deposit/*.c
-SUPPORT=s21_calculations/s21_common/*.c
+MAIN_FOLD=s21_frontend
+CALC=s21_backend/s21_calculator/*.c
+CREDIT=s21_backend/s21_credit/*.c
+DEPOSIT=s21_backend/s21_deposit/*.c
+SUPPORT=s21_backend/s21_common/*.c
 # TESTS PATHS
-TESTS=s21_calculations/s21_tests/*.c
+TESTS=s21_backend/s21_tests/*.c
 # OTHER PATHS
 TRASH=$(MAIN_FOLD)/*.o $(MAIN_FOLD)/ui_* $(MAIN_FOLD)/moc_* $(MAIN_FOLD)/*.user $(MAIN_FOLD)/Makefile
-GCOV=s21_calculations/gcov_report
+GCOV=s21_backend/gcov_report
 BUILD=build
 # EXECUTE
 EXE=test
@@ -101,7 +101,7 @@ clang-format:
 
 # Моя временная цель
 build: uninstall
-	@gcc $(CC) $(CALC) $(CREDIT) $(DEPOSIT) $(SUPPORT) s21_calculations/s21_debug.c -lm -o $(EXE)
+	@gcc $(CC) $(CALC) $(CREDIT) $(DEPOSIT) $(SUPPORT) s21_backend/s21_debug.c -lm -o $(EXE)
 	clear
 	@./$(EXE)
 
