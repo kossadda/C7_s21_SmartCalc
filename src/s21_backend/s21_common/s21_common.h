@@ -59,6 +59,7 @@ int compare_dates(time_data first, time_data second);
 void add_one_period(time_data *begin, time_data *end, time_data last_day, int capital_type, int const_date);
 int sub_till_end_month(time_data date);
 int sub_date(time_data first, time_data second);
+int days_in_this_year(time_data date);
 time_data determine_last_day(time_data date, int term_type, int term);
 
 // Another functions.

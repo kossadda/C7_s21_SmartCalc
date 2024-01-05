@@ -7,8 +7,10 @@
  * @brief List defining constant statuses for functions used in the deposit calculator.
 */
 enum deposit_functions_status {
-//  Deposit capitalization enabled/disabled.
+//  Deposit capitalization disabled/enabled.
     NOT_CAPITAL = 0, CAPITAL = 1,
+//  Type of operation with deposit sum.
+    REFILL = 0, WITHDRAWALS = 1,
 };
 
 /**
@@ -37,9 +39,23 @@ typedef struct deposit_init {
     int current;                        /** A counter that tracks the actual number of payment periods. */
 } deposit_init;
 
+/**
+ * @brief Struct representing initial information about deposit replenishments and partial withdrawals.
+*/
+typedef struct operations {
+    time_data *date;            /** An array containing all operations dates.                        */
+    long double *sum;           /** An array containing all operations amounts.                      */
+    int *type;                  /** An array containing all types of operations.                     */
+    long double min_balance;    /** The amount below which cannot remain after partial withdrawals.  */
+    int count;                  /** Number of operations.                                            */
+    int current;                /** A counter that tracks the actual number of operations made.      */
+} operations;
+
 // Main functions
 
-void calculate_deposit(deposit_init *depos, investment *pay);
-int calc_period(deposit_init *data, investment *pay, time_data end_period);
+void calculate_deposit(deposit_init *data, investment *pay, operations *oper);
+int calc_period(deposit_init *data, investment *pay, time_data end_period, long double percent);
+void write_results(deposit_init data, investment *pay);
+long double calc_period_percent(deposit_init *data, time_data *begin, time_data end);
 
 #endif

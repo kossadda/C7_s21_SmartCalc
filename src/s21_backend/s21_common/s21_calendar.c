@@ -1,6 +1,5 @@
 #include "s21_common.h"
 
-static int days_in_this_year(time_data date);
 static void add_months(time_data *date, int term, int beginning_date);
 static void add_days(time_data *date, int term);
 static void move_to_end_term(time_data *begin, time_data *end);
@@ -150,6 +149,25 @@ time_data determine_last_day(time_data date, int term_type, int term)
 }
 
 /**
+ * @brief Determines how many days from the current date to the beginning of the current year.
+ * 
+ * @param date date from which the count is made.
+ * 
+ * @return Number of days in a year.
+*/
+int days_in_this_year(time_data date)
+{
+    int days[] = {0, JAN, (check_leap(date.year)) ? LEAP_FEB : FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC};
+    int days_in_year = date.day;
+
+    for(int i = 1; i < date.month; i++) {
+        days_in_year += days[i];
+    }
+
+    return days_in_year;
+}
+
+/**
  * @brief Moves the specified date relative to the specified period.
  * 
  * @param[in] begin period start date.
@@ -233,25 +251,6 @@ static void move_to_end_term(time_data *begin, time_data *end) {
     begin->day = end->day;
     begin->month = end->month;
     begin->year = end->year;
-}
-
-/**
- * @brief Determines how many days from the current date to the beginning of the current year.
- * 
- * @param date date from which the count is made.
- * 
- * @return Number of days in a year.
-*/
-static int days_in_this_year(time_data date)
-{
-    int days[] = {0, JAN, (check_leap(date.year)) ? LEAP_FEB : FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC};
-    int days_in_year = date.day;
-
-    for(int i = 1; i < date.month; i++) {
-        days_in_year += days[i];
-    }
-
-    return days_in_year;
 }
 
 /**

@@ -16,7 +16,11 @@ graphics::graphics(QWidget *parent) :
     tracer(nullptr),
     last_step(0.01),
     tracer_visible(0),
-    graph_nums(0)
+    graph_nums(0),
+    xBegin(0),
+    yBegin(0),
+    xEnd(0),
+    yEnd(0)
 {
     ui->setupUi(this);
     change_label_visible(false);

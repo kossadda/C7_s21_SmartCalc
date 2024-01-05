@@ -1,7 +1,5 @@
 #include "s21_deposit.h"
 
-static void write_results(deposit_init data, investment *pay);
-
 /**
  * @brief Function for determining all payments for a certain period.
  * 
@@ -13,7 +11,7 @@ static void write_results(deposit_init data, investment *pay);
  * @retval ALLOCATED = 0 - if memory is allocated.
  * @retval NOT_ALLOCATED = 1 - if memory isn't allocated.
 */
-int calc_period(deposit_init *data, investment *pay, time_data end_period)
+int calc_period(deposit_init *data, investment *pay, time_data end_period, long double percent)
 {
     int error_code = ALLOCATED;
 
@@ -21,9 +19,10 @@ int calc_period(deposit_init *data, investment *pay, time_data end_period)
     error_code = allocate_row(&pay->result, data->current);
 
     if(error_code == ALLOCATED) {
+        // pay->profit = calc_period_percent(data, &data->date, end_period) + round_value(percent);
         long double first_part_month = percent_formula(data->amount, data->rate, data->date.leap, data->date.month_days);
         long double second_part_month = percent_formula(data->amount, data->rate, end_period.leap, end_period.month_days);
-        pay->profit = round_value(first_part_month + second_part_month);
+        pay->profit = round_value(first_part_month + second_part_month) + round_value(percent);
         
         if(data->capital == CAPITAL) {
             pay->balance_changing = pay->profit;
@@ -47,7 +46,7 @@ int calc_period(deposit_init *data, investment *pay, time_data end_period)
  * @param data structure containing input parameters for calculation.
  * @param[in] pay structure containing buffer variables for monthly results and general payment data arrays.
 */
-static void write_results(deposit_init data, investment *pay)
+void write_results(deposit_init data, investment *pay)
 {
     pay->result[data.current][0] = pay->profit;
     pay->result[data.current][1] = pay->balance_changing;

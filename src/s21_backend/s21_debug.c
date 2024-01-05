@@ -80,6 +80,22 @@ void print_deposit(deposit_init *data, investment *pay) {
     printf("\nTOTAL : %Lf  -  %Lf\n\n", pay->total[0], pay->total[1]);
 }
 
+int init_operations(operations *oper)
+{
+    int error_code = NOT_ALLOCATED;
+    oper->date = (time_data *)malloc(1 * sizeof(time_data));
+    int error_code_date = CHECK_NULL(oper->date);
+    oper->sum = (long double *)malloc(1 * sizeof(long double));
+    int error_code_sum = CHECK_NULL(oper->sum);
+    oper->type = (int *)malloc(1 * sizeof(int));
+    int error_code_type = CHECK_NULL(oper->type);
+    error_code = error_code_date + error_code_sum + error_code_type;
+    oper->count = 0;
+    oper->current = 0;
+    oper->min_balance = 0;
+    return error_code;
+}
+
 
 void init_deposit(deposit_init *deposit, long double amount, int term_type, int term, int day, int month, int year, long double rate, int capital_time, int capital) {
     deposit->amount = amount;
@@ -93,6 +109,19 @@ void init_deposit(deposit_init *deposit, long double amount, int term_type, int 
     deposit->capital = capital;
 }
 
+void input_operation(operations *oper, int day, int month, int year, long double sum, int type, long double min_balance) {
+    oper->date = (time_data *)realloc(oper->date, (oper->count + 1) * sizeof(time_data));
+    oper->sum = (long double *)realloc(oper->sum, (oper->count + 1) * sizeof(long double));
+    oper->type = (int *)realloc(oper->type, (oper->count + 1) * sizeof(int));
+    oper->date[oper->count].day = day;
+    oper->date[oper->count].month = month;
+    oper->date[oper->count].year = year;
+    oper->sum[oper->count] = sum;
+    oper->type[oper->count] = type;
+    oper->min_balance = min_balance;
+    oper->count++; 
+}
+
 #endif
 
 #ifndef DEBUG
@@ -101,13 +130,17 @@ void init_deposit(deposit_init *deposit, long double amount, int term_type, int 
 int main() {
     deposit_init data;
     investment pay;
+    operations oper;
+    init_operations(&oper);
 
-    init_deposit(&data, 10000, MONTHS_PERIOD, 12, 1, 1, 2020, 15, BY_MONTH, CAPITAL);
+    init_deposit(&data, 10000, MONTHS_PERIOD, 12, 1, 1, 2022, 15, BY_MONTH, CAPITAL);
+    input_operation(&oper, 15, 3, 2022, 1000, REFILL, 0);
 
-    calculate_deposit(&data, &pay);
-    long double result_total[2] = {1500.61, 10000};
+    calculate_deposit(&data, &pay, &oper);
 
     print_deposit(&data, &pay);
+
+
     // print_credit(&data, &pay);
 }
 
