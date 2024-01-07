@@ -118,7 +118,7 @@ long double calc_period_percent(deposit_init *data, time_data *begin, time_data 
     percent = percent_formula(data->amount, data->rate, oper->leap, oper->month_days) + first_part;
     
     leap_days_between_dates(oper, end);
-
+    
     *begin = *oper;
     
     return percent;

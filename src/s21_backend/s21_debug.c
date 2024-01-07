@@ -70,12 +70,28 @@ void print_credit(credit_init *data, payments *pay) {
 
 void print_deposit(deposit_init *data, investment *pay) {
     printf("MONTHLY:\n");
-    for(int i = 0; i <= data->current; i++) {
-        printf("%d", i + 1);
+    int rows = data->current;
+    int const_date = data->date.day;
+    time_data last_day = determine_last_day(data->date, data->term_type, data->term);
+    for(int i = 0; i <= rows; i++) {
+        time_data end = data->date;
+        add_one_period(&data->date, &end, last_day, data->capital_time, const_date);
+
+        if(end.day < 10) {
+            printf("0");
+        }
+        printf("%d.", end.day);
+        if(end.month < 10) {
+            printf("0");
+        }
+        printf("%d.", end.month);
+        printf("%d", end.year);
+        
         for(int j = 0; j < 4; j++) {
             printf(" - %Lf", pay->result[i][j]);
         }
         printf("\n");
+        data->date = end;
     }
     printf("\nTOTAL : %Lf  -  %Lf\n\n", pay->total[0], pay->total[1]);
 }
@@ -126,6 +142,7 @@ void input_operation(operations *oper, int day, int month, int year, long double
 
 #ifndef DEBUG
 #define DEBUG
+    // deposit_init data1 = data;
 
 int main() {
     deposit_init data;
@@ -133,14 +150,18 @@ int main() {
     operations oper;
     init_operations(&oper);
 
-    init_deposit(&data, 8737647.43, MONTHS_PERIOD, 121, 31, 1, 2015, 8.476, BY_MONTH, CAPITAL);
-    // input_operation(&oper, 2, 2, 2015, 22222222, REFILL, 0);
+    init_deposit(&data, 8737647.43, MONTHS_PERIOD, 121, 31, 1, 2015, 8.476, BY_YEAR, CAPITAL);
+    deposit_init data1 = data;
+    input_operation(&oper, 2, 2, 2015, 22222222, REFILL, 0);
     // input_operation(&oper, 2, 2, 2018, 11111111, REFILL, 0);
 
     calculate_deposit(&data, &pay, &oper);
-    long double result_total[2] = {50610081.91, 92681062.34};
+    long double result_total[2] = {47963663.67, 90034644.1};
 
-    print_deposit(&data, &pay);
+
+    
+    data1.current = data.current;
+    print_deposit(&data1, &pay);
 
     // print_credit(&data, &pay);
 }

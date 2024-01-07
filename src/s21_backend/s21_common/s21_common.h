@@ -21,11 +21,9 @@ enum calendar_constants {
     DATE_OUTSIDE = 0, DATE_BETWEEN = 1,
 //  Dates compare status.
     DATE_EQUAL = 0, DATE_BEFORE = 1, DATE_AFTER = 2,
-//  Last day inclusive.
-    INCLUSIVE = 0, NO_INCLUSIVE = 1,
 //  Type of frequency of capitalization.
-    BY_DAY     = 0, BY_WEEK     = 1, BY_MONTH = 2, CREDIT_MONTH = 3,
-    BY_QUARTER = 4, BY_HALFYEAR = 5, BY_YEAR  = 6, BY_END_TERM  = 7,
+    BY_DAY     = -1, BY_WEEK     = -2, BY_MONTH = -3, CREDIT_MONTH = -4,
+    BY_QUARTER = -5, BY_HALFYEAR = -6, BY_YEAR  = -7, BY_END_TERM  = -8,
 //  Numerical representation of capitalization periodicity.
     DAY = 1, WEEK = 7, MONTH = 1, QUARTER = 3, HALFYEAR = 6, YEAR = 12,
 //  Type of term.
