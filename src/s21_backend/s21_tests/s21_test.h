@@ -8,10 +8,12 @@
 
 int test_suite(Suite *test);
 void free_credit(int row, payments *pay, early_pay *redemption);
-void free_deposit(int row, investment *pay);
+void free_deposit(int row, investment *pay, operations *oper);
 void input_initial(credit_init *data, long double debt, long double months, int type, long double rate, int day, int month, int year);
 void input_redemption(early_pay *redemption, int day, int month, int year, long double sum, int type);
 void init_deposit(deposit_init *deposit, long double amount, int term_type, int term, int day, int month, int year, long double rate, int capital_time, int capital);
+int init_operations(operations *oper);
+void input_operation(operations *oper, int day, int month, int year, long double sum, int type, long double min_balance);
 
 // Calculator tests
 
@@ -59,5 +61,12 @@ Suite *s21_deposit_by_quarter(void);
 Suite *s21_deposit_by_halfyear(void);
 Suite *s21_deposit_by_year(void);
 Suite *s21_deposit_by_end_term(void);
+Suite *s21_deposit_refill_by_day(void);
+Suite *s21_deposit_refill_by_week(void);
+Suite *s21_deposit_refill_by_month(void);
+Suite *s21_deposit_refill_by_quarter(void);
+Suite *s21_deposit_refill_by_halfyear(void);
+Suite *s21_deposit_refill_by_year(void);
+Suite *s21_deposit_refill_by_end_term(void);
 
 #endif

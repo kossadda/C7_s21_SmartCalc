@@ -19,10 +19,9 @@ int calc_period(deposit_init *data, investment *pay, time_data end_period, long 
     error_code = allocate_row(&pay->result, data->current);
 
     if(error_code == ALLOCATED) {
-        // pay->profit = calc_period_percent(data, &data->date, end_period) + round_value(percent);
         long double first_part_month = percent_formula(data->amount, data->rate, data->date.leap, data->date.month_days);
         long double second_part_month = percent_formula(data->amount, data->rate, end_period.leap, end_period.month_days);
-        pay->profit = round_value(first_part_month + second_part_month) + round_value(percent);
+        pay->profit = round_value(first_part_month + second_part_month + percent);
         
         if(data->capital == CAPITAL) {
             pay->balance_changing = pay->profit;

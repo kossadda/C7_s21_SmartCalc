@@ -127,6 +127,47 @@ int compare_dates(time_data first, time_data second)
     return compare;
 }
 
+void leap_days_between_dates(time_data *first, time_data *second)
+{
+    int leap_days = 0;
+    int normal_days = 0;
+    first->leap = check_leap(first->year);
+    second->leap = check_leap(second->year);
+
+    if(first->year != second->year) {
+        int first_date_years_day = (first->leap ? LEAP_YEAR : YEAR_DAYS) - days_in_this_year(*first);
+        int second_date_years_day = days_in_this_year(*second);
+
+        if(first->leap) {
+            leap_days += first_date_years_day;
+        } else {
+            normal_days += first_date_years_day;
+        }
+        if(second->leap) {
+            leap_days += second_date_years_day;
+        } else {
+            normal_days += second_date_years_day;
+        }
+
+        for(int i = first->year + 1; i < second->year; i++) {
+            if(check_leap(i)) {
+                leap_days += LEAP_YEAR;
+            } else {
+                normal_days += YEAR_DAYS;
+            }
+        }
+
+        first->month_days = leap_days;
+        first->leap = YEAR_IS_LEAP;
+
+        second->month_days = normal_days;
+        second->leap = YEAR_NOT_LEAP;
+    } else {
+        second->month_days = sub_date(*second, *first);
+        first->month_days = 0;
+    }
+}
+
 /**
  * @brief Defines the last day of the deposit.
  * 
@@ -248,9 +289,9 @@ static void move_to_end_term(time_data *begin, time_data *end) {
         end->leap = YEAR_IS_LEAP;
     }
 
-    begin->day = end->day;
-    begin->month = end->month;
-    begin->year = end->year;
+    // begin->day = end->day;
+    // begin->month = end->month;
+    // begin->year = end->year;
 }
 
 /**

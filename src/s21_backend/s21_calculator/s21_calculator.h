@@ -72,7 +72,7 @@ typedef struct num_stack {
  * @brief Struct representing stack for lexems.
 */
 typedef struct lex_stack {
-    char stack[75];                 /** An array containing stack lexems.                            */
+    char stack[75];                 /** An array containing stack lexems (math operations).          */
     int count;                      /** A counter that determines the number of lexems on the stack. */
 } lex_stack;
 

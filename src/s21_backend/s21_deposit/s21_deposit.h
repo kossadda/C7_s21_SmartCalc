@@ -56,6 +56,6 @@ typedef struct operations {
 void calculate_deposit(deposit_init *data, investment *pay, operations *oper);
 int calc_period(deposit_init *data, investment *pay, time_data end_period, long double percent);
 void write_results(deposit_init data, investment *pay);
-long double calc_period_percent(deposit_init *data, time_data *begin, time_data end);
+long double calc_period_percent(deposit_init *data, time_data *begin, time_data *oper, time_data *end);
 
 #endif

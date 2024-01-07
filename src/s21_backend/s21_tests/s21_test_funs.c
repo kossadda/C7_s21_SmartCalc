@@ -48,7 +48,7 @@ void free_credit(int row, payments *pay, early_pay *redemption) {
  * @param row number of rows.
  * @param[in] pay structure containing buffer variables for monthly results and general payment data arrays.
 */
-void free_deposit(int row, investment *pay) {
+void free_deposit(int row, investment *pay, operations *oper) {
     if(pay) {
         for(int i = 0; i < row; i++) {
             free(pay->result[i]);
@@ -61,6 +61,20 @@ void free_deposit(int row, investment *pay) {
         if(pay->total) {
             free(pay->total);
             pay->total = NULL;
+        }
+    }
+    if(oper) {
+        if(oper->date) {
+            free(oper->date);
+            oper->date = NULL;
+        }
+        if(oper->sum) {
+            free(oper->sum);
+            oper->sum = NULL;
+        }
+        if(oper->type) {
+            free(oper->type);
+            oper->type = NULL;
         }
     }
 }
@@ -148,4 +162,34 @@ void init_deposit(deposit_init *deposit, long double amount, int term_type, int 
     deposit->rate = rate;
     deposit->capital_time = capital_time;
     deposit->capital = capital;
+}
+
+int init_operations(operations *oper)
+{
+    int error_code = NOT_ALLOCATED;
+    oper->date = (time_data *)malloc(1 * sizeof(time_data));
+    int error_code_date = CHECK_NULL(oper->date);
+    oper->sum = (long double *)malloc(1 * sizeof(long double));
+    int error_code_sum = CHECK_NULL(oper->sum);
+    oper->type = (int *)malloc(1 * sizeof(int));
+    int error_code_type = CHECK_NULL(oper->type);
+    error_code = error_code_date + error_code_sum + error_code_type;
+    oper->count = 0;
+    oper->current = 0;
+    oper->min_balance = 0;
+    return error_code;
+}
+
+void input_operation(operations *oper, int day, int month, int year, long double sum, int type, long double min_balance)
+{
+    oper->date = (time_data *)realloc(oper->date, (oper->count + 1) * sizeof(time_data));
+    oper->sum = (long double *)realloc(oper->sum, (oper->count + 1) * sizeof(long double));
+    oper->type = (int *)realloc(oper->type, (oper->count + 1) * sizeof(int));
+    oper->date[oper->count].day = day;
+    oper->date[oper->count].month = month;
+    oper->date[oper->count].year = year;
+    oper->sum[oper->count] = sum;
+    oper->type[oper->count] = type;
+    oper->min_balance = min_balance;
+    oper->count++; 
 }

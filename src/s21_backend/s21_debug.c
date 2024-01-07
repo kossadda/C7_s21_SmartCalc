@@ -133,13 +133,14 @@ int main() {
     operations oper;
     init_operations(&oper);
 
-    init_deposit(&data, 10000, MONTHS_PERIOD, 12, 1, 1, 2022, 15, BY_MONTH, CAPITAL);
-    input_operation(&oper, 15, 3, 2022, 1000, REFILL, 0);
+    init_deposit(&data, 8737647.43, MONTHS_PERIOD, 121, 31, 1, 2015, 8.476, BY_MONTH, CAPITAL);
+    // input_operation(&oper, 2, 2, 2015, 22222222, REFILL, 0);
+    // input_operation(&oper, 2, 2, 2018, 11111111, REFILL, 0);
 
     calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {50610081.91, 92681062.34};
 
     print_deposit(&data, &pay);
-
 
     // print_credit(&data, &pay);
 }

@@ -45,14 +45,11 @@ void calculate_deposit(deposit_init *data, investment *pay, operations *oper)
 
             error_code = calc_period(data, pay, end_period, percent);
             
-            if(data->capital_time != BY_END_TERM) {
-                data->date = end_period;
-            }
+            data->date = end_period;
 
             data->date = (error_code == ALLOCATED) ? data->date : last_day;
         }
     }
-    (void)oper;
 }
 
 /**
@@ -77,19 +74,18 @@ static int check_operation(deposit_init *data, investment *pay, operations *oper
             data->current++;
             error_code = allocate_row(&pay->result, data->current);
 
-            *percent += calc_period_percent(data, &data->date, oper->date[oper->current]);
+            *percent += calc_period_percent(data, &data->date, &(oper->date[oper->current]), end_period);
 
             pay->balance_changing = oper->sum[oper->current];
-            pay->balance += pay->balance_changing;
+            pay->balance = data->amount + pay->balance_changing;
             pay->profit = 0;
             pay->receiving = 0;
 
             write_results(*data, pay);
-
-            data->amount += pay->balance_changing;
             
+            data->amount += pay->balance_changing;
             oper->current++;
-
+            
             if(oper->current == oper->count) {
                 break;
             }
@@ -106,24 +102,25 @@ static int compare_date_with_period(time_data begin, time_data *oper, time_data 
     if(compare_dates(*oper, begin) != DATE_BEFORE && compare_dates(*oper, end) == DATE_BEFORE) {
         day_between = DATE_BETWEEN;
         oper->leap = check_leap(oper->year);
-        oper->month_days = sub_date(*oper, begin);
+        oper->month_days = 0;
     }
 
     return day_between;
 }
 
-long double calc_period_percent(deposit_init *data, time_data *begin, time_data end)
+long double calc_period_percent(deposit_init *data, time_data *begin, time_data *oper, time_data *end)
 {
     long double percent = 0;
 
-    if(begin->leap == end.leap) {
-        percent = percent_formula(data->amount, data->rate, begin->leap, sub_date(end, *begin));
-    } else {
-        long double first_part = percent_formula(data->amount, data->rate, begin->leap, sub_till_end_month(*begin));
-        percent = percent_formula(data->amount, data->rate, end.leap, days_in_this_year(end)) + first_part;
-    }
+    leap_days_between_dates(begin, oper);
 
-    *begin = end;
+    long double first_part = percent_formula(data->amount, data->rate, begin->leap, begin->month_days);
+    percent = percent_formula(data->amount, data->rate, oper->leap, oper->month_days) + first_part;
+    
+    leap_days_between_dates(oper, end);
 
-    return round_value(percent);
+    *begin = *oper;
+    
+    return percent;
 }
+

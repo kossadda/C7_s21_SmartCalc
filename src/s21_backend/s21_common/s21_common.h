@@ -21,6 +21,8 @@ enum calendar_constants {
     DATE_OUTSIDE = 0, DATE_BETWEEN = 1,
 //  Dates compare status.
     DATE_EQUAL = 0, DATE_BEFORE = 1, DATE_AFTER = 2,
+//  Last day inclusive.
+    INCLUSIVE = 0, NO_INCLUSIVE = 1,
 //  Type of frequency of capitalization.
     BY_DAY     = 0, BY_WEEK     = 1, BY_MONTH = 2, CREDIT_MONTH = 3,
     BY_QUARTER = 4, BY_HALFYEAR = 5, BY_YEAR  = 6, BY_END_TERM  = 7,
@@ -60,6 +62,7 @@ void add_one_period(time_data *begin, time_data *end, time_data last_day, int ca
 int sub_till_end_month(time_data date);
 int sub_date(time_data first, time_data second);
 int days_in_this_year(time_data date);
+void leap_days_between_dates(time_data *first, time_data *second);
 time_data determine_last_day(time_data date, int term_type, int term);
 
 // Another functions.
