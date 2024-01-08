@@ -68,5 +68,12 @@ Suite *s21_deposit_refill_by_quarter(void);
 Suite *s21_deposit_refill_by_halfyear(void);
 Suite *s21_deposit_refill_by_year(void);
 Suite *s21_deposit_refill_by_end_term(void);
+Suite *s21_deposit_withdrawals_by_day(void);
+Suite *s21_deposit_withdrawals_by_week(void);
+Suite *s21_deposit_withdrawals_by_month(void);
+Suite *s21_deposit_withdrawals_by_quarter(void);
+Suite *s21_deposit_withdrawals_by_halfyear(void);
+Suite *s21_deposit_withdrawals_by_year(void);
+Suite *s21_deposit_withdrawals_by_end_term(void);
 
 #endif

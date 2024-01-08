@@ -2370,6 +2370,1376 @@ START_TEST(deposit_refill_by_end_term_5)
 
 //  ==========================================================================================================================================================================================
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//  ==========================================================================================================================================================================================
+
+START_TEST(deposit_withdrawals_by_day_1)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 150000, MONTHS_PERIOD, 12, 23, 11, 2023, 15, BY_DAY, CAPITAL);
+    input_operation(&oper, 5, 1, 2024, 25000, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {20739.51, 145739.51};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_day_2)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 150000, MONTHS_PERIOD, 12, 23, 11, 2023, 15, BY_DAY, NOT_CAPITAL);
+    input_operation(&oper, 5, 1, 2024, 25000, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {19197.01, 125000};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_day_3)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 12578367.22, MONTHS_PERIOD, 52, 15, 2, 2011, 7.852, BY_DAY, CAPITAL);
+    input_operation(&oper, 6, 6, 2013, 1235567, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {4878199.41, 16220999.63};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_day_4)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 12578367.22, MONTHS_PERIOD, 52, 15, 2, 2011, 7.852, BY_DAY, NOT_CAPITAL);
+    input_operation(&oper, 6, 6, 2013, 1235567, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {4078896.96, 11342800.22};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_day_5)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 102635556.23, MONTHS_PERIOD, 66, 7, 2, 2021, 5.562, BY_DAY, CAPITAL);
+    input_operation(&oper, 7, 8, 2024, 25715345, WITHDRAWALS, 0);
+    input_operation(&oper, 9, 9, 2024, 16152222, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {31861340.39, 92629329.62};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_day_6)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 102635556.23, MONTHS_PERIOD, 66, 7, 2, 2021, 5.562, BY_DAY, NOT_CAPITAL);
+    input_operation(&oper, 7, 8, 2024, 25715345, WITHDRAWALS, 0);
+    input_operation(&oper, 9, 9, 2024, 16152222, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {26799978.62, 60767989.23};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_day_7)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 8737647.43, MONTHS_PERIOD, 121, 31, 1, 2015, 8.476, BY_DAY, CAPITAL);
+    input_operation(&oper, 2, 2, 2015, 22222222, WITHDRAWALS, 0);
+    input_operation(&oper, 2, 2, 2018, 11111111, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {2667113.45, 293649.88};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_day_8)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 8737647.43, MONTHS_PERIOD, 121, 31, 1, 2015, 8.476, BY_DAY, NOT_CAPITAL);
+    input_operation(&oper, 2, 2, 2015, 22222222, WITHDRAWALS, 0);
+    input_operation(&oper, 2, 2, 2018, 11111111, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {7462850.13, 8737647.43};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_day_9)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 62563535.23, MONTHS_PERIOD, 76, 22, 11, 2020, 7.851, BY_DAY, CAPITAL);
+    input_operation(&oper, 3, 5, 2022, 1111111, WITHDRAWALS, 0);
+    input_operation(&oper, 29, 2, 2024, 2222222, WITHDRAWALS, 0);
+    input_operation(&oper, 3, 7, 2025, 3333333, WITHDRAWALS, 0);
+    input_operation(&oper, 10, 7, 2025, 4444444, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {38018815.09, 89471240.32};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_day_10)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 62563535.23, MONTHS_PERIOD, 76, 22, 11, 2020, 7.851, BY_DAY, NOT_CAPITAL);
+    input_operation(&oper, 3, 5, 2022, 1111111, WITHDRAWALS, 0);
+    input_operation(&oper, 29, 2, 2024, 2222222, WITHDRAWALS, 0);
+    input_operation(&oper, 3, 7, 2025, 3333333, WITHDRAWALS, 0);
+    input_operation(&oper, 10, 7, 2025, 4444444, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {29082699.38, 51452425.23};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+//  ==========================================================================================================================================================================================
+
+START_TEST(deposit_withdrawals_by_week_1)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 150000, MONTHS_PERIOD, 12, 23, 11, 2023, 15, BY_WEEK, CAPITAL);
+    input_operation(&oper, 5, 1, 2024, 25000, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {20712.22, 145712.22};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_week_2)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 150000, MONTHS_PERIOD, 12, 23, 11, 2023, 15, BY_WEEK, NOT_CAPITAL);
+    input_operation(&oper, 5, 1, 2024, 25000, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {19197.14, 125000};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_week_3)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 12578367.22, MONTHS_PERIOD, 52, 15, 2, 2011, 7.852, BY_WEEK, CAPITAL);
+    input_operation(&oper, 6, 6, 2013, 1235567, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {4874480.79, 16217281.01};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_week_4)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 12578367.22, MONTHS_PERIOD, 52, 15, 2, 2011, 7.852, BY_WEEK, NOT_CAPITAL);
+    input_operation(&oper, 6, 6, 2013, 1235567, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {4078895.91, 11342800.22};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_week_5)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 102635556.23, MONTHS_PERIOD, 66, 7, 2, 2021, 5.562, BY_WEEK, CAPITAL);
+    input_operation(&oper, 7, 8, 2024, 25715345, WITHDRAWALS, 0);
+    input_operation(&oper, 9, 9, 2024, 16152222, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {31844231.67, 92612220.9};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_week_6)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 102635556.23, MONTHS_PERIOD, 66, 7, 2, 2021, 5.562, BY_WEEK, NOT_CAPITAL);
+    input_operation(&oper, 7, 8, 2024, 25715345, WITHDRAWALS, 0);
+    input_operation(&oper, 9, 9, 2024, 16152222, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {26799981.96, 60767989.23};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_week_7)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 8737647.43, MONTHS_PERIOD, 121, 31, 1, 2015, 8.476, BY_WEEK, CAPITAL);
+    input_operation(&oper, 2, 2, 2015, 22222222, WITHDRAWALS, 0);
+    input_operation(&oper, 2, 2, 2018, 11111111, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {2663355.22, 289891.65};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_week_8)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 8737647.43, MONTHS_PERIOD, 121, 31, 1, 2015, 8.476, BY_WEEK, NOT_CAPITAL);
+    input_operation(&oper, 2, 2, 2015, 22222222, WITHDRAWALS, 0);
+    input_operation(&oper, 2, 2, 2018, 11111111, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {7462845.41, 8737647.43};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_week_9)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 62563535.23, MONTHS_PERIOD, 76, 22, 11, 2020, 7.851, BY_WEEK, CAPITAL);
+    input_operation(&oper, 3, 5, 2022, 1111111, WITHDRAWALS, 0);
+    input_operation(&oper, 29, 2, 2024, 2222222, WITHDRAWALS, 0);
+    input_operation(&oper, 3, 7, 2025, 3333333, WITHDRAWALS, 0);
+    input_operation(&oper, 10, 7, 2025, 4444444, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {37987524.98, 89439950.21};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_week_10)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 62563535.23, MONTHS_PERIOD, 76, 22, 11, 2020, 7.851, BY_WEEK, NOT_CAPITAL);
+    input_operation(&oper, 3, 5, 2022, 1111111, WITHDRAWALS, 0);
+    input_operation(&oper, 29, 2, 2024, 2222222, WITHDRAWALS, 0);
+    input_operation(&oper, 3, 7, 2025, 3333333, WITHDRAWALS, 0);
+    input_operation(&oper, 10, 7, 2025, 4444444, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {29082701.1, 51452425.23};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+//  ==========================================================================================================================================================================================
+
+START_TEST(deposit_withdrawals_by_month_1)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 150000, MONTHS_PERIOD, 12, 23, 11, 2023, 15, BY_MONTH, CAPITAL);
+    input_operation(&oper, 5, 1, 2024, 25000, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {20604.87, 145604.87};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_month_2)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 150000, MONTHS_PERIOD, 12, 23, 11, 2023, 15, BY_MONTH, NOT_CAPITAL);
+    input_operation(&oper, 5, 1, 2024, 25000, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {19196.97, 125000};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_month_3)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 12578367.22, MONTHS_PERIOD, 52, 15, 2, 2011, 7.852, BY_MONTH, CAPITAL);
+    input_operation(&oper, 6, 6, 2013, 1235567, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {4860015.6, 16202815.82};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_month_4)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 12578367.22, MONTHS_PERIOD, 52, 15, 2, 2011, 7.852, BY_MONTH, NOT_CAPITAL);
+    input_operation(&oper, 6, 6, 2013, 1235567, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {4078895.78, 11342800.22};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_month_5)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 102635556.23, MONTHS_PERIOD, 66, 7, 2, 2021, 5.562, BY_MONTH, CAPITAL);
+    input_operation(&oper, 7, 8, 2024, 25715345, WITHDRAWALS, 0);
+    input_operation(&oper, 9, 9, 2024, 16152222, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {31777599.25, 92545588.48};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_month_6)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 102635556.23, MONTHS_PERIOD, 66, 7, 2, 2021, 5.562, BY_MONTH, NOT_CAPITAL);
+    input_operation(&oper, 7, 8, 2024, 25715345, WITHDRAWALS, 0);
+    input_operation(&oper, 9, 9, 2024, 16152222, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {26799981.96, 60767989.23};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_month_7)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 8737647.43, MONTHS_PERIOD, 121, 31, 1, 2015, 8.476, BY_MONTH, CAPITAL);
+    input_operation(&oper, 2, 2, 2015, 22222222, WITHDRAWALS, 0);
+    input_operation(&oper, 2, 2, 2018, 11111111, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {2648712.42, 275248.85};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_month_8)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 8737647.43, MONTHS_PERIOD, 121, 31, 1, 2015, 8.476, BY_MONTH, NOT_CAPITAL);
+    input_operation(&oper, 2, 2, 2015, 22222222, WITHDRAWALS, 0);
+    input_operation(&oper, 2, 2, 2018, 11111111, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {7462843.42, 8737647.43};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_month_9)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 62563535.23, MONTHS_PERIOD, 76, 22, 11, 2020, 7.851, BY_MONTH, CAPITAL);
+    input_operation(&oper, 3, 5, 2022, 1111111, WITHDRAWALS, 0);
+    input_operation(&oper, 29, 2, 2024, 2222222, WITHDRAWALS, 0);
+    input_operation(&oper, 3, 7, 2025, 3333333, WITHDRAWALS, 0);
+    input_operation(&oper, 10, 7, 2025, 4444444, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {37865831.27, 89318256.5};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_month_10)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 62563535.23, MONTHS_PERIOD, 76, 22, 11, 2020, 7.851, BY_MONTH, NOT_CAPITAL);
+    input_operation(&oper, 3, 5, 2022, 1111111, WITHDRAWALS, 0);
+    input_operation(&oper, 29, 2, 2024, 2222222, WITHDRAWALS, 0);
+    input_operation(&oper, 3, 7, 2025, 3333333, WITHDRAWALS, 0);
+    input_operation(&oper, 10, 7, 2025, 4444444, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {29082700.21, 51452425.23};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+//  ==========================================================================================================================================================================================
+
+START_TEST(deposit_withdrawals_by_quarter_1)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 150000, MONTHS_PERIOD, 12, 23, 11, 2023, 15, BY_QUARTER, CAPITAL);
+    input_operation(&oper, 5, 1, 2024, 25000, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {20330.35, 145330.35};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_quarter_2)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 150000, MONTHS_PERIOD, 12, 23, 11, 2023, 15, BY_QUARTER, NOT_CAPITAL);
+    input_operation(&oper, 5, 1, 2024, 25000, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {19196.97, 125000};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_quarter_3)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 12578367.22, MONTHS_PERIOD, 52, 15, 2, 2011, 7.852, BY_QUARTER, CAPITAL);
+    input_operation(&oper, 6, 6, 2013, 1235567, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {4823663.1, 16166463.32};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_quarter_4)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 12578367.22, MONTHS_PERIOD, 52, 15, 2, 2011, 7.852, BY_QUARTER, NOT_CAPITAL);
+    input_operation(&oper, 6, 6, 2013, 1235567, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {4078895.87, 11342800.22};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_quarter_5)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 102635556.23, MONTHS_PERIOD, 66, 7, 2, 2021, 5.562, BY_QUARTER, CAPITAL);
+    input_operation(&oper, 7, 8, 2024, 25715345, WITHDRAWALS, 0);
+    input_operation(&oper, 9, 9, 2024, 16152222, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {31605984.47, 92373973.7};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_quarter_6)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 102635556.23, MONTHS_PERIOD, 66, 7, 2, 2021, 5.562, BY_QUARTER, NOT_CAPITAL);
+    input_operation(&oper, 7, 8, 2024, 25715345, WITHDRAWALS, 0);
+    input_operation(&oper, 9, 9, 2024, 16152222, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {26799981.96, 60767989.23};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_quarter_7)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 8737647.43, MONTHS_PERIOD, 121, 31, 1, 2015, 8.476, BY_QUARTER, CAPITAL);
+    input_operation(&oper, 2, 2, 2015, 22222222, WITHDRAWALS, 0);
+    input_operation(&oper, 2, 2, 2018, 11111111, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {2611594.37, 238130.8};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_quarter_8)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 8737647.43, MONTHS_PERIOD, 121, 31, 1, 2015, 8.476, BY_QUARTER, NOT_CAPITAL);
+    input_operation(&oper, 2, 2, 2015, 22222222, WITHDRAWALS, 0);
+    input_operation(&oper, 2, 2, 2018, 11111111, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {7462843.39, 8737647.43};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_quarter_9)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 62563535.23, MONTHS_PERIOD, 76, 22, 11, 2020, 7.851, BY_QUARTER, CAPITAL);
+    input_operation(&oper, 3, 5, 2022, 1111111, WITHDRAWALS, 0);
+    input_operation(&oper, 29, 2, 2024, 2222222, WITHDRAWALS, 0);
+    input_operation(&oper, 3, 7, 2025, 3333333, WITHDRAWALS, 0);
+    input_operation(&oper, 10, 7, 2025, 4444444, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {37557368.32, 89009793.55};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_quarter_10)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 62563535.23, MONTHS_PERIOD, 76, 22, 11, 2020, 7.851, BY_QUARTER, NOT_CAPITAL);
+    input_operation(&oper, 3, 5, 2022, 1111111, WITHDRAWALS, 0);
+    input_operation(&oper, 29, 2, 2024, 2222222, WITHDRAWALS, 0);
+    input_operation(&oper, 3, 7, 2025, 3333333, WITHDRAWALS, 0);
+    input_operation(&oper, 10, 7, 2025, 4444444, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {29082700.16, 51452425.23};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+//  ==========================================================================================================================================================================================
+
+START_TEST(deposit_withdrawals_by_halfyear_1)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 150000, MONTHS_PERIOD, 12, 23, 11, 2023, 15, BY_HALFYEAR, CAPITAL);
+    input_operation(&oper, 5, 1, 2024, 25000, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {19933.78, 144933.78};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_halfyear_2)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 150000, MONTHS_PERIOD, 12, 23, 11, 2023, 15, BY_HALFYEAR, NOT_CAPITAL);
+    input_operation(&oper, 5, 1, 2024, 25000, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {19196.97, 125000};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_halfyear_3)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 12578367.22, MONTHS_PERIOD, 52, 15, 2, 2011, 7.852, BY_HALFYEAR, CAPITAL);
+    input_operation(&oper, 6, 6, 2013, 1235567, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {4771120.2, 16113920.42};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_halfyear_4)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 12578367.22, MONTHS_PERIOD, 52, 15, 2, 2011, 7.852, BY_HALFYEAR, NOT_CAPITAL);
+    input_operation(&oper, 6, 6, 2013, 1235567, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {4078895.92, 11342800.22};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_halfyear_5)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 102635556.23, MONTHS_PERIOD, 66, 7, 2, 2021, 5.562, BY_HALFYEAR, CAPITAL);
+    input_operation(&oper, 7, 8, 2024, 25715345, WITHDRAWALS, 0);
+    input_operation(&oper, 9, 9, 2024, 16152222, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {31352883.68, 92120872.91};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_halfyear_6)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 102635556.23, MONTHS_PERIOD, 66, 7, 2, 2021, 5.562, BY_HALFYEAR, NOT_CAPITAL);
+    input_operation(&oper, 7, 8, 2024, 25715345, WITHDRAWALS, 0);
+    input_operation(&oper, 9, 9, 2024, 16152222, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {26799981.97, 60767989.23};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_halfyear_7)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 8737647.43, MONTHS_PERIOD, 121, 31, 1, 2015, 8.476, BY_HALFYEAR, CAPITAL);
+    input_operation(&oper, 2, 2, 2015, 22222222, WITHDRAWALS, 0);
+    input_operation(&oper, 2, 2, 2018, 11111111, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {2557792.72, 184329.15};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_halfyear_8)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 8737647.43, MONTHS_PERIOD, 121, 31, 1, 2015, 8.476, BY_HALFYEAR, NOT_CAPITAL);
+    input_operation(&oper, 2, 2, 2015, 22222222, WITHDRAWALS, 0);
+    input_operation(&oper, 2, 2, 2018, 11111111, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {7462843.28, 8737647.43};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_halfyear_9)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 62563535.23, MONTHS_PERIOD, 76, 22, 11, 2020, 7.851, BY_HALFYEAR, CAPITAL);
+    input_operation(&oper, 3, 5, 2022, 1111111, WITHDRAWALS, 0);
+    input_operation(&oper, 29, 2, 2024, 2222222, WITHDRAWALS, 0);
+    input_operation(&oper, 3, 7, 2025, 3333333, WITHDRAWALS, 0);
+    input_operation(&oper, 10, 7, 2025, 4444444, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {37111947.66, 88564372.89};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_halfyear_10)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 62563535.23, MONTHS_PERIOD, 76, 22, 11, 2020, 7.851, BY_HALFYEAR, NOT_CAPITAL);
+    input_operation(&oper, 3, 5, 2022, 1111111, WITHDRAWALS, 0);
+    input_operation(&oper, 29, 2, 2024, 2222222, WITHDRAWALS, 0);
+    input_operation(&oper, 3, 7, 2025, 3333333, WITHDRAWALS, 0);
+    input_operation(&oper, 10, 7, 2025, 4444444, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {29082700.15, 51452425.23};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+//  ==========================================================================================================================================================================================
+
+START_TEST(deposit_withdrawals_by_year_1)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 150000, MONTHS_PERIOD, 12, 23, 11, 2023, 15, BY_YEAR, CAPITAL);
+    input_operation(&oper, 5, 1, 2024, 25000, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {19196.97, 144196.97};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_year_2)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 150000, MONTHS_PERIOD, 12, 23, 11, 2023, 15, BY_YEAR, NOT_CAPITAL);
+    input_operation(&oper, 5, 1, 2024, 25000, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {19196.97, 125000};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_year_3)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 12578367.22, MONTHS_PERIOD, 52, 15, 2, 2011, 7.852, BY_YEAR, CAPITAL);
+    input_operation(&oper, 6, 6, 2013, 1235567, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {4673986.21, 16016786.43};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_year_4)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 12578367.22, MONTHS_PERIOD, 52, 15, 2, 2011, 7.852, BY_YEAR, NOT_CAPITAL);
+    input_operation(&oper, 6, 6, 2013, 1235567, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {4078895.91, 11342800.22};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_year_5)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 102635556.23, MONTHS_PERIOD, 66, 7, 2, 2021, 5.562, BY_YEAR, CAPITAL);
+    input_operation(&oper, 7, 8, 2024, 25715345, WITHDRAWALS, 0);
+    input_operation(&oper, 9, 9, 2024, 16152222, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {30879882.35, 91647871.58};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_year_6)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 102635556.23, MONTHS_PERIOD, 66, 7, 2, 2021, 5.562, BY_YEAR, NOT_CAPITAL);
+    input_operation(&oper, 7, 8, 2024, 25715345, WITHDRAWALS, 0);
+    input_operation(&oper, 9, 9, 2024, 16152222, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {26799981.98, 60767989.23};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_year_7)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 8737647.43, MONTHS_PERIOD, 121, 31, 1, 2015, 8.476, BY_YEAR, CAPITAL);
+    input_operation(&oper, 2, 2, 2015, 22222222, WITHDRAWALS, 0);
+    input_operation(&oper, 2, 2, 2018, 11111111, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {2456615.95, 83152.38};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_year_8)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 8737647.43, MONTHS_PERIOD, 121, 31, 1, 2015, 8.476, BY_YEAR, NOT_CAPITAL);
+    input_operation(&oper, 2, 2, 2015, 22222222, WITHDRAWALS, 0);
+    input_operation(&oper, 2, 2, 2018, 11111111, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {7462843.38, 8737647.43};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_year_9)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 62563535.23, MONTHS_PERIOD, 76, 22, 11, 2020, 7.851, BY_YEAR, CAPITAL);
+    input_operation(&oper, 3, 5, 2022, 1111111, WITHDRAWALS, 0);
+    input_operation(&oper, 29, 2, 2024, 2222222, WITHDRAWALS, 0);
+    input_operation(&oper, 3, 7, 2025, 3333333, WITHDRAWALS, 0);
+    input_operation(&oper, 10, 7, 2025, 4444444, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {36275146.38, 87727571.61};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_year_10)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 62563535.23, MONTHS_PERIOD, 76, 22, 11, 2020, 7.851, BY_YEAR, NOT_CAPITAL);
+    input_operation(&oper, 3, 5, 2022, 1111111, WITHDRAWALS, 0);
+    input_operation(&oper, 29, 2, 2024, 2222222, WITHDRAWALS, 0);
+    input_operation(&oper, 3, 7, 2025, 3333333, WITHDRAWALS, 0);
+    input_operation(&oper, 10, 7, 2025, 4444444, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {29082700.15, 51452425.23};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+//  ==========================================================================================================================================================================================
+
+START_TEST(deposit_withdrawals_by_end_term_1)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 150000, MONTHS_PERIOD, 12, 23, 11, 2023, 15, BY_END_TERM, NOT_CAPITAL);
+    input_operation(&oper, 5, 1, 2024, 25000, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {19196.97, 125000};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_end_term_2)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 12578367.22, MONTHS_PERIOD, 52, 15, 2, 2011, 7.852, BY_END_TERM, NOT_CAPITAL);
+    input_operation(&oper, 6, 6, 2013, 1235567, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {4078895.91, 11342800.22};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_end_term_3)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 102635556.23, MONTHS_PERIOD, 66, 7, 2, 2021, 5.562, BY_END_TERM, NOT_CAPITAL);
+    input_operation(&oper, 7, 8, 2024, 25715345, WITHDRAWALS, 0);
+    input_operation(&oper, 9, 9, 2024, 16152222, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {26799981.96, 60767989.23};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_end_term_4)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 8737647.43, MONTHS_PERIOD, 121, 31, 1, 2015, 8.476, BY_END_TERM, NOT_CAPITAL);
+    input_operation(&oper, 2, 2, 2015, 22222222, WITHDRAWALS, 0);
+    input_operation(&oper, 2, 2, 2018, 11111111, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {7462843.34, 8737647.43};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+START_TEST(deposit_withdrawals_by_end_term_5)
+{
+    deposit_init data;
+    investment pay;
+    operations oper;
+    init_operations(&oper);
+
+    init_deposit(&data, 62563535.23, MONTHS_PERIOD, 76, 22, 11, 2020, 7.851, BY_END_TERM, NOT_CAPITAL);
+    input_operation(&oper, 3, 5, 2022, 1111111, WITHDRAWALS, 0);
+    input_operation(&oper, 29, 2, 2024, 2222222, WITHDRAWALS, 0);
+    input_operation(&oper, 3, 7, 2025, 3333333, WITHDRAWALS, 0);
+    input_operation(&oper, 10, 7, 2025, 4444444, WITHDRAWALS, 0);
+
+    calculate_deposit(&data, &pay, &oper);
+    long double result_total[2] = {29082700.15, 51452425.23};
+
+    for(int i = 0; i < 2; i++) {
+        ck_assert_double_eq_tol(pay.total[i], result_total[i], 1e-3);
+    }
+    free_deposit(data.current + 1, &pay, &oper);
+}
+
+//  ==========================================================================================================================================================================================
+
 Suite *s21_deposit_by_day(void)
 {
     Suite *deposit = suite_create("s21_deposit (frequency by day)");
@@ -2625,7 +3995,6 @@ Suite *s21_deposit_refill_by_year(void)
     return deposit;
 }
 
-
 Suite *s21_deposit_refill_by_end_term(void)
 {
     Suite *deposit = suite_create("s21_deposit (with refill and frequency by end term)");
@@ -2637,6 +4006,141 @@ Suite *s21_deposit_refill_by_end_term(void)
     tcase_add_test(tc_deposit_refill_by_end_term, deposit_refill_by_end_term_4);
     tcase_add_test(tc_deposit_refill_by_end_term, deposit_refill_by_end_term_5);
     suite_add_tcase(deposit, tc_deposit_refill_by_end_term);
+
+    return deposit;
+}
+
+Suite *s21_deposit_withdrawals_by_day(void)
+{
+    Suite *deposit = suite_create("s21_deposit (with withdrawals and frequency by day)");
+
+    TCase *tc_deposit_withdrawals_by_day = tcase_create("test_deposit");
+    tcase_add_test(tc_deposit_withdrawals_by_day, deposit_withdrawals_by_day_1);
+    tcase_add_test(tc_deposit_withdrawals_by_day, deposit_withdrawals_by_day_2);
+    tcase_add_test(tc_deposit_withdrawals_by_day, deposit_withdrawals_by_day_3);
+    tcase_add_test(tc_deposit_withdrawals_by_day, deposit_withdrawals_by_day_4);
+    tcase_add_test(tc_deposit_withdrawals_by_day, deposit_withdrawals_by_day_5);
+    tcase_add_test(tc_deposit_withdrawals_by_day, deposit_withdrawals_by_day_6);
+    tcase_add_test(tc_deposit_withdrawals_by_day, deposit_withdrawals_by_day_7);
+    tcase_add_test(tc_deposit_withdrawals_by_day, deposit_withdrawals_by_day_8);
+    tcase_add_test(tc_deposit_withdrawals_by_day, deposit_withdrawals_by_day_9);
+    tcase_add_test(tc_deposit_withdrawals_by_day, deposit_withdrawals_by_day_10);
+    suite_add_tcase(deposit, tc_deposit_withdrawals_by_day);
+
+    return deposit;
+}
+
+Suite *s21_deposit_withdrawals_by_week(void)
+{
+    Suite *deposit = suite_create("s21_deposit (with withdrawals and frequency by week)");
+
+    TCase *tc_deposit_withdrawals_by_week = tcase_create("test_deposit");
+    tcase_add_test(tc_deposit_withdrawals_by_week, deposit_withdrawals_by_week_1);
+    tcase_add_test(tc_deposit_withdrawals_by_week, deposit_withdrawals_by_week_2);
+    tcase_add_test(tc_deposit_withdrawals_by_week, deposit_withdrawals_by_week_3);
+    tcase_add_test(tc_deposit_withdrawals_by_week, deposit_withdrawals_by_week_4);
+    tcase_add_test(tc_deposit_withdrawals_by_week, deposit_withdrawals_by_week_5);
+    tcase_add_test(tc_deposit_withdrawals_by_week, deposit_withdrawals_by_week_6);
+    tcase_add_test(tc_deposit_withdrawals_by_week, deposit_withdrawals_by_week_7);
+    tcase_add_test(tc_deposit_withdrawals_by_week, deposit_withdrawals_by_week_8);
+    tcase_add_test(tc_deposit_withdrawals_by_week, deposit_withdrawals_by_week_9);
+    tcase_add_test(tc_deposit_withdrawals_by_week, deposit_withdrawals_by_week_10);
+    suite_add_tcase(deposit, tc_deposit_withdrawals_by_week);
+
+    return deposit;
+}
+
+Suite *s21_deposit_withdrawals_by_month(void)
+{
+    Suite *deposit = suite_create("s21_deposit (with withdrawals and frequency by month)");
+
+    TCase *tc_deposit_withdrawals_by_month = tcase_create("test_deposit");
+    tcase_add_test(tc_deposit_withdrawals_by_month, deposit_withdrawals_by_month_1);
+    tcase_add_test(tc_deposit_withdrawals_by_month, deposit_withdrawals_by_month_2);
+    tcase_add_test(tc_deposit_withdrawals_by_month, deposit_withdrawals_by_month_3);
+    tcase_add_test(tc_deposit_withdrawals_by_month, deposit_withdrawals_by_month_4);
+    tcase_add_test(tc_deposit_withdrawals_by_month, deposit_withdrawals_by_month_5);
+    tcase_add_test(tc_deposit_withdrawals_by_month, deposit_withdrawals_by_month_6);
+    tcase_add_test(tc_deposit_withdrawals_by_month, deposit_withdrawals_by_month_7);
+    tcase_add_test(tc_deposit_withdrawals_by_month, deposit_withdrawals_by_month_8);
+    tcase_add_test(tc_deposit_withdrawals_by_month, deposit_withdrawals_by_month_9);
+    tcase_add_test(tc_deposit_withdrawals_by_month, deposit_withdrawals_by_month_10);
+    suite_add_tcase(deposit, tc_deposit_withdrawals_by_month);
+
+    return deposit;
+}
+
+Suite *s21_deposit_withdrawals_by_quarter(void)
+{
+    Suite *deposit = suite_create("s21_deposit (with withdrawals and frequency by quarter)");
+
+    TCase *tc_deposit_withdrawals_by_quarter = tcase_create("test_deposit");
+    tcase_add_test(tc_deposit_withdrawals_by_quarter, deposit_withdrawals_by_quarter_1);
+    tcase_add_test(tc_deposit_withdrawals_by_quarter, deposit_withdrawals_by_quarter_2);
+    tcase_add_test(tc_deposit_withdrawals_by_quarter, deposit_withdrawals_by_quarter_3);
+    tcase_add_test(tc_deposit_withdrawals_by_quarter, deposit_withdrawals_by_quarter_4);
+    tcase_add_test(tc_deposit_withdrawals_by_quarter, deposit_withdrawals_by_quarter_5);
+    tcase_add_test(tc_deposit_withdrawals_by_quarter, deposit_withdrawals_by_quarter_6);
+    tcase_add_test(tc_deposit_withdrawals_by_quarter, deposit_withdrawals_by_quarter_7);
+    tcase_add_test(tc_deposit_withdrawals_by_quarter, deposit_withdrawals_by_quarter_8);
+    tcase_add_test(tc_deposit_withdrawals_by_quarter, deposit_withdrawals_by_quarter_9);
+    tcase_add_test(tc_deposit_withdrawals_by_quarter, deposit_withdrawals_by_quarter_10);
+    suite_add_tcase(deposit, tc_deposit_withdrawals_by_quarter);
+
+    return deposit;
+}
+
+Suite *s21_deposit_withdrawals_by_halfyear(void)
+{
+    Suite *deposit = suite_create("s21_deposit (with withdrawals and frequency by halfyear)");
+
+    TCase *tc_deposit_withdrawals_by_halfyear = tcase_create("test_deposit");
+    tcase_add_test(tc_deposit_withdrawals_by_halfyear, deposit_withdrawals_by_halfyear_1);
+    tcase_add_test(tc_deposit_withdrawals_by_halfyear, deposit_withdrawals_by_halfyear_2);
+    tcase_add_test(tc_deposit_withdrawals_by_halfyear, deposit_withdrawals_by_halfyear_3);
+    tcase_add_test(tc_deposit_withdrawals_by_halfyear, deposit_withdrawals_by_halfyear_4);
+    tcase_add_test(tc_deposit_withdrawals_by_halfyear, deposit_withdrawals_by_halfyear_5);
+    tcase_add_test(tc_deposit_withdrawals_by_halfyear, deposit_withdrawals_by_halfyear_6);
+    tcase_add_test(tc_deposit_withdrawals_by_halfyear, deposit_withdrawals_by_halfyear_7);
+    tcase_add_test(tc_deposit_withdrawals_by_halfyear, deposit_withdrawals_by_halfyear_8);
+    tcase_add_test(tc_deposit_withdrawals_by_halfyear, deposit_withdrawals_by_halfyear_9);
+    tcase_add_test(tc_deposit_withdrawals_by_halfyear, deposit_withdrawals_by_halfyear_10);
+    suite_add_tcase(deposit, tc_deposit_withdrawals_by_halfyear);
+
+    return deposit;
+}
+
+Suite *s21_deposit_withdrawals_by_year(void)
+{
+    Suite *deposit = suite_create("s21_deposit (with withdrawals and frequency by year)");
+
+    TCase *tc_deposit_withdrawals_by_year = tcase_create("test_deposit");
+    tcase_add_test(tc_deposit_withdrawals_by_year, deposit_withdrawals_by_year_1);
+    tcase_add_test(tc_deposit_withdrawals_by_year, deposit_withdrawals_by_year_2);
+    tcase_add_test(tc_deposit_withdrawals_by_year, deposit_withdrawals_by_year_3);
+    tcase_add_test(tc_deposit_withdrawals_by_year, deposit_withdrawals_by_year_4);
+    tcase_add_test(tc_deposit_withdrawals_by_year, deposit_withdrawals_by_year_5);
+    tcase_add_test(tc_deposit_withdrawals_by_year, deposit_withdrawals_by_year_6);
+    tcase_add_test(tc_deposit_withdrawals_by_year, deposit_withdrawals_by_year_7);
+    tcase_add_test(tc_deposit_withdrawals_by_year, deposit_withdrawals_by_year_8);
+    tcase_add_test(tc_deposit_withdrawals_by_year, deposit_withdrawals_by_year_9);
+    tcase_add_test(tc_deposit_withdrawals_by_year, deposit_withdrawals_by_year_10);
+    suite_add_tcase(deposit, tc_deposit_withdrawals_by_year);
+
+    return deposit;
+}
+
+Suite *s21_deposit_withdrawals_by_end_term(void)
+{
+    Suite *deposit = suite_create("s21_deposit (with withdrawals and frequency by end term)");
+
+    TCase *tc_deposit_withdrawals_by_end_term = tcase_create("test_deposit");
+    tcase_add_test(tc_deposit_withdrawals_by_end_term, deposit_withdrawals_by_end_term_1);
+    tcase_add_test(tc_deposit_withdrawals_by_end_term, deposit_withdrawals_by_end_term_2);
+    tcase_add_test(tc_deposit_withdrawals_by_end_term, deposit_withdrawals_by_end_term_3);
+    tcase_add_test(tc_deposit_withdrawals_by_end_term, deposit_withdrawals_by_end_term_4);
+    tcase_add_test(tc_deposit_withdrawals_by_end_term, deposit_withdrawals_by_end_term_5);
+    suite_add_tcase(deposit, tc_deposit_withdrawals_by_end_term);
 
     return deposit;
 }

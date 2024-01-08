@@ -96,7 +96,7 @@ void print_deposit(deposit_init *data, investment *pay) {
         data->date = end;
         }
     }
-    printf("\nTOTAL : %Lf  -  %Lf\n\n", pay->total[0], pay->total[1]);
+    printf("\nTOTAL : %.2Lf, %.2Lf\n\n", pay->total[0], pay->total[1]);
 }
 
 int init_operations(operations *oper)
@@ -153,13 +153,14 @@ int main() {
     operations oper;
     init_operations(&oper);
 
-    init_deposit(&data, 8737647.43, MONTHS_PERIOD, 121, 31, 1, 2015, 8.476, BY_YEAR, CAPITAL);
+    init_deposit(&data, 8737647.43, MONTHS_PERIOD, 121, 31, 1, 2015, 8.476, BY_WEEK, CAPITAL);
+    input_operation(&oper, 2, 2, 2015, 22222222, WITHDRAWALS, 0);
+    input_operation(&oper, 2, 2, 2018, 11111111, WITHDRAWALS, 0);
+
     deposit_init data1 = data;
-    input_operation(&oper, 2, 2, 2015, 22222222, REFILL, 0);
-    // input_operation(&oper, 2, 2, 2018, 11111111, REFILL, 0);
 
     calculate_deposit(&data, &pay, &oper);
-    long double result_total[2] = {47963663.67, 90034644.1};
+    long double result_total[2] = {27815.05, 202815.05};
 
 
     

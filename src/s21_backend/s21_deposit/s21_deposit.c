@@ -74,10 +74,18 @@ static int check_operation(deposit_init *data, investment *pay, operations *oper
         while(compare_date_with_period(data->date, &(oper->date[oper->current]), *end_period) == DATE_BETWEEN) {
             data->current++;
             error_code = allocate_row(&pay->result, data->current);
+            if(data->amount < oper->sum[oper->current] && oper->type[oper->current] == WITHDRAWALS) {
+                pay->balance_changing = 0;
+            } else {
+                *percent += calc_period_percent(data, &data->date, &(oper->date[oper->current]), end_period);
 
-            *percent += calc_period_percent(data, &data->date, &(oper->date[oper->current]), end_period);
+                if(oper->type[oper->current] == REFILL) {
+                    pay->balance_changing = oper->sum[oper->current];
+                } else if(oper->type[oper->current] == WITHDRAWALS) {
+                    pay->balance_changing = oper->sum[oper->current] * (-1.0);
+                }
+            }
 
-            pay->balance_changing = oper->sum[oper->current];
             pay->balance = data->amount + pay->balance_changing;
             pay->profit = 0;
             pay->receiving = 0;
