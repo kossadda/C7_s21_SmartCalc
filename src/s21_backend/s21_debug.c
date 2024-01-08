@@ -75,6 +75,7 @@ void print_deposit(deposit_init *data, investment *pay) {
     time_data last_day = determine_last_day(data->date, data->term_type, data->term);
     for(int i = 0; i <= rows; i++) {
         time_data end = data->date;
+        if(i != 0) { 
         add_one_period(&data->date, &end, last_day, data->capital_time, const_date);
 
         if(end.day < 10) {
@@ -86,12 +87,14 @@ void print_deposit(deposit_init *data, investment *pay) {
         }
         printf("%d.", end.month);
         printf("%d", end.year);
-        
+        }
         for(int j = 0; j < 4; j++) {
             printf(" - %Lf", pay->result[i][j]);
         }
         printf("\n");
+        if(i != 0) { 
         data->date = end;
+        }
     }
     printf("\nTOTAL : %Lf  -  %Lf\n\n", pay->total[0], pay->total[1]);
 }

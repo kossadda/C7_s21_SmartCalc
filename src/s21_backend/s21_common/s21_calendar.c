@@ -220,6 +220,8 @@ int days_in_this_year(time_data date)
 */
 void add_one_period(time_data *begin, time_data *end, time_data last_day, int capital_type, int const_date)
 {
+    begin->leap = check_leap(begin->year);
+    
     if(capital_type == BY_DAY) {
         add_days(end, DAY);
     } else if(capital_type == BY_WEEK) {

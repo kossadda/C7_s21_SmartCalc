@@ -35,10 +35,11 @@ void calculate_deposit(deposit_init *data, investment *pay, operations *oper)
     }
 
     if(error_code == ALLOCATED) {
+        time_data end_period = data->date;
+        
         for(data->current = -1; compare_dates(data->date, last_day) != DATE_EQUAL;) {
             long double percent = 0;
 
-            time_data end_period = data->date;
             add_one_period(&(data->date), &end_period, last_day, data->capital_time, const_day);
 
             check_operation(data, pay, oper, &end_period, &percent);
@@ -118,7 +119,7 @@ long double calc_period_percent(deposit_init *data, time_data *begin, time_data 
     percent = percent_formula(data->amount, data->rate, oper->leap, oper->month_days) + first_part;
     
     leap_days_between_dates(oper, end);
-    
+
     *begin = *oper;
     
     return percent;
