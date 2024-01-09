@@ -16,7 +16,7 @@ int calc_period(deposit_init *data, investment *pay, time_data end_period, long 
     int error_code = ALLOCATED;
 
     data->current++;
-    error_code = allocate_row(&pay->result, data->current);
+    error_code = allocate_row(&pay->result, data->current, DEPOSIT_COLUMNS);
 
     if(error_code == ALLOCATED) {
         long double first_part_month = percent_formula(data->amount, data->rate, data->date.leap, data->date.month_days);

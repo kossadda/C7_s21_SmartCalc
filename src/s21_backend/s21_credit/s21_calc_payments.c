@@ -69,7 +69,7 @@ static int calculate_annuity_month(credit_init *data, payments *pay, time_data n
     static long double rest = 0;
 
     data->current++;
-    error_code = allocate_row(&pay->result, data->current);
+    error_code = allocate_row(&pay->result, data->current, CREDIT_COLUMNS);
 
     if(error_code == ALLOCATED) {
         long double first_part_month = percent_formula(data->debt, data->rate, data->date.leap, data->date.month_days);
@@ -121,7 +121,7 @@ static int calculate_diff_month(credit_init *data, payments *pay, time_data next
     int error_code = ALLOCATED;
 
     data->current++;
-    error_code = allocate_row(&pay->result, data->current);
+    error_code = allocate_row(&pay->result, data->current, CREDIT_COLUMNS);
 
     if(error_code == ALLOCATED) {
         if(data->debt < pay->main) {

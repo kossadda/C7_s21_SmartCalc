@@ -22,7 +22,7 @@ int check_operation(deposit_init *data, investment *pay, operations *oper, time_
     if(oper && oper->count && oper->current < oper->count) {
         while(compare_dates(oper->date[oper->current], data->date) != DATE_BEFORE && compare_dates(oper->date[oper->current], *end_period) == DATE_BEFORE) {
             data->current++;
-            error_code = allocate_row(&pay->result, data->current);
+            error_code = allocate_row(&pay->result, data->current, DEPOSIT_COLUMNS);
 
             long double oper_sum = oper->sum[oper->current]; 
 

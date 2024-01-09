@@ -35,6 +35,8 @@ enum common_constants {
     YEAR_NOT_LEAP = 0, YEAR_IS_LEAP = 1,
 //  Allocate memory status.
     ALLOCATED = 0, NOT_ALLOCATED = 1,
+//  Number of result columns.
+    CREDIT_COLUMNS = 4, DEPOSIT_COLUMNS = 4, TAXES_COLUMNS = 5,
 };
 
 /**
@@ -66,7 +68,7 @@ time_data determine_last_day(time_data date, int term_type, int term);
 // Another functions.
 
 int init_payments(long double ***result, long double **total);
-int allocate_row(long double ***result, int current);
+int allocate_row(long double ***result, int current, int columns);
 long double percent_formula(long double debt, long double rate, int leap, int month_days);
 long double round_value(long double number);
 

@@ -22,7 +22,7 @@ int redemp_payment(credit_init *data, payments *pay, time_data *next_month, earl
     long double monthly_pay = pay->monthly;
     int error_code = ALLOCATED;
     data->current++;
-    error_code = allocate_row(&pay->result, data->current);
+    error_code = allocate_row(&pay->result, data->current, CREDIT_COLUMNS);
     if(error_code == ALLOCATED) {
         if(*change == DEBT_CHANGED) {
             redemption->date[redemption->current].month_days = sub_date(redemption->date[redemption->current], redemption->date[redemption->current - 1]);

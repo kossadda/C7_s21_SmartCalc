@@ -49,18 +49,22 @@ int init_payments(long double ***result, long double **total)
  * @retval ALLOCATED = 0 - if memory is allocated.
  * @retval NOT_ALLOCATED = 1 - if memory isn't allocated.
 */
-int allocate_row(long double ***result, int current)
+int allocate_row(long double ***result, int current, int columns)
 {
     int error_code = NOT_ALLOCATED;
+
     *result = (long double **)realloc(*result, (current + 1) * sizeof(long double *));
     int error_code_row = CHECK_NULL(*result);
-    (*result)[current] = (long double *)malloc(4 * sizeof(long double));
+
+    (*result)[current] = (long double *)malloc(columns * sizeof(long double));
     int error_code_column = CHECK_NULL((*result)[current]);
+
     error_code = error_code_row + error_code_column;
+
     return error_code;
 }
 
 long double percent_formula(long double debt, long double rate, int leap, int month_days)
 {
-    return (debt * rate / 100) / ((leap) ? LEAP_YEAR : YEAR_DAYS) * month_days;
+    return (debt * rate / 100) / ((leap == YEAR_IS_LEAP) ? LEAP_YEAR : YEAR_DAYS) * month_days;
 }

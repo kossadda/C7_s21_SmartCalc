@@ -54,6 +54,10 @@ void free_deposit(int row, investment *pay, operations *oper) {
             free(pay->result[i]);
             pay->result[i] = NULL;
         }
+        for(int i = 0; i < pay->taxes_count; i++) {
+            free(pay->taxes[i]);
+            pay->taxes[i] = NULL;
+        }
         if(pay->result) {
             free(pay->result);
             pay->result = NULL;
@@ -61,6 +65,10 @@ void free_deposit(int row, investment *pay, operations *oper) {
         if(pay->total) {
             free(pay->total);
             pay->total = NULL;
+        }
+        if(pay->taxes) {
+            free(pay->taxes);
+            pay->taxes = NULL;
         }
     }
     if(oper) {

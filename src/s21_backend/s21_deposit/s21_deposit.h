@@ -11,6 +11,10 @@ enum deposit_functions_status {
     NOT_CAPITAL = 0, CAPITAL = 1,
 //  Type of operation with deposit sum.
     REFILL = 0, WITHDRAWALS = 1,
+//  Tax constants from the central bank
+    TAX_RATE = 16, NDFL_RATE = 13, NON_TAX_SUM = 1000000,
+//  MONTH NUMBERS
+    DECEMBER = 12,
 };
 
 /**
@@ -23,6 +27,8 @@ typedef struct investment {
     long double balance;                /** Amount deposited in the current period.                                         */
     long double **result;               /** An array of all the above main fields of the structure for storing the results. */
     long double *total;                 /** An array where all period results are added up.                                 */
+    long double **taxes;
+    int taxes_count;
 } investment;
 
 /**

@@ -96,6 +96,11 @@ void print_deposit(deposit_init *data, investment *pay) {
         data->date = end;
     }
     printf("\nTOTAL : %.2Lf, %.2Lf\n\n", pay->total[0], pay->total[1]);
+
+    for(int i = 0; i < pay->taxes_count; i++) {
+        printf("Год: %.0Lf | Доход: %.2Lf | Вычет: %.2Lf | Доход после вычеты: %.2Lf | Сумма налога: %.2Lf | Оплатить до: 1 декабря %.0Lf\n", pay->taxes[i][0], pay->taxes[i][1], pay->taxes[i][2], pay->taxes[i][3], pay->taxes[i][4], pay->taxes[i][0] + 1);
+    }
+    printf("\n\n");
 }
 
 int init_operations(operations *oper)
@@ -152,12 +157,12 @@ int main() {
     operations oper;
     init_operations(&oper);
 
-    init_deposit(&data, 77777777777.77, DAYS_PERIOD, 5342, 23, 11, 2023, 0.01, BY_YEAR, CAPITAL);
+    init_deposit(&data, 1523456, MONTHS_PERIOD, 31, 23, 1, 2024, 15, BY_MONTH, CAPITAL);
 
     deposit_init data1 = data;
 
     calculate_deposit(&data, &pay, &oper);
-    long double result_total[2] = {19196.97, 125000};
+    long double result_total[2] = {1500.61, 10000};
 
 
 
