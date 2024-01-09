@@ -75,7 +75,7 @@ void print_deposit(deposit_init *data, investment *pay) {
     time_data last_day = determine_last_day(data->date, data->term_type, data->term);
     for(int i = 0; i <= rows; i++) {
         time_data end = data->date;
-        if(i != 0) { 
+
         add_one_period(&data->date, &end, last_day, data->capital_time, const_date);
 
         if(end.day < 10) {
@@ -87,14 +87,13 @@ void print_deposit(deposit_init *data, investment *pay) {
         }
         printf("%d.", end.month);
         printf("%d", end.year);
-        }
+
         for(int j = 0; j < 4; j++) {
             printf(" - %Lf", pay->result[i][j]);
         }
         printf("\n");
-        if(i != 0) { 
+
         data->date = end;
-        }
     }
     printf("\nTOTAL : %.2Lf, %.2Lf\n\n", pay->total[0], pay->total[1]);
 }
@@ -153,14 +152,13 @@ int main() {
     operations oper;
     init_operations(&oper);
 
-    init_deposit(&data, 8737647.43, MONTHS_PERIOD, 121, 31, 1, 2015, 8.476, BY_WEEK, CAPITAL);
-    input_operation(&oper, 2, 2, 2015, 22222222, WITHDRAWALS, 0);
-    input_operation(&oper, 2, 2, 2018, 11111111, WITHDRAWALS, 0);
+    init_deposit(&data, 77777777777.77, DAYS_PERIOD, 5342, 23, 11, 2023, 0.01, BY_YEAR, CAPITAL);
 
     deposit_init data1 = data;
 
     calculate_deposit(&data, &pay, &oper);
-    long double result_total[2] = {27815.05, 202815.05};
+    long double result_total[2] = {19196.97, 125000};
+
 
 
     

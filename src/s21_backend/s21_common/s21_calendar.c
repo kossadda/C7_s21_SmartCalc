@@ -16,11 +16,13 @@ static void move_to_end_term(time_data *begin, time_data *end);
 int check_leap(int year)
 {
     int leap = YEAR_NOT_LEAP;
+
     if(year % QUADRICENTENARY == 0) {
         leap = YEAR_IS_LEAP;
     } else if(year % LEAP_INTERVAL == 0 && year % CENTURY != 0) {
         leap = YEAR_IS_LEAP;
     }
+
     return leap;
 }
 
@@ -38,16 +40,13 @@ int check_leap(int year)
 int compare_date_with_month(time_data now, time_data *pay, time_data next)
 {
     int day_between = DATE_OUTSIDE;
-    if(pay->year == now.year || pay->year == next.year) {
-        if(pay->month == now.month && pay->day >= now.day) {
-            day_between = DATE_BETWEEN;
-            pay->month_days = sub_date(*pay, now);
-        } else if(pay->month == next.month && pay->day < next.day) {
-            day_between = DATE_BETWEEN;
-            pay->month_days = sub_date(*pay, now);
-        }
+
+    if(compare_dates(*pay, now) != DATE_BEFORE && compare_dates(*pay, next) == DATE_BEFORE) {
+        day_between = DATE_BETWEEN;
+        pay->month_days = sub_date(*pay, now);
         pay->leap = check_leap(pay->year);
     }
+    
     return day_between;
 }
 
@@ -62,12 +61,14 @@ int compare_date_with_month(time_data now, time_data *pay, time_data next)
 int sub_date(time_data first, time_data second)
 {
     int difference = 0;
+
     if(first.year == second.year) {
         difference = days_in_this_year(first) - days_in_this_year(second);
     } else {
         difference = days_in_this_year(first) + (((second.leap) ? LEAP_YEAR : YEAR_DAYS) - days_in_this_year(second));
+
         for(int i = second.year + 1; i != first.year; i++) {
-            difference += (check_leap(i)) ? LEAP_YEAR : YEAR_DAYS;
+            difference += (check_leap(i) == YEAR_IS_LEAP) ? LEAP_YEAR : YEAR_DAYS;
         }
     }
 
@@ -84,8 +85,10 @@ int sub_date(time_data first, time_data second)
 int sub_till_end_month(time_data date)
 {
     int days[] = {0, JAN, (date.leap) ? LEAP_FEB : FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC};
+
     time_data last_day_month = date;
     last_day_month.day = days[date.month];
+
     return sub_date(last_day_month, date);
 }
 
@@ -109,6 +112,7 @@ int compare_dates(time_data first, time_data second)
     } else if(first.year > second.year) {
         compare = DATE_AFTER;
     }
+
     if(compare == DATE_EQUAL) {
         if(first.month < second.month) {
             compare = DATE_BEFORE;
@@ -116,6 +120,7 @@ int compare_dates(time_data first, time_data second)
             compare = DATE_AFTER;
         }
     }
+
     if(compare == DATE_EQUAL) {
         if(first.day < second.day) {
             compare = DATE_BEFORE;
@@ -143,6 +148,7 @@ void leap_days_between_dates(time_data *first, time_data *second)
         } else {
             normal_days += first_date_years_day;
         }
+
         if(second->leap) {
             leap_days += second_date_years_day;
         } else {
@@ -150,7 +156,7 @@ void leap_days_between_dates(time_data *first, time_data *second)
         }
 
         for(int i = first->year + 1; i < second->year; i++) {
-            if(check_leap(i)) {
+            if(check_leap(i) == YEAR_IS_LEAP) {
                 leap_days += LEAP_YEAR;
             } else {
                 normal_days += YEAR_DAYS;
@@ -183,6 +189,7 @@ time_data determine_last_day(time_data date, int term_type, int term)
         add_days(&date, term);
     } else if(term_type == MONTHS_PERIOD) {
         int const_date = date.day;
+        
         for(int i = 0; i < term; i++) {
             add_months(&date, CREDIT_MONTH, const_date);
         }
@@ -200,7 +207,7 @@ time_data determine_last_day(time_data date, int term_type, int term)
 */
 int days_in_this_year(time_data date)
 {
-    int days[] = {0, JAN, (check_leap(date.year)) ? LEAP_FEB : FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC};
+    int days[] = {0, JAN, (check_leap(date.year) == YEAR_IS_LEAP) ? LEAP_FEB : FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC};
     int days_in_year = date.day;
 
     for(int i = 1; i < date.month; i++) {
@@ -274,23 +281,27 @@ static void move_to_end_term(time_data *begin, time_data *end) {
     } else {
         int begin_days = ((begin->leap) ? LEAP_YEAR : YEAR_DAYS) - days_in_this_year(*begin);
         int end_days = days_in_this_year(*end);
+
         if(begin->leap) {
             end->month_days += begin_days;
         } else {
             begin->month_days += begin_days;
         }
+
         if(end->leap) {
             end->month_days += end_days;
         } else {
             begin->month_days += end_days;
         }
+
         for(int i = begin->year + 1; i < end->year; i++) {
-            if(check_leap(i)) {
+            if(check_leap(i) == YEAR_IS_LEAP) {
                 end->month_days += LEAP_YEAR;
             } else {
                 begin->month_days += YEAR_DAYS;
             }
         }
+
         begin->leap = YEAR_NOT_LEAP;
         end->leap = YEAR_IS_LEAP;
     }
@@ -305,10 +316,11 @@ static void move_to_end_term(time_data *begin, time_data *end) {
 */
 static void add_months(time_data *date, int term, int beginning_date)
 {
-    int days[] = {0, JAN, (check_leap(date->year)) ? LEAP_FEB : FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC};
+    int days[] = {0, JAN, (check_leap(date->year) == YEAR_IS_LEAP) ? LEAP_FEB : FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC};
     
     if(term == CREDIT_MONTH) {
         date->month += 1;
+
         if(date->month > 12) {
             date->month = 1;
             date->year += 1;
@@ -317,6 +329,7 @@ static void add_months(time_data *date, int term, int beginning_date)
         if(date->day != beginning_date) {
             date->day = beginning_date;
         }
+
         if(date->day > days[date->month]) {
             date->day = days[date->month];
         }
@@ -324,19 +337,19 @@ static void add_months(time_data *date, int term, int beginning_date)
         int begin_month = date->month; 
         int begin_year = date->year;
         int days_turn = 0;
+
         for(int i = 0; i < term; i++) {
             days_turn += days[begin_month];
             begin_month++;
+
             if(begin_month > 12) {
                 begin_year++;
                 begin_month = 1;
-                days[2] = check_leap(begin_year) ? LEAP_FEB : FEB;
+                days[2] = (check_leap(begin_year) == YEAR_IS_LEAP) ? LEAP_FEB : FEB;
             }
         }
-        // for(int i = 0; i < term; i++) {
-            // days[2] = (check_leap(date->year)) ? LEAP_FEB : FEB;
-            add_days(date, days_turn);
-        // }
+        
+        add_days(date, days_turn);
     }
     
     date->leap = check_leap(date->year);
@@ -350,17 +363,20 @@ static void add_months(time_data *date, int term, int beginning_date)
 */
 static void add_days(time_data *date, int term)
 {
-    int days[] = {0, JAN, (check_leap(date->year)) ? LEAP_FEB : FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC};
+    int days[] = {0, JAN, (check_leap(date->year) == YEAR_IS_LEAP) ? LEAP_FEB : FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC};
 
     for(int i = 0; i < term; i++) {
         date->day++;
+
         if(date->day > days[date->month]) {
             date->day = 1;
             date->month++;
+
             if(date->month > 12) {
                 date->month = 1;
                 date->year++;
-                if(check_leap(date->year)) {
+
+                if(check_leap(date->year) == YEAR_IS_LEAP) {
                     days[2] = LEAP_FEB;
                 } else {
                     days[2] = FEB;
