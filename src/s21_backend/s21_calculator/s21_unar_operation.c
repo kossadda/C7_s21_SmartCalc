@@ -87,7 +87,7 @@ void make_unar(char *str, char *ptr, int len, int pos_number)
         }
         ptr[count++] = str[i];
         if(i == len) {
-            ptr[count++] = CHAR_OP_BRCK;
+            ptr[count++] = CHAR_CL_BRCK;
         }
     }
 }

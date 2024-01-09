@@ -62,6 +62,7 @@ int main(void) {
         s21_deposit_withdrawals_by_halfyear,
         s21_deposit_withdrawals_by_year    ,
         s21_deposit_withdrawals_by_end_term,
+        s21_deposit_combined_with_taxes    ,
     };
 
 

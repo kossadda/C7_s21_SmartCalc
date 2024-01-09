@@ -369,6 +369,7 @@ void s21_smartcalc::on_turn_back_clicked()
     if(history.size()) {
         ui->result->setText(history[history_count]);
     }
+    clear_after = false;
 }
 
 // Перемотка истории вперед

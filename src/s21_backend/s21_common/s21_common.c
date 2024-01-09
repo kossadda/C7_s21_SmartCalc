@@ -61,6 +61,12 @@ int allocate_row(long double ***result, int current, int columns)
 
     error_code = error_code_row + error_code_column;
 
+    if(error_code == ALLOCATED) {
+        for(int i = 0; i < columns; i++) {
+            (*result)[current][i] = 0;
+        }
+    }
+
     return error_code;
 }
 

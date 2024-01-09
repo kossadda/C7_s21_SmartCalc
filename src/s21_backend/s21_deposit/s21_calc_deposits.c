@@ -6,6 +6,7 @@
  * @param[in] data structure containing input parameters for calculation.
  * @param[in] pay structure containing buffer variables for monthly results and general payment data arrays.
  * @param end_period period end date.
+ * @param percent the amount accumulated before the expected replenishment/withdrawal in the current period.
  * 
  * @return Error code.
  * @retval ALLOCATED = 0 - if memory is allocated.
@@ -27,7 +28,7 @@ int calc_period(deposit_init *data, investment *pay, time_data end_period, long 
             pay->balance_changing = pay->profit;
             pay->receiving = 0;
             data->amount += pay->profit;
-        } else if(data->capital == NOT_CAPITAL) {
+        } else {
             pay->balance_changing = 0;
             pay->receiving = pay->profit;
         }

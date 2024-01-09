@@ -89,7 +89,7 @@ void print_deposit(deposit_init *data, investment *pay) {
         printf("%d", end.year);
 
         for(int j = 0; j < 4; j++) {
-            printf(" - %Lf", pay->result[i][j]);
+            printf(" - %.2Lf", pay->result[i][j]);
         }
         printf("\n");
 
@@ -98,7 +98,8 @@ void print_deposit(deposit_init *data, investment *pay) {
     printf("\nTOTAL : %.2Lf, %.2Lf\n\n", pay->total[0], pay->total[1]);
 
     for(int i = 0; i < pay->taxes_count; i++) {
-        printf("Год: %.0Lf | Доход: %.2Lf | Вычет: %.2Lf | Доход после вычеты: %.2Lf | Сумма налога: %.2Lf | Оплатить до: 1 декабря %.0Lf\n", pay->taxes[i][0], pay->taxes[i][1], pay->taxes[i][2], pay->taxes[i][3], pay->taxes[i][4], pay->taxes[i][0] + 1);
+        printf("%.2Lf, ", pay->taxes[i][4]);
+        // printf("Год: %.0Lf | Доход: %.3Lf | Вычет: %.3Lf | Доход после вычета: %.3Lf | Сумма налога: %.3Lf | Оплатить до: 1 декабря %.0Lf\n", pay->taxes[i][0], pay->taxes[i][1], pay->taxes[i][2], pay->taxes[i][3], pay->taxes[i][4], pay->taxes[i][0] + 1);
     }
     printf("\n\n");
 }
@@ -157,12 +158,27 @@ int main() {
     operations oper;
     init_operations(&oper);
 
-    init_deposit(&data, 1523456, MONTHS_PERIOD, 31, 23, 1, 2024, 15, BY_MONTH, CAPITAL);
+
+
+
+    init_deposit(&data, 771332.12, MONTHS_PERIOD, 56, 22, 6, 2025, 17.275, BY_HALFYEAR, CAPITAL);
+    input_operation(&oper, 23, 6, 2025, 42335566, REFILL, 0);
+    input_operation(&oper, 29, 7, 2025, 1987656, REFILL, 0);
+    input_operation(&oper, 8, 8, 2025, 12001233, WITHDRAWALS, 0);
+    input_operation(&oper, 28, 2, 2029, 3211111, REFILL, 0);
+    input_operation(&oper, 4, 12, 2029, 6672311, WITHDRAWALS, 0);
+    input_operation(&oper, 7, 2, 2030, 31000000, WITHDRAWALS, 0);
+
+    long double taxes_total[] = {379390.00, 826608.15, 979320.07, 1159635.47, 1425421.40, 206660.23};
+
+
+
+
+
+
 
     deposit_init data1 = data;
-
     calculate_deposit(&data, &pay, &oper);
-    long double result_total[2] = {1500.61, 10000};
 
 
 

@@ -10,7 +10,6 @@ static int calculate_diff_month(credit_init *data, payments *pay, time_data next
  * @param[in] data structure containing input parameters for calculation.
  * @param[in] pay structure containing buffer variables for monthly results and general payment data arrays.
  * @param[in] redemption structure containing data on early repayments.
- * @param next_month structure containing the payment end date for the current month.
  * 
  * @return Error code.
  * @retval ALLOCATED = 0 - if memory is allocated.
@@ -160,7 +159,7 @@ static int check_calc_redemption(credit_init *data, payments *pay, early_pay *re
 
     if(redemption && redemption->sum && redemption->current < redemption->count) {
         while(compare_date_with_month(data->date, &(redemption->date[redemption->current]), *next_month) == DATE_BETWEEN) {
-            error_code = redemp_payment(data, pay, next_month, redemption, paid_percent, &change);
+            error_code = redemp_payment(data, pay, redemption, next_month, paid_percent, &change);
 
             if(redemption->current == redemption->count) {
                 break;

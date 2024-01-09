@@ -6,10 +6,10 @@ static long double calc_period_percent(deposit_init *data, time_data *begin, tim
  * @brief Determines whether the current early repayment is within the current month and calculates it.
  * 
  * @param[in] data structure containing input parameters for calculation.
- * @param[in] pay structure containing buffer variables for monthly results and general payment data arrays.
- * @param[in] redemption structure containing data on early repayments.
- * @param[in] next_month structure containing the payment end date for the current month.
- * @param[in] paid_percent the amount deducted from the monthly interest in case of early repayment.
+ * @param[in] pay structure containing buffer variables for period results and general payment data arrays.
+ * @param[in] oper structure containing data on deposit/withdrawal operations.
+ * @param[in] end_period structure containing the payment end date for the current period.
+ * @param[in] percent the amount accumulated before the expected replenishment/withdrawal in the current period.
  * 
  * @return Error code.
  * @retval ALLOCATED = 0 - if memory is allocated.
@@ -56,13 +56,23 @@ int check_operation(deposit_init *data, investment *pay, operations *oper, time_
     return error_code;
 }
 
+/**
+ * @brief Calculates and records the transaction, remembering the accumulated amount before the transaction.
+ * 
+ * @param[in] data structure containing input parameters for calculation.
+ * @param[in] begin structure containing information about the beginning of the current period.
+ * @param[in] operstructure containing information about the operation.
+ * @param[in] end structure containing information about the end of the current period.
+ * 
+ * @return The amount accumulated before the operation.
+*/
 static long double calc_period_percent(deposit_init *data, time_data *begin, time_data *oper, time_data *end)
 {
     long double percent = 0;
 
     leap_days_between_dates(begin, oper);
 
-    percent += percent_formula(data->amount, data->rate, begin->leap, begin->month_days);
+    percent = percent_formula(data->amount, data->rate, begin->leap, begin->month_days);
     percent += percent_formula(data->amount, data->rate, oper->leap, oper->month_days);
     
     leap_days_between_dates(oper, end);

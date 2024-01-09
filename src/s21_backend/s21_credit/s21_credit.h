@@ -54,7 +54,7 @@ typedef struct early_pay {
 
 int calculate_credit(credit_init *data, payments *pay, early_pay *redemption);
 int calculate_payments(credit_init *data, payments *pay, early_pay *redemption);
-int redemp_payment(credit_init *data, payments *pay, time_data *next_month, early_pay *redemption, long double *paid_percent, int *change);
+int redemp_payment(credit_init *data, payments *pay, early_pay *redemption, time_data *next_month, long double *paid_percent, int *change);
 
 // Support functions
 

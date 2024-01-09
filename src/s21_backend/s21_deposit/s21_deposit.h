@@ -13,8 +13,6 @@ enum deposit_functions_status {
     REFILL = 0, WITHDRAWALS = 1,
 //  Tax constants from the central bank
     TAX_RATE = 16, NDFL_RATE = 13, NON_TAX_SUM = 1000000,
-//  MONTH NUMBERS
-    DECEMBER = 12,
 };
 
 /**
@@ -27,7 +25,7 @@ typedef struct investment {
     long double balance;                /** Amount deposited in the current period.                                         */
     long double **result;               /** An array of all the above main fields of the structure for storing the results. */
     long double *total;                 /** An array where all period results are added up.                                 */
-    long double **taxes;
+    long double **taxes;                /** An array containing the tax costs of the deposit. */
     int taxes_count;
 } investment;
 
@@ -63,5 +61,6 @@ int calculate_deposit(deposit_init *data, investment *pay, operations *oper);
 int calc_period(deposit_init *data, investment *pay, time_data end_period, long double percent);
 void write_results(deposit_init data, investment *pay);
 int check_operation(deposit_init *data, investment *pay, operations *oper, time_data *end_period, long double *percent);
+int check_taxes(deposit_init *data, investment *pay, time_data end, time_data last, long double *year_profit, long double non_taxable_amount, int begin_year);
 
 #endif

@@ -75,5 +75,6 @@ Suite *s21_deposit_withdrawals_by_quarter(void);
 Suite *s21_deposit_withdrawals_by_halfyear(void);
 Suite *s21_deposit_withdrawals_by_year(void);
 Suite *s21_deposit_withdrawals_by_end_term(void);
+Suite *s21_deposit_combined_with_taxes(void);
 
 #endif
