@@ -63,86 +63,8 @@
       <property name="bottomMargin">
        <number>15</number>
       </property>
-      <item row="12" column="0" colspan="3">
-       <layout class="QHBoxLayout" name="layout_2">
-        <item>
-         <spacer name="spacer_6">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Preferred</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QPushButton" name="calculate">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>150</width>
-            <height>50</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>150</width>
-            <height>50</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
-border-radius: 10px;
-background-color: rgb(226, 226, 226);
-color:black;
-border: 1px solid black;
-}
-
-QPushButton:pressed {
-background-color: rgb(175, 97, 33);
-}</string>
-          </property>
-          <property name="text">
-           <string>Calculate</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="spacer_5">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Preferred</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </item>
-      <item row="9" column="2">
-       <widget class="QLabel" name="info_label_2">
+      <item row="9" column="1">
+       <widget class="QRadioButton" name="differentiated">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -151,7 +73,7 @@ background-color: rgb(175, 97, 33);
         </property>
         <property name="minimumSize">
          <size>
-          <width>25</width>
+          <width>170</width>
           <height>25</height>
          </size>
         </property>
@@ -161,353 +83,36 @@ background-color: rgb(175, 97, 33);
           <height>40</height>
          </size>
         </property>
-        <property name="font">
-         <font>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Differentiated payment is a variant of monthly loan payment, when the size of the monthly loan repayment gradually decreases towards the end of the loan period.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
         <property name="styleSheet">
-         <string notr="true">QToolTip {
-    padding: 0 8px;
-	background-color: rgb(226, 226, 226);
-	color:black;
-	border: 1px solid black;
+         <string notr="true">QRadioButton::indicator {
+    border: 2px solid #808080;
+    width: 12px;
+    height: 12px;
+    border-radius: 6px;
+	color: rgb(0, 0, 0);
 }
 
-QLabel {
-	color:black;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>🛈</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="2">
-       <widget class="QComboBox" name="sum_box">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>50</width>
-          <height>35</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>50</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">/*QComboBox {
-border-radius: 10px;
-padding: 0 8px;
-background-color: rgb(226, 226, 226);
-color:black;
-border: 1px solid black;
+QRadioButton::indicator:checked {
+    background-color: rgb(175, 97, 33);
+    border: 3px solid #808080;
 }
 
-QComboBox::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 15px;
-    border-left-width: 1px;
-    border-left-color: rgb(0, 0, 0);
-    border-left-style: solid;
-}*/
-
-QComboBox {
-border-radius: 10px;
-padding: 0 8px;
-background-color: rgb(226, 226, 226);
-color:black;
-border: 1px solid black;
-}
-
-            QComboBox::down-arrow {
-                border: 1px solid #yourBorderColor;
-                border-radius: 25px;
-            }</string>
-        </property>
-        <item>
-         <property name="text">
-          <string> $ - USD</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string> ₽ - RUB</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string> € - EUR</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string> ¥ - CNY</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string> ₹ - INR</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string> ₸ - KZT</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string> ¥ - JPY</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string> ₣ - CHF</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string> ฿ - THB</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string> ₾ - GEL</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="7" column="1">
-       <widget class="QDateEdit" name="date_edit">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>170</width>
-          <height>35</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>50</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>10</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">    border-radius: 10px;
-    padding: 0 8px;
-	background-color: rgb(226, 226, 226);
-	color:black;
-	border: 1px solid black;</string>
-        </property>
-        <property name="maximumDateTime">
-         <datetime>
-          <hour>21</hour>
-          <minute>59</minute>
-          <second>59</second>
-          <year>9999</year>
-          <month>12</month>
-          <day>12</day>
-         </datetime>
-        </property>
-        <property name="calendarPopup">
-         <bool>true</bool>
-        </property>
-        <property name="date">
-         <date>
-          <year>2022</year>
-          <month>1</month>
-          <day>1</day>
-         </date>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="amount_label">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>170</width>
-          <height>35</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>50</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">border-radius: 10px;
-background-color: rgb(226, 226, 226);
-color:black;
-border: 1px solid black;</string>
-        </property>
-        <property name="text">
-         <string>Amount of credit</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="1">
-       <widget class="QLineEdit" name="time_edit">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>170</width>
-          <height>35</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>50</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>10</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLineEdit {
+QRadioButton{
     border-radius: 10px;
     padding: 0 8px;
 	background-color: rgb(226, 226, 226);
 	color:black;
 	border: 1px solid black;
-}</string>
+}
+</string>
         </property>
         <property name="text">
-         <string/>
-        </property>
-        <property name="placeholderText">
-         <string/>
+         <string>  Differentiated</string>
         </property>
        </widget>
       </item>
-      <item row="6" column="0">
-       <widget class="QLabel" name="interest_label">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>170</width>
-          <height>35</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>50</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">border-radius: 10px;
-background-color: rgb(226, 226, 226);
-color:black;
-border: 1px solid black;</string>
-        </property>
-        <property name="text">
-         <string>Interest rate</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="10" column="0" colspan="3">
-       <widget class="QLabel" name="payment_2">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>35</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>1558154</width>
-          <height>50</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">border-radius: 10px;
-background-color: rgb(226, 226, 226);
-color:black;
-	border: 1px solid black;</string>
-        </property>
-        <property name="text">
-         <string>Early repayments</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="1">
-       <widget class="QLineEdit" name="percent_edit">
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="time_edit">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -587,8 +192,8 @@ border: 1px solid black;</string>
         </property>
        </widget>
       </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="credit_label">
+      <item row="4" column="0">
+       <widget class="QLabel" name="amount_label">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -619,286 +224,10 @@ color:black;
 border: 1px solid black;</string>
         </property>
         <property name="text">
-         <string>Credit term</string>
+         <string>Amount of credit</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0" colspan="3">
-       <widget class="Line" name="line">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>1</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(0, 0, 0);</string>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="0" rowspan="2">
-       <widget class="QLabel" name="payment_label">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>170</width>
-          <height>35</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>1558154</width>
-          <height>50</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">border-radius: 10px;
-background-color: rgb(226, 226, 226);
-color:black;
-border: 1px solid black;</string>
-        </property>
-        <property name="text">
-         <string>Payments type</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="2">
-       <widget class="QComboBox" name="time_box">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>50</width>
-          <height>35</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>50</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">border-radius: 10px;
-padding: 0 8px;
-background-color: rgb(226, 226, 226);
-color:black;
-	border: 1px solid black;</string>
-        </property>
-        <item>
-         <property name="text">
-          <string>years</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>months</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="9" column="1">
-       <widget class="QRadioButton" name="differentiated">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>170</width>
-          <height>25</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QRadioButton::indicator {
-    border: 2px solid #808080;
-    width: 12px;
-    height: 12px;
-    border-radius: 6px;
-	color: rgb(0, 0, 0);
-}
-
-QRadioButton::indicator:checked {
-    background-color: #ffA500;
-    border: 3px solid #808080;
-}
-
-QRadioButton{
-    border-radius: 10px;
-    padding: 0 8px;
-	background-color: rgb(226, 226, 226);
-	color:black;
-	border: 1px solid black;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>  Differentiated</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="2">
-       <widget class="QLabel" name="info_label_1">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>25</width>
-          <height>25</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;An annuity payment is a variant of monthly loan payment, when the amount of the monthly payment remains constant throughout the entire loan period.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QToolTip {
-    padding: 0 8px;
-	background-color: rgb(226, 226, 226);
-	color:black;
-	border: 1px solid black;
-}
-
-QLabel {
-	color:black;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>🛈</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignBottom|Qt::AlignHCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="2">
-       <widget class="QLabel" name="percent_label">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>35</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>25</width>
-          <height>50</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>10</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">border-radius: 10px;
-background-color: rgb(226, 226, 226);
-color:black;
-	border: 1px solid black;</string>
-        </property>
-        <property name="text">
-         <string>%</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="1">
-       <widget class="QRadioButton" name="annuity">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>170</width>
-          <height>25</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QRadioButton::indicator {
-    border: 2px solid #808080;
-    width: 12px;
-    height: 12px;
-    border-radius: 6px;
-}
-
-QRadioButton::indicator:checked {
-    background-color: #ffA500;
-    border: 3px solid #808080;
-}
-
-QRadioButton{
-    border-radius: 10px;
-    padding: 0 8px;
-	background-color: rgb(226, 226, 226);
-	color:black;
-	border: 1px solid black;
-}</string>
-        </property>
-        <property name="text">
-         <string>  Annuity</string>
         </property>
        </widget>
       </item>
@@ -941,6 +270,310 @@ QRadioButton{
         </property>
         <property name="placeholderText">
          <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="0" colspan="3">
+       <layout class="QVBoxLayout" name="layout_1"/>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="credit_label">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>170</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color: rgb(226, 226, 226);
+color:black;
+border: 1px solid black;</string>
+        </property>
+        <property name="text">
+         <string>Credit term</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="12" column="0" colspan="3">
+       <layout class="QHBoxLayout" name="layout_2">
+        <item>
+         <spacer name="spacer_6">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Preferred</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="calculate">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>150</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+border-radius: 10px;
+background-color: rgb(226, 226, 226);
+color:black;
+border: 1px solid black;
+}
+
+QPushButton:pressed {
+background-color: rgb(175, 97, 33);
+}</string>
+          </property>
+          <property name="text">
+           <string>Calculate</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="spacer_5">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Preferred</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item row="10" column="0" colspan="3">
+       <widget class="QLabel" name="payment_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>1558154</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color: rgb(226, 226, 226);
+color:black;
+	border: 1px solid black;</string>
+        </property>
+        <property name="text">
+         <string>Early repayments</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="3">
+       <widget class="Line" name="line">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>1</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(0, 0, 0);</string>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QDateEdit" name="date_edit">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>170</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QDateEdit {
+    border-radius: 10px;
+    padding: 0 8px;
+	background-color: rgb(226, 226, 226);
+	color:black;
+	border: 1px solid black;
+}
+
+QDateEdit::drop-down {
+    image: url(/home/kossadda/develop/C7_s21_smartcalc/src/s21_pics/down_arrow.png);
+	width: 20px;
+	height: 35px;
+	margin-right: 5px;
+}
+
+QDateEdit QCalendarWidget {
+    color: black;
+}
+
+QDateEdit QCalendarWidget QAbstractItemView {
+    background-color: white;
+    color: black;
+}
+
+QDateEdit QCalendarWidget QToolButton {
+    color: black;
+}
+
+QDateEdit QCalendarWidget QToolButton QMenu {
+    color: black;
+}</string>
+        </property>
+        <property name="maximumDateTime">
+         <datetime>
+          <hour>11</hour>
+          <minute>59</minute>
+          <second>59</second>
+          <year>9999</year>
+          <month>12</month>
+          <day>12</day>
+         </datetime>
+        </property>
+        <property name="calendarPopup">
+         <bool>true</bool>
+        </property>
+        <property name="date">
+         <date>
+          <year>2022</year>
+          <month>1</month>
+          <day>1</day>
+         </date>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="2">
+       <widget class="QLabel" name="info_label_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Differentiated payment is a variant of monthly loan payment, when the size of the monthly loan repayment gradually decreases towards the end of the loan period.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QToolTip {
+    padding: 0 8px;
+	background-color: rgb(226, 226, 226);
+	color:black;
+	border: 1px solid black;
+}
+
+QLabel {
+	color:black;
+}
+</string>
+        </property>
+        <property name="text">
+         <string>🛈</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
@@ -1011,8 +644,395 @@ QComboBox::drop-down {
         </item>
        </widget>
       </item>
-      <item row="11" column="0" colspan="3">
-       <layout class="QVBoxLayout" name="layout_1"/>
+      <item row="6" column="1">
+       <widget class="QLineEdit" name="percent_edit">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>170</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    border-radius: 10px;
+    padding: 0 8px;
+	background-color: rgb(226, 226, 226);
+	color:black;
+	border: 1px solid black;
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="2">
+       <widget class="QComboBox" name="time_box">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QComboBox {
+    border-radius: 10px;
+    padding: 0 8px;
+    background-color: rgb(226, 226, 226);
+    color: black;
+    border: 1px solid black;
+}
+
+QComboBox::drop-down {
+    image: url(/home/kossadda/develop/C7_s21_smartcalc/src/s21_pics/down_arrow.png);
+	width: 20px;
+	height: 35px;
+	margin-right: 5px;
+}</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>years</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>months</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="8" column="2">
+       <widget class="QLabel" name="info_label_1">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;An annuity payment is a variant of monthly loan payment, when the amount of the monthly payment remains constant throughout the entire loan period.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QToolTip {
+    padding: 0 8px;
+	background-color: rgb(226, 226, 226);
+	color:black;
+	border: 1px solid black;
+}
+
+QLabel {
+	color:black;
+}
+</string>
+        </property>
+        <property name="text">
+         <string>🛈</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="QRadioButton" name="annuity">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>170</width>
+          <height>25</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QRadioButton::indicator {
+    border: 2px solid #808080;
+    width: 12px;
+    height: 12px;
+    border-radius: 6px;
+}
+
+QRadioButton::indicator:checked {
+    background-color: rgb(175, 97, 33);
+    border: 3px solid #808080;
+}
+
+QRadioButton{
+    border-radius: 10px;
+    padding: 0 8px;
+	background-color: rgb(226, 226, 226);
+	color:black;
+	border: 1px solid black;
+}</string>
+        </property>
+        <property name="text">
+         <string>  Annuity</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0" rowspan="2">
+       <widget class="QLabel" name="payment_label">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>170</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>1558154</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color: rgb(226, 226, 226);
+color:black;
+border: 1px solid black;</string>
+        </property>
+        <property name="text">
+         <string>Payments type</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="interest_label">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>170</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color: rgb(226, 226, 226);
+color:black;
+border: 1px solid black;</string>
+        </property>
+        <property name="text">
+         <string>Interest rate</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="2">
+       <widget class="QComboBox" name="sum_box">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QComboBox {
+    border-radius: 10px;
+    padding: 0 8px;
+    background-color: rgb(226, 226, 226);
+    color: black;
+    border: 1px solid black;
+}
+
+QComboBox::drop-down {
+    image: url(/home/kossadda/develop/C7_s21_smartcalc/src/s21_pics/down_arrow.png);
+	width: 20px;
+	height: 35px;
+	margin-right: 5px;
+}</string>
+        </property>
+        <item>
+         <property name="text">
+          <string> $ - USD</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string> ₽ - RUB</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string> € - EUR</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string> ¥ - CNY</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string> ₹ - INR</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string> ₸ - KZT</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string> ¥ - JPY</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string> ₣ - CHF</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string> ฿ - THB</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string> ₾ - GEL</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="6" column="2">
+       <widget class="QLabel" name="percent_label">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>25</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-radius: 10px;
+background-color: rgb(226, 226, 226);
+color:black;
+	border: 1px solid black;</string>
+        </property>
+        <property name="text">
+         <string>%</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>

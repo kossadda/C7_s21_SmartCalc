@@ -435,15 +435,17 @@ border: 1px solid black;</string>
     </layout>
    </item>
    <item>
-    <widget class="QTableWidget" name="table">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QTableWidget::item:selected {
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QTableWidget" name="table">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QTableWidget::item:selected {
 	background-color: rgb(175, 97, 33);
 	color: rgb(255, 255, 255);
 }
@@ -451,51 +453,53 @@ border: 1px solid black;</string>
 QTableWidget {
     border-radius: 10px;
     padding: 0 8px;
-	background-color: rgb(226, 226, 226);
+	background-color: rgb(255, 255, 255);
 	color:black;
 	color: rgb(0, 0, 0);
 	gridline-color: rgb(0, 0, 0);
 	border: 1px solid black;
 }</string>
-     </property>
-     <property name="rowCount">
-      <number>0</number>
-     </property>
-     <property name="columnCount">
-      <number>5</number>
-     </property>
-     <attribute name="horizontalHeaderDefaultSectionSize">
-      <number>120</number>
-     </attribute>
-     <attribute name="verticalHeaderDefaultSectionSize">
-      <number>50</number>
-     </attribute>
-     <column>
-      <property name="text">
-       <string>Date</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Amount of payment</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Principal payment</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Interest payment</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Balance owed</string>
-      </property>
-     </column>
-    </widget>
+       </property>
+       <property name="rowCount">
+        <number>0</number>
+       </property>
+       <property name="columnCount">
+        <number>5</number>
+       </property>
+       <attribute name="horizontalHeaderDefaultSectionSize">
+        <number>120</number>
+       </attribute>
+       <attribute name="verticalHeaderDefaultSectionSize">
+        <number>50</number>
+       </attribute>
+       <column>
+        <property name="text">
+         <string>Date</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Amount of payment</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Principal payment</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Interest payment</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Balance owed</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item>
     <layout class="QHBoxLayout" name="result_layout">

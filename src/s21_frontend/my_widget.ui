@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
     <number>0</number>
@@ -44,13 +47,13 @@
        </property>
        <property name="minimumSize">
         <size>
-         <width>110</width>
+         <width>120</width>
          <height>35</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>110</width>
+         <width>120</width>
          <height>35</height>
         </size>
        </property>
@@ -60,11 +63,37 @@
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">    border-radius: 10px;
+        <string notr="true">QDateEdit {
+    border-radius: 10px;
     padding: 0 8px;
 	background-color: rgb(226, 226, 226);
 	color:black;
-	border: 1px solid black;</string>
+	border: 1px solid black;
+}
+
+QDateEdit::drop-down {
+    image: url(/home/kossadda/develop/C7_s21_smartcalc/src/s21_pics/down_arrow.png);
+	width: 20px;
+	height: 35px;
+	margin-right: 5px;
+}
+
+QDateEdit QCalendarWidget {
+    color: black;
+}
+
+QDateEdit QCalendarWidget QAbstractItemView {
+    background-color: white;
+    color: black;
+}
+
+QDateEdit QCalendarWidget QToolButton {
+    color: black;
+}
+
+QDateEdit QCalendarWidget QToolButton QMenu {
+    color: black;
+}</string>
        </property>
        <property name="calendarPopup">
         <bool>true</bool>
@@ -99,6 +128,10 @@ QTableWidget {
 	color: rgb(0, 0, 0);
 	gridline-color: rgb(0, 0, 0);
 	border: 1px solid black;
+}
+
+QTableCornerButton::section { 
+	background-color: rgb(226, 226, 226); 
 }</string>
        </property>
        <property name="rowCount">
@@ -229,11 +262,20 @@ background-color: rgb(170, 44, 33);
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">    border-radius: 10px;
+        <string notr="true">QComboBox {
+    border-radius: 10px;
     padding: 0 8px;
-	background-color: rgb(226, 226, 226);
-	color:black;
-	border: 1px solid black;</string>
+    background-color: rgb(226, 226, 226);
+    color: black;
+    border: 1px solid black;
+}
+
+QComboBox::drop-down {
+    image: url(/home/kossadda/develop/C7_s21_smartcalc/src/s21_pics/down_arrow.png);
+	width: 20px;
+	height: 35px;
+	margin-right: 5px;
+}</string>
        </property>
        <item>
         <property name="text">

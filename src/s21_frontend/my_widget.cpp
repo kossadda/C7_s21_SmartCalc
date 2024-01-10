@@ -1,5 +1,10 @@
 #include "my_widget.h"
 #include "ui_my_widget.h"
+#include <QApplication>
+#include <QTableWidget>
+#include <QPushButton>
+#include <QHeaderView>
+#include <QVBoxLayout>
 
 class DateTableWidgetItem : public QTableWidgetItem {
 public:
@@ -18,6 +23,7 @@ my_widget::my_widget(QWidget *parent) :
     ui->table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->table->horizontalHeader()->setStyleSheet("background-color: rgb(226, 226, 226); color: rgb(0, 0, 0)");
     ui->table->verticalHeader()->setStyleSheet("background-color: rgb(226, 226, 226); color: rgb(0, 0, 0)");
+
     ui->table->setSortingEnabled(true);
     ui->table->sortByColumn(0, Qt::AscendingOrder);
     ui->pay_date->setDate(QDate::currentDate());

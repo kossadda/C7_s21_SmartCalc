@@ -6,8 +6,8 @@ s21_credit_table::s21_credit_table(QWidget *parent)
     , ui(new Ui::s21_credit_table)
 {
     ui->setupUi(this);
-    ui->table->horizontalHeader()->setStyleSheet("background-color: rgb(226, 226, 226); color: rgb(0, 0, 0)");
-    ui->table->verticalHeader()->setStyleSheet("background-color: rgb(226, 226, 226); color: rgb(0, 0, 0)");
+    ui->table->horizontalHeader()->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(0, 0, 0)");
+    ui->table->verticalHeader()->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(0, 0, 0)");
 }
 
 s21_credit_table::~s21_credit_table()
