@@ -6,21 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>700</width>
-    <height>550</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>650</width>
-    <height>550</height>
+    <width>800</width>
+    <height>600</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(30, 27, 6);</string>
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -49,7 +49,10 @@
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-width: 2px; border-color: rgb(255, 255, 255);</string>
+        <string notr="true">border-radius: 10px;
+background-color: rgb(226, 226, 226);
+color:black;
+border: 1px solid black;</string>
        </property>
        <property name="text">
         <string>Payment in foreign currency</string>
@@ -75,6 +78,12 @@
          <width>100</width>
          <height>25</height>
         </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-radius: 10px;
+background-color: rgb(226, 226, 226);
+color:black;
+border: 1px solid black;</string>
        </property>
        <property name="text">
         <string/>
@@ -104,6 +113,12 @@
          <height>25</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">border-radius: 10px;
+background-color: rgb(226, 226, 226);
+color:black;
+border: 1px solid black;</string>
+       </property>
        <property name="text">
         <string>Amount of credit</string>
        </property>
@@ -128,6 +143,12 @@
          <width>100</width>
          <height>25</height>
         </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-radius: 10px;
+background-color: rgb(226, 226, 226);
+color:black;
+border: 1px solid black;</string>
        </property>
        <property name="text">
         <string/>
@@ -164,6 +185,12 @@
          <height>25</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">border-radius: 10px;
+background-color: rgb(226, 226, 226);
+color:black;
+border: 1px solid black;</string>
+       </property>
        <property name="text">
         <string>Credit term</string>
        </property>
@@ -188,6 +215,12 @@
          <width>100</width>
          <height>25</height>
         </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-radius: 10px;
+background-color: rgb(226, 226, 226);
+color:black;
+border: 1px solid black;</string>
        </property>
        <property name="text">
         <string/>
@@ -217,6 +250,12 @@
          <height>25</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">border-radius: 10px;
+background-color: rgb(226, 226, 226);
+color:black;
+border: 1px solid black;</string>
+       </property>
        <property name="text">
         <string>Loan issue date</string>
        </property>
@@ -241,6 +280,12 @@
          <width>100</width>
          <height>25</height>
         </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-radius: 10px;
+background-color: rgb(226, 226, 226);
+color:black;
+border: 1px solid black;</string>
        </property>
        <property name="text">
         <string/>
@@ -277,6 +322,12 @@
          <height>25</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">border-radius: 10px;
+background-color: rgb(226, 226, 226);
+color:black;
+border: 1px solid black;</string>
+       </property>
        <property name="text">
         <string>Selected monthly payment type:</string>
        </property>
@@ -301,6 +352,12 @@
          <width>100</width>
          <height>25</height>
         </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-radius: 10px;
+background-color: rgb(226, 226, 226);
+color:black;
+border: 1px solid black;</string>
        </property>
        <property name="text">
         <string/>
@@ -330,6 +387,12 @@
          <height>25</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">border-radius: 10px;
+background-color: rgb(226, 226, 226);
+color:black;
+border: 1px solid black;</string>
+       </property>
        <property name="text">
         <string>Interest rate</string>
        </property>
@@ -354,6 +417,12 @@
          <width>100</width>
          <height>25</height>
         </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border-radius: 10px;
+background-color: rgb(226, 226, 226);
+color:black;
+border: 1px solid black;</string>
        </property>
        <property name="text">
         <string/>
@@ -380,9 +449,13 @@
 }
 
 QTableWidget {
-	background-color: rgb(30, 27, 6);
-	color: rgb(255, 255, 255);
-	gridline-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    padding: 0 8px;
+	background-color: rgb(226, 226, 226);
+	color:black;
+	color: rgb(0, 0, 0);
+	gridline-color: rgb(0, 0, 0);
+	border: 1px solid black;
 }</string>
      </property>
      <property name="rowCount">
@@ -446,8 +519,17 @@ QTableWidget {
          <height>25</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">border-radius: 10px;
+background-color: rgb(226, 226, 226);
+color:black;
+border: 1px solid black;</string>
+       </property>
        <property name="text">
         <string>Total paid:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>
@@ -471,8 +553,17 @@ QTableWidget {
          <height>25</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">border-radius: 10px;
+background-color: rgb(226, 226, 226);
+color:black;
+border: 1px solid black;</string>
+       </property>
        <property name="text">
         <string>Debt paid:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>
@@ -496,8 +587,17 @@ QTableWidget {
          <height>25</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">border-radius: 10px;
+background-color: rgb(226, 226, 226);
+color:black;
+border: 1px solid black;</string>
+       </property>
        <property name="text">
         <string>Interest paid:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>

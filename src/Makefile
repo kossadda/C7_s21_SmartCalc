@@ -51,6 +51,7 @@ install: s21_smartcalc.a
 # 	$(MAKE) install_cmake
 	@mkdir -p $(BUILD)
 	@cd $(BUILD) && cmake .. && make
+	./build/s21_smartcalc
 
 install_cmake:
 	@if [ -e /etc/debian_version ]; then \

@@ -8,6 +8,10 @@ graphics::graphics(QWidget *parent) :
     last_step(0.01),
     tracer_visible(0),
     graph_nums(0),
+    current_x_min(0),
+    current_x_max(0),
+    current_y_min(0),
+    current_y_max(0),
     xBegin(0),
     xEnd(0),
     yBegin(0),
@@ -55,15 +59,23 @@ int graphics::check_symbol(QString expression, QChar symbol)
 
 void graphics::onMouseWheel()
 {
-    QCPRange yRange = ui->Table->yAxis->range();
+
     QCPRange xRange = ui->Table->xAxis->range();
+    QCPRange yRange = ui->Table->yAxis->range();
 
     if(ui->Table->graphCount() > 0) {
         if (yRange.size() > yEnd - yBegin || xRange.size() > xEnd - xBegin) {
-            ui->Table->xAxis->setRange(xBegin, xEnd);
-            ui->Table->yAxis->setRange(yBegin, yEnd);
+            ui->Table->xAxis->setRange(current_x_min, current_x_max);
+            ui->Table->yAxis->setRange(current_y_min, current_y_max);
+        } else if (xRange.size() < 8 || yRange.size() < 8) {
+            ui->Table->xAxis->setRange(current_x_min, current_x_max);
+            ui->Table->yAxis->setRange(current_y_min, current_y_max);
         }
     }
+    current_x_min = ui->Table->xAxis->range().lower;
+    current_x_max = ui->Table->xAxis->range().upper;
+    current_y_min = ui->Table->yAxis->range().lower;
+    current_y_max = ui->Table->yAxis->range().upper;
 }
 
 
@@ -104,7 +116,7 @@ void graphics::slotMouseMove(QMouseEvent *event)
 
 void graphics::build_plot(QString expression)
 {
-    if(ui->step->text().toDouble() != 0) {
+    if(ui->step->text().toDouble() != 0 && (ui->x_end->text().toDouble() - ui->x_beg->text().toDouble() >= 4 && ui->y_end->text().toDouble() - ui->y_beg->text().toDouble() >= 4) ) {
         if(tracer && last_expr != expression) {
             tracer_visible = 1;
         }
@@ -144,10 +156,16 @@ void graphics::build_plot(QString expression)
         ui->Table->graph(0)->setData(x, y);
 
         ui->Table->replot();
-        ui->Table->setInteraction(QCP::iRangeZoom, true);
+        if(ui->Table->xAxis->range().size() >= 10 && ui->Table->yAxis->range().size() >= 10) {
+            ui->Table->setInteraction(QCP::iRangeZoom, true);
+        }
         if(!ui->x_trace->isVisible()) {
             ui->Table->setInteraction(QCP::iRangeDrag, true);
         }
+        current_x_min = xBegin;
+        current_x_max = xEnd;
+        current_y_min = yBegin;
+        current_y_max = yEnd;
     }
 }
 

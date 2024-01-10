@@ -50,6 +50,7 @@ private:
     int graph_nums;
 
     QVector<double> x, y;
+    double current_x_min, current_x_max, current_y_min, current_y_max;
     double xBegin, xEnd, yBegin, yEnd, h, X;
     int N;
 };

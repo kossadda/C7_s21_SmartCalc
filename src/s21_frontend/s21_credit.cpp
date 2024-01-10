@@ -17,7 +17,7 @@ s21_credit::s21_credit(QWidget *parent)
 
 
     tableWindow->getUi()->table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    // ui->date_edit->setDate(QDate::currentDate());
+    ui->date_edit->setDate(QDate::currentDate());
 
     connect(ui->creditBox, SIGNAL(activated(int)), this, SLOT(change_credit(int)));
 }
@@ -128,8 +128,8 @@ void s21_credit::on_calculate_clicked()
         }
 
         if(tableWindow) {
-            QPoint currentPosGlobal = this->mapToGlobal(QPoint(-700, 0));
-            tableWindow->setGeometry(currentPosGlobal.x(), currentPosGlobal.y(), 700, 550);
+            QPoint currentPosGlobal = this->mapToGlobal(QPoint(-800, 0));
+            tableWindow->setGeometry(currentPosGlobal.x(), currentPosGlobal.y(), 800, 600);
             tableWindow->show();
             tableWindow->getUi()->table->setRowCount(data.current + 1);
             add_all_to_table(data.current + 1, pay.result, pay.total);

@@ -32,7 +32,7 @@
    <item>
     <layout class="QGridLayout" name="widget_layout">
      <property name="spacing">
-      <number>0</number>
+      <number>5</number>
      </property>
      <item row="0" column="0">
       <widget class="QDateEdit" name="pay_date">
@@ -44,13 +44,13 @@
        </property>
        <property name="minimumSize">
         <size>
-         <width>100</width>
+         <width>110</width>
          <height>35</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>16777215</width>
+         <width>110</width>
          <height>35</height>
         </size>
        </property>
@@ -60,8 +60,11 @@
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255, 255, 255);</string>
+        <string notr="true">    border-radius: 10px;
+    padding: 0 8px;
+	background-color: rgb(226, 226, 226);
+	color:black;
+	border: 1px solid black;</string>
        </property>
        <property name="calendarPopup">
         <bool>true</bool>
@@ -89,15 +92,18 @@ background-color: rgb(255, 255, 255);</string>
 }
 
 QTableWidget {
-	background-color: rgb(30, 27, 6);
-	color: rgb(255, 255, 255);
-	gridline-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    padding: 0 8px;
+	background-color: rgb(226, 226, 226);
+	color:black;
+	color: rgb(0, 0, 0);
+	gridline-color: rgb(0, 0, 0);
+	border: 1px solid black;
 }</string>
        </property>
        <property name="rowCount">
-        <number>1</number>
+        <number>0</number>
        </property>
-       <row/>
        <column>
         <property name="text">
          <string>Date</string>
@@ -113,21 +119,6 @@ QTableWidget {
          <string>Recalculation</string>
         </property>
        </column>
-       <item row="0" column="0">
-        <property name="text">
-         <string>06.04.2022</string>
-        </property>
-       </item>
-       <item row="0" column="1">
-        <property name="text">
-         <string>5232</string>
-        </property>
-       </item>
-       <item row="0" column="2">
-        <property name="text">
-         <string>Reduce term</string>
-        </property>
-       </item>
       </widget>
      </item>
      <item row="0" column="1">
@@ -140,27 +131,30 @@ QTableWidget {
        </property>
        <property name="minimumSize">
         <size>
-         <width>100</width>
+         <width>110</width>
          <height>35</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>16777215</width>
+         <width>110</width>
          <height>35</height>
         </size>
        </property>
        <property name="font">
         <font>
-         <pointsize>10</pointsize>
+         <pointsize>8</pointsize>
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255, 255, 255);</string>
+        <string notr="true">    border-radius: 10px;
+    padding: 0 8px;
+	background-color: rgb(226, 226, 226);
+	color:black;
+	border: 1px solid black;</string>
        </property>
        <property name="text">
-        <string>51235</string>
+        <string/>
        </property>
        <property name="placeholderText">
         <string>Early pay sum</string>
@@ -194,11 +188,14 @@ background-color: rgb(255, 255, 255);</string>
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
-	background-color: rgb(149, 0, 0);
+border-radius: 10px;
+background-color: rgb(226, 226, 226);
+color:black;
+border: 1px solid black;
 }
 
 QPushButton:pressed {
-	background-color: rgb(255, 126, 94);
+background-color: rgb(170, 44, 33);
 }</string>
        </property>
        <property name="text">
@@ -232,8 +229,11 @@ QPushButton:pressed {
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255, 255, 255);</string>
+        <string notr="true">    border-radius: 10px;
+    padding: 0 8px;
+	background-color: rgb(226, 226, 226);
+	color:black;
+	border: 1px solid black;</string>
        </property>
        <item>
         <property name="text">
@@ -274,11 +274,14 @@ background-color: rgb(255, 255, 255);</string>
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
-    background-color: rgb(175, 97, 33);
+border-radius: 10px;
+background-color: rgb(226, 226, 226);
+color:black;
+border: 1px solid black;
 }
 
 QPushButton:pressed {
-    background-color: rgb(0, 119, 171);
+background-color: rgb(175, 97, 33);
 }</string>
        </property>
        <property name="text">

@@ -4,7 +4,6 @@
 class DateTableWidgetItem : public QTableWidgetItem {
 public:
     bool operator<(const QTableWidgetItem &other) const override {
-        // Сравниваем даты при помощи QDateTime
         QDateTime date1 = QDateTime::fromString(text(), "dd.MM.yyyy");
         QDateTime date2 = QDateTime::fromString(other.text(), "dd.MM.yyyy");
         return date1 < date2;
@@ -17,9 +16,11 @@ my_widget::my_widget(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->table->horizontalHeader()->setStyleSheet("background-color: rgb(226, 226, 226); color: rgb(0, 0, 0)");
+    ui->table->verticalHeader()->setStyleSheet("background-color: rgb(226, 226, 226); color: rgb(0, 0, 0)");
     ui->table->setSortingEnabled(true);
     ui->table->sortByColumn(0, Qt::AscendingOrder);
-    // ui->pay_date->setDate(QDate::currentDate());
+    ui->pay_date->setDate(QDate::currentDate());
 }
 
 my_widget::~my_widget()
