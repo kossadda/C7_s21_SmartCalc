@@ -1,15 +1,6 @@
 #include "graphics.h"
 #include "ui_graphics.h"
 
-extern "C" {
-#include "../s21_backend/s21_calculator/s21_calculator.c"
-#include "../s21_backend/s21_calculator/s21_validation.c"
-#include "../s21_backend/s21_calculator/s21_notation.c"
-#include "../s21_backend/s21_calculator/s21_checks.c"
-#include "../s21_backend/s21_calculator/s21_comparison.c"
-#include "../s21_backend/s21_calculator/s21_math_operations.c"
-}
-
 graphics::graphics(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::graphics),
@@ -18,8 +9,8 @@ graphics::graphics(QWidget *parent) :
     tracer_visible(0),
     graph_nums(0),
     xBegin(0),
-    yBegin(0),
     xEnd(0),
+    yBegin(0),
     yEnd(0)
 {
     ui->setupUi(this);

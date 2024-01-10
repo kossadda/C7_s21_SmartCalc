@@ -3,10 +3,6 @@
 // #include "s21_credit.h"
 #include "ui_s21_smartcalc.h"
 
-extern "C" {
-#include "../s21_backend/s21_calculator/s21_unar_operation.c"
-}
-
 s21_smartcalc::s21_smartcalc(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::s21_smartcalc)
@@ -288,6 +284,7 @@ void s21_smartcalc::on_variable_clicked()
         var->setFixedHeight(35);
         var->setMinimumWidth(70);
         var->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+        var->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(0, 0, 0)");
         var->setPlaceholderText("x =");
         change_color(ui->variable, "green_var");
         if(!graphWindow) {

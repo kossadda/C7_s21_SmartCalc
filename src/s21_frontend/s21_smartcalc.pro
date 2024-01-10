@@ -34,6 +34,8 @@ FORMS += \
     s21_deposit.ui \
     s21_smartcalc.ui
 
+LIBS += ../s21_smartcalc.a
+
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin

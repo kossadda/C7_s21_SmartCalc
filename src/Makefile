@@ -1,25 +1,27 @@
 # FLAGS
-VAL=--trace-children=yes --track-origins=yes --leak-check=full
-CLANG=-n -style="{BasedOnStyle: Google, IndentWidth: 4}"
-CC=-Wall -Werror -Wextra -g -std=c11
-COVER=-fprofile-arcs -ftest-coverage
-LCOV=-lcheck -lsubunit -lgcov
-GCOVR=-r . --html --html-details
-# FUNCS PATHS1
+VAL = --trace-children=yes --track-origins=yes --leak-check=full
+CLANG = -n -style="{BasedOnStyle: Google, IndentWidth: 4}"
+# CC = -Wall -Werror -Wextra -g -std=c11
+COVER = -fprofile-arcs -ftest-coverage
+LCOV = -lcheck -lsubunit -lgcov
+GCOVR = -r . --html --html-details
+# FUNCS PATHS
 MAIN_FOLD=s21_frontend
-CALC=s21_backend/s21_calculator/*.c
-CREDIT=s21_backend/s21_credit/*.c
-DEPOSIT=s21_backend/s21_deposit/*.c
-SUPPORT=s21_backend/s21_common/*.c
+CALC = $(shell find s21_backend/s21_calculator -name '*.c')
+CREDIT = $(shell find s21_backend/s21_credit -name '*.c')
+DEPOSIT = $(shell find s21_backend/s21_deposit -name '*.c')
+SUPPORT = $(shell find s21_backend/s21_common -name '*.c')
+SOURCES = $(CALC) $(CREDIT) $(DEPOSIT) $(SUPPORT)
+OBJECTS = $(SOURCES:.c=.o)
 # TESTS PATHS
-TESTS=s21_backend/s21_tests/*.c
+TESTS = s21_backend/s21_tests/*.c
 # OTHER PATHS
-TRASH=$(MAIN_FOLD)/*.o $(MAIN_FOLD)/ui_* $(MAIN_FOLD)/moc_* $(MAIN_FOLD)/*.user $(MAIN_FOLD)/Makefile
-GCOV=s21_backend/gcov_report
-BUILD=build
+TRASH = $(MAIN_FOLD)/*.o $(MAIN_FOLD)/ui_* $(MAIN_FOLD)/moc_* $(MAIN_FOLD)/*.user $(MAIN_FOLD)/Makefile
+GCOV = gcov_report
+BUILD = build
 # EXECUTE
-EXE=test
-PROG=s21_smartcalc
+EXE = test
+PROG = s21_smartcalc
 
 
 
@@ -45,7 +47,7 @@ install_by_qmake:
 	@cd $(MAIN_FOLD) && qmake && make -s
 	@mv $(MAIN_FOLD)/$(PROG) $(BUILD)/$(PROG)
 
-install:
+install: s21_smartcalc.a
 # 	$(MAKE) install_cmake
 	@mkdir -p $(BUILD)
 	@cd $(BUILD) && cmake .. && make
@@ -73,6 +75,11 @@ uninstall:
 
 run:
 	./$(BUILD)/$(PROG)
+
+s21_smartcalc.a: $(OBJECTS)
+	ar rcs $@ $(OBJECTS)
+	ranlib $(PROG).a
+	@rm $(OBJECTS)
 
 test: ggwp
 	clear

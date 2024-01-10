@@ -6,6 +6,10 @@
 #include <QLineEdit>
 #include "graphics.h"
 
+extern "C" {
+#include "../s21_backend/s21_main.h"
+}
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class s21_smartcalc;

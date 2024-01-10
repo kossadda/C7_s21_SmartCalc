@@ -5,6 +5,10 @@
 #include "s21_credit_table.h"
 #include "my_widget.h"
 
+extern "C" {
+#include "../s21_backend/s21_main.h"
+}
+
 namespace Ui {
 class s21_credit;
 }

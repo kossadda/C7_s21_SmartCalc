@@ -6,6 +6,10 @@
 #include <QVector>
 #include "qcustomplot.h"
 
+extern "C" {
+#include "../s21_backend/s21_main.h"
+}
+
 namespace Ui {
 class graphics;
 }
