@@ -49,24 +49,56 @@ void s21_credit::change_credit(int index)
     // }
 }
 
-void s21_credit::free_memory(int rows, long double ***result, long double **total) {
-    for(int i = 0; i < rows; i++) {
-        if((*result)[i]) {
-            free((*result)[i]);
-            (*result)[i] = NULL;
+// void s21_credit::free_memory(int rows, long double ***result, long double **total) {
+//     for(int i = 0; i < rows; i++) {
+//         if((*result)[i]) {
+//             free((*result)[i]);
+//             (*result)[i] = NULL;
+//         }
+//     }
+//     if(result) {
+//         free(*result);
+//         *result = NULL;
+//     }
+//     if(total) {
+//         free(*total);
+//         *total = NULL;
+//     }
+// }
+
+
+void s21_credit::free_memory(credit_init data, payments *pay, early_pay *redemption) {
+    for(int i = 0; i < data.current + 1; i++) {
+        if(pay->result[i]) {
+            free(pay->result[i]);
+            pay->result[i] = NULL;
         }
     }
-    if(result) {
-        free(*result);
-        *result = NULL;
+    if(pay->result) {
+        free(pay->result);
+        pay->result = NULL;
     }
-    if(total) {
-        free(*total);
-        *total = NULL;
+    if(pay->total) {
+        free(pay->total);
+        pay->total = NULL;
+    }
+    if(early_pays->getTableWidget()->rowCount() > 0) {
+        if(redemption->date != NULL) {
+            free(redemption->date);
+            redemption->date = NULL;
+        }
+        if(redemption->sum != NULL) {
+            free(redemption->sum);
+            redemption->sum = NULL;
+        }
+        if(redemption->type != NULL) {
+            free(redemption->type);
+            redemption->type = NULL;
+        }
     }
 }
 
-void add_redemption(early_pay *redemption, my_widget *early_pays, int count) {
+void s21_credit::add_redemption(early_pay *redemption, my_widget *early_pays, int count) {
     redemption->date = (time_data *)realloc(redemption->date, (count + 1) * sizeof(time_data));
     redemption->sum = (long double *)realloc(redemption->sum, (count + 1) * sizeof(long double));
     redemption->type = (int *)realloc(redemption->type, (count + 1) * sizeof(int));
@@ -86,13 +118,25 @@ void add_redemption(early_pay *redemption, my_widget *early_pays, int count) {
     redemption->count++;
 }
 
-void init_parameters(credit_init *data, Ui::s21_credit *ui) {
+void s21_credit::init_parameters(credit_init *data, Ui::s21_credit *ui) {
     data->months = ui->time_edit->text().toInt();
     data->debt = ui->amount_edit->text().toDouble();
     data->rate = ui->percent_edit->text().toDouble();
     data->date.day = ui->date_edit->date().day();
     data->date.month = ui->date_edit->date().month();
     data->date.year = ui->date_edit->date().year();
+    if(ui->annuity->isChecked()) {
+        data->payment_type = ANNUITY;
+    } else {
+        if(ui->differentiated->isChecked()) {
+            data->payment_type = DIFFERENTIATED;
+        } else {
+            data->payment_type = NOT_CHOSEN;
+        }
+    }
+    if(ui->time_box->currentIndex() == 0) {
+        data->months *= 12;
+    }
 }
 
 void s21_credit::on_calculate_clicked()
@@ -110,16 +154,6 @@ void s21_credit::on_calculate_clicked()
             add_redemption(&redemption, early_pays, count);
         }
     }
-
-    if(ui->annuity->isChecked()) {
-        data.payment_type = ANNUITY;
-    } else {
-        if(ui->differentiated->isChecked()) {
-            data.payment_type = DIFFERENTIATED;
-        } else {
-            data.payment_type = NOT_CHOSEN;
-        }
-    }
     if(data.payment_type != NOT_CHOSEN) {
         if(early_pays->getTableWidget()->rowCount() == 0) {
             calculate_credit(&data, &pay, NULL);
@@ -134,21 +168,7 @@ void s21_credit::on_calculate_clicked()
             tableWindow->getUi()->table->setRowCount(data.current + 1);
             add_all_to_table(data.current + 1, pay.result, pay.total);
         }
-        free_memory(data.current + 1, &pay.result, &pay.total);
-        if(early_pays->getTableWidget()->rowCount() > 0) {
-            if(redemption.date != NULL) {
-                free(redemption.date);
-                redemption.date = NULL;
-            }
-            if(redemption.sum != NULL) {
-                free(redemption.sum);
-                redemption.sum = NULL;
-            }
-            if(redemption.type != NULL) {
-                free(redemption.type);
-                redemption.type = NULL;
-            }
-        }
+        free_memory(data, &pay, &redemption);
     }
 }
 
@@ -216,4 +236,10 @@ void s21_credit::add_all_to_table(int months, long double **result, long double 
             tableWindow->getUi()->interest_info->setText("Interest paid: " + number);
         }
     }
+    tableWindow->getUi()->currency_select->setText(ui->sum_box->currentText());
+    tableWindow->getUi()->amount_select->setText(ui->amount_edit->text());
+    tableWindow->getUi()->term_select->setText(ui->time_edit->text() + " " + ui->time_box->currentText());
+    tableWindow->getUi()->type_select->setText((ui->annuity->isChecked()) ? "Annuity" : "Differentiated");
+    tableWindow->getUi()->rate_select->setText(ui->percent_edit->text());
+    tableWindow->getUi()->loan_select->setText(ui->date_edit->date().toString("dd.MM.yyyy"));
 }

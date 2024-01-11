@@ -1,7 +1,8 @@
 # FLAGS
 VAL = --trace-children=yes --track-origins=yes --leak-check=full
 CLANG = -n -style="{BasedOnStyle: Google, IndentWidth: 4}"
-# CC = -Wall -Werror -Wextra -g -std=c11
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra -g -std=c11
 COVER = -fprofile-arcs -ftest-coverage
 LCOV = -lcheck -lsubunit -lgcov
 GCOVR = -r . --html --html-details
@@ -47,7 +48,7 @@ install_by_qmake:
 	@cd $(MAIN_FOLD) && qmake && make -s
 	@mv $(MAIN_FOLD)/$(PROG) $(BUILD)/$(PROG)
 
-install: s21_smartcalc.a
+install:
 # 	$(MAKE) install_cmake
 	@mkdir -p $(BUILD)
 	@cd $(BUILD) && cmake .. && make
@@ -84,11 +85,11 @@ s21_smartcalc.a: $(OBJECTS)
 
 test: ggwp
 	clear
-	@gcc $(CC) $(CALC) $(CREDIT) $(DEPOSIT) $(SUPPORT) $(TESTS) -lm -o $(EXE) $(LCOV)
+	@$(CC) $(CFLAGS) $(CALC) $(CREDIT) $(DEPOSIT) $(SUPPORT) $(TESTS) -lm -o $(EXE) $(LCOV)
 	@./$(EXE)
 
 gcov_report: uninstall
-	gcc $(CC) $(COVER) $(CALC) $(CREDIT) $(DEPOSIT) $(SUPPORT) $(TESTS) -lm -o $(EXE) $(LCOV)
+	$(CC) $(CFLAGS) $(COVER) $(CALC) $(CREDIT) $(DEPOSIT) $(SUPPORT) $(TESTS) -lm -o $(EXE) $(LCOV)
 	@mkdir -p $(GCOV)
 	@./$(EXE)
 	gcovr $(GCOVR) -o $(GCOV)/coverage.html
@@ -109,7 +110,7 @@ clang-format:
 
 # Моя временная цель
 build: uninstall
-	@gcc $(CC) $(CALC) $(CREDIT) $(DEPOSIT) $(SUPPORT) s21_backend/s21_debug.c -lm -o $(EXE)
+	@$(CC) $(CFLAGS) $(CALC) $(CREDIT) $(DEPOSIT) $(SUPPORT) s21_backend/s21_debug.c -lm -o $(EXE)
 	clear
 	@./$(EXE)
 

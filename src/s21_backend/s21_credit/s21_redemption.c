@@ -116,7 +116,8 @@ static void change_days_pays(credit_init *data, early_pay *redemption, time_data
     
     if(data->payment_type == DIFFERENTIATED) {
         if(redemption->type[redemption->current] == REDUCE_PAY && change == DEBT_CHANGED) {
-            pay->const_main = round_value(data->debt/(data->months - (data->current - redemption->current)));
+            int term = data->months - (data->current - redemption->current);
+            pay->const_main = (term) ? round_value(data->debt/term) : pay->const_main;
         }
         pay->main = pay->const_main;
     }

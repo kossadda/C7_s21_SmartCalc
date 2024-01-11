@@ -132,7 +132,8 @@ QTableWidget {
 
 QTableCornerButton::section { 
 	background-color: rgb(226, 226, 226); 
-}</string>
+}
+</string>
        </property>
        <property name="rowCount">
         <number>0</number>
@@ -190,7 +191,7 @@ QTableCornerButton::section {
         <string/>
        </property>
        <property name="placeholderText">
-        <string>Early pay sum</string>
+        <string>Payment sum</string>
        </property>
       </widget>
      </item>

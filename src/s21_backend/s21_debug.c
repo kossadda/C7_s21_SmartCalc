@@ -1,8 +1,8 @@
 #include "s21_tests/s21_test.h"
 #include <stdio.h>
 
-#define DEBUG_CREDIT
 #ifndef DEBUG_CREDIT
+#define DEBUG_CREDIT
 
 void input_initial(credit_init *data, long double debt, long double months, int type, long double rate, int day, int month, int year) {
     data->debt = debt;
@@ -60,13 +60,13 @@ void print_credit(credit_init *data, payments *pay) {
         }
         printf("\n");
     }
-    printf("\nTOTAL : %Lf  -  %Lf\n\n", pay->total[0], pay->total[1]);
+    printf("\nTOTAL : %Lf  -  %Lf  -  %Lf\n\n", pay->total[0], pay->total[1], pay->total[2]);
 }
 
 #endif
 
-#ifndef DEBUG_DEPOSIT
 #define DEBUG_DEPOSIT
+#ifndef DEBUG_DEPOSIT
 
 void print_deposit(deposit_init *data, investment *pay) {
     printf("MONTHLY:\n");
@@ -153,40 +153,22 @@ void input_operation(operations *oper, int day, int month, int year, long double
     // deposit_init data1 = data;
 
 int main() {
-    deposit_init data;
-    investment pay;
-    operations oper;
-    init_operations(&oper);
+    credit_init data;
+    payments pay;
+    early_pay redemption;
+    init_redemption(&redemption);
 
+    input_initial(&data, 18267861.75, 35, DIFFERENTIATED, 14.651, 29, 2, 2024);
+    input_redemption(&redemption, 28, 7, 2024, 102845, REDUCE_PAY);
+    input_redemption(&redemption, 30, 9, 2024, 816510, REDUCE_TERM);
+    input_redemption(&redemption, 9, 7, 2025, 1200120, REDUCE_TERM);
+    input_redemption(&redemption, 21, 7, 2025, 51237, REDUCE_PAY);
 
+    calculate_credit(&data, &pay, &redemption);
+    long double result_total[3] = {112884986.74, 77777777.77, 35107208.97};
+    // print_deposit(&data1, &pay);
 
-
-    init_deposit(&data, 771332.12, MONTHS_PERIOD, 56, 22, 6, 2025, 17.275, BY_HALFYEAR, CAPITAL);
-    input_operation(&oper, 23, 6, 2025, 42335566, REFILL, 0);
-    input_operation(&oper, 29, 7, 2025, 1987656, REFILL, 0);
-    input_operation(&oper, 8, 8, 2025, 12001233, WITHDRAWALS, 0);
-    input_operation(&oper, 28, 2, 2029, 3211111, REFILL, 0);
-    input_operation(&oper, 4, 12, 2029, 6672311, WITHDRAWALS, 0);
-    input_operation(&oper, 7, 2, 2030, 31000000, WITHDRAWALS, 0);
-
-    long double taxes_total[] = {379390.00, 826608.15, 979320.07, 1159635.47, 1425421.40, 206660.23};
-
-
-
-
-
-
-
-    deposit_init data1 = data;
-    calculate_deposit(&data, &pay, &oper);
-
-
-
-    
-    data1.current = data.current;
-    print_deposit(&data1, &pay);
-
-    // print_credit(&data, &pay);
+    print_credit(&data, &pay);
 }
 
 #endif

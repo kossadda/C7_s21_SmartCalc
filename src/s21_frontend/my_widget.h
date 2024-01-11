@@ -3,6 +3,11 @@
 
 #include <QWidget>
 #include <QTableWidget>
+#include <QApplication>
+#include <QPushButton>
+#include <QHeaderView>
+#include <QVBoxLayout>
+#include <QComboBox>
 
 namespace Ui {
 class my_widget;
@@ -18,6 +23,8 @@ public:
 
 public slots:
     QTableWidget* getTableWidget();
+    QComboBox* getUi();
+    bool containsOnlyDigits(const QString &str);
 
 private slots:
     void on_add_to_table_clicked();

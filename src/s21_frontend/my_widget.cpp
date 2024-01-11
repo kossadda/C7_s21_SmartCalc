@@ -1,10 +1,5 @@
 #include "my_widget.h"
 #include "ui_my_widget.h"
-#include <QApplication>
-#include <QTableWidget>
-#include <QPushButton>
-#include <QHeaderView>
-#include <QVBoxLayout>
 
 class DateTableWidgetItem : public QTableWidgetItem {
 public:
@@ -21,9 +16,8 @@ my_widget::my_widget(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    ui->table->horizontalHeader()->setStyleSheet("background-color: rgb(226, 226, 226); color: rgb(0, 0, 0)");
-    ui->table->verticalHeader()->setStyleSheet("background-color: rgb(226, 226, 226); color: rgb(0, 0, 0)");
-
+    ui->table->horizontalHeader()->setStyleSheet("background-color: rgb(226, 226, 226); color: rgb(0, 0, 0);");
+    ui->table->verticalHeader()->setStyleSheet("background-color: rgb(226, 226, 226); color: rgb(0, 0, 0);");
     ui->table->setSortingEnabled(true);
     ui->table->sortByColumn(0, Qt::AscendingOrder);
     ui->pay_date->setDate(QDate::currentDate());
@@ -34,10 +28,10 @@ my_widget::~my_widget()
     delete ui;
 }
 
-bool containsOnlyDigits(const QString &str)
+bool my_widget::containsOnlyDigits(const QString &str)
 {
     for (const QChar &ch : str) {
-        if (!ch.isDigit()) {
+        if (!ch.isDigit() && ch != '.') {
             return false;
         }
     }
@@ -46,7 +40,7 @@ bool containsOnlyDigits(const QString &str)
 
 void my_widget::on_add_to_table_clicked()
 {
-    if(ui->pay_sum->text().length() && containsOnlyDigits(ui->pay_sum->text())) {
+    if(ui->pay_sum->text().length() && ui->pay_sum->text().toDouble() > 0) {
         ui->table->setRowCount(ui->table->rowCount() + 1);
         DateTableWidgetItem *item_1 = new DateTableWidgetItem();
         DateTableWidgetItem *item_2 = new DateTableWidgetItem();
@@ -71,4 +65,9 @@ void my_widget::on_clean_table_clicked()
 QTableWidget* my_widget::getTableWidget()
 {
     return ui->table;
+}
+
+QComboBox* my_widget::getUi()
+{
+    return ui->pay_type;
 }
