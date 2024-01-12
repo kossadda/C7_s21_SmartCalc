@@ -24,12 +24,9 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <layout class="QHBoxLayout" name="info_layout_1">
-     <property name="spacing">
-      <number>0</number>
-     </property>
-     <item>
-      <widget class="QLabel" name="amount_info">
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="info_interest">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -38,13 +35,13 @@
        </property>
        <property name="minimumSize">
         <size>
-         <width>200</width>
+         <width>250</width>
          <height>25</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>200</width>
+         <width>250</width>
          <height>25</height>
         </size>
        </property>
@@ -55,15 +52,15 @@ color:black;
 border: 1px solid black;</string>
        </property>
        <property name="text">
-        <string>Amount of credit</string>
+        <string>Interest charges:</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignCenter</set>
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QLabel" name="amount_select">
+     <item row="0" column="2">
+      <widget class="QLabel" name="info_rate">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -72,13 +69,13 @@ border: 1px solid black;</string>
        </property>
        <property name="minimumSize">
         <size>
-         <width>50</width>
+         <width>250</width>
          <height>25</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>100</width>
+         <width>250</width>
          <height>25</height>
         </size>
        </property>
@@ -89,15 +86,15 @@ color:black;
 border: 1px solid black;</string>
        </property>
        <property name="text">
-        <string/>
+        <string>Effective rate:</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignCenter</set>
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QLabel" name="currency_info">
+     <item row="0" column="1">
+      <widget class="QLabel" name="info_gains">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -106,13 +103,13 @@ border: 1px solid black;</string>
        </property>
        <property name="minimumSize">
         <size>
-         <width>200</width>
+         <width>250</width>
          <height>25</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>200</width>
+         <width>250</width>
          <height>25</height>
         </size>
        </property>
@@ -123,15 +120,15 @@ color:black;
 border: 1px solid black;</string>
        </property>
        <property name="text">
-        <string>Payment in foreign currency</string>
+        <string>Capital gains:</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignCenter</set>
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QLabel" name="currency_select">
+     <item row="1" column="0">
+      <widget class="QLabel" name="info_oper">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -140,13 +137,13 @@ border: 1px solid black;</string>
        </property>
        <property name="minimumSize">
         <size>
-         <width>50</width>
+         <width>250</width>
          <height>25</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>100</width>
+         <width>250</width>
          <height>25</height>
         </size>
        </property>
@@ -157,22 +154,15 @@ color:black;
 border: 1px solid black;</string>
        </property>
        <property name="text">
-        <string/>
+        <string>Refils/withdrawals:</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignCenter</set>
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
      </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="info_layout_2">
-     <property name="spacing">
-      <number>0</number>
-     </property>
-     <item>
-      <widget class="QLabel" name="term_info">
+     <item row="1" column="1">
+      <widget class="QLabel" name="info_fullsum">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -181,13 +171,13 @@ border: 1px solid black;</string>
        </property>
        <property name="minimumSize">
         <size>
-         <width>200</width>
+         <width>250</width>
          <height>25</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>200</width>
+         <width>250</width>
          <height>25</height>
         </size>
        </property>
@@ -198,15 +188,15 @@ color:black;
 border: 1px solid black;</string>
        </property>
        <property name="text">
-        <string>Credit term</string>
+        <string>Amount+interest:</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignCenter</set>
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QLabel" name="term_select">
+     <item row="1" column="2">
+      <widget class="QLabel" name="info_tax">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -215,13 +205,13 @@ border: 1px solid black;</string>
        </property>
        <property name="minimumSize">
         <size>
-         <width>50</width>
+         <width>250</width>
          <height>25</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>100</width>
+         <width>250</width>
          <height>25</height>
         </size>
        </property>
@@ -232,221 +222,10 @@ color:black;
 border: 1px solid black;</string>
        </property>
        <property name="text">
-        <string/>
+        <string>Tax:</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="type_info">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>200</width>
-         <height>25</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>200</width>
-         <height>25</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-radius: 10px;
-background-color: rgb(226, 226, 226);
-color:black;
-border: 1px solid black;</string>
-       </property>
-       <property name="text">
-        <string>Monthly payment type</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="type_select">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>50</width>
-         <height>25</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>100</width>
-         <height>25</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-radius: 10px;
-background-color: rgb(226, 226, 226);
-color:black;
-border: 1px solid black;</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="info_layout_3">
-     <property name="spacing">
-      <number>0</number>
-     </property>
-     <item>
-      <widget class="QLabel" name="rate_info">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>200</width>
-         <height>25</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>200</width>
-         <height>25</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-radius: 10px;
-background-color: rgb(226, 226, 226);
-color:black;
-border: 1px solid black;</string>
-       </property>
-       <property name="text">
-        <string>Interest rate</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="rate_select">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>50</width>
-         <height>25</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>100</width>
-         <height>25</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-radius: 10px;
-background-color: rgb(226, 226, 226);
-color:black;
-border: 1px solid black;</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="loan_info">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>200</width>
-         <height>25</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>200</width>
-         <height>25</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-radius: 10px;
-background-color: rgb(226, 226, 226);
-color:black;
-border: 1px solid black;</string>
-       </property>
-       <property name="text">
-        <string>Loan issue date</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="loan_select">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>50</width>
-         <height>25</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>100</width>
-         <height>25</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">border-radius: 10px;
-background-color: rgb(226, 226, 226);
-color:black;
-border: 1px solid black;</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
      </item>
@@ -624,6 +403,9 @@ border: 1px solid black;</string>
       </widget>
      </item>
     </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="tax_layout"/>
    </item>
   </layout>
  </widget>

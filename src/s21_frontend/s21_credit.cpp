@@ -1,6 +1,4 @@
 #include "s21_credit.h"
-// #include "s21_deposit.h"
-// #include "s21_smartcalc.h"
 #include "ui_s21_credit.h"
 #include "ui_s21_credit_table.h"
 
@@ -11,6 +9,12 @@ s21_credit::s21_credit(QWidget *parent)
 {
     ui->setupUi(this);
     tableWindow = new s21_credit_table();
+    tableWindow->getUi()->info_fullsum->setVisible(false);
+    tableWindow->getUi()->info_gains->setVisible(false);
+    tableWindow->getUi()->info_interest->setVisible(false);
+    tableWindow->getUi()->info_oper->setVisible(false);
+    tableWindow->getUi()->info_rate->setVisible(false);
+    tableWindow->getUi()->info_tax->setVisible(false);
 
     early_pays = new my_widget(this);
     ui->layout_1->addWidget(early_pays);
@@ -18,8 +22,6 @@ s21_credit::s21_credit(QWidget *parent)
 
     tableWindow->getUi()->table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->date_edit->setDate(QDate::currentDate());
-
-    connect(ui->creditBox, SIGNAL(activated(int)), this, SLOT(change_credit(int)));
 }
 
 s21_credit::~s21_credit()
@@ -29,43 +31,6 @@ s21_credit::~s21_credit()
     }
     delete ui;
 }
-
-void s21_credit::change_credit(int index)
-{
-    // QPoint currentPosGlobal = this->mapToGlobal(QPoint(0, 0));
-    // QSize currentSize = this->size();
-    // QMainWindow* newWindow = nullptr;
-
-    // if (index == 1) {
-    //     newWindow = new s21_smartcalc();
-    // } else if (index == 2) {
-    //     newWindow = new s21_deposit();
-    // }
-
-    // if (newWindow) {
-    //     this->close();
-    //     newWindow->setGeometry(currentPosGlobal.x(), currentPosGlobal.y(), currentSize.width(), currentSize.height());
-    //     newWindow->show();
-    // }
-}
-
-// void s21_credit::free_memory(int rows, long double ***result, long double **total) {
-//     for(int i = 0; i < rows; i++) {
-//         if((*result)[i]) {
-//             free((*result)[i]);
-//             (*result)[i] = NULL;
-//         }
-//     }
-//     if(result) {
-//         free(*result);
-//         *result = NULL;
-//     }
-//     if(total) {
-//         free(*total);
-//         *total = NULL;
-//     }
-// }
-
 
 void s21_credit::free_memory(credit_init data, payments *pay, early_pay *redemption) {
     for(int i = 0; i < data.current + 1; i++) {
@@ -172,9 +137,12 @@ void s21_credit::on_calculate_clicked()
     }
 }
 
-void s21_credit::add_item_to_table(int row, int column, QString value) {
+void s21_credit::add_item_to_table(int row, int column, QString value, int style) {
     QTableWidgetItem *item = new QTableWidgetItem(value);
     item->setTextAlignment(Qt::AlignCenter);
+    if(style) {
+        item->setData(Qt::BackgroundRole, QBrush(QColor(0, 128, 0, 128)));
+    }
     tableWindow->getUi()->table->setItem(row, column, item);
 }
 
@@ -185,12 +153,12 @@ int s21_credit::check_date_between(const QDate& previous, const QDate& current, 
     return (one_date >= previous && one_date < current) ? 1 : 0;
 }
 
-void s21_credit::add_datarow_to_table(const QDate& date, QString row_head, long double **result, int iteration) {
+void s21_credit::add_datarow_to_table(const QDate& date, QString row_head, long double **result, int iteration, int style) {
     QTableWidgetItem *header_item = new QTableWidgetItem(row_head);
     tableWindow->getUi()->table->setVerticalHeaderItem(iteration, header_item);
-    add_item_to_table(iteration, 0, date.toString("dd.MM.yyyy"));
+    add_item_to_table(iteration, 0, date.toString("dd.MM.yyyy"), style);
     for(int j = 0; j < 4; j++) {
-        add_item_to_table(iteration, j+1, QString::number(result[iteration][j], 'f', 2));
+        add_item_to_table(iteration, j+1, QString::number(result[iteration][j], 'f', 2), style);
     }
 }
 
@@ -200,12 +168,13 @@ void s21_credit::add_all_to_table(int months, long double **result, long double 
     QDate prev = ui->date_edit->date();
     QDate current_day = ui->date_edit->date().addMonths(1);
     QDate one_date;
+
     for(int i = 0; i < months; i++) {
         if(redemp_count != early_pays->getTableWidget()->rowCount()) {
             while(check_date_between(prev, current_day, &redemp_count)) {
                 QTableWidgetItem *redem_item = early_pays->getTableWidget()->item(redemp_count, 0);
                 one_date = QDate::fromString(redem_item->text(), "dd.MM.yyyy");
-                add_datarow_to_table(one_date, "", result, i);
+                add_datarow_to_table(one_date, "", result, i, 1);
                 redemp_count++;
                 i++;
                 if(redemp_count == early_pays->getTableWidget()->rowCount()) {
@@ -213,7 +182,7 @@ void s21_credit::add_all_to_table(int months, long double **result, long double 
                 }
             }
         }
-        add_datarow_to_table(current_day, QString::number(i + 1 - redemp_count), result, i);
+        add_datarow_to_table(current_day, QString::number(i + 1 - redemp_count), result, i, 0);
 
         prev = current_day;
         current_day = current_day.addMonths(1);
@@ -226,6 +195,7 @@ void s21_credit::add_all_to_table(int months, long double **result, long double 
             }
         }
     }
+
     for(int i = 0; i < 3; i++) {
         QString number = QString::number(static_cast<double>(total[i]), 'f', 2);
         if(i == 0) {
@@ -236,10 +206,4 @@ void s21_credit::add_all_to_table(int months, long double **result, long double 
             tableWindow->getUi()->interest_info->setText("Interest paid: " + number);
         }
     }
-    tableWindow->getUi()->currency_select->setText(ui->sum_box->currentText());
-    tableWindow->getUi()->amount_select->setText(ui->amount_edit->text());
-    tableWindow->getUi()->term_select->setText(ui->time_edit->text() + " " + ui->time_box->currentText());
-    tableWindow->getUi()->type_select->setText((ui->annuity->isChecked()) ? "Annuity" : "Differentiated");
-    tableWindow->getUi()->rate_select->setText(ui->percent_edit->text());
-    tableWindow->getUi()->loan_select->setText(ui->date_edit->date().toString("dd.MM.yyyy"));
 }

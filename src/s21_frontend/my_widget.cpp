@@ -45,7 +45,7 @@ int my_widget::containsOnlyDigits(const QString &str)
 
 void my_widget::on_add_to_table_clicked()
 {
-    if(ui->pay_sum->text().length() && ui->pay_sum->text().toDouble() > 0) {
+    if(ui->pay_sum->text().length() && onOperEditTextChanged(ui->pay_sum->text()) == 0) {
         ui->table->setRowCount(ui->table->rowCount() + 1);
         DateTableWidgetItem *item_1 = new DateTableWidgetItem();
         DateTableWidgetItem *item_2 = new DateTableWidgetItem();
@@ -116,4 +116,9 @@ QTableWidget* my_widget::getTableWidget()
 QComboBox* my_widget::getUi_type()
 {
     return ui->pay_type;
+}
+
+QLineEdit* my_widget::getUi_sum()
+{
+    return ui->pay_sum;
 }

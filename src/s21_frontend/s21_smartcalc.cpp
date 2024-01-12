@@ -1,6 +1,4 @@
 #include "s21_smartcalc.h"
-// #include "s21_deposit.h"
-// #include "s21_credit.h"
 #include "ui_s21_smartcalc.h"
 
 s21_smartcalc::s21_smartcalc(QWidget *parent)
@@ -28,7 +26,6 @@ s21_smartcalc::s21_smartcalc(QWidget *parent)
     ui->history_info_label->setVisible(false);
     ui->history_widget->setVisible(false);
 
-    connect(ui->switch_window, SIGNAL(activated(int)), this, SLOT(change_window(int)));
     connect(this, &s21_smartcalc::resized, this, &s21_smartcalc::onResized);
 }
 
@@ -58,66 +55,6 @@ s21_smartcalc::~s21_smartcalc()
     if(pushButton1) delete pushButton1;
     if(var) delete var;
     delete ui;
-}
-
-// Сменить окно на депозитный/кредитный калькулятор
-void s21_smartcalc::change_window(int index)
-{
-    // QPoint currentPosGlobal = this->mapToGlobal(QPoint(0, 0));
-    // QSize currentSize = this->size();
-    // QMainWindow* newWindow = nullptr;
-
-    // if (index == 1) {
-    //     newWindow = new s21_deposit();
-    // } else if (index == 2) {
-    //     newWindow = new s21_credit();
-    // }
-
-    // if (newWindow) {
-    //     this->close();
-    //     newWindow->setGeometry(currentPosGlobal.x(), currentPosGlobal.y(), currentSize.width(), currentSize.height());
-    //     newWindow->show();
-    // }
-}
-
-// Сменить окно на обычный/депозитный калькулятор
-void s21_smartcalc::change_deposit(int index)
-{
-    // QPoint currentPosGlobal = this->mapToGlobal(QPoint(0, 0));
-    // QSize currentSize = this->size();
-    // QMainWindow* newWindow = nullptr;
-
-    // if (index == 1) {
-    //     newWindow = new s21_smartcalc();
-    // } else if (index == 2) {
-    //     newWindow = new s21_credit();
-    // }
-
-    // if (newWindow) {
-    //     this->close();
-    //     newWindow->setGeometry(currentPosGlobal.x(), currentPosGlobal.y(), currentSize.width(), currentSize.height());
-    //     newWindow->show();
-    // }
-}
-
-// Сменить окно на обычный/кредитный калькулятор
-void s21_smartcalc::change_credit(int index)
-{
-    // QPoint currentPosGlobal = this->mapToGlobal(QPoint(0, 0));
-    // QSize currentSize = this->size();
-    // QMainWindow* newWindow = nullptr;
-
-    // if (index == 1) {
-    //     newWindow = new s21_smartcalc();
-    // } else if (index == 2) {
-    //     newWindow = new s21_deposit();
-    // }
-
-    // if (newWindow) {
-    //     this->close();
-    //     newWindow->setGeometry(currentPosGlobal.x(), currentPosGlobal.y(), currentSize.width(), currentSize.height());
-    //     newWindow->show();
-    // }
 }
 
 // Определение длины целой части числа

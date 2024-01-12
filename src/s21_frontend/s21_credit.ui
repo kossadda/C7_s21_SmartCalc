@@ -508,7 +508,7 @@ QDateEdit QCalendarWidget QToolButton QMenu {
         </property>
         <property name="maximumDateTime">
          <datetime>
-          <hour>20</hour>
+          <hour>15</hour>
           <minute>59</minute>
           <second>59</second>
           <year>9999</year>
@@ -897,12 +897,12 @@ QComboBox::drop-down {
         </property>
         <item>
          <property name="text">
-          <string> $ - USD</string>
+          <string> ₽ - RUB</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string> ₽ - RUB</string>
+          <string> $ - USD</string>
          </property>
         </item>
         <item>

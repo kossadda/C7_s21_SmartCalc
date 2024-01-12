@@ -24,6 +24,7 @@ public:
 public slots:
     QTableWidget* getTableWidget();
     QComboBox* getUi_type();
+    QLineEdit* getUi_sum();
     int containsOnlyDigits(const QString &str);
     int check_fraction_length(const QString &text, int length);
 

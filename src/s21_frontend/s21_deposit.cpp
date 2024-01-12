@@ -1,27 +1,62 @@
 #include "s21_deposit.h"
 #include "ui_s21_deposit.h"
-// #include "s21_smartcalc.h"
-// #include "s21_credit.h"
-
+#include "ui_s21_credit_table.h"
 
 s21_deposit::s21_deposit(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::s21_deposit)
 {
     ui->setupUi(this);
+    ui->payment_period->setCurrentIndex(2);
+
+
+    tableWindow = new s21_credit_table();
+    tableWindow->getUi()->debt_info->setVisible(false);
+    // tableWindow->getUi()->amount_info->setText("");
+    QStringList header_labels;
+    header_labels << "Date" << "Interest accrued" << "Balance change" << "Pay" << "Balance";
+    tableWindow->getUi()->table->setHorizontalHeaderLabels(header_labels);
+    tableWindow->getUi()->table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
+
+
+
+    taxWindow = new QTableWidget();
+    taxWindow->setStyleSheet(tableWindow->getUi()->table->styleSheet());
+    taxWindow->setColumnCount(6);
+    QStringList tax_labels;
+    tax_labels << "Year" << "Income" << "Deduction" << "Income-deduction" << "Tax amount" << "Pay before";
+    taxWindow->setHorizontalHeaderLabels(tax_labels);
+    taxWindow->horizontalHeader()->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(0, 0, 0)");
+    taxWindow->verticalHeader()->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(0, 0, 0)");
+    taxWindow->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    taxWindow->setFixedHeight(150);
+    tableWindow->getUi()->tax_layout->addWidget(taxWindow);
+
+
+
 
     opers = new my_widget(this);
+
     opers->getUi_type()->clear();
     opers->getUi_type()->addItem("Refill");
     opers->getUi_type()->addItem("Withdrawal");
     ui->layout_3->addWidget(opers);
 
-    connect(ui->depositBox, SIGNAL(activated(int)), this, SLOT(change_deposit(int)));
     connect(ui->capital, SIGNAL(stateChanged(int)), this, SLOT(onCheckBoxStateChanged(int)));
     connect(ui->amount_edit, SIGNAL(textChanged(QString)), this, SLOT(onAmountEditTextChanged(QString)));
     connect(ui->time_edit, SIGNAL(textChanged(QString)), this, SLOT(onTimeEditTextChanged(QString)));
     connect(ui->time_box, SIGNAL(currentIndexChanged(int)), this,SLOT(onTimeEditIndexChanged()));
     connect(ui->percent_edit, SIGNAL(textChanged(QString)), this, SLOT(onInterestTextChanged(QString)));
+}
+
+s21_deposit::~s21_deposit()
+{
+    if(tableWindow) {
+        delete tableWindow;
+    }
+
+    delete ui;
 }
 
 void s21_deposit::onTimeEditIndexChanged()
@@ -92,7 +127,6 @@ int s21_deposit::onInterestTextChanged(const QString &text)
     return valid;
 }
 
-
 void s21_deposit::onCheckBoxStateChanged(int state)
 {
     if (state == Qt::Checked) {
@@ -100,30 +134,6 @@ void s21_deposit::onCheckBoxStateChanged(int state)
     } else {
         ui->payment_period->addItem("By end term");
     }
-}
-
-s21_deposit::~s21_deposit()
-{
-    delete ui;
-}
-
-void s21_deposit::change_deposit(int index)
-{
-    // QPoint currentPosGlobal = this->mapToGlobal(QPoint(0, 0));
-    // QSize currentSize = this->size();
-    // QMainWindow* newWindow = nullptr;
-
-    // if (index == 1) {
-    //     newWindow = new s21_smartcalc();
-    // } else if (index == 2) {
-    //     newWindow = new s21_credit();
-    // }
-
-    // if (newWindow) {
-    //     this->close();
-    //     newWindow->setGeometry(currentPosGlobal.x(), currentPosGlobal.y(), currentSize.width(), currentSize.height());
-    //     newWindow->show();
-    // }
 }
 
 void s21_deposit::init_deposit_data(deposit_init *data)
@@ -216,11 +226,22 @@ void s21_deposit::free_memory(deposit_init data, investment *pay, operations *op
 
 int s21_deposit::validation()
 {
-    int valid_amount = onAmountEditTextChanged(ui->amount_edit->text());
-    int valid_time = onTimeEditTextChanged(ui->time_edit->text());
-    int valid_interest = onInterestTextChanged(ui->percent_edit->text());
+    int valid_data = 1;
 
-    int valid_data = valid_amount + valid_time + valid_interest;
+    if(ui->amount_edit->text().length() && ui->time_edit->text().length() && ui->percent_edit->text().length()) {
+        int valid_oper = 0;
+        int valid_amount = onAmountEditTextChanged(ui->amount_edit->text());
+        int valid_time = onTimeEditTextChanged(ui->time_edit->text());
+        int valid_interest = onInterestTextChanged(ui->percent_edit->text());
+
+        if((opers->getUi_sum()->text().length() > 0 && opers->getUi_sum()->text().toDouble() <= 0) || opers->getUi_sum()->text().length() > 12) {
+            valid_oper = 1;
+        } else if(opers->check_fraction_length(opers->getUi_sum()->text(), 2)) {
+            valid_oper = 1;
+        }
+
+        valid_data = valid_amount + valid_time + valid_interest + valid_oper;
+    }
 
     return valid_data;
 }
@@ -243,8 +264,100 @@ void s21_deposit::on_calculate_clicked()
             }
         }
 
-
+        if(opers->getTableWidget()->rowCount() == 0) {
+            calculate_deposit(&data, &pay, NULL);
+        } else {
+            calculate_deposit(&data, &pay, &op);
+        }
+        if(tableWindow) {
+            QPoint currentPosGlobal = this->mapToGlobal(QPoint(-800, 0));
+            tableWindow->setGeometry(currentPosGlobal.x(), currentPosGlobal.y(), 800, 600);
+            tableWindow->show();
+            tableWindow->getUi()->table->setRowCount(data.current + 1);
+            add_all_to_table(data, pay.result, pay.total);
+        }
         free_memory(data, &pay, &op);
     }
 }
 
+void s21_deposit::add_item_to_table(int row, int column, QString value, int style)
+{
+    QTableWidgetItem *item = new QTableWidgetItem(value);
+    item->setTextAlignment(Qt::AlignCenter);
+    if(style == 1) {
+        item->setData(Qt::BackgroundRole, QBrush(QColor(0, 128, 0, 128)));
+    } else if(style == 2) {
+        item->setData(Qt::BackgroundRole, QBrush(QColor(128, 0, 0, 128)));
+    }
+    tableWindow->getUi()->table->setItem(row, column, item);
+}
+
+int s21_deposit::check_date_between(const QDate& previous, const QDate& current, int* oper_count)
+{
+    QDate one_date;
+    QTableWidgetItem *redem_item = opers->getTableWidget()->item(*oper_count, 0);
+    one_date = QDate::fromString(redem_item->text(), "dd.MM.yyyy");
+    return (one_date >= previous && one_date < current) ? 1 : 0;
+}
+
+void s21_deposit::add_datarow_to_table(const QDate& date, QString row_head, long double **result, int iteration, int style)
+{
+    QTableWidgetItem *header_item = new QTableWidgetItem(row_head);
+    tableWindow->getUi()->table->setVerticalHeaderItem(iteration, header_item);
+    add_item_to_table(iteration, 0, date.toString("dd.MM.yyyy"), style);
+    for(int j = 0; j < 4; j++) {
+        add_item_to_table(iteration, j+1, QString::number(result[iteration][j], 'f', 2), style);
+    }
+}
+
+void s21_deposit::add_all_to_table(deposit_init data, long double **result, long double *total)
+{
+    int oper_count = 0;
+    time_data begin;
+    begin.day = ui->date_edit->date().day();
+    begin.month = ui->date_edit->date().month();
+    begin.year = ui->date_edit->date().year();
+    time_data last_day = determine_last_day(begin, data.term_type, data.term);
+    time_data end_period = begin;
+
+
+    QDate prev = ui->date_edit->date();
+    QDate one_date;
+
+    for(int i = 0; i < data.current + 1; i++) {
+        add_one_period(&begin, &end_period, last_day, data.capital_time, ui->date_edit->date().day());
+        QDate current_day(end_period.year, end_period.month, end_period.day);
+
+        if(oper_count != opers->getTableWidget()->rowCount()) {
+            while(check_date_between(prev, current_day, &oper_count)) {
+                QTableWidgetItem *redem_item = opers->getTableWidget()->item(oper_count, 0);
+                QTableWidgetItem *redem_item_2 = opers->getTableWidget()->item(oper_count, 2);
+                int style = 1;
+                if(redem_item_2->text() == "Withdrawals") {
+                    style = 2;
+                }
+                one_date = QDate::fromString(redem_item->text(), "dd.MM.yyyy");
+                add_datarow_to_table(one_date, "", result, i, style);
+                oper_count++;
+                i++;
+                if(oper_count == opers->getTableWidget()->rowCount()) {
+                    break;
+                }
+            }
+        }
+        add_datarow_to_table(current_day, QString::number(i + 1 - oper_count), result, i, 0);
+
+        begin = end_period;
+        prev = current_day;
+    }
+
+    for(int i = 0; i < 2; i++) {
+        QString number = QString::number(static_cast<double>(total[i]), 'f', 2);
+        if(i == 0) {
+            tableWindow->getUi()->total_info->setText("Interest accrued: " + number);
+        } else {
+            tableWindow->getUi()->interest_info->setText("Balance: " + number);
+        }
+    }
+
+}

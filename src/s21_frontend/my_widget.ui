@@ -135,9 +135,19 @@ QTableCornerButton::section {
 }
 </string>
        </property>
-       <property name="rowCount">
-        <number>0</number>
+       <property name="verticalScrollMode">
+        <enum>QAbstractItemView::ScrollPerPixel</enum>
        </property>
+       <property name="horizontalScrollMode">
+        <enum>QAbstractItemView::ScrollPerPixel</enum>
+       </property>
+       <property name="rowCount">
+        <number>4</number>
+       </property>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
        <column>
         <property name="text">
          <string>Date</string>
@@ -153,6 +163,66 @@ QTableCornerButton::section {
          <string>Recalculation</string>
         </property>
        </column>
+       <item row="0" column="0">
+        <property name="text">
+         <string>25.07.2025</string>
+        </property>
+       </item>
+       <item row="0" column="1">
+        <property name="text">
+         <string>250001</string>
+        </property>
+       </item>
+       <item row="0" column="2">
+        <property name="text">
+         <string>Refill</string>
+        </property>
+       </item>
+       <item row="1" column="0">
+        <property name="text">
+         <string>31.01.2026</string>
+        </property>
+       </item>
+       <item row="1" column="1">
+        <property name="text">
+         <string>200000</string>
+        </property>
+       </item>
+       <item row="1" column="2">
+        <property name="text">
+         <string>Withdrawals</string>
+        </property>
+       </item>
+       <item row="2" column="0">
+        <property name="text">
+         <string>22.02.2025</string>
+        </property>
+       </item>
+       <item row="2" column="1">
+        <property name="text">
+         <string>102020</string>
+        </property>
+       </item>
+       <item row="2" column="2">
+        <property name="text">
+         <string>Refill</string>
+        </property>
+       </item>
+       <item row="3" column="0">
+        <property name="text">
+         <string>28.08.2025</string>
+        </property>
+       </item>
+       <item row="3" column="1">
+        <property name="text">
+         <string>60000</string>
+        </property>
+       </item>
+       <item row="3" column="2">
+        <property name="text">
+         <string>Withdrawals</string>
+        </property>
+       </item>
       </widget>
      </item>
      <item row="0" column="1">

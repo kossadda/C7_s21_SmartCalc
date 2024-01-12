@@ -32,9 +32,6 @@ protected:
 
 private slots:
     void onResized(const QSize &newSize);
-    void change_window(int index);
-    void change_deposit(int index);
-    void change_credit(int index);
     void on_graphWindowClosed();
     int countDigits(double number);
     void on_actionVarTriggered();

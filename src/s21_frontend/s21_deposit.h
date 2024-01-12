@@ -25,7 +25,6 @@ public:
 
 
 private slots:
-    void change_deposit(int index);
     void onCheckBoxStateChanged(int state);
     int onAmountEditTextChanged(const QString &text);
     int onTimeEditTextChanged(const QString &text);
@@ -38,10 +37,17 @@ private slots:
     void free_memory(deposit_init data, investment *pay, operations *op);
     int validation();
 
+    void add_all_to_table(deposit_init data, long double **result, long double *total);
+    void add_datarow_to_table(const QDate& date, QString row_head, long double **result, int iteration, int style);
+    int check_date_between(const QDate& previous, const QDate& current, int* oper_count);
+    void add_item_to_table(int row, int column, QString value, int style);
+
 private:
     Ui::s21_deposit *ui;
+    s21_credit_table *tableWindow;
     my_widget *opers;
     QCheckBox *checkBox;
+    QTableWidget *taxWindow;
 };
 
 #endif // S21_DEPOSIT_H

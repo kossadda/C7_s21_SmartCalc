@@ -179,12 +179,12 @@ QComboBox::drop-down {
         </property>
         <item>
          <property name="text">
-          <string> $ - USD</string>
+          <string> ₽ - RUB</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string> ₽ - RUB</string>
+          <string> $ - USD</string>
          </property>
         </item>
         <item>
@@ -356,7 +356,7 @@ border: 1px solid black;</string>
 }</string>
         </property>
         <property name="text">
-         <string/>
+         <string>120000</string>
         </property>
         <property name="placeholderText">
          <string/>
@@ -398,7 +398,7 @@ border: 1px solid black;</string>
 }</string>
         </property>
         <property name="text">
-         <string/>
+         <string>10</string>
         </property>
         <property name="placeholderText">
          <string/>
@@ -577,7 +577,7 @@ QDateEdit QCalendarWidget QToolButton QMenu {
         </property>
         <property name="maximumDateTime">
          <datetime>
-          <hour>18</hour>
+          <hour>3</hour>
           <minute>59</minute>
           <second>59</second>
           <year>9999</year>
@@ -632,7 +632,7 @@ QDateEdit QCalendarWidget QToolButton QMenu {
 }</string>
         </property>
         <property name="text">
-         <string/>
+         <string>6</string>
         </property>
         <property name="placeholderText">
          <string/>
