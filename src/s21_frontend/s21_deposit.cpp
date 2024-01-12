@@ -11,44 +11,87 @@ s21_deposit::s21_deposit(QWidget *parent)
     ui->setupUi(this);
 
     opers = new my_widget(this);
-    opers->getUi()->clear();
-    opers->getUi()->addItem("Refill");
-    opers->getUi()->addItem("Withdrawal");
+    opers->getUi_type()->clear();
+    opers->getUi_type()->addItem("Refill");
+    opers->getUi_type()->addItem("Withdrawal");
     ui->layout_3->addWidget(opers);
 
     connect(ui->depositBox, SIGNAL(activated(int)), this, SLOT(change_deposit(int)));
     connect(ui->capital, SIGNAL(stateChanged(int)), this, SLOT(onCheckBoxStateChanged(int)));
-    connect(ui->amount_edit, SIGNAL(textChanged(const QString&)), this, SLOT(onAmountEditTextChanged(const QString&)));
-    connect(ui->time_edit, SIGNAL(textChanged(const QString&)), this, SLOT(onAmountEditTextChanged(const QString&)));
+    connect(ui->amount_edit, SIGNAL(textChanged(QString)), this, SLOT(onAmountEditTextChanged(QString)));
+    connect(ui->time_edit, SIGNAL(textChanged(QString)), this, SLOT(onTimeEditTextChanged(QString)));
+    connect(ui->time_box, SIGNAL(currentIndexChanged(int)), this,SLOT(onTimeEditIndexChanged()));
+    connect(ui->percent_edit, SIGNAL(textChanged(QString)), this, SLOT(onInterestTextChanged(QString)));
 }
 
-void s21_deposit::onAmountEditTextChanged(const QString &text)
+void s21_deposit::onTimeEditIndexChanged()
 {
+    onTimeEditTextChanged(ui->time_edit->text());
+}
+
+int s21_deposit::onAmountEditTextChanged(const QString &text)
+{
+    int valid = 1;
+
     QString correct_style = "QLineEdit {border-radius: 10px;padding: 0 8px;background-color: rgb(226, 226, 226);color:black;border: 1px solid black;}";
     QString wrong_style = "QLineEdit {border-radius: 10px;padding: 0 8px;background-color: rgba(255, 0, 0, 100);color:black;border: 1px solid black;}";
 
-    if(text.toDouble() <= 0) {
+    if((text.length() > 0 && text.toDouble() <= 0) || text.length() > 12) {
         ui->amount_edit->setStyleSheet(wrong_style);
-        ui->amount_edit->setPlaceholderText("Enter correct amount");
+    } else if(opers->check_fraction_length(text, 2)) {
+        ui->amount_edit->setStyleSheet(wrong_style);
     } else {
         ui->amount_edit->setStyleSheet(correct_style);
-        ui->amount_edit->setPlaceholderText("");
+        valid = 0;
     }
+
+    return valid;
 }
 
-// void s21_deposit::onAmountEditTextChanged(const QString &text)
-// {
-//     QString correct_style = "QLineEdit {border-radius: 10px;padding: 0 8px;background-color: rgb(226, 226, 226);color:black;border: 1px solid black;}";
-//     QString wrong_style = "QLineEdit {border-radius: 10px;padding: 0 8px;background-color: rgba(255, 0, 0, 100);color:black;border: 1px solid black;}";
+int s21_deposit::onTimeEditTextChanged(const QString &text)
+{
+    int valid = 1;
 
-//     if(text.toDouble() <= 0) {
-//         ui->amount_edit->setStyleSheet(wrong_style);
-//         ui->amount_edit->setPlaceholderText("Enter correct amount");
-//     } else {
-//         ui->amount_edit->setStyleSheet(correct_style);
-//         ui->amount_edit->setPlaceholderText("");
-//     }
-// }
+    QString correct_style = "QLineEdit {border-radius: 10px;padding: 0 8px;background-color: rgb(226, 226, 226);color:black;border: 1px solid black;}";
+    QString wrong_style = "QLineEdit {border-radius: 10px;padding: 0 8px;background-color: rgba(255, 0, 0, 100);color:black;border: 1px solid black;}";
+
+    if(opers->containsOnlyDigits(text) == 1) {
+        ui->time_edit->setStyleSheet(wrong_style);
+    } else if(ui->time_box->currentIndex() == 0 && text.toInt() > 50) {
+        ui->time_edit->setStyleSheet(wrong_style);
+    } else if(ui->time_box->currentIndex() == 1 && text.toInt() > 600) {
+        ui->time_edit->setStyleSheet(wrong_style);
+    } else if(ui->time_box->currentIndex() == 2 && text.toInt() > 18250) {
+        ui->time_edit->setStyleSheet(wrong_style);
+    } else if(text.length() > 0 && text.toDouble() <= 0) {
+        ui->time_edit->setStyleSheet(wrong_style);
+    } else {
+        ui->time_edit->setStyleSheet(correct_style);
+        valid = 0;
+    }
+
+    return valid;
+}
+
+int s21_deposit::onInterestTextChanged(const QString &text)
+{
+    int valid = 1;
+
+    QString correct_style = "QLineEdit {border-radius: 10px;padding: 0 8px;background-color: rgb(226, 226, 226);color:black;border: 1px solid black;}";
+    QString wrong_style = "QLineEdit {border-radius: 10px;padding: 0 8px;background-color: rgba(255, 0, 0, 100);color:black;border: 1px solid black;}";
+
+    if(text.length() > 0 && (text.toDouble() <= 0 || text.toDouble() > 999) && text != "0") {
+        ui->percent_edit->setStyleSheet(wrong_style);
+    } else if(opers->check_fraction_length(text, 3)) {
+        ui->percent_edit->setStyleSheet(wrong_style);
+    } else {
+        ui->percent_edit->setStyleSheet(correct_style);
+        valid = 0;
+    }
+
+    return valid;
+}
+
 
 void s21_deposit::onCheckBoxStateChanged(int state)
 {
@@ -173,18 +216,11 @@ void s21_deposit::free_memory(deposit_init data, investment *pay, operations *op
 
 int s21_deposit::validation()
 {
-    int valid_data = 0;
+    int valid_amount = onAmountEditTextChanged(ui->amount_edit->text());
+    int valid_time = onTimeEditTextChanged(ui->time_edit->text());
+    int valid_interest = onInterestTextChanged(ui->percent_edit->text());
 
-
-    // else if(ui->time_edit->text().toDouble() <= 0) {
-    //     valid_data = 1;
-    //     ui->time_edit
-    //     QMessageBox::information(this, "Validation", "Enter a valid date.");
-    // } else if(! opers->containsOnlyDigits(ui->percent_edit->text()) && ui->percent_edit->text().toDouble() <= 0) {
-    //     valid_data = 1;
-    //     QMessageBox::information(this, "Validation", "Enter the correct interest rate.");
-    // }
-
+    int valid_data = valid_amount + valid_time + valid_interest;
 
     return valid_data;
 }

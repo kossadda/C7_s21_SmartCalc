@@ -27,7 +27,10 @@ public:
 private slots:
     void change_deposit(int index);
     void onCheckBoxStateChanged(int state);
-    void onAmountEditTextChanged(const QString &text);
+    int onAmountEditTextChanged(const QString &text);
+    int onTimeEditTextChanged(const QString &text);
+    int onInterestTextChanged(const QString &text);
+    void onTimeEditIndexChanged();
     void on_calculate_clicked();
     void init_deposit_data(deposit_init *data);
     int init_operations(operations *op);
