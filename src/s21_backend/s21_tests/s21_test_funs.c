@@ -13,11 +13,13 @@ void free_credit(int row, payments *pay, early_pay *redemption) {
         if(redemption) {
             redemp_rows = 1;
         }
-        for(int i = 0; i < row + redemp_rows; i++) {
-            free(pay->result[i]);
-            pay->result[i] = NULL;
-        }
         if(pay->result) {
+            for(int i = 0; i < row + redemp_rows; i++) {
+                if(pay->result[i]) {
+                    free(pay->result[i]);
+                    pay->result[i] = NULL;
+                }
+            }
             free(pay->result);
             pay->result = NULL;
         }
@@ -47,28 +49,33 @@ void free_credit(int row, payments *pay, early_pay *redemption) {
  * 
  * @param row number of rows.
  * @param[in] pay structure containing buffer variables for monthly results and general payment data arrays.
+ * @param[in] oper structure containing data arrays of refill/withdrawals.
 */
 void free_deposit(int row, investment *pay, operations *oper) {
     if(pay) {
-        for(int i = 0; i < row; i++) {
-            free(pay->result[i]);
-            pay->result[i] = NULL;
-        }
-        for(int i = 0; i < pay->taxes_count; i++) {
-            free(pay->taxes[i]);
-            pay->taxes[i] = NULL;
-        }
         if(pay->result) {
+            for(int i = 0; i < row; i++) {
+                if(pay->result[i]) {
+                    free(pay->result[i]);
+                    pay->result[i] = NULL;
+                }
+            }
             free(pay->result);
             pay->result = NULL;
+        }
+        if(pay->taxes) {
+            for(int i = 0; i < pay->taxes_count; i++) {
+                if(pay->taxes[i]) {
+                    free(pay->taxes[i]);
+                    pay->taxes[i] = NULL;
+                }
+            }
+            free(pay->taxes);
+            pay->taxes = NULL;
         }
         if(pay->total) {
             free(pay->total);
             pay->total = NULL;
-        }
-        if(pay->taxes) {
-            free(pay->taxes);
-            pay->taxes = NULL;
         }
     }
     if(oper) {
@@ -107,7 +114,7 @@ int test_suite(Suite *test) {
 /**
  * @brief Function for filling in loan initialization fields.
  * 
- * @param data structure containing input parameters for calculation.
+ * @param[in] data structure containing input parameters for calculation.
  * @param debt balance owed.
  * @param months number of months of lending.
  * @param type payment type. ANNUITY - annuity, DEFFERENTIATED - differentiated.
@@ -116,7 +123,7 @@ int test_suite(Suite *test) {
  * @param month month of loan issue.
  * @param year year of loan issue.
 */
-void input_initial(credit_init *data, long double debt, long double months, int type, long double rate, int day, int month, int year) {
+void input_credit(credit_init *data, long double debt, long double months, int type, long double rate, int day, int month, int year) {
     data->debt = debt;
     data->months = months;
     data->payment_type = type;
@@ -127,8 +134,23 @@ void input_initial(credit_init *data, long double debt, long double months, int 
 }
 
 /**
+ * @brief Function for initializing early repayment arrays.
+ * 
+ * @param[in] redemption structure containing data on early repayments.
+*/
+void init_redemption(early_pay *redemption)
+{
+    redemption->date = (time_data *)malloc(1 * sizeof(time_data));
+    redemption->sum = (long double *)malloc(1 * sizeof(long double));
+    redemption->type = (int *)malloc(1 * sizeof(int));
+    redemption->count = 0;
+    redemption->current = 0;
+}
+
+/**
  * @brief Function for filling in the fields for initializing early repayment.
  * 
+ * @param[in] redemption structure containing data on early repayments.
  * @param day day of early payment.
  * @param month month of early payment.
  * @param year year of early payment.
@@ -150,6 +172,7 @@ void input_redemption(early_pay *redemption, int day, int month, int year, long 
 /**
  * @brief Function for filling in deposit initialization fields.
  * 
+ * @param[in] deposit structure containing input parameters for calculation.
  * @param amount amount of deposit.
  * @param term_type type of deposit term.
  * @param term deposit term.
@@ -172,22 +195,32 @@ void init_deposit(deposit_init *deposit, long double amount, int term_type, int 
     deposit->capital = capital;
 }
 
-int init_operations(operations *oper)
+/**
+ * @brief Function for initializing refill/withdrawals arrays.
+ * 
+ * @param[in] oper structure containing data on refill/withdrawals.
+*/
+void init_operations(operations *oper)
 {
-    int error_code = NOT_ALLOCATED;
     oper->date = (time_data *)malloc(1 * sizeof(time_data));
-    int error_code_date = CHECK_NULL(oper->date);
     oper->sum = (long double *)malloc(1 * sizeof(long double));
-    int error_code_sum = CHECK_NULL(oper->sum);
     oper->type = (int *)malloc(1 * sizeof(int));
-    int error_code_type = CHECK_NULL(oper->type);
-    error_code = error_code_date + error_code_sum + error_code_type;
     oper->count = 0;
     oper->current = 0;
     oper->min_balance = 0;
-    return error_code;
 }
 
+/**
+ * @brief Function for filling in the fields for initializing refill/withdrawals arrays.
+ * 
+ * @param[in] oper structure containing data on refill/withdrawals.
+ * @param day day of refill/withdrawal.
+ * @param month month of refill/withdrawal.
+ * @param year year of refill/withdrawal.
+ * @param sum sum of refill/withdrawal.
+ * @param type type - refill or withdrawal.
+ * @param min_balance the amount below which the balance cannot fall due to withdrawals.
+*/
 void input_operation(operations *oper, int day, int month, int year, long double sum, int type, long double min_balance)
 {
     oper->date = (time_data *)realloc(oper->date, (oper->count + 1) * sizeof(time_data));

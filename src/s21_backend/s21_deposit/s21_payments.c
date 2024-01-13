@@ -24,7 +24,7 @@ int check_operation(deposit_init *data, investment *pay, operations *oper, time_
             data->current++;
             error_code = allocate_row(&pay->result, data->current, DEPOSIT_COLUMNS);
 
-            long double oper_sum = oper->sum[oper->current]; 
+            long double oper_sum = oper->sum[oper->current];
 
             if((data->amount < oper_sum || data->amount - oper_sum < oper->min_balance) && oper->type[oper->current] == WITHDRAWALS) {
                 pay->balance_changing = 0;

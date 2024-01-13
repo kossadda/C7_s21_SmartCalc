@@ -25,10 +25,10 @@ int calculate_deposit(deposit_init *data, investment *pay, operations *oper)
     if(error_code == ALLOCATED) {
         if(oper) {
             oper->current = 0;
+            // oper->min_balance = 0;
         }
         data->date.leap = check_leap(data->date.year);
-        pay->taxes_count = 0;
-
+        
         int error_code_payments = init_payments(&pay->result, &pay->total);
         int error_code_taxes = init_taxes(pay);
 
@@ -77,6 +77,8 @@ static int init_taxes(investment *pay)
     
     pay->taxes = (long double **)malloc(1 * sizeof(long double *));
     error_code = CHECK_NULL(pay->taxes);
+    
+    pay->taxes_count = 0;
 
     return error_code;
 }

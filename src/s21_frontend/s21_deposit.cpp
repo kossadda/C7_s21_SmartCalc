@@ -12,7 +12,6 @@ s21_deposit::s21_deposit(QWidget *parent)
 
     tableWindow = new s21_credit_table();
     tableWindow->getUi()->debt_info->setVisible(false);
-    // tableWindow->getUi()->amount_info->setText("");
     QStringList header_labels;
     header_labels << "Date" << "Interest accrued" << "Balance change" << "Pay" << "Balance";
     tableWindow->getUi()->table->setHorizontalHeaderLabels(header_labels);
@@ -189,26 +188,39 @@ int s21_deposit::init_operations(operations *op)
     error_code = error_code_date + error_code_sum + error_code_type;
     op->count = 0;
     op->current = 0;
+    op->min_balance = 0;
     return error_code;
 }
 
 void s21_deposit::free_memory(deposit_init data, investment *pay, operations *op)
 {
-    for(int i = 0; i < data.current + 1; i++) {
-        if(pay->result[i]) {
-            free(pay->result[i]);
-            pay->result[i] = NULL;
+    if(pay) {
+        if(pay->result) {
+            for(int i = 0; i < data.current + 1; i++) {
+                if(pay->result[i]) {
+                    free(pay->result[i]);
+                    pay->result[i] = NULL;
+                }
+            }
+            free(pay->result);
+            pay->result = NULL;
+        }
+        if(pay->taxes) {
+            for(int i = 0; i < pay->taxes_count; i++) {
+                if(pay->taxes[i]) {
+                    free(pay->taxes[i]);
+                    pay->taxes[i] = NULL;
+                }
+            }
+            free(pay->taxes);
+            pay->taxes = NULL;
+        }
+        if(pay->total) {
+            free(pay->total);
+            pay->total = NULL;
         }
     }
-    if(pay->result) {
-        free(pay->result);
-        pay->result = NULL;
-    }
-    if(pay->total) {
-        free(pay->total);
-        pay->total = NULL;
-    }
-    if(opers->getTableWidget()->rowCount() > 0) {
+    if(op) {
         if(op->date != NULL) {
             free(op->date);
             op->date = NULL;

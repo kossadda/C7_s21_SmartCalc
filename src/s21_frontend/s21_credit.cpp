@@ -104,6 +104,22 @@ void s21_credit::init_parameters(credit_init *data, Ui::s21_credit *ui) {
     }
 }
 
+int s21_credit::init_redemption(early_pay *redemption)
+{
+    int error_code = NOT_ALLOCATED;
+    redemption->date = (time_data *)malloc(1 * sizeof(time_data));
+    int error_code_date = CHECK_NULL(redemption->date);
+    redemption->sum = (long double *)malloc(1 * sizeof(long double));
+    int error_code_sum = CHECK_NULL(redemption->sum);
+    redemption->type = (int *)malloc(1 * sizeof(int));
+    int error_code_type = CHECK_NULL(redemption->type);
+    error_code = error_code_date + error_code_sum + error_code_type;
+    redemption->count = 0;
+    redemption->current = 0;
+    return error_code;
+}
+
+
 void s21_credit::on_calculate_clicked()
 {
     payments pay;

@@ -59,6 +59,5 @@ int redemp_payment(credit_init *data, payments *pay, early_pay *redemption, time
 // Support functions
 
 void remember_result(credit_init *data, payments *pay);
-int init_redemption(early_pay *redemption);
 
 #endif

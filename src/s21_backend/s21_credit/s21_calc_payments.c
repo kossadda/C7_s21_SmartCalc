@@ -169,3 +169,20 @@ static int check_calc_redemption(credit_init *data, payments *pay, early_pay *re
     
     return error_code;
 }
+
+/**
+ * @brief A function that writes the result of each month to an array.
+ * 
+ * @param[in] data structure containing input parameters for calculation.
+ * @param[in] pay structure containing buffer variables for monthly results and general payment data arrays.
+*/
+void remember_result(credit_init *data, payments *pay)
+{
+    pay->result[data->current][0] = pay->monthly;
+    pay->total[0] += pay->monthly;
+    pay->result[data->current][1] = pay->main;
+    pay->total[1] += pay->main;
+    pay->result[data->current][2] = pay->percent;
+    pay->total[2] += pay->percent;
+    pay->result[data->current][3] = data->debt;
+}

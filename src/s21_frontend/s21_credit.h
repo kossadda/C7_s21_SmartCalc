@@ -28,6 +28,7 @@ private slots:
     void free_memory(credit_init data, payments *pay, early_pay *redemption);
     int check_date_between(const QDate& previous, const QDate& current, int* redemp_count);
     void add_datarow_to_table(const QDate& date, QString row_head, long double **result, int iteration, int style);
+    int init_redemption(early_pay *redemption);
     void add_redemption(early_pay *redemption, my_widget *early_pays, int count);
     void init_parameters(credit_init *data, Ui::s21_credit *ui);
 
