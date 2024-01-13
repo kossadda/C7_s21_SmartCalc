@@ -10,6 +10,12 @@
     <height>550</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>440</width>
+    <height>550</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Calculator (by kossadda)</string>
   </property>
@@ -489,7 +495,7 @@ QToolTip {
         </property>
         <property name="font">
          <font>
-          <pointsize>30</pointsize>
+          <pointsize>-1</pointsize>
          </font>
         </property>
         <property name="layoutDirection">
@@ -497,6 +503,7 @@ QToolTip {
         </property>
         <property name="styleSheet">
          <string notr="true">background-color: rgb(30, 27, 6);
+font-size: 30px;
 border: 0px;</string>
         </property>
         <property name="maxLength">
@@ -528,18 +535,18 @@ border: 0px;</string>
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(50, 50, 50);
-	padding-top: 6px;
+           <string notr="true">QPushButton:pressed {
+	background-color: rgb(255, 85, 0);
 }
 
-QPushButton:pressed {
-	background-color: rgb(255, 85, 0);
-}</string>
+QPushButton {
+    background-color: rgb(50, 50, 50);
+	padding-top: 6px;
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>*</string>
@@ -562,18 +569,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(50, 50, 50);
-}
-
-QPushButton:pressed {
+           <string notr="true">QPushButton:pressed {
 	background-color: rgb(255, 85, 0);
 }
-</string>
+
+QPushButton {
+    background-color: rgb(50, 50, 50);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>+</string>
@@ -596,17 +602,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>13</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(50, 50, 50);
+           <string notr="true">QPushButton:pressed {
+	background-color: rgb(255, 85, 0);
 }
 
-QPushButton:pressed {
-	background-color: rgb(255, 85, 0);
-}</string>
+QPushButton {
+    background-color: rgb(50, 50, 50);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>/</string>
@@ -629,17 +635,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>14</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(50, 50, 50);
+           <string notr="true">QPushButton:pressed {
+	background-color: rgb(255, 85, 0);
 }
 
-QPushButton:pressed {
-	background-color: rgb(255, 85, 0);
-}</string>
+QPushButton {
+    background-color: rgb(50, 50, 50);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>𝝅</string>
@@ -662,17 +668,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(59, 59, 59);
+           <string notr="true">QPushButton:pressed {
+    background-color: rgb(60, 97, 117);
 }
 
-QPushButton:pressed {
-    background-color: rgb(60, 97, 117);
-}</string>
+QPushButton {
+    background-color: rgb(59, 59, 59);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>8</string>
@@ -695,17 +701,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(59, 59, 59);
+           <string notr="true">QPushButton:pressed {
+    background-color: rgb(60, 97, 117);
 }
 
-QPushButton:pressed {
-    background-color: rgb(60, 97, 117);
-}</string>
+QPushButton {
+    background-color: rgb(59, 59, 59);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>6</string>
@@ -728,17 +734,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(50, 50, 50);
+           <string notr="true">QPushButton:pressed {
+	background-color: rgb(255, 85, 0);
 }
 
-QPushButton:pressed {
-	background-color: rgb(255, 85, 0);
-}</string>
+QPushButton {
+    background-color: rgb(50, 50, 50);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>mod</string>
@@ -761,17 +767,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(59, 59, 59);
+           <string notr="true">QPushButton:pressed {
+    background-color: rgb(60, 97, 117);
 }
 
-QPushButton:pressed {
-    background-color: rgb(60, 97, 117);
-}</string>
+QPushButton {
+    background-color: rgb(59, 59, 59);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>4</string>
@@ -794,17 +800,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(50, 50, 50);
+           <string notr="true">QPushButton:pressed {
+	background-color: rgb(255, 85, 0);
 }
 
-QPushButton:pressed {
-	background-color: rgb(255, 85, 0);
-}</string>
+QPushButton {
+    background-color: rgb(50, 50, 50);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>ln</string>
@@ -827,17 +833,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(59, 59, 59);
+           <string notr="true">QPushButton:pressed {
+    background-color: rgb(60, 97, 117);
 }
 
-QPushButton:pressed {
-    background-color: rgb(60, 97, 117);
-}</string>
+QPushButton {
+    background-color: rgb(59, 59, 59);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>3</string>
@@ -860,17 +866,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(50, 50, 50);
+           <string notr="true">QPushButton:pressed {
+	background-color: rgb(255, 85, 0);
 }
 
-QPushButton:pressed {
-	background-color: rgb(255, 85, 0);
-}</string>
+QPushButton {
+    background-color: rgb(50, 50, 50);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>.</string>
@@ -893,17 +899,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(59, 59, 59);
+           <string notr="true">QPushButton:pressed {
+    background-color: rgb(60, 97, 117);
 }
 
-QPushButton:pressed {
-    background-color: rgb(60, 97, 117);
-}</string>
+QPushButton {
+    background-color: rgb(59, 59, 59);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>7</string>
@@ -926,17 +932,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(59, 59, 59);
+           <string notr="true">QPushButton:pressed {
+    background-color: rgb(60, 97, 117);
 }
 
-QPushButton:pressed {
-    background-color: rgb(60, 97, 117);
-}</string>
+QPushButton {
+    background-color: rgb(59, 59, 59);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>2</string>
@@ -959,17 +965,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>14</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(50, 50, 50);
+           <string notr="true">QPushButton:pressed {
+	background-color: rgb(255, 85, 0);
 }
 
-QPushButton:pressed {
-	background-color: rgb(255, 85, 0);
-}</string>
+QPushButton {
+    background-color: rgb(50, 50, 50);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>-</string>
@@ -992,17 +998,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(50, 50, 50);
+           <string notr="true">QPushButton:pressed {
+	background-color: rgb(255, 85, 0);
 }
 
-QPushButton:pressed {
-	background-color: rgb(255, 85, 0);
-}</string>
+QPushButton {
+    background-color: rgb(50, 50, 50);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>asin</string>
@@ -1025,17 +1031,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(50, 50, 50);
+           <string notr="true">QPushButton:pressed {
+	background-color: rgb(255, 85, 0);
 }
 
-QPushButton:pressed {
-	background-color: rgb(255, 85, 0);
-}</string>
+QPushButton {
+    background-color: rgb(50, 50, 50);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>(</string>
@@ -1058,17 +1064,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>11</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(50, 50, 50);
+           <string notr="true">QPushButton:pressed {
+	background-color: rgb(255, 85, 0);
 }
 
-QPushButton:pressed {
-	background-color: rgb(255, 85, 0);
-}</string>
+QPushButton {
+    background-color: rgb(50, 50, 50);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>+/-</string>
@@ -1091,17 +1097,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(50, 50, 50);
+           <string notr="true">QPushButton:pressed {
+	background-color: rgb(255, 85, 0);
 }
 
-QPushButton:pressed {
-	background-color: rgb(255, 85, 0);
-}</string>
+QPushButton {
+    background-color: rgb(50, 50, 50);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>acos</string>
@@ -1124,17 +1130,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(50, 50, 50);
+           <string notr="true">QPushButton:pressed {
+	background-color: rgb(255, 85, 0);
 }
 
-QPushButton:pressed {
-	background-color: rgb(255, 85, 0);
-}</string>
+QPushButton {
+    background-color: rgb(50, 50, 50);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>log</string>
@@ -1157,17 +1163,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>20</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(175, 97, 33);
+           <string notr="true">QPushButton:pressed {
+    background-color: rgb(50, 50, 50);
 }
 
-QPushButton:pressed {
-    background-color: rgb(50, 50, 50);
-}</string>
+QPushButton {
+    background-color: rgb(175, 97, 33);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>=</string>
@@ -1190,17 +1196,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(59, 59, 59);
+           <string notr="true">QPushButton:pressed {
+    background-color: rgb(60, 97, 117);
 }
 
-QPushButton:pressed {
-    background-color: rgb(60, 97, 117);
-}</string>
+QPushButton {
+    background-color: rgb(59, 59, 59);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>5</string>
@@ -1223,17 +1229,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(50, 50, 50);
+           <string notr="true">QPushButton:pressed {
+	background-color: rgb(255, 85, 0);
 }
 
-QPushButton:pressed {
-	background-color: rgb(255, 85, 0);
-}</string>
+QPushButton {
+    background-color: rgb(50, 50, 50);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>sin</string>
@@ -1256,17 +1262,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(50, 50, 50);
+           <string notr="true">QPushButton:pressed {
+	background-color: rgb(255, 85, 0);
 }
 
-QPushButton:pressed {
-	background-color: rgb(255, 85, 0);
-}</string>
+QPushButton {
+    background-color: rgb(50, 50, 50);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>C</string>
@@ -1289,17 +1295,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(50, 50, 50);
+           <string notr="true">QPushButton:pressed {
+	background-color: rgb(255, 85, 0);
 }
 
-QPushButton:pressed {
-	background-color: rgb(255, 85, 0);
-}</string>
+QPushButton {
+    background-color: rgb(50, 50, 50);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>atan</string>
@@ -1322,17 +1328,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(59, 59, 59);
+           <string notr="true">QPushButton:pressed {
+    background-color: rgb(60, 97, 117);
 }
 
-QPushButton:pressed {
-    background-color: rgb(60, 97, 117);
-}</string>
+QPushButton {
+    background-color: rgb(59, 59, 59);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>9</string>
@@ -1355,17 +1361,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(59, 59, 59);
+           <string notr="true">QPushButton:pressed {
+    background-color: rgb(60, 97, 117);
 }
 
-QPushButton:pressed {
-    background-color: rgb(60, 97, 117);
-}</string>
+QPushButton {
+    background-color: rgb(59, 59, 59);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>1</string>
@@ -1388,17 +1394,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>13</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(50, 50, 50);
+           <string notr="true">QPushButton:pressed {
+	background-color: rgb(255, 85, 0);
 }
 
-QPushButton:pressed {
-	background-color: rgb(255, 85, 0);
-}</string>
+QPushButton {
+    background-color: rgb(50, 50, 50);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>e</string>
@@ -1421,17 +1427,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(50, 50, 50);
+           <string notr="true">QPushButton:pressed {
+	background-color: rgb(255, 85, 0);
 }
 
-QPushButton:pressed {
-	background-color: rgb(255, 85, 0);
-}</string>
+QPushButton {
+    background-color: rgb(50, 50, 50);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>⌫</string>
@@ -1454,17 +1460,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(50, 50, 50);
+           <string notr="true">QPushButton:pressed {
+	background-color: rgb(255, 85, 0);
 }
 
-QPushButton:pressed {
-	background-color: rgb(255, 85, 0);
-}</string>
+QPushButton {
+    background-color: rgb(50, 50, 50);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>cos</string>
@@ -1487,17 +1493,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(50, 50, 50);
+           <string notr="true">QPushButton:pressed {
+	background-color: rgb(255, 85, 0);
 }
 
-QPushButton:pressed {
-	background-color: rgb(255, 85, 0);
-}</string>
+QPushButton {
+    background-color: rgb(50, 50, 50);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>sqrt</string>
@@ -1520,17 +1526,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(50, 50, 50);
+           <string notr="true">QPushButton:pressed {
+	background-color: rgb(255, 85, 0);
 }
 
-QPushButton:pressed {
-	background-color: rgb(255, 85, 0);
-}</string>
+QPushButton {
+    background-color: rgb(50, 50, 50);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>^</string>
@@ -1553,17 +1559,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(50, 50, 50);
+           <string notr="true">QPushButton:pressed {
+	background-color: rgb(255, 85, 0);
 }
 
-QPushButton:pressed {
-	background-color: rgb(255, 85, 0);
-}</string>
+QPushButton {
+    background-color: rgb(50, 50, 50);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>)</string>
@@ -1586,17 +1592,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(59, 59, 59);
+           <string notr="true">QPushButton:pressed {
+    background-color: rgb(60, 97, 117);
 }
 
-QPushButton:pressed {
-    background-color: rgb(60, 97, 117);
-}</string>
+QPushButton {
+    background-color: rgb(59, 59, 59);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>0</string>
@@ -1619,17 +1625,17 @@ QPushButton:pressed {
           </property>
           <property name="font">
            <font>
-            <pointsize>12</pointsize>
+            <pointsize>-1</pointsize>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: rgb(50, 50, 50);
+           <string notr="true">QPushButton:pressed {
+	background-color: rgb(255, 85, 0);
 }
 
-QPushButton:pressed {
-	background-color: rgb(255, 85, 0);
-}</string>
+QPushButton {
+    background-color: rgb(50, 50, 50);
+	font-size: 16px;}</string>
           </property>
           <property name="text">
            <string>tan</string>

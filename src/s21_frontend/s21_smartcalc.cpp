@@ -33,6 +33,31 @@ void s21_smartcalc::onResized(const QSize &newSize)
 {
     int maxWidth = 700;
 
+    int width = newSize.width();
+    int height = newSize.height();
+
+    double scaleFactor = std::min(width / 1500.0, height / 1400.0);
+    int fontSize = static_cast<int>(69 * scaleFactor);
+    fontSize = (fontSize < 35) ? 35 : fontSize;
+    ui->result->setStyleSheet(QString("background-color: rgb(30, 27, 6); font-size: %1px; border: 0px;").arg(fontSize));
+
+    for(int i = 0; i < ui->buttons->count(); i++) {
+        QLayoutItem *button_item = ui->buttons->itemAt(i);
+
+        if(button_item) {
+            if(QWidget *widget = button_item->widget()) {
+                if(QPushButton *butt = qobject_cast<QPushButton*>(widget)) {
+                    QString style = butt->styleSheet();
+                    while(style.right(1) != ":") {
+                        style.chop(1);
+                    }
+                    style += " " + QString::number((fontSize > 40) ? 21 : fontSize - 19) + "px;}";
+
+                    butt->setStyleSheet(style);
+                }
+            }
+        }
+    }
     if (newSize.width() > maxWidth && !ui->history_info_label->isVisible()) {
         ui->history_info_label->setVisible(true);
         ui->history_widget->setVisible(true);
@@ -250,18 +275,22 @@ void s21_smartcalc::on_variable_clicked()
 // Выбор цвета замещающих кнопок
 void s21_smartcalc::change_color(QPushButton *button, QString color)
 {
+    QString styleSheet = ui->push_0->styleSheet();
+    QRegularExpression regex("font-size:\\s*(\\d+)px;");
+    QRegularExpressionMatch match = regex.match(styleSheet);
+    int fontSize = match.captured(1).toInt();
     if(color == "orange_eq") {
-        button->setStyleSheet("QPushButton { background-color: rgb(175, 97, 33); } QPushButton:pressed { background-color: rgb(50, 50, 50); }");
+        button->setStyleSheet("QPushButton { background-color: rgb(175, 97, 33); font-size: " + QString::number(fontSize) + "px; } QPushButton:pressed { background-color: rgb(50, 50, 50); }");
     } else if(color == "orange") {
         button->setStyleSheet("QPushButton { background-color: rgb(81, 44, 6); } QPushButton:pressed { background-color: rgb(50, 50, 50); } QToolTip { background-color: rgb(30, 27, 6); border: 1px solid white; }");
     } else if(color == "blue") {
-        button->setStyleSheet("QPushButton { background-color: rgb(0, 119, 171); font-size: 20px; } QPushButton:pressed { background-color: rgb(175, 97, 33); }");
+        button->setStyleSheet("QPushButton { background-color: rgb(0, 119, 171); font-size: " + QString::number(fontSize) + "px; } QPushButton:pressed { background-color: rgb(175, 97, 33); }");
     } else if(color == "blue_graph") {
         button->setStyleSheet("QPushButton { background-color: rgb(0, 119, 171); } QPushButton:pressed { background-color: rgb(175, 97, 33); } QToolTip { background-color: rgb(30, 27, 6);	border: 1px solid white; }");
     } else if(color == "blue_eq") {
         button->setStyleSheet("QPushButton { background-color: rgb(23, 135, 21); } QPushButton:pressed { background-color: rgb(50, 50, 50);}");
     } else if(color == "green") {
-        button->setStyleSheet("QPushButton { background-color: rgb(23, 135, 21); font-size: 20px; } QPushButton:pressed { background-color: rgb(50, 50, 50); }");
+        button->setStyleSheet("QPushButton { background-color: rgb(23, 135, 21); font-size: " + QString::number(fontSize) + "px; } QPushButton:pressed { background-color: rgb(50, 50, 50); }");
     } else if(color == "green_var") {
         button->setStyleSheet("QPushButton { background-color: rgb(23, 135, 21); } QPushButton:pressed { background-color: rgb(50, 50, 50); } QToolTip { background-color: rgb(30, 27, 6); border: 1px solid white; }");
     } else if(color == "black_eq") {

@@ -5,6 +5,8 @@
 #include <QPushButton>
 #include <QLineEdit>
 #include "graphics.h"
+#include <QRegularExpression>
+#include <QRegularExpressionMatch>
 
 extern "C" {
 #include "../s21_backend/s21_main.h"
