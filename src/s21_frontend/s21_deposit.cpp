@@ -9,16 +9,12 @@ s21_deposit::s21_deposit(QWidget *parent)
     ui->setupUi(this);
     ui->payment_period->setCurrentIndex(2);
 
-
     tableWindow = new s21_credit_table();
-    tableWindow->getUi()->debt_info->setVisible(false);
+
     QStringList header_labels;
     header_labels << "Date" << "Interest accrued" << "Balance change" << "Pay" << "Balance";
     tableWindow->getUi()->table->setHorizontalHeaderLabels(header_labels);
     tableWindow->getUi()->table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-
-
-
 
     taxWindow = new QTableWidget();
     taxWindow->setStyleSheet(tableWindow->getUi()->table->styleSheet());
@@ -31,9 +27,6 @@ s21_deposit::s21_deposit(QWidget *parent)
     taxWindow->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     taxWindow->setFixedHeight(150);
     tableWindow->getUi()->tax_layout->addWidget(taxWindow);
-
-
-
 
     opers = new my_widget(this);
 
@@ -65,18 +58,18 @@ void s21_deposit::onTimeEditIndexChanged()
 
 int s21_deposit::onAmountEditTextChanged(const QString &text)
 {
-    int valid = 1;
+    int valid = WRONG_EXPR;
 
-    QString correct_style = "QLineEdit {border-radius: 10px;padding: 0 8px;background-color: rgb(226, 226, 226);color:black;border: 1px solid black;}";
-    QString wrong_style = "QLineEdit {border-radius: 10px;padding: 0 8px;background-color: rgba(255, 0, 0, 100);color:black;border: 1px solid black;}";
+    QRegularExpression regex("^[0-9]{1,12}(\\.[0-9]{1,2})?$");
+    QRegularExpressionMatch match = regex.match(text);
 
-    if((text.length() > 0 && text.toDouble() <= 0) || text.length() > 12) {
-        ui->amount_edit->setStyleSheet(wrong_style);
-    } else if(opers->check_fraction_length(text, 2)) {
-        ui->amount_edit->setStyleSheet(wrong_style);
+    if(text.length() == 0) {
+        ui->amount_edit->setStyleSheet(opers->correct_style);
+    } else if(match.hasMatch() && text.toDouble() && !(text[0] == '0' && text[1] != '.')) {
+        ui->amount_edit->setStyleSheet(opers->correct_style);
+        valid = CORRECT_EXPR;
     } else {
-        ui->amount_edit->setStyleSheet(correct_style);
-        valid = 0;
+        ui->amount_edit->setStyleSheet(opers->wrong_style);
     }
 
     return valid;
@@ -84,24 +77,24 @@ int s21_deposit::onAmountEditTextChanged(const QString &text)
 
 int s21_deposit::onTimeEditTextChanged(const QString &text)
 {
-    int valid = 1;
+    int valid = WRONG_EXPR;
 
-    QString correct_style = "QLineEdit {border-radius: 10px;padding: 0 8px;background-color: rgb(226, 226, 226);color:black;border: 1px solid black;}";
-    QString wrong_style = "QLineEdit {border-radius: 10px;padding: 0 8px;background-color: rgba(255, 0, 0, 100);color:black;border: 1px solid black;}";
+    QRegularExpression regex("^[0-9]+$");
+    QRegularExpressionMatch match = regex.match(text);
 
-    if(opers->containsOnlyDigits(text) == 1) {
-        ui->time_edit->setStyleSheet(wrong_style);
+    if(text.length() == 0) {
+        ui->time_edit->setStyleSheet(opers->correct_style);
     } else if(ui->time_box->currentIndex() == 0 && text.toInt() > 50) {
-        ui->time_edit->setStyleSheet(wrong_style);
+        ui->time_edit->setStyleSheet(opers->wrong_style);
     } else if(ui->time_box->currentIndex() == 1 && text.toInt() > 600) {
-        ui->time_edit->setStyleSheet(wrong_style);
+        ui->time_edit->setStyleSheet(opers->wrong_style);
     } else if(ui->time_box->currentIndex() == 2 && text.toInt() > 18250) {
-        ui->time_edit->setStyleSheet(wrong_style);
-    } else if(text.length() > 0 && text.toDouble() <= 0) {
-        ui->time_edit->setStyleSheet(wrong_style);
+        ui->time_edit->setStyleSheet(opers->wrong_style);
+    } else if(match.hasMatch() && text.toInt() && text[0] != '0') {
+        ui->time_edit->setStyleSheet(opers->correct_style);
+        valid = CORRECT_EXPR;
     } else {
-        ui->time_edit->setStyleSheet(correct_style);
-        valid = 0;
+        ui->time_edit->setStyleSheet(opers->wrong_style);
     }
 
     return valid;
@@ -109,18 +102,18 @@ int s21_deposit::onTimeEditTextChanged(const QString &text)
 
 int s21_deposit::onInterestTextChanged(const QString &text)
 {
-    int valid = 1;
+    int valid = WRONG_EXPR;
 
-    QString correct_style = "QLineEdit {border-radius: 10px;padding: 0 8px;background-color: rgb(226, 226, 226);color:black;border: 1px solid black;}";
-    QString wrong_style = "QLineEdit {border-radius: 10px;padding: 0 8px;background-color: rgba(255, 0, 0, 100);color:black;border: 1px solid black;}";
+    QRegularExpression regex("^[0-9]+(\\.[0-9]{1,3})?$");
+    QRegularExpressionMatch match = regex.match(text);
 
-    if(text.length() > 0 && (text.toDouble() <= 0 || text.toDouble() > 999) && text != "0") {
-        ui->percent_edit->setStyleSheet(wrong_style);
-    } else if(opers->check_fraction_length(text, 3)) {
-        ui->percent_edit->setStyleSheet(wrong_style);
+    if(text.length() == 0) {
+        ui->percent_edit->setStyleSheet(opers->correct_style);
+    } else if(match.hasMatch() && text.toDouble() && text.toDouble() <= 999 && !(text[0] == '0' && text[1] != '.')) {
+        ui->percent_edit->setStyleSheet(opers->correct_style);
+        valid = CORRECT_EXPR;
     } else {
-        ui->percent_edit->setStyleSheet(correct_style);
-        valid = 0;
+        ui->percent_edit->setStyleSheet(opers->wrong_style);
     }
 
     return valid;
@@ -220,39 +213,52 @@ void s21_deposit::free_memory(deposit_init data, investment *pay, operations *op
             pay->total = NULL;
         }
     }
-    if(op) {
-        if(op->date != NULL) {
-            free(op->date);
-            op->date = NULL;
-        }
-        if(op->sum != NULL) {
-            free(op->sum);
-            op->sum = NULL;
-        }
-        if(op->type != NULL) {
-            free(op->type);
-            op->type = NULL;
+    if(opers->getTableWidget()->rowCount() > 0) {
+        if(op) {
+            if(op->date != NULL) {
+                free(op->date);
+                op->date = NULL;
+            }
+            if(op->sum != NULL) {
+                free(op->sum);
+                op->sum = NULL;
+            }
+            if(op->type != NULL) {
+                free(op->type);
+                op->type = NULL;
+            }
         }
     }
 }
 
 int s21_deposit::validation()
 {
-    int valid_data = 1;
+    int valid_data = CORRECT_EXPR;
 
-    if(ui->amount_edit->text().length() && ui->time_edit->text().length() && ui->percent_edit->text().length()) {
-        int valid_oper = 0;
+    if(ui->amount_edit->text().length() == 0) {
+        ui->amount_edit->setStyleSheet(opers->wrong_style);
+        ui->amount_edit->setPlaceholderText("Enter amount");
+        valid_data++;
+    }
+    if(ui->time_edit->text().length() == 0) {
+        ui->time_edit->setStyleSheet(opers->wrong_style);
+        ui->time_edit->setPlaceholderText("Enter term");
+        valid_data++;
+    }
+    if(ui->percent_edit->text().length() == 0) {
+        ui->percent_edit->setStyleSheet(opers->wrong_style);
+        ui->percent_edit->setPlaceholderText("Enter rate");
+        valid_data++;
+    }
+    if(valid_data == CORRECT_EXPR) {
         int valid_amount = onAmountEditTextChanged(ui->amount_edit->text());
         int valid_time = onTimeEditTextChanged(ui->time_edit->text());
         int valid_interest = onInterestTextChanged(ui->percent_edit->text());
 
-        if((opers->getUi_sum()->text().length() > 0 && opers->getUi_sum()->text().toDouble() <= 0) || opers->getUi_sum()->text().length() > 12) {
-            valid_oper = 1;
-        } else if(opers->check_fraction_length(opers->getUi_sum()->text(), 2)) {
-            valid_oper = 1;
-        }
-
-        valid_data = valid_amount + valid_time + valid_interest + valid_oper;
+        valid_data = valid_amount + valid_time + valid_interest;
+        ui->amount_edit->setPlaceholderText("");
+        ui->time_edit->setPlaceholderText("");
+        ui->percent_edit->setPlaceholderText("");
     }
 
     return valid_data;
@@ -286,7 +292,7 @@ void s21_deposit::on_calculate_clicked()
             tableWindow->setGeometry(currentPosGlobal.x(), currentPosGlobal.y(), 800, 600);
             tableWindow->show();
             tableWindow->getUi()->table->setRowCount(data.current + 1);
-            add_all_to_table(data, pay.result, pay.total);
+            add_all_to_table(data, &pay);
         }
         free_memory(data, &pay, &op);
     }
@@ -322,8 +328,13 @@ void s21_deposit::add_datarow_to_table(const QDate& date, QString row_head, long
     }
 }
 
-void s21_deposit::add_all_to_table(deposit_init data, long double **result, long double *total)
+void s21_deposit::add_all_to_table(deposit_init data, investment *pay)
 {
+    long double all_tax = 0;
+    long double all_refill = 0;
+    long double all_withdrawals = 0;
+    long double deposit_with_profit = 0;
+    long double effective_rate = 0;
     int oper_count = 0;
     time_data begin;
     begin.day = ui->date_edit->date().day();
@@ -331,7 +342,6 @@ void s21_deposit::add_all_to_table(deposit_init data, long double **result, long
     begin.year = ui->date_edit->date().year();
     time_data last_day = determine_last_day(begin, data.term_type, data.term);
     time_data end_period = begin;
-
 
     QDate prev = ui->date_edit->date();
     QDate one_date;
@@ -343,13 +353,17 @@ void s21_deposit::add_all_to_table(deposit_init data, long double **result, long
         if(oper_count != opers->getTableWidget()->rowCount()) {
             while(check_date_between(prev, current_day, &oper_count)) {
                 QTableWidgetItem *redem_item = opers->getTableWidget()->item(oper_count, 0);
+                QTableWidgetItem *redem_item_1 = opers->getTableWidget()->item(oper_count, 1);
                 QTableWidgetItem *redem_item_2 = opers->getTableWidget()->item(oper_count, 2);
                 int style = 1;
                 if(redem_item_2->text() == "Withdrawals") {
                     style = 2;
+                    all_withdrawals += redem_item_1->text().toDouble();
+                } else {
+                    all_refill += redem_item_1->text().toDouble();
                 }
                 one_date = QDate::fromString(redem_item->text(), "dd.MM.yyyy");
-                add_datarow_to_table(one_date, "", result, i, style);
+                add_datarow_to_table(one_date, "", pay->result, i, style);
                 oper_count++;
                 i++;
                 if(oper_count == opers->getTableWidget()->rowCount()) {
@@ -357,19 +371,52 @@ void s21_deposit::add_all_to_table(deposit_init data, long double **result, long
                 }
             }
         }
-        add_datarow_to_table(current_day, QString::number(i + 1 - oper_count), result, i, 0);
+        add_datarow_to_table(current_day, QString::number(i + 1 - oper_count), pay->result, i, 0);
 
         begin = end_period;
         prev = current_day;
     }
 
     for(int i = 0; i < 2; i++) {
-        QString number = QString::number(static_cast<double>(total[i]), 'f', 2);
+        QString number = QString::number(static_cast<double>(pay->total[i]), 'f', 2);
         if(i == 0) {
-            tableWindow->getUi()->total_info->setText("Interest accrued: " + number);
+            tableWindow->getUi()->debt_info->setText("Interest accrued: " + number);
         } else {
             tableWindow->getUi()->interest_info->setText("Balance: " + number);
         }
     }
 
+    taxWindow->setRowCount(pay->taxes_count);
+    for(int i = 0; i < pay->taxes_count; i++) {
+        all_tax += pay->taxes[i][4];
+        for(int j = 0; j < 6; j++) {
+            QString item_text;
+            if(j == 5) {
+                if(pay->taxes[i][4]) {
+                    item_text = "Pay by 01.12." + QString::number(static_cast<double>(pay->taxes[i][0] + 1), 'f', 0);
+                }
+            } else {
+                item_text = QString::number(static_cast<double>(pay->taxes[i][j]), 'f', (!j) ? 0 : 2);
+            }
+            QTableWidgetItem *tax_item = new QTableWidgetItem(item_text);
+            tax_item->setTextAlignment(Qt::AlignCenter);
+            taxWindow->setItem(i, j, tax_item);
+        }
+    }
+    if(data.capital) {
+        deposit_with_profit = pay->total[1];
+        QDate end_deposit(last_day.year, last_day.month, last_day.day);
+        effective_rate = pay->total[0] / ui->amount_edit->text().toDouble() * 365 / ui->date_edit->date().daysTo(end_deposit) * 100;
+        tableWindow->getUi()->total_info->setText("Effective rate: " + QString::number(static_cast<double>(effective_rate), 'f', 2) + " %");
+        tableWindow->getUi()->total_info->setVisible(true);
+    } else {
+        deposit_with_profit = pay->total[0] + pay->total[1] + all_withdrawals;
+        tableWindow->getUi()->total_info->setVisible(false);
+    }
+    tableWindow->getUi()->info_rate->setText("Tax: " + QString::number(static_cast<double>(all_tax), 'f', 2));
+    tableWindow->getUi()->info_gains->setText("Capital gains: " + QString::number(static_cast<double>(pay->total[0]/ui->amount_edit->text().toDouble()*100), 'f', 2) + " %");
+    tableWindow->getUi()->info_tax->setText("Gain with tax: " + QString::number(static_cast<double>(pay->total[0] - all_tax), 'f', 2));
+    tableWindow->getUi()->info_refills->setText("Refills: " + QString::number(static_cast<double>(all_refill), 'f', 2));
+    tableWindow->getUi()->info_withdrawals->setText("Withdrawals: " + QString::number(static_cast<double>(all_withdrawals), 'f', 2));
+    tableWindow->getUi()->info_fullsum->setText("Amount+interest: " + QString::number(static_cast<double>(deposit_with_profit), 'f', 2));
 }

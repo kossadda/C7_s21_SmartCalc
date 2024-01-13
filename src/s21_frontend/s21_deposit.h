@@ -5,7 +5,8 @@
 #include "my_widget.h"
 #include "s21_credit_table.h"
 #include <QCheckBox>
-#include <QMessageBox>
+#include <QRegularExpression>
+#include <QRegularExpressionMatch>
 
 extern "C" {
 #include "../s21_backend/s21_main.h"
@@ -37,7 +38,7 @@ private slots:
     void free_memory(deposit_init data, investment *pay, operations *op);
     int validation();
 
-    void add_all_to_table(deposit_init data, long double **result, long double *total);
+    void add_all_to_table(deposit_init data, investment *pay);
     void add_datarow_to_table(const QDate& date, QString row_head, long double **result, int iteration, int style);
     int check_date_between(const QDate& previous, const QDate& current, int* oper_count);
     void add_item_to_table(int row, int column, QString value, int style);

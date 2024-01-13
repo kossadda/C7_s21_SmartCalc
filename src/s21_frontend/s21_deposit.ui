@@ -356,7 +356,7 @@ border: 1px solid black;</string>
 }</string>
         </property>
         <property name="text">
-         <string>120000</string>
+         <string>1203235.12</string>
         </property>
         <property name="placeholderText">
          <string/>
@@ -398,7 +398,7 @@ border: 1px solid black;</string>
 }</string>
         </property>
         <property name="text">
-         <string>10</string>
+         <string>15.272</string>
         </property>
         <property name="placeholderText">
          <string/>
@@ -577,12 +577,12 @@ QDateEdit QCalendarWidget QToolButton QMenu {
         </property>
         <property name="maximumDateTime">
          <datetime>
-          <hour>3</hour>
+          <hour>17</hour>
           <minute>59</minute>
           <second>59</second>
           <year>9999</year>
           <month>12</month>
-          <day>9</day>
+          <day>8</day>
          </datetime>
         </property>
         <property name="calendarPopup">

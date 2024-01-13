@@ -12,13 +12,17 @@ public:
 
 my_widget::my_widget(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::my_widget)
+    ui(new Ui::my_widget),
+    correct_style("QLineEdit {border-radius: 10px;padding: 0 8px;background-color: rgb(226, 226, 226);color:black;border: 1px solid black;}"),
+    wrong_style("QLineEdit {border-radius: 10px;padding: 0 8px;background-color: rgba(255, 0, 0, 100);color:black;border: 1px solid black;}")
 {
     ui->setupUi(this);
     ui->table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->table->horizontalHeader()->setStyleSheet("background-color: rgb(226, 226, 226); color: rgb(0, 0, 0);");
     ui->table->verticalHeader()->setStyleSheet("background-color: rgb(226, 226, 226); color: rgb(0, 0, 0);");
     ui->table->setSortingEnabled(true);
+    ui->table->horizontalHeader()->setSortIndicatorShown(false);
+    ui->table->horizontalHeader()->setSectionsClickable(false);
     ui->table->sortByColumn(0, Qt::AscendingOrder);
     ui->pay_date->setDate(QDate::currentDate());
 
@@ -28,19 +32,6 @@ my_widget::my_widget(QWidget *parent) :
 my_widget::~my_widget()
 {
     delete ui;
-}
-
-int my_widget::containsOnlyDigits(const QString &str)
-{
-    int no_digits = 0;
-
-    for (const QChar &ch : str) {
-        if (!ch.isDigit()) {
-            no_digits = 1;
-        }
-    }
-
-    return no_digits;
 }
 
 void my_widget::on_add_to_table_clicked()
@@ -62,42 +53,20 @@ void my_widget::on_add_to_table_clicked()
     }
 }
 
-int my_widget::check_fraction_length(const QString &text, int length)
-{
-    int normal_length = 0;
-
-    int dot = 0;
-    int after_dot_count = 0;
-
-    for (const QChar &ch : text) {
-        if (ch == '.') {
-            dot = 1;
-        } else if(dot == 1) {
-            after_dot_count++;
-        }
-    }
-
-    if(after_dot_count > length || (text.length() > 0 && text[0] == '.')) {
-        normal_length = 1;
-    }
-
-    return normal_length;
-}
-
 int my_widget::onOperEditTextChanged(const QString &text)
 {
     int valid = 1;
 
-    QString correct_style = "QLineEdit {border-radius: 10px;padding: 0 8px;background-color: rgb(226, 226, 226);color:black;border: 1px solid black;}";
-    QString wrong_style = "QLineEdit {border-radius: 10px;padding: 0 8px;background-color: rgba(255, 0, 0, 100);color:black;border: 1px solid black;}";
+    QRegularExpression regex("^[0-9]{1,12}(\\.[0-9]{1,2})?$");
+    QRegularExpressionMatch match = regex.match(text);
 
-    if((text.length() > 0 && text.toDouble() <= 0) || text.length() > 12) {
-        ui->pay_sum->setStyleSheet(wrong_style);
-    } else if(check_fraction_length(text, 2)) {
-        ui->pay_sum->setStyleSheet(wrong_style);
+    if(text.length() == 0) {
+        ui->pay_sum->setStyleSheet(this->correct_style);
+    } else if(match.hasMatch() && text.toDouble() && text[0] != '0') {
+        ui->pay_sum->setStyleSheet(this->correct_style);
+        valid = CORRECT_EXPR;
     } else {
-        ui->pay_sum->setStyleSheet(correct_style);
-        valid = 0;
+        ui->pay_sum->setStyleSheet(this->wrong_style);
     }
 
     return valid;

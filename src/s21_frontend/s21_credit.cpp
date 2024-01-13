@@ -11,8 +11,8 @@ s21_credit::s21_credit(QWidget *parent)
     tableWindow = new s21_credit_table();
     tableWindow->getUi()->info_fullsum->setVisible(false);
     tableWindow->getUi()->info_gains->setVisible(false);
-    tableWindow->getUi()->info_interest->setVisible(false);
-    tableWindow->getUi()->info_oper->setVisible(false);
+    tableWindow->getUi()->info_refills->setVisible(false);
+    tableWindow->getUi()->info_withdrawals->setVisible(false);
     tableWindow->getUi()->info_rate->setVisible(false);
     tableWindow->getUi()->info_tax->setVisible(false);
 

@@ -21,9 +21,11 @@ int check_taxes(deposit_init *data, investment *pay, time_data end, time_data la
     int error_code = ALLOCATED;
     
     if(begin_year != end.year && data->capital_time != BY_END_TERM) {
+        data->date.year = begin_year;
         error_code = write_taxes(data, pay, year_profit, non_taxable_amount);
     }
     if(compare_dates(end, last) == DATE_EQUAL) {
+        data->date.year = end.year;
         *year_profit += pay->profit;
         error_code = write_taxes(data, pay, year_profit, non_taxable_amount);
     }

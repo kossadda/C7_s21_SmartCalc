@@ -8,6 +8,7 @@
 #include <QHeaderView>
 #include <QVBoxLayout>
 #include <QComboBox>
+enum styles {WRONG_EXPR = 1, CORRECT_EXPR = 0};
 
 namespace Ui {
 class my_widget;
@@ -20,13 +21,13 @@ class my_widget : public QWidget
 public:
     explicit my_widget(QWidget *parent = nullptr);
     ~my_widget();
+    QString correct_style;
+    QString wrong_style;
 
 public slots:
     QTableWidget* getTableWidget();
     QComboBox* getUi_type();
     QLineEdit* getUi_sum();
-    int containsOnlyDigits(const QString &str);
-    int check_fraction_length(const QString &text, int length);
 
 private slots:
     void on_add_to_table_clicked();
