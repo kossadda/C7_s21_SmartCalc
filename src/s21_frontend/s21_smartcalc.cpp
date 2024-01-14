@@ -103,7 +103,7 @@ void s21_smartcalc::onResized(const QSize &newSize)
                     while(style.right(1) != ":") {
                         style.chop(1);
                     }
-                    style += " " + QString::number((font_size > 40) ? 21 : font_size - 19) + "px;}";
+                    style += " " + QString::number((font_size > 44) ? 25 : font_size - 19) + "px;}";
 
                     butt->setStyleSheet(style);
                 }
