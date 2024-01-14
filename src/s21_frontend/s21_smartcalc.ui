@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>440</width>
-    <height>550</height>
+    <width>979</width>
+    <height>660</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -190,7 +190,7 @@
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QComboBox { background-color: rgb(30, 27, 6); border: 15px; text-align: center; } QComboBox::drop-down { border: none; }</string>
+           <string notr="true">QComboBox { background-color: rgb(30, 27, 6); border: 15px; text-align: center; color: rgb(255, 255, 255);} QComboBox::drop-down { border: none; }</string>
           </property>
           <property name="editable">
            <bool>false</bool>
@@ -278,6 +278,7 @@
           <property name="styleSheet">
            <string notr="true">QPushButton {
 	background-color: rgb(81, 44, 6);
+	color: rgb(255, 255, 255);
 }
 
 QPushButton:pressed {
@@ -327,6 +328,7 @@ QToolTip {
           <property name="styleSheet">
            <string notr="true">QPushButton {
 	background-color: rgb(81, 44, 6);
+	color: rgb(255, 255, 255);
 }
 
 QPushButton:pressed {
@@ -376,6 +378,7 @@ QToolTip {
           <property name="styleSheet">
            <string notr="true">QPushButton {
 	background-color: rgb(81, 44, 6);
+	color: rgb(255, 255, 255);
 }
 
 QPushButton:pressed {
@@ -425,6 +428,7 @@ QToolTip {
           <property name="styleSheet">
            <string notr="true">QPushButton {
 	background-color: rgb(81, 44, 6);
+	color: rgb(255, 255, 255);
 }
 
 QPushButton:pressed {
@@ -546,6 +550,7 @@ color: rgb(255, 12, 12);</string>
 
 QPushButton {
     background-color: rgb(50, 50, 50);
+	color: rgb(255, 255, 255);
 	padding-top: 6px;
 	font-size: 16px;}</string>
           </property>
@@ -580,6 +585,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(50, 50, 50);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -613,6 +619,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(50, 50, 50);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -646,6 +653,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(50, 50, 50);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -679,6 +687,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(59, 59, 59);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -712,6 +721,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(59, 59, 59);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -745,6 +755,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(50, 50, 50);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -778,6 +789,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(59, 59, 59);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -811,6 +823,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(50, 50, 50);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -844,6 +857,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(59, 59, 59);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -877,6 +891,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(50, 50, 50);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -910,6 +925,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(59, 59, 59);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -943,6 +959,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(59, 59, 59);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -976,6 +993,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(50, 50, 50);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -1009,6 +1027,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(50, 50, 50);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -1042,6 +1061,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(50, 50, 50);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -1075,6 +1095,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(50, 50, 50);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -1108,6 +1129,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(50, 50, 50);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -1141,6 +1163,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(50, 50, 50);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -1174,6 +1197,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(175, 97, 33);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -1207,6 +1231,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(59, 59, 59);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -1240,6 +1265,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(50, 50, 50);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -1273,6 +1299,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(50, 50, 50);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -1306,6 +1333,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(50, 50, 50);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -1339,6 +1367,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(59, 59, 59);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -1372,6 +1401,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(59, 59, 59);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -1405,6 +1435,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(50, 50, 50);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -1438,6 +1469,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(50, 50, 50);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -1471,6 +1503,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(50, 50, 50);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -1504,6 +1537,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(50, 50, 50);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -1537,6 +1571,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(50, 50, 50);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -1570,6 +1605,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(50, 50, 50);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -1603,6 +1639,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(59, 59, 59);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
@@ -1636,6 +1673,7 @@ QPushButton {
 
 QPushButton {
     background-color: rgb(50, 50, 50);
+	color: rgb(255, 255, 255);
 	font-size: 16px;}</string>
           </property>
           <property name="text">
