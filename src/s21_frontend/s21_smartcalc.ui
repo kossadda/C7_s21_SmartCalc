@@ -504,7 +504,8 @@ QToolTip {
         <property name="styleSheet">
          <string notr="true">background-color: rgb(30, 27, 6);
 font-size: 30px;
-border: 0px;</string>
+border: 0px;
+color: rgb(255, 12, 12);</string>
         </property>
         <property name="maxLength">
          <number>255</number>

@@ -60,7 +60,7 @@ int s21_deposit::onAmountEditTextChanged(const QString &text)
 {
     int valid = WRONG_EXPR;
 
-    QRegularExpression regex("^[0-9]{1,12}(\\.[0-9]{1,2})?$");
+    static const QRegularExpression regex("^[0-9]{1,12}(\\.[0-9]{1,2})?$");
     QRegularExpressionMatch match = regex.match(text);
 
     if(text.length() == 0) {

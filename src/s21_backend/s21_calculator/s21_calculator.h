@@ -15,6 +15,7 @@
 #define BEGIN_TRIGONTRC_CHARS "sctal"
 #define END_TIGONTRC_CHARS "gtnsd"
 #define WRONG_BEGINNING "odinqrg"
+#define BINARY_OPERATIONS "+-*/"
 #define RIGHT_ASSOCIATIVE "^"
 #define BEGIN_ADDITION "1*("
 #define NUMBERS "1234567890"
@@ -72,7 +73,7 @@ typedef struct num_stack {
  * @brief Struct representing stack for lexems.
 */
 typedef struct lex_stack {
-    char stack[75];                 /** An array containing stack lexems (math operations).          */
+    char stack[150];                 /** An array containing stack lexems (math operations).          */
     int count;                      /** A counter that determines the number of lexems on the stack. */
 } lex_stack;
 

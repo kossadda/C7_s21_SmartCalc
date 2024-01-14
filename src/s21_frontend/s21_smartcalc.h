@@ -5,6 +5,7 @@
 #include <QPushButton>
 #include <QLineEdit>
 #include "graphics.h"
+#include <regex>
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
 
@@ -28,14 +29,18 @@ signals:
 public:
     s21_smartcalc(QWidget *parent = nullptr);
     ~s21_smartcalc();
+    int valid;
+    int font_size;
 
 protected:
+    void onCheckExpr(const QString &text);
     void resizeEvent(QResizeEvent *event) override;
 
 private slots:
     void onResized(const QSize &newSize);
     void on_graphWindowClosed();
     int countDigits(double number);
+    void on_actionVarChanged(const QString &text);
     void on_actionVarTriggered();
     void on_actionPlotTriggered();
     void save_history();
@@ -82,6 +87,7 @@ private:
     QStringList history;
     graphics *graphWindow;
     QListWidget* listWidget;
+    int correct_var;
     bool clear_after = false;
     int history_count = -1;
 };

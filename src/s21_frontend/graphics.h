@@ -35,7 +35,7 @@ public slots:
 
     void build_plot(QString expression);
     double calculate(QString expression, double variable);
-    int check_symbol(QString expression, QChar symbol);
+    int check_symbol(QString expression, QChar first, QChar second);
     void change_label_visible(bool decision);
 
 private slots:

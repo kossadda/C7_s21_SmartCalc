@@ -110,18 +110,21 @@ int func_substitution(char *str)
 
     for(size_t i = 0; i < strlen(str); i++) {
         if((check(str[i], WRONG_BEGINNING)) && check(str[i-1], PREV_TRIGONTRC_CHARS)) {
-            wrong_expression = 1;
+            wrong_expression = YES;
             i = strlen(str);
         } else if((check(str[i], BEGIN_TRIGONTRC_CHARS) && check(str[i-1], PREV_TRIGONTRC_CHARS)) || (check(str[i], MOD))) {
             wrong_expression = check_trigonometric(true_str, &count, str, &i);
-
-            if(wrong_expression) {
-                i = strlen(str);
-            }
         } else if(check(str[i], NUMBERS CL_BRCK) && check(str[i+1], OP_BRCK)) {
+            add_symbol(true_str, &count, TWO_CHAR, str[i], CHAR_MUL);
+        } else if(check(str[i], CL_BRCK) && check(str[i+1], DOT)) {
+            wrong_expression = YES;
+        } else if(check(str[i], BINARY_OPERATIONS) && check(str[i+1], BINARY_OPERATIONS)) {
+            wrong_expression = YES;
+        } else if(check(str[i], CL_BRCK) && check(str[i+1], NUMBERS BEGIN_TRIGONTRC_CHARS)) {
             add_symbol(true_str, &count, TWO_CHAR, str[i], CHAR_MUL);
         } else {
             add_symbol(true_str, &count, ONE_CHAR, str[i]);
+
         }
 
         if(str[i] == CHAR_OP_BRCK && check(str[i+1], ADD MINUS)) {
@@ -129,6 +132,9 @@ int func_substitution(char *str)
                 add_symbol(true_str, &count, ONE_CHAR, CHAR_UNAR);
             }
             i++;
+        }
+        if(wrong_expression == YES) {
+            i = strlen(str);
         }
     }
     if(wrong_expression == NO) {

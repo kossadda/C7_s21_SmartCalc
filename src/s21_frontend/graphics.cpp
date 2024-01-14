@@ -46,15 +46,20 @@ double graphics::calculate(QString expression, double variable) {
     return res;
 }
 
-int graphics::check_symbol(QString expression, QChar symbol)
+int graphics::check_symbol(QString expression, QChar first, QChar second)
 {
-    int count_symbol = 0;
+    int count_first = 0;
+    int count_second = 0;
+
     for(int i = 0; i < expression.length(); i++) {
-        if(expression[i] == symbol) {
-            count_symbol++;
+        if(expression[i] == first) {
+            count_first++;
+        } else if(expression[i] == second) {
+            count_second++;
         }
     }
-    return count_symbol;
+
+    return (count_first != count_second) ? YES : NO;
 }
 
 void graphics::onMouseWheel()

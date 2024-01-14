@@ -3,12 +3,15 @@
 
 s21_smartcalc::s21_smartcalc(QWidget *parent)
     : QMainWindow(parent)
+    , valid(0)
+    , font_size(35)
     , ui(new Ui::s21_smartcalc)
     , pushButton(nullptr)
     , pushButton1(nullptr)
     , var(nullptr)
     , graphWindow(nullptr)
     , listWidget(nullptr)
+    , correct_var(0)
 {
     ui->setupUi(this);
 
@@ -27,6 +30,51 @@ s21_smartcalc::s21_smartcalc(QWidget *parent)
     ui->history_widget->setVisible(false);
 
     connect(this, &s21_smartcalc::resized, this, &s21_smartcalc::onResized);
+    connect(ui->result, &QLineEdit::textChanged, this, &s21_smartcalc::onCheckExpr);
+}
+
+void s21_smartcalc::on_actionVarChanged(const QString &text)
+{
+    static const QRegularExpression regex("^[0-9]{1,12}(\\.[0-9]{1,12})?$");
+    QRegularExpressionMatch match = regex.match(text);
+
+    if(text.length() == 0) {
+        var->setStyleSheet(QString("QLineEdit {border-radius: 10px;padding: 0 8px;background-color: rgb(226, 226, 226);color:black;border: 1px solid black;}"));
+        correct_var = NO;
+        var->setPlaceholderText("x = ");
+    } else if(match.hasMatch() && (!text.toDouble() || (text.toDouble() && !(text[0] == '0' && text[1] != '.')))) {
+        var->setStyleSheet(QString("QLineEdit {border-radius: 10px;padding: 0 8px;background-color: rgb(226, 226, 226);color:black;border: 1px solid black;}"));
+        correct_var = YES;
+    } else {
+        var->setStyleSheet(QString("QLineEdit {border-radius: 10px;padding: 0 8px;background-color: rgba(255, 50, 50, 150);color:black;border: 1px solid black;}"));
+        correct_var = NO;
+    }
+}
+
+void s21_smartcalc::onCheckExpr(const QString &text)
+{
+    int wrong_expression = NO;
+
+    std::string str = text.toStdString();
+    char *char_str = (char *)str.c_str();
+    char c_str[512];
+    strcpy(c_str, char_str);
+
+    wrong_expression = graphWindow->check_symbol(text, '(', ')');
+    if(wrong_expression == NO) {
+        wrong_expression = str_without_spaces(c_str);
+    }
+    if(wrong_expression == NO) {
+        input_varibles(c_str, 0);
+        wrong_expression = func_substitution(c_str);
+    }
+    if(wrong_expression == NO) {
+        ui->result->setStyleSheet(QString("background-color: rgb(30, 27, 6); font-size: %1px; border: 0px;color: rgb(255, 255, 255);").arg(font_size));
+        valid = YES;
+    } else {
+        ui->result->setStyleSheet(QString("background-color: rgb(30, 27, 6); font-size: %1px; border: 0px;color: rgba(255, 50, 50, 150);").arg(font_size));
+        valid = NO;
+    }
 }
 
 void s21_smartcalc::onResized(const QSize &newSize)
@@ -37,9 +85,13 @@ void s21_smartcalc::onResized(const QSize &newSize)
     int height = newSize.height();
 
     double scaleFactor = std::min(width / 1500.0, height / 1400.0);
-    int fontSize = static_cast<int>(69 * scaleFactor);
-    fontSize = (fontSize < 35) ? 35 : fontSize;
-    ui->result->setStyleSheet(QString("background-color: rgb(30, 27, 6); font-size: %1px; border: 0px;").arg(fontSize));
+    font_size = static_cast<int>(69 * scaleFactor);
+    font_size = (font_size < 35) ? 35 : font_size;
+    if(valid == NO) {
+        ui->result->setStyleSheet(QString("background-color: rgb(30, 27, 6); font-size: %1px; border: 0px;color: rgba(255, 50, 50, 150);").arg(font_size));
+    } else {
+        ui->result->setStyleSheet(QString("background-color: rgb(30, 27, 6); font-size: %1px; border: 0px;color: rgb(255, 255, 255);").arg(font_size));
+    }
 
     for(int i = 0; i < ui->buttons->count(); i++) {
         QLayoutItem *button_item = ui->buttons->itemAt(i);
@@ -51,7 +103,7 @@ void s21_smartcalc::onResized(const QSize &newSize)
                     while(style.right(1) != ":") {
                         style.chop(1);
                     }
-                    style += " " + QString::number((fontSize > 40) ? 21 : fontSize - 19) + "px;}";
+                    style += " " + QString::number((font_size > 40) ? 21 : font_size - 19) + "px;}";
 
                     butt->setStyleSheet(style);
                 }
@@ -96,12 +148,14 @@ int s21_smartcalc::countDigits(double number)
 // Вычисление выражения
 void s21_smartcalc::on_push_eq_clicked()
 {
-    if(ui->result->text() != "") {
+    if(ui->result->text() != "" && valid == YES) {
         save_history();
-        if(graphWindow->check_symbol(ui->result->text(), 'x') > 0 && (!graphWindow && !var)) {
-            ui->result->setText("variable in expression");
-        } else if(graphWindow->check_symbol(ui->result->text(), '(') != graphWindow->check_symbol(ui->result->text(), ')')) {
-            ui->result->setText("wrong brackets");
+        if(ui->result->text().count('x') > 0 && (!graphWindow && !var)) {
+            ui->result->setText("use variable mode");
+            ui->result->setStyleSheet(QString("background-color: rgb(30, 27, 6); font-size: %1px; border: 0px;color: rgba(50, 255, 50, 150);").arg(font_size));
+        } else if(!graphWindow && var && correct_var == NO) {
+            var->setPlaceholderText("Enter x");
+            var->setStyleSheet(QString("QLineEdit {border-radius: 10px;padding: 0 8px;background-color: rgba(255, 50, 50, 150);color:black;border: 1px solid black;}"));
         } else {
             double var_point = 0;
             if(var) {
@@ -112,8 +166,6 @@ void s21_smartcalc::on_push_eq_clicked()
             double res = graphWindow->calculate(ui->result->text(), var_point);
             if(res != __DBL_MAX__) {
                 ui->result->setText(QString::number(res, 'g', countDigits(res) + 7));
-            } else {
-                ui->result->setText("wrong expression");
             }
         }
         clear_after = true;
@@ -224,16 +276,10 @@ void s21_smartcalc::createPlotButton(QPushButton *button, int row)
 // Построить график
 void s21_smartcalc::on_actionPlotTriggered()
 {
-    if(ui->result->text().length() > 0) {
+    if(ui->result->text().length() > 0 && valid == YES) {
         save_history();
-        if(graphWindow->check_symbol(ui->result->text(), '(') != graphWindow->check_symbol(ui->result->text(), ')')) {
-            ui->result->setText("wrong brackets");
-        } else if(graphWindow->calculate(ui->result->text(), 1) == __DBL_MAX__) {
-            ui->result->setText("wrong expression");
-        } else {
-            graphWindow->build_plot(ui->result->text());
-            graphWindow->show();
-        }
+        graphWindow->build_plot(ui->result->text());
+        graphWindow->show();
         clear_after = true;
     }
 }
@@ -244,9 +290,9 @@ void s21_smartcalc::on_variable_clicked()
     if(!var) {
         var = new QLineEdit(this);
         var->setFixedHeight(35);
-        var->setMinimumWidth(70);
+        var->setMinimumWidth(90);
         var->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
-        var->setStyleSheet("background-color: rgb(255, 255, 255); color: rgb(0, 0, 0)");
+        var->setStyleSheet("QLineEdit {border-radius: 10px;padding: 0 8px;background-color: rgb(226, 226, 226);color:black;border: 1px solid black;}");
         var->setPlaceholderText("x =");
         change_color(ui->variable, "green_var");
         if(!graphWindow) {
@@ -255,7 +301,9 @@ void s21_smartcalc::on_variable_clicked()
         }
         change_color(pushButton1, "green");
         ui->settings->insertWidget(2, var);
+        connect(var, &QLineEdit::textChanged, this, &s21_smartcalc::on_actionVarChanged);
     } else {
+        disconnect(var, &QLineEdit::textChanged, this, &s21_smartcalc::on_actionVarChanged);
         change_color(ui->variable, "orange");
         delete var;
         var = nullptr;
