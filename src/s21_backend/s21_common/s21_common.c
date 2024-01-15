@@ -3,7 +3,7 @@
 /**
  * @brief Rounds a long double number to the nearest e-2.
  * 
- * @param number rounded number.
+ * @param[in] number rounded number.
  * 
  * @return Result of rounding.
 */
@@ -15,7 +15,7 @@ long double round_value(long double number)
 /**
  * @brief Function initializing a data array.
  * 
- * @param[in] pay structure containing buffer variables for monthly results and general payment data arrays.
+ * @param[out] pay structure containing buffer variables for monthly results and general payment data arrays.
  * 
  * @return Error code.
  * @retval ALLOCATED = 0 - if memory is allocated.
@@ -42,8 +42,8 @@ int init_payments(long double ***result, long double **total)
 /**
  * @brief Function for allocating memory in an array for the next payout period.
  * 
- * @param[in] data structure containing input parameters for calculation.
- * @param[in] pay structure containing buffer variables for monthly results and general payment data arrays.
+ * @param[out] data structure containing input parameters for calculation.
+ * @param[out] pay structure containing buffer variables for monthly results and general payment data arrays.
  * 
  * @return Error code.
  * @retval ALLOCATED = 0 - if memory is allocated.

@@ -7,7 +7,7 @@ static void add_symbol(char *str, int *count, int mode, ...);
 /**
  * @brief A function for excluding spaces from a string, as well as validating the string for only valid characters.
  * 
- * @param[in] str string to process.
+ * @param[out] str string to process.
  * 
  * @return Error code.
  * @retval NO = 0 - the string contains valid characters.
@@ -46,15 +46,15 @@ int str_without_spaces(char *str)
 /**
  * @brief Function for replacing variables x, constants (e, Pi) with their corresponding values and additional processing.
  * 
- * @param[in] str string to process.
- * @param var value of variable x.
+ * @param[out] str string to process.
+ * @param[in] var value of variable x.
 */
 void input_varibles(char *str, double var)
 {
     char true_str[1500] = {0};
     int count = 0;
     
-    add_symbol(true_str, &count, STRING, BEGIN_ADDITION);
+    add_symbol(true_str, &count, STRING, BEGIN_ADDITION OP_BRCK);
     if(*str == CHAR_E) {
         add_symbol(true_str, &count, NUMBER, EXP_NUMBER);
     }
@@ -96,7 +96,7 @@ void input_varibles(char *str, double var)
 /**
  * @brief A function for replacing full function names with their shortened versions in char format (for ease of parsing) and additional processing.
  * 
- * @param[in] str string to process.
+ * @param[out] str string to process.
  * 
  * @return Error code.
  * @retval NO = 0 - the string contains valid characters.
@@ -109,7 +109,7 @@ int func_substitution(char *str)
     int count = 0;
 
     for(size_t i = 0; i < strlen(str); i++) {
-        if((check(str[i], WRONG_BEGINNING)) && check(str[i-1], PREV_TRIGONTRC_CHARS)) {
+        if((check(str[i], WRONG_BEGINNING)) && check(str[i-1], PREV_TRIGONTRC_CHARS NUMBERS)) {
             wrong_expression = YES;
             i = strlen(str);
         } else if((check(str[i], BEGIN_TRIGONTRC_CHARS) && check(str[i-1], PREV_TRIGONTRC_CHARS)) || (check(str[i], MOD))) {
@@ -130,6 +130,9 @@ int func_substitution(char *str)
         if(str[i] == CHAR_OP_BRCK && check(str[i+1], ADD MINUS)) {
             if(str[i+1] == CHAR_MINUS) {
                 add_symbol(true_str, &count, ONE_CHAR, CHAR_UNAR);
+            }
+            if(str[i+1] == CHAR_MINUS && str[i+2] == CHAR_OP_BRCK) {
+                add_symbol(true_str, &count, STRING, BEGIN_ADDITION);
             }
             i++;
         }
@@ -155,10 +158,10 @@ int func_substitution(char *str)
 /**
  * @brief A function that checks the possible full name of the function for compliance with those specified in the parser.
  * 
- * @param[in] true_str mathematical expression with substituted symbols.
- * @param[in] count counter for a string with replaced characters.
- * @param[in] str string with full names.
- * @param[in] i counter for a line with full names.
+ * @param[out] true_str mathematical expression with substituted symbols.
+ * @param[out] count counter for a string with replaced characters.
+ * @param[out] str string with full names.
+ * @param[out] i counter for a line with full names.
  * 
  * @return Error code.
  * @retval NO = 0 - the string contains valid characters.
@@ -172,7 +175,7 @@ static int check_trigonometric(char *true_str, int *count, const char *str, size
 
     if(str[*i] == CHAR_MOD) {
         for(int j = 0; str[*i] != CHAR_ZERO; j++) {
-            if(j > 4 || check(str[*i], NUMBERS MINUS BEGIN_TRIGONTRC_CHARS)) {
+            if(j > 4 || check(str[*i], NUMBERS MINUS BEGIN_TRIGONTRC_CHARS OP_BRCK)) {
                 break;
             }
             
@@ -212,7 +215,7 @@ static int check_trigonometric(char *true_str, int *count, const char *str, size
         wrong_expression = YES;
     }
     
-    if(check(str[*i], OP_BRCK NUMBERS BEGIN_TRIGONTRC_CHARS)) {
+    if(check(str[*i], OP_BRCK NUMBERS BEGIN_TRIGONTRC_CHARS OP_BRCK)) {
         (*i)--;
     }
 
@@ -226,10 +229,10 @@ static int check_trigonometric(char *true_str, int *count, const char *str, size
  * "mode" = NUMBER (1) - add a number to a string.
  * "mode" = CHAR (2) - add a char to the string (for 2 characters - TWO_CHAR, if a larger number is needed, add the required number arithmetically).
  * 
- * @param[in] str processed string.
- * @param[in] count counter for a string.
- * @param mode mode for adding symbols
- * @param parameters parameters corresponding to the specified mode.
+ * @param[out] str processed string.
+ * @param[out] count counter for a string.
+ * @param[in] mode mode for adding symbols
+ * @param[in] parameters parameters corresponding to the specified mode.
 */
 static void add_symbol(char *str, int *count, int mode, ...)
 {

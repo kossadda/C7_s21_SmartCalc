@@ -3,8 +3,8 @@
 /**
  * @brief A function designed to compare the priorities of two lexems (current and at the top of the stack).
  * 
- * @param current current lexem.
- * @param top_stack lexem on top of stack.
+ * @param[in] current current lexem.
+ * @param[in] top_stack lexem on top of stack.
  * 
  * @return Status of the current lexem in relation to the lexem at the top of the stack.
  * @retval LOW_PRIORITY = 0 - if the current lexem is of lower priority.
@@ -34,7 +34,7 @@ int prior_comparison(const char current, const char top_stack)
 /**
  * @brief The function determines the priority of the input lexem.
  * 
- * @param lexem lexem.
+ * @param[in] lexem lexem.
  * 
  * @return lexem priority.
  * @retval 1 - if lexem one of "+-".
@@ -47,7 +47,7 @@ int determine_priority(const char lexem)
 {
     int priority = 0;
 
-    if(check(lexem, ADD MIN)) {
+    if(check(lexem, ADD SUB)) {
         priority = 1;
     } else if(check(lexem, MUL DIV MOD)) {
         priority = 2;

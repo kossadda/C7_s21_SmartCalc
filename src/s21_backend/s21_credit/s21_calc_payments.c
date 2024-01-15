@@ -7,9 +7,9 @@ static int calculate_diff_month(credit_init *data, payments *pay, time_data next
 /**
  * @brief Calculates monthly payments for an annuity payment type.
  * 
- * @param[in] data structure containing input parameters for calculation.
- * @param[in] pay structure containing buffer variables for monthly results and general payment data arrays.
- * @param[in] redemption structure containing data on early repayments.
+ * @param[out] data structure containing input parameters for calculation.
+ * @param[out] pay structure containing buffer variables for monthly results and general payment data arrays.
+ * @param[out] redemption structure containing data on early repayments.
  * 
  * @return Error code.
  * @retval ALLOCATED = 0 - if memory is allocated.
@@ -54,9 +54,9 @@ int calculate_payments(credit_init *data, payments *pay, early_pay *redemption)
 /**
  * @brief Function for calculating one month payments.
  * 
- * @param[in] data structure containing input parameters for calculation.
- * @param[in] pay structure containing buffer variables for monthly results and general payment data arrays.
- * @param next_month structure containing the payment end date for the current month.
+ * @param[out] data structure containing input parameters for calculation.
+ * @param[out] pay structure containing buffer variables for monthly results and general payment data arrays.
+ * @param[in] next_month structure containing the payment end date for the current month.
  * 
  * @return Error code.
  * @retval ALLOCATED = 0 - if memory is allocated.
@@ -106,10 +106,10 @@ static int calculate_annuity_month(credit_init *data, payments *pay, time_data n
 /**
  * @brief Function for calculating one month payments.
  * 
- * @param[in] data structure containing input parameters for calculation.
- * @param[in] pay structure containing buffer variables for monthly results and general payment data arrays.
- * @param next_month structure containing the payment end date for the current month.
- * @param paid_percent the amount deducted from the monthly interest in case of early repayment.
+ * @param[out] data structure containing input parameters for calculation.
+ * @param[out] pay structure containing buffer variables for monthly results and general payment data arrays.
+ * @param[in] next_month structure containing the payment end date for the current month.
+ * @param[in] paid_percent the amount deducted from the monthly interest in case of early repayment.
  * 
  * @return Error code.
  * @retval ALLOCATED = 0 - if memory is allocated.
@@ -142,11 +142,11 @@ static int calculate_diff_month(credit_init *data, payments *pay, time_data next
 /**
  * @brief Determines whether the current early repayment is within the current month and calculates it.
  * 
- * @param[in] data structure containing input parameters for calculation.
- * @param[in] pay structure containing buffer variables for monthly results and general payment data arrays.
- * @param[in] redemption structure containing data on early repayments.
- * @param[in] next_month structure containing the payment end date for the current month.
- * @param[in] paid_percent the amount deducted from the monthly interest in case of early repayment.
+ * @param[out] data structure containing input parameters for calculation.
+ * @param[out] pay structure containing buffer variables for monthly results and general payment data arrays.
+ * @param[out] redemption structure containing data on early repayments.
+ * @param[out] next_month structure containing the payment end date for the current month.
+ * @param[out] paid_percent the amount deducted from the monthly interest in case of early repayment.
  * 
  * @return Error code.
  * @retval ALLOCATED = 0 - if memory is allocated.
@@ -173,8 +173,8 @@ static int check_calc_redemption(credit_init *data, payments *pay, early_pay *re
 /**
  * @brief A function that writes the result of each month to an array.
  * 
- * @param[in] data structure containing input parameters for calculation.
- * @param[in] pay structure containing buffer variables for monthly results and general payment data arrays.
+ * @param[out] data structure containing input parameters for calculation.
+ * @param[out] pay structure containing buffer variables for monthly results and general payment data arrays.
 */
 void remember_result(credit_init *data, payments *pay)
 {

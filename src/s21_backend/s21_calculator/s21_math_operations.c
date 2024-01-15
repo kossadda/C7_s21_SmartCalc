@@ -4,9 +4,9 @@
 /**
  * @brief Calculates two numbers received as input using the specified lexem.
  * 
- * @param first first number.
- * @param second second number.
- * @param lexem lexem.
+ * @param[in] first first number.
+ * @param[in] second second number.
+ * @param[in] lexem lexem.
  * 
  * @return Result of calculation.
 */
@@ -35,8 +35,8 @@ double math_nums(double first, double second, const char lexem)
 /**
  * @brief Calculates the received number using the specified trigonometric function.
  * 
- * @param[in] number calculating number.
- * @param lexem trigonometric or logarithmic function.
+ * @param[out] number calculating number.
+ * @param[in] lexem trigonometric or logarithmic function.
 */
 void math_trigonometry(double *number, const char lexem)
 {

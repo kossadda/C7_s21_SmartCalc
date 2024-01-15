@@ -3,10 +3,10 @@
 /**
  * @brief Function for determining all payments for a certain period.
  * 
- * @param[in] data structure containing input parameters for calculation.
- * @param[in] pay structure containing buffer variables for monthly results and general payment data arrays.
- * @param end_period period end date.
- * @param percent the amount accumulated before the expected replenishment/withdrawal in the current period.
+ * @param[out] data structure containing input parameters for calculation.
+ * @param[out] pay structure containing buffer variables for monthly results and general payment data arrays.
+ * @param[in] end_period period end date.
+ * @param[in] percent the amount accumulated before the expected replenishment/withdrawal in the current period.
  * 
  * @return Error code.
  * @retval ALLOCATED = 0 - if memory is allocated.
@@ -43,8 +43,8 @@ int calc_period(deposit_init *data, investment *pay, time_data end_period, long 
 /**
  * @brief A function that writes the result of each month to an array.
  * 
- * @param data structure containing input parameters for calculation.
- * @param[in] pay structure containing buffer variables for monthly results and general payment data arrays.
+ * @param[in] data structure containing input parameters for calculation.
+ * @param[out] pay structure containing buffer variables for monthly results and general payment data arrays.
 */
 void write_results(deposit_init data, investment *pay)
 {

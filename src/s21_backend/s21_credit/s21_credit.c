@@ -3,9 +3,9 @@
 /**
  * @brief Main function for calculating payments for all credit term.
  * 
- * @param[in] data structure containing input parameters for calculation.
- * @param[in] pay structure containing buffer variables for monthly results and general payment data arrays.
- * @param[in] redemption structure containing data on early repayments.
+ * @param[out] data structure containing input parameters for calculation.
+ * @param[out] pay structure containing buffer variables for monthly results and general payment data arrays.
+ * @param[out] redemption structure containing data on early repayments.
  * 
  * @return Error code.
  * @retval ALLOCATED = 0 - if memory is allocated.

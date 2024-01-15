@@ -7,7 +7,7 @@ static void move_to_end_term(time_data *begin, time_data *end);
 /**
  * @brief Function to define a year as a leap year.
  * 
- * @param year verified year.
+ * @param[in] year verified year.
  * 
  * @return Information about the leap year.
  * @retval YEAR_NOT_LEAP = 0 - in the case of a normal year.
@@ -29,9 +29,9 @@ int check_leap(int year)
 /**
  * @brief Determines whether the current maturity date is within the range of the current payment month.
  * 
- * @param now beginning of the payment period of the current month.
- * @param[in] pay early repayment date.
- * @param next end of the current month's payment period.
+ * @param[in] now beginning of the payment period of the current month.
+ * @param[out] pay early repayment date.
+ * @param[in] next end of the current month's payment period.
  * 
  * @return Information about the position of early payment date.
  * @retval DATE_OUTSIDE = 0 - if early_payment outside of current month.
@@ -53,8 +53,8 @@ int compare_date_with_month(time_data now, time_data *pay, time_data next)
 /**
  * @brief Subtracts two dates.
  * 
- * @param first the date from which you need to subtract.
- * @param second date to be subtracted.
+ * @param[in] first the date from which you need to subtract.
+ * @param[in] second date to be subtracted.
  * 
  * @return Number of days between two dates.
 */
@@ -78,7 +78,7 @@ int sub_date(time_data first, time_data second)
 /**
  * @brief Determines the number of days from the current date to the end of the current month.
  * 
- * @param date date from which the count is made.
+ * @param[in] date date from which the count is made.
  * 
  * @return Number of days until the end of the current month.
 */
@@ -95,8 +95,8 @@ int sub_till_end_month(time_data date)
 /**
  * @brief Function comparing two dates.
  * 
- * @param first first date compared.
- * @param second second date compared.
+ * @param[in] first first date compared.
+ * @param[in] second second date compared.
  * 
  * @return Position of the first date relative to the second.
  * @retval DATE_EQUAL = 0 - if the dates are the same.
@@ -177,9 +177,9 @@ void leap_days_between_dates(time_data *first, time_data *second)
 /**
  * @brief Defines the last day of the deposit.
  * 
- * @param date deposit opening date.
- * @param term_type what period is specified by the user (days/months).
- * @param term deposit term.
+ * @param[in] date deposit opening date.
+ * @param[in] term_type what period is specified by the user (days/months).
+ * @param[in] term deposit term.
  * 
  * @return Last day of the deposit.
 */
@@ -201,7 +201,7 @@ time_data determine_last_day(time_data date, int term_type, int term)
 /**
  * @brief Determines how many days from the current date to the beginning of the current year.
  * 
- * @param date date from which the count is made.
+ * @param[in] date date from which the count is made.
  * 
  * @return Number of days in a year.
 */
@@ -220,10 +220,10 @@ int days_in_this_year(time_data date)
 /**
  * @brief Moves the specified date relative to the specified period.
  * 
- * @param[in] begin period start date.
- * @param[in] end period end date.
- * @param last_day deposit end day.
- * @param capital_type type of payment periodization.
+ * @param[out] begin period start date.
+ * @param[out] end period end date.
+ * @param[in] last_day deposit end day.
+ * @param[in] capital_type type of payment periodization.
 */
 void add_one_period(time_data *begin, time_data *end, time_data last_day, int capital_type, int const_date)
 {
@@ -269,8 +269,8 @@ void add_one_period(time_data *begin, time_data *end, time_data last_day, int ca
 /**
  * @brief A function that determines the number of days in leap years and ordinary years for a lump sum payment.
  * 
- * @param[in] begin deposit start date.
- * @param[in] end deposit end date.
+ * @param[out] begin deposit start date.
+ * @param[out] end deposit end date.
 */
 static void move_to_end_term(time_data *begin, time_data *end) {
     begin->month_days = 0;
@@ -310,9 +310,9 @@ static void move_to_end_term(time_data *begin, time_data *end) {
 /**
  * @brief A function that determines the correct logic for adding a month to the current date.
  * 
- * @param[in] date date by which the required time period.
- * @param term number of added months.
- * @param beginning_date the original date received as input from the user.
+ * @param[out] date date by which the required time period.
+ * @param[in] term number of added months.
+ * @param[in] beginning_date the original date received as input from the user.
 */
 static void add_months(time_data *date, int term, int beginning_date)
 {
@@ -358,8 +358,8 @@ static void add_months(time_data *date, int term, int beginning_date)
 /**
  * @brief A function that determines the correct logic for adding a days to the current date.
  * 
- * @param[in] date date by which the required time period.
- * @param term number of added days.
+ * @param[out] date date by which the required time period.
+ * @param[in] term number of added days.
 */
 static void add_days(time_data *date, int term)
 {

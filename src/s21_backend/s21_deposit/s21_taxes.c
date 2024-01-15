@@ -5,13 +5,13 @@ static int write_taxes(deposit_init *data, investment *pay, long double *year_pr
 /**
  * @brief Checks the current period for transition between years.
  * 
- * @param[in] data structure containing input parameters for calculation.
- * @param[in] pay structure containing buffer variables for monthly results and general payment data arrays.
- * @param end structure containing information about the end of the current period.
- * @param last structure containing information about the last deposit day.
- * @param[in] year_profit amount accumulated during the year.
- * @param non_taxable_amount tax free amount.
- * @param begin_year the year from which the current period began.
+ * @param[out] data structure containing input parameters for calculation.
+ * @param[out] pay structure containing buffer variables for monthly results and general payment data arrays.
+ * @param[in] end structure containing information about the end of the current period.
+ * @param[in] last structure containing information about the last deposit day.
+ * @param[out] year_profit amount accumulated during the year.
+ * @param[in] non_taxable_amount tax free amount.
+ * @param[in] begin_year the year from which the current period began.
  * 
  * @return Error code.
  * @retval ALLOCATED = 0 - if memory is allocated.
@@ -38,10 +38,10 @@ int check_taxes(deposit_init *data, investment *pay, time_data end, time_data la
 /**
  * @brief A function that records taxation in an array.
  * 
- * @param[in] data structure containing input parameters for calculation.
- * @param[in] pay structure containing buffer variables for monthly results and general payment data arrays.
- * @param[in] year_profit amount accumulated during the year.
- * @param non_taxable_amount tax free amount.
+ * @param[out] data structure containing input parameters for calculation.
+ * @param[out] pay structure containing buffer variables for monthly results and general payment data arrays.
+ * @param[out] year_profit amount accumulated during the year.
+ * @param[in] non_taxable_amount tax free amount.
  * 
  * @return Error code.
  * @retval ALLOCATED = 0 - if memory is allocated.

@@ -53,27 +53,32 @@ void s21_smartcalc::on_actionVarChanged(const QString &text)
 
 void s21_smartcalc::onCheckExpr(const QString &text)
 {
-    int wrong_expression = NO;
-
-    std::string str = text.toStdString();
-    char *char_str = (char *)str.c_str();
-    char c_str[512];
-    strcpy(c_str, char_str);
-
-    wrong_expression = graphWindow->check_symbol(text, '(', ')');
-    if(wrong_expression == NO) {
-        wrong_expression = str_without_spaces(c_str);
-    }
-    if(wrong_expression == NO) {
-        input_varibles(c_str, 0);
-        wrong_expression = func_substitution(c_str);
-    }
-    if(wrong_expression == NO) {
-        ui->result->setStyleSheet(QString("background-color: rgb(30, 27, 6); font-size: %1px; border: 0px;color: rgb(255, 255, 255);").arg(font_size));
-        valid = YES;
+    if(clear_after) {
+        ui->result->setText("");
+        clear_after = false;
     } else {
-        ui->result->setStyleSheet(QString("background-color: rgb(30, 27, 6); font-size: %1px; border: 0px;color: rgba(255, 50, 50, 150);").arg(font_size));
-        valid = NO;
+        int wrong_expression = NO;
+
+        std::string str = text.toStdString();
+        char *char_str = (char *)str.c_str();
+        char c_str[512];
+        strcpy(c_str, char_str);
+
+        wrong_expression = graphWindow->check_symbol(text, '(', ')');
+        if(wrong_expression == NO) {
+            wrong_expression = str_without_spaces(c_str);
+        }
+        if(wrong_expression == NO) {
+            input_varibles(c_str, 0);
+            wrong_expression = func_substitution(c_str);
+        }
+        if(wrong_expression == NO) {
+            ui->result->setStyleSheet(QString("background-color: rgb(30, 27, 6); font-size: %1px; border: 0px;color: rgb(255, 255, 255);").arg(font_size));
+            valid = YES;
+        } else {
+            ui->result->setStyleSheet(QString("background-color: rgb(30, 27, 6); font-size: %1px; border: 0px;color: rgba(255, 50, 50, 150);").arg(font_size));
+            valid = NO;
+        }
     }
 }
 
@@ -175,7 +180,6 @@ void s21_smartcalc::on_push_eq_clicked()
 // Установка плавающей точки
 void s21_smartcalc::on_push_dot_clicked()
 {
-    clear_result();
     if(ui->result->text().length() > 0) {
         QString field = ui->result->text();
         QChar last_symbol = field[field.length() - 1];
@@ -397,7 +401,6 @@ void s21_smartcalc::on_move_frwd_clicked()
 // Удалить символ
 void s21_smartcalc::on_push_del_clicked()
 {
-    clear_result();
     if(ui->result->text().length() > 0) {
         QString temp = ui->result->text();
         temp.chop(1);
@@ -425,7 +428,6 @@ void s21_smartcalc::add(QString text) {
 // Добавление цифр
 void s21_smartcalc::push_nums()
 {
-    clear_result();
     QPushButton *button = (QPushButton *)sender();
     add(button->text());
 }
@@ -442,77 +444,66 @@ void s21_smartcalc::clear_result()
 // Добавить переменную
 void s21_smartcalc::on_actionVarTriggered()
 {
-    clear_result();
     add("x");
 }
 
 // Квадратный корень из числа
 void s21_smartcalc::on_push_sqrt_clicked()
 {
-    clear_result();
     add("sqrt(");
 }
 
 // Десятичный логарифм
 void s21_smartcalc::on_push_log_clicked()
 {
-    clear_result();
     add("log(");
 }
 
 // Натуральный логарифм
 void s21_smartcalc::on_push_ln_clicked()
 {
-    clear_result();
     add("ln(");
 }
 
 // Синус
 void s21_smartcalc::on_push_sin_clicked()
 {
-    clear_result();
     add("sin(");
 }
 
 // Косинус
 void s21_smartcalc::on_push_cos_clicked()
 {
-    clear_result();
     add("cos(");
 }
 
 // Тангенс
 void s21_smartcalc::on_push_tan_clicked()
 {
-    clear_result();
     add("tan(");
 }
 
 // Арксинус
 void s21_smartcalc::on_push_asin_clicked()
 {
-    clear_result();
     add("asin(");
 }
 
 // Арккосинус
 void s21_smartcalc::on_push_acos_clicked()
 {
-    clear_result();
     add("acos(");
 }
 
 // Арктангенс
 void s21_smartcalc::on_push_atan_clicked()
 {
-    clear_result();
     add("atan(");
 }
 
 // Остаток от деления
 void s21_smartcalc::on_push_mod_clicked()
 {
-    clear_result();
     if(ui->result->text().length() > 0) {
         add(" mod ");
     }
@@ -521,14 +512,12 @@ void s21_smartcalc::on_push_mod_clicked()
 // Добавить открывающую скобку
 void s21_smartcalc::on_push_opn_brack_clicked()
 {
-    clear_result();
     add("(");
 }
 
 // Добавить закрывающую скобку
 void s21_smartcalc::on_push_cls_brack_clicked()
 {
-    clear_result();
     if(ui->result->text().length() > 0) {
         add(")");
     }
@@ -537,7 +526,6 @@ void s21_smartcalc::on_push_cls_brack_clicked()
 // Добавить деление
 void s21_smartcalc::on_push_div_clicked()
 {
-    clear_result();
     if(ui->result->text().length() > 0) {
         add("/");
     }
@@ -546,7 +534,6 @@ void s21_smartcalc::on_push_div_clicked()
 // Добавить умножение
 void s21_smartcalc::on_push_mul_clicked()
 {
-    clear_result();
     if(ui->result->text().length() > 0) {
         add("*");
     }
@@ -555,7 +542,6 @@ void s21_smartcalc::on_push_mul_clicked()
 // Добавить вычитание
 void s21_smartcalc::on_push_sub_clicked()
 {
-    clear_result();
     if(ui->result->text().length() > 0) {
         add("-");
     }
@@ -564,7 +550,6 @@ void s21_smartcalc::on_push_sub_clicked()
 // Добавить сумму
 void s21_smartcalc::on_push_sum_clicked()
 {
-    clear_result();
     if(ui->result->text().length() > 0) {
         add("+");
     }
@@ -573,21 +558,18 @@ void s21_smartcalc::on_push_sum_clicked()
 // Научная нотация
 void s21_smartcalc::on_push_e_clicked()
 {
-    clear_result();
     add("e");
 }
 
 // Добавить число Пи
 void s21_smartcalc::on_push_pi_clicked()
 {
-    clear_result();
     add("P");
 }
 
 // Возведение в степень
 void s21_smartcalc::on_push_exp_clicked()
 {
-    clear_result();
     if(ui->result->text().length() > 0) {
         add("^");
     }

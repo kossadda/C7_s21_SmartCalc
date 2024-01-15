@@ -3,7 +3,7 @@
 /**
  * @brief Function for adding/removing a unary minus from the last number in a line.
  * 
- * @param[in] str processed string.
+ * @param[out] str processed string.
  * 
  * @return Modified string.
 */
@@ -29,8 +29,8 @@ char *unar_operation(char *str)
 /**
  * @brief Function to determine the position of the last number in a string.
  * 
- * @param[in] str processed string.
- * @param len String length.
+ * @param[out] str processed string.
+ * @param[in] len String length.
  * 
  * @return Index of the character from which the number begins.
 */
@@ -49,8 +49,8 @@ int number_position(char *str, int len)
 /**
  * @brief Function to determine the position of the last minus sign in a string.
  * 
- * @param[in] str processed string.
- * @param len string length.
+ * @param[out] str processed string.
+ * @param[in] len string length.
  * 
  * @return Index of the last character containing a minus value.
 */
@@ -69,10 +69,10 @@ int minus_position(char *str, int len)
 /**
  * @brief Function to add a unary minus to a string.
  * 
- * @param[in] str processed string.
- * @param[in] ptr buffer string.
- * @param len string length.
- * @param pos_number index of the character from which the number begins.
+ * @param[out] str processed string.
+ * @param[out] ptr buffer string.
+ * @param[in] len string length.
+ * @param[in] pos_number index of the character from which the number begins.
 */
 void make_unar(char *str, char *ptr, int len, int pos_number)
 {
@@ -95,10 +95,10 @@ void make_unar(char *str, char *ptr, int len, int pos_number)
 /**
  * @brief Function to remove unary minus.
  * 
- * @param[in] str processed string.
- * @param[in] ptr buffer string.
- * @param len string length.
- * @param pos_minus index of the last character containing a minus value.
+ * @param[out] str processed string.
+ * @param[out] ptr buffer string.
+ * @param[in] len string length.
+ * @param[in] pos_minus index of the last character containing a minus value.
 */
 void clean_unar(char *str, char *ptr, int len, int pos_minus)
 {

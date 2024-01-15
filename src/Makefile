@@ -15,7 +15,7 @@ SUPPORT = $(shell find s21_backend/s21_common -name '*.c')
 SOURCES = $(CALC) $(CREDIT) $(DEPOSIT) $(SUPPORT)
 OBJECTS = $(SOURCES:.c=.o)
 # TESTS PATHS
-TESTS = s21_backend/s21_tests/*.c
+TESTS = s21_tests/*.c
 # OTHER PATHS
 TRASH = $(MAIN_FOLD)/*.o $(MAIN_FOLD)/ui_* $(MAIN_FOLD)/moc_* $(MAIN_FOLD)/*.user $(MAIN_FOLD)/Makefile
 GCOV = gcov_report
@@ -48,7 +48,7 @@ install_by_qmake:
 	@cd $(MAIN_FOLD) && qmake && make -s
 	@mv $(MAIN_FOLD)/$(PROG) $(BUILD)/$(PROG)
 
-install:
+install: s21_smartcalc.a
 # 	$(MAKE) install_cmake
 	@mkdir -p $(BUILD)
 	@cd $(BUILD) && cmake .. && make

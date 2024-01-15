@@ -8,12 +8,12 @@ static int logarithm(long double x, long double base);
  * @brief
  * Calculates early payments.
  * 
- * @param[in] data structure containing input parameters for calculation.
- * @param[in] pay structure containing buffer variables for monthly results and general payment data arrays.
- * @param[in] redemption structure containing data on early repayments.
- * @param[in] next_month structure containing the payment end date for the current month.
- * @param[in] paid_percent the amount deducted from the monthly interest in case of early repayment.
- * @param[in] change variable reporting the change in the debt balance in case of early repayment. DEBT_NOT_CHANGED = 0 - hasn't changed, DEBT_CHANGED = 1 - changed.
+ * @param[out] data structure containing input parameters for calculation.
+ * @param[out] pay structure containing buffer variables for monthly results and general payment data arrays.
+ * @param[out] redemption structure containing data on early repayments.
+ * @param[out] next_month structure containing the payment end date for the current month.
+ * @param[out] paid_percent the amount deducted from the monthly interest in case of early repayment.
+ * @param[out] change variable reporting the change in the debt balance in case of early repayment. DEBT_NOT_CHANGED = 0 - hasn't changed, DEBT_CHANGED = 1 - changed.
  * 
  * @return Error code.
  * @retval ALLOCATED = 0 - if memory is allocated.
@@ -57,11 +57,11 @@ int redemp_payment(credit_init *data, payments *pay, early_pay *redemption, time
 /**
  * @brief Calculates the interest payment and determines whether the balance of the debt has changed.
  * 
- * @param[in] data structure containing input parameters for calculation.
- * @param[in] redemption structure containing data on early repayments.
- * @param[in] pay structure containing buffer variables for monthly results and general payment data arrays.
- * @param[in] paid_percent the amount deducted from the monthly interest in case of early repayment.
- * @param[in] change variable reporting the change in the debt balance in case of early repayment. DEBT_NOT_CHANGED = 0 - hasn't changed, DEBT_CHANGED = 1 - changed.
+ * @param[out] data structure containing input parameters for calculation.
+ * @param[out] redemption structure containing data on early repayments.
+ * @param[out] pay structure containing buffer variables for monthly results and general payment data arrays.
+ * @param[out] paid_percent the amount deducted from the monthly interest in case of early repayment.
+ * @param[out] change variable reporting the change in the debt balance in case of early repayment. DEBT_NOT_CHANGED = 0 - hasn't changed, DEBT_CHANGED = 1 - changed.
 */
 static void determine_debt_changing(credit_init *data, early_pay *redemption, payments *pay, long double *paid_percent, int *change) {
     if(*change == DEBT_CHANGED) {
@@ -90,12 +90,12 @@ static void determine_debt_changing(credit_init *data, early_pay *redemption, pa
 /**
  * @brief Changes the number of days remaining after the operation and changes the monthly payments according to the type of payments.
  * 
- * @param[in] data structure containing input parameters for calculation.
- * @param[in] redemption structure containing data on early repayments.
- * @param[in] next_month structure containing the payment end date for the current month.
- * @param[in] pay structure containing buffer variables for monthly results and general payment data arrays.
- * @param monthly_pay current monthly payment amount.
- * @param change contains information about whether the amount of the debt has changed. DEBT_NOT_CHANGED = 0 - hasn't changed, DEBT_CHANGED = 1 - changed.
+ * @param[out] data structure containing input parameters for calculation.
+ * @param[out] redemption structure containing data on early repayments.
+ * @param[out] next_month structure containing the payment end date for the current month.
+ * @param[out] pay structure containing buffer variables for monthly results and general payment data arrays.
+ * @param[in] monthly_pay current monthly payment amount.
+ * @param[in] change contains information about whether the amount of the debt has changed. DEBT_NOT_CHANGED = 0 - hasn't changed, DEBT_CHANGED = 1 - changed.
 */
 static void change_days_pays(credit_init *data, early_pay *redemption, time_data *next_month, payments *pay, long double monthly_pay, int change) {
     if(change) {
@@ -126,8 +126,8 @@ static void change_days_pays(credit_init *data, early_pay *redemption, time_data
 /**
  * @brief Determines the logarithm of an arbitrary number to an arbitrary base and rounds the result of the calculation.
  * 
- * @param x the logarithm number of which must be determined.
- * @param base the base by which the logarithm must be determined.
+ * @param[in] x the logarithm number of which must be determined.
+ * @param[in] base the base by which the logarithm must be determined.
  * 
  * @return Result of a calculation.
 */

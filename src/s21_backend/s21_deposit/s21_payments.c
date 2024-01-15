@@ -5,11 +5,11 @@ static long double calc_period_percent(deposit_init *data, time_data *begin, tim
 /**
  * @brief Determines whether the current early repayment is within the current month and calculates it.
  * 
- * @param[in] data structure containing input parameters for calculation.
- * @param[in] pay structure containing buffer variables for period results and general payment data arrays.
- * @param[in] oper structure containing data on deposit/withdrawal operations.
- * @param[in] end_period structure containing the payment end date for the current period.
- * @param[in] percent the amount accumulated before the expected replenishment/withdrawal in the current period.
+ * @param[out] data structure containing input parameters for calculation.
+ * @param[out] pay structure containing buffer variables for period results and general payment data arrays.
+ * @param[out] oper structure containing data on deposit/withdrawal operations.
+ * @param[out] end_period structure containing the payment end date for the current period.
+ * @param[out] percent the amount accumulated before the expected replenishment/withdrawal in the current period.
  * 
  * @return Error code.
  * @retval ALLOCATED = 0 - if memory is allocated.
@@ -59,10 +59,10 @@ int check_operation(deposit_init *data, investment *pay, operations *oper, time_
 /**
  * @brief Calculates and records the transaction, remembering the accumulated amount before the transaction.
  * 
- * @param[in] data structure containing input parameters for calculation.
- * @param[in] begin structure containing information about the beginning of the current period.
- * @param[in] operstructure containing information about the operation.
- * @param[in] end structure containing information about the end of the current period.
+ * @param[out] data structure containing input parameters for calculation.
+ * @param[out] begin structure containing information about the beginning of the current period.
+ * @param[out] operstructure containing information about the operation.
+ * @param[out] end structure containing information about the end of the current period.
  * 
  * @return The amount accumulated before the operation.
 */

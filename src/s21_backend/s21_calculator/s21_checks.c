@@ -3,8 +3,8 @@
 /**
  * @brief Function for checking an incoming character to match string characters.
  * 
- * @param first_symbol comparing symbol.
- * @param[in] search string characters to compare with.
+ * @param[in] first_symbol comparing symbol.
+ * @param[out] search string characters to compare with.
  * 
  * @return The result of finding a character in a string.
  * @retval NO = 0 - if no matches are found.
@@ -29,9 +29,9 @@ int check(const char first_symbol, const char *search)
  * Function have two modes. 
  * Closing parentheses during parsing - PARS_EXPRESSION. Closing brackets after parsing - CLOSE_EXPRESSION.
  * 
- * @param[in] num numeric stack.
- * @param[in] lex lexem stack.
- * @param mode the function mode. 
+ * @param[out] num numeric stack.
+ * @param[out] lex lexem stack.
+ * @param[in] mode the function mode. 
 */
 void bracket_close(num_stack *num, lex_stack *lex, int mode)
 {
@@ -60,10 +60,10 @@ void bracket_close(num_stack *num, lex_stack *lex, int mode)
  * "decision" = EQUAL_PRIORITY - if lexem have the same priority. 
  * "decision" = HIGH_PRIORITY - if the current lexem has a higher priority.
  * 
- * @param[in] num numeric stack.
- * @param[in] lex lexem stack.
- * @param current_lexem current lexem.
- * @param decision calculation mode.
+ * @param[out] num numeric stack.
+ * @param[out] lex lexem stack.
+ * @param[in] current_lexem current lexem.
+ * @param[in] decision calculation mode.
 */
 void math_while_parsing(num_stack *num, lex_stack *lex, const char current_lexem, int decision)
 {

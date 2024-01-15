@@ -5,7 +5,7 @@ static void add_num_to_stack(num_stack *num, char *token);
 /**
  * @brief String parsing function to determine priority and then evaluate arithmetic expressions.
  * 
- * @param[in] str processed string with arithmetic expression.
+ * @param[out] str processed string with arithmetic expression.
  * 
  * @return Result of calculations.
 */
@@ -57,8 +57,8 @@ double notation(char *str)
 /**
  * @brief Function to add a number to a number stack.
  * 
- * @param num number to add.
- * @param token parse string.
+ * @param[in] num number to add.
+ * @param[in] token parse string.
 */
 static void add_num_to_stack(num_stack *num, char *token)
 {
@@ -76,10 +76,10 @@ static void add_num_to_stack(num_stack *num, char *token)
  * "decision" = NO (0) - don't clear the top of the stack.
  * "decision" = YES (1) - to clear the top of the stack.
  * 
- * @param num numeric stack.
- * @param num_decision numeric cleaning decision.
- * @param lex lexem stack.
- * @param lex_decision lexem cleaning decision.
+ * @param[in] num numeric stack.
+ * @param[in] num_decision numeric cleaning decision.
+ * @param[in] lex lexem stack.
+ * @param[in] lex_decision lexem cleaning decision.
 */
 void clean_top_stack(num_stack *num, int num_decision, lex_stack *lex, int lex_decision)
 {

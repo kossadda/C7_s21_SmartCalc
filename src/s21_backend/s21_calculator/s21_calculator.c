@@ -3,8 +3,8 @@
 /**
  * @brief Main function of result calculation.
  * 
- * @param[in] str pointer to char coming from C++.
- * @param x value of variable x.
+ * @param[out] str pointer to char coming from C++.
+ * @param[in] x value of variable x.
  * 
  * @return Result of the calculation.
  * @retval True result of calculation - if all code segments completed without errors.

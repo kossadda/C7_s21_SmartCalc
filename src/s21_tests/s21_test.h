@@ -1,7 +1,7 @@
 #ifndef S21_C_TESTS_H
 #define S21_C_TESTS_H
 
-#include "../s21_main.h"
+#include "../s21_backend/s21_main.h"
 #include <check.h>
 
 // Functions to test

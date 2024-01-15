@@ -5,9 +5,9 @@ static int init_taxes(investment *pay);
 /**
  * @brief Main function for calculating payments for all deposit term.
  * 
- * @param[in] data structure containing input parameters for calculation.
- * @param[in] pay structure containing buffer variables for monthly results and general payment data arrays.
- * @param[in] oper structure containing data on deposit/withdrawal operations.
+ * @param[out] data structure containing input parameters for calculation.
+ * @param[out] pay structure containing buffer variables for monthly results and general payment data arrays.
+ * @param[out] oper structure containing data on deposit/withdrawal operations.
  * 
  * @return Error code.
  * @retval ALLOCATED = 0 - if memory is allocated.
@@ -65,7 +65,7 @@ int calculate_deposit(deposit_init *data, investment *pay, operations *oper)
 /**
  * @brief Function initializing a taxes array.
  * 
- * @param[in] pay structure containing buffer variables for taxes data arrays.
+ * @param[out] pay structure containing buffer variables for taxes data arrays.
  * 
  * @return Error code.
  * @retval ALLOCATED = 0 - if memory is allocated.
