@@ -1,4 +1,14 @@
-/// \file
+/**
+ * @file s21_payments.c
+ * @author kossadda (https://github.com/kossadda)
+ * @brief 
+ * @version 0.1
+ * @date 2024-01-15
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #include "s21_deposit.h"
 
 static long double calc_period_percent(deposit_init *data, time_data *begin, time_data *oper, time_data *end);

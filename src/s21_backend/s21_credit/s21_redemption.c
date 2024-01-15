@@ -1,4 +1,14 @@
-/// \file
+/**
+ * @file s21_redemption.c
+ * @author kossadda (https://github.com/kossadda)
+ * @brief 
+ * @version 0.1
+ * @date 2024-01-15
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #include "s21_credit.h"
 
 static void determine_debt_changing(credit_init *data, early_pay *redemption, payments *pay, long double *paid_percent, int *change);

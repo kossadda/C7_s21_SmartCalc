@@ -1,4 +1,14 @@
-/// \file
+/**
+ * @file s21_calc_payments.c
+ * @author kossadda (https://github.com/kossadda)
+ * @brief 
+ * @version 0.1
+ * @date 2024-01-15
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #include "s21_credit.h"
 
 static int calculate_annuity_month(credit_init *data, payments *pay, time_data next_month, long double paid_percent);

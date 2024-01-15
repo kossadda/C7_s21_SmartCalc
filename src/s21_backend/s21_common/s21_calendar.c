@@ -1,4 +1,14 @@
-/// \file
+/**
+ * @file s21_calendar.c
+ * @author kossadda (https://github.com/kossadda)
+ * @brief 
+ * @version 0.1
+ * @date 2024-01-15
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #include "s21_common.h"
 
 static void add_months(time_data *date, int term, int beginning_date);
@@ -9,7 +19,6 @@ static void move_to_end_term(time_data *begin, time_data *end);
  * @brief Function to define a year as a leap year.
  * 
  * @param[in] year verified year.
- * 
  * @return Information about the leap year.
  * @retval YEAR_NOT_LEAP = 0 - in the case of a normal year.
  * @retval YEAR_IS_LEAP = 1 - in the case of a leap year.
@@ -33,7 +42,6 @@ int check_leap(int year)
  * @param[in] now beginning of the payment period of the current month.
  * @param[out] pay early repayment date.
  * @param[in] next end of the current month's payment period.
- * 
  * @return Information about the position of early payment date.
  * @retval DATE_OUTSIDE = 0 - if early_payment outside of current month.
  * @retval DATE_BETWEEN = 1 - if early_payment outside in the current month.
@@ -56,7 +64,6 @@ int compare_date_with_month(time_data now, time_data *pay, time_data next)
  * 
  * @param[in] first the date from which you need to subtract.
  * @param[in] second date to be subtracted.
- * 
  * @return Number of days between two dates.
 */
 int sub_date(time_data first, time_data second)
@@ -80,7 +87,6 @@ int sub_date(time_data first, time_data second)
  * @brief Determines the number of days from the current date to the end of the current month.
  * 
  * @param[in] date date from which the count is made.
- * 
  * @return Number of days until the end of the current month.
 */
 int sub_till_end_month(time_data date)
@@ -98,7 +104,6 @@ int sub_till_end_month(time_data date)
  * 
  * @param[in] first first date compared.
  * @param[in] second second date compared.
- * 
  * @return Position of the first date relative to the second.
  * @retval DATE_EQUAL = 0 - if the dates are the same.
  * @retval DATE_BEFORE = 1 - if the first date is earlier than the second.
@@ -135,7 +140,6 @@ int compare_dates(time_data first, time_data second)
 
 /*!
  * @brief Function to determine the number of leap days and ordinary days.
- * 
  * @param[in] first first date compared.
  * @param[in] second second date compared.
 */
@@ -187,7 +191,6 @@ void leap_days_between_dates(time_data *first, time_data *second)
  * @param[in] date deposit opening date.
  * @param[in] term_type what period is specified by the user (days/months).
  * @param[in] term deposit term.
- * 
  * @return Last day of the deposit.
 */
 time_data determine_last_day(time_data date, int term_type, int term)
@@ -209,7 +212,6 @@ time_data determine_last_day(time_data date, int term_type, int term)
  * @brief Determines how many days from the current date to the beginning of the current year.
  * 
  * @param[in] date date from which the count is made.
- * 
  * @return Number of days in a year.
 */
 int days_in_this_year(time_data date)

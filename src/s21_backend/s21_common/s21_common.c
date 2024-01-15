@@ -1,4 +1,14 @@
-/// \file
+/**
+ * @file s21_common.c
+ * @author kossadda (https://github.com/kossadda)
+ * @brief 
+ * @version 0.1
+ * @date 2024-01-15
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #include "s21_common.h"
 
 /*!
@@ -18,7 +28,6 @@ long double round_value(long double number)
  * 
  * @param[out] result an array of all the above main fields of the structure for storing the results.
  * @param[out] total an array where all monthly results are added up.
- * 
  * @return Error code.
  * @retval ALLOCATED = 0 - if memory is allocated.
  * @retval NOT_ALLOCATED = 1 - if memory isn't allocated.
@@ -47,7 +56,6 @@ int init_payments(long double ***result, long double **total)
  * @param[out] result an array of all the above main fields of the structure for storing the results.
  * @param[in] current number of rows.
  * @param[in] columns
- * 
  * @return Error code.
  * @retval ALLOCATED = 0 - if memory is allocated.
  * @retval NOT_ALLOCATED = 1 - if memory isn't allocated.
@@ -80,7 +88,6 @@ int allocate_row(long double ***result, int current, int columns)
  * @param[out] rate credit interest rate.
  * @param[out] leap contains information that the year is a leap year.
  * @param[out] month_days how many days are counted.
- * 
  * @return Calculation result.
 */
 long double percent_formula(long double debt, long double rate, int leap, int month_days)

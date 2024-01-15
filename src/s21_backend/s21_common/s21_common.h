@@ -1,3 +1,14 @@
+/**
+ * @file s21_common.h
+ * @author kossadda (https://github.com/kossadda)
+ * @brief 
+ * @version 0.1
+ * @date 2024-01-15
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #ifndef S21_C_COMMON_
 #define S21_C_COMMON_
 

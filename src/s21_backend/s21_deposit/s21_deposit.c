@@ -1,4 +1,14 @@
-/// \file
+/**
+ * @file s21_deposit.c
+ * @author kossadda (https://github.com/kossadda)
+ * @brief 
+ * @version 0.1
+ * @date 2024-01-15
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #include "s21_deposit.h"
 
 static int init_taxes(investment *pay);
@@ -26,7 +36,6 @@ int calculate_deposit(deposit_init *data, investment *pay, operations *oper)
     if(error_code == ALLOCATED) {
         if(oper) {
             oper->current = 0;
-            // oper->min_balance = 0;
         }
         data->date.leap = check_leap(data->date.year);
         

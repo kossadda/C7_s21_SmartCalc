@@ -1,4 +1,14 @@
-/// \file
+/**
+ * @file s21_taxes.c
+ * @author kossadda (https://github.com/kossadda)
+ * @brief 
+ * @version 0.1
+ * @date 2024-01-15
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #include "s21_deposit.h"
 
 static int write_taxes(deposit_init *data, investment *pay, long double *year_profit, long double non_taxable_amount);

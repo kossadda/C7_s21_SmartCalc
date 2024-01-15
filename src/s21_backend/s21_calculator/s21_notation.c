@@ -1,4 +1,14 @@
-/// \file
+/**
+ * @file s21_notation.c
+ * @author kossadda (https://github.com/kossadda)
+ * @brief 
+ * @version 0.1
+ * @date 2024-01-15
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #include "s21_calculator.h"
 
 static void add_num_to_stack(num_stack *num, char *token);

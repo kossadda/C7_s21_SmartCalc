@@ -1,6 +1,9 @@
 {
     "files.associations": {
         "s21_calendar.c": "cpp",
-        "s21_differentiated.c": "cpp"
+        "s21_differentiated.c": "cpp",
+        "s21_calculator.h": "c",
+        "s21_common.h": "c",
+        "s21_credit.h": "c"
     }
 }

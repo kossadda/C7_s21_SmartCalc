@@ -77,6 +77,7 @@ uninstall:
 	@rm -rf $(GCOV) $(TRASH) $(EXE) $(BUILD) $(BUILD)-* *.gc* $(DVI)
 
 dvi:
+	
 	@rm -rf $(DVI)
 	@doxygen Doxyfile
 	@xdg-open $(DVI)/html/index.html
