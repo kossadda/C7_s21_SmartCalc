@@ -1,8 +1,9 @@
+/// \file
 #include "s21_deposit.h"
 
 static long double calc_period_percent(deposit_init *data, time_data *begin, time_data *oper, time_data *end);
 
-/**
+/*!
  * @brief Determines whether the current early repayment is within the current month and calculates it.
  * 
  * @param[out] data structure containing input parameters for calculation.
@@ -56,7 +57,7 @@ int check_operation(deposit_init *data, investment *pay, operations *oper, time_
     return error_code;
 }
 
-/**
+/*!
  * @brief Calculates and records the transaction, remembering the accumulated amount before the transaction.
  * 
  * @param[out] data structure containing input parameters for calculation.

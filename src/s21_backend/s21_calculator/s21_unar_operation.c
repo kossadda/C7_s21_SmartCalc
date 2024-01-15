@@ -1,6 +1,7 @@
+/// \file
 #include "s21_calculator.h"
 
-/**
+/*!
  * @brief Function for adding/removing a unary minus from the last number in a line.
  * 
  * @param[out] str processed string.
@@ -26,7 +27,7 @@ char *unar_operation(char *str)
     return str;
 }
 
-/**
+/*!
  * @brief Function to determine the position of the last number in a string.
  * 
  * @param[out] str processed string.
@@ -46,7 +47,7 @@ int number_position(char *str, int len)
     return pos_number;
 }
 
-/**
+/*!
  * @brief Function to determine the position of the last minus sign in a string.
  * 
  * @param[out] str processed string.
@@ -66,7 +67,7 @@ int minus_position(char *str, int len)
     return pos_minus;
 }
 
-/**
+/*!
  * @brief Function to add a unary minus to a string.
  * 
  * @param[out] str processed string.
@@ -92,7 +93,7 @@ void make_unar(char *str, char *ptr, int len, int pos_number)
     }
 }
 
-/**
+/*!
  * @brief Function to remove unary minus.
  * 
  * @param[out] str processed string.

@@ -1,7 +1,8 @@
+/// \file
 #include "s21_calculator.h"
 #include <math.h>
 
-/**
+/*!
  * @brief Calculates two numbers received as input using the specified lexem.
  * 
  * @param[in] first first number.
@@ -32,7 +33,7 @@ double math_nums(double first, double second, const char lexem)
     return first;
 }
 
-/**
+/*!
  * @brief Calculates the received number using the specified trigonometric function.
  * 
  * @param[out] number calculating number.

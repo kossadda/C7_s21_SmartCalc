@@ -1,6 +1,7 @@
+/// \file
 #include "s21_calculator.h"
 
-/**
+/*!
  * @brief A function designed to compare the priorities of two lexems (current and at the top of the stack).
  * 
  * @param[in] current current lexem.
@@ -31,7 +32,7 @@ int prior_comparison(const char current, const char top_stack)
     return decision;
 }
 
-/**
+/*!
  * @brief The function determines the priority of the input lexem.
  * 
  * @param[in] lexem lexem.

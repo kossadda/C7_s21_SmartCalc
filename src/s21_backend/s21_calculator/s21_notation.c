@@ -1,8 +1,9 @@
+/// \file
 #include "s21_calculator.h"
 
 static void add_num_to_stack(num_stack *num, char *token);
 
-/**
+/*!
  * @brief String parsing function to determine priority and then evaluate arithmetic expressions.
  * 
  * @param[out] str processed string with arithmetic expression.
@@ -54,7 +55,7 @@ double notation(char *str)
     return num.stack[0];
 }
 
-/**
+/*!
  * @brief Function to add a number to a number stack.
  * 
  * @param[in] num number to add.
@@ -70,7 +71,7 @@ static void add_num_to_stack(num_stack *num, char *token)
     }
 }
 
-/**
+/*!
  * @brief Function for clearing the top of stacks.
  * Function have two modes.
  * "decision" = NO (0) - don't clear the top of the stack.

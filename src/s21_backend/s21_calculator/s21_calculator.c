@@ -1,6 +1,7 @@
+/// \file
 #include "s21_calculator.h"
 
-/**
+/*!
  * @brief Main function of result calculation.
  * 
  * @param[out] str pointer to char coming from C++.

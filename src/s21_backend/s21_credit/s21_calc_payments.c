@@ -1,10 +1,11 @@
+/// \file
 #include "s21_credit.h"
 
 static int calculate_annuity_month(credit_init *data, payments *pay, time_data next_month, long double paid_percent);
 static int check_calc_redemption(credit_init *data, payments *pay, early_pay *redemption, time_data *next_month, long double *paid_percent);
 static int calculate_diff_month(credit_init *data, payments *pay, time_data next_month, long double paid_percent);
 
-/**
+/*!
  * @brief Calculates monthly payments for an annuity payment type.
  * 
  * @param[out] data structure containing input parameters for calculation.
@@ -51,7 +52,7 @@ int calculate_payments(credit_init *data, payments *pay, early_pay *redemption)
     return error_code;
 }
 
-/**
+/*!
  * @brief Function for calculating one month payments.
  * 
  * @param[out] data structure containing input parameters for calculation.
@@ -103,7 +104,7 @@ static int calculate_annuity_month(credit_init *data, payments *pay, time_data n
     return error_code;
 }
 
-/**
+/*!
  * @brief Function for calculating one month payments.
  * 
  * @param[out] data structure containing input parameters for calculation.
@@ -139,7 +140,7 @@ static int calculate_diff_month(credit_init *data, payments *pay, time_data next
     return error_code;
 }
 
-/**
+/*!
  * @brief Determines whether the current early repayment is within the current month and calculates it.
  * 
  * @param[out] data structure containing input parameters for calculation.
@@ -170,7 +171,7 @@ static int check_calc_redemption(credit_init *data, payments *pay, early_pay *re
     return error_code;
 }
 
-/**
+/*!
  * @brief A function that writes the result of each month to an array.
  * 
  * @param[out] data structure containing input parameters for calculation.

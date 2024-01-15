@@ -33,7 +33,7 @@
 #define PI "P"
 #define E "e"
 
-/**
+/*!
  * @brief List defining replacement chars for full expression names.
 */
 enum substitution {
@@ -47,7 +47,7 @@ enum substitution {
     CHAR_VAR      =   'x',    CHAR_E      =   'e',    CHAR_SPACE   =   ' ',
 };
 
-/**
+/*!
  * @brief List defining constant statuses for functions used in the credit calculator.
 */
 enum calc_functions_status {
@@ -61,20 +61,20 @@ enum calc_functions_status {
     NO = 0, YES = 1,
 };
 
-/**
+/*!
  * @brief Struct representing stack for numbers.
 */
 typedef struct num_stack {
-    double stack[150];              /** An array containing stack numbers.                            */
-    int count;                      /** A counter that determines the number of numbers on the stack. */
+    double stack[150];              /**< An array containing stack numbers.                            */
+    int count;                      /**< A counter that determines the number of numbers on the stack. */
 } num_stack;
 
-/**
+/*!
  * @brief Struct representing stack for lexems.
 */
 typedef struct lex_stack {
-    char stack[150];                 /** An array containing stack lexems (math operations).          */
-    int count;                      /** A counter that determines the number of lexems on the stack. */
+    char stack[150];                /**< An array containing stack lexems (math operations).          */
+    int count;                      /**< A counter that determines the number of lexems on the stack. */
 } lex_stack;
 
 // Main funtions

@@ -1,8 +1,9 @@
+/// \file
 #include "s21_deposit.h"
 
 static int write_taxes(deposit_init *data, investment *pay, long double *year_profit, long double non_taxable_amount);
 
-/**
+/*!
  * @brief Checks the current period for transition between years.
  * 
  * @param[out] data structure containing input parameters for calculation.
@@ -35,7 +36,7 @@ int check_taxes(deposit_init *data, investment *pay, time_data end, time_data la
     return error_code;
 }
 
-/**
+/*!
  * @brief A function that records taxation in an array.
  * 
  * @param[out] data structure containing input parameters for calculation.

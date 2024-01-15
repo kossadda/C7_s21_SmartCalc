@@ -1,10 +1,11 @@
+/// \file
 #include "s21_calculator.h"
 #include <stdarg.h>
 
 static int check_trigonometric(char *true_str, int *count, const char *str, size_t *i);
 static void add_symbol(char *str, int *count, int mode, ...);
 
-/**
+/*!
  * @brief A function for excluding spaces from a string, as well as validating the string for only valid characters.
  * 
  * @param[out] str string to process.
@@ -43,7 +44,7 @@ int str_without_spaces(char *str)
     return wrong_expression;
 }
 
-/**
+/*!
  * @brief Function for replacing variables x, constants (e, Pi) with their corresponding values and additional processing.
  * 
  * @param[out] str string to process.
@@ -93,7 +94,7 @@ void input_varibles(char *str, double var)
     strcpy(str, true_str);
 }
 
-/**
+/*!
  * @brief A function for replacing full function names with their shortened versions in char format (for ease of parsing) and additional processing.
  * 
  * @param[out] str string to process.
@@ -155,7 +156,7 @@ int func_substitution(char *str)
     return wrong_expression;
 }
 
-/**
+/*!
  * @brief A function that checks the possible full name of the function for compliance with those specified in the parser.
  * 
  * @param[out] true_str mathematical expression with substituted symbols.
@@ -222,7 +223,7 @@ static int check_trigonometric(char *true_str, int *count, const char *str, size
     return wrong_expression;
 }
 
-/**
+/*!
  * @brief Function to add characters/strings/numbers to a string.
  * Function have three modes.
  * "mode" = STRING (0) - add a string to a string.

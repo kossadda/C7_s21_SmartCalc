@@ -1,10 +1,11 @@
+/// \file
 #include "s21_credit.h"
 
 static void determine_debt_changing(credit_init *data, early_pay *redemption, payments *pay, long double *paid_percent, int *change);
 static void change_days_pays(credit_init *data, early_pay *redemption, time_data *next_month, payments *pay, long double monthly_pay, int change);
 static int logarithm(long double x, long double base);
 
-/**
+/*!
  * @brief
  * Calculates early payments.
  * 
@@ -54,7 +55,7 @@ int redemp_payment(credit_init *data, payments *pay, early_pay *redemption, time
     return error_code;
 }
 
-/**
+/*!
  * @brief Calculates the interest payment and determines whether the balance of the debt has changed.
  * 
  * @param[out] data structure containing input parameters for calculation.
@@ -87,7 +88,7 @@ static void determine_debt_changing(credit_init *data, early_pay *redemption, pa
     }
 }
 
-/**
+/*!
  * @brief Changes the number of days remaining after the operation and changes the monthly payments according to the type of payments.
  * 
  * @param[out] data structure containing input parameters for calculation.
@@ -123,7 +124,7 @@ static void change_days_pays(credit_init *data, early_pay *redemption, time_data
     }
 }
 
-/**
+/*!
  * @brief Determines the logarithm of an arbitrary number to an arbitrary base and rounds the result of the calculation.
  * 
  * @param[in] x the logarithm number of which must be determined.

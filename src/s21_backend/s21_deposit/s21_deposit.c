@@ -1,8 +1,9 @@
+/// \file
 #include "s21_deposit.h"
 
 static int init_taxes(investment *pay);
 
-/**
+/*!
  * @brief Main function for calculating payments for all deposit term.
  * 
  * @param[out] data structure containing input parameters for calculation.
@@ -62,7 +63,7 @@ int calculate_deposit(deposit_init *data, investment *pay, operations *oper)
     return error_code;
 }
 
-/**
+/*!
  * @brief Function initializing a taxes array.
  * 
  * @param[out] pay structure containing buffer variables for taxes data arrays.

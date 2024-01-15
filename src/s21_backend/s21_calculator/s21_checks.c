@@ -1,6 +1,7 @@
+/// \file
 #include "s21_calculator.h"
 
-/**
+/*!
  * @brief Function for checking an incoming character to match string characters.
  * 
  * @param[in] first_symbol comparing symbol.
@@ -24,7 +25,7 @@ int check(const char first_symbol, const char *search)
     return check;
 }
 
-/**
+/*!
  * @brief When parsing a string, if it encounters ')', it performs all lexems on the top of the stack until it encounters '('.
  * Function have two modes. 
  * Closing parentheses during parsing - PARS_EXPRESSION. Closing brackets after parsing - CLOSE_EXPRESSION.
@@ -54,7 +55,7 @@ void bracket_close(num_stack *num, lex_stack *lex, int mode)
     }
 }
 
-/**
+/*!
  * @brief The function is designed to use mathematical lexem if the priority of the current lexem coincides/predominates over the lexem at the top of the stack.
  * Function have two modes.
  * "decision" = EQUAL_PRIORITY - if lexem have the same priority. 

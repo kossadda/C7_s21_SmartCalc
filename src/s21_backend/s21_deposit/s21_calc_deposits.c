@@ -1,6 +1,7 @@
+/// \file
 #include "s21_deposit.h"
 
-/**
+/*!
  * @brief Function for determining all payments for a certain period.
  * 
  * @param[out] data structure containing input parameters for calculation.
@@ -40,7 +41,7 @@ int calc_period(deposit_init *data, investment *pay, time_data end_period, long 
     return error_code;
 }
 
-/**
+/*!
  * @brief A function that writes the result of each month to an array.
  * 
  * @param[in] data structure containing input parameters for calculation.

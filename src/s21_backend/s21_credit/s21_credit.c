@@ -1,6 +1,7 @@
+/// \file
 #include "s21_credit.h"
 
-/**
+/*!
  * @brief Main function for calculating payments for all credit term.
  * 
  * @param[out] data structure containing input parameters for calculation.

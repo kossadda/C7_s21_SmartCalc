@@ -39,15 +39,15 @@ enum common_constants {
     CREDIT_COLUMNS = 4, DEPOSIT_COLUMNS = 4, TAXES_COLUMNS = 5,
 };
 
-/**
+/*!
  * @brief Struct representing data about a specific day.
 */
 typedef struct time_data {
-    int day;                    /** Day of the month.                                                   */
-    int month;                  /** Month of the year.                                                  */
-    int year;                   /** Year of this date.                                                  */
-    int leap;                   /** Contains information whether the year is a leap year.               */
-    int month_days;             /** Number of days of the month included in the monthly payment period. */
+    int day;                    /**< Day of the month.                                                   */
+    int month;                  /**< Month of the year.                                                  */
+    int year;                   /**< Year of this date.                                                  */
+    int leap;                   /**< Contains information whether the year is a leap year.               */
+    int month_days;             /**< Number of days of the month included in the monthly payment period. */
 } time_data;
 
 // Calendar checks.

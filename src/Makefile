@@ -8,14 +8,14 @@ LCOV = -lcheck -lsubunit -lgcov
 GCOVR = -r . --html --html-details
 # FUNCS PATHS
 MAIN_FOLD=s21_frontend
-CALC = $(shell find s21_backend/s21_calculator -name '*.c')
-CREDIT = $(shell find s21_backend/s21_credit -name '*.c')
-DEPOSIT = $(shell find s21_backend/s21_deposit -name '*.c')
-SUPPORT = $(shell find s21_backend/s21_common -name '*.c')
+CALC = $(shell find ./s21_backend/s21_calculator -name '*.c')
+CREDIT = $(shell find ./s21_backend/s21_credit -name '*.c')
+DEPOSIT = $(shell find ./s21_backend/s21_deposit -name '*.c')
+SUPPORT = $(shell find ./s21_backend/s21_common -name '*.c')
 SOURCES = $(CALC) $(CREDIT) $(DEPOSIT) $(SUPPORT)
 OBJECTS = $(SOURCES:.c=.o)
 # TESTS PATHS
-TESTS = s21_tests/*.c
+TESTS = ./s21_tests/*.c
 # OTHER PATHS
 TRASH = $(MAIN_FOLD)/*.o $(MAIN_FOLD)/ui_* $(MAIN_FOLD)/moc_* $(MAIN_FOLD)/*.user $(MAIN_FOLD)/Makefile
 GCOV = gcov_report
@@ -23,7 +23,8 @@ BUILD = build
 # EXECUTE
 EXE = test
 PROG = s21_smartcalc
-
+# DVI PATH
+DVI = ./../docs
 
 
 
@@ -73,7 +74,12 @@ install_qmake:
     fi
 
 uninstall:
-	@rm -rf $(GCOV) $(TRASH) $(EXE) $(BUILD) $(BUILD)-* *.gc*
+	@rm -rf $(GCOV) $(TRASH) $(EXE) $(BUILD) $(BUILD)-* *.gc* $(DVI)
+
+dvi:
+	@rm -rf $(DVI)
+	@doxygen Doxyfile
+	@xdg-open $(DVI)/html/index.html
 
 run:
 	./$(BUILD)/$(PROG)

@@ -3,6 +3,8 @@
         "s21_test.h": "c",
         "s21_deposit.h": "c",
         "random": "c",
-        "source_location": "c"
+        "source_location": "c",
+        "s21_common.h": "c",
+        "s21_calculator.h": "c"
     }
 }

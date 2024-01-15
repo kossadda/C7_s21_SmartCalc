@@ -1,6 +1,7 @@
+/// \file
 #include "s21_common.h"
 
-/**
+/*!
  * @brief Rounds a long double number to the nearest e-2.
  * 
  * @param[in] number rounded number.
@@ -12,10 +13,11 @@ long double round_value(long double number)
     return round(number * 100) / 100;
 }
 
-/**
+/*!
  * @brief Function initializing a data array.
  * 
- * @param[out] pay structure containing buffer variables for monthly results and general payment data arrays.
+ * @param[out] result an array of all the above main fields of the structure for storing the results.
+ * @param[out] total an array where all monthly results are added up.
  * 
  * @return Error code.
  * @retval ALLOCATED = 0 - if memory is allocated.
@@ -39,11 +41,12 @@ int init_payments(long double ***result, long double **total)
     return error_code;
 }
 
-/**
+/*!
  * @brief Function for allocating memory in an array for the next payout period.
  * 
- * @param[out] data structure containing input parameters for calculation.
- * @param[out] pay structure containing buffer variables for monthly results and general payment data arrays.
+ * @param[out] result an array of all the above main fields of the structure for storing the results.
+ * @param[in] current number of rows.
+ * @param[in] columns
  * 
  * @return Error code.
  * @retval ALLOCATED = 0 - if memory is allocated.
@@ -70,6 +73,16 @@ int allocate_row(long double ***result, int current, int columns)
     return error_code;
 }
 
+/*!
+ * @brief Function for allocating memory in an array for the next payout period.
+ * 
+ * @param[out] debt the balance of the debt.
+ * @param[out] rate credit interest rate.
+ * @param[out] leap contains information that the year is a leap year.
+ * @param[out] month_days how many days are counted.
+ * 
+ * @return Calculation result.
+*/
 long double percent_formula(long double debt, long double rate, int leap, int month_days)
 {
     return (debt * rate / 100) / ((leap == YEAR_IS_LEAP) ? LEAP_YEAR : YEAR_DAYS) * month_days;
