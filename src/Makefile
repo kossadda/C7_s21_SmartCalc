@@ -1,125 +1,248 @@
-# FLAGS
-VAL = --trace-children=yes --track-origins=yes --leak-check=full
-CLANG = -n -style="{BasedOnStyle: Google, IndentWidth: 4}"
+################################################################################
+#          ____    _                                    _            _         #
+#    ___  |___ \  / |          ___ _ __ ___   __ _ _ __| |_ ___ __ _| | ___    #
+#   / __|   __) | | |         / __| '_ ` _ \ / _` | '__| __/ __/ _` | |/ __|   #
+#   \__ \  / __/  | |         \__ \ | | | | | (_| | |  | || (_| (_| | | (__    #
+#   |___/ |_____| |_|  _____  |___/_| |_| |_|\__,_|_|   \__\___\__,_|_|\___|   #
+#                     |_____|                                                  #
+################################################################################
+
+
+
+
+################################################################################
+#                                 _       _     _                              #
+#                                (_)     | |   | |                             #
+#                __   ____ _ _ __ _  __ _| |__ | | ___  ___                    #
+#                \ \ / / _` | '__| |/ _` | '_ \| |/ _ \/ __|                   #
+#                 \ V / (_| | |  | | (_| | |_) | |  __/\__ \                   #
+#                  \_/ \__,_|_|  |_|\__,_|_.__/|_|\___||___/                   #
+#                                                                              #
+#                                                                              #
+################################################################################
+
+#================================== COMPILER ==================================#
+PROJECT_NAME = s21_smartcalc
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -g -std=c11
-COVER = -fprofile-arcs -ftest-coverage
-LCOV = -lcheck -lsubunit -lgcov
-GCOVR = -r . --html --html-details
-# FUNCS PATHS
-MAIN_FOLD=s21_frontend
-CALC = $(shell find ./s21_backend/s21_calculator -name '*.c')
-CREDIT = $(shell find ./s21_backend/s21_credit -name '*.c')
-DEPOSIT = $(shell find ./s21_backend/s21_deposit -name '*.c')
-SUPPORT = $(shell find ./s21_backend/s21_common -name '*.c')
-SOURCES = $(CALC) $(CREDIT) $(DEPOSIT) $(SUPPORT)
-OBJECTS = $(SOURCES:.c=.o)
-# TESTS PATHS
-TESTS = ./s21_tests/*.c
-# OTHER PATHS
-TRASH = $(MAIN_FOLD)/*.o $(MAIN_FOLD)/ui_* $(MAIN_FOLD)/moc_* $(MAIN_FOLD)/*.user $(MAIN_FOLD)/Makefile
+#==============================================================================#
+
+
+#=============================== DIRECTORY NAMES ==============================#
+OBJ_DIR = ./obj
+GCOV_OBJ_DIR = ./obj/gcov
+TEST_OBJ_DIR = ./obj/tests
+MODULES_DIR = ./modules
+TEST_DIR = ./tests
+REPORT_DIR = ./report
+DVI_DIR = ./../docs
+BUILD = ./../bin
+#==============================================================================#
+
+#==================================== FLAGS ===================================#
+# MAIN FLAGS FOR COMPILER
+CFLAGS = -Wall -Werror -Wextra -pedantic -std=c11 -g
+
+# CHECK LIBRARIES FOR LINKING
+LDFLAGS = -lcheck -lsubunit -lm
+
+# CHECK & GCOV LIBRARIES FOR LINKING GCOV
+LDGCOV = $(LDFLAGS) -lgcov
+
+# FLAGS FOR COVERING MODULES
+GCOV_FLAGS = -fprofile-arcs -ftest-coverage
+
+# FLAGS FOR VALGRING TEST
+VAL = --trace-children=yes --track-fds=yes --track-origins=yes \
+	--leak-check=full --show-leak-kinds=all -s
+
+# FLAGS FOR CPPCHECK TEST
+CPPCHECK = --enable=all --suppress=missingIncludeSystem
+#==============================================================================#
+
+
+#================================ TARGET NAMES ================================#
+LIBRARY = $(PROJECT_NAME).a
+TARGET = test
 GCOV = gcov_report
-BUILD = build
-# EXECUTE
-EXE = test
-PROG = s21_smartcalc
-# DVI PATH
-DVI = ./../docs
+#==============================================================================#
+
+
+#================================ MAIN HEADER =================================#
+MAIN_H = $(shell find ./ -maxdepth 1 -name "*.h")
+#==============================================================================#
+
+
+#====================== LIST OF FILE AND DIRS IN MODULES ======================#
+MODULES_DIRS = $(shell find $(MODULES_DIR) -type d)
+MODULES_C = $(shell find $(MODULES_DIR) -type f -name "*.c")
+MODULES_H = $(shell find $(MODULES_DIR) -type f -name "*.h")
+MODULES_O = $(MODULES_C:%.c=%.o)
+#==============================================================================#
+
+
+#==================== LIST OF FILE AND DIRS IN TEST MODULES ===================#
+TEST_DIRS = $(shell find $(TEST_DIR) -type d)
+TEST_C = $(notdir $(shell find $(TEST_DIR) -type f -name "*.c"))
+TEST_H = $(shell find $(TEST_DIR) -type f -name "*.h")
+TEST_O = $(addprefix $(TEST_OBJ_DIR)/, $(notdir $(TEST_C:%.c=%.o)))
+#==============================================================================#
+
+#================= LIST OF FILES TO CLANG-FORMAT AND CPPCHECK =================#
+C_FILES = $(MODULES_C) $(TEST_C)
+H_FILES = $(MODULES_H) $(MAIN_H) $(TEST_H)
+ALL_FILES = $(C_FILES) $(H_FILES)
+#==============================================================================#
+
+
+#=============== CONFIGURING PATH TO SEARH FOR UNPREFIXED PATHS ===============#
+vpath %.c $(MODULES_DIRS) : $(TEST_DIRS)
+vpath %.o $(OBJ_DIR)
+#==============================================================================#
 
 
 
 
+################################################################################
+#                      _                       _                               #
+#                     | |                     | |                              #
+#                    _| |_ __ _ _ __ __ _  ___| |_ ___                         #
+#                   |_  __/ _` | '__/ _` |/ _ \ __/ __|                        #
+#                     | || (_| | | | (_| |  __/ |_\__ \                        #
+#                      \__\__,_|_|  \__, |\___|\__|___/                        #
+#                                    __/ |                                     #
+#                                   |___/                                      #
+################################################################################
 
-all: install run
-
-# install: uninstall
-# 	@read -p "Выберите способ установки (qmake/cmake): " choice; \
-# 	if [ "$$choice" = "qmake" ]; then \
-# 		$(MAKE) install_by_qmake; \
-# 	elif [ "$$choice" = "cmake" ]; then \
-# 		$(MAKE) install_by_cmake; \
-# 	else \
-# 		echo "Неверный выбор. Установка отменена."; \
-# 	fi
-# 	@rm -rf $(TRASH)
-
-install_by_qmake:
-# 	$(MAKE) install_qmake
-	@mkdir -p $(BUILD)
-	@cd $(MAIN_FOLD) && qmake && make -s
-	@mv $(MAIN_FOLD)/$(PROG) $(BUILD)/$(PROG)
+#================================= MAIN TARGETS ===============================#
+all: dvi $(TARGET)
 
 install: s21_smartcalc.a
-# 	$(MAKE) install_cmake
-	@mkdir -p $(BUILD)
-	@cd $(BUILD) && cmake .. && make
-	./build/s21_smartcalc
+	@printf "\033[33m      _             _      _           _ _     _ _                     \n";
+	@printf "     | |           | |    | |         (_) |   | (_)                    \n";
+	@printf "  ___| |_ __ _ _ __| |_   | |__  _   _ _| | __| |_ _ __   __ _         \n";
+	@printf " / __| __/ _\` | '__| __|  | '_ \| | | | | |/ _\` | | '_ \ / _\` |        \n";
+	@printf " \__ \ || (_| | |  | |_   | |_) | |_| | | | (_| | | | | | (_| |  _ _ _ \n";
+	@printf " |___/\__\__,_|_|   \__|  |_.__/ \__,_|_|_|\__,_|_|_| |_|\__, | (_|_|_)\n";
+	@printf "                                                          __/ |        \n";
+	@printf "                                                         |___/         \033[0m\n";
+	mkdir -p $(BUILD)
+	cd $(BUILD) && cmake ./../src && make	
+	@printf "\033[33m  _           _        _ _       _   _                                           _      _           _ \n";
+	@printf " (_)         | |      | | |     | | (_)                                         | |    | |         | |\n";
+	@printf "  _ _ __  ___| |_ __ _| | | __ _| |_ _  ___  _ __       ___ ___  _ __ ___  _ __ | | ___| |_ ___  __| |\n";
+	@printf " | | '_ \/ __| __/ _\` | | |/ _\` | __| |/ _ \| '_ \     / __/ _ \| '_ \` _ \| '_ \| |/ _ \ __/ _ \/ _\` |\n";
+	@printf " | | | | \__ \ || (_| | | | (_| | |_| | (_) | | | |   | (_| (_) | | | | | | |_) | |  __/ ||  __/ (_| |\n";
+	@printf " |_|_| |_|___/\__\__,_|_|_|\__,_|\__|_|\___/|_| |_|    \___\___/|_|_|_| |_| .__/|_|\___|\__\___|\__,_|\n";
+	@printf "                                                       / _|     | | |     | |                         \n";
+	@printf "                       ___ _   _  ___ ___ ___  ___ ___| |_ _   _| | |_   _|_|                         \n";
+	@printf "                      / __| | | |/ __/ __/ _ \/ __/ __|  _| | | | | | | | |                           \n";
+	@printf "                      \__ \ |_| | (_| (_|  __/\__ \__ \ | | |_| | | | |_| |                           \n";
+	@printf "                      |___/\__,_|\___\___\___||___/___/_|  \__,_|_|_|\__, |                           \n";
+	@printf "                                                                      __/ |                           \n";
+	@printf "                                                                     |___/                            \033[0m\n";
 
-install_cmake:
-	@if [ -e /etc/debian_version ]; then \
-        sudo apt install cmake; \
-    else \
-        if [ -e /etc/fedora-release ]; then \
-            sudo dnf install cmake; \
-        fi; \
-    fi
+uninstall: clean
+	rm -rf $(BUILD)
 
-install_qmake:
-	@if [ -e /etc/debian_version ]; then \
-        sudo apt install qt5-qmake; \
-    else \
-        if [ -e /etc/fedora-release ]; then \
-            sudo dnf install qt5-qtbase-devel; \
-        fi; \
-    fi
+$(LIBRARY): $(OBJ_DIR) $(MODULES_O) $(MODULES_H) $(MAIN_H)
+	ar rcs $@ $(addprefix $(OBJ_DIR)/, $(notdir $(MODULES_O)))
+	ranlib $@
 
-uninstall:
-	@rm -rf $(GCOV) $(TRASH) $(EXE) $(BUILD) $(BUILD)-* *.gc* $(DVI)
+$(TARGET): $(LIBRARY) $(TEST_OBJ_DIR) $(TEST_O)
+	$(CC) $(TEST_O) $(LIBRARY) $(LDFLAGS) -o $@
+	./$@
+
+$(GCOV): $(REPORT_DIR) $(TEST_OBJ_DIR) $(TEST_O)
+	$(CC) $(TEST_O) $(MODULES_C) $(LDFLAGS)	$(GCOV_FLAGS) -o $(TARGET)
+	./$(TARGET)
+	gcovr -r . --html --html-details -o $(REPORT_DIR)/coverage.html
+	xdg-open $(REPORT_DIR)/coverage.html
 
 dvi:
-	
-	@rm -rf $(DVI)
-	@doxygen Doxyfile
-	@xdg-open $(DVI)/html/index.html
+	rm -rf $(DVI_DIR)
+	doxygen Doxyfile
+	xdg-open $(DVI_DIR)/html/index.html
 
-run:
-	./$(BUILD)/$(PROG)
+dist:
 
-s21_smartcalc.a: $(OBJECTS)
-	ar rcs $@ $(OBJECTS)
-	ranlib $(PROG).a
-	@rm $(OBJECTS)
+clean:
+	rm -rf $(OBJ_DIR)
+	rm -rf $(REPORT_DIR)
+	rm -rf $(DVI_DIR)
+	rm -rf $(GCOV)
+	rm -f $(TARGET)
+	rm -f *.a *.o
+	rm -f *.gc*
+	rm -f main
+	rm -f val.txt
 
-test: ggwp
-	clear
-	@$(CC) $(CFLAGS) $(CALC) $(CREDIT) $(DEPOSIT) $(SUPPORT) $(TESTS) -lm -o $(EXE) $(LCOV)
-	@./$(EXE)
-
-gcov_report: uninstall
-	$(CC) $(CFLAGS) $(COVER) $(CALC) $(CREDIT) $(DEPOSIT) $(SUPPORT) $(TESTS) -lm -o $(EXE) $(LCOV)
-	@mkdir -p $(GCOV)
-	@./$(EXE)
-	gcovr $(GCOVR) -o $(GCOV)/coverage.html
-	@rm -rf $(EXE) *.gc*
-	xdg-open $(GCOV)/coverage.html
-
-valgrind: test
-	@valgrind $(VAL) ./$(EXE) > val.txt 2>&1
-	@code val.txt
-	@rm $(EXE)
-
-valgrind_prog: install
-	@valgrind $(VAL) ./$(BUILD)/$(PROG)
-
-clang-format:
-	clang-format $(CLANG) $(CALC)
+rebuild: clean all
+#==============================================================================#
 
 
-# Моя временная цель
-build: uninstall
-	@$(CC) $(CFLAGS) $(CALC) $(CREDIT) $(DEPOSIT) $(SUPPORT) s21_backend/s21_debug.c -lm -o $(EXE)
-	clear
-	@./$(EXE)
+#============================== CREATE DIRECTORIES ============================#
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
-ggwp:
-	rm -rf test
+$(TEST_OBJ_DIR):
+	mkdir -p $(TEST_OBJ_DIR)
+
+$(REPORT_DIR):
+	mkdir -p $(REPORT_DIR)
+#==============================================================================#
+
+
+#============================== OBJECTIVE TARGETS =============================#
+%.o: %.c $(H_FILES)
+	$(CC) $(CFLAGS) -c -o $(addprefix $(OBJ_DIR)/, $(notdir $@)) $<
+
+$(TEST_OBJ_DIR)/%.o : %.c $(TEST_H)
+	$(CC) $(CFLAGS) -c -o $@ $<
+#==============================================================================#
+
+
+#=============================== CHECKS TARGETS ===============================#
+debug: $(LIBRARY)
+	@$(CC) main.c $(LIBRARY) tests/debug/*.c -o main -lm
+	@./main
+
+clang_check:
+	clang-format -style=Google -n $(ALL_FILES)
+
+clang_fix:
+	clang-format -style=Google -i $(ALL_FILES)
+
+cppcheck:
+	$@ $(CPPCHECK) $(ALL_FILES)
+
+valgrind: $(TARGET)
+	@printf '\033[33m\n                   _            _           _   _            _   _             \n'
+	@printf '                  | |          (_)         | | | |          | | (_)            \n'
+	@printf '       __   ____ _| | __ _ _ __ _ _ __   __| | | |_ ___  ___| |_ _ _ __   __ _ \n'
+	@printf '       \ \ / / _` | |/ _` | '\''__| | '\''_ \ / _` | | __/ _ \/ __| __| | '\''_ \ / _` |\n'
+	@printf '        \ V / (_| | | (_| | |  | | | | | (_| | | ||  __/\__ \ |_| | | | | (_| |\n'
+	@printf '         \_/ \__,_|_|\__, |_|  |_|_| |_|\__,_|  \__\___||___/\__|_|_| |_|\__, |\n'
+	@printf '                      __/ |                                               __/ |\n'
+	@printf '                     |___/                                               |___/ \n\033[0m\n'
+
+	@$@ $(VAL) ./$(TARGET) > val.txt 2>&1 && \
+	{ \
+		printf "\033[33m\n"; \
+		printf "########################################################################################\n\n"; \
+		printf "                                Valgrind test results:                          \n"; \
+		printf "                               Passed tests $$(grep "ERROR SUMMARY: 0" -c val.txt) from $$(grep "ERROR SUMMARY:" -c val.txt)                       \n\n"; \
+		printf "########################################################################################\n"; \
+		printf "\033[0m\n"; \
+	}
+#==============================================================================#
+
+
+#============================= ADDITIONAL TARGETS =============================#
+# install:
+# 	sudo apt install cppcheck
+# 	sudo apt install clang-format
+# 	sudo apt-get install check
+# 	sudo apt install doxygen
+# 	sudo apt-get install graphviz
+# 	sudo apt-get install texlive
+#==============================================================================#

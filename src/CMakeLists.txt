@@ -15,14 +15,14 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 set(S21_SMARTCALC_LIB ${CMAKE_CURRENT_SOURCE_DIR}/s21_smartcalc.a)
 
 set(PROJECT_SOURCES
-    ./s21_frontend/main.cpp
-    ./s21_frontend/s21_smartcalc.cpp
-    ./s21_frontend/s21_deposit.cpp
-    ./s21_frontend/s21_credit.cpp
-    ./s21_frontend/qcustomplot.cpp
-    ./s21_frontend/my_widget.cpp
-    ./s21_frontend/graphics.cpp
-    ./s21_frontend/s21_credit_table.cpp
+    ./gui_modules/main.cpp
+    ./gui_modules/s21_smartcalc.cpp
+    ./gui_modules/s21_deposit.cpp
+    ./gui_modules/s21_credit.cpp
+    ./gui_modules/qcustomplot.cpp
+    ./gui_modules/my_widget.cpp
+    ./gui_modules/graphics.cpp
+    ./gui_modules/s21_credit_table.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -37,8 +37,8 @@ else()
 endif()
 
 target_include_directories(s21_smartcalc PRIVATE
-    ./s21_frontend
-    ./s21_backend
+    ./gui_modules
+    ./modules
 )
 
 target_link_libraries(s21_smartcalc PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${S21_SMARTCALC_LIB})
