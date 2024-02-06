@@ -1,6 +1,8 @@
 #include "s21_credit.h"
 #include "ui_s21_credit.h"
 #include "ui_s21_credit_table.h"
+#include "s21_smartcalc.h"
+#include "s21_deposit.h"
 
 s21_credit::s21_credit(QWidget *parent)
     : QMainWindow(parent)
@@ -22,6 +24,7 @@ s21_credit::s21_credit(QWidget *parent)
 
     tableWindow->getUi()->table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->date_edit->setDate(QDate::currentDate());
+    connect(ui->creditBox, &QComboBox::currentTextChanged, this, &s21_credit::change_mode);
 }
 
 s21_credit::~s21_credit()
@@ -30,6 +33,25 @@ s21_credit::~s21_credit()
         delete tableWindow;
     }
     delete ui;
+}
+
+void s21_credit::change_mode(const QString index)
+{
+    QPoint currentPosGlobal = this->mapToGlobal(QPoint(0, 0));
+    QSize currentSize = this->size();
+    QMainWindow* newWindow = nullptr;
+
+    if (index == "Engineer") {
+        newWindow = new s21_smartcalc();
+    } else if (index == "Deposit") {
+        newWindow = new s21_deposit();
+    }
+
+    if (newWindow) {
+        this->close();
+        newWindow->setGeometry(currentPosGlobal.x(), currentPosGlobal.y(), currentSize.width(), currentSize.height());
+        newWindow->show();
+    }
 }
 
 void s21_credit::free_memory(credit_init data, payments *pay, early_pay *redemption) {

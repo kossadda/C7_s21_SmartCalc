@@ -13,6 +13,9 @@ extern "C" {
 #include "./../s21_smartcalc.h"
 }
 
+class s21_credit;
+class s21_deposit;
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class s21_smartcalc;
@@ -29,6 +32,7 @@ signals:
 public:
     s21_smartcalc(QWidget *parent = nullptr);
     ~s21_smartcalc();
+    void change_mode(const QString index);
     int valid;
     int font_size;
 

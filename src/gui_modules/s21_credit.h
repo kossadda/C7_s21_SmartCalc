@@ -9,6 +9,9 @@ extern "C" {
 #include "./../s21_smartcalc.h"
 }
 
+class s21_smartcalc;
+class s21_deposit;
+
 namespace Ui {
 class s21_credit;
 }
@@ -20,6 +23,7 @@ class s21_credit : public QMainWindow
 public:
     explicit s21_credit(QWidget *parent = nullptr);
     ~s21_credit();
+    void change_mode(const QString index);
 
 private slots:
     void on_calculate_clicked();

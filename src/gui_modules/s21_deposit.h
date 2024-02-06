@@ -12,6 +12,9 @@ extern "C" {
 #include "./../s21_smartcalc.h"
 }
 
+class s21_smartcalc;
+class s21_credit;
+
 namespace Ui {
 class s21_deposit;
 }
@@ -23,6 +26,7 @@ class s21_deposit : public QMainWindow
 public:
     explicit s21_deposit(QWidget *parent = nullptr);
     ~s21_deposit();
+    void change_mode(const QString index);
 
 
 private slots:

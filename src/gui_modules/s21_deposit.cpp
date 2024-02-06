@@ -1,6 +1,8 @@
 #include "s21_deposit.h"
 #include "ui_s21_deposit.h"
 #include "ui_s21_credit_table.h"
+#include "s21_smartcalc.h"
+#include "s21_credit.h"
 
 s21_deposit::s21_deposit(QWidget *parent)
     : QMainWindow(parent)
@@ -28,6 +30,8 @@ s21_deposit::s21_deposit(QWidget *parent)
     taxWindow->setFixedHeight(150);
     tableWindow->getUi()->tax_layout->addWidget(taxWindow);
 
+    ui->date_edit->setDate(QDate::currentDate());
+
     opers = new my_widget(this);
 
     opers->getUi_type()->clear();
@@ -40,6 +44,7 @@ s21_deposit::s21_deposit(QWidget *parent)
     connect(ui->time_edit, SIGNAL(textChanged(QString)), this, SLOT(onTimeEditTextChanged(QString)));
     connect(ui->time_box, SIGNAL(currentIndexChanged(int)), this,SLOT(onTimeEditIndexChanged()));
     connect(ui->percent_edit, SIGNAL(textChanged(QString)), this, SLOT(onInterestTextChanged(QString)));
+    connect(ui->depositBox, &QComboBox::currentTextChanged, this, &s21_deposit::change_mode);
 }
 
 s21_deposit::~s21_deposit()
@@ -49,6 +54,25 @@ s21_deposit::~s21_deposit()
     }
 
     delete ui;
+}
+
+void s21_deposit::change_mode(const QString index)
+{
+    QPoint currentPosGlobal = this->mapToGlobal(QPoint(0, 0));
+    QSize currentSize = this->size();
+    QMainWindow* newWindow = nullptr;
+
+    if (index == "Engineer") {
+        newWindow = new s21_smartcalc();
+    } else if (index == "Credit") {
+        newWindow = new s21_credit();
+    }
+
+    if (newWindow) {
+        this->close();
+        newWindow->setGeometry(currentPosGlobal.x(), currentPosGlobal.y(), currentSize.width(), currentSize.height());
+        newWindow->show();
+    }
 }
 
 void s21_deposit::onTimeEditIndexChanged()

@@ -299,8 +299,9 @@ QPushButton:pressed {
 }
 
 QToolTip {
-	background-color: rgb(30, 27, 6);
+	background-color: rgb(226, 226, 226);
 	border: 1px solid white;
+	color: rgb(0, 0, 0);
 }
 </string>
           </property>
@@ -349,8 +350,9 @@ QPushButton:pressed {
 }
 
 QToolTip {
-	background-color: rgb(30, 27, 6);
+	background-color: rgb(226, 226, 226);
 	border: 1px solid white;
+	color: rgb(0, 0, 0);
 }
 </string>
           </property>
@@ -399,8 +401,9 @@ QPushButton:pressed {
 }
 
 QToolTip {
-	background-color: rgb(30, 27, 6);
+	background-color: rgb(226, 226, 226);
 	border: 1px solid white;
+	color: rgb(0, 0, 0);
 }
 </string>
           </property>
@@ -449,8 +452,9 @@ QPushButton:pressed {
 }
 
 QToolTip {
-	background-color: rgb(30, 27, 6);
+	background-color: rgb(226, 226, 226);
 	border: 1px solid white;
+	color: rgb(0, 0, 0);
 }
 </string>
           </property>
@@ -670,7 +674,7 @@ QPushButton {
 	font-size: 16px;}</string>
           </property>
           <property name="text">
-           <string>𝝅</string>
+           <string>兀</string>
           </property>
          </widget>
         </item>

@@ -356,7 +356,7 @@ border: 1px solid black;</string>
 }</string>
         </property>
         <property name="text">
-         <string>1203235.12</string>
+         <string/>
         </property>
         <property name="placeholderText">
          <string/>
@@ -398,7 +398,7 @@ border: 1px solid black;</string>
 }</string>
         </property>
         <property name="text">
-         <string>15.272</string>
+         <string/>
         </property>
         <property name="placeholderText">
          <string/>
@@ -577,12 +577,12 @@ QDateEdit QCalendarWidget QToolButton QMenu {
         </property>
         <property name="maximumDateTime">
          <datetime>
-          <hour>17</hour>
+          <hour>10</hour>
           <minute>59</minute>
           <second>59</second>
           <year>9999</year>
           <month>12</month>
-          <day>8</day>
+          <day>6</day>
          </datetime>
         </property>
         <property name="calendarPopup">
@@ -632,7 +632,7 @@ QDateEdit QCalendarWidget QToolButton QMenu {
 }</string>
         </property>
         <property name="text">
-         <string>6</string>
+         <string/>
         </property>
         <property name="placeholderText">
          <string/>
@@ -728,7 +728,7 @@ QCheckBox{
 }
 
 QComboBox::drop-down {
-	border: none; 
+	border: none;
 }</string>
         </property>
         <property name="editable">

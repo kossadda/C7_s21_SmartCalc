@@ -1,5 +1,7 @@
 #include "s21_smartcalc.h"
 #include "ui_s21_smartcalc.h"
+#include "s21_credit.h"
+#include "s21_deposit.h"
 
 s21_smartcalc::s21_smartcalc(QWidget *parent)
     : QMainWindow(parent)
@@ -31,6 +33,26 @@ s21_smartcalc::s21_smartcalc(QWidget *parent)
 
     connect(this, &s21_smartcalc::resized, this, &s21_smartcalc::onResized);
     connect(ui->result, &QLineEdit::textChanged, this, &s21_smartcalc::onCheckExpr);
+    connect(ui->switch_window, &QComboBox::currentTextChanged, this, &s21_smartcalc::change_mode);
+}
+
+void s21_smartcalc::change_mode(const QString index)
+{
+    QPoint currentPosGlobal = this->mapToGlobal(QPoint(0, 0));
+    QSize currentSize = this->size();
+    QMainWindow* newWindow = nullptr;
+
+    if (index == "Deposit") {
+        newWindow = new s21_deposit();
+    } else if (index == "Credit") {
+        newWindow = new s21_credit();
+    }
+
+    if (newWindow) {
+        this->close();
+        newWindow->setGeometry(currentPosGlobal.x(), currentPosGlobal.y(), currentSize.width(), currentSize.height());
+        newWindow->show();
+    }
 }
 
 void s21_smartcalc::on_actionVarChanged(const QString &text)
@@ -54,7 +76,7 @@ void s21_smartcalc::on_actionVarChanged(const QString &text)
 void s21_smartcalc::onCheckExpr(const QString &text)
 {
     if(clear_after) {
-        ui->result->setText("");
+//        ui->result->setText("");
         clear_after = false;
     } else {
         int wrong_expression = NO;
@@ -139,7 +161,6 @@ s21_smartcalc::~s21_smartcalc()
     delete ui;
 }
 
-// Определение длины целой части числа
 int s21_smartcalc::countDigits(double number)
 {
     if(abs(number) < 1) {
@@ -150,7 +171,6 @@ int s21_smartcalc::countDigits(double number)
     return integer_string.length();
 }
 
-// Вычисление выражения
 void s21_smartcalc::on_push_eq_clicked()
 {
     if(ui->result->text() != "" && valid == YES) {
@@ -177,7 +197,6 @@ void s21_smartcalc::on_push_eq_clicked()
     }
 }
 
-// Установка плавающей точки
 void s21_smartcalc::on_push_dot_clicked()
 {
     if(ui->result->text().length() > 0) {
@@ -200,7 +219,6 @@ void s21_smartcalc::on_push_dot_clicked()
     }
 }
 
-// Открытие/закрытие окна графиков
 void s21_smartcalc::on_graph_clicked()
 {
     if(!graphWindow) {
@@ -224,7 +242,6 @@ void s21_smartcalc::on_graph_clicked()
     }
 }
 
-// События при закрытии окна графиков
 void s21_smartcalc::on_graphWindowClosed()
 {
     if(!var) {
@@ -249,7 +266,6 @@ void s21_smartcalc::on_graphWindowClosed()
     }
 }
 
-// Замена кнопки на = на x и plot
 void s21_smartcalc::switch_buttons(QString name1, QString name2)
 {
     if(!pushButton) {
@@ -269,7 +285,6 @@ void s21_smartcalc::switch_buttons(QString name1, QString name2)
     change_color(ui->push_eq, "black_eq");
 }
 
-// Создание замещающей кнопки
 void s21_smartcalc::createPlotButton(QPushButton *button, int row)
 {
     button->setMinimumSize(80, 50);
@@ -277,7 +292,6 @@ void s21_smartcalc::createPlotButton(QPushButton *button, int row)
     ui->buttons->addWidget(button, row, 4, 1, 1);
 }
 
-// Построить график
 void s21_smartcalc::on_actionPlotTriggered()
 {
     if(ui->result->text().length() > 0 && valid == YES) {
@@ -288,7 +302,6 @@ void s21_smartcalc::on_actionPlotTriggered()
     }
 }
 
-// Добавить поле ввода переменной
 void s21_smartcalc::on_variable_clicked()
 {
     if(!var) {
@@ -324,7 +337,6 @@ void s21_smartcalc::on_variable_clicked()
     }
 }
 
-// Выбор цвета замещающих кнопок
 void s21_smartcalc::change_color(QPushButton *button, QString color)
 {
     QString styleSheet = ui->push_0->styleSheet();
@@ -334,23 +346,22 @@ void s21_smartcalc::change_color(QPushButton *button, QString color)
     if(color == "orange_eq") {
         button->setStyleSheet("QPushButton { background-color: rgb(175, 97, 33); color: rgb(255, 255, 255); font-size: " + QString::number(fontSize) + "px; } QPushButton:pressed { background-color: rgb(50, 50, 50); }");
     } else if(color == "orange") {
-        button->setStyleSheet("QPushButton { background-color: rgb(81, 44, 6); color: rgb(255, 255, 255);} QPushButton:pressed { background-color: rgb(50, 50, 50); } QToolTip { background-color: rgb(30, 27, 6); border: 1px solid white; }");
+        button->setStyleSheet("QPushButton { background-color: rgb(81, 44, 6); color: rgb(255, 255, 255);} QPushButton:pressed { background-color: rgb(50, 50, 50); } QToolTip { background-color: rgb(226, 226, 226); border: 1px solid white; color: rgb(0, 0, 0); }");
     } else if(color == "blue") {
         button->setStyleSheet("QPushButton { background-color: rgb(0, 119, 171); color: rgb(255, 255, 255); font-size: " + QString::number(fontSize) + "px; } QPushButton:pressed { background-color: rgb(175, 97, 33); }");
     } else if(color == "blue_graph") {
-        button->setStyleSheet("QPushButton { background-color: rgb(0, 119, 171); color: rgb(255, 255, 255);} QPushButton:pressed { background-color: rgb(175, 97, 33); } QToolTip { background-color: rgb(30, 27, 6);	border: 1px solid white; }");
+        button->setStyleSheet("QPushButton { background-color: rgb(0, 119, 171); color: rgb(255, 255, 255);} QPushButton:pressed { background-color: rgb(175, 97, 33); } QToolTip { background-color: rgb(226, 226, 226); border: 1px solid white; color: rgb(0, 0, 0); }");
     } else if(color == "blue_eq") {
         button->setStyleSheet("QPushButton { background-color: rgb(23, 135, 21); color: rgb(255, 255, 255);} QPushButton:pressed { background-color: rgb(50, 50, 50);}");
     } else if(color == "green") {
         button->setStyleSheet("QPushButton { background-color: rgb(23, 135, 21); color: rgb(255, 255, 255); font-size: " + QString::number(fontSize) + "px; } QPushButton:pressed { background-color: rgb(50, 50, 50); }");
     } else if(color == "green_var") {
-        button->setStyleSheet("QPushButton { background-color: rgb(23, 135, 21); color: rgb(255, 255, 255);} QPushButton:pressed { background-color: rgb(50, 50, 50); } QToolTip { background-color: rgb(30, 27, 6); border: 1px solid white; }");
+        button->setStyleSheet("QPushButton { background-color: rgb(23, 135, 21); color: rgb(255, 255, 255);} QPushButton:pressed { background-color: rgb(50, 50, 50); } QToolTip { background-color: rgb(226, 226, 226); border: 1px solid white; color: rgb(0, 0, 0); }");
     } else if(color == "black_eq") {
         button->setStyleSheet("QPushButton { background-color: rgb(30, 27, 6); color: rgb(30, 27, 6) } QPushButton:pressed { background-color: rgb(50, 50, 50); }");
     }
 }
 
-// Сохранить выражение в историю
 void s21_smartcalc::save_history() {
     if(history_count + 1 != history.size()) {
         int list_size = history.size();
@@ -374,7 +385,6 @@ void s21_smartcalc::save_history() {
     }
 }
 
-// Отмотка истории назад
 void s21_smartcalc::on_turn_back_clicked()
 {
     if(history_count > 0) {
@@ -387,7 +397,6 @@ void s21_smartcalc::on_turn_back_clicked()
     clear_after = false;
 }
 
-// Перемотка истории вперед
 void s21_smartcalc::on_move_frwd_clicked()
 {
     if(history_count >= -1) {
@@ -398,7 +407,6 @@ void s21_smartcalc::on_move_frwd_clicked()
     }
 }
 
-// Удалить символ
 void s21_smartcalc::on_push_del_clicked()
 {
     if(ui->result->text().length() > 0) {
@@ -408,7 +416,6 @@ void s21_smartcalc::on_push_del_clicked()
     }
 }
 
-// Унарный минус
 void s21_smartcalc::on_push_unar_clicked()
 {
     if(ui->result->text().length() > 0) {
@@ -420,19 +427,16 @@ void s21_smartcalc::on_push_unar_clicked()
     }
 }
 
-// Вспомогательная функция добавления текста на главный экран
 void s21_smartcalc::add(QString text) {
     ui->result->setText(ui->result->text() + text);
 }
 
-// Добавление цифр
 void s21_smartcalc::push_nums()
 {
     QPushButton *button = (QPushButton *)sender();
     add(button->text());
 }
 
-// Очистить поле ввода в случае предыдущих вычислений
 void s21_smartcalc::clear_result()
 {
     if(clear_after) {
@@ -441,67 +445,56 @@ void s21_smartcalc::clear_result()
     }
 }
 
-// Добавить переменную
 void s21_smartcalc::on_actionVarTriggered()
 {
     add("x");
 }
 
-// Квадратный корень из числа
 void s21_smartcalc::on_push_sqrt_clicked()
 {
     add("sqrt(");
 }
 
-// Десятичный логарифм
 void s21_smartcalc::on_push_log_clicked()
 {
     add("log(");
 }
 
-// Натуральный логарифм
 void s21_smartcalc::on_push_ln_clicked()
 {
     add("ln(");
 }
 
-// Синус
 void s21_smartcalc::on_push_sin_clicked()
 {
     add("sin(");
 }
 
-// Косинус
 void s21_smartcalc::on_push_cos_clicked()
 {
     add("cos(");
 }
 
-// Тангенс
 void s21_smartcalc::on_push_tan_clicked()
 {
     add("tan(");
 }
 
-// Арксинус
 void s21_smartcalc::on_push_asin_clicked()
 {
     add("asin(");
 }
 
-// Арккосинус
 void s21_smartcalc::on_push_acos_clicked()
 {
     add("acos(");
 }
 
-// Арктангенс
 void s21_smartcalc::on_push_atan_clicked()
 {
     add("atan(");
 }
 
-// Остаток от деления
 void s21_smartcalc::on_push_mod_clicked()
 {
     if(ui->result->text().length() > 0) {
@@ -509,13 +502,11 @@ void s21_smartcalc::on_push_mod_clicked()
     }
 }
 
-// Добавить открывающую скобку
 void s21_smartcalc::on_push_opn_brack_clicked()
 {
     add("(");
 }
 
-// Добавить закрывающую скобку
 void s21_smartcalc::on_push_cls_brack_clicked()
 {
     if(ui->result->text().length() > 0) {
@@ -523,7 +514,6 @@ void s21_smartcalc::on_push_cls_brack_clicked()
     }
 }
 
-// Добавить деление
 void s21_smartcalc::on_push_div_clicked()
 {
     if(ui->result->text().length() > 0) {
@@ -531,7 +521,6 @@ void s21_smartcalc::on_push_div_clicked()
     }
 }
 
-// Добавить умножение
 void s21_smartcalc::on_push_mul_clicked()
 {
     if(ui->result->text().length() > 0) {
@@ -539,7 +528,6 @@ void s21_smartcalc::on_push_mul_clicked()
     }
 }
 
-// Добавить вычитание
 void s21_smartcalc::on_push_sub_clicked()
 {
     if(ui->result->text().length() > 0) {
@@ -547,7 +535,6 @@ void s21_smartcalc::on_push_sub_clicked()
     }
 }
 
-// Добавить сумму
 void s21_smartcalc::on_push_sum_clicked()
 {
     if(ui->result->text().length() > 0) {
@@ -555,19 +542,16 @@ void s21_smartcalc::on_push_sum_clicked()
     }
 }
 
-// Научная нотация
 void s21_smartcalc::on_push_e_clicked()
 {
     add("e");
 }
 
-// Добавить число Пи
 void s21_smartcalc::on_push_pi_clicked()
 {
     add("P");
 }
 
-// Возведение в степень
 void s21_smartcalc::on_push_exp_clicked()
 {
     if(ui->result->text().length() > 0) {
@@ -575,7 +559,6 @@ void s21_smartcalc::on_push_exp_clicked()
     }
 }
 
-// Очистить поле ввода
 void s21_smartcalc::on_push_c_clicked()
 {
     ui->result->setText("");
