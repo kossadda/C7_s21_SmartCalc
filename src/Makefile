@@ -117,14 +117,14 @@ vpath %.o $(OBJ_DIR)
 all: dvi $(TARGET)
 
 install: s21_smartcalc.a
-	@printf "\033[33m      _             _      _           _ _     _ _                     \n";
-	@printf "     | |           | |    | |         (_) |   | (_)                    \n";
-	@printf "  ___| |_ __ _ _ __| |_   | |__  _   _ _| | __| |_ _ __   __ _         \n";
-	@printf " / __| __/ _\` | '__| __|  | '_ \| | | | | |/ _\` | | '_ \ / _\` |        \n";
-	@printf " \__ \ || (_| | |  | |_   | |_) | |_| | | | (_| | | | | | (_| |  _ _ _ \n";
-	@printf " |___/\__\__,_|_|   \__|  |_.__/ \__,_|_|_|\__,_|_|_| |_|\__, | (_|_|_)\n";
-	@printf "                                                          __/ |        \n";
-	@printf "                                                         |___/         \033[0m\n";
+	@printf "\033[33m                     _             _      _           _ _     _ _                     \n";
+	@printf "                    | |           | |    | |         (_) |   | (_)                    \n";
+	@printf "                 ___| |_ __ _ _ __| |_   | |__  _   _ _| | __| |_ _ __   __ _         \n";
+	@printf "                / __| __/ _\` | '__| __|  | '_ \| | | | | |/ _\` | | '_ \ / _\` |        \n";
+	@printf "                \__ \ || (_| | |  | |_   | |_) | |_| | | | (_| | | | | | (_| |  _ _ _ \n";
+	@printf "                |___/\__\__,_|_|   \__|  |_.__/ \__,_|_|_|\__,_|_|_| |_|\__, | (_|_|_)\n";
+	@printf "                                                                         __/ |        \n";
+	@printf "                                                                        |___/         \033[0m\n";
 	mkdir -p $(BUILD)
 	cd $(BUILD) && cmake ./../src && make	
 	@printf "\033[33m  _           _        _ _       _   _                                           _      _           _ \n";
@@ -140,9 +140,11 @@ install: s21_smartcalc.a
 	@printf "                      |___/\__,_|\___\___\___||___/___/_|  \__,_|_|_|\__, |                           \n";
 	@printf "                                                                      __/ |                           \n";
 	@printf "                                                                     |___/                            \033[0m\n";
+	$(MAKE) run
 
 uninstall: clean
 	rm -rf $(BUILD)
+	rm -rf build*
 
 $(LIBRARY): $(OBJ_DIR) $(MODULES_O) $(MODULES_H) $(MAIN_H)
 	ar rcs $@ $(addprefix $(OBJ_DIR)/, $(notdir $(MODULES_O)))
@@ -238,11 +240,14 @@ valgrind: $(TARGET)
 
 
 #============================= ADDITIONAL TARGETS =============================#
-# install:
-# 	sudo apt install cppcheck
-# 	sudo apt install clang-format
-# 	sudo apt-get install check
-# 	sudo apt install doxygen
-# 	sudo apt-get install graphviz
-# 	sudo apt-get install texlive
+run:
+	$(BUILD)/$(PROJECT_NAME)
+
+dependencies:
+	sudo apt install cppcheck
+	sudo apt install clang-format
+	sudo apt-get install check
+	sudo apt install doxygen
+	sudo apt-get install graphviz
+	sudo apt-get install texlive
 #==============================================================================#
