@@ -41,6 +41,7 @@ protected:
     void resizeEvent(QResizeEvent *event) override;
 
 private slots:
+    int additional_validation(QString text);
     void onResized(const QSize &newSize);
     void on_graphWindowClosed();
     int countDigits(double number);

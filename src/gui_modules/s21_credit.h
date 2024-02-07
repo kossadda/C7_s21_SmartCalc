@@ -26,6 +26,11 @@ public:
     void change_mode(const QString index);
 
 private slots:
+    void onTimeEditIndexChanged();
+    int onAmountEditTextChanged(const QString &text);
+    int onTimeEditTextChanged(const QString &text);
+    int onInterestTextChanged(const QString &text);
+    int validation();
     void on_calculate_clicked();
     void add_item_to_table(int row, int column, QString value, int style);
     void add_all_to_table(int months, long double **result, long double *total);

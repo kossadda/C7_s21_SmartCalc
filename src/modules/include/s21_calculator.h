@@ -22,7 +22,7 @@
 #define INCLUDE_CHARS "()^+-*/ modsinctaqrlgePx.0123456789"
 #define ALL_OPERATIONS "()^+<*/msctSCTQLlu"
 #define TRIGONOMETRIC_CHARS "sctSCTQLl"
-#define PREV_TRIGONTRC_CHARS "+-/*()d"
+#define PREV_TRIGONTRC_CHARS "1234567890+-/*()d"
 #define BEGIN_TRIGONTRC_CHARS "sctal"
 #define END_TIGONTRC_CHARS "gtnsd"
 #define WRONG_BEGINNING "odinqrg"

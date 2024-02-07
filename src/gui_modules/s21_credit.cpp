@@ -25,6 +25,11 @@ s21_credit::s21_credit(QWidget *parent)
     tableWindow->getUi()->table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->date_edit->setDate(QDate::currentDate());
     connect(ui->creditBox, &QComboBox::currentTextChanged, this, &s21_credit::change_mode);
+
+    connect(ui->amount_edit, SIGNAL(textChanged(QString)), this, SLOT(onAmountEditTextChanged(QString)));
+    connect(ui->time_edit, &QLineEdit::textChanged, this, &s21_credit::onTimeEditTextChanged);
+    connect(ui->time_box, SIGNAL(currentIndexChanged(int)), this,SLOT(onTimeEditIndexChanged()));
+    connect(ui->percent_edit, &QLineEdit::textChanged, this, &s21_credit::onInterestTextChanged);
 }
 
 s21_credit::~s21_credit()
@@ -53,6 +58,73 @@ void s21_credit::change_mode(const QString index)
         newWindow->show();
     }
 }
+
+void s21_credit::onTimeEditIndexChanged()
+{
+    onTimeEditTextChanged(ui->time_edit->text());
+}
+
+int s21_credit::onAmountEditTextChanged(const QString &text)
+{
+    int valid = WRONG_EXPR;
+
+    static const QRegularExpression regex("^[0-9]{1,12}(\\.[0-9]{1,2})?$");
+    QRegularExpressionMatch match = regex.match(text);
+
+    if(text.length() == 0) {
+        ui->amount_edit->setStyleSheet(early_pays->correct_style);
+    } else if(match.hasMatch() && text.toDouble() && !(text[0] == '0' && text[1] != '.')) {
+        ui->amount_edit->setStyleSheet(early_pays->correct_style);
+        valid = CORRECT_EXPR;
+    } else {
+        ui->amount_edit->setStyleSheet(early_pays->wrong_style);
+    }
+
+    return valid;
+}
+
+int s21_credit::onTimeEditTextChanged(const QString &text)
+{
+    int valid = WRONG_EXPR;
+
+    QRegularExpression regex("^[0-9]+$");
+    QRegularExpressionMatch match = regex.match(text);
+
+    if(text.length() == 0) {
+        ui->time_edit->setStyleSheet(early_pays->correct_style);
+    } else if(ui->time_box->currentIndex() == 0 && text.toInt() > 50) {
+        ui->time_edit->setStyleSheet(early_pays->wrong_style);
+    } else if(ui->time_box->currentIndex() == 1 && text.toInt() > 600) {
+        ui->time_edit->setStyleSheet(early_pays->wrong_style);
+    } else if(match.hasMatch() && text.toInt() && text[0] != '0') {
+        ui->time_edit->setStyleSheet(early_pays->correct_style);
+        valid = CORRECT_EXPR;
+    } else {
+        ui->time_edit->setStyleSheet(early_pays->wrong_style);
+    }
+
+    return valid;
+}
+
+int s21_credit::onInterestTextChanged(const QString &text)
+{
+    int valid = WRONG_EXPR;
+
+    QRegularExpression regex("^[0-9]+(\\.[0-9]{1,3})?$");
+    QRegularExpressionMatch match = regex.match(text);
+
+    if(text.length() == 0) {
+        ui->percent_edit->setStyleSheet(early_pays->correct_style);
+    } else if(match.hasMatch() && text.toDouble() && text.toDouble() <= 999 && !(text[0] == '0' && text[1] != '.')) {
+        ui->percent_edit->setStyleSheet(early_pays->correct_style);
+        valid = CORRECT_EXPR;
+    } else {
+        ui->percent_edit->setStyleSheet(early_pays->wrong_style);
+    }
+
+    return valid;
+}
+
 
 void s21_credit::free_memory(credit_init data, payments *pay, early_pay *redemption) {
     for(int i = 0; i < data.current + 1; i++) {
@@ -141,6 +213,38 @@ int s21_credit::init_redemption(early_pay *redemption)
     return error_code;
 }
 
+int s21_credit::validation()
+{
+    int valid_data = CORRECT_EXPR;
+
+    if(ui->amount_edit->text().length() == 0) {
+        ui->amount_edit->setStyleSheet(early_pays->wrong_style);
+        ui->amount_edit->setPlaceholderText("Enter amount");
+        valid_data++;
+    }
+    if(ui->time_edit->text().length() == 0) {
+        ui->time_edit->setStyleSheet(early_pays->wrong_style);
+        ui->time_edit->setPlaceholderText("Enter term");
+        valid_data++;
+    }
+    if(ui->percent_edit->text().length() == 0) {
+        ui->percent_edit->setStyleSheet(early_pays->wrong_style);
+        ui->percent_edit->setPlaceholderText("Enter rate");
+        valid_data++;
+    }
+    if(valid_data == CORRECT_EXPR) {
+        int valid_amount = onAmountEditTextChanged(ui->amount_edit->text());
+        int valid_time = onTimeEditTextChanged(ui->time_edit->text());
+        int valid_interest = onInterestTextChanged(ui->percent_edit->text());
+
+        valid_data = valid_amount + valid_time + valid_interest;
+        ui->amount_edit->setPlaceholderText("");
+        ui->time_edit->setPlaceholderText("");
+        ui->percent_edit->setPlaceholderText("");
+    }
+
+    return valid_data;
+}
 
 void s21_credit::on_calculate_clicked()
 {
@@ -157,7 +261,7 @@ void s21_credit::on_calculate_clicked()
             add_redemption(&redemption, early_pays, count);
         }
     }
-    if(data.payment_type != NOT_CHOSEN) {
+    if(!validation() && data.payment_type != NOT_CHOSEN) {
         if(early_pays->getTableWidget()->rowCount() == 0) {
             calculate_credit(&data, &pay, NULL);
         } else {

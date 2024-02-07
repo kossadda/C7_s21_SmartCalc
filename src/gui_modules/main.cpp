@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     setlocale(LC_NUMERIC, "C");
     s21_smartcalc w;
-    // s21_credit w;
+//     s21_credit w;
 //     s21_deposit w;
     w.show();
     return a.exec();

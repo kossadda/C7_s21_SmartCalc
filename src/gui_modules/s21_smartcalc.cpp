@@ -55,6 +55,68 @@ void s21_smartcalc::change_mode(const QString index)
     }
 }
 
+int s21_smartcalc::additional_validation(QString text)
+{
+    text.remove(' ');
+    int count_open = 0;
+    int count_close = 0;
+    int valid = CORRECT_EXPR;
+    int empty_brackets = 0;
+    QString begin = "(-0123456789sctal";
+    QString nums = "0123456789";
+    QString lexems = "+-*/^";
+    if(text.length() && begin.count(text[0]) && text[text.length() - 1] != '.') {
+        for(int i = 0; i < text.length(); i++) {
+            if(text[i] == ')') {
+                count_close++;
+                int temp_count_open = 0;
+                for(int j = 0; j < i; j++) {
+                    if(text[j] == '(') {
+                        temp_count_open++;
+                    }
+                }
+                if(temp_count_open != count_close || empty_brackets) {
+                    valid = WRONG_EXPR;
+                } else {
+                    valid = CORRECT_EXPR;
+                }
+            } else if(text[i] == '(') {
+                count_open++;
+                if(i < text.length() - 1 && (text[i + 1] == ')' || text[i + 1] == '^')) {
+                    empty_brackets = 1;
+                }
+            } else if(i != text.length() && text[i] == '.' && !nums.count(text[i + 1])) {
+                valid = WRONG_EXPR;
+            } else if(i < text.length() - 1 && lexems.count(text[i]) && lexems.count(text[i + 1])){
+                empty_brackets = 1;
+            }
+        }
+
+        int number_now = 0;
+        int dot_count = 0;
+        for(int i = 0; i < text.length(); i++) {
+            if(number_now && text[i] == '.') {
+                dot_count++;
+                if(dot_count > 1) {
+                    valid = WRONG_EXPR;
+                }
+            }
+            if(nums.count(text[i])) {
+                number_now = 1;
+            } else {
+                if(text[i] != '.') {
+                    number_now = 0;
+                    dot_count = 0;
+                }
+            }
+        }
+    } else {
+        valid = WRONG_EXPR;
+    }
+
+    return valid;
+}
+
 void s21_smartcalc::on_actionVarChanged(const QString &text)
 {
     static const QRegularExpression regex("^[0-9]{1,12}(\\.[0-9]{1,12})?$");
@@ -76,27 +138,32 @@ void s21_smartcalc::on_actionVarChanged(const QString &text)
 void s21_smartcalc::onCheckExpr(const QString &text)
 {
     if(clear_after) {
-//        ui->result->setText("");
+        ui->result->setText("");
         clear_after = false;
     } else {
-        int wrong_expression = NO;
+        int wrong_expression = additional_validation(text);
 
-        std::string str = text.toStdString();
-        char *char_str = (char *)str.c_str();
-        char c_str[512];
-        strcpy(c_str, char_str);
+        if(wrong_expression == NO) {
+            std::string str = text.toStdString();
+            char *char_str = (char *)str.c_str();
+            char c_str[512];
+            strcpy(c_str, char_str);
 
-        wrong_expression = graphWindow->check_symbol(text, '(', ')');
-        if(wrong_expression == NO) {
-            wrong_expression = str_without_spaces(c_str);
-        }
-        if(wrong_expression == NO) {
-            input_varibles(c_str, 0);
-            wrong_expression = func_substitution(c_str);
-        }
-        if(wrong_expression == NO) {
-            ui->result->setStyleSheet(QString("background-color: rgb(30, 27, 6); font-size: %1px; border: 0px;color: rgb(255, 255, 255);").arg(font_size));
-            valid = YES;
+            wrong_expression = graphWindow->check_symbol(text, '(', ')');
+            if(wrong_expression == NO) {
+                wrong_expression = str_without_spaces(c_str);
+            }
+            if(wrong_expression == NO) {
+                input_varibles(c_str, 0);
+                wrong_expression = func_substitution(c_str);
+            }
+            if(wrong_expression == NO) {
+                ui->result->setStyleSheet(QString("background-color: rgb(30, 27, 6); font-size: %1px; border: 0px;color: rgb(255, 255, 255);").arg(font_size));
+                valid = YES;
+            } else {
+                ui->result->setStyleSheet(QString("background-color: rgb(30, 27, 6); font-size: %1px; border: 0px;color: rgba(255, 50, 50, 150);").arg(font_size));
+                valid = NO;
+            }
         } else {
             ui->result->setStyleSheet(QString("background-color: rgb(30, 27, 6); font-size: %1px; border: 0px;color: rgba(255, 50, 50, 150);").arg(font_size));
             valid = NO;
@@ -222,9 +289,9 @@ void s21_smartcalc::on_push_dot_clicked()
 void s21_smartcalc::on_graph_clicked()
 {
     if(!graphWindow) {
-        QPoint currentPosGlobal = this->mapToGlobal(QPoint(-550, 0));
+        QPoint currentPosGlobal = this->mapToGlobal(QPoint(-600, 0));
         graphWindow = new graphics();
-        graphWindow->setGeometry(currentPosGlobal.x(), currentPosGlobal.y(), 550, 550);
+        graphWindow->setGeometry(currentPosGlobal.x(), currentPosGlobal.y(), 600, 600);
         graphWindow->show();
         connect(graphWindow, SIGNAL(graphWindowClosed()), this, SLOT(on_graphWindowClosed()));
 
@@ -387,6 +454,7 @@ void s21_smartcalc::save_history() {
 
 void s21_smartcalc::on_turn_back_clicked()
 {
+    clear_after = false;
     if(history_count > 0) {
         if(!(history_count + 1 == history.size() &&  ui->result->text() != history[history_count]))
             history_count--;
@@ -394,7 +462,6 @@ void s21_smartcalc::on_turn_back_clicked()
     if(history.size()) {
         ui->result->setText(history[history_count]);
     }
-    clear_after = false;
 }
 
 void s21_smartcalc::on_move_frwd_clicked()

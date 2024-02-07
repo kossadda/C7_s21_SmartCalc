@@ -380,7 +380,7 @@ void s21_deposit::add_all_to_table(deposit_init data, investment *pay)
                 QTableWidgetItem *redem_item_1 = opers->getTableWidget()->item(oper_count, 1);
                 QTableWidgetItem *redem_item_2 = opers->getTableWidget()->item(oper_count, 2);
                 int style = 1;
-                if(redem_item_2->text() == "Withdrawals") {
+                if(redem_item_2->text() == "Withdrawal") {
                     style = 2;
                     all_withdrawals += redem_item_1->text().toDouble();
                 } else {
