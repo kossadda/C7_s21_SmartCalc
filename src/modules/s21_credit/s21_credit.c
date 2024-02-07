@@ -24,21 +24,21 @@
  * @retval NOT_ALLOCATED = 1 - if memory isn't allocated.
  */
 int calculate_credit(credit_init *data, payments *pay, early_pay *redemption) {
-  int error_code_data = CHECK_NULL(data);
-  int error_code_pay = CHECK_NULL(pay);
-  int error_code = error_code_data + error_code_pay;
+  int code_data = CHECK_NULL(data);
+  int code_pay = CHECK_NULL(pay);
+  int code = code_data + code_pay;
 
-  if (error_code == ALLOCATED) {
+  if (code == ALLOCATED) {
     if (redemption) {
       redemption->current = 0;
     }
 
-    error_code = init_payments(&pay->result, &pay->total);
+    code = init_payments(&pay->result, &pay->total);
   }
 
-  if (error_code == ALLOCATED) {
+  if (code == ALLOCATED) {
     calculate_payments(data, pay, redemption);
   }
 
-  return error_code;
+  return code;
 }

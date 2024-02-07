@@ -8,6 +8,7 @@
 #include <regex>
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
+#include <QKeyEvent>
 
 extern "C" {
 #include "./../s21_smartcalc.h"
@@ -28,6 +29,7 @@ class s21_smartcalc : public QMainWindow
 
 signals:
     void resized(const QSize &newSize);
+    void keyPressed(int key);
 
 public:
     s21_smartcalc(QWidget *parent = nullptr);
@@ -39,6 +41,8 @@ public:
 protected:
     void onCheckExpr(const QString &text);
     void resizeEvent(QResizeEvent *event) override;
+    void keyPressEvent(QKeyEvent *event) override;
+    void handleKeyPress(int key);
 
 private slots:
     int additional_validation(QString text);

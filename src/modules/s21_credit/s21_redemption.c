@@ -43,12 +43,12 @@ int redemp_payment(credit_init *data, payments *pay, early_pay *redemption,
                    time_data *next_month, long double *paid_percent,
                    int *change) {
   long double monthly_pay = pay->monthly;
-  int error_code = ALLOCATED;
+  int code = ALLOCATED;
 
   data->current++;
-  error_code = allocate_row(&pay->result, data->current, CREDIT_COLUMNS);
+  code = allocate_row(&pay->result, data->current, CREDIT_COLUMNS);
 
-  if (error_code == ALLOCATED) {
+  if (code == ALLOCATED) {
     determine_debt_changing(data, redemption, pay, paid_percent, change);
 
     pay->monthly = redemption->sum[redemption->current];
@@ -78,7 +78,7 @@ int redemp_payment(credit_init *data, payments *pay, early_pay *redemption,
 
     redemption->current++;
   }
-  return error_code;
+  return code;
 }
 
 /*!

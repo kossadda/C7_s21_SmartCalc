@@ -34,20 +34,20 @@ long double round_value(long double number) {
  * @retval NOT_ALLOCATED = 1 - if memory isn't allocated.
  */
 int init_payments(long double ***result, long double **total) {
-  int error_code = NOT_ALLOCATED;
+  int code = NOT_ALLOCATED;
 
   *total = (long double *)malloc(3 * sizeof(long double));
-  int error_code_total = CHECK_NULL(*total);
+  int code_total = CHECK_NULL(*total);
   *result = (long double **)malloc(1 * sizeof(long double *));
-  int error_code_result = CHECK_NULL(*result);
-
-  error_code = error_code_total + error_code_result;
+  int code_result = CHECK_NULL(*result);
+  
+  code = code_total + code_result;
 
   (*total)[0] = 0;
   (*total)[1] = 0;
   (*total)[2] = 0;
 
-  return error_code;
+  return code;
 }
 
 /*!
@@ -62,24 +62,24 @@ int init_payments(long double ***result, long double **total) {
  * @retval NOT_ALLOCATED = 1 - if memory isn't allocated.
  */
 int allocate_row(long double ***result, int current, int columns) {
-  int error_code = NOT_ALLOCATED;
+  int code = NOT_ALLOCATED;
 
   *result =
       (long double **)realloc(*result, (current + 1) * sizeof(long double *));
-  int error_code_row = CHECK_NULL(*result);
+  int code_row = CHECK_NULL(*result);
 
   (*result)[current] = (long double *)malloc(columns * sizeof(long double));
-  int error_code_column = CHECK_NULL((*result)[current]);
+  int code_column = CHECK_NULL((*result)[current]);
 
-  error_code = error_code_row + error_code_column;
-
-  if (error_code == ALLOCATED) {
+  code = code_row + code_column;
+  
+  if (code == ALLOCATED) {
     for (int i = 0; i < columns; i++) {
       (*result)[current][i] = 0;
     }
   }
 
-  return error_code;
+  return code;
 }
 
 /*!

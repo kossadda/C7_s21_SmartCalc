@@ -35,21 +35,21 @@ static int write_taxes(deposit_init *data, investment *pay,
 int check_taxes(deposit_init *data, investment *pay, time_data end,
                 time_data last, long double *year_profit,
                 long double non_taxable_amount, int begin_year) {
-  int error_code = ALLOCATED;
+  int code = ALLOCATED;
 
   if (begin_year != end.year && data->capital_time != BY_END_TERM) {
     data->date.year = begin_year;
-    error_code = write_taxes(data, pay, year_profit, non_taxable_amount);
+    code = write_taxes(data, pay, year_profit, non_taxable_amount);
   }
   if (compare_dates(end, last) == DATE_EQUAL) {
     data->date.year = end.year;
     *year_profit += pay->profit;
-    error_code = write_taxes(data, pay, year_profit, non_taxable_amount);
+    code = write_taxes(data, pay, year_profit, non_taxable_amount);
   }
 
   *year_profit += pay->profit;
 
-  return error_code;
+  return code;
 }
 
 /*!
@@ -68,11 +68,11 @@ int check_taxes(deposit_init *data, investment *pay, time_data end,
 static int write_taxes(deposit_init *data, investment *pay,
                        long double *year_profit,
                        long double non_taxable_amount) {
-  int error_code = ALLOCATED;
+  int code = ALLOCATED;
   long double year_tax = 0;
 
   allocate_row(&pay->taxes, pay->taxes_count, TAXES_COLUMNS);
-  if (error_code == ALLOCATED) {
+  if (code == ALLOCATED) {
     if (*year_profit > non_taxable_amount) {
       year_tax =
           round_value((*year_profit - non_taxable_amount) * NDFL_RATE / 100);
@@ -90,5 +90,5 @@ static int write_taxes(deposit_init *data, investment *pay,
 
   pay->taxes_count++;
 
-  return error_code;
+  return code;
 }

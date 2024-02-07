@@ -18,7 +18,7 @@
  * @param[in] current current lexem.
  * @param[in] top_stack lexem on top of stack.
  *
- * @return int - status of the current lexem in relation to the lexem at the 
+ * @return int - status of the current lexem in relation to the lexem at the
  * top of the stack.
  * @retval LOW_PRIORITY = 0 - if the current lexem is of lower priority.
  * @retval EQUAL_PRIORITY = 1 - if the current lexem has equal priority.

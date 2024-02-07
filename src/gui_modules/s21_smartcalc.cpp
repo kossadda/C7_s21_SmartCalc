@@ -34,6 +34,7 @@ s21_smartcalc::s21_smartcalc(QWidget *parent)
     connect(this, &s21_smartcalc::resized, this, &s21_smartcalc::onResized);
     connect(ui->result, &QLineEdit::textChanged, this, &s21_smartcalc::onCheckExpr);
     connect(ui->switch_window, &QComboBox::currentTextChanged, this, &s21_smartcalc::change_mode);
+    connect(this, &s21_smartcalc::keyPressed, this, &s21_smartcalc::handleKeyPress);
 }
 
 void s21_smartcalc::change_mode(const QString index)
@@ -52,6 +53,52 @@ void s21_smartcalc::change_mode(const QString index)
         this->close();
         newWindow->setGeometry(currentPosGlobal.x(), currentPosGlobal.y(), currentSize.width(), currentSize.height());
         newWindow->show();
+    }
+}
+
+void s21_smartcalc::keyPressEvent(QKeyEvent *event)
+{
+    emit keyPressed(event->key());
+}
+
+void s21_smartcalc::handleKeyPress(int key)
+{
+    if(key >= 48 && key <= 57) {
+        add(QString::number(key - 48));
+    } else if(key == 43) {
+        on_push_sum_clicked();
+    } else if(key == 45) {
+        on_push_sub_clicked();
+    } else if(key == 42) {
+        on_push_mul_clicked();
+    } else if(key == 47) {
+        on_push_div_clicked();
+    } else if(key == 46) {
+        on_push_dot_clicked();
+    } else if(key == 40) {
+        on_push_opn_brack_clicked();
+    } else if(key == 41) {
+        on_push_cls_brack_clicked();
+    } else if(key == 94) {
+        on_push_exp_clicked();
+    } else if(key == 80) {
+        on_push_pi_clicked();
+    } else if(key == 69) {
+        on_push_e_clicked();
+    } else if(key == 16777219) {
+        on_push_del_clicked();
+    } else if(key == 16777220 || key == 61) {
+        on_push_eq_clicked();
+    } else if(key == 16777216) {
+        on_push_c_clicked();
+    } else if(key == 90) {
+        on_turn_back_clicked();
+    } else if(key == 88) {
+        on_move_frwd_clicked();
+    } else if(key == 86) {
+        on_variable_clicked();
+    } else if(key == 66) {
+        on_graph_clicked();
     }
 }
 

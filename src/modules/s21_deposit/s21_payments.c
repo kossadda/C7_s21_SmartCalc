@@ -34,14 +34,14 @@ static long double calc_period_percent(deposit_init *data, time_data *begin,
  */
 int check_operation(deposit_init *data, investment *pay, operations *oper,
                     time_data *end_period, long double *percent) {
-  int error_code = ALLOCATED;
+  int code = ALLOCATED;
 
   if (oper && oper->count && oper->current < oper->count) {
     while (
         compare_dates(oper->date[oper->current], data->date) != DATE_BEFORE &&
         compare_dates(oper->date[oper->current], *end_period) == DATE_BEFORE) {
       data->current++;
-      error_code = allocate_row(&pay->result, data->current, DEPOSIT_COLUMNS);
+      code = allocate_row(&pay->result, data->current, DEPOSIT_COLUMNS);
 
       long double oper_sum = oper->sum[oper->current];
 
@@ -75,7 +75,7 @@ int check_operation(deposit_init *data, investment *pay, operations *oper,
     }
   }
 
-  return error_code;
+  return code;
 }
 
 /*!

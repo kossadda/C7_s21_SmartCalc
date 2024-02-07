@@ -28,12 +28,12 @@
  */
 int calc_period(deposit_init *data, investment *pay, time_data end_period,
                 long double percent) {
-  int error_code = ALLOCATED;
+  int code = ALLOCATED;
 
   data->current++;
-  error_code = allocate_row(&pay->result, data->current, DEPOSIT_COLUMNS);
+  code = allocate_row(&pay->result, data->current, DEPOSIT_COLUMNS);
 
-  if (error_code == ALLOCATED) {
+  if (code == ALLOCATED) {
     long double first_part_month = percent_formula(
         data->amount, data->rate, data->date.leap, data->date.month_days);
     long double second_part_month = percent_formula(
@@ -53,7 +53,7 @@ int calc_period(deposit_init *data, investment *pay, time_data end_period,
     write_results(*data, pay);
   }
 
-  return error_code;
+  return code;
 }
 
 /*!
