@@ -254,7 +254,7 @@ QComboBox::drop-down
             <string>Engineer</string>
            </property>
            <property name="icon">
-            <iconset resource="../s21_pics/resource.qrc">
+            <iconset resource="../resources/resource.qrc">
              <normaloff>:/calculator.png</normaloff>:/calculator.png</iconset>
            </property>
           </item>
@@ -263,7 +263,7 @@ QComboBox::drop-down
             <string>Deposit</string>
            </property>
            <property name="icon">
-            <iconset resource="../s21_pics/resource.qrc">
+            <iconset resource="../resources/resource.qrc">
              <normaloff>:/deposit.png</normaloff>:/deposit.png</iconset>
            </property>
           </item>
@@ -272,7 +272,7 @@ QComboBox::drop-down
             <string>Credit</string>
            </property>
            <property name="icon">
-            <iconset resource="../s21_pics/resource.qrc">
+            <iconset resource="../resources/resource.qrc">
              <normaloff>:/credit.png</normaloff>:/credit.png</iconset>
            </property>
           </item>
@@ -337,7 +337,7 @@ QComboBox::drop-down
           </property>
           <property name="styleSheet">
            <string notr="true">QPushButton {
-	background-color: rgb(81, 44, 6);
+	background-color: rgb(175, 97, 33);
 	color: rgb(255, 255, 255);
 }
 
@@ -388,7 +388,7 @@ QToolTip {
           </property>
           <property name="styleSheet">
            <string notr="true">QPushButton {
-	background-color: rgb(81, 44, 6);
+	background-color: rgb(175, 97, 33);
 	color: rgb(255, 255, 255);
 }
 
@@ -439,7 +439,7 @@ QToolTip {
           </property>
           <property name="styleSheet">
            <string notr="true">QPushButton {
-	background-color: rgb(81, 44, 6);
+	background-color: rgb(175, 97, 33);
 	color: rgb(255, 255, 255);
 }
 
@@ -490,8 +490,9 @@ QToolTip {
           </property>
           <property name="styleSheet">
            <string notr="true">QPushButton {
-	background-color: rgb(81, 44, 6);
+	background-color: rgb(175, 97, 33);
 	color: rgb(255, 255, 255);
+	font-weight: bold;
 }
 
 QPushButton:pressed {
@@ -1759,7 +1760,7 @@ QPushButton {
   </widget>
  </widget>
  <resources>
-  <include location="../s21_pics/resource.qrc"/>
+  <include location="../resources/resource.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -11,6 +11,8 @@ s21_credit::s21_credit(QWidget *parent)
 {
     ui->setupUi(this);
     tableWindow = new s21_credit_table();
+    QIcon icon(":table.png");
+    tableWindow->setWindowIcon(icon);
     tableWindow->getUi()->info_fullsum->setVisible(false);
     tableWindow->getUi()->info_gains->setVisible(false);
     tableWindow->getUi()->info_refills->setVisible(false);

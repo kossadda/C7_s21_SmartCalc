@@ -12,6 +12,8 @@ s21_deposit::s21_deposit(QWidget *parent)
     ui->payment_period->setCurrentIndex(2);
 
     tableWindow = new s21_credit_table();
+    QIcon icon(":table.png");
+    tableWindow->setWindowIcon(icon);
 
     QStringList header_labels;
     header_labels << "Date" << "Interest accrued" << "Balance change" << "Pay" << "Balance";

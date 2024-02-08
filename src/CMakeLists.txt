@@ -23,7 +23,7 @@ set(PROJECT_SOURCES
     ./gui_modules/my_widget.cpp
     ./gui_modules/graphics.cpp
     ./gui_modules/s21_credit_table.cpp
-    ./s21_pics/resource.qrc
+    ./resources/resource.qrc
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

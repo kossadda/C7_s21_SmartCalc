@@ -29,7 +29,7 @@ s21_smartcalc::s21_smartcalc(QWidget *parent)
     connect(ui->push_9, SIGNAL(clicked()), this, SLOT(push_nums()));
 
     QListView * listView = new QListView(ui->switch_window);
-    listView->setStyleSheet("QListView {background-color: rgb(30, 27, 6);} QListView::item {border-bottom: 5px solid rgb(30, 27, 6); margin:3px; background-color: rgb(30, 27, 6); } QListView::item:selected {border-bottom: 5px solid rgb(81, 44, 6); margin:3px; color: white;}");
+    listView->setStyleSheet("QListView {background-color: rgb(30, 27, 6);} QListView::item {border-bottom: 5px solid rgb(30, 27, 6); margin:3px; background-color: rgb(30, 27, 6); } QListView::item:selected {border-bottom: 5px solid rgb(175, 97, 33); margin:3px; color: white;}");
     ui->switch_window->setView(listView);
 
     ui->history_info_label->setVisible(false);
@@ -501,7 +501,7 @@ void s21_smartcalc::change_color(QPushButton *button, QString color)
     if(color == "orange_eq") {
         button->setStyleSheet("QPushButton { background-color: rgb(175, 97, 33); color: rgb(255, 255, 255); font-size: " + QString::number(fontSize) + "px; } QPushButton:pressed { background-color: rgb(50, 50, 50); }");
     } else if(color == "orange") {
-        button->setStyleSheet("QPushButton { background-color: rgb(81, 44, 6); color: rgb(255, 255, 255);} QPushButton:pressed { background-color: rgb(50, 50, 50); } QToolTip { background-color: rgb(226, 226, 226); border: 1px solid white; color: rgb(0, 0, 0); }");
+        button->setStyleSheet("QPushButton { background-color: rgb(175, 97, 33); color: rgb(255, 255, 255);} QPushButton:pressed { background-color: rgb(50, 50, 50); } QToolTip { background-color: rgb(226, 226, 226); border: 1px solid white; color: rgb(0, 0, 0); }");
     } else if(color == "blue") {
         button->setStyleSheet("QPushButton { background-color: rgb(0, 119, 171); color: rgb(255, 255, 255); font-size: " + QString::number(fontSize) + "px; } QPushButton:pressed { background-color: rgb(175, 97, 33); }");
     } else if(color == "blue_graph") {

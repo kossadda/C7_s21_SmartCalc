@@ -1,9 +1,10 @@
 <RCC>
     <qresource prefix="/">
         <file>calculator.png</file>
-        <file>deposit.png</file>
         <file>credit.png</file>
-        <file>plot.png</file>
+        <file>deposit.png</file>
         <file>down_arrow.png</file>
+        <file>plot.png</file>
+        <file>table.png</file>
     </qresource>
 </RCC>
