@@ -234,11 +234,10 @@ QComboBox QAbstractItemView
 
 QComboBox::drop-down
 {
-    border-left-width: 1px;
-    border-left-color: black;
-    border-left-style: solid;
-    border-top-right-radius: 9px;
-    border-bottom-right-radius: 9px;
+    image: url(:down_arrow.png);
+	width: 20px;
+	height: 50px;
+	margin-right: 5px;
  }</string>
           </property>
           <property name="editable">
@@ -254,15 +253,27 @@ QComboBox::drop-down
            <property name="text">
             <string>Engineer</string>
            </property>
+           <property name="icon">
+            <iconset resource="../s21_pics/resource.qrc">
+             <normaloff>:/calculator.png</normaloff>:/calculator.png</iconset>
+           </property>
           </item>
           <item>
            <property name="text">
             <string>Deposit</string>
            </property>
+           <property name="icon">
+            <iconset resource="../s21_pics/resource.qrc">
+             <normaloff>:/deposit.png</normaloff>:/deposit.png</iconset>
+           </property>
           </item>
           <item>
            <property name="text">
             <string>Credit</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../s21_pics/resource.qrc">
+             <normaloff>:/credit.png</normaloff>:/credit.png</iconset>
            </property>
           </item>
          </widget>
@@ -1747,6 +1758,8 @@ QPushButton {
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../s21_pics/resource.qrc"/>
+ </resources>
  <connections/>
 </ui>

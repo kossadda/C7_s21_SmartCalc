@@ -172,20 +172,11 @@ background-color: rgb(175, 97, 33);
 }
 
 QComboBox::drop-down {
-    border-left-width: 1px;
-    border-left-color: black;
-    border-left-style: solid;
-    width: 20px;
-    height: 35px;
-    border-top-right-radius: 9px;
-    border-bottom-right-radius: 9px;
-}
-
-QComboBox::down-arrow {
-    width: 16px;
-    height: 16px;
-}
-</string>
+    image: url(:down_arrow.png);
+	width: 20px;
+	height: 35px;
+	margin-right: 5px;
+}</string>
         </property>
         <item>
          <property name="text">
@@ -270,20 +261,11 @@ QComboBox::down-arrow {
 }
 
 QComboBox::drop-down {
-    border-left-width: 1px;
-    border-left-color: black;
-    border-left-style: solid;
-    width: 20px;
-    height: 35px;
-    border-top-right-radius: 9px;
-    border-bottom-right-radius: 9px;
-}
-
-QComboBox::down-arrow {
-    width: 16px;
-    height: 16px;
-}
-</string>
+    image: url(:down_arrow.png);
+	width: 20px;
+	height: 35px;
+	margin-right: 5px;
+}</string>
         </property>
         <item>
          <property name="text">
@@ -456,20 +438,11 @@ border: 1px solid black;</string>
 }
 
 QComboBox::drop-down {
-    border-left-width: 1px;
-    border-left-color: black;
-    border-left-style: solid;
-    width: 20px;
-    height: 35px;
-    border-top-right-radius: 9px;
-    border-bottom-right-radius: 9px;
-}
-
-QComboBox::down-arrow {
-    width: 16px;
-    height: 16px;
-}
-</string>
+    image: url(:down_arrow.png);
+	width: 20px;
+	height: 35px;
+	margin-right: 5px;
+}</string>
         </property>
         <item>
          <property name="text">
@@ -582,7 +555,7 @@ border: 1px solid black;</string>
 }
 
 QDateEdit::drop-down {
-    image: url(/home/kossadda/develop/C7_s21_smartcalc/src/s21_pics/down_arrow.png);
+    image: url(:down_arrow.png);
 	width: 20px;
 	height: 35px;
 	margin-right: 5px;
@@ -607,12 +580,12 @@ QDateEdit QCalendarWidget QToolButton QMenu {
         </property>
         <property name="maximumDateTime">
          <datetime>
-          <hour>9</hour>
+          <hour>3</hour>
           <minute>59</minute>
           <second>59</second>
           <year>9999</year>
           <month>12</month>
-          <day>5</day>
+          <day>4</day>
          </datetime>
         </property>
         <property name="calendarPopup">
@@ -1011,11 +984,6 @@ color:black;
     padding: 1px 0px 1px 20px;
 }
 
-QComboBox:hover, QPushButton:hover
-{
-    color: rgb(255, 0, 0);
-}
-
 QComboBox:!on
 {
     color: black; /* Изменено для видимости */
@@ -1027,17 +995,15 @@ QComboBox QAbstractItemView
     border: 2px solid darkgray;
     color: black; /* Изменено для видимости */
     selection-background-color: rgb(226, 226, 226);
+	background-color: red;
 }
 
-QComboBox::drop-down
-{
-    border-left-width: 1px;
-    border-left-color: black;
-    border-left-style: solid;
-    border-top-right-radius: 9px;
-    border-bottom-right-radius: 9px;
-}
-</string>
+QComboBox::drop-down {
+    image: url(:down_arrow.png);
+	width: 20px;
+	height: 35px;
+	margin-right: 5px;
+}</string>
         </property>
         <property name="editable">
          <bool>false</bool>
@@ -1052,15 +1018,27 @@ QComboBox::drop-down
          <property name="text">
           <string>Deposit</string>
          </property>
+         <property name="icon">
+          <iconset resource="../s21_pics/resource.qrc">
+           <normaloff>:/deposit.png</normaloff>:/deposit.png</iconset>
+         </property>
         </item>
         <item>
          <property name="text">
           <string>Engineer</string>
          </property>
+         <property name="icon">
+          <iconset resource="../s21_pics/resource.qrc">
+           <normaloff>:/calculator.png</normaloff>:/calculator.png</iconset>
+         </property>
         </item>
         <item>
          <property name="text">
           <string>Credit</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../s21_pics/resource.qrc">
+           <normaloff>:/credit.png</normaloff>:/credit.png</iconset>
          </property>
         </item>
        </widget>
@@ -1070,6 +1048,8 @@ QComboBox::drop-down
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../s21_pics/resource.qrc"/>
+ </resources>
  <connections/>
 </ui>

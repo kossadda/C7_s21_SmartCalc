@@ -21,6 +21,9 @@ s21_credit::s21_credit(QWidget *parent)
     early_pays = new my_widget(this);
     ui->layout_1->addWidget(early_pays);
 
+    QListView * listView = new QListView(ui->creditBox);
+    listView->setStyleSheet("QListView {background-color: white;} QListView::item {border-bottom: 5px solid white; margin:3px; background-color: white; } QListView::item:selected {border-bottom: 5px solid black; margin:3px; color: black;}");
+    ui->creditBox->setView(listView);
 
     tableWindow->getUi()->table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->date_edit->setDate(QDate::currentDate());
@@ -48,8 +51,12 @@ void s21_credit::change_mode(const QString index)
 
     if (index == "Engineer") {
         newWindow = new s21_smartcalc();
+        QIcon icon(":calculator.png");
+        newWindow->setWindowIcon(icon);
     } else if (index == "Deposit") {
         newWindow = new s21_deposit();
+        QIcon icon(":deposit.png");
+        newWindow->setWindowIcon(icon);
     }
 
     if (newWindow) {

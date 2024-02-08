@@ -39,6 +39,11 @@ s21_deposit::s21_deposit(QWidget *parent)
     opers->getUi_type()->addItem("Withdrawal");
     ui->layout_3->addWidget(opers);
 
+    QString list_style = "QListView {background-color: white;} QListView::item {border-bottom: 5px solid white; margin:3px; background-color: white; } QListView::item:selected {border-bottom: 5px solid black; margin:3px; color: black;}";
+    QListView *listView = new QListView(ui->depositBox);
+    listView->setStyleSheet(list_style);
+    ui->depositBox->setView(listView);
+
     connect(ui->capital, SIGNAL(stateChanged(int)), this, SLOT(onCheckBoxStateChanged(int)));
     connect(ui->amount_edit, SIGNAL(textChanged(QString)), this, SLOT(onAmountEditTextChanged(QString)));
     connect(ui->time_edit, SIGNAL(textChanged(QString)), this, SLOT(onTimeEditTextChanged(QString)));
@@ -64,8 +69,12 @@ void s21_deposit::change_mode(const QString index)
 
     if (index == "Engineer") {
         newWindow = new s21_smartcalc();
+        QIcon icon(":calculator.png");
+        newWindow->setWindowIcon(icon);
     } else if (index == "Credit") {
         newWindow = new s21_credit();
+        QIcon icon(":credit.png");
+        newWindow->setWindowIcon(icon);
     }
 
     if (newWindow) {

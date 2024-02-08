@@ -483,13 +483,10 @@ color:black;
 }
 
 QDateEdit::drop-down {
-    border-left-width: 1px;
-    border-left-color: black;
-    border-left-style: solid;
-    width: 20px;
-    height: 35px;
-    border-top-right-radius: 9px;
-    border-bottom-right-radius: 9px;
+    image: url(:down_arrow.png);
+	width: 20px;
+	height: 35px;
+	margin-right: 5px;
 }
 
 QDateEdit QCalendarWidget {
@@ -511,12 +508,12 @@ QDateEdit QCalendarWidget QToolButton QMenu {
         </property>
         <property name="maximumDateTime">
          <datetime>
-          <hour>5</hour>
+          <hour>9</hour>
           <minute>59</minute>
           <second>59</second>
           <year>9999</year>
           <month>12</month>
-          <day>11</day>
+          <day>10</day>
          </datetime>
         </property>
         <property name="calendarPopup">
@@ -579,80 +576,6 @@ QLabel {
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
-       </widget>
-      </item>
-      <item row="2" column="0" colspan="3">
-       <widget class="QComboBox" name="creditBox">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>43</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>43</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>15</pointsize>
-          <bold>false</bold>
-          <underline>false</underline>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QComboBox {
-	border-radius: 10px;
-	background-color: rgb(226, 226, 226);
-	border: 15px; 
-	text-align: center;
-	color: rgb(0, 0, 0);
-	border: 1px solid black;
-}
-
-QComboBox::drop-down {
-    border-left-width: 1px;
-    border-left-color: black;
-    border-left-style: solid;
-    width: 20px;
-    height: 35px;
-    border-top-right-radius: 9px;
-    border-bottom-right-radius: 9px;
-}
-</string>
-        </property>
-        <property name="editable">
-         <bool>false</bool>
-        </property>
-        <property name="placeholderText">
-         <string/>
-        </property>
-        <property name="frame">
-         <bool>true</bool>
-        </property>
-        <item>
-         <property name="text">
-          <string>Credit</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Engineer</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Deposit</string>
-         </property>
-        </item>
        </widget>
       </item>
       <item row="6" column="1">
@@ -728,20 +651,11 @@ QComboBox::drop-down {
 }
 
 QComboBox::drop-down {
-    border-left-width: 1px;
-    border-left-color: black;
-    border-left-style: solid;
-    width: 20px;
-    height: 35px;
-    border-top-right-radius: 9px;
-    border-bottom-right-radius: 9px;
-}
-
-QComboBox::down-arrow {
-    width: 16px;
-    height: 16px;
-}
-</string>
+    image: url(:down_arrow.png);
+	width: 20px;
+	height: 35px;
+	margin-right: 5px;
+}</string>
         </property>
         <item>
          <property name="text">
@@ -910,20 +824,11 @@ border: 1px solid black;</string>
 }
 
 QComboBox::drop-down {
-    border-left-width: 1px;
-    border-left-color: black;
-    border-left-style: solid;
-    width: 20px;
-    height: 35px;
-    border-top-right-radius: 9px;
-    border-bottom-right-radius: 9px;
-}
-
-QComboBox::down-arrow {
-    width: 16px;
-    height: 16px;
-}
-</string>
+    image: url(:down_arrow.png);
+	width: 20px;
+	height: 35px;
+	margin-right: 5px;
+}</string>
         </property>
         <item>
          <property name="text">
@@ -1066,11 +971,114 @@ QLabel {
         </property>
        </widget>
       </item>
+      <item row="2" column="0">
+       <widget class="QComboBox" name="creditBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>43</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>43</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+          <bold>false</bold>
+          <underline>false</underline>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QComboBox
+{
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    selection-background-color: rgb(226, 226, 226);
+    selection-color: black; /* Изменено для контраста с белым */
+    color: black; /* Изменено для видимости на светлом фоне */
+    background-color: rgb(226, 226, 226);
+    border-style: solid;
+    border: 1px solid #1e1e1e;
+    border-radius: 10px;
+    padding: 1px 0px 1px 20px;
+}
+
+QComboBox:!on
+{
+    color: black; /* Изменено для видимости */
+    background-color: rgb(226, 226, 226);
+}
+
+QComboBox QAbstractItemView
+{
+    border: 2px solid darkgray;
+    color: black; /* Изменено для видимости */
+    selection-background-color: rgb(226, 226, 226);
+	background-color: red;
+}
+
+QComboBox::drop-down {
+    image: url(:down_arrow.png);
+	width: 20px;
+	height: 35px;
+	margin-right: 5px;
+}</string>
+        </property>
+        <property name="editable">
+         <bool>false</bool>
+        </property>
+        <property name="placeholderText">
+         <string/>
+        </property>
+        <property name="frame">
+         <bool>true</bool>
+        </property>
+        <item>
+         <property name="text">
+          <string>Credit</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../s21_pics/resource.qrc">
+           <normaloff>:/credit.png</normaloff>:/credit.png</iconset>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Engineer</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../s21_pics/resource.qrc">
+           <normaloff>:/calculator.png</normaloff>:/calculator.png</iconset>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Deposit</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../s21_pics/resource.qrc">
+           <normaloff>:/deposit.png</normaloff>:/deposit.png</iconset>
+         </property>
+        </item>
+       </widget>
+      </item>
      </layout>
     </item>
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../s21_pics/resource.qrc"/>
+ </resources>
  <connections/>
 </ui>

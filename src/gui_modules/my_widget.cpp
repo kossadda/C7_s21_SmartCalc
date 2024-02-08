@@ -12,9 +12,9 @@ public:
 
 my_widget::my_widget(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::my_widget),
     correct_style("QLineEdit {border-radius: 10px;padding: 0 8px;background-color: rgb(226, 226, 226);color:black;border: 1px solid black;}"),
-    wrong_style("QLineEdit {border-radius: 10px;padding: 0 8px;background-color: rgba(255, 0, 0, 100);color:black;border: 1px solid black;}")
+    wrong_style("QLineEdit {border-radius: 10px;padding: 0 8px;background-color: rgba(255, 0, 0, 100);color:black;border: 1px solid black;}"),
+    ui(new Ui::my_widget)
 {
     ui->setupUi(this);
     ui->table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);

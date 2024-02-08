@@ -40,6 +40,8 @@ int calculate_payments(credit_init *data, payments *pay,
   data->date.leap = check_leap(data->date.year);
   time_data next_month = data->date;
 
+  double annuity_cycle = data->debt;
+
   if (data->payment_type == ANNUITY) {
     double monthly_percent = data->rate / (100.0 * YEAR);
     pay->monthly =
@@ -65,6 +67,11 @@ int calculate_payments(credit_init *data, payments *pay,
     }
 
     data->date = next_month;
+    
+    if(data->current > 500 && data->debt == annuity_cycle) {
+      data->debt = 0;
+    }
+
     data->debt = (code == ALLOCATED) ? data->debt : 0;
   }
 

@@ -28,6 +28,10 @@ s21_smartcalc::s21_smartcalc(QWidget *parent)
     connect(ui->push_8, SIGNAL(clicked()), this, SLOT(push_nums()));
     connect(ui->push_9, SIGNAL(clicked()), this, SLOT(push_nums()));
 
+    QListView * listView = new QListView(ui->switch_window);
+    listView->setStyleSheet("QListView {background-color: rgb(30, 27, 6);} QListView::item {border-bottom: 5px solid rgb(30, 27, 6); margin:3px; background-color: rgb(30, 27, 6); } QListView::item:selected {border-bottom: 5px solid rgb(81, 44, 6); margin:3px; color: white;}");
+    ui->switch_window->setView(listView);
+
     ui->history_info_label->setVisible(false);
     ui->history_widget->setVisible(false);
 
@@ -45,8 +49,12 @@ void s21_smartcalc::change_mode(const QString index)
 
     if (index == "Deposit") {
         newWindow = new s21_deposit();
+        QIcon icon(":deposit.png");
+        newWindow->setWindowIcon(icon);
     } else if (index == "Credit") {
         newWindow = new s21_credit();
+        QIcon icon(":credit.png");
+        newWindow->setWindowIcon(icon);
     }
 
     if (newWindow) {
@@ -369,6 +377,8 @@ void s21_smartcalc::on_graph_clicked()
         QPoint currentPosGlobal = this->mapToGlobal(QPoint(-600, 0));
         graphWindow = new graphics();
         graphWindow->setGeometry(currentPosGlobal.x(), currentPosGlobal.y(), 600, 600);
+        QIcon icon(":plot.png");
+        graphWindow->setWindowIcon(icon);
         graphWindow->show();
         connect(graphWindow, SIGNAL(graphWindowClosed()), this, SLOT(on_graphWindowClosed()));
 

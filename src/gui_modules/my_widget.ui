@@ -72,14 +72,12 @@
 }
 
 QDateEdit::drop-down {
-    border-left-width: 1px;
-    border-left-color: black;
-    border-left-style: solid;
-    width: 20px;
-    height: 35px;
-    border-top-right-radius: 9px;
-    border-bottom-right-radius: 9px;
+    image: url(:down_arrow.png);
+	width: 20px;
+	height: 35px;
+	margin-right: 5px;
 }
+
 
 QDateEdit QCalendarWidget {
     color: black;
@@ -282,20 +280,11 @@ background-color: rgb(170, 44, 33);
 }
 
 QComboBox::drop-down {
-    border-left-width: 1px;
-    border-left-color: black;
-    border-left-style: solid;
-    width: 20px;
-    height: 35px;
-    border-top-right-radius: 9px;
-    border-bottom-right-radius: 9px;
-}
-
-QComboBox::down-arrow {
-    width: 16px;
-    height: 16px;
-}
-</string>
+    image: url(:down_arrow.png);
+	width: 20px;
+	height: 35px;
+	margin-right: 5px;
+}</string>
        </property>
        <item>
         <property name="text">
