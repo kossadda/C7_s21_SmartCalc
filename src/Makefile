@@ -36,6 +36,7 @@ GUI_MODULES_DIR = ./gui_modules
 TEST_DIR = ./tests
 REPORT_DIR = ./report
 DVI_DIR = ./../docs
+DIST_DIR = ./../dist
 BUILD = ./../bin
 #==============================================================================#
 
@@ -86,6 +87,7 @@ TEST_DIRS = $(shell find $(TEST_DIR) -type d)
 TEST_C = $(notdir $(shell find $(TEST_DIR) -type f -name "*.c"))
 TEST_H = $(shell find $(TEST_DIR) -type f -name "*.h")
 TEST_O = $(addprefix $(TEST_OBJ_DIR)/, $(notdir $(TEST_C:%.c=%.o)))
+EXCLUDE = ./modules/s21_calculator/s21_unar_operation.c
 #==============================================================================#
 
 #================= LIST OF FILES TO CLANG-FORMAT AND CPPCHECK =================#
@@ -156,7 +158,7 @@ $(TARGET): $(LIBRARY) $(TEST_OBJ_DIR) $(TEST_O)
 	./$@
 
 $(GCOV): $(REPORT_DIR) $(TEST_OBJ_DIR) $(TEST_O)
-	$(CC) $(TEST_O) $(MODULES_C) $(LDFLAGS)	$(GCOV_FLAGS) -o $(TARGET)
+	$(CC) $(TEST_O) $(filter-out $(EXCLUDE),$(MODULES_C)) $(LDFLAGS)	$(GCOV_FLAGS) -o $(TARGET)
 	./$(TARGET)
 	gcovr -r . --html --html-details -o $(REPORT_DIR)/coverage.html
 	xdg-open $(REPORT_DIR)/coverage.html
@@ -167,11 +169,20 @@ dvi:
 	xdg-open $(DVI_DIR)/html/index.html
 
 dist:
+	@rm -rf $(DIST_DIR)
+	@echo "Creating a distribution..."
+	@mkdir -p $(DIST_DIR)/$(PROJECT_NAME)
+	@cp -r ./ $(DIST_DIR)/$(PROJECT_NAME)
+	@echo "Distribution packaging..."
+	@tar -czf $(DIST_DIR)/$(PROJECT_NAME).tar.gz -C $(DIST_DIR) $(PROJECT_NAME)
+	@echo "Dist created: $(DIST_DIR)/$(PROJECT_NAME).tar.gz"
+	@rm -rf $(DIST_DIR)/$(PROJECT_NAME)
 
 clean:
 	rm -rf $(OBJ_DIR)
 	rm -rf $(REPORT_DIR)
 	rm -rf $(DVI_DIR)
+	rm -rf $(DIST_DIR)
 	rm -rf $(GCOV)
 	rm -f $(TARGET)
 	rm -f *.a *.o
@@ -211,10 +222,6 @@ $(TEST_OBJ_DIR)/%.o : %.c $(TEST_H)
 
 
 #=============================== CHECKS TARGETS ===============================#
-debug: $(LIBRARY)
-	@$(CC) main.c $(LIBRARY) tests/debug/*.c -o main -lm
-	@./main
-
 clang_check:
 	clang-format -style=Google -n $(ALL_FILES)
 
@@ -250,6 +257,10 @@ valgrind: $(TARGET)
 run:
 	$(BUILD)/$(PROJECT_NAME)
 
+debug: $(LIBRARY)
+	@$(CC) main.c $(LIBRARY) tests/debug/*.c -o main -lm
+	@./main
+	
 qmake_build: $(LIBRARY)
 	cd $(GUI_MODULES_DIR) && qmake && make
 	rm -rf $(BUILD)
