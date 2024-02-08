@@ -607,12 +607,12 @@ QDateEdit QCalendarWidget QToolButton QMenu {
         </property>
         <property name="maximumDateTime">
          <datetime>
-          <hour>0</hour>
+          <hour>9</hour>
           <minute>59</minute>
           <second>59</second>
           <year>9999</year>
           <month>12</month>
-          <day>6</day>
+          <day>5</day>
          </datetime>
         </property>
         <property name="calendarPopup">
@@ -718,73 +718,6 @@ QCheckBox{
         <property name="tristate">
          <bool>false</bool>
         </property>
-       </widget>
-      </item>
-      <item row="2" column="0" colspan="3">
-       <widget class="QComboBox" name="depositBox">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>43</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>43</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>15</pointsize>
-          <bold>false</bold>
-          <underline>false</underline>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QComboBox {
-	border-radius: 10px;
-	background-color: rgb(226, 226, 226);
-	border: 15px; 
-	text-align: center;
-	color: rgb(0, 0, 0);
-	border: 1px solid black;
-}
-
-QComboBox::drop-down {
-	border: none;
-}</string>
-        </property>
-        <property name="editable">
-         <bool>false</bool>
-        </property>
-        <property name="placeholderText">
-         <string/>
-        </property>
-        <property name="frame">
-         <bool>true</bool>
-        </property>
-        <item>
-         <property name="text">
-          <string>Deposit</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Engineer</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Credit</string>
-         </property>
-        </item>
        </widget>
       </item>
       <item row="12" column="0" colspan="3">
@@ -986,7 +919,7 @@ border: 1px solid black;</string>
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>1</height>
+          <height>2</height>
          </size>
         </property>
         <property name="styleSheet">
@@ -1034,6 +967,102 @@ color:black;
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QComboBox" name="depositBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>43</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>43</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>15</pointsize>
+          <bold>false</bold>
+          <underline>false</underline>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QComboBox
+{
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    selection-background-color: rgb(226, 226, 226);
+    selection-color: black; /* Изменено для контраста с белым */
+    color: black; /* Изменено для видимости на светлом фоне */
+    background-color: rgb(226, 226, 226);
+    border-style: solid;
+    border: 1px solid #1e1e1e;
+    border-radius: 10px;
+    padding: 1px 0px 1px 20px;
+}
+
+QComboBox:hover, QPushButton:hover
+{
+    color: rgb(255, 0, 0);
+}
+
+QComboBox:!on
+{
+    color: black; /* Изменено для видимости */
+    background-color: rgb(226, 226, 226);
+}
+
+QComboBox QAbstractItemView
+{
+    border: 2px solid darkgray;
+    color: black; /* Изменено для видимости */
+    selection-background-color: rgb(226, 226, 226);
+}
+
+QComboBox::drop-down
+{
+    border-left-width: 1px;
+    border-left-color: black;
+    border-left-style: solid;
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 9px;
+}
+</string>
+        </property>
+        <property name="editable">
+         <bool>false</bool>
+        </property>
+        <property name="placeholderText">
+         <string/>
+        </property>
+        <property name="frame">
+         <bool>true</bool>
+        </property>
+        <item>
+         <property name="text">
+          <string>Deposit</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Engineer</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Credit</string>
+         </property>
+        </item>
        </widget>
       </item>
      </layout>

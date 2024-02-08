@@ -511,7 +511,7 @@ QDateEdit QCalendarWidget QToolButton QMenu {
         </property>
         <property name="maximumDateTime">
          <datetime>
-          <hour>10</hour>
+          <hour>5</hour>
           <minute>59</minute>
           <second>59</second>
           <year>9999</year>
@@ -619,8 +619,15 @@ QLabel {
 }
 
 QComboBox::drop-down {
-	border: none; 
-}</string>
+    border-left-width: 1px;
+    border-left-color: black;
+    border-left-style: solid;
+    width: 20px;
+    height: 35px;
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 9px;
+}
+</string>
         </property>
         <property name="editable">
          <bool>false</bool>
