@@ -117,7 +117,7 @@ vpath %.o $(OBJ_DIR)
 ################################################################################
 
 #================================= MAIN TARGETS ===============================#
-all: dvi $(TARGET)
+all: install dvi
 
 install: $(LIBRARY)
 	@printf "\033[33m                     _             _      _           _ _     _ _                     \n";
@@ -143,7 +143,6 @@ install: $(LIBRARY)
 	@printf "                      |___/\__,_|\___\___\___||___/___/_|  \__,_|_|_|\__, |                           \n";
 	@printf "                                                                      __/ |                           \n";
 	@printf "                                                                     |___/                            \033[0m\n";
-	$(MAKE) run
 
 uninstall: clean
 	rm -rf $(BUILD)

@@ -67,8 +67,8 @@ int calculate_payments(credit_init *data, payments *pay,
     }
 
     data->date = next_month;
-    
-    if(data->current > 500 && data->debt == annuity_cycle) {
+
+    if (data->current > 500 && data->debt == annuity_cycle) {
       data->debt = 0;
     }
 

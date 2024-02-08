@@ -13,8 +13,6 @@
 
 #include "./../include/s21_calculator.h"
 
-#define PRECISION 1.0e-15
-
 /*!
  * @brief Calculates two numbers received as input using the specified lexem.
  *

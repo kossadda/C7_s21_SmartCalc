@@ -16,33 +16,36 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define PI_NUMBER 3.1415926535897932
-#define EXP_NUMBER 2.7182818284590452
+#define PI_NUMBER 3.1415926535897932   ///< The exact value of pi.
+#define EXP_NUMBER 2.7182818284590452  ///< The exact value of Euler's number.
+#define PRECISION 1.0e-15  ///< Approximate maximum accuracy of double.
 
-#define INCLUDE_CHARS "()^+-*/ modsinctaqrlgePx.0123456789"
-#define ALL_OPERATIONS "()^+<*/msctSCTQLlu"
-#define TRIGONOMETRIC_CHARS "sctSCTQLl"
-#define PREV_TRIGONTRC_CHARS "1234567890+-/*()d"
-#define BEGIN_TRIGONTRC_CHARS "sctal"
-#define END_TIGONTRC_CHARS "gtnsd"
-#define WRONG_BEGINNING "odinqrg"
-#define BINARY_OPERATIONS "+-*/"
-#define RIGHT_ASSOCIATIVE "^"
-#define BEGIN_ADDITION "1*"
-#define NUMBERS "1234567890"
-#define VARIABLE "x"
-#define OP_BRCK "("
-#define CL_BRCK ")"
-#define MINUS "-"
-#define EXP "^"
-#define ADD "+"
-#define SUB "<"
-#define DIV "/"
-#define MUL "*"
-#define MOD "m"
-#define DOT "."
-#define PI "P"
-#define E "e"
+#define INCLUDE_CHARS \
+  "()^+-*/ modsinctaqrlgePx.0123456789"  ///< Income chars acceptable for parse.
+#define ALL_OPERATIONS "()^+<*/msctSCTQLlu"  ///< Substituted operation chars.
+#define TRIGONOMETRIC_CHARS "sctSCTQLl"  ///< Chars trigonometric operations.
+#define PREV_TRIGONTRC_CHARS \
+  "1234567890+-/*()d"  ///< Acceptable chars before trigonometry.
+#define BEGIN_TRIGONTRC_CHARS "sctal"  ///< Initial chars of trigonometry.
+#define END_TIGONTRC_CHARS "gtnsd"     ///< Last chars of trigonometry.
+#define WRONG_BEGINNING "odinqrg"      ///< Wrong initial chars of trigonometry.
+#define BINARY_OPERATIONS "+-*/"       ///< Operations with two operands.
+#define RIGHT_ASSOCIATIVE "^"          ///< Right-associative operations.
+#define BEGIN_ADDITION "1*"  ///< Prefix to the initial mathematical expression.
+#define NUMBERS "1234567890"  ///< Numbers string.
+#define VARIABLE "x"          ///< Variable x string.
+#define OP_BRCK "("           ///< Open bracket string.
+#define CL_BRCK ")"           ///< Close bracket string.
+#define MINUS "-"             ///< Minus string.
+#define EXP "^"               ///< Exponentiation string.
+#define ADD "+"               ///< Add char string.
+#define SUB "<"               ///< Sub char string.
+#define DIV "/"               ///< Div char string.
+#define MUL "*"               ///< Mul char string.
+#define MOD "m"               ///< Mod char string.
+#define DOT "."               ///< Dot char string.
+#define PI "P"                ///< Pi char string.
+#define E "e"                 ///< Euler's char string.
 
 ///@brief List defining replacement chars for full expression names.
 enum substitution {
