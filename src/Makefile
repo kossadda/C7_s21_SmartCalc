@@ -32,6 +32,7 @@ OBJ_DIR = ./obj
 GCOV_OBJ_DIR = ./obj/gcov
 TEST_OBJ_DIR = ./obj/tests
 MODULES_DIR = ./modules
+GUI_MODULES_DIR = ./gui_modules
 TEST_DIR = ./tests
 REPORT_DIR = ./report
 DVI_DIR = ./../docs
@@ -116,7 +117,7 @@ vpath %.o $(OBJ_DIR)
 #================================= MAIN TARGETS ===============================#
 all: dvi $(TARGET)
 
-install: s21_smartcalc.a
+install: $(LIBRARY)
 	@printf "\033[33m                     _             _      _           _ _     _ _                     \n";
 	@printf "                    | |           | |    | |         (_) |   | (_)                    \n";
 	@printf "                 ___| |_ __ _ _ __| |_   | |__  _   _ _| | __| |_ _ __   __ _         \n";
@@ -175,6 +176,12 @@ clean:
 	rm -f $(TARGET)
 	rm -f *.a *.o
 	rm -f *.gc*
+	rm -f $(GUI_MODULES_DIR)/*.o
+	rm -f $(GUI_MODULES_DIR)/*.user
+	rm -f $(GUI_MODULES_DIR)/*.cpp
+	rm -f $(GUI_MODULES_DIR)/*.h
+	rm -f $(GUI_MODULES_DIR)/Makefile
+	rm -f $(GUI_MODULES_DIR)/$(PROJECT_NAME)
 	rm -f main
 	rm -f val.txt
 
@@ -242,6 +249,13 @@ valgrind: $(TARGET)
 #============================= ADDITIONAL TARGETS =============================#
 run:
 	$(BUILD)/$(PROJECT_NAME)
+
+qmake_build: $(LIBRARY)
+	cd $(GUI_MODULES_DIR) && qmake && make
+	rm -rf $(BUILD)
+	mkdir $(BUILD)
+	mv $(GUI_MODULES_DIR)/$(PROJECT_NAME) $(BUILD)
+	$(MAKE) clean
 
 dependencies:
 	sudo apt install cppcheck

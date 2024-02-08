@@ -7,32 +7,34 @@ CONFIG += c++17
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+INCLUDEPATH += $$PWD/include
+
 SOURCES += \
-    graphics.cpp \
-    main.cpp \
-    my_widget.cpp \
-    qcustomplot.cpp \
-    s21_credit.cpp \
-    s21_credit_table.cpp \
-    s21_deposit.cpp \
-    s21_smartcalc.cpp
+    ./cpp_modules/graphics.cpp \
+    ./cpp_modules/main.cpp \
+    ./cpp_modules/my_widget.cpp \
+    ./cpp_modules/qcustomplot.cpp \
+    ./cpp_modules/s21_credit.cpp \
+    ./cpp_modules/s21_credit_table.cpp \
+    ./cpp_modules/s21_deposit.cpp \
+    ./cpp_modules/s21_smartcalc.cpp
 
 HEADERS += \
-    graphics.h \
-    my_widget.h \
-    qcustomplot.h \
-    s21_credit.h \
-    s21_credit_table.h \
-    s21_deposit.h \
-    s21_smartcalc.h
+    ./include/graphics.h \
+    ./include/my_widget.h \
+    ./include/qcustomplot.h \
+    ./include/s21_credit.h \
+    ./include/s21_credit_table.h \
+    ./include/s21_deposit.h \
+    ./include/s21_smartcalc.h
 
 FORMS += \
-    graphics.ui \
-    my_widget.ui \
-    s21_credit.ui \
-    s21_credit_table.ui \
-    s21_deposit.ui \
-    s21_smartcalc.ui
+    ./ui_modules/graphics.ui \
+    ./ui_modules/my_widget.ui \
+    ./ui_modules/s21_credit.ui \
+    ./ui_modules/s21_credit_table.ui \
+    ./ui_modules/s21_deposit.ui \
+    ./ui_modules/s21_smartcalc.ui
 
 LIBS += ./../s21_smartcalc.a
 
@@ -42,4 +44,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    ../resources/resource.qrc
+    ./../resources/resource.qrc

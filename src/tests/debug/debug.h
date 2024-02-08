@@ -13,7 +13,7 @@
 
 #include <check.h>
 
-#include "./../../s21_smartcalc.h"
+#include "./../../modules/s21_smartcalc.h"
 
 void free_credit(int row, payments *pay, early_pay *redemption);
 void free_deposit(int row, investment *pay, operations *oper);

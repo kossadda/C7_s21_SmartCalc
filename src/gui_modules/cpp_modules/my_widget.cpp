@@ -1,5 +1,5 @@
-#include "my_widget.h"
-#include "ui_my_widget.h"
+#include "./../include/my_widget.h"
+#include "./ui_my_widget.h"
 
 class DateTableWidgetItem : public QTableWidgetItem {
 public:

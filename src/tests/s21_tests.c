@@ -9,7 +9,7 @@
  * 
  */
 
-#include "s21_tests.h"
+#include "./s21_tests.h"
 #include <stdio.h>
 #include <string.h>
 

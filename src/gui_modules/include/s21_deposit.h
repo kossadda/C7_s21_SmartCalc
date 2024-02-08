@@ -2,14 +2,15 @@
 #define S21_DEPOSIT_H
 
 #include <QMainWindow>
-#include "my_widget.h"
-#include "s21_credit_table.h"
 #include <QCheckBox>
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
 
+#include "./my_widget.h"
+#include "./s21_credit_table.h"
+
 extern "C" {
-#include "./../s21_smartcalc.h"
+#include "./../../modules/s21_smartcalc.h"
 }
 
 class s21_smartcalc;

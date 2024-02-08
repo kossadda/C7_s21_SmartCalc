@@ -12,8 +12,8 @@
 #ifndef S21_TESTS_H_
 #define S21_TESTS_H_
 
-#include "test_modules/test_include/s21_test_credit.h"
-#include "test_modules/test_include/s21_test_deposit.h"
-#include "test_modules/test_include/s21_test_smartcalc.h"
+#include "./test_modules/test_include/s21_test_credit.h"
+#include "./test_modules/test_include/s21_test_deposit.h"
+#include "./test_modules/test_include/s21_test_smartcalc.h"
 
 #endif  // S21_TESTS_H_

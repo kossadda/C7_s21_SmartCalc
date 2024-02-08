@@ -2,11 +2,11 @@
 #define S21_CREDIT_H
 
 #include <QMainWindow>
-#include "s21_credit_table.h"
-#include "my_widget.h"
+#include "./s21_credit_table.h"
+#include "./my_widget.h"
 
 extern "C" {
-#include "./../s21_smartcalc.h"
+#include "./../../modules/s21_smartcalc.h"
 }
 
 class s21_smartcalc;

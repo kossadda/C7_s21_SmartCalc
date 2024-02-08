@@ -1,8 +1,8 @@
-#include "s21_deposit.h"
-#include "ui_s21_deposit.h"
-#include "ui_s21_credit_table.h"
-#include "s21_smartcalc.h"
-#include "s21_credit.h"
+#include "./../include/s21_deposit.h"
+#include "./../include/s21_smartcalc.h"
+#include "./../include/s21_credit.h"
+#include "./ui_s21_deposit.h"
+#include "./ui_s21_credit_table.h"
 
 s21_deposit::s21_deposit(QWidget *parent)
     : QMainWindow(parent)

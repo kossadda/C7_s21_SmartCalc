@@ -4,14 +4,15 @@
 #include <QMainWindow>
 #include <QPushButton>
 #include <QLineEdit>
-#include "graphics.h"
 #include <regex>
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
 #include <QKeyEvent>
 
+#include "./graphics.h"
+
 extern "C" {
-#include "./../s21_smartcalc.h"
+#include "./../../modules/s21_smartcalc.h"
 }
 
 class s21_credit;

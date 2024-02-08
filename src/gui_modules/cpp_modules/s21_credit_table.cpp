@@ -1,5 +1,5 @@
-#include "s21_credit_table.h"
-#include "ui_s21_credit_table.h"
+#include "./../include/s21_credit_table.h"
+#include "./ui_s21_credit_table.h"
 
 s21_credit_table::s21_credit_table(QWidget *parent)
     : QWidget(parent)

@@ -8,6 +8,7 @@
 #include <QHeaderView>
 #include <QVBoxLayout>
 #include <QComboBox>
+
 enum styles {WRONG_EXPR = 1, CORRECT_EXPR = 0};
 
 namespace Ui {

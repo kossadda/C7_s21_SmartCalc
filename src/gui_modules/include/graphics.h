@@ -7,7 +7,7 @@
 #include "qcustomplot.h"
 
 extern "C" {
-#include "./../s21_smartcalc.h"
+#include "./../../modules/s21_smartcalc.h"
 }
 
 namespace Ui {

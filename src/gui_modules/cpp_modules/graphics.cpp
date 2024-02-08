@@ -1,5 +1,5 @@
-#include "graphics.h"
-#include "ui_graphics.h"
+#include "./../include/graphics.h"
+#include "./ui_graphics.h"
 
 #include <QtGlobal>
 
