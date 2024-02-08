@@ -40,7 +40,7 @@ int init_payments(long double ***result, long double **total) {
   int code_total = CHECK_NULL(*total);
   *result = (long double **)malloc(1 * sizeof(long double *));
   int code_result = CHECK_NULL(*result);
-  
+
   code = code_total + code_result;
 
   (*total)[0] = 0;
@@ -72,7 +72,7 @@ int allocate_row(long double ***result, int current, int columns) {
   int code_column = CHECK_NULL((*result)[current]);
 
   code = code_row + code_column;
-  
+
   if (code == ALLOCATED) {
     for (int i = 0; i < columns; i++) {
       (*result)[current][i] = 0;

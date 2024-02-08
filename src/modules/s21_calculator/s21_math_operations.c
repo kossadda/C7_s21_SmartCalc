@@ -13,6 +13,8 @@
 
 #include "./../include/s21_calculator.h"
 
+#define PRECISION 1.0e-15
+
 /*!
  * @brief Calculates two numbers received as input using the specified lexem.
  *
@@ -38,6 +40,10 @@ double math_nums(double first, double second, const char lexem) {
     if (first < 0) {
       first = second + first;
     }
+  }
+
+  if (fabs(first) < PRECISION) {
+    first = 0;
   }
 
   return first;
@@ -69,5 +75,9 @@ void math_trigonometry(double *number, const char lexem) {
     *number = log10(*number);
   } else if (lexem == CHAR_LN) {
     *number = log(*number);
+  }
+
+  if (fabs(*number) < PRECISION) {
+    *number = 0;
   }
 }

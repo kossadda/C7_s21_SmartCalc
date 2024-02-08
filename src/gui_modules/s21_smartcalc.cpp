@@ -91,6 +91,8 @@ void s21_smartcalc::handleKeyPress(int key)
         on_push_eq_clicked();
     } else if(key == 16777216) {
         on_push_c_clicked();
+        clear_history(0);
+        history_count = -1;
     } else if(key == 90) {
         on_turn_back_clicked();
     } else if(key == 88) {
@@ -99,6 +101,34 @@ void s21_smartcalc::handleKeyPress(int key)
         on_variable_clicked();
     } else if(key == 66) {
         on_graph_clicked();
+    } else if(key == 77) {
+        add("m");
+    } else if(key == 79) {
+        add("o");
+    } else if(key == 68) {
+        add("d");
+    } else if(key == 83) {
+        add("s");
+    } else if(key == 73) {
+        add("i");
+    } else if(key == 78) {
+        add("n");
+    } else if(key == 67) {
+        add("c");
+    } else if(key == 84) {
+        add("t");
+    } else if(key == 65) {
+        add("a");
+    } else if(key == 81) {
+        add("q");
+    } else if(key == 82) {
+        add("r");
+    } else if(key == 76) {
+        add("l");
+    } else if(key == 71) {
+        add("g");
+    } else if(key == 88) {
+        add("x");
     }
 }
 
@@ -408,7 +438,8 @@ void s21_smartcalc::createPlotButton(QPushButton *button, int row)
 
 void s21_smartcalc::on_actionPlotTriggered()
 {
-    if(ui->result->text().length() > 0 && valid == YES) {
+    int valid_range = graphWindow->compare_max_min_x_y();
+    if(ui->result->text().length() > 0 && valid == YES && !valid_range) {
         save_history();
         graphWindow->build_plot(ui->result->text());
         graphWindow->show();
@@ -476,14 +507,27 @@ void s21_smartcalc::change_color(QPushButton *button, QString color)
     }
 }
 
-void s21_smartcalc::save_history() {
-    if(history_count + 1 != history.size()) {
-        int list_size = history.size();
+void s21_smartcalc::clear_history(int key)
+{
+    int list_size = history.size();
+    if(key) {
         for(int i = 0; i < list_size - history_count - 1; i++) {
             history.removeAt(history_count + 1);
             QListWidgetItem *itemToRemove = ui->history_widget->takeItem(history_count + 1);
             delete itemToRemove;
         }
+    } else {
+        for(int i = list_size - 1; i >= 0; i--) {
+            history.removeAt(i);
+            QListWidgetItem *itemToRemove = ui->history_widget->takeItem(i);
+            delete itemToRemove;
+        }
+    }
+}
+
+void s21_smartcalc::save_history() {
+    if(history_count + 1 != history.size()) {
+        clear_history(1);
     }
     if(history_count >= 0) {
         QString check = history.at(history_count);

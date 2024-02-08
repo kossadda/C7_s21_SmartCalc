@@ -21,6 +21,8 @@ class graphics : public QWidget
 public:
     explicit graphics(QWidget *parent = nullptr);
     ~graphics();
+    QString correct_style;
+    QString wrong_style;
 
 signals:
     void graphWindowClosed();
@@ -32,6 +34,7 @@ public slots:
     void slotMousePress(QMouseEvent *event);
     void slotMouseMove(QMouseEvent *event);
     void onMouseWheel();
+    int compare_max_min_x_y();
 
     void build_plot(QString expression);
     double calculate(QString expression, double variable);
@@ -39,6 +42,11 @@ public slots:
     void change_label_visible(bool decision);
 
 private slots:
+    int onStepEditTextChanged(const QString &text);
+    int onXMinTextChanged(const QString &text);
+    int onXMaxTextChanged(const QString &text);
+    int onYMinTextChanged(const QString &text);
+    int onYMaxTextChanged(const QString &text);
     void on_trace_enable_clicked();
 
 private:

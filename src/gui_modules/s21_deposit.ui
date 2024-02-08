@@ -164,6 +164,7 @@ background-color: rgb(175, 97, 33);
         <property name="styleSheet">
          <string notr="true">QComboBox {
     border-radius: 10px;
+    padding-right: 20px;
     padding: 0 8px;
     background-color: rgb(226, 226, 226);
     color: black;
@@ -171,11 +172,20 @@ background-color: rgb(175, 97, 33);
 }
 
 QComboBox::drop-down {
-    image: url(/home/kossadda/develop/C7_s21_smartcalc/src/s21_pics/down_arrow.png);
-	width: 20px;
-	height: 35px;
-	margin-right: 5px;
-}</string>
+    border-left-width: 1px;
+    border-left-color: black;
+    border-left-style: solid;
+    width: 20px;
+    height: 35px;
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 9px;
+}
+
+QComboBox::down-arrow {
+    width: 16px;
+    height: 16px;
+}
+</string>
         </property>
         <item>
          <property name="text">
@@ -252,6 +262,7 @@ QComboBox::drop-down {
         <property name="styleSheet">
          <string notr="true">QComboBox {
     border-radius: 10px;
+    padding-right: 20px;
     padding: 0 8px;
     background-color: rgb(226, 226, 226);
     color: black;
@@ -259,11 +270,18 @@ QComboBox::drop-down {
 }
 
 QComboBox::drop-down {
-	width: 20px;
-	height: 35px;
-	margin-right: 5px;
-	background-color: transparent;
-	background-image: url(./../s21_pics/down_arrow.png);
+    border-left-width: 1px;
+    border-left-color: black;
+    border-left-style: solid;
+    width: 20px;
+    height: 35px;
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 9px;
+}
+
+QComboBox::down-arrow {
+    width: 16px;
+    height: 16px;
 }
 </string>
         </property>
@@ -430,6 +448,7 @@ border: 1px solid black;</string>
         <property name="styleSheet">
          <string notr="true">QComboBox {
     border-radius: 10px;
+    padding-right: 20px;
     padding: 0 8px;
     background-color: rgb(226, 226, 226);
     color: black;
@@ -437,11 +456,20 @@ border: 1px solid black;</string>
 }
 
 QComboBox::drop-down {
-    image: url(/home/kossadda/develop/C7_s21_smartcalc/src/s21_pics/down_arrow.png);
-	width: 20px;
-	height: 35px;
-	margin-right: 5px;
-}</string>
+    border-left-width: 1px;
+    border-left-color: black;
+    border-left-style: solid;
+    width: 20px;
+    height: 35px;
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 9px;
+}
+
+QComboBox::down-arrow {
+    width: 16px;
+    height: 16px;
+}
+</string>
         </property>
         <item>
          <property name="text">
@@ -579,7 +607,7 @@ QDateEdit QCalendarWidget QToolButton QMenu {
         </property>
         <property name="maximumDateTime">
          <datetime>
-          <hour>5</hour>
+          <hour>0</hour>
           <minute>59</minute>
           <second>59</second>
           <year>9999</year>

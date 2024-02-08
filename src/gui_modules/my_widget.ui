@@ -72,10 +72,13 @@
 }
 
 QDateEdit::drop-down {
-    image: url(/home/kossadda/develop/C7_s21_smartcalc/src/s21_pics/down_arrow.png);
-	width: 20px;
-	height: 35px;
-	margin-right: 5px;
+    border-left-width: 1px;
+    border-left-color: black;
+    border-left-style: solid;
+    width: 20px;
+    height: 35px;
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 9px;
 }
 
 QDateEdit QCalendarWidget {
@@ -271,6 +274,7 @@ background-color: rgb(170, 44, 33);
        <property name="styleSheet">
         <string notr="true">QComboBox {
     border-radius: 10px;
+    padding-right: 20px;
     padding: 0 8px;
     background-color: rgb(226, 226, 226);
     color: black;
@@ -278,11 +282,20 @@ background-color: rgb(170, 44, 33);
 }
 
 QComboBox::drop-down {
-    image: url(/home/kossadda/develop/C7_s21_smartcalc/src/s21_pics/down_arrow.png);
-	width: 20px;
-	height: 35px;
-	margin-right: 5px;
-}</string>
+    border-left-width: 1px;
+    border-left-color: black;
+    border-left-style: solid;
+    width: 20px;
+    height: 35px;
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 9px;
+}
+
+QComboBox::down-arrow {
+    width: 16px;
+    height: 16px;
+}
+</string>
        </property>
        <item>
         <property name="text">

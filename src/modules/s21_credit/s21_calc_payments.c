@@ -53,7 +53,7 @@ int calculate_payments(credit_init *data, payments *pay,
   for (data->current = -1; data->debt != 0;) {
     long double paid_percent = 0;
     add_one_period(&(data->date), &next_month, next_month, CREDIT_MONTH,
-                    const_day);
+                   const_day);
 
     code = check_redemp(data, pay, redemption, &next_month, &paid_percent);
     if (code == ALLOCATED) {

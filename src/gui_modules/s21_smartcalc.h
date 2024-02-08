@@ -52,6 +52,7 @@ private slots:
     void on_actionVarChanged(const QString &text);
     void on_actionVarTriggered();
     void on_actionPlotTriggered();
+    void clear_history(int key);
     void save_history();
     void createPlotButton(QPushButton *button, int row);
     void switch_buttons(QString name1, QString name2);

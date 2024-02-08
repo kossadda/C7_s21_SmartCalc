@@ -1,8 +1,12 @@
 #include "graphics.h"
 #include "ui_graphics.h"
 
+#include <QtGlobal>
+
 graphics::graphics(QWidget *parent) :
     QWidget(parent),
+    correct_style("QLineEdit {border-radius: 10px;padding: 0 8px;background-color: rgb(226, 226, 226);color:black;}"),
+    wrong_style("QLineEdit {border-radius: 10px;padding: 0 8px;background-color: rgba(255, 0, 0, 100);color:black;}"),
     ui(new Ui::graphics),
     tracer(nullptr),
     last_step(0.01),
@@ -22,6 +26,11 @@ graphics::graphics(QWidget *parent) :
     connect(ui->Table, &QCustomPlot::mousePress, this, &graphics::slotMousePress);
     connect(ui->Table, &QCustomPlot::mouseMove, this, &graphics::slotMouseMove);
     connect(ui->Table, &QCustomPlot::mouseWheel, this, &graphics::onMouseWheel);
+    connect(ui->step, &QLineEdit::textChanged, this, &graphics::onStepEditTextChanged);
+    connect(ui->x_beg, &QLineEdit::textChanged, this, &graphics::onXMinTextChanged);
+    connect(ui->x_end, &QLineEdit::textChanged, this, &graphics::onXMaxTextChanged);
+    connect(ui->y_beg, &QLineEdit::textChanged, this, &graphics::onYMinTextChanged);
+    connect(ui->y_end, &QLineEdit::textChanged, this, &graphics::onYMaxTextChanged);
 }
 
 graphics::~graphics()
@@ -44,6 +53,137 @@ double graphics::calculate(QString expression, double variable) {
     char *c_str = (char *)str.c_str();
     double res = calculation(c_str, variable);
     return res;
+}
+
+int graphics::compare_max_min_x_y()
+{
+    int valid = 0;
+
+    valid += onStepEditTextChanged(ui->step->text());
+    valid += onXMinTextChanged(ui->x_beg->text());
+    valid += onXMaxTextChanged(ui->x_end->text());
+    valid += onYMinTextChanged(ui->y_beg->text());
+    valid += onYMaxTextChanged(ui->y_end->text());
+
+    if(ui->x_beg->text().toDouble() >= ui->x_end->text().toDouble()) {
+        ui->x_beg->setStyleSheet(wrong_style);
+        ui->x_end->setStyleSheet(wrong_style);
+        valid = 1;
+    } else {
+        ui->x_beg->setStyleSheet(correct_style);
+        ui->x_end->setStyleSheet(correct_style);
+    }
+
+    if(ui->y_beg->text().toDouble() >= ui->y_end->text().toDouble()) {
+        ui->y_beg->setStyleSheet(wrong_style);
+        ui->y_end->setStyleSheet(wrong_style);
+        valid = 1;
+    } else {
+        ui->y_beg->setStyleSheet(correct_style);
+        ui->y_end->setStyleSheet(correct_style);
+    }
+
+    return valid;
+}
+
+int graphics::onStepEditTextChanged(const QString &text)
+{
+    int valid = 1;
+
+    static const QRegularExpression regex("^[0-9]{1,3}(\\.[0-9]{1,3})?$");
+    QRegularExpressionMatch match = regex.match(text);
+
+    if(text.length() == 0) {
+        ui->step->setStyleSheet(wrong_style);
+        ui->step->setPlaceholderText("Enter step");
+    } else if(match.hasMatch() && text.toDouble() <= 100 && text.toDouble() && !(text[0] == '0' && text[1] != '.')) {
+        ui->step->setStyleSheet(correct_style);
+        valid = 0;
+    } else {
+        ui->step->setStyleSheet(wrong_style);
+    }
+
+    return valid;
+}
+
+int graphics::onXMinTextChanged(const QString &text)
+{
+    int valid = 1;
+
+    static const QRegularExpression regex("^[-]?[0-9]{1,7}(\\.[0-9]{1,3})?$");
+    QRegularExpressionMatch match = regex.match(text);
+
+    if(text.length() == 0) {
+        ui->x_beg->setStyleSheet(wrong_style);
+        ui->x_beg->setPlaceholderText("Enter value");
+    } else if(match.hasMatch() && qFabs(text.toDouble()) <= 1000000 && !(text[0] == '0' && text[1] != '.')) {
+        ui->x_beg->setStyleSheet(correct_style);
+        valid = 0;
+    } else {
+        ui->x_beg->setStyleSheet(wrong_style);
+    }
+
+    return valid;
+}
+
+int graphics::onXMaxTextChanged(const QString &text)
+{
+    int valid = 1;
+
+    static const QRegularExpression regex("^[-]?[0-9]{1,7}(\\.[0-9]{1,3})?$");
+    QRegularExpressionMatch match = regex.match(text);
+
+    if(text.length() == 0) {
+        ui->x_end->setStyleSheet(wrong_style);
+        ui->x_end->setPlaceholderText("Enter value");
+    } else if(match.hasMatch() && qFabs(text.toDouble()) <= 1000000 && !(text[0] == '0' && text[1] != '.')) {
+        ui->x_end->setStyleSheet(correct_style);
+        valid = 0;
+    } else {
+        ui->x_end->setStyleSheet(wrong_style);
+    }
+
+    return valid;
+}
+
+int graphics::onYMinTextChanged(const QString &text)
+{
+    int valid = 1;
+
+    static const QRegularExpression regex("^[-]?[0-9]{1,7}(\\.[0-9]{1,3})?$");
+    QRegularExpressionMatch match = regex.match(text);
+
+    if(text.length() == 0) {
+        ui->y_beg->setStyleSheet(wrong_style);
+        ui->y_beg->setPlaceholderText("Enter value");
+    } else if(match.hasMatch() && qFabs(text.toDouble()) <= 1000000 && !(text[0] == '0' && text[1] != '.')) {
+        ui->y_beg->setStyleSheet(correct_style);
+        valid = 0;
+    } else {
+        ui->y_beg->setStyleSheet(wrong_style);
+    }
+
+    return valid;
+}
+
+int graphics::onYMaxTextChanged(const QString &text)
+{
+    int valid = 1;
+
+    static const QRegularExpression regex("^[-]?[0-9]{1,7}(\\.[0-9]{1,3})?$");
+    QRegularExpressionMatch match = regex.match(text);
+
+    if(text.length() == 0) {
+        ui->y_end->setStyleSheet(wrong_style);
+        ui->y_end->setPlaceholderText("Enter value");
+    } else if(match.hasMatch() && qFabs(text.toDouble()) <= 1000000 && !(text[0] == '0' && text[1] != '.')) {
+        ui->y_end->setStyleSheet(correct_style);
+        valid = 0;
+    } else {
+        ui->y_end->setStyleSheet(wrong_style);
+    }
+
+    return valid;
 }
 
 int graphics::check_symbol(QString expression, QChar first, QChar second)

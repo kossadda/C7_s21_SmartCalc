@@ -133,7 +133,8 @@ int func_substitution(char *str) {
                 check(str[i - 1], PREV_TRIGONTRC_CHARS)) ||
                (check(str[i], MOD))) {
       wrong_expression = check_trigonometric(true_str, &count, str, &i);
-    } else if (check(str[i], NUMBERS CL_BRCK) && check(str[i + 1], OP_BRCK)) {
+    } else if (check(str[i], NUMBERS CL_BRCK) &&
+               check(str[i + 1], OP_BRCK BEGIN_TRIGONTRC_CHARS)) {
       add_symbol(true_str, &count, TWO_CHAR, str[i], CHAR_MUL);
     } else if (check(str[i], CL_BRCK) && check(str[i + 1], DOT)) {
       wrong_expression = YES;
