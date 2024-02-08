@@ -139,7 +139,7 @@ int s21_smartcalc::additional_validation(QString text)
     int count_close = 0;
     int valid = CORRECT_EXPR;
     int empty_brackets = 0;
-    QString begin = "(-0123456789sctal";
+    QString begin = "(-0123456789sctalPxe";
     QString nums = "0123456789";
     QString lexems = "+-*/^";
     if(text.length() && begin.count(text[0]) && text[text.length() - 1] != '.') {
