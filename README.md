@@ -1,83 +1,187 @@
 # s21_smartcalc v_1.0
 
+<br>
+
 ## Contents
-1. [About the project](#about-the-project)
-2. [Development team](#development-team)
-3. [Completed tasks](#completed-tasks)
-4. [Implementation features](#implementation-features)
-5. [Building the project](#building-the-project)
-6. [Feedback](#feedback)
+1. [About the project](#о-проекте)
+2. [Development team](#команда-разработки)
+3. [Building the project](#сборка-проекта)
+4. [Implementation features](#особенности-реализации)
+5. [Testing](#тестирование)
+6. [Technical task](#техническое-задание)
+7. [Feedback](#обратная-связь)
+
+<br>
 
 ## About the project
 
-This project is part of the School 21 project database from Sber. The goal of this project is to implement our own version of an engineering calculator with additional modes of deposit and credit calculators.
+Данный проект является частью базы проектов "Школы 21" от Сбера. Целью данного проекта является реализация собственной версии инженерного калькулятора с дополнительными режимами депозитного и кредитного калькуляторов.
+
+<br>
 
 ## Development team
 
-Composition of the team that implemented the project: <br>
+Состав команды, реализовавшей проект: <br>
 **kossadda** (https://github.com/kossadda) <br>
 
-## Completed tasks
-
-The following were implemented as part of the project:
-
-| No. | Calculator Mode        | Description                                                                                                           |
-|-----|------------------------|-----------------------------------------------------------------------------------------------------------------------|
-|  1  | Engineering calculator | Allows you to calculate complex mathematical expressions up to 255 characters long with the ability to create graphs. |
-|  2  | Loan calculator        | Allows you to obtain complete information about monthly payments when lending.                                        |
-|  3  | Deposit calculator     | Allows you to obtain complete information about income for periods of account capitalization.                         |
-
-## Implementation features
-
-While writing the project, it was decided to implement the calculations on the backend in C (based on the technical specifications), the GUI component in C++ using the qt framework (which is allowed by the technical specifications of our project, despite the fact that the project is part of the C branch of the language ). The project is built using CMake, although as a backup there is the option to build using QMake.
-
-Briefly about the engineering calculator: <br>
-
-1) Supports input of mathematical expressions up to 255 characters. <br>
-2) Support for plotting. <br>
-3) Support for zooming charts. <br>
-4) Support for tracing graphs. <br>
-5) Interactive input validation. <br>
-
-Briefly about the loan calculator: <br>
-
-1) The advanced loan calculator from calcus.ru is used as a basis. <br>
-2) Supports both types of monthly payments. <br>
-3) Support for early repayment transactions of two types. <br>
-4) Full report on all monthly payment periods. <br>
-5) Full report on final lending indicators. <br>
-
-Briefly about the deposit calculator: <br>
-
-1) The advanced loan calculator from calcus.ru is used as a basis. <br>
-2) Support for replenishment operations and partial withdrawals from the deposit. <br>
-3) Support for any frequency of account capitalization. <br>
-4) Full report on all periods of account capitalization. <br>
-5) Full report on the final indicators of the deposit. <br>
-
-To learn more about all the available functionality, go to the project manual, where you can find instructions for their use.
+<br>
 
 ## Building the project
 
-The following main goals for working with the project have been added to the Makefile:
+В Makefile добавлены следующие основные цели для работы с проектом:
 
-| #  | Command            | Description                                                              |
-|----|--------------------|--------------------------------------------------------------------------|
-| 1  | `all`              | Generates documentation for the project and starts testing modules.      |
-| 2  | `s21_smartcalc`    | Assembles modules into a static library.                                 |
-| 3  | `test`             | Tests modules.                                                           |
-| 4  | `gcov_report`      | Tests modules and generates a coverage report in html format.            |
-| 5  | `dvi`              | Generates documentation in html and manual format for the functionality. |
-| 6  | `rebuild`          | Rebuilding the project.                                                  |
-| 7  | `clang_check`      | Testing modules for compliance with Google style.                        |
-| 8  | `valgrind`         | Testing modules for working with memory through Valgrind.                |
-| 9  | `install`          | Installs the necessary dependencies for testing the project.             |
-| 10 | `clean`            | Cleans the repository from generated files.                              |
+| #  | Цель               | Описание цели                                                                |
+|----| ------------------ | ---------------------------------------------------------------------------- |
+| 1  | `all`              | Производит сборку проекта и формирует документацию к проекту.                |
+| 2  | `install`          | Производит сборку проекта.                                                   |
+| 3  | `uninstall`        | Производит деинсталяцию проекта.                                             |
+| 4  | `s21_smartcalc`    | Осуществляет сборку модулей в статическую библиотеку.                        |
+| 5  | `test`             | Производит тестирование модулей.                                             |
+| 6  | `gcov_report`      | Производит тестирование модулей и формирует отчет о покрытии в html формате. |
+| 7  | `dvi`              | Формирует документацию в формате html и manual к функционалу.                |
+| 8  | `dist`             | Сжимает проект в tar архив.                                                  |
+| 9  | `clean`            | Производит очистку репозитория от сгенерированных файлов.                    |
+| 10 | `rebuild`          | Осуществляет пересборку проекта.                                             |
+| 11 | `clang_check`      | Тестирование модулей на соответствие Google style.                           |
+| 12 | `cppcheck`         | Тестирование модулей через анализатор кода cppcheck.                         |
+| 13 | `valgrind`         | Тестирование модулей на работу с памятью через Valgrind.                     |
+| 14 | `qmake_build`      | Осуществляет сборку проекта через qmake.                                     |
+| 15 | `dependencies`     | Производит установку необходимых зависимостей для тестирования проекта.      |
+
+<br>
+
+## Implementation features
+
+В ходе написания проекта было принято решение произвести реализацию вычислений на бэкенде на языке C (исходя из ТЗ), GUI-составляющей - на языке C++ с применением фреймворка qt (что позволяется ТЗ нашего проекта, несмотря на то, что проект входит в ветку C языка). Сборка проекта осуществляется при помощи CMake, хоть и на запасной случай есть возможность сборки по QMake.  
+
+**Внешний вид инженерного калькулятора:** <br>
+
+![engineer](./misc/img/engineer.gif) <br>
+
+1) Поддержка ввода математических выражений до 255 символов.
+2) Поддержка построения графиков.
+3) Поддержка зумирования графиков.
+4) Поддержка трассировки графиков.
+5) Поддержка клавиатурного ввода.
+6) Интерактивная валидация ввода.
+
+**Внешний вид кредитного калькулятора:** <br>
+
+![credit](./misc/img/credit.gif) <br>
+
+1) За основу взят калькулятор расширенный кредитный калькулятор с calcus.ru. <br>
+2) Поддержка обоих видов ежемесячных платежей. <br>
+3) Поддержка операций досрочных погашений двух типов. <br>
+4) Полный отчет по всем периодам ежемесячных выплат. <br>
+5) Полный отчет по итоговым показателям кредитования. <br>
+6) Интерактивная валидация ввода.
+
+**Внешний вид депозитного калькулятора:** <br>
+
+![deposit](./misc/img/deposit.gif) <br>
+
+1) За основу взят калькулятор расширенный кредитный калькулятор с calcus.ru. <br>
+2) Поддержка операций пополнений и частичных снятий средств с депозита. <br>
+3) Поддержка любой периодичности капитализации счета. <br>
+4) Полный отчет по всем периодам капитализации счета. <br>
+5) Полный отчет по итоговым показателям депозита. <br>
+6) Интерактивная валидация ввода.
+
+Для более подробного ознакомления со всем доступным функционалом следует перейти к manual по проекту, где можно найти и инструкции к их применению.
+
+<br>
+
+## Testing
+
+Написанный код был протестирован unit-тестами с использованием библиотеки check.
+
+![unit_tests](./misc/img/test.gif) <br>
+
+Произведено покрытие кода тестами с выводом в html отчет при помощи gcovr.
+
+![gcoverage](./misc/img/gcov.gif) <br>
+
+Код протестирован на наличие ошибок/утечек через valgrind.
+
+![valgrind_tests](./misc/img/valgrind.gif) <br>
+
+<br>
+
+## Technical task
+
+#### Part 1. Реализация SmartCalc v1.0
+
+Необходимо реализовать программу SmartCalc v1.0:
+
+- Программа должна быть разработана на языке Си стандарта C11 с использованием компилятора gcc. Допустимо использование дополнительных библиотек и модулей QT
+- Код программы должен находиться в папке src 
+- Сборка программы должна быть настроена с помощью Makefile со стандартным набором целей для GNU-программ: all, install, uninstall, clean, dvi, dist, test, gcov_report. Установка должна вестись в любой другой произвольный каталог
+- Программа должна быть разработана в соответствии с принципами структурного программирования
+- При написании кода необходимо придерживаться Google Style
+- Должно быть обеспечено покрытие unit-тестами модулей, связанных с вычислением выражений, с помощью библиотеки Check
+- Реализация с графическим пользовательским интерфейсом, на базе любой GUI-библиотеки с API для C89/C99/C11 
+<br/>Для Linux: GTK+, CEF, Qt
+<br/>Для Mac: GTK+, Nuklear, raygui, microui, libagar, libui, IUP, LCUI, CEF, Qt
+- На вход программы могут подаваться как целые числа, так и вещественные числа, записанные через точку. По желанию можно обрабатывать ввод чисел в экспоненциальной записи
+- Вычисление должно производиться после полного ввода вычисляемого выражения и нажатия на символ `=`
+- Вычисление произвольных скобочных арифметических выражений в инфиксной нотации
+- Вычисление произвольных скобочных арифметических выражений в инфиксной нотации с подстановкой значения переменной _x_ в виде числа
+- Построение графика функции, заданной с помощью выражения в инфиксной нотации с переменной _x_  (с координатными осями, отметкой используемого масштаба и сеткой с адаптивным шагом)
+    - Не требуется предоставлять пользователю возможность менять масштаб
+- Область определения и область значения функций ограничиваются по крайней мере числами от -1000000 до 1000000
+    - Для построения графиков функции необходимо дополнительно указывать отображаемые область определения и область значения
+- Проверяемая точность дробной части - минимум 7 знаков после запятой
+- У пользователя должна быть возможность ввода до 255 символов
+- Скобочные арифметические выражения в инфиксной нотации должны поддерживать следующие арифметические операции и математические функции:
+
+- **Арифметические операторы**:
+
+| Название оператора   | Инфиксная нотация <br /> (Классическая) | Префиксная нотация <br /> (Польская нотация) |  Постфиксная нотация <br /> (Обратная польская нотация) |
+| -------------------- | --------------------------------------- | -------------------------------------------- | ------------------------------------------------------- |
+| Скобки               | (a + b)                                 | (+ a b)                                      | a b +                                                   |
+| Сложение             | a + b                                   | + a b                                        | a b +                                                   |
+| Вычитание            | a - b                                   | - a b                                        | a b -                                                   |
+| Умножение            | a * b                                   | * a b                                        | a b *                                                   |
+| Деление              | a / b                                   | / a b                                        | a b \                                                   |
+| Возведение в степень | a ^ b                                   | ^ a b                                        | a b ^                                                   |
+| Остаток от деления   | a mod b                                 | mod a b                                      | a b mod                                                 |
+| Унарный плюс         | +a                                      | +a                                           | a+                                                      |
+| Унарный минус        | -a                                      | -a                                           | a-                                                      |
+
+> Обратите внимание, что оператор умножения содержит обязательный знак `*`. Обработка выражения с опущенным знаком `*` является необязательной и остается на усмотрение разработчика
+
+- **Функции**:
+
+| Описание функции               | Функция |   
+| ------------------------------ | ------- |  
+| Вычисляет косинус              | cos(x)  |   
+| Вычисляет синус                | sin(x)  |  
+| Вычисляет тангенс              | tan(x)  |  
+| Вычисляет арккосинус           | acos(x) | 
+| Вычисляет арксинус             | asin(x) | 
+| Вычисляет арктангенс           | atan(x) |
+| Вычисляет квадратный корень    | sqrt(x) |
+| Вычисляет натуральный логарифм | ln(x)   | 
+| Вычисляет десятичный логарифм  | log(x)  |
+
+#### Part 2. Дополнительно. Кредитный калькулятор
+
+Предусмотреть специальный режим "кредитный калькулятор" (за образец можно взять сайты banki.ru и calcus.ru):
+ - Вход: общая сумма кредита, срок, процентная ставка, тип (аннуитетный, дифференцированный)
+ - Выход: ежемесячный платеж, переплата по кредиту, общая выплата
+
+#### Part 3. Дополнительно. Депозитный калькулятор
+
+Предусмотреть специальный режим "калькулятор доходности вкладов" (за образец можно взять сайты banki.ru и calcus.ru):
+ - Вход: сумма вклада, срок размещения, процентная ставка, налоговая ставка, периодичность выплат, капитализация процентов, список пополнений, список частичных снятий
+ - Выход: начисленные проценты, сумма налога, сумма на вкладе к концу срока
+
+<br>
 
 ## Feedback
 
-If you have any questions regarding the features or other aspects of the project that interest you, please contact us by email:
+Если имеются вопросы касаемо особенностей или других интересующих вас моментов проекта, то обращайтесь на почту:
 
 gabilov1997@gmail.com <br>
 
-Thank you for your attention. We hope that you will like this project.
+Спасибо за внимание. Надеюсь, что данный проект вам придет по душе.

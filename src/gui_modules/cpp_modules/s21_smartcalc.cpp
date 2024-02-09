@@ -150,7 +150,8 @@ int s21_smartcalc::additional_validation(QString text)
     QString begin = "(-0123456789sctalPxe";
     QString nums = "0123456789";
     QString lexems = "+-*/^";
-    if(text.length() && begin.count(text[0]) && text[text.length() - 1] != '.') {
+    QString end = "0123456789)Pex ";
+    if(text.length() && begin.count(text[0]) && end.count(text[text.length() - 1])) {
         for(int i = 0; i < text.length(); i++) {
             if(text[i] == ')') {
                 count_close++;

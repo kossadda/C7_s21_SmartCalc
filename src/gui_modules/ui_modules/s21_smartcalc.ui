@@ -136,7 +136,7 @@ margin-right: 4px;</string>
         <property name="minimumSize">
          <size>
           <width>280</width>
-          <height>60</height>
+          <height>50</height>
          </size>
         </property>
         <property name="maximumSize">

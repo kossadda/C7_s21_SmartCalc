@@ -195,7 +195,7 @@ clean:
 	rm -f main
 	rm -f val.txt
 
-rebuild: clean all
+rebuild: uninstall all
 #==============================================================================#
 
 
