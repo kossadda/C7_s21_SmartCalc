@@ -270,13 +270,32 @@ background-color: rgb(170, 44, 33);
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">QComboBox {
-    border-radius: 10px;
-    padding-right: 20px;
-    padding: 0 8px;
+        <string notr="true">QComboBox
+{
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    selection-background-color: rgb(226, 226, 226);
+    selection-color: black; /* Изменено для контраста с белым */
+    color: black; /* Изменено для видимости на светлом фоне */
     background-color: rgb(226, 226, 226);
-    color: black;
-    border: 1px solid black;
+    border-style: solid;
+    border: 1px solid #1e1e1e;
+    border-radius: 10px;
+    padding: 1px 0px 1px 20px;
+}
+
+QComboBox:!on
+{
+    color: black; /* Изменено для видимости */
+    background-color: rgb(226, 226, 226);
+}
+
+QComboBox QAbstractItemView
+{
+    border: 2px solid darkgray;
+    color: black; /* Изменено для видимости */
+    selection-background-color: rgb(226, 226, 226);
+	background-color: white;
 }
 
 QComboBox::drop-down {

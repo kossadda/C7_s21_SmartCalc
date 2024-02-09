@@ -265,7 +265,8 @@ qmake_build: $(LIBRARY)
 	rm -rf $(BUILD)
 	mkdir $(BUILD)
 	mv $(GUI_MODULES_DIR)/$(PROJECT_NAME) $(BUILD)
-	$(MAKE) clean
+# 	$(MAKE) clean
+	$(MAKE) run
 
 dependencies:
 	sudo apt install cppcheck

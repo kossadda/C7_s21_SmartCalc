@@ -162,13 +162,32 @@ background-color: rgb(175, 97, 33);
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">QComboBox {
-    border-radius: 10px;
-    padding-right: 20px;
-    padding: 0 8px;
+         <string notr="true">QComboBox
+{
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    selection-background-color: rgb(226, 226, 226);
+    selection-color: black; /* Изменено для контраста с белым */
+    color: black; /* Изменено для видимости на светлом фоне */
     background-color: rgb(226, 226, 226);
-    color: black;
-    border: 1px solid black;
+    border-style: solid;
+    border: 1px solid #1e1e1e;
+    border-radius: 10px;
+    padding: 1px 0px 1px 20px;
+}
+
+QComboBox:!on
+{
+    color: black; /* Изменено для видимости */
+    background-color: rgb(226, 226, 226);
+}
+
+QComboBox QAbstractItemView
+{
+    border: 2px solid darkgray;
+    color: black; /* Изменено для видимости */
+    selection-background-color: rgb(226, 226, 226);
+	background-color: white;
 }
 
 QComboBox::drop-down {
@@ -251,13 +270,32 @@ QComboBox::drop-down {
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">QComboBox {
-    border-radius: 10px;
-    padding-right: 20px;
-    padding: 0 8px;
+         <string notr="true">QComboBox
+{
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    selection-background-color: rgb(226, 226, 226);
+    selection-color: black; /* Изменено для контраста с белым */
+    color: black; /* Изменено для видимости на светлом фоне */
     background-color: rgb(226, 226, 226);
-    color: black;
-    border: 1px solid black;
+    border-style: solid;
+    border: 1px solid #1e1e1e;
+    border-radius: 10px;
+    padding: 1px 0px 1px 20px;
+}
+
+QComboBox:!on
+{
+    color: black; /* Изменено для видимости */
+    background-color: rgb(226, 226, 226);
+}
+
+QComboBox QAbstractItemView
+{
+    border: 2px solid darkgray;
+    color: black; /* Изменено для видимости */
+    selection-background-color: rgb(226, 226, 226);
+	background-color: white;
 }
 
 QComboBox::drop-down {
@@ -365,48 +403,6 @@ border: 1px solid black;</string>
         </property>
        </widget>
       </item>
-      <item row="6" column="1">
-       <widget class="QLineEdit" name="percent_edit">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>170</width>
-          <height>35</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>50</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>10</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLineEdit {
-    border-radius: 10px;
-    padding: 0 8px;
-	background-color: rgb(226, 226, 226);
-	color:black;
-	border: 1px solid black;
-}</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="placeholderText">
-         <string/>
-        </property>
-       </widget>
-      </item>
       <item row="9" column="1">
        <widget class="QComboBox" name="payment_period">
         <property name="sizePolicy">
@@ -428,13 +424,32 @@ border: 1px solid black;</string>
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">QComboBox {
-    border-radius: 10px;
-    padding-right: 20px;
-    padding: 0 8px;
+         <string notr="true">QComboBox
+{
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    selection-background-color: rgb(226, 226, 226);
+    selection-color: black; /* Изменено для контраста с белым */
+    color: black; /* Изменено для видимости на светлом фоне */
     background-color: rgb(226, 226, 226);
-    color: black;
-    border: 1px solid black;
+    border-style: solid;
+    border: 1px solid #1e1e1e;
+    border-radius: 10px;
+    padding: 1px 0px 1px 20px;
+}
+
+QComboBox:!on
+{
+    color: black; /* Изменено для видимости */
+    background-color: rgb(226, 226, 226);
+}
+
+QComboBox QAbstractItemView
+{
+    border: 2px solid darkgray;
+    color: black; /* Изменено для видимости */
+    selection-background-color: rgb(226, 226, 226);
+	background-color: white;
 }
 
 QComboBox::drop-down {
@@ -580,12 +595,12 @@ QDateEdit QCalendarWidget QToolButton QMenu {
         </property>
         <property name="maximumDateTime">
          <datetime>
-          <hour>3</hour>
+          <hour>17</hour>
           <minute>59</minute>
           <second>59</second>
           <year>9999</year>
           <month>12</month>
-          <day>4</day>
+          <day>3</day>
          </datetime>
         </property>
         <property name="calendarPopup">
@@ -1019,7 +1034,7 @@ QComboBox::drop-down {
           <string>Deposit</string>
          </property>
          <property name="icon">
-          <iconset resource="../s21_pics/resource.qrc">
+          <iconset resource="../../resources/resource.qrc">
            <normaloff>:/deposit.png</normaloff>:/deposit.png</iconset>
          </property>
         </item>
@@ -1028,7 +1043,7 @@ QComboBox::drop-down {
           <string>Engineer</string>
          </property>
          <property name="icon">
-          <iconset resource="../s21_pics/resource.qrc">
+          <iconset resource="../../resources/resource.qrc">
            <normaloff>:/calculator.png</normaloff>:/calculator.png</iconset>
          </property>
         </item>
@@ -1037,10 +1052,52 @@ QComboBox::drop-down {
           <string>Credit</string>
          </property>
          <property name="icon">
-          <iconset resource="../s21_pics/resource.qrc">
+          <iconset resource="../../resources/resource.qrc">
            <normaloff>:/credit.png</normaloff>:/credit.png</iconset>
          </property>
         </item>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QLineEdit" name="percent_edit">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>170</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    border-radius: 10px;
+    padding: 0 8px;
+	background-color: rgb(226, 226, 226);
+	color:black;
+	border: 1px solid black;
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string/>
+        </property>
        </widget>
       </item>
      </layout>
@@ -1049,7 +1106,7 @@ QComboBox::drop-down {
   </widget>
  </widget>
  <resources>
-  <include location="../s21_pics/resource.qrc"/>
+  <include location="../../resources/resource.qrc"/>
  </resources>
  <connections/>
 </ui>
