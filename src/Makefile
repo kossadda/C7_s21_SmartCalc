@@ -275,4 +275,13 @@ dependencies:
 	sudo apt install doxygen
 	sudo apt-get install graphviz
 	sudo apt-get install texlive
+
+docker_build:
+	docker build -t $(PROJECT_NAME) .
+	docker run -d --name $(PROJECT_NAME) $(PROJECT_NAME)
+	docker cp $(PROJECT_NAME):/$(PROJECT_NAME)/bin ./..
+	docker stop $(PROJECT_NAME)
+	docker rm -f $(PROJECT_NAME)
+	docker rmi -f $(PROJECT_NAME):latest
+
 #==============================================================================#
