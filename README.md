@@ -105,24 +105,24 @@ Composition of the team that implemented the project: <br>
 
 The following main targets for working with the project have been added to the Makefile:
 
-| #  | Цель               | Описание цели                                                                         |
-|----| ------------------ | ------------------------------------------------------------------------------------- |
-| 1  | `all`              | Производит сборку проекта и формирует документацию к проекту.                         |
-| 2  | `install`          | Производит сборку проекта.                                                            |
-| 3  | `uninstall`        | Производит деинсталяцию проекта.                                                      |
-| 4  | `smartcalc`        | Осуществляет сборку модулей в статическую библиотеку.                                 |
-| 5  | `test`             | Производит тестирование модулей.                                                      |
-| 6  | `gcov_report`      | Производит тестирование модулей и формирует отчет о покрытии в html формате.          |
-| 7  | `dvi`              | Формирует документацию в формате html и manual к функционалу.                         |
-| 8  | `dist`             | Сжимает проект в tar архив.                                                           |
-| 9  | `clean`            | Производит очистку репозитория от сгенерированных файлов.                             |
-| 10 | `rebuild`          | Осуществляет пересборку проекта.                                                      |
-| 11 | `clang_check`      | Тестирование модулей на соответствие Google style.                                    |
-| 12 | `cppcheck`         | Тестирование модулей через анализатор кода cppcheck.                                  |
-| 13 | `valgrind`         | Тестирование модулей на работу с памятью через Valgrind.                              |
-| 14 | `qmake_build`      | Осуществляет сборку проекта через qmake.                                              |
-| 15 | `docker_build`     | Осуществляет сборку проекта через docker.                                             |
-| 16 | `dependencies`     | Производит установку необходимых зависимостей для cборки и тестирования проекта.      |
+| #  | Target             | Target description                                                        |
+|----| ------------------ | ------------------------------------------------------------------------- |
+| 1  | `all`              | Builds the project and generates project documentation.                   |
+| 2  | `install`          | Builds the project.                                                       |
+| 3  | `uninstall`        | Uninstalls the project.                                                   |
+| 4  | `smartcalc`        | Builds modules into a static library.                                     |
+| 5  | `test`             | Performs module testing.                                                  |
+| 6  | `gcov_report`      | Tests modules and generates a coverage report in html format.             |
+| 7  | `dvi`              | Generates documentation in html and manual format for the functionality.  |
+| 8  | `dist`             | Compresses the project into a tar archive.                                |
+| 9  | `clean`            | Cleans the repository of generated files.                                 |
+| 10 | `rebuild`          | Rebuilds the project.                                                     |
+| 11 | `clang_check`      | Testing modules for compliance with Google style.                         |
+| 12 | `cppcheck`         | Testing modules using the cppcheck code analyzer.                         |
+| 13 | `valgrind`         | Testing modules for working with memory using Valgrind.                   |
+| 14 | `qmake_build`      | Builds the project using qmake.                                           |
+| 15 | `docker_build`     | Builds the project using Docker.                                          |
+| 16 | `dependencies`     | Installs the necessary dependencies for building and testing the project. |
 
 <br>
 
