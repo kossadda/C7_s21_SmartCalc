@@ -174,7 +174,7 @@ Has three operating modes:
 6. The calculator fully supports writing functions/numbers/brackets together, simulating multiplication between them. For example, `5log(2)` is an acceptable spelling;
 7. Writing scientific number notation and using Euler's number are supported. That is, `5e-2` will be counted as `0.05`, and `5e*2` will be `5*(Euler number)*2`;
 8. In variable input mode, a value entry field `x` appears, which is also interactively validated;
-9. In variable input mode, the expression will not be calculated if the expression does not contain the variable `x` or an incorrect value `x` is entered;
+9. In variable input mode, the expression will not be calculated if an incorrect value `x` is entered;
 10. In plotting mode, the minimum acceptable range between the minimum and maximum `x` or `y` is 4;
 11. The input of the domain of definition and acceptable values of the function is interactively validated. The definition areas are limited to a range of `{1000000:-1000000}`;
 12. You can enter the required graph step to build more accurate graphs. The range of the permissible step varies in the range `{0.001:100}` (it should also be noted that with a large range of permissible values, that is, the range `x` - the smaller the step, the longer the construction takes);

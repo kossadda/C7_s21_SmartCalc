@@ -18,21 +18,14 @@
 ///@brief Check pointer for NULL.
 #define CHECK_NULL(ptr) (ptr == NULL)
 
+#define ALL_DAYS                                        \
+  { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 } \
+  ///< Month days in normal year.
+
 ///@brief Contains constants for calendar functions.
 enum calendar_constants {
-  JAN = 31,       ///< Number of days in January.
   FEB = 28,       ///< Number of days in February.
-  MAR = 31,       ///< Number of days in March.
-  APR = 30,       ///< Number of days in April.
   LEAP_FEB = 29,  ///< Number of days in leap Feabruary.
-  MAY = 31,       ///< Number of days in May.
-  JUN = 30,       ///< Number of days in June.
-  JUL = 31,       ///< Number of days in Jule.
-  AUG = 31,       ///< Number of days in August.
-  SEP = 30,       ///< Number of days in September.
-  OCT = 31,       ///< Number of days in October.
-  NOV = 30,       ///< Number of days in November.
-  DEC = 31,       ///< Number of days in December.
 
   QUADRICENTENARY = 400,  ///< Quadricentenary interval.
   CENTURY = 100,          ///< Century interval.

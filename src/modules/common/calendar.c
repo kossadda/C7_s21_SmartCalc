@@ -92,11 +92,11 @@ int sub_date(time_data first, time_data second) {
  * @return int - number of days until the end of the current month.
  */
 int sub_till_end_month(time_data date) {
-  const int days[] = {0,   JAN, (date.leap) ? LEAP_FEB : FEB,
-                      MAR, APR, MAY,
-                      JUN, JUL, AUG,
-                      SEP, OCT, NOV,
-                      DEC};
+  int days[] = ALL_DAYS;
+
+  if (date.leap) {
+    days[2] = LEAP_FEB;
+  }
 
   time_data last_day_month = date;
   last_day_month.day = days[date.month];
@@ -219,13 +219,12 @@ time_data determine_last_day(time_data date, int term_type, int term) {
  * @return int - number of days in a year.
  */
 int days_in_this_year(time_data date) {
-  const int days[] = {
-      0,   JAN, (check_leap(date.year) == YEAR_IS_LEAP) ? LEAP_FEB : FEB,
-      MAR, APR, MAY,
-      JUN, JUL, AUG,
-      SEP, OCT, NOV,
-      DEC};
   int days_in_year = date.day;
+  int days[] = ALL_DAYS;
+
+  if (check_leap(date.year)) {
+    days[2] = LEAP_FEB;
+  }
 
   for (int i = 1; i < date.month; i++) {
     days_in_year += days[i];
@@ -339,12 +338,11 @@ static void move_to_end_term(time_data *begin, time_data *end) {
  * @param[in] beginning_date the original date received as input from the user.
  */
 static void add_months(time_data *date, int term, int beginning_date) {
-  int days[] = {
-      0,   JAN, (check_leap(date->year) == YEAR_IS_LEAP) ? LEAP_FEB : FEB,
-      MAR, APR, MAY,
-      JUN, JUL, AUG,
-      SEP, OCT, NOV,
-      DEC};
+  int days[] = ALL_DAYS;
+
+  if (check_leap(date->year)) {
+    days[2] = LEAP_FEB;
+  }
 
   if (term == CREDIT_MONTH) {
     date->month += 1;
@@ -389,12 +387,11 @@ static void add_months(time_data *date, int term, int beginning_date) {
  * @param[in] term number of added days.
  */
 static void add_days(time_data *date, int term) {
-  int days[] = {
-      0,   JAN, (check_leap(date->year) == YEAR_IS_LEAP) ? LEAP_FEB : FEB,
-      MAR, APR, MAY,
-      JUN, JUL, AUG,
-      SEP, OCT, NOV,
-      DEC};
+  int days[] = ALL_DAYS;
+
+  if (check_leap(date->year)) {
+    days[2] = LEAP_FEB;
+  }
 
   for (int i = 0; i < term; i++) {
     date->day++;

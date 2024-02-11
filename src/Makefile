@@ -79,6 +79,8 @@ MODULES_DIRS = $(shell find $(MODULES_DIR) -type d)
 MODULES_C = $(shell find $(MODULES_DIR) -type f -name "*.c")
 MODULES_H = $(shell find $(MODULES_DIR) -type f -name "*.h")
 MODULES_O = $(MODULES_C:%.c=%.o)
+GUI_MODULES = $(shell find $(GUI_MODULES_DIR) -type f -name "*.cpp")
+GUI_HEADERS = $(shell find $(GUI_MODULES_DIR) -type f -name "*.h")
 #==============================================================================#
 
 
@@ -220,10 +222,10 @@ $(TEST_OBJ_DIR)/%.o : %.c $(TEST_H)
 
 #=============================== CHECKS TARGETS ===============================#
 clang_check:
-	clang-format -style=Google -n $(ALL_FILES)
+	clang-format -style=Google -n $(ALL_FILES) $(GUI_MODULES) $(GUI_HEADERS)
 
 clang_fix:
-	clang-format -style=Google -i $(ALL_FILES)
+	clang-format -style=Google -i $(ALL_FILES) $(GUI_MODULES) $(GUI_HEADERS)
 
 cppcheck:
 	$@ $(CPPCHECK) $(ALL_FILES)
@@ -281,5 +283,4 @@ dependencies:
 	apt-get install texlive
 	apt install cmake
 	apt install qtbase5-dev
-
 #==============================================================================#

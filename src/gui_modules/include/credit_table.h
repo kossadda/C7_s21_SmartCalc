@@ -7,18 +7,17 @@ namespace Ui {
 class credit_table;
 }
 
-class credit_table : public QWidget
-{
-    Q_OBJECT
+class credit_table : public QWidget {
+  Q_OBJECT
 
-public:
-    explicit credit_table(QWidget *parent = nullptr);
-    ~credit_table();
+ public:
+  explicit credit_table(QWidget *parent = nullptr);
+  ~credit_table();
 
-    Ui::credit_table* getUi() const;
+  Ui::credit_table *getUi() const;
 
-private:
-    Ui::credit_table *ui;
+ private:
+  Ui::credit_table *ui;
 };
 
-#endif // CREDIT_TABLE_H
+#endif  // CREDIT_TABLE_H
