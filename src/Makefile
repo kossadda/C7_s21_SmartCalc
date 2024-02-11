@@ -265,16 +265,6 @@ qmake_build: $(LIBRARY)
 	rm -rf $(BUILD)
 	mkdir $(BUILD)
 	mv $(GUI_MODULES_DIR)/$(PROJECT_NAME) $(BUILD)
-# 	$(MAKE) clean
-	$(MAKE) run
-
-dependencies:
-	sudo apt install cppcheck
-	sudo apt install clang-format
-	sudo apt-get install check
-	sudo apt install doxygen
-	sudo apt-get install graphviz
-	sudo apt-get install texlive
 
 docker_build:
 	docker build -t $(PROJECT_NAME) .
@@ -283,5 +273,15 @@ docker_build:
 	docker stop $(PROJECT_NAME)
 	docker rm -f $(PROJECT_NAME)
 	docker rmi -f $(PROJECT_NAME):latest
+
+dependencies:
+	apt install cppcheck
+	apt install clang-format
+	apt-get install check
+	apt install doxygen
+	apt-get install graphviz
+	apt-get install texlive
+	apt install cmake
+	apt install qtbase5-dev
 
 #==============================================================================#

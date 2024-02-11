@@ -10,6 +10,4 @@ WORKDIR /s21_smartcalc/src
 
 COPY . /s21_smartcalc/src
 
-RUN make install
-
-CMD ["/s21_smartcalc/bin/s21_smartcalc"]
+RUN make qmake_build

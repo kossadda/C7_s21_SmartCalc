@@ -161,7 +161,7 @@ int s21_smartcalc::additional_validation(QString text)
                         temp_count_open++;
                     }
                 }
-                if(temp_count_open != count_close || empty_brackets) {
+                if(temp_count_open != count_close) {
                     valid = WRONG_EXPR;
                 } else {
                     valid = CORRECT_EXPR;
@@ -176,6 +176,10 @@ int s21_smartcalc::additional_validation(QString text)
             } else if(i < text.length() - 1 && lexems.count(text[i]) && lexems.count(text[i + 1])){
                 empty_brackets = 1;
             }
+        }
+
+        if(empty_brackets) {
+            valid = WRONG_EXPR;
         }
 
         int number_now = 0;
