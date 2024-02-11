@@ -1,13 +1,13 @@
 ################################################################################
-#          ____    _                                    _            _         #
-#    ___  |___ \  / |          ___ _ __ ___   __ _ _ __| |_ ___ __ _| | ___    #
-#   / __|   __) | | |         / __| '_ ` _ \ / _` | '__| __/ __/ _` | |/ __|   #
-#   \__ \  / __/  | |         \__ \ | | | | | (_| | |  | || (_| (_| | | (__    #
-#   |___/ |_____| |_|  _____  |___/_| |_| |_|\__,_|_|   \__\___\__,_|_|\___|   #
-#                     |_____|                                                  #
+#   _____                      _    _____      _                  __     ___   #
+#  / ____|                    | |  / ____|    | |                /_ |   / _ \  #
+# | (___  _ __ ___   __ _ _ __| |_| |     __ _| | ___     __   __ | |  | | | | #
+#  \___ \| '_ ` _ \ / _` | '__| __| |    / _` | |/ __|    \ \ / / | |  | | | | #
+#  ____) | | | | | | (_| | |  | |_| |___| (_| | | (__      \ V /  | | _| |_| | #
+# |_____/|_| |_| |_|\__,_|_|   \__|\_____\__,_|_|\___| ____ \_/   |_|(_)\___/  #
+#                                                     |____|                   #
+#                                                                              #
 ################################################################################
-
-
 
 
 ################################################################################
@@ -22,7 +22,7 @@
 ################################################################################
 
 #================================== COMPILER ==================================#
-PROJECT_NAME = s21_smartcalc
+PROJECT_NAME = smartcalc
 CC = gcc
 #==============================================================================#
 
@@ -84,10 +84,10 @@ MODULES_O = $(MODULES_C:%.c=%.o)
 
 #==================== LIST OF FILE AND DIRS IN TEST MODULES ===================#
 TEST_DIRS = $(shell find $(TEST_DIR) -type d)
-TEST_C = $(notdir $(shell find $(TEST_DIR) -type f -name "*.c"))
+TEST_C = $(shell find $(TEST_DIR) -type f -name "*.c")
 TEST_H = $(shell find $(TEST_DIR) -type f -name "*.h")
-TEST_O = $(addprefix $(TEST_OBJ_DIR)/, $(notdir $(TEST_C:%.c=%.o)))
-EXCLUDE = ./modules/s21_calculator/s21_unar_operation.c
+TEST_O = $(TEST_C:%.c=%.o)
+EXCLUDE = ./modules/calculator/unar_operation.c
 #==============================================================================#
 
 #================= LIST OF FILES TO CLANG-FORMAT AND CPPCHECK =================#
@@ -101,8 +101,6 @@ ALL_FILES = $(C_FILES) $(H_FILES)
 vpath %.c $(MODULES_DIRS) : $(TEST_DIRS)
 vpath %.o $(OBJ_DIR)
 #==============================================================================#
-
-
 
 
 ################################################################################
@@ -153,11 +151,11 @@ $(LIBRARY): $(OBJ_DIR) $(MODULES_O) $(MODULES_H) $(MAIN_H)
 	ranlib $@
 
 $(TARGET): $(LIBRARY) $(TEST_OBJ_DIR) $(TEST_O)
-	$(CC) $(TEST_O) $(LIBRARY) $(LDFLAGS) -o $@
+	$(CC) $(addprefix $(OBJ_DIR)/, $(notdir $(TEST_O))) $(LIBRARY) $(LDFLAGS) -o $@
 	./$@
 
 $(GCOV): $(REPORT_DIR) $(TEST_OBJ_DIR) $(TEST_O)
-	$(CC) $(TEST_O) $(filter-out $(EXCLUDE),$(MODULES_C)) $(LDFLAGS)	$(GCOV_FLAGS) -o $(TARGET)
+	$(CC) $(addprefix $(OBJ_DIR)/, $(notdir $(TEST_O))) $(filter-out $(EXCLUDE),$(MODULES_C)) $(LDFLAGS)	$(GCOV_FLAGS) -o $(TARGET)
 	./$(TARGET)
 	gcovr -r . --html --html-details -o $(REPORT_DIR)/coverage.html
 	xdg-open $(REPORT_DIR)/coverage.html
@@ -167,14 +165,14 @@ dvi:
 	doxygen Doxyfile
 	xdg-open $(DVI_DIR)/html/index.html
 
-dist:
+dist: uninstall
 	@rm -rf $(DIST_DIR)
 	@echo "Creating a distribution..."
 	@mkdir -p $(DIST_DIR)/$(PROJECT_NAME)
-	@cp -r ./ $(DIST_DIR)/$(PROJECT_NAME)
+	@cp -r ./ $(DIST_DIR)/$(PROJECT_NAME) && rm -rf $(DIST_DIR)/$(PROJECT_NAME)/tests
 	@echo "Distribution packaging..."
 	@tar -czf $(DIST_DIR)/$(PROJECT_NAME).tar.gz -C $(DIST_DIR) $(PROJECT_NAME)
-	@echo "Dist created: $(DIST_DIR)/$(PROJECT_NAME).tar.gz"
+	@echo "\033[33mDistribution created: $(DIST_DIR)/$(PROJECT_NAME).tar.gz\033[0m"
 	@rm -rf $(DIST_DIR)/$(PROJECT_NAME)
 
 clean:

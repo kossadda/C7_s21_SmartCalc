@@ -8,12 +8,12 @@
  * @copyright Copyright (c) 2024
  *
  */
-#ifndef S21_DEBUG_H_
-#define S21_DEBUG_H_
+#ifndef DEBUG_H_
+#define DEBUG_H_
 
 #include <check.h>
 
-#include "./../../modules/s21_smartcalc.h"
+#include "./../../modules/smartcalc.h"
 
 void free_credit(int row, payments *pay, early_pay *redemption);
 void free_deposit(int row, investment *pay, operations *oper);
@@ -29,4 +29,4 @@ void init_operations(operations *oper);
 void input_operation(operations *oper, int day, int month, int year,
                      long double sum, int type, long double min_balance);
 
-#endif  // S21_DEBUG_H_
+#endif  // DEBUG_H_

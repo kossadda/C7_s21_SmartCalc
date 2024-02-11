@@ -6,8 +6,8 @@ RUN apt-get update && apt-get install -y \
     qtbase5-dev \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /s21_smartcalc/src
+WORKDIR /smartcalc/src
 
-COPY . /s21_smartcalc/src
+COPY . /smartcalc/src
 
 RUN make qmake_build

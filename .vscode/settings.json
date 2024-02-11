@@ -1,0 +1,7 @@
+{
+  "files.associations": {
+    "tests.h": "c",
+    "test_credit.h": "c",
+    "debug.h": "c"
+  }
+}
