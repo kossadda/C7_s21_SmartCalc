@@ -12,6 +12,8 @@
 #ifndef _TEST_SMARTCALC_H_
 #define _TEST_SMARTCALC_H_
 
+#define TEST_PRECISION 1.0e-5
+
 #include "./../../debug/debug.h"
 
 Suite *arifmetic_1(void);

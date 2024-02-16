@@ -1470,6 +1470,16 @@ START_TEST(pointers_5) {
   free_credit(0, NULL, &redemption);
 }
 
+START_TEST(pointers_6) {
+  credit_init data;
+  payments pay;
+
+  input_credit(&data, 0.15, 61, ANNUITY, 84.517, 18, 6, 2154);
+  calculate_credit(&data, &pay, NULL);
+
+  free_credit(data.current + 1, &pay, NULL);
+}
+
 //  ============================================================================
 
 START_TEST(diff_redemption_term_1) {
@@ -2716,7 +2726,7 @@ START_TEST(annuity_redepmtion_combinated_10) {
 //  ============================================================================
 
 Suite *annuity_1(void) {
-  Suite *credit = suite_create("credit (annuity first cases)");
+  Suite *credit = suite_create("\ncredit (annuity first cases)\n");
 
   TCase *tc_test_annuity_1 = tcase_create("test_annuity");
   tcase_add_test(tc_test_annuity_1, annuity_test_1);
@@ -2735,7 +2745,7 @@ Suite *annuity_1(void) {
 }
 
 Suite *annuity_2(void) {
-  Suite *credit = suite_create("credit (annuity second cases)");
+  Suite *credit = suite_create("\ncredit (annuity second cases)\n");
 
   TCase *tc_test_annuity_2 = tcase_create("test_annuity");
   tcase_add_test(tc_test_annuity_2, annuity_test_11);
@@ -2754,7 +2764,7 @@ Suite *annuity_2(void) {
 }
 
 Suite *annuity_3(void) {
-  Suite *credit = suite_create("credit (annuity third cases)");
+  Suite *credit = suite_create("\ncredit (annuity third cases)\n");
 
   TCase *tc_test_annuity_3 = tcase_create("test_annuity");
   tcase_add_test(tc_test_annuity_3, annuity_test_21);
@@ -2773,7 +2783,7 @@ Suite *annuity_3(void) {
 }
 
 Suite *annuity_4(void) {
-  Suite *credit = suite_create("credit (annuity fourth cases)");
+  Suite *credit = suite_create("\ncredit (annuity fourth cases)\n");
 
   TCase *tc_test_annuity_4 = tcase_create("test_annuity");
   tcase_add_test(tc_test_annuity_4, annuity_test_31);
@@ -2792,7 +2802,7 @@ Suite *annuity_4(void) {
 }
 
 Suite *annuity_5(void) {
-  Suite *credit = suite_create("credit (annuity fifth cases)");
+  Suite *credit = suite_create("\ncredit (annuity fifth cases)\n");
 
   TCase *tc_test_annuity_5 = tcase_create("test_annuity");
   tcase_add_test(tc_test_annuity_5, annuity_test_41);
@@ -2811,7 +2821,7 @@ Suite *annuity_5(void) {
 }
 
 Suite *differentiated_1(void) {
-  Suite *credit = suite_create("credit (differentiated first cases)");
+  Suite *credit = suite_create("\ncredit (differentiated first cases)\n");
 
   TCase *tc_test_differentiated_1 = tcase_create("test_differentiated");
   tcase_add_test(tc_test_differentiated_1, differentiated_test_1);
@@ -2830,7 +2840,7 @@ Suite *differentiated_1(void) {
 }
 
 Suite *differentiated_2(void) {
-  Suite *credit = suite_create("credit (differentiated second cases)");
+  Suite *credit = suite_create("\ncredit (differentiated second cases)\n");
 
   TCase *tc_test_differentiated_2 = tcase_create("test_differentiated");
   tcase_add_test(tc_test_differentiated_2, differentiated_test_11);
@@ -2849,7 +2859,7 @@ Suite *differentiated_2(void) {
 }
 
 Suite *differentiated_3(void) {
-  Suite *credit = suite_create("credit (differentiated third cases)");
+  Suite *credit = suite_create("\ncredit (differentiated third cases)\n");
 
   TCase *tc_test_differentiated_3 = tcase_create("test_differentiated");
   tcase_add_test(tc_test_differentiated_3, differentiated_test_21);
@@ -2868,7 +2878,7 @@ Suite *differentiated_3(void) {
 }
 
 Suite *differentiated_4(void) {
-  Suite *credit = suite_create("credit (differentiated fourth cases)");
+  Suite *credit = suite_create("\ncredit (differentiated fourth cases)\n");
 
   TCase *tc_test_differentiated_4 = tcase_create("test_differentiated");
   tcase_add_test(tc_test_differentiated_4, differentiated_test_31);
@@ -2887,7 +2897,7 @@ Suite *differentiated_4(void) {
 }
 
 Suite *differentiated_5(void) {
-  Suite *credit = suite_create("credit (differentiated fifth cases)");
+  Suite *credit = suite_create("\ncredit (differentiated fifth cases)\n");
 
   TCase *tc_test_differentiated_5 = tcase_create("test_differentiated");
   tcase_add_test(tc_test_differentiated_5, differentiated_test_41);
@@ -2906,7 +2916,7 @@ Suite *differentiated_5(void) {
 }
 
 Suite *pointer_test(void) {
-  Suite *credit = suite_create("credit (pointers tests)");
+  Suite *credit = suite_create("\ncredit (pointers tests)\n");
 
   TCase *tc_test_pointers_1 = tcase_create("test_pointers");
   tcase_add_test(tc_test_pointers_1, pointers_1);
@@ -2914,13 +2924,14 @@ Suite *pointer_test(void) {
   tcase_add_test(tc_test_pointers_1, pointers_3);
   tcase_add_test(tc_test_pointers_1, pointers_4);
   tcase_add_test(tc_test_pointers_1, pointers_5);
+  tcase_add_test(tc_test_pointers_1, pointers_6);
   suite_add_tcase(credit, tc_test_pointers_1);
 
   return credit;
 }
 
 Suite *diff_redemption_term(void) {
-  Suite *credit = suite_create("credit (differentiated reduce term)");
+  Suite *credit = suite_create("\ncredit (differentiated reduce term)\n");
 
   TCase *tc_test_diff_term_1 = tcase_create("test_diff_term");
   tcase_add_test(tc_test_diff_term_1, diff_redemption_term_1);
@@ -2940,7 +2951,7 @@ Suite *diff_redemption_term(void) {
 }
 
 Suite *diff_redemption_pay(void) {
-  Suite *credit = suite_create("credit (differentiated reduce pay)");
+  Suite *credit = suite_create("\ncredit (differentiated reduce pay)\n");
 
   TCase *tc_test_diff_pay_1 = tcase_create("test_diff_pay");
   tcase_add_test(tc_test_diff_pay_1, diff_redemption_pay_1);
@@ -2960,7 +2971,7 @@ Suite *diff_redemption_pay(void) {
 }
 
 Suite *annuity_redepmtion_term(void) {
-  Suite *credit = suite_create("credit (annuity reduce term)");
+  Suite *credit = suite_create("\ncredit (annuity reduce term)\n");
 
   TCase *tc_test_annuity_term_1 = tcase_create("test_annuity_term");
   tcase_add_test(tc_test_annuity_term_1, annuity_redemption_term_1);
@@ -2980,7 +2991,7 @@ Suite *annuity_redepmtion_term(void) {
 }
 
 Suite *annuity_redepmtion_pay(void) {
-  Suite *credit = suite_create("credit (annuity reduce pay)");
+  Suite *credit = suite_create("\ncredit (annuity reduce pay)\n");
 
   TCase *tc_test_annuity_pay_1 = tcase_create("test_annuity_term");
   tcase_add_test(tc_test_annuity_pay_1, annuity_redemption_pay_1);
@@ -3000,7 +3011,7 @@ Suite *annuity_redepmtion_pay(void) {
 
 Suite *diff_redepmtion_combinated(void) {
   Suite *credit =
-      suite_create("credit (differentiated combinated reduce pay/term)");
+      suite_create("\ncredit (differentiated combinated reduce pay/term)\n");
 
   TCase *tc_test_diff_redepmtion_combinated_1 =
       tcase_create("test_diff_redepmtion_combinated");
@@ -3030,7 +3041,8 @@ Suite *diff_redepmtion_combinated(void) {
 }
 
 Suite *annuity_redepmtion_combinated(void) {
-  Suite *credit = suite_create("credit (annuity combinated reduce pay/term)");
+  Suite *credit =
+      suite_create("\ncredit (annuity combinated reduce pay/term)\n");
 
   TCase *tc_test_annuity_redepmtion_combinated_1 =
       tcase_create("test_annuity_redepmtion_combinated");

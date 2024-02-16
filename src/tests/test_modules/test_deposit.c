@@ -3833,7 +3833,7 @@ START_TEST(deposit_hardest_combined_with_taxes_5) {
 }
 
 Suite *deposit_by_day(void) {
-  Suite *deposit = suite_create("deposit (frequency by day)");
+  Suite *deposit = suite_create("\ndeposit (frequency by day)\n");
 
   TCase *tc_deposit_by_day = tcase_create("test_deposit");
   tcase_add_test(tc_deposit_by_day, deposit_by_day_1);
@@ -3852,7 +3852,7 @@ Suite *deposit_by_day(void) {
 }
 
 Suite *deposit_by_week(void) {
-  Suite *deposit = suite_create("deposit (frequency by week)");
+  Suite *deposit = suite_create("\ndeposit (frequency by week)\n");
 
   TCase *tc_deposit_by_week = tcase_create("test_deposit");
   tcase_add_test(tc_deposit_by_week, deposit_by_week_1);
@@ -3871,7 +3871,7 @@ Suite *deposit_by_week(void) {
 }
 
 Suite *deposit_by_month(void) {
-  Suite *deposit = suite_create("deposit (frequency by month)");
+  Suite *deposit = suite_create("\ndeposit (frequency by month)\n");
 
   TCase *tc_deposit_by_month = tcase_create("test_deposit");
   tcase_add_test(tc_deposit_by_month, deposit_by_month_1);
@@ -3890,7 +3890,7 @@ Suite *deposit_by_month(void) {
 }
 
 Suite *deposit_by_quarter(void) {
-  Suite *deposit = suite_create("deposit (frequency by quarter)");
+  Suite *deposit = suite_create("\ndeposit (frequency by quarter)\n");
 
   TCase *tc_deposit_by_quarter = tcase_create("test_deposit");
   tcase_add_test(tc_deposit_by_quarter, deposit_by_quarter_1);
@@ -3909,7 +3909,7 @@ Suite *deposit_by_quarter(void) {
 }
 
 Suite *deposit_by_halfyear(void) {
-  Suite *deposit = suite_create("deposit (frequency by halfyear)");
+  Suite *deposit = suite_create("\ndeposit (frequency by halfyear)\n");
 
   TCase *tc_deposit_by_halfyear = tcase_create("test_deposit");
   tcase_add_test(tc_deposit_by_halfyear, deposit_by_halfyear_1);
@@ -3928,7 +3928,7 @@ Suite *deposit_by_halfyear(void) {
 }
 
 Suite *deposit_by_year(void) {
-  Suite *deposit = suite_create("deposit (frequency by year)");
+  Suite *deposit = suite_create("\ndeposit (frequency by year)\n");
 
   TCase *tc_deposit_by_year = tcase_create("test_deposit");
   tcase_add_test(tc_deposit_by_year, deposit_by_year_1);
@@ -3947,7 +3947,7 @@ Suite *deposit_by_year(void) {
 }
 
 Suite *deposit_by_end_term(void) {
-  Suite *deposit = suite_create("deposit (frequency by end term)");
+  Suite *deposit = suite_create("\ndeposit (frequency by end term)\n");
 
   TCase *tc_deposit_by_end_term = tcase_create("test_deposit");
   tcase_add_test(tc_deposit_by_end_term, deposit_by_end_term_1);
@@ -3961,7 +3961,8 @@ Suite *deposit_by_end_term(void) {
 }
 
 Suite *deposit_refill_by_day(void) {
-  Suite *deposit = suite_create("deposit (with refill and frequency by day)");
+  Suite *deposit =
+      suite_create("\ndeposit (with refill and frequency by day)\n");
 
   TCase *tc_deposit_refill_by_day = tcase_create("test_deposit");
   tcase_add_test(tc_deposit_refill_by_day, deposit_refill_by_day_1);
@@ -3980,7 +3981,8 @@ Suite *deposit_refill_by_day(void) {
 }
 
 Suite *deposit_refill_by_week(void) {
-  Suite *deposit = suite_create("deposit (with refill and frequency by week)");
+  Suite *deposit =
+      suite_create("\ndeposit (with refill and frequency by week)\n");
 
   TCase *tc_deposit_refill_by_week = tcase_create("test_deposit");
   tcase_add_test(tc_deposit_refill_by_week, deposit_refill_by_week_1);
@@ -3999,7 +4001,8 @@ Suite *deposit_refill_by_week(void) {
 }
 
 Suite *deposit_refill_by_month(void) {
-  Suite *deposit = suite_create("deposit (with refill and frequency by month)");
+  Suite *deposit =
+      suite_create("\ndeposit (with refill and frequency by month)\n");
 
   TCase *tc_deposit_refill_by_month = tcase_create("test_deposit");
   tcase_add_test(tc_deposit_refill_by_month, deposit_refill_by_month_1);
@@ -4019,7 +4022,7 @@ Suite *deposit_refill_by_month(void) {
 
 Suite *deposit_refill_by_quarter(void) {
   Suite *deposit =
-      suite_create("deposit (with refill and frequency by quarter)");
+      suite_create("\ndeposit (with refill and frequency by quarter)\n");
 
   TCase *tc_deposit_refill_by_quarter = tcase_create("test_deposit");
   tcase_add_test(tc_deposit_refill_by_quarter, deposit_refill_by_quarter_1);
@@ -4039,7 +4042,7 @@ Suite *deposit_refill_by_quarter(void) {
 
 Suite *deposit_refill_by_halfyear(void) {
   Suite *deposit =
-      suite_create("deposit (with refill and frequency by halfyear)");
+      suite_create("\ndeposit (with refill and frequency by halfyear)\n");
 
   TCase *tc_deposit_refill_by_halfyear = tcase_create("test_deposit");
   tcase_add_test(tc_deposit_refill_by_halfyear, deposit_refill_by_halfyear_1);
@@ -4058,7 +4061,8 @@ Suite *deposit_refill_by_halfyear(void) {
 }
 
 Suite *deposit_refill_by_year(void) {
-  Suite *deposit = suite_create("deposit (with refill and frequency by year)");
+  Suite *deposit =
+      suite_create("\ndeposit (with refill and frequency by year)\n");
 
   TCase *tc_deposit_refill_by_year = tcase_create("test_deposit");
   tcase_add_test(tc_deposit_refill_by_year, deposit_refill_by_year_1);
@@ -4078,7 +4082,7 @@ Suite *deposit_refill_by_year(void) {
 
 Suite *deposit_refill_by_end_term(void) {
   Suite *deposit =
-      suite_create("deposit (with refill and frequency by end term)");
+      suite_create("\ndeposit (with refill and frequency by end term)\n");
 
   TCase *tc_deposit_refill_by_end_term = tcase_create("test_deposit");
   tcase_add_test(tc_deposit_refill_by_end_term, deposit_refill_by_end_term_1);
@@ -4093,7 +4097,7 @@ Suite *deposit_refill_by_end_term(void) {
 
 Suite *deposit_withdrawals_by_day(void) {
   Suite *deposit =
-      suite_create("deposit (with withdrawals and frequency by day)");
+      suite_create("\ndeposit (with withdrawals and frequency by day)\n");
 
   TCase *tc_deposit_withdrawals_by_day = tcase_create("test_deposit");
   tcase_add_test(tc_deposit_withdrawals_by_day, deposit_withdrawals_by_day_1);
@@ -4113,7 +4117,7 @@ Suite *deposit_withdrawals_by_day(void) {
 
 Suite *deposit_withdrawals_by_week(void) {
   Suite *deposit =
-      suite_create("deposit (with withdrawals and frequency by week)");
+      suite_create("\ndeposit (with withdrawals and frequency by week)\n");
 
   TCase *tc_deposit_withdrawals_by_week = tcase_create("test_deposit");
   tcase_add_test(tc_deposit_withdrawals_by_week, deposit_withdrawals_by_week_1);
@@ -4134,7 +4138,7 @@ Suite *deposit_withdrawals_by_week(void) {
 
 Suite *deposit_withdrawals_by_month(void) {
   Suite *deposit =
-      suite_create("deposit (with withdrawals and frequency by month)");
+      suite_create("\ndeposit (with withdrawals and frequency by month)\n");
 
   TCase *tc_deposit_withdrawals_by_month = tcase_create("test_deposit");
   tcase_add_test(tc_deposit_withdrawals_by_month,
@@ -4164,7 +4168,7 @@ Suite *deposit_withdrawals_by_month(void) {
 
 Suite *deposit_withdrawals_by_quarter(void) {
   Suite *deposit =
-      suite_create("deposit (with withdrawals and frequency by quarter)");
+      suite_create("\ndeposit (with withdrawals and frequency by quarter)\n");
 
   TCase *tc_deposit_withdrawals_by_quarter = tcase_create("test_deposit");
   tcase_add_test(tc_deposit_withdrawals_by_quarter,
@@ -4194,7 +4198,7 @@ Suite *deposit_withdrawals_by_quarter(void) {
 
 Suite *deposit_withdrawals_by_halfyear(void) {
   Suite *deposit =
-      suite_create("deposit (with withdrawals and frequency by halfyear)");
+      suite_create("\ndeposit (with withdrawals and frequency by halfyear)\n");
 
   TCase *tc_deposit_withdrawals_by_halfyear = tcase_create("test_deposit");
   tcase_add_test(tc_deposit_withdrawals_by_halfyear,
@@ -4224,7 +4228,7 @@ Suite *deposit_withdrawals_by_halfyear(void) {
 
 Suite *deposit_withdrawals_by_year(void) {
   Suite *deposit =
-      suite_create("deposit (with withdrawals and frequency by year)");
+      suite_create("\ndeposit (with withdrawals and frequency by year)\n");
 
   TCase *tc_deposit_withdrawals_by_year = tcase_create("test_deposit");
   tcase_add_test(tc_deposit_withdrawals_by_year, deposit_withdrawals_by_year_1);
@@ -4245,7 +4249,7 @@ Suite *deposit_withdrawals_by_year(void) {
 
 Suite *deposit_withdrawals_by_end_term(void) {
   Suite *deposit =
-      suite_create("deposit (with withdrawals and frequency by end term)");
+      suite_create("\ndeposit (with withdrawals and frequency by end term)\n");
 
   TCase *tc_deposit_withdrawals_by_end_term = tcase_create("test_deposit");
   tcase_add_test(tc_deposit_withdrawals_by_end_term,
@@ -4265,7 +4269,7 @@ Suite *deposit_withdrawals_by_end_term(void) {
 
 Suite *deposit_combined_with_taxes(void) {
   Suite *deposit =
-      suite_create("deposit (hardest variations combined with taxes)");
+      suite_create("\ndeposit (hardest variations combined with taxes)\n");
 
   TCase *tc_deposit_combined_with_taxes = tcase_create("test_deposit");
   tcase_add_test(tc_deposit_combined_with_taxes,

@@ -232,9 +232,9 @@ static void test_function(Suite *(**array)(void), size_t size, char *name,
 static void function_declaration(char *function) {
   char space[5] = {0};
   int str_len = strlen(function);
-  if (str_len == 10) {
+  if (str_len == 6) {
     strcpy(space, "   ");
-  } else if (str_len == 11) {
+  } else if (str_len == 7) {
     strcpy(space, "  ");
   }
   printf(
@@ -245,8 +245,8 @@ static void function_declaration(char *function) {
       "|                                                                       "
       "               |\n");
   printf(
-      "|                                 %s TESTS %s                           "
-      "      |\n",
+      "|                                  %s TESTS %s                          "
+      "          |\n",
       function, space);
   printf(
       "|_______________________________________________________________________"
