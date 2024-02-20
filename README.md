@@ -198,7 +198,7 @@ Has three operating modes:
 1. The deposit calculator from the site `calcus.ru` was taken as a basis;
 2. All user input fields are interactively validated;
 3. The loan amount varies in the range `{0.01:999999999999.99}`;
-4. The loan term varies in the range `1:18250` - days, `{1:600}` - months, `{1:50}` - years;
+4. The loan term varies in the range `{1:18250}` - days, `{1:600}` - months, `{1:50}` - years;
 5. The interest rate varies in the range `{0.001:999}`;
 6. It is possible to carry out replenishment operations and partial withdrawals of funds from the deposit;
 7. The field for entering the amount of deposits/withdrawals has the same range as the deposit amount.
